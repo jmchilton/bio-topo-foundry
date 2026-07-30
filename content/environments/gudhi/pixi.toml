@@ -1,0 +1,9 @@
+# GUDHI — broad TDA library (simplicial/alpha/cubical complexes, persistence, representations).
+# conda-forge, community-maintained → L3. (conda-forge gudhi=3.13.0, 2026-07-29)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+gudhi = "==3.13.0"
+

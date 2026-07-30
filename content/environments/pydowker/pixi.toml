@@ -1,0 +1,19 @@
+# pyDowker — the full 2-parameter-persistence stack, assembled from three in-repo recipes:
+#   pyDowker (Dowker complexes)  →  pyrivet (Python API)  →  rivet (rivet_console C++ engine).
+# This is the environment that RETIRES the old "hollow green": previously `import pyDowker` passed but
+# the tool couldn't run because `rivet_console` was on no package index. Building RIVET's Qt-free
+# console engine from source (recipes/rivet, GPL-3.0) supplies it, so the whole path is now runnable.
+#
+# All three are declared as path deps because pyrivet + rivet live nowhere but this repo; gudhi, numpy
+# and scipy are pulled transitively from conda-forge. rivet is a compiled C++ recipe → this env is
+# linux-64 and grades L1 (in-repo recipes; RIVET GPL-3.0 + pyrivet BSD + pyDowker MIT are all
+# redistributable → L3-eligible once the recipes are upstreamed to conda-forge).
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+pydowker = { path = "../../../recipes/pyDowker" }
+pyrivet = { path = "../../../recipes/pyrivet" }
+rivet-console = { path = "../../../recipes/rivet" }

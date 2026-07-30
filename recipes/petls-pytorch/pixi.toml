@@ -1,0 +1,8 @@
+# Adapter only: points pixi-build at the rattler-build recipe beside it. recipe.yaml is the
+# artifact — the eventual conda-forge/Bioconda staged-recipes PR. Pure-python (noarch), Apache-2.0.
+[package]
+name = "petls-pytorch"
+version = "1.0.2"
+
+[package.build]
+backend = { name = "pixi-build-rattler-build", version = "*" }

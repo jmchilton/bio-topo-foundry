@@ -1,0 +1,16 @@
+# giotto-tda — scikit-learn-compatible TDA pipelines. No conda package (and no PyPI sdist either,
+# wheel-only). Expressed as a [pypi-dependencies] entry, which puts the environment OUT OF PROFILE
+# at L0: a second resolver with no conda identity for a recipe or mulled target string to name.
+# To reach L1, add a rattler-build recipe under recipes/giotto-tda and switch to a path dependency
+# (its sibling giotto-ph already has one). (PyPI giotto-tda==0.6.2, 2026-07-29)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = "3.11.*"
+
+
+[pypi-dependencies]
+giotto-tda = "==0.6.2"
+

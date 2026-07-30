@@ -1,0 +1,58 @@
+# VERIFIED GREEN on linux-64 via rattler-build in a linux/amd64 container: the pybind11 extension
+# compiles + links, packages (phat-1.5.0a-hb0f4dca_0, ~420 KiB), the test env solves, and both the
+# `import phat` and `pip check` tests pass. Two non-fatal C++ deprecation warnings come from upstream
+# code (PYBIND11_PLUGIN / module_(const char*) — deprecated pybind11 idioms), harmless to the build.
+#
+# PHAT (Persistent Homology Algorithm Toolbox) — Python bindings over a header-only C++ library.
+# Fast boundary-matrix reduction (chunk / spectral-sequence / twist / row algorithms) for large
+# filtrations. Self-contained compile: a single pybind11 extension (python/_phat.cpp) against the
+# bundled include/phat headers, C++11, NO external libs (no Boost/CGAL/Eigen) -> a clean L1 recipe.
+# Installs the pure-Python `phat.py` (which `import _phat`s the compiled ext). pybind11 is build-only.
+# LGPL-3.0 (COPYING = GPLv3, COPYING.LESSER = LGPLv3) -> redistributable, so L3-eligible once published.
+# NOTE: PyPI calls the release 1.5.0a (alpha) though the in-sdist setup.py says 1.5.0; we track the
+# PyPI identity (1.5.0a). Source is the PyPI sdist (no wheel is published).
+context:
+  build_number: '0'
+
+package:
+  name: phat
+  version: 1.5.0a
+
+source:
+- url: https://files.pythonhosted.org/packages/43/82/c14de81dc2953a71a060f72f2bc34c41996307956b162751f2a47e2c78f7/phat-1.5.0a.tar.gz
+  sha256: 51e7fe5e05adf5c7e0895765572fff05b979731234251f13011610d71d4980ab
+
+build:
+  number: ${{ build_number }}
+  script:
+    - python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+  host:
+    - python >=3.8
+    - pip
+    - setuptools
+    # setup.py does `import pybind11` in build_ext to add its include dir; needed at build time only.
+    - pybind11
+  run:
+    - python >=3.8
+    # Upstream setup.py over-declares pybind11 in install_requires (it's really build-only — just
+    # headers for the extension compile). Mirrored here so the package metadata is self-consistent
+    # and `pip check` passes; a future upstream fix could move it to build-only and drop this.
+    - pybind11
+
+tests:
+- python:
+    imports:
+    - phat
+
+about:
+  homepage: https://bitbucket.org/phat-code/phat
+  summary: Python bindings for PHAT, the C++ Persistent Homology Algorithm Toolbox (fast boundary-matrix reduction)
+  license: LGPL-3.0-or-later
+  license_file:
+    - COPYING
+    - COPYING.LESSER
+  repository: https://bitbucket.org/phat-code/phat

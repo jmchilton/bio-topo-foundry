@@ -1,0 +1,11 @@
+# scikit-tda — umbrella meta-package bundling ripser.py, persim, kmapper, tadasets. PyPI-only →
+# in-repo recipe holds it at L1. NOTE: its run closure includes `tadasets`, also absent from conda;
+# that package needs its own recipe before this environment fully resolves. (PyPI scikit-tda==1.1.1)
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+scikit-tda = { path = "../../../recipes/scikit-tda" }
+

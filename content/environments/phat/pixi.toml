@@ -1,0 +1,12 @@
+# PHAT — Persistent Homology Algorithm Toolbox (C++ header-only + pybind11). A fast boundary-matrix
+# reduction backend (chunk / spectral-sequence / twist algorithms) for large filtrations — the
+# reduction perf/scale our pure-Python stack lacks. PyPI sdist only (no wheel, no conda package) →
+# in-repo compiled recipe → L1. LGPL-3.0 (redistributable → L3-eligible on publish).
+# (PyPI phat==1.5.0a; header-only C++11, no external libs.)
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+phat = { path = "../../../recipes/phat" }

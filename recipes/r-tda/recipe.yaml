@@ -1,0 +1,60 @@
+# Compiled R package (NeedsCompilation: yes). LinkingTo BH/Rcpp/RcppEigen; system deps gmp + make.
+# Modeled on the r-designit recipe + CRAN metadata; the gmp/boost/eigen host set is a best-guess and
+# should be confirmed with a real `rattler-build build`.
+context:
+  build_number: '0'
+
+package:
+  name: r-tda
+  version: 1.9.4
+
+source:
+- url:
+  - https://cran.r-project.org/src/contrib/TDA_1.9.4.tar.gz
+  - https://cran.r-project.org/src/contrib/Archive/TDA/TDA_1.9.4.tar.gz
+  sha256: bad4680d4b110f7f74500295772d2a35ee1ca045546928ebf9c486f872bfd07a
+
+build:
+  number: ${{ build_number }}
+  script:
+    - if: win
+      then: R CMD INSTALL --build . %R_ARGS%
+      else: R CMD INSTALL --build . ${R_ARGS}
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - make
+  host:
+  - r-base
+  - r-rcpp >=0.11.0
+  - r-rcppeigen
+  - r-bh >=1.87.0
+  - r-fnn
+  - r-igraph
+  - r-scales
+  - gmp
+  run:
+  - r-base
+  - r-rcpp >=0.11.0
+  - r-fnn
+  - r-igraph
+  - r-scales
+  - gmp
+
+tests:
+- script:
+  - Rscript -e 'library("TDA")'
+
+about:
+  homepage: https://cran.r-project.org/package=TDA
+  summary: Statistical Tools for Topological Data Analysis
+  description: |-
+    Tools for the statistical analysis of persistent homology and for
+    density clustering. Computes persistence diagrams, confidence bands,
+    and clustering from point-cloud and function inputs.
+  license: GPL-3.0-only
+  license_file:
+  - ${{ PREFIX }}/lib/R/share/licenses/GPL-3
+  repository: https://github.com/cran/TDA

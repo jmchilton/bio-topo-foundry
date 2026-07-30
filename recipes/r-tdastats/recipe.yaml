@@ -1,0 +1,53 @@
+# Compiled R package (NeedsCompilation: yes, Rcpp). Modeled on the r-designit recipe + CRAN metadata.
+# VERIFIED GREEN on linux-64 via `rattler-build build` in a linux/amd64 container: compiles the Rcpp
+# sources, installs, packages, and the `library("TDAstats")` test passes (r-tdastats-0.4.2-r44hd863ad4_0.conda).
+# Only fix over the initial draft: CRAN's "GPL-3" had to become the SPDX id `GPL-3.0-only` (rattler-build
+# validates the license field as SPDX and rejects the bare "GPL-3").
+context:
+  build_number: '0'
+
+package:
+  name: r-tdastats
+  version: 0.4.2
+
+source:
+- url:
+  - https://cran.r-project.org/src/contrib/TDAstats_0.4.2.tar.gz
+  - https://cran.r-project.org/src/contrib/Archive/TDAstats/TDAstats_0.4.2.tar.gz
+  sha256: 62e33b3fb6937ca6420891eb4c97590bb1ad77976a547c7672ff53a60aafd855
+
+build:
+  number: ${{ build_number }}
+  script:
+    - if: win
+      then: R CMD INSTALL --build . %R_ARGS%
+      else: R CMD INSTALL --build . ${R_ARGS}
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - make
+  host:
+  - r-base
+  - r-rcpp >=0.12.15
+  - r-ggplot2 >=2.2.1
+  run:
+  - r-base
+  - r-rcpp >=0.12.15
+  - r-ggplot2 >=2.2.1
+
+tests:
+- script:
+  - Rscript -e 'library("TDAstats")'
+
+about:
+  homepage: https://tdaverse.github.io/TDAstats/
+  summary: Pipeline for Topological Data Analysis
+  description: |-
+    A comprehensive pipeline for topological data analysis, including
+    calculation and statistical inference of persistent homology.
+  license: GPL-3.0-only
+  license_file:
+  - ${{ PREFIX }}/lib/R/share/licenses/GPL-3
+  repository: https://github.com/cran/TDAstats

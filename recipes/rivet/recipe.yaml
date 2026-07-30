@@ -1,0 +1,81 @@
+# RIVET — Rank Invariant Visualization and Exploration Tool (Lesnick & Wright). The compute engine
+# for 2-parameter persistent homology: this recipe builds ONLY `rivet_console` (the CLI computation
+# engine), which is Qt-free. The `rivet_GUI` viewer needs Qt5 and is intentionally NOT built — nothing
+# in our stack drives the GUI; the console binary is what `pyrivet` (and thus pyDowker) shells out to.
+#
+# Build: pure CMake (project(rivet_console), C++14, Boost >=1.58, no Qt). CMakeLists uses ExternalProject
+# to git-clone two header/impl deps at configure time — docopt.cpp and msgpack-c (cpp-3.0.1) — so the
+# build needs `git` + network (same pattern our giotto-ph / pyflagser recipes already rely on). No Boost
+# COMPONENTS are requested, so Boost is used header-only; `libboost-devel` supplies the headers.
+#
+# Package name is `rivet-console`, NOT `rivet`: conda-forge already carries an unrelated `rivet`
+# (v3.x/4.x, a different project), and under strict channel priority that would shadow this one. The
+# name also states exactly what we ship — the console engine only, not the Qt GUI. The installed binary
+# is still `rivet_console` (what pyrivet execs), independent of the conda package name.
+#
+# Version: RIVET ships no tags/releases (rolling master); docs call it "1.0". Pinned to master commit
+# 32ce9e8 (2023-08-08) via the GitHub archive tarball below.
+# License: GPL-3.0-or-later (source headers: "either version 3 ... or (at your option) any later version").
+# Redistributable copyleft → conda-forge-eligible (L3) once this recipe is upstreamed.
+context:
+  build_number: '0'
+  git_commit: 32ce9e80b06353ed24f1e4e24469bdc6968cc52f
+
+package:
+  name: rivet-console
+  version: '1.0'
+
+source:
+- url: https://github.com/rivetTDA/rivet/archive/${{ git_commit }}.tar.gz
+  sha256: 2cdc446c55bcfa30fcdf65b2757986fe9f78cc8eac55241edd8ef295d915e806
+
+build:
+  number: ${{ build_number }}
+  # linux-only: the ExternalProject/CMake flow + OpenMP path is exercised on linux; the console binary
+  # is what our downstream (pyrivet) needs on PATH.
+  script:
+    # Upstream CMakeLists:7 does `set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "...")` with ${CMAKE_CXX_FLAGS}
+    # UNQUOTED. Under conda the activation scripts populate CXXFLAGS with spaces, so CMake parses the
+    # expansion as a semicolon list and emits a mangled compile line (`-ftemplate-depth=1024: not found`,
+    # `c++: no input files`). Re-quote the line so the existing flags stay one space-separated string.
+    # (A stock ubuntu build dodges this only because CXXFLAGS is empty there.)
+    - sed -i 's#^set(CMAKE_CXX_FLAGS .*#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-depth=1024 -Wall -Wextra -pedantic -fPIC")#' CMakeLists.txt
+    - mkdir -p build && cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Release
+    # Cap parallelism: the dcel/*.cpp arrangement units compile with -ftemplate-depth=1024 and each
+    # peaks ~1.5-2 GB in cc1plus, so a full -j${CPU_COUNT} fan-out OOM-kills cc1plus on memory-limited
+    # or emulated builders (verified: -j14 in a 7.7 GB container). -j2 matches conda-forge's 2-core
+    # runners and stays well under typical RAM.
+    - make -j2 rivet_console
+    - install -Dm755 rivet_console ${PREFIX}/bin/rivet_console
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    # cmake <4: RIVET (and its ExternalProject sub-builds docopt.cpp / msgpack-c) declare
+    # `cmake_minimum_required(VERSION 3.1)`, which CMake >=4 rejects outright. Same pin our giotto-ph
+    # recipe uses. conda-forge still ships 3.31.x.
+    - cmake <4
+    - make
+    # ExternalProject_Add git-clones docopt.cpp and msgpack-c at configure time.
+    - git
+  host:
+    - libboost-devel >=1.58
+  # rivet_console uses Boost header-only (find_package(Boost) with no COMPONENTS; the overlink check
+  # confirms it links only libgomp, never a boost .so). But libboost-devel's run-export injects a hard
+  # `libboost >=1.91` RUNTIME pin, which then collides with gudhi's older boost-cpp in any shared env
+  # (e.g. the pyDowker stack). Drop that spurious runtime constraint — there is no boost link to honor.
+  ignore_run_exports:
+    by_name:
+      - libboost
+
+tests:
+- script:
+    - rivet_console --help
+
+about:
+  homepage: https://rivet.readthedocs.io
+  summary: RIVET console engine for 2-parameter persistent homology (rivet_console CLI; GUI viewer not built)
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  repository: https://github.com/rivetTDA/rivet

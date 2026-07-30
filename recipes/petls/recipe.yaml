@@ -1,0 +1,81 @@
+# Compiled (scikit-build-core + pybind11 + CMake, C++17). VERIFIED GREEN on linux-64 via
+# `rattler-build build` in a linux/amd64 container: compiles, links, packages, the test env solves, and
+# the import + pip-check tests pass (petls-1.0.1-hb0f4dca_0.conda).
+# PLATFORM NOTE: linux-64 only. petls.hpp hardcodes `std::chrono::_V2::steady_clock`, a libstdc++ (GCC)
+# internal namespace that does not exist under macOS Clang/libc++, so this will not build on osx-*.
+# petls also FetchContent-clones Eigen/pybind11/GUDHI/Ripser at configure time, so `git` + network are
+# required during the build (the eigen/pybind11 host entries are unused, kept as intent hints).
+# Remaining lint (non-fatal): "Overdepending against libboost" — libboost-devel run-exports more boost
+# libs than petls links (only program_options); could be trimmed with build.ignore_run_exports.
+# ALPHA COMPLEX DISABLED: petls's cpp/alpha.cmake does `include(${CGAL_USE_FILE})`, a mechanism removed
+# in CGAL >=5 (modern CGAL uses imported targets), so it can't build against conda-forge's CGAL 6.2.
+# We build with -DPETLS_USE_ALPHA_COMPLEX=OFF, which the upstream CMakeLists supports and which drops
+# the CGAL/GMP/MPFR/GUDHI-headers build requirement. Re-enabling alpha needs an upstream patch to
+# alpha.cmake for CGAL>=5 (link CGAL::CGAL instead of including CGAL_USE_FILE).
+context:
+  build_number: '0'
+
+package:
+  name: petls
+  version: 1.0.1
+
+source:
+- url: https://files.pythonhosted.org/packages/38/43/c489a558d5e7972e409b180d83663d2601406bea8be8fbc8cdcaa703ca47/petls-1.0.1.tar.gz
+  sha256: 46a7b2ba942d57ee64924abbcc670abd7e07e3a692d5d58deb8e257c77a59a34
+
+build:
+  number: ${{ build_number }}
+  script:
+    - export CMAKE_ARGS="${CMAKE_ARGS} -DPETLS_USE_ALPHA_COMPLEX=OFF"
+    - python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  build:
+  - ${{ compiler('cxx') }}
+  - cmake
+  # petls's CMake forces the "Unix Makefiles" generator, so `make` is required (ninja won't be used).
+  - make
+  # petls FetchContent-clones Eigen (and pybind11) from GitHub at configure time, so `git` + network
+  # are needed during the build. (This is why the `eigen`/`pybind11` host entries below go unused —
+  # kept only as a hint of the real deps; a cleaner recipe would set FETCHCONTENT_SOURCE_DIR_* to them.)
+  - git
+  host:
+  - python >=3.10
+  - pip
+  # upstream pyproject uses the deprecated `cmake.verbose` key, removed in scikit-build-core >=0.10,
+  # so pin below that until petls updates it to `build.verbose`.
+  - scikit-build-core >=0.3.3,<0.10
+  - pybind11
+  - eigen
+  # petls core links compiled Boost (program_options, thread) — needs libboost-devel, not -headers.
+  # Pinned to 1.90 so petls's libboost run-export matches what the `gudhi` runtime dep is built
+  # against: newer libboost (1.91) has no gudhi build yet, which makes the closure un-co-installable.
+  - libboost-devel 1.90.*
+  - numpy
+  run:
+  - python >=3.10
+  - ${{ pin_compatible('numpy') }}
+  - scipy >=1.15.2
+  - gudhi >=3.11.0
+  - matplotlib-base
+  - pandas
+  # petls lists pytest in its pyproject runtime `dependencies` and imports it at package import time,
+  # so it is a genuine run dep here (not just a test dep).
+  - pytest >=7.4.0
+
+tests:
+- python:
+    imports:
+    - petls
+
+about:
+  homepage: https://github.com/bdjones13/PETLS
+  summary: PErsistent Topological Laplacian Software (persistent topological Laplacians)
+  # UPSTREAM HAS NO LICENSE: no LICENSE file in the repo and no license in the PyPI metadata for
+  # petls 1.0.1 (both checked 2026-07), so PETLS is legally all-rights-reserved — NOT redistributable
+  # and NOT eligible for conda-forge/Bioconda, which require a bundled OSI license. This caps petls at
+  # L1 in the biopixi ladder regardless of the clean linux-64 build above. A license has been requested
+  # upstream: https://github.com/bdjones13/PETLS/issues/2 . (An earlier `license: MIT` value here was
+  # unfounded — no upstream source declares MIT.) Revisit this field and the L-ceiling if a license lands.
+  license: LicenseRef-NONE
+  repository: https://github.com/bdjones13/PETLS

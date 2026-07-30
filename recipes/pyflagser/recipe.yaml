@@ -1,0 +1,69 @@
+# Compiled bindings to flagser. VERIFIED GREEN on linux-64 via `rattler-build build` in a linux/amd64
+# container: compiles, links, packages, the test env solves, and import + pip-check tests pass
+# (pyflagser-0.4.7-hb0f4dca_0.conda). Four things this build needed, all captured below:
+#   1. git source (not the archive tarball) so the flagser submodule (luetge/flagser) is fetched —
+#      the tarball ships only the binding sources and setup.py force-runs `git submodule update`.
+#   2. `make` — setup.py drives raw cmake with the default Unix Makefiles generator.
+#   3. repoint setup.py's `pkg_resources.extern.packaging` version import at standalone `packaging`
+#      (pkg_resources.extern is gone from modern setuptools).
+#   4. force-include <cstdint> — flagser's definitions.h uses uint32_t/uint8_t without including it,
+#      which GCC 13+ no longer pulls in transitively.
+context:
+  build_number: '0'
+
+package:
+  name: pyflagser
+  version: 0.4.7
+
+source:
+# pyflagser vendors the flagser C++ engine as a git submodule (luetge/flagser) and its setup.py
+# force-runs `git submodule update --init --recursive`; the archive tarball ships only the binding
+# sources, not flagser itself. Use a git source at the tag so rattler-build fetches the submodule.
+- git: https://github.com/giotto-ai/pyflagser.git
+  tag: v0.4.7
+
+build:
+  number: ${{ build_number }}
+  script:
+    # setup.py does `from pkg_resources.extern.packaging import version` — pkg_resources.extern was
+    # removed from modern setuptools entirely (chasing an old-enough setuptools would also drop
+    # Python 3.14 support). Repoint that single version-parse at the standalone `packaging` module,
+    # which is all it's used for. (A source patch file would be the cleaner staged-recipes form.)
+    - sed -i 's/^from pkg_resources.extern.packaging import version/from packaging import version/' setup.py
+    # flagser (this era) uses uint32_t/uint8_t in definitions.h without including <cstdint>, which
+    # GCC 13+ no longer pulls in transitively. Force-include it for every translation unit.
+    - export CXXFLAGS="${CXXFLAGS} -include cstdint"
+    - python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  - cmake
+  # setup.py drives raw `cmake` with the default Unix Makefiles generator (never ninja), so `make`
+  # is required or cmake aborts with CMAKE_MAKE_PROGRAM-not-set.
+  - make
+  host:
+  - python
+  - pip
+  - setuptools
+  # provides the `packaging` module the build script's sed repoints setup.py's version import to.
+  - packaging
+  - pybind11
+  - numpy
+  run:
+  - python
+  - ${{ pin_compatible('numpy') }}
+  - numpy >=1.17.0
+  - scipy >=0.17.0
+
+tests:
+- python:
+    imports:
+    - pyflagser
+
+about:
+  homepage: https://github.com/giotto-ai/pyflagser
+  summary: Python bindings for the flagser directed flag-complex persistence tool
+  license: AGPL-3.0-or-later
+  repository: https://github.com/giotto-ai/pyflagser

@@ -1,0 +1,7 @@
+# Pixi local environments and build state — regenerable from pixi.toml + pixi.lock
+.pixi/
+
+# rattler-build output
+output/
+
+.DS_Store

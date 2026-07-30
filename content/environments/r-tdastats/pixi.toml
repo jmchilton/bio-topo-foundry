@@ -1,0 +1,10 @@
+# TDAstats (R) — streamlined persistent homology wrapping Ripser via Rcpp. CRAN-only, compiled
+# (NeedsCompilation: yes). In-repo recipe → L1. Upstream is legacy/maintenance-only. (CRAN 0.4.2)
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+r-base = "4.4.*"
+r-tdastats = { path = "../../../recipes/r-tdastats" }

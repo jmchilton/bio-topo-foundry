@@ -1,0 +1,9 @@
+# MMseqs2 — fast sequence search & clustering; used to build leakage-safe (sequence-family-held-out)
+# train/test splits, which both structure-QA papers depend on for honest evaluation. Single Bioconda
+# package (CLI) → L4 (auto BioContainer). (Bioconda mmseqs2=18.8cc5c, 2026-07-30)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+mmseqs2 = "==18.8cc5c"

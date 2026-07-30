@@ -1,0 +1,9 @@
+# Dionysus 2 — persistent (co)homology, vineyards, zigzag persistence. Usually a backend engine
+# rather than an end-user tool. conda-forge → L3. (conda-forge dionysus=2.2.3, 2026-07-29)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+dionysus = "==2.2.3"
+

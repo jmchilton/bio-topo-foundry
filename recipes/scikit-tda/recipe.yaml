@@ -1,0 +1,45 @@
+# Pure-Python noarch meta-package. Modeled on `rattler-build generate-recipe pypi scikit-tda`.
+context:
+  build_number: '0'
+
+package:
+  name: scikit-tda
+  version: 1.1.1
+
+source:
+- url: https://files.pythonhosted.org/packages/1e/12/f13612a33e4e5d3c29a0ca1c4994d2f44b85c4c0005ece42606228c916fa/scikit_tda-1.1.1.tar.gz
+  sha256: 530b8dd7391c37ca12a585e7c1e585adeb24779fc66ea612221f6273e654d086
+
+build:
+  number: ${{ build_number }}
+  noarch: python
+  script: python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - setuptools
+  run:
+  - python >=3.6
+  - numpy
+  - scipy
+  - scikit-learn
+  - matplotlib-base
+  - ripser
+  - persim
+  - pillow
+  - kmapper
+  # - tadasets   # PyPI-only; needs its own recipe before this fully resolves from conda
+
+tests:
+- requires:
+  - pip
+  script:
+  - pip show scikit-tda
+
+about:
+  homepage: https://scikit-tda.org
+  summary: Topological Data Analysis Python libraries bundle
+  license: MIT
+  repository: https://github.com/scikit-tda/scikit-tda

@@ -1,0 +1,64 @@
+# pyrivet — the pure-Python interface to RIVET (rivetTDA/rivet-python). It builds bifiltrations and
+# then shells out to the `rivet_console` binary (subprocess) to compute 2-parameter Betti numbers /
+# barcodes. So this package is trivial to build, but USELESS without the console engine on PATH — the
+# `rivet` run-dep (our in-repo recipes/rivet) supplies it. Together they turn the old "hollow green"
+# (import passes, tool can't run) into a real, runnable 2-parameter-persistence stack for pyDowker.
+#
+# Not on PyPI and no git tags → source is the GitHub archive of master commit 7a07d19 (2024-08-29),
+# and setuptools_scm (which needs a VCS or a pretend version) is fed SETUPTOOLS_SCM_PRETEND_VERSION.
+# Pure Python (no ext_modules) → noarch. License: BSD-3-Clause.
+context:
+  build_number: '0'
+  version: '0.1'
+  git_commit: 7a07d1933ccea00e53717e0491262884957f3b5d
+
+package:
+  name: pyrivet
+  version: ${{ version }}
+
+source:
+- url: https://github.com/rivetTDA/rivet-python/archive/${{ git_commit }}.tar.gz
+  sha256: b6100b0f7d3e190a93d62e12efaf6fd6be9cdd9e7dbabbe8d056dc08b852bbd7
+
+build:
+  number: ${{ build_number }}
+  noarch: python
+  script:
+    - export SETUPTOOLS_SCM_PRETEND_VERSION=${{ version }}
+    - python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python >=3.4
+    - pip
+    - setuptools
+    - setuptools_scm
+    - numpy
+  run:
+    - python >=3.4
+    - numpy
+    # scipy is imported (pyrivet/codensity_estimate.py, hilbert_distance.py) but omitted from
+    # install_requires upstream; declared here so the runtime metadata is honest.
+    - scipy
+    # the console engine pyrivet subprocesses out to (rivet_executable = 'rivet_console'). Without it
+    # every compute call raises FileNotFoundError — this run-dep is what makes the package non-hollow.
+    # Package name is `rivet-console` (our recipes/rivet); the plain `rivet` on conda-forge is a
+    # different, unrelated project.
+    - rivet-console
+
+tests:
+- python:
+    imports:
+    - pyrivet
+    - pyrivet.rivet
+- script:
+    # the `rivet` run-dep is auto-installed into every test env, so this proves the engine pyrivet
+    # subprocesses out to is actually present + runnable alongside it
+    - rivet_console --help
+
+about:
+  homepage: https://github.com/rivetTDA/rivet-python
+  summary: Pure-Python interface to RIVET (2-parameter persistent homology); drives the rivet_console engine
+  license: BSD-3-Clause
+  license_file: LICENSE
+  repository: https://github.com/rivetTDA/rivet-python

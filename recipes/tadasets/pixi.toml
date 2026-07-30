@@ -1,0 +1,8 @@
+# Adapter only: points pixi-build at the rattler-build recipe beside it. recipe.yaml is the
+# artifact — the thing that eventually becomes a conda-forge staged-recipes PR. Pure-python, MIT.
+[package]
+name = "tadasets"
+version = "0.2.2"
+
+[package.build]
+backend = { name = "pixi-build-rattler-build", version = "*" }

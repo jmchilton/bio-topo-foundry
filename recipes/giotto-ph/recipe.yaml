@@ -1,0 +1,68 @@
+# Compiled (pybind11/C++). VERIFIED GREEN on linux-64 via `rattler-build build` in a linux/amd64
+# container: compiles, links, packages, the test env solves, and import + pip-check tests pass
+# (giotto-ph-0.2.4-hb0f4dca_0.conda). Four things this build needed, all captured below:
+#   1. git source (not the archive tarball) so the pybind11/junction/turf submodules are fetched —
+#      setup.py force-runs `git submodule update --init --recursive`.
+#   2. `make` — setup.py drives raw cmake with the default Unix Makefiles generator.
+#   3. `cmake <4` — the junction submodule's cmake_minimum_required is below 3.5, a hard error on CMake 4.
+#   4. force-include <cstdint> — 0.2.4 predates GCC 13's stricter transitive headers.
+# Only benign warnings remain (signedness comparisons); no packaging lint.
+context:
+  build_number: '0'
+
+package:
+  name: giotto-ph
+  version: 0.2.4
+
+source:
+# giotto-ph vendors pybind11/junction/turf as git submodules and its setup.py force-runs
+# `git submodule update --init --recursive`, so a plain archive tarball (which omits submodules)
+# can't build. Use a git source at the tag; rattler-build recursively fetches submodules.
+- git: https://github.com/giotto-ai/giotto-ph.git
+  tag: v0.2.4
+
+build:
+  number: ${{ build_number }}
+  script:
+    # giotto-ph 0.2.4 predates GCC 13's stricter headers: gph/src/Flag_complex_edge_collapser.h
+    # uses uint8_t without including <cstdint>, which no longer arrives transitively. Force-include
+    # it for every translation unit (cmake seeds CMAKE_CXX_FLAGS from $CXXFLAGS). Upstream-cleaner
+    # would be a patch adding the include, but this is non-invasive and covers all affected headers.
+    - export CXXFLAGS="${CXXFLAGS} -include cstdint"
+    - python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  build:
+  - ${{ compiler('c') }}
+  - ${{ compiler('cxx') }}
+  # Pin <4: the vendored `junction` submodule's CMakeLists declares cmake_minimum_required below
+  # 3.5, which CMake >=4.0 rejects as a hard error. setup.py calls raw `cmake` with a fixed arg
+  # list (no CMAKE_POLICY_VERSION_MINIMUM), so we can't inject the override — an older cmake that
+  # treats the old minimum as a deprecation warning is the least-invasive fix.
+  - cmake <4
+  # setup.py invokes raw `cmake` with the default "Unix Makefiles" generator (it never selects
+  # ninja), so `make` is required or cmake aborts with CMAKE_MAKE_PROGRAM-not-set.
+  - make
+  host:
+  - python
+  - pip
+  - setuptools
+  - scikit-build
+  - pybind11
+  - numpy
+  run:
+  - python
+  - ${{ pin_compatible('numpy') }}
+  - scipy >=1.5.0
+  - scikit-learn >=0.23.1
+
+tests:
+- python:
+    imports:
+    - gph
+
+about:
+  homepage: https://github.com/giotto-ai/giotto-ph
+  summary: High-performance implementation of persistent homology (Vietoris-Rips)
+  license: AGPL-3.0-or-later
+  repository: https://github.com/giotto-ai/giotto-ph

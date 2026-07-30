@@ -1,0 +1,13 @@
+# pixi-build adapter for the in-repo rivet recipe (rivet_console engine). Lets an environment consume
+# `recipes/rivet` as a path dependency via the pixi-build-rattler-build backend. See recipe.yaml.
+[package]
+name = "rivet-console"
+version = "1.0"
+
+[package.build]
+backend = { name = "pixi-build-rattler-build", version = "*" }
+
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+preview = ["pixi-build"]

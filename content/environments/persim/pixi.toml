@@ -1,0 +1,9 @@
+# persim — persistence-diagram distances (bottleneck/Wasserstein) & vectorizations; part of
+# the scikit-tda family. conda-forge → L3. (conda-forge persim=0.3.8, 2026-07-29)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+persim = "==0.3.8"
+

@@ -1,0 +1,35 @@
+# HiPoNet — cohort-scale multi-view simplicial learner (Krishnaswamy Lab, Yale; NeurIPS 2025).
+# Repo github.com/KrishnaswamyLab/HiPoNet @ 45a9d08c49af0aa0a2e24b840d53e0512ad69032 (pin).
+#
+# LICENSE: Yale non-commercial (permits non-commercial use/copy/modify/distribute; commercial needs a
+# separate Yale license). Buildable/usable for research, but NOT conda-forge/Bioconda-eligible (no OSI
+# license) -> L-ceiling stays below L3 regardless of build quality.
+#
+# WHY L0 (not L1): the repo is NOT a packaged library. Its pyproject declares `name = "pointcloudnet"`
+# v0.1.0 with NO [build-system] table and a flat script layout (main_*.py, models/, utils/), so it is
+# not pip/wheel-installable -> there is nothing for a rattler-build recipe to build. It is a uv-managed
+# research codebase (.python-version 3.11, uv.lock pins torch 2.8 / numpy 2.3.2 / scanpy 1.11.4).
+#
+# This fixture reproduces the runtime closure as [pypi-dependencies] (mirroring uv.lock's all-PyPI
+# resolve). RUN the tool from the pinned clone (e.g. `uv run main_classification.py ...`), not as an
+# installed package. Deps taken from pyproject @ 45a9d08 (phate is commented-out upstream; omitted).
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = "3.11.*"
+
+[pypi-dependencies]
+igraph = ">=0.11.9"
+leidenalg = ">=0.10.2"
+libauc = ">=1.4.0"
+magic-impute = ">=3.0.0"
+numpy = ">=2.3.2"
+scanpy = ">=1.11.4"
+scipy = ">=1.14.0"
+scikit-learn = ">=1.7.1"
+torch = ">=2.8.0"
+torchinfo = ">=1.8.0"
+tqdm = ">=4.67.1"
+wandb = ">=0.21.3"

@@ -1,0 +1,11 @@
+# Scanpy + AnnData — single-cell preprocessing toolkit + the `.h5ad` interchange container. Explicit
+# dependency of both single-cell papers (HiPoNet, TopoMetry) and the on-ramp for every single-cell
+# pipeline. conda-forge → L3. AnnData is pulled transitively by scanpy but pinned explicitly as the
+# format contract. (conda-forge scanpy=1.12.3, anndata=0.13.2, 2026-07-30)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+scanpy = "==1.12.3"
+anndata = "==0.13.2"

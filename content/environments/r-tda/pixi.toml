@@ -1,0 +1,10 @@
+# TDA (R) — statistical TDA (persistence diagrams, density clustering, confidence bands). CRAN-only,
+# compiled; LinkingTo BH/Rcpp/RcppEigen, system deps gmp + make. In-repo recipe → L1. (CRAN 1.9.4)
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+r-base = "4.4.*"
+r-tda = { path = "../../../recipes/r-tda" }

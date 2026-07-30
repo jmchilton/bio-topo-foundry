@@ -1,0 +1,59 @@
+# pyDowker — builds Dowker complexes from custom relations (numpy arrays), computes persistence via
+# gudhi (1-parameter) and BIPERSISTENCE via RIVET (2-parameter). This is the leaf of the chain that
+# was previously a "hollow green": `import pyDowker` passed (empty __init__), but the real module
+# `pyDowker.DowkerComplex` does `from pyrivet import rivet`, and pyrivet shells out to `rivet_console`.
+# With recipes/rivet (console engine) + recipes/pyrivet in place, the whole path is now runnable.
+#
+# Upstream MIT, pure-Python, src-layout with a bare [project] table and NO [build-system] and NO
+# declared dependencies — so both the build backend (setuptools, via PEP 517 fallback) and every
+# runtime dep are supplied here. Real imports across src/pyDowker: gudhi, pyrivet, numpy.
+# (Stray committed src/pyDowker/{a.out, MNeighborComplex.c++} are non-.py and excluded from the wheel.)
+# Source: GitHub archive of master commit 7f043c3 (2024-09-19); no tags/PyPI release.
+context:
+  build_number: '0'
+
+package:
+  name: pydowker
+  version: 0.0.1
+
+source:
+- url: https://github.com/nihell/pyDowker/archive/7f043c3863c47dafa228b4d8aa4de27cc74b57f3.tar.gz
+  sha256: ac398243181f3ed285e5d7b14299530ecee11dbbfe5fce5a6b6892013a157e78
+
+build:
+  number: ${{ build_number }}
+  noarch: python
+  script:
+    - python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    # >=61 for the src-layout auto-discovery this project relies on (no explicit package config).
+    - python >=3.8
+    - pip
+    - setuptools >=61
+  run:
+    # None of these are declared upstream (bare [project]); mirrored from the actual imports so the
+    # package is installable-and-runnable rather than a hollow green.
+    - python >=3.8
+    - numpy
+    - gudhi
+    - pyrivet
+
+tests:
+- python:
+    imports:
+    - pyDowker
+    # exercises the real dep closure: gudhi + pyrivet (+ numpy) all import here
+    - pyDowker.DowkerComplex
+- script:
+    # rivet (via the pyrivet run-dep) is auto-installed into the test env: prove the 2-parameter
+    # engine at the bottom of the chain is present + runnable
+    - rivet_console --help
+
+about:
+  homepage: https://github.com/nihell/pyDowker
+  summary: Dowker complexes with custom relations; 1-param persistence via gudhi, bipersistence via RIVET
+  license: MIT
+  license_file: LICENSE
+  repository: https://github.com/nihell/pyDowker

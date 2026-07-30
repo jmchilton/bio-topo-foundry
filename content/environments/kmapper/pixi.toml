@@ -1,0 +1,11 @@
+# KeplerMapper (imported as `kmapper`) — the popular Mapper implementation with interactive HTML
+# output. PyPI package name is `kmapper`, NOT `kepler-mapper`. No conda package, so an in-repo
+# recipe holds it at L1. (PyPI kmapper==2.1.0, 2026-07-29)
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+kmapper = { path = "../../../recipes/kmapper" }
+

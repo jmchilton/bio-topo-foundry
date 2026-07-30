@@ -1,0 +1,11 @@
+# giotto-ph — high-performance Vietoris–Rips persistence engine (backs giotto-tda). Wheel-only on
+# PyPI (no sdist), so the recipe sources a GitHub tag tarball. Compiled (pybind11/C++) → the recipe
+# is a DRAFT that needs a real rattler-build to verify. In-repo recipe → L1. (v0.2.4)
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+giotto-ph = { path = "../../../recipes/giotto-ph" }
+

@@ -1,0 +1,11 @@
+# PETLS — PErsistent Topological Laplacian Software (the newest general persistent-Laplacian engine,
+# Wei-lab lineage, Aug 2025). PyPI-only, compiled (pybind11/Eigen/Boost) → DRAFT recipe. In-repo
+# recipe → L1. Depends on conda-forge gudhi. (PyPI petls==1.0.1, 2026-07-29)
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+petls = { path = "../../../recipes/petls" }
+

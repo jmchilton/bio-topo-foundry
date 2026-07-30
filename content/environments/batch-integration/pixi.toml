@@ -1,0 +1,13 @@
+# Batch integration — harmonypy (Harmony) + scanorama (Scanorama). Removes donor/batch effects so
+# multi-donor cohorts share one embedding; prerequisite for honest cohort-scale single-cell pipelines
+# (and for a topological scaffold that reflects biology, not batch). Two alternatives for one pipeline
+# slot, pinned together to document the choice. Both bioconda → each is individually L4 (single
+# Bioconda pkg), but this env installs two, so it grades L3 (multi-package, all-conda, resolvable).
+# (bioconda harmonypy=2.0.0, scanorama=1.7.4, 2026-07-30)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+harmonypy = "==2.0.0"
+scanorama = "==1.7.4"

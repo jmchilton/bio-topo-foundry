@@ -1,0 +1,10 @@
+# DockQ — the reference protein-protein interface-quality score (Fnat / LRMSD / iRMSD → DockQ). It is
+# the training label AND the evaluation metric for both structure-QA papers (TopoQA, TopoDockQ), so no
+# QA pipeline is reproducible without it. Single Bioconda package → L4 (auto BioContainer).
+# (Bioconda dockq=2.1.3, 2026-07-30)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+dockq = "==2.1.3"

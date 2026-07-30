@@ -1,0 +1,9 @@
+# Biopython — PDB/mmCIF parsing, sequence I/O, structure/interface extraction; glue under every
+# structure pipeline (the on-ramp for TopoQA/TopoDockQ-style interface work). conda-forge → L3.
+# (conda-forge biopython=1.87, 2026-07-30)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+biopython = "==1.87"

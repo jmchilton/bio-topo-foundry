@@ -1,0 +1,47 @@
+# tadasets — synthetic datasets for Topological Data Analysis (scikit-tda family: torus, sphere,
+# swiss-roll, dsphere, infty-sign). Pure-Python universal wheel, MIT → noarch: python, conda-forge
+# staged-recipes-eligible. Absent from conda today; this recipe closes a gap the environments README
+# already flagged — BOTH `scikit-tda` (genuine transitive dep) and `petls-pytorch` (declared dep) need
+# it before their closures resolve entirely from conda channels.
+# VERIFIED GREEN via `rattler-build build` on osx-arm64: sdist sha256 matches, setuptools build +
+# package, LICENSE bundled, import test env solves and `import tadasets` + pip check pass. noarch →
+# byte-identical on linux-64.
+context:
+  version: "0.2.2"
+  build_number: '0'
+
+package:
+  name: tadasets
+  version: ${{ version }}
+
+source:
+- url: https://files.pythonhosted.org/packages/eb/19/ab52af65b21146a6eca2ffa53ca61ad3e06eb6a00726ef26ad598c30e95f/tadasets-${{ version }}.tar.gz
+  sha256: 0be975f49d0f1e36539730215dba2389c68ecabfe08cdf1fb87edc2f26f8e3dc
+
+build:
+  number: ${{ build_number }}
+  noarch: python
+  script: python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools >=61.0
+  run:
+  - python >=3.8
+  - numpy
+  - matplotlib-base
+
+tests:
+- python:
+    imports:
+    - tadasets
+    pip_check: true
+
+about:
+  homepage: https://github.com/scikit-tda/tadasets
+  summary: Great data sets for Topological Data Analysis (scikit-tda)
+  license: MIT
+  license_file: LICENSE.txt
+  repository: https://github.com/scikit-tda/tadasets

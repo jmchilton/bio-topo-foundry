@@ -1,0 +1,13 @@
+# ANN backends — hnswlib (HNSW graph index) + pynndescent (NN-descent). The approximate-nearest-
+# neighbor engines behind single-cell kNN graphs (scanpy/UMAP/TopoMetry). Pinning them fixes a
+# documented TopoMetry reproducibility gap (unpinned ANN backend → nondeterministic graphs) and is
+# what unlocks ~1.3M-cell scale. Two alternatives for one pipeline slot, pinned together so the
+# neighbor-graph substrate is reproducible. Both conda-forge → L3 (hnswlib is compiled per-platform;
+# pynndescent is noarch). (conda-forge hnswlib=0.8.0, pynndescent=0.5.13, 2026-07-30)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+hnswlib = "==0.8.0"
+pynndescent = "==0.5.13"

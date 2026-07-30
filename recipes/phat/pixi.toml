@@ -1,0 +1,8 @@
+# Adapter only: points pixi-build at the rattler-build recipe beside it. recipe.yaml is the
+# artifact — the eventual conda-forge staged-recipes PR. Compiled (pybind11, C++11), LGPL-3.0.
+[package]
+name = "phat"
+version = "1.5.0a"
+
+[package.build]
+backend = { name = "pixi-build-rattler-build", version = "*" }

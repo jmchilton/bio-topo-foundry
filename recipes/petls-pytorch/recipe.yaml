@@ -1,0 +1,61 @@
+# petls-pytorch — GPU-native Persistent Topological Laplacians in PyTorch (S. K. Marston / Sylverity,
+# 2026). An INDEPENDENT PyTorch reimplementation of the PETLS persistent-Laplacian engine, written from
+# the PETLS paper + public API (not petls source). Apache-2.0 + pure-Python universal wheel → noarch:
+# python and conda-forge/Bioconda-eligible — unlike upstream petls (unlicensed, compiled, linux-64-only,
+# permanently capped at L1). This is the "harden an existing open package" alternative to a from-scratch
+# cleanroom (see ../../persistent-laplacian-implementation-review.md; bio-topo-foundry#2, now superseded).
+# VERIFIED GREEN via `rattler-build build` on osx-arm64 (with the sibling ../tadasets recipe as a local
+# channel): sdist sha256 matches, setuptools build + package, LICENSE + NOTICE bundled, import test env
+# solves and `import petls_pytorch` + pip check pass. Package is noarch → byte-identical on linux-64.
+# RUN-DEPS: pytorch/numpy/scipy/gudhi are the core; matplotlib + pandas are genuine (used in
+# core/profile.py + utils/plotting.py). `tadasets` is DECLARED by upstream pyproject but is NOT imported
+# anywhere in the shipped package (only unshipped benchmarks/examples use it) — kept here so pip-check
+# stays honest against upstream metadata, and satisfied via the sibling ../tadasets recipe. Flag upstream
+# to drop it, then it can leave `run` here too.
+context:
+  version: "1.0.2"
+  build_number: '0'
+
+package:
+  name: petls-pytorch
+  version: ${{ version }}
+
+source:
+- url: https://files.pythonhosted.org/packages/90/83/1ef543101cbb748c26353670341b2fc94412ab54dc09f4315ebe4a37fbf8/petls_pytorch-${{ version }}.tar.gz
+  sha256: e22645d24c13db0c13db697897dcab8e4aebcf513434492dab614cdc72aabc33
+
+build:
+  number: ${{ build_number }}
+  noarch: python
+  script: python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=61.0
+  - wheel
+  run:
+  - python >=3.10
+  - pytorch >=2.0.0
+  - numpy >=1.24.0
+  - scipy >=1.10.0
+  - gudhi >=3.10.0
+  - pandas >=2.0.0
+  - matplotlib-base >=3.7.0
+  - tadasets >=0.2.0
+
+tests:
+- python:
+    imports:
+    - petls_pytorch
+    pip_check: true
+
+about:
+  homepage: https://github.com/Sylverity/petls-pytorch
+  summary: GPU-native persistent topological Laplacians in PyTorch (independent PETLS reimplementation)
+  license: Apache-2.0
+  license_file:
+    - LICENSE
+    - NOTICE
+  repository: https://github.com/Sylverity/petls-pytorch

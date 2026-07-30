@@ -1,0 +1,15 @@
+# petls-pytorch — GPU-native Persistent Topological Laplacians in PyTorch (S. K. Marston / Sylverity).
+# INDEPENDENT Apache-2.0 reimplementation of the PETLS persistent-Laplacian engine; pure-Python universal
+# wheel. In-repo recipe (noarch, redistributable) → L1 today, but conda-forge/Bioconda-eligible → L3/L4
+# once the recipe (+ its sibling tadasets recipe) land in a public channel. The open, shippable
+# alternative to unlicensed `petls` for every persistent-Laplacian pipeline. Drags a torch closure, so a
+# full lockfile solve is heavy. (PyPI petls-pytorch==1.0.2, Apache-2.0, 2026-06-29)
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+# Both are local recipes (neither on conda yet); petls-pytorch run-depends on tadasets, so stage both.
+petls-pytorch = { path = "../../../recipes/petls-pytorch" }
+tadasets = { path = "../../../recipes/tadasets" }

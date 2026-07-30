@@ -1,0 +1,10 @@
+# TopOMetry — single-cell manifold/topology toolkit (Laplace–Beltrami approximation, scores many
+# latent representations). conda-forge → L3. Note: drags a large single-cell/scientific closure,
+# so a full lockfile solve is heavy. (conda-forge topometry=0.2.1.1, 2026-07-29)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+topometry = "==0.2.1.1"
+
