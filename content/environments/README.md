@@ -27,7 +27,7 @@ derives it from the manifest, lockfile, and public metadata.
 | `giotto-tda` | giotto-tda 0.6.2 | PyPI (`[pypi-dependencies]`) | **L0** — out of profile |
 | `hiponet` | HiPoNet `@45a9d08` (`pointcloudnet`, single-cell) | git clone + PyPI closure (**locked green** linux-64) | **L0** — Yale non-commercial, not a packageable lib |
 | `topodockq` | TopoDockQ scorer `@5696f82` (struct QA) | git clone + conda/PyPI per `environment.yaml` (**locked green** linux-64) | **L0** — MIT but Py3.8 `.pyc` core, nothing to build |
-| `open-topodockq-featurizer` | open TopoDockQ interface featurizer (MIT clean-room; the `.pyc`-gated piece) | recipe ×2 w/ `petls-pytorch` (pure-python noarch; **authored, build/lock pending**) | **L1** (Bioconda-eligible → L3/L4 on publish) |
+| `open-topodockq-featurizer` | open TopoDockQ interface featurizer (MIT clean-room; the `.pyc`-gated piece) | recipe ×2 w/ `petls-pytorch` (pure-python noarch, **verified green** + linux-64 lock) | **L1** (Bioconda-eligible → L3/L4 on publish) |
 | `biopython` | Biopython 1.87 | conda-forge (**locked green**) | **L3** |
 | `dssp` | dssp 4.6.1 (provides `mkdssp`) | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
 | `mmseqs2` | MMseqs2 18.8cc5c | Bioconda (**locked green**) | **L4** — single Bioconda pkg |

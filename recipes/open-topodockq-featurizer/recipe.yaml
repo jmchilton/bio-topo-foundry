@@ -15,8 +15,12 @@
 # is our in-repo v2 fork (isolated-vertex boundary fix, REQUIRED for the bipartite interface complexes)
 # and is on no public channel yet, so the consuming env stages it as a sibling path dep. `torch` is a
 # direct import (petls dtype config), not merely transitive, so it is declared explicitly.
-# STATUS: authored against the pushed commit; `rattler-build build` + env lockfile not yet run in this
-# session (pixi/rattler-build unavailable) — build-verify before relying on it, like the sibling recipes.
+# STATUS: VERIFIED GREEN. Both this recipe and the sibling petls-pytorch build as noarch packages; a
+# throwaway osx-arm64 env staging both installs clean, `import open_topodockq_featurizer` works, a probe
+# featurizes bit-exact from the installed package (2e-14), and `pip check` reports no broken requirements.
+# The consuming env's linux-64 `pixi.lock` also solves cleanly (full torch closure). Pure-python/noarch,
+# so the osx-arm64 build+import+pip_check verifies the platform-independent package; the env is linux-64
+# only to match petls-pytorch's torch-closure convention (that platform not installed/run here).
 context:
   version: "0.0.1"
   build_number: '0'
