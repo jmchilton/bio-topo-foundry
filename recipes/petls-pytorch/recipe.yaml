@@ -4,25 +4,30 @@
 # python and conda-forge/Bioconda-eligible — unlike upstream petls (unlicensed, compiled, linux-64-only,
 # permanently capped at L1). This is the "harden an existing open package" alternative to a from-scratch
 # cleanroom (see ../../persistent-laplacian-implementation-review.md; bio-topo-foundry#2, now superseded).
-# VERIFIED GREEN via `rattler-build build` on osx-arm64 (with the sibling ../tadasets recipe as a local
-# channel): sdist sha256 matches, setuptools build + package, LICENSE + NOTICE bundled, import test env
-# solves and `import petls_pytorch` + pip check pass. Package is noarch → byte-identical on linux-64.
+#
+# BUILT FROM OUR FORK jmchilton/petls-pytorch @ v2 (git_commit below), NOT the PyPI 1.0.2 sdist. v2 bundles
+# three fixes on top of upstream 1.0.2: (1) simplex-tree boundary extraction now indexes every simplex, so
+# isolated vertices no longer crash Complex(simplex_tree=)/Rips(distances=) — REQUIRED for the bipartite
+# interface complexes in the TopoDockQ featurizer (bio-topo-foundry#3); (2) tadasets demoted from a runtime
+# dep to a benchmark extra upstream-in-fork; (3) added float64 property tests. pyproject version stays 1.0.2
+# (static, no setuptools_scm) so the built package reports 1.0.2; build_number distinguishes it. Each fix is
+# also its own pushed branch; upstream PRs pending. VERIFIED GREEN via `rattler-build build` (sibling
+# ../tadasets recipe no longer needed by THIS env — see run-deps).
 # RUN-DEPS: pytorch/numpy/scipy/gudhi are the core; matplotlib + pandas are genuine (used in
-# core/profile.py + utils/plotting.py). `tadasets` is DECLARED by upstream pyproject but is NOT imported
-# anywhere in the shipped package (only unshipped benchmarks/examples use it) — kept here so pip-check
-# stays honest against upstream metadata, and satisfied via the sibling ../tadasets recipe. Flag upstream
-# to drop it, then it can leave `run` here too.
+# core/profile.py + utils/plotting.py). `tadasets` is NO LONGER a runtime dep in the fork (it moved to the
+# `benchmark` optional-dependencies group), so it is dropped from `run` here and pip-check stays clean.
 context:
   version: "1.0.2"
-  build_number: '0'
+  build_number: '1'
+  git_commit: 25364f5a3dada72cdf6aa7ac363ca8b189752c2f
 
 package:
   name: petls-pytorch
   version: ${{ version }}
 
 source:
-- url: https://files.pythonhosted.org/packages/90/83/1ef543101cbb748c26353670341b2fc94412ab54dc09f4315ebe4a37fbf8/petls_pytorch-${{ version }}.tar.gz
-  sha256: e22645d24c13db0c13db697897dcab8e4aebcf513434492dab614cdc72aabc33
+- url: https://github.com/jmchilton/petls-pytorch/archive/${{ git_commit }}.tar.gz
+  sha256: 76ad891cbc7ee852f69cda93e3b0aa897b941e872d0195900c433dcb5dbba5fa
 
 build:
   number: ${{ build_number }}
@@ -43,7 +48,6 @@ requirements:
   - gudhi >=3.10.0
   - pandas >=2.0.0
   - matplotlib-base >=3.7.0
-  - tadasets >=0.2.0
 
 tests:
 - python:
@@ -58,4 +62,4 @@ about:
   license_file:
     - LICENSE
     - NOTICE
-  repository: https://github.com/Sylverity/petls-pytorch
+  repository: https://github.com/jmchilton/petls-pytorch

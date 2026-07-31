@@ -106,9 +106,11 @@ becomes a *latent* `paper` behind it. The earlier `paper` filing came from the n
   exist).
 - **Open engine, adopted:** **petls-pytorch** — Apache-2.0 reimpl of PETLS; env+recipe
   built + green, stub writeup at `content/packages/petls-pytorch.md` (it's the *shippable* substitute
-  for the blocked upstream petls). Its
-  build dep **tadasets** also gets an in-repo recipe (`recipes/tadasets/`), which also closes
-  `scikit-tda`'s long-noted transitive gap.
+  for the blocked upstream petls). **Built from our fork `jmchilton/petls-pytorch @ v2`** (three fixes over
+  1.0.2; the load-bearing one lets isolated vertices survive simplex-tree boundary extraction, unblocking
+  the bipartite interface complexes for bio-topo-foundry#3). The **tadasets** in-repo recipe
+  (`recipes/tadasets/`) now backs only `scikit-tda`'s transitive gap — the fork demoted tadasets from a
+  petls-pytorch runtime dep to a benchmark extra.
 - **Package writeups** awaiting an environment: **topoqa** → candidate future `environment` build
   (hiponet + topodockq now have L0 envs).
 - **Environments without a whitepaper** (23 of 28): the workhorse TDA libs (ripser, gudhi, dionysus,

@@ -62,9 +62,9 @@ derives it from the manifest, lockfile, and public metadata.
   submodule's cmake_minimum_required predates 3.5), and pyflagser needs its `pkg_resources.extern`
   version import repointed at standalone `packaging`.
 - **`scikit-tda` transitive gap — now closed:** its run closure includes `tadasets`, absent from conda,
-  so `recipes/tadasets` (pure-python, MIT, **verified green**) now provides it. The same recipe satisfies
-  `petls-pytorch`'s declared `tadasets` dep, so both environments resolve entirely from conda channels + the
-  in-repo recipes.
+  so `recipes/tadasets` (pure-python, MIT, **verified green**) now provides it, letting `scikit-tda` resolve
+  entirely from conda channels + the in-repo recipe. (Upstream `petls-pytorch` also once declared `tadasets`
+  at runtime, but our fork demoted it to a benchmark extra — see below — so only `scikit-tda` needs it now.)
 - **`pydowker` is a 3-recipe chain built from source:** the whole 2-parameter-persistence stack —
   `pyDowker` (Dowker complexes) → `pyrivet` (pure-Python API) → `rivet-console` (RIVET's Qt-free C++
   engine). It retires a former "hollow green": `import pyDowker` used to pass while the tool couldn't run,
@@ -81,4 +81,10 @@ derives it from the manifest, lockfile, and public metadata.
 - **`petls-pytorch` is the open PETLS engine:** Apache-2.0 pure-Python reimplementation of PETLS (persistent
   Laplacians). Unlike the unlicensed, compiled, linux-only `petls` (permanently L1), its noarch recipe is
   redistributable and staged-recipes-eligible → promotes to L3/L4 once on conda-forge/Bioconda. Recipe +
-  linux-64 lock verified green; see `../../persistent-laplacian-implementation-review.md`.
+  linux-64 lock verified green; see `../../persistent-laplacian-implementation-review.md`. **Built from our
+  fork `jmchilton/petls-pytorch @ v2`, not the PyPI 1.0.2 sdist:** v2 carries three fixes on top of upstream
+  1.0.2 — most importantly, simplex-tree boundary extraction now indexes every simplex, so isolated vertices
+  no longer crash `Complex(simplex_tree=)`/`Rips(distances=)`. That crash blocked the **bipartite** interface
+  complexes needed for the TopoDockQ featurizer (bio-topo-foundry#3), where atoms with no cross-interface
+  neighbour within the cutoff are routine. The fork also demoted `tadasets` from a runtime dep to a benchmark
+  extra; upstream PRs pending.
