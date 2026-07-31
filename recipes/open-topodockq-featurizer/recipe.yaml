@@ -1,0 +1,62 @@
+# open-topodockq-featurizer — clean-room reimplementation of the TopoDockQ interface featurizer, the
+# ONE piece of TopoDockQ that ships only as unlicensed .pyc bytecode (wangru25/TopoDockQ-Feature;
+# bio-topo-foundry#3). MIT + pure-Python universal wheel → noarch: python and conda-forge/Bioconda-
+# eligible → L3/L4 once the recipe lands in a public channel. Built on our petls-pytorch v2 fork
+# (sibling recipe) + GUDHI, with NO .pyc anywhere in the path.
+#
+# PROVENANCE: the featurizer method was recovered by BLACK-BOX observation of the upstream .pyc (CLI
+# sweeps, instrumented I/O, synthetic inputs) — never decompiled, not copied from TopoDockQ-Feature.
+# Reproduced bit-exact vs .pyc-minted oracles on 400 real interface complexes (400 distinct PDBs) plus
+# 6 adversarial synthetic probes (which surfaced + fixed 4 latent bugs); see the repo README/tests. It
+# emits the raw 2,754 channel-major vector that upstream `03`→`04` (the open MIT scorer) consumes
+# unchanged — so this closes the open TopoDockQ vertical (pipeline P2).
+#
+# BUILT FROM github.com/jmchilton/open-topodockq-featurizer @ git_commit below. RUN-DEP `petls-pytorch`
+# is our in-repo v2 fork (isolated-vertex boundary fix, REQUIRED for the bipartite interface complexes)
+# and is on no public channel yet, so the consuming env stages it as a sibling path dep. `torch` is a
+# direct import (petls dtype config), not merely transitive, so it is declared explicitly.
+# STATUS: authored against the pushed commit; `rattler-build build` + env lockfile not yet run in this
+# session (pixi/rattler-build unavailable) — build-verify before relying on it, like the sibling recipes.
+context:
+  version: "0.0.1"
+  build_number: '0'
+  git_commit: 40c0d7185ce0363eadf7955ed707614ecd28aa66
+
+package:
+  name: open-topodockq-featurizer
+  version: ${{ version }}
+
+source:
+- url: https://github.com/jmchilton/open-topodockq-featurizer/archive/${{ git_commit }}.tar.gz
+  sha256: 82c63ad1987d698cb6db0250cc5a375ee764976cf26ed013ad0bb6071694a940
+
+build:
+  number: ${{ build_number }}
+  noarch: python
+  script: python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - hatchling
+  run:
+  - python >=3.11
+  - numpy >=1.24.0
+  - gudhi >=3.10.0
+  - pytorch >=2.0.0
+  - petls-pytorch
+
+tests:
+- python:
+    imports:
+    - open_topodockq_featurizer
+    pip_check: true
+
+about:
+  homepage: https://github.com/jmchilton/open-topodockq-featurizer
+  summary: Open clean-room reimplementation of the TopoDockQ interface featurizer (petls-pytorch + GUDHI, no .pyc)
+  license: MIT
+  license_file:
+    - LICENSE
+  repository: https://github.com/jmchilton/open-topodockq-featurizer

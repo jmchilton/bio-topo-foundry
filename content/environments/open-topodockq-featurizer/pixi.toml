@@ -1,0 +1,19 @@
+# open-topodockq-featurizer — clean-room MIT reimplementation of the TopoDockQ interface featurizer,
+# the only .pyc-gated piece of TopoDockQ (bio-topo-foundry#3). Pure-Python (noarch) in-repo recipe →
+# L1 today, conda-forge/Bioconda-eligible → L3/L4 on upstreaming. Completes the open TopoDockQ vertical
+# (pipeline P2): this featurizer emits the raw 2,754 vector that the open MIT scorer's `03`→`04`
+# consumes unchanged — no unlicensed `.pyc` anywhere in the path. (Contrast the sibling `topodockq`
+# env, which is deliberately L0: it runs the closed .pyc *scorer* fixture with the featurizer excluded.)
+#
+# Stages TWO in-repo recipes as path deps (like `pydowker`): the featurizer and its petls-pytorch
+# v2-fork engine — the isolated-vertex boundary fix is REQUIRED for the bipartite interface complexes,
+# and petls-pytorch is on no public channel yet. Drags a torch closure via petls-pytorch, so a full
+# lockfile solve is heavy; linux-64 to match that closure.
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+open-topodockq-featurizer = { path = "../../../recipes/open-topodockq-featurizer" }
+petls-pytorch = { path = "../../../recipes/petls-pytorch" }

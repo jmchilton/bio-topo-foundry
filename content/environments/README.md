@@ -27,6 +27,7 @@ derives it from the manifest, lockfile, and public metadata.
 | `giotto-tda` | giotto-tda 0.6.2 | PyPI (`[pypi-dependencies]`) | **L0** — out of profile |
 | `hiponet` | HiPoNet `@45a9d08` (`pointcloudnet`, single-cell) | git clone + PyPI closure (**locked green** linux-64) | **L0** — Yale non-commercial, not a packageable lib |
 | `topodockq` | TopoDockQ scorer `@5696f82` (struct QA) | git clone + conda/PyPI per `environment.yaml` (**locked green** linux-64) | **L0** — MIT but Py3.8 `.pyc` core, nothing to build |
+| `open-topodockq-featurizer` | open TopoDockQ interface featurizer (MIT clean-room; the `.pyc`-gated piece) | recipe ×2 w/ `petls-pytorch` (pure-python noarch; **authored, build/lock pending**) | **L1** (Bioconda-eligible → L3/L4 on publish) |
 | `biopython` | Biopython 1.87 | conda-forge (**locked green**) | **L3** |
 | `dssp` | dssp 4.6.1 (provides `mkdssp`) | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
 | `mmseqs2` | MMseqs2 18.8cc5c | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
@@ -52,6 +53,9 @@ derives it from the manifest, lockfile, and public metadata.
   flat scripts); `topodockq`'s core is Py3.8 `.pyc` bytecode with no source. So **no recipe** is possible
   for either today — for technical reasons, *not* licensing (`hiponet` is capped at L0/L1 by its
   non-commercial license regardless; `topodockq` is MIT and could reach L3 if upstream ships source).
+  The featurizer half of that `.pyc` gap is now independently closed: **`open-topodockq-featurizer`**
+  is an MIT clean-room reimplementation (L1 recipe + env, bit-exact vs the `.pyc` on 400 real complexes
+  + adversarial probes), so the open scorer's feature inputs no longer require any bytecode.
 - **Compiled recipes:** `petls`, `giotto-ph`, and `pyflagser` are all **verified building green on
   linux-64** (rattler-build in a linux/amd64 container: compile + link + package + tests pass).
   `petls` is linux-64-only (an upstream `std::chrono::_V2` libstdc++-ism won't compile under

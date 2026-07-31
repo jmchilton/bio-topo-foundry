@@ -1,0 +1,8 @@
+# Adapter only: points pixi-build at the rattler-build recipe beside it. recipe.yaml is the
+# artifact — the eventual conda-forge/Bioconda staged-recipes PR. Pure-python (noarch), MIT.
+[package]
+name = "open-topodockq-featurizer"
+version = "0.0.1"
+
+[package.build]
+backend = { name = "pixi-build-rattler-build", version = "*" }
