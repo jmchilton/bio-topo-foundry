@@ -1,0 +1,18 @@
+# open-topoqa-featurizer — clean-room MIT reimplementation of the TopoQA element-specific
+# persistent-homology interface featurizer (bio-topo-foundry#4). Pure-Python (noarch) in-repo
+# recipe → L1 today, conda-forge/Bioconda-eligible → L3/L4 on upstreaming. The open half of a
+# retrainable TopoQA vertical (pipeline P1): emits the 172-dim interface-graph node features
+# (32 conventional + 140 element-specific PH) + 11-dim edges, with the released (x,y,y)
+# coordinate defect fixed by construction and NO unlicensed code in the path.
+#
+# Stages ONE in-repo recipe (the featurizer). Unlike the sibling open-topodockq-featurizer,
+# every run dep is on a public channel — numpy/gudhi/biopython from conda-forge and `dssp`
+# (mkdssp binary, for 8-state SS + relative SASA) from bioconda — so they resolve from
+# channels rather than sibling path recipes.
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+open-topoqa-featurizer = { path = "../../../recipes/open-topoqa-featurizer" }

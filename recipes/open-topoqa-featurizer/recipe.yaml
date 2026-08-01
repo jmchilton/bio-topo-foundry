@@ -1,0 +1,59 @@
+# open-topoqa-featurizer — clean-room reimplementation of the TopoQA element-specific
+# persistent-homology interface featurizer (Han et al. 2025, bbaf083). The upstream code
+# (yubingapril/TopoQA) is unlicensed; this is reproduced FROM THE PAPER — never read,
+# cloned, or decompiled — and is MIT + pure-Python (noarch) → conda-forge/Bioconda-eligible
+# → L3/L4 once the recipe lands in a public channel. bio-topo-foundry#4.
+#
+# PROVENANCE: methods/math of persistent homology are not copyrightable; this independent
+# implementation is ours, released MIT. There is NO upstream feature oracle (the released
+# code carries an (x,y,y) coordinate defect and the scorer is retrained in #5), so parity is
+# against the paper spec + invariants, not bit-exact — see the repo README/tests.
+#
+# BUILT FROM github.com/jmchilton/open-topoqa-featurizer @ git_commit below.
+# RUN DEPS are all on public channels (conda-forge/bioconda): numpy, gudhi, biopython, and
+# `dssp` (provides the `mkdssp` binary the featurizer shells out to for 8-state secondary
+# structure + relative SASA). So — unlike the sibling open-topodockq-featurizer — the
+# consuming env stages only this one path recipe and pulls the rest from channels.
+context:
+  version: "0.0.1"
+  build_number: '0'
+  git_commit: 216f87a906bdffde2856efb77d88605bfa19019f
+
+package:
+  name: open-topoqa-featurizer
+  version: ${{ version }}
+
+source:
+- url: https://github.com/jmchilton/open-topoqa-featurizer/archive/${{ git_commit }}.tar.gz
+  sha256: 0b7d9bd3ff2c873141a8267a276bdaded059f24e2d2a414d8c6b760da066f52e
+
+build:
+  number: ${{ build_number }}
+  noarch: python
+  script: python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - hatchling
+  run:
+  - python >=3.11
+  - numpy >=1.24.0
+  - gudhi >=3.10.0
+  - biopython >=1.80
+  - dssp >=4.0
+
+tests:
+- python:
+    imports:
+    - open_topoqa_featurizer
+    pip_check: true
+
+about:
+  homepage: https://github.com/jmchilton/open-topoqa-featurizer
+  summary: Open clean-room reimplementation of the TopoQA interface featurizer (GUDHI + Biopython + DSSP, no unlicensed code)
+  license: MIT
+  license_file:
+    - LICENSE
+  repository: https://github.com/jmchilton/open-topoqa-featurizer

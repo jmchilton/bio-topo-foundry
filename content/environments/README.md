@@ -28,6 +28,7 @@ derives it from the manifest, lockfile, and public metadata.
 | `hiponet` | HiPoNet `@45a9d08` (`pointcloudnet`, single-cell) | git clone + PyPI closure (**locked green** linux-64) | **L0** — Yale non-commercial, not a packageable lib |
 | `topodockq` | TopoDockQ scorer `@5696f82` (struct QA) | git clone + conda/PyPI per `environment.yaml` (**locked green** linux-64) | **L0** — MIT but Py3.8 `.pyc` core, nothing to build |
 | `open-topodockq-featurizer` | open TopoDockQ interface featurizer (MIT clean-room; the `.pyc`-gated piece) | recipe ×2 w/ `petls-pytorch` (pure-python noarch, **verified green** + linux-64 lock) | **L1** (Bioconda-eligible → L3/L4 on publish) |
+| `open-topoqa-featurizer` | open TopoQA interface featurizer (MIT clean-room; the unlicensed-code piece) | recipe (pure-python noarch; all deps on channels incl. `dssp`, **verified green** + linux-64 lock) | **L1** (Bioconda-eligible → L3/L4 on publish) |
 | `biopython` | Biopython 1.87 | conda-forge (**locked green**) | **L3** |
 | `dssp` | dssp 4.6.1 (provides `mkdssp`) | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
 | `mmseqs2` | MMseqs2 18.8cc5c | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
@@ -56,6 +57,16 @@ derives it from the manifest, lockfile, and public metadata.
   The featurizer half of that `.pyc` gap is now independently closed: **`open-topodockq-featurizer`**
   is an MIT clean-room reimplementation (L1 recipe + env, bit-exact vs the `.pyc` on 400 real complexes
   + adversarial probes), so the open scorer's feature inputs no longer require any bytecode.
+- **`open-topoqa-featurizer` is the sibling TopoQA clean-room** (bio-topo-foundry#4): an MIT
+  reimplementation of TopoQA's element-specific persistent-homology interface featurizer, reproduced
+  **from the paper** (Han 2025, bbaf083) — the upstream code is unlicensed and was never read. It emits
+  the 172-dim node features (32 conventional + 140 element-specific PH) + 11-dim edges, fixing the
+  released code's `(x,y,y)` coordinate defect by construction. Unlike TopoDockQ there is **no bit-exact
+  oracle** (that defect + a retrained scorer, #5, mean divergence from the checkpoint is *correct*), so
+  it's validated against the paper spec + invariants (19 tests, incl. a real-`mkdssp` end-to-end run).
+  All run deps are on public channels (numpy/gudhi/biopython + bioconda `dssp` for `mkdssp`), so the env
+  stages a single path recipe — verified green (osx-arm64 build+install imports from site-packages,
+  featurizes the real 2fns fixture with the env's own `mkdssp`) with a solved linux-64 lock.
 - **Compiled recipes:** `petls`, `giotto-ph`, and `pyflagser` are all **verified building green on
   linux-64** (rattler-build in a linux/amd64 container: compile + link + package + tests pass).
   `petls` is linux-64-only (an upstream `std::chrono::_V2` libstdc++-ism won't compile under
