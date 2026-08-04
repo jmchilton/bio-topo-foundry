@@ -29,6 +29,7 @@ derives it from the manifest, lockfile, and public metadata.
 | `topodockq` | TopoDockQ scorer `@5696f82` (struct QA) | git clone + conda/PyPI per `environment.yaml` (**locked green** linux-64) | **L0** — MIT but Py3.8 `.pyc` core, nothing to build |
 | `open-topodockq-featurizer` | open TopoDockQ interface featurizer (MIT clean-room; the `.pyc`-gated piece) | recipe ×2 w/ `petls-pytorch` (pure-python noarch, **verified green** + linux-64 lock) | **L1** (Bioconda-eligible → L3/L4 on publish) |
 | `open-topoqa-featurizer` | open TopoQA interface featurizer (MIT clean-room; the unlicensed-code piece) | recipe (pure-python noarch; all deps on channels incl. `dssp`, **verified green** + linux-64 lock) | **L1** (Bioconda-eligible → L3/L4 on publish) |
+| `open-topoqa-scorer` | open TopoQA ProteinGAT interface-quality scorer (MIT clean-room retrain from the paper) | recipe ×2 w/ `open-topoqa-featurizer` (pure-python noarch, **verified green** + linux-64 lock) | **L1** (Bioconda-eligible → L3/L4 on publish) |
 | `biopython` | Biopython 1.87 | conda-forge (**locked green**) | **L3** |
 | `dssp` | dssp 4.6.1 (provides `mkdssp`) | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
 | `mmseqs2` | MMseqs2 18.8cc5c | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
@@ -67,6 +68,18 @@ derives it from the manifest, lockfile, and public metadata.
   All run deps are on public channels (numpy/gudhi/biopython + bioconda `dssp` for `mkdssp`), so the env
   stages a single path recipe — verified green (osx-arm64 build+install imports from site-packages,
   featurizes the real 2fns fixture with the env's own `mkdssp`) with a solved linux-64 lock.
+- **`open-topoqa-scorer` closes the open TopoQA vertical** (bio-topo-foundry#5): the MIT clean-room
+  **ProteinGAT scorer** that consumes the featurizer's graphs and predicts a DockQ-like interface-quality
+  score. The *architecture* is reproduced from the paper (Han 2025, bbaf083, Eqs 3–9); the paper pins no
+  training/capacity hyperparameters, so the weights are **our retrain** on a reassembled MAF2 + Dockground
+  corpus. Like the featurizer there is **no bit-exact oracle** — an independent reproduction confirmed the
+  released code carries an `(x,y,y)` coordinate defect that ~⅓ of the paper's HAF2 ranking-loss margin
+  depends on, so divergence from the upstream checkpoint is *correct*; against a corrected `(x,y,z)` TopoQA
+  the retrain is at parity (matches/beats every correlation, HAF2 ranking-loss parity — see
+  `../packages/topoqa.md`). The env stages **two** in-repo path recipes (the scorer + its
+  `open-topoqa-featurizer` input, which is on no public channel yet) and drags a full `pytorch` /
+  `pytorch_geometric` closure. Verified green: the linux-64 lock solves cleanly (pytorch 2.13.0 cpu-mkl,
+  pytorch_geometric 2.8.0, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds + imports.
 - **Compiled recipes:** `petls`, `giotto-ph`, and `pyflagser` are all **verified building green on
   linux-64** (rattler-build in a linux/amd64 container: compile + link + package + tests pass).
   `petls` is linux-64-only (an upstream `std::chrono::_V2` libstdc++-ism won't compile under

@@ -1,0 +1,65 @@
+# open-topoqa-scorer — clean-room retrain of the TopoQA ProteinGAT interface-quality scorer
+# (Han et al. 2025, bbaf083). The upstream code (yubingapril/TopoQA) is unlicensed; the model
+# here is reproduced FROM THE PAPER's Methods (§5.2.5, Eqs 3–9) — never read, cloned, or
+# decompiled — and is MIT + pure-Python (noarch) → conda-forge/Bioconda-eligible → L3/L4 once
+# the recipe lands in a public channel. bio-topo-foundry#5. The scoring half of the open,
+# retrainable TopoQA vertical (pipeline P1); consumes the sibling open-topoqa-featurizer graphs.
+#
+# PROVENANCE: the paper specifies only the architecture (edge-conditioned multi-head attention
+# that updates both nodes and edges, half-width pooled edges, a three-linear readout, sigmoid,
+# MSE loss) and NO training/capacity hyperparameters (heads/width/layers/dropout/lr/epochs are
+# our tunable choices). The weights are OUR retrain on a reassembled MAF2 + Dockground corpus —
+# there is NO upstream checkpoint oracle, and divergence from it is CORRECT: an independent
+# reproduction confirmed the released code carries an (x,y,y) coordinate defect that ~1/3 of the
+# paper's HAF2 ranking-loss margin depends on. Against a correctly-implemented (x,y,z) TopoQA the
+# retrain is at parity (matches/beats all correlations, HAF2 ranking-loss parity) — see the repo
+# README/tests and content/packages/topoqa.md.
+#
+# BUILT FROM github.com/jmchilton/open-topoqa-scorer @ git_commit below. RUN-DEP
+# `open-topoqa-featurizer` is our in-repo clean-room featurizer (#4) and is on no public channel
+# yet, so the consuming env stages it as a sibling path dep. `pytorch` + `pytorch_geometric` are
+# direct imports (the ProteinGAT model), not merely transitive, so they are declared explicitly.
+context:
+  version: "0.0.1"
+  build_number: '0'
+  git_commit: 0befb0f69349f7bab5dcd7420dfed309d4aeaf1e
+
+package:
+  name: open-topoqa-scorer
+  version: ${{ version }}
+
+source:
+- url: https://github.com/jmchilton/open-topoqa-scorer/archive/${{ git_commit }}.tar.gz
+  sha256: cba052b7cef8a18078e94a5bdd54e109e9ffd90731e0822693c46d066079f8c6
+
+build:
+  number: ${{ build_number }}
+  noarch: python
+  script: python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - hatchling
+  run:
+  - python >=3.11
+  - numpy >=1.24.0
+  - pytorch >=2.0.0
+  - pytorch_geometric >=2.4.0
+  - biopython >=1.80
+  - open-topoqa-featurizer
+
+tests:
+- python:
+    imports:
+    - open_topoqa_scorer
+    pip_check: true
+
+about:
+  homepage: https://github.com/jmchilton/open-topoqa-scorer
+  summary: Open clean-room retrain of the TopoQA ProteinGAT interface-quality scorer (from the paper spec, no unlicensed code)
+  license: MIT
+  license_file:
+    - LICENSE
+  repository: https://github.com/jmchilton/open-topoqa-scorer
