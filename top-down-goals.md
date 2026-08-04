@@ -8,6 +8,16 @@
 Grounding: **[surveys]** = the two TDA/TDL surveys · **[struct]** = petls/topodockq/topoqa ·
 **[sc]** = hiponet/topometry. Caveats (license/bugs) are load-bearing for feasibility — kept inline.
 
+> **Progress update, 2026-08-04 — the cleanroom epic (#1) is DONE and closed.** Every structure-QA
+> tool that was 🚫-blocked is now ✅-open + foundry **L1**: **petls-pytorch** (adopted, #2),
+> **open-topodockq-featurizer** (#3, bit-exact vs the `.pyc`), **open-topoqa-featurizer** (#4), and
+> **open-topoqa-scorer** (#5, retrained, **at parity** with a correctly-implemented TopoQA). Both
+> struct verticals (TopoDockQ P2, TopoQA P1) now run end-to-end with **no unlicensed code in the
+> path**. The released TopoQA `(x,y,y)` defect was reported upstream
+> ([yubingapril/TopoQA#1](https://github.com/yubingapril/TopoQA/issues/1)). **What this unlocks is
+> the top half of the delivery pole: the `pipeline` and `training` Kinds below (§2–§3) are now
+> buildable on open tools** — see the "Actionable next" callout at the end of §1.
+
 ---
 
 ## Build-status legend
@@ -30,13 +40,14 @@ top (a tool writeup). **Licensing now dominates the ordering:**
 - **★ Methodological benchmark harness — fully open + most defensible.** Both QA surveys flag a
   missing topology-vs-matched-baseline ablation. P6 leans only on ✅ tools we already have
   (gudhi/ripser/giotto-*/r-tda) + open glue. Least licensing-encumbered of all.
-- **★ Structure QA — partially unblocked; TopoQA still gated.** The persistent-Laplacian engine is now
-  ✅ open: **petls-pytorch** (Apache-2.0, an independent PyTorch reimplementation of PETLS) has a green
-  in-repo conda recipe + biopixi env (`content/environments/petls-pytorch/`), so we **adopt** it in place
-  of unlicensed **petls** — no cleanroom needed (see `persistent-laplacian-implementation-review.md`).
-  Still 🚫: **TopoQA** (no license — it *is* on GitHub at `yubingapril/TopoQA`, all-rights-reserved + a
-  coordinate bug) and **TopoDockQ**'s `TopoDockQ-Feature` `.pyc` featurizer (its scorer is ✅ MIT). Those
-  stay open-reimplementation targets (bio-topo-foundry #3–#5) on our PH tools + open glue.
+- **★ Structure QA — NOW FULLY UNBLOCKED (2026-08-04).** The persistent-Laplacian engine is ✅ open:
+  **petls-pytorch** (Apache-2.0, an independent PyTorch reimplementation of PETLS) has a green in-repo
+  conda recipe + biopixi env (`content/environments/petls-pytorch/`), adopted in place of unlicensed
+  **petls**. The two formerly-gated pieces are now ✅ open clean-room L1s too: **TopoQA** →
+  `open-topoqa-featurizer` (#4) + `open-topoqa-scorer` (#5, retrained, at parity), and **TopoDockQ**'s
+  `.pyc` featurizer → `open-topodockq-featurizer` (#3, bit-exact). All reimplemented **from the papers**
+  (never reading upstream code/bytecode), so the whole structure-QA vertical is buildable on redistributable
+  tools. **This is no longer the gated vertical — it's the readiest one for pipeline/training delivery.**
 
 ---
 
@@ -54,13 +65,16 @@ Tiered by leverage. `[ ]` = to build. Each: what · why · caveat.
   pinned clone. Deps mirror the all-PyPI `uv.lock` closure.
 - [x] ⚠️/✅ **TopoDockQ** (scorer) — persistent-Laplacian peptide-docking confidence scorer. **[struct]**
   Repo is ✅ **MIT**, *but* its core ships as Py3.8 `.pyc` bytecode (no source) and the `TopoDockQ-Feature`
-  featurizer is 🚫 unlicensed → scorer runs on *supplied* features. **Env built:**
-  `content/environments/topodockq/` — **L0**, locked green (linux-64), mirrors upstream `environment.yaml`
-  (Py3.8.18 + gudhi 3.8 + torch 2.4.1). No recipe (opaque bytecode, nothing to build); L3-eligible later.
-- [ ] 🚫 **TopoQA** — interface QA for protein complexes. **[struct]** *Is* on GitHub
-  (`yubingapril/TopoQA`) but has **no software license** (article is CC BY-NC; code all-rights-reserved)
-  + a `(x,y,y)` vs `(x,y,z)` bug in `src/utils.py`. **Blocked** — request a license + report the bug
-  upstream before any packaging.
+  featurizer was 🚫 unlicensed. **The featurizer gap is now closed:** `open-topodockq-featurizer` (#3,
+  MIT clean-room, bit-exact vs the `.pyc`, L1) feeds the MIT scorer → full open vertical, no bytecode in
+  path. Upstream fixture env `content/environments/topodockq/` stays **L0** (opaque bytecode scorer),
+  locked green (Py3.8.18 + gudhi 3.8 + torch 2.4.1).
+- [x] ✅ **TopoQA** — interface QA for protein complexes. **[struct]** Upstream (`yubingapril/TopoQA`)
+  still has **no software license**, so instead of packaging it we **reimplemented from the paper**:
+  `open-topoqa-featurizer` (#4, MIT, L1) + `open-topoqa-scorer` (#5, MIT, retrained, L1, at parity with a
+  correctly-implemented TopoQA). The released `(x,y,y)` coordinate defect is fixed by construction and was
+  reported upstream ([yubingapril/TopoQA#1](https://github.com/yubingapril/TopoQA/issues/1)). No longer
+  blocked — this vertical is open end-to-end.
 
 ### Tier 1 — enabling deps that unblock many pipelines (low effort, bioconda)
 
@@ -130,15 +144,18 @@ move. Track the ask, don't build shippable deliverables on them.
   repackaged/shipped. License requested: `bdjones13/PETLS#2`. **But its engine is no longer a blocker:**
   ✅ **petls-pytorch** (Apache-2.0) is an open drop-in with a green in-repo recipe + env, so pipelines
   P2/P4/P5 and the Laplacian arm of P6 can **ship** against it (validating numerics vs the local petls oracle).
-- 🚫 **TopoQA** — no software license + coordinate bug. Blocked until upstream licenses.
-- 🚫 **TopoDockQ-Feature** — unlicensed `.pyc` featurizer. The MIT TopoDockQ scorer is fine; its
-  feature generator is not.
+- ✅ **TopoQA** — upstream is still unlicensed, but **no longer blocks us**: reimplemented from the paper
+  as `open-topoqa-featurizer` (#4) + `open-topoqa-scorer` (#5), MIT + L1. Upstream license ask is moot for
+  our purposes; the `(x,y,y)` defect was reported ([yubingapril/TopoQA#1](https://github.com/yubingapril/TopoQA/issues/1)).
+- ✅ **TopoDockQ-Feature** — the unlicensed `.pyc` featurizer is superseded by `open-topodockq-featurizer`
+  (#3, MIT clean-room, bit-exact). Feeds the already-MIT TopoDockQ scorer.
 - ⚠️ **HiPoNet** — licensed but **non-commercial** → build as a research fixture, but **not**
-  conda-forge/Bioconda eligible and not for commercial Galaxy deployment.
+  conda-forge/Bioconda eligible and not for commercial Galaxy deployment. *(Still the one true caveat.)*
 
-**Consequence for sequencing:** the ✅-open **single-cell** and **benchmark-harness** goals still lead,
-and the **structure-QA** vertical's Laplacian engine is now open too (petls-pytorch). What remains gated
-there is TopoQA's scorer + TopoDockQ's featurizer — open-reimplementation targets, not upstream-packaging ones.
+**Consequence for sequencing (revised 2026-08-04):** all three verticals are now open. The
+**structure-QA** vertical went from "gated" to **fully open + L1-packaged** (cleanroom epic #1 done), so it
+joins **single-cell** and the **benchmark-harness** as ready-to-deliver. HiPoNet's non-commercial license
+is the *only* remaining hard caveat, and it touches just the single-cell neural arm.
 
 ### Cleanroom path — unblock via the papers, not their code
 
@@ -159,17 +176,52 @@ public mathematics → low risk; a quick check on any application-specific claim
   still delivers the double leverage — unblocks **TopoDockQ**'s only gated piece (its featurizer; scorer
   already MIT → #3) and frees pipelines P2/P4/P5 + the Laplacian arm of P6. Remaining work is
   validation/sparse-scaling, not implementation — see `persistent-laplacian-implementation-review.md`.
-- **TopoQA → amenable, but it's a *trained model*, not a computation.** Paper + supplement specify
-  everything: featurizer (7 element channels, 8 Å, VR H0 + alpha H1 → 140 stats), edge histogram, and
-  even the GAT hyperparameters (2 layers, 8 heads, hidden 32, dropout 0.25, Adam, MSE, 200 epochs). The
-  **featurizer is trivial** on our PH stack. But a *working scorer* needs **retraining** on a reassembled
-  decoy+DockQ set (named sources MAF2/EVcouplings/DeepHomo; no manifests released) → a bounded ML
-  data-engineering effort, not just math. Bonus: a paper-faithful reimpl fixes the `(x,y,y)` bug by
-  construction (won't match their checkpoint — fine, we retrain).
+- **TopoQA → DONE (#4/#5, 2026-08-04).** Featurizer (7 element channels, 8 Å, VR H0 + alpha H1 → 140
+  stats + edge histogram) reimplemented on our PH stack (#4). Scorer retrained from the paper spec (#5).
+  **Correction to an earlier assumption:** the paper specifies only the *architecture* + MSE loss — it
+  pins **none** of the GAT capacity/training hyperparameters (heads, hidden width, layers, dropout, lr,
+  epochs; grep-confirmed across the full text). The "2 layers / 8 heads / hidden 32 / dropout 0.25 / 200
+  epochs" figures were **not** from the paper; those are our tunable choices. Retraining used a reassembled
+  MAF2 + Dockground decoy+DockQ corpus (leak-free MMseqs2 split). An independent reproduction confirmed the
+  result: correct-coordinate scorer is **at parity** with a correctly-implemented TopoQA (matches/beats all
+  correlations, HAF2 ranking-loss parity), and ~⅓ of the paper's HAF2 margin depends on the released
+  `(x,y,y)` defect. The `(x,y,y)` fix is by construction.
 
-**Bottom line:** persistent-Laplacian engine = **solved by adoption** — harden Apache-2.0 petls-pytorch
-into a conda recipe + env (done, green) rather than cleanroom. TopoQA = reimplement-plus-retrain (gated
-on data assembly) → featurizer easy now, scorer a later project (#4/#5).
+**Bottom line (2026-08-04):** persistent-Laplacian engine solved by **adoption** (petls-pytorch); TopoQA
+solved by **reimplement-plus-retrain** (#4 featurizer + #5 scorer, both L1, at parity); TopoDockQ featurizer
+solved by **bit-exact cleanroom** (#3). The cleanroom epic is complete — the packages exist, so the next
+deliverables are the **pipelines (§2) and trainings (§3)** built on them.
+
+---
+
+### Actionable next — from packages to user-facing delivery (2026-08-04)
+
+The environment/package tier is now deep enough that the **`pipeline` and `training` Kinds are the
+bottleneck, not the tools.** Concrete next units of work, ranked by readiness × leverage:
+
+1. **P1 as a real Galaxy workflow — TopoQA interface QA (highest, most direct).** Both halves are
+   packaged: `open-topoqa-featurizer` (#4) + `open-topoqa-scorer` (#5). Work = wrap two Galaxy tools
+   (`featurize`: PDB decoys → interface graphs; `score`: graphs → DockQ-like value + ranking) and chain
+   them into a `.ga` workflow (PDB set → per-decoy score → ranked table). User-facing structure-QA
+   pipeline, entirely on redistributable code. *Delivers: pipeline P1.*
+2. **S2 GTN training — "Ranking AlphaFold decoys: build an interface-QA scorer."** The whole #5
+   replication arc is already a worked example: corpus assembly, leak-free MMseqs2 split, train, top-1
+   ranking-loss / CAPRI eval, and the honesty points (pooled-vs-per-target, the `(x,y,y)` lesson). Work =
+   turn `results/phase_e_debrief.md` + the scripts into a GTN tutorial. *Delivers: training S2 (+ S1 as the
+   featurization prequel).*
+3. **P6 benchmark harness — the defensible ablation.** We already have the eval spine (`evaluate.py`,
+   `metrics.py`, the DProQ benchmark on disk). Work = add the matched non-topological baseline arm + a
+   Laplacian arm (`petls-pytorch`), run all three through the same regressor/metrics. Fills the
+   topology-vs-baseline gap both QA surveys flag. *Delivers: pipeline P6 (+ training F6 on rigor).*
+4. **P2 TopoDockQ pipeline — peptide-docking confidence.** `open-topodockq-featurizer` (#3) + the MIT
+   scorer + `petls-pytorch`, all L1. Work = wrap featurize→score end-to-end as a workflow. *Delivers:
+   pipeline P2 (+ training S3).*
+5. **Single-cell track in parallel (already open).** P7 / C3 (cohort-scale patient point clouds →
+   classifier) lean only on TopoMetry + Scanpy + ripser/giotto-ph/persim — no cleanroom was ever needed.
+   Ready whenever the structure track has bandwidth. *Delivers: pipeline P7, trainings C1–C4.*
+
+**Recommended first step:** (1) — it converts the two brand-new L1 packages into the first genuinely
+user-facing Galaxy pipeline, and (2) rides on it as the matching curriculum.
 
 ---
 
@@ -260,8 +312,9 @@ A layered path: shared **Foundations**, then two domain tracks. Each builds on t
 
 1. **petls** — upstream is Linux-x86-64-wheel-only + **unlicensed** (keep as a local numerical oracle
    only); ship against the Apache-2.0 **petls-pytorch** reimplementation instead (in-repo recipe + env).
-2. **TopoQA** — no license + coordinate bug; **TopoDockQ-Feature** — `.pyc`-only + unlicensed → both
-   reference/benchmark, not redistributable, until upstream clarifies.
+2. **TopoQA** / **TopoDockQ-Feature** — upstream stays unlicensed / `.pyc`-only, but we no longer depend on
+   either: use the MIT cleanroom reimplementations (`open-topoqa-{featurizer,scorer}` #4/#5,
+   `open-topodockq-featurizer` #3). Treat the *upstream* artifacts as reference/oracle only.
 3. **HiPoNet** — non-commercial Yale license; pin commit `45a9d08`; package the core, not the benchmark scripts.
 4. **Wei-group / Hodge tools** (KDA, HHD) may be MATLAB — confirm language before estimating effort.
 5. Teach + encode the surveys' honesty points: matched-baseline ablation (P6), leakage-safe splits (F6),
