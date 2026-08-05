@@ -9,9 +9,11 @@ Work upstreamed to strengthen the persistent-Laplacian TDA ecosystem rather than
 - **TopoMetry: merge the 1.1.0 version bump to `master`** — `setup.cfg` in `master` still declares
   `1.0.2` while `topo/version.py` declares `1.1.0`, so anyone installing from git (i.e. anyone pinning a
   commit for reproducibility) gets a distribution that reports the wrong version. The PyPI sdist is
-  correct, so the bump was applied at publish time and never committed. **Already fixed on
-  `integration-dev`** (`version = 1.1.0`, checked 2026-08-05), which is 7 commits ahead of `master` and 0
-  behind — so the ask is to merge, not to write. Cheap and low-risk — to draft
+  correct, so the bump was applied at publish time and never committed. **The one-line fix already exists
+  on `integration-dev`** (`version = 1.1.0`, commit `b1c502e`, checked 2026-08-05). Ask for a *cherry-pick
+  to `master`*, not a branch merge: `integration-dev` is a multi-omic-integration feature branch (WNN,
+  ATAC LSI, CCA reference mapping, +971 lines in `single_cell.py`), so merging it is a large ask that has
+  nothing to do with the version string — to draft
 - **TopoMetry: layouts ignore `random_state`** — the strongest finding from the P8 replication. Three
   refits from the same matrix with identical params and `random_state=0` give spectral scaffolds that
   agree to a pairwise-distance correlation of **1.0000** (deterministic), but MAP layouts that agree only
