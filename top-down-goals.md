@@ -38,8 +38,10 @@ top (a tool writeup). **Licensing now dominates the ordering:**
   **HiPoNet** is ⚠️ (non-commercial Yale license — research fixture only, not Bioconda), and it's
   cleanly reproducible (`uv.lock`, pin `45a9d08`). **Nothing here is hard-blocked.** (Pipeline P7, C-track.)
 - **★ Methodological benchmark harness — fully open + most defensible.** Both QA surveys flag a
-  missing topology-vs-matched-baseline ablation. P6 leans only on ✅ tools we already have
-  (gudhi/ripser/giotto-*/r-tda) + open glue. Least licensing-encumbered of all.
+  missing topology-vs-baseline comparison. P6 ([#12](https://github.com/jmchilton/bio-topo-foundry/issues/12))
+  now answers both the attribution question (in-featurizer block ablation) *and* the practical one (a
+  competitive leaderboard vs DProQ/DProQA/pLDDT). Leans only on ✅ tools we already have + open glue;
+  least licensing-encumbered of all.
 - **★ Structure QA — NOW FULLY UNBLOCKED (2026-08-04).** The persistent-Laplacian engine is ✅ open:
   **petls-pytorch** (Apache-2.0, an independent PyTorch reimplementation of PETLS) has a green in-repo
   conda recipe + biopixi env (`content/environments/petls-pytorch/`), adopted in place of unlicensed
@@ -209,10 +211,14 @@ bottleneck, not the tools.** Concrete next units of work, ranked by readiness ×
    ranking-loss / CAPRI eval, and the honesty points (pooled-vs-per-target, the `(x,y,y)` lesson). Work =
    turn `results/phase_e_debrief.md` + the scripts into a GTN tutorial. *Delivers: training S2 (+ S1 as the
    featurization prequel).*
-3. **P6 benchmark harness — the defensible ablation.** We already have the eval spine (`evaluate.py`,
-   `metrics.py`, the DProQ benchmark on disk). Work = add the matched non-topological baseline arm + a
-   Laplacian arm (`petls-pytorch`), run all three through the same regressor/metrics. Fills the
-   topology-vs-baseline gap both QA surveys flag. *Delivers: pipeline P6 (+ training F6 on rigor).*
+3. **P6 benchmark harness — two-part, filed as [#12](https://github.com/jmchilton/bio-topo-foundry/issues/12).**
+   Rescoped into attribution + competitiveness after finding the baseline is already *inside* our
+   featurizer (node = 32 conventional + 140 topological, contiguous blocks). **P6a (attribution):** slice
+   the blocks — full/conventional-only/topological-only, same graph/GNN/split/protocol → Δ = topology's
+   marginal contribution (no baseline built). **P6b (competitiveness):** leaderboard of our correct-`(x,y,z)`
+   model vs published DProQ/DProQA/GNN-DOVE **+ mean-interface-pLDDT** (confirmed on the AF-Multimer decoys),
+   same sets + metric — the practical "useful step?" question + honest post-`(x,y,y)`-fix standing. Eval
+   spine (`evaluate.py`, `metrics.py`, benchmark) reused as-is. *Delivers: pipeline P6 (+ training F6 on rigor).*
 4. **P2 TopoDockQ pipeline — peptide-docking confidence.** `open-topodockq-featurizer` (#3) + the MIT
    scorer + `petls-pytorch`, all L1. Work = wrap featurize→score end-to-end as a workflow. *Delivers:
    pipeline P2 (+ training S3).*
@@ -229,24 +235,52 @@ user-facing Galaxy pipeline, and (2) rides on it as the matching curriculum.
 
 Each maps to already-packaged tools; ★-new-env notes what would elevate it. Realistic to build in Galaxy.
 
+Each pipeline also carries delivery-provenance metadata so literature hardening stays visibly distinct
+from Foundry invention:
+
+- **Arc** — `replicate` reproduces a named published workflow or result; `harden` makes it reliable,
+  reproducible, and deliverable without changing its scientific intent; `extend` adds a Foundry-authored
+  comparison, composition, or hypothesis. An arc may pass through more than one stage.
+- **Source** — the specific reviewed package/paper, or the survey lineage when a primary artifact still
+  needs to be selected.
+- **Foundry delta** — the work that is ours rather than a claim about what the source already delivered.
+
 ### Structure / molecular
 - **P1 · Reference-free interface QA for AlphaFold complexes** (TopoQA-style, on our stack). *Q:* which
   decoy has the most native-like interface when there's no native? PDB decoys → interface residues
   (Cα<10 Å) → 7 element-selection local point clouds → H0/H1 barcodes (**gudhi/ripser/giotto-ph**) →
   140 summary features (**persim/giotto-tda**) + DSSP/SASA → regress to DockQ → rank. ★ DockQ, DSSP, Biopython. **[struct]**
+  **Arc:** replicate → harden. **Source:** TopoQA (Han et al. 2025). **Foundry delta:** open replacement
+  components plus tested Galaxy wrapping and collection-level ranking.
 - **P2 · Persistent-Laplacian peptide-docking confidence** (TopoDockQ-style — flagship **petls** use).
   *Q:* predict p-DockQ without a reference. Interface → 9 bipartite element-channel Rips + Alpha →
   **petls** Laplacian eigenvalue stats + Betti-0 bins → MLP → select pose. ★ pyDowker. **[struct]**
+  **Arc:** replicate → harden. **Source:** TopoDockQ. **Foundry delta:** replace the opaque featurizer and
+  unlicensed Laplacian dependency with open components, then deliver and test the end-to-end workflow.
 - **P3 · Element-specific PH protein-ligand binding affinity** (PDBbind). Pocket → per-element channel
   persistence (**ripser/gudhi**) → vectorize (**persim/scikit-tda**) → GBT/MLP → pKd, vs PH-only baseline. **[surveys][struct]**
+  **Arc:** replicate → harden. **Source:** the ESPH/TopologyNet lineage reviewed by Wee and Jiang; a
+  representative primary artifact and benchmark remain to be selected. **Foundry delta:** pin that
+  reference, make its data and split contract explicit, and deliver an open Galaxy implementation.
 - **P4 · Persistent-Laplacian mutation impact (ΔΔG / interface disruption).** WT vs mutant → local
   complexes → **petls** spectra (harmonic=Betti, non-harmonic=shape) → paired feature deltas → predict
   stability change + flag interface-breaking mutations. **[surveys][struct]**
+  **Arc:** replicate → harden. **Source:** persistent-spectral mutation and protein-engineering studies
+  reviewed by Wee and Jiang; the primary implementation target remains to be selected. **Foundry delta:**
+  a reproducible paired WT/mutant feature contract, open engine, leakage-safe evaluation, and Galaxy delivery.
 - **P5 · Non-canonical peptide design triage** (ResidueX-style). Scaffold → RDKit ncAA conformers →
   graft → **petls/gudhi** TDA rescore → OpenMM/OpenFF minimize → ranked design hypotheses. ★ RDKit/OpenMM/OpenFF/AmberTools. **[struct]**
-- **P6 · ★ TDA-vs-baseline benchmark harness** (the defensible one). Fixed decoy set + MMseqs2 split →
-  three arms: PH-only (**gudhi/ripser**), Laplacian (**petls**), matched geometric baseline → same
-  regressor/metrics → head-to-head ranking loss. Fills the ablation both QA papers admit is missing. ★ MMseqs2. **[struct]**
+  **Arc:** replicate → harden. **Source:** the published ResidueX workflow accompanying TopoDockQ.
+  **Foundry delta:** package the molecular-design stack, reproduce the released examples, and expose the
+  modular generate → score → minimize path in Galaxy.
+- **P6 · ★ TDA benchmark harness — attribution + competitiveness** (the defensible one; [#12](https://github.com/jmchilton/bio-topo-foundry/issues/12)).
+  **P6a attribution:** in-featurizer block ablation (full / conventional-32 / topological-140), same
+  graph/GNN/split/metric → Δ = what the PH block buys. **P6b competitiveness:** leaderboard vs standard
+  practice — published DProQ/DProQA/GNN-DOVE + mean-interface-pLDDT on the AF-Multimer decoys, same sets +
+  ranking-loss metric — answers "useful step?" and re-places the topological approach once the `(x,y,y)`
+  defect is corrected. Deferred arms: run-DProQ-ourselves, `petls` persistent-Laplacian features. ★ MMseqs2. **[struct]**
+  **Arc:** extend. **Source:** an evaluation gap identified across the TopoQA and TopoDockQ reviews.
+  **Foundry delta:** the shared split/model/metric contract; attribution ablation *and* a corrected-coordinate competitive leaderboard.
 
 ### Single-cell / spatial
 - **P7 · ★ Cohort-scale patient classification from cellular point clouds.** *Q:* does a patient's cell-
@@ -254,21 +288,39 @@ Each maps to already-packaged tools; ★-new-env notes what would elevate it. Re
   (**ripser/giotto-ph**) → persistence images (**persim**) → sample-level classifier (**giotto-tda**),
   patient-level splits. The interpretable non-neural baseline HiPoNet asks reproducers to build; add
   HiPoNet as the neural arm. ★ HiPoNet, Scanpy. **[sc]**
+  **Arc:** replicate → harden → extend. **Source:** HiPoNet's published cohort-classification tasks.
+  **Foundry delta:** first reproduce and repair the HiPoNet workflow, then add transparent PH and matched
+  geometric/compositional baselines under the same patient-level evaluation contract.
 - **P8 · Differentiation & cell-cycle loop topology.** scRNA → Scanpy → **topometry** scaffold → H1 on
   scaffold (**ripser/giotto-ph**) to detect the cyclic program → overlay velocity/pseudotime → report
   loop persistence + branch points. ★ Scanpy, PHATE. **[sc]**
+  **Arc:** replicate → extend. **Source:** TopoMetry's published developmental/cell-cycle case study.
+  **Foundry delta:** turn the visually observed loop into an explicit H1 measurement with perturbation,
+  donor, and parameter-stability checks.
 - **P9 · Spatial-proteomics microenvironment topology** (CODEX/MIBI). Cell table (x,y+markers) → spatial
   proximity + marker-similarity views → per-sample PH (**ripser/giotto-ph**, **pyflagser** if directed)
   → outcome classifier. ★ HiPoNet (multi-view neural benchmark). **[sc]**
+  **Arc:** replicate → harden → extend. **Source:** HiPoNet's published CODEX/MIBI spatial tasks.
+  **Foundry delta:** repair and reproduce the released spatial workflow, then compare it with transparent
+  PH and directed-topology representations under identical cohort splits.
 - **P10 · Manifold-aware subpopulation resolution + overclustering guard.** scRNA → **topometry** refined
   graph → Leiden → markers → stability across k/donors; **kmapper** to check clusters sit on genuine
   branches. ★ Scanpy, Harmony. **[sc]**
+  **Arc:** replicate → extend. **Source:** TopoMetry's fine-subpopulation analyses. **Foundry delta:** add
+  donor/parameter stability and an independent Mapper-based guard against interpreting resolution alone
+  as biological validity.
 
 ### Cross-cutting
 - **P11 · Mapper landscape/decoy visualization.** TDA features (structure decoys *or* single-cell) →
   **kmapper/topometry** graph colored by quality/phenotype → derive filters / read transitions. **[struct][sc]**
+  **Arc:** extend. **Source:** earlier molecular Mapper applications plus the reviewed Mapper/TopoMetry
+  capabilities. **Foundry delta:** a reusable cross-domain workflow and interpretation contract rather
+  than a reproduction of one reported benchmark.
 - **P12 · RNA-velocity flow decomposition** (Hodge). Velocity field → gradient/rotational/harmonic split
   → interpret directed differentiation flow. New bio capability. ★ Hodge-decomposition env. **[surveys]**
+  **Arc:** replicate → harden. **Source:** the RNA-velocity Hodge-decomposition lineage reviewed by Su et
+  al.; a primary implementation target still needs to be selected. **Foundry delta:** trace and reproduce
+  that primary method, package an open implementation, and expose its boundary conditions and outputs in Galaxy.
 
 ---
 
