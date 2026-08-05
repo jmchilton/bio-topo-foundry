@@ -17,6 +17,17 @@ Work upstreamed to strengthen the persistent-Laplacian TDA ecosystem rather than
 - **TopoMetry → conda-forge feedstock update** — the channel carries exactly one build, `0.2.1.1`, which
   predates the `topo.sc.fit_adata` API the eLife version of record describes. Bumping the feedstock to
   1.1.0 promotes `content/environments/topometry-1.1` from L1 to L3 and retires the two-env split — to draft
+- **scVelo: default velocity mode is broken under NumPy ≥ 2** — `leastsq_generalized`'s no-offset branch
+  (`optimization.py`) assigns a length-1 array into a scalar slot; NumPy 1.x unwrapped it silently, NumPy 2
+  raises. `fit_offset` defaults to `False`, so this is the exact path `scv.tl.velocity(mode="stochastic")`
+  takes — scVelo's *default* mode. Unfixed on `theislab/scvelo` master as of 2026-08-05. One-line fix
+  (take element 0), identity on the mathematics. Blocks any modern-stack reproduction of a published
+  scVelo analysis, incl. bio-topo-foundry#11 — to draft
+- **scVelo: `filter_and_normalize` silently lost its HVG/log1p contract** — 0.3.4 stripped it to
+  `filter_genes` + `normalize_per_cell` and dropped `filter_genes_dispersion`/`log1p` from `scv.pp`
+  entirely, so the `scv.pp.filter_and_normalize(adata, min_shared_counts=20, n_top_genes=2000)` call in
+  every scVelo tutorial now raises `TypeError`. Either restore the kwarg or update the docs; as it stands
+  "scVelo with default parameters" is not a stable specification across versions — to draft
 - **scvelo_notebooks: request a licence** — `theislab/scvelo_notebooks` hosts the processed datasets
   `scvelo.datasets.*` downloads (including the pancreas object behind bio-topo-foundry#11) with no licence
   file, so they are all-rights-reserved by default and cannot be redistributed as workflow test fixtures.
