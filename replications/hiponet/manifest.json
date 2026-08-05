@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "epic": {
+    "issue": "https://github.com/jmchilton/bio-topo-foundry/issues/10",
+    "arc_stage": "replicate"
+  },
+  "paper": {
+    "title": "HiPoNet: A Multi-View Simplicial Complex Network for High Dimensional Point-Cloud and Single-Cell data",
+    "venue": "NeurIPS 2025 Main Conference Track",
+    "version": "official proceedings PDF",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/b284aad9fb5c6d74b9535a30ece69e1c-Paper-Conference.pdf",
+    "sha256": "5075a0926641918ed4c1c76f9586002cb37e9b5a95402fb151176973439ac8f5",
+    "page_count": 30,
+    "pdf_creation_date": "2025-10-23T14:49:19-04:00",
+    "license": "CC BY 4.0"
+  },
+  "software": {
+    "repository": "https://github.com/KrishnaswamyLab/HiPoNet",
+    "license": {
+      "name": "Yale Non-Commercial License",
+      "commercial_use": "requires a separate commercial license from Yale University",
+      "distribution_condition": "distributed modifications and derivatives must be made available on GitHub with the notice preserved"
+    },
+    "publication_proximal_candidate": {
+      "commit": "9dd23b9cdad5bf98e4af02df3681c415e9b3c961",
+      "authored_at": "2025-09-16T21:27:55-04:00",
+      "subject": "update defaults to match paper",
+      "uv_lock_sha256": "41c28a7b172b3df93b9b5cbec77ab22a605b26084ff742320243238c0643f7fd",
+      "status": "candidate only: no release or tag binds this commit to the proceedings paper, and several script defaults still conflict with the paper"
+    },
+    "hardening_base": {
+      "commit": "45a9d08c49af0aa0a2e24b840d53e0512ad69032",
+      "authored_at": "2026-03-27T13:17:41-04:00",
+      "subject": "Merge pull request #5 from KrishnaswamyLab/geom_lap",
+      "uv_lock_sha256": "950c1ad27cd9451741bb602eefac7ec1743a18bad80a6e334fb5f88e1de54689",
+      "status": "Foundry environment pin; post-publication geometric-Laplacian features must remain disabled for a faithful run"
+    },
+    "submission_review_snapshot": {
+      "url": "https://anonymous.4open.science/r/PointCloudNet-1EAD",
+      "paper_claim": "submission-time code, reproduction details, and data splits",
+      "current_status": "expired: HTTP 410 Gone",
+      "archive_status": "no indexed Internet Archive capture found"
+    }
+  },
+  "environment": {
+    "foundry_manifest": "content/environments/hiponet/pixi.toml",
+    "foundry_manifest_sha256": "926cde7cad20406040ab47c475643eeb098f5554f44176f2fa85de71eb92d3e1",
+    "foundry_lock": "content/environments/hiponet/pixi.lock",
+    "foundry_lock_sha256": "d2fd3180590bfb202a5b9121d3968312376b5332104dcd7d8ab4193128d1e263",
+    "platform": "linux-64",
+    "python": "3.11.*"
+  },
+  "source_dataset": {
+    "name": "Processed Multiplexed Ion Beam Imaging (MIBI) of tumor microenvironments of 54 melanoma samples following immunotherapy",
+    "version": 1,
+    "doi": "10.17632/79y7bht7tf.1",
+    "landing_page": "https://data.mendeley.com/datasets/79y7bht7tf/1",
+    "published_at": "2025-01-06T23:00:42.588Z",
+    "license": "CC BY 4.0",
+    "files": [
+      {
+        "filename": "cell_protein_data.csv",
+        "file_id": "2679faaa-53b9-40e1-8315-3e25ede010b7",
+        "size_bytes": 20938620,
+        "sha256": "6b47db94ea6984f3229a871852eb6cfb6f8e435ec42c8f6e34209b57cf4e0fc5",
+        "download_url": "https://data.mendeley.com/public-files/datasets/79y7bht7tf/files/2679faaa-53b9-40e1-8315-3e25ede010b7/file_downloaded",
+        "role": "patient ID plus 29 deposited, denoised and normalized protein measurements per cell"
+      },
+      {
+        "filename": "cell_spatial_data.csv",
+        "file_id": "456465e9-ba45-4846-8c54-df2ffe210cf4",
+        "size_bytes": 1173027,
+        "sha256": "74dc69b6a118dc2cba4f434f1fde0fcab2d2eee61e7e2b064132212ec03eb187",
+        "download_url": "https://data.mendeley.com/public-files/datasets/79y7bht7tf/files/456465e9-ba45-4846-8c54-df2ffe210cf4/file_downloaded",
+        "role": "area, x/y centroid, and per-patient cell instance; excluded from the published non-spatial classification task"
+      },
+      {
+        "filename": "patient_info.csv",
+        "file_id": "ba49ff67-a7a6-45e7-9973-cf975ca5daf2",
+        "size_bytes": 1144,
+        "sha256": "388236706aa64d814921c70f856357c0bdfc36646eccb217975a841411552b3e",
+        "download_url": "https://data.mendeley.com/public-files/datasets/79y7bht7tf/files/ba49ff67-a7a6-45e7-9973-cf975ca5daf2/file_downloaded",
+        "role": "patient-level covariates and response labels"
+      }
+    ],
+    "version_boundary": "Use v1 because the paper cites /1. Mendeley v2 replaces the three-file T-cell layout with a two-file all-cell layout and is not an interchangeable update."
+  },
+  "artifact_forensics": {
+    "status": "closed without author contact",
+    "report": "forensic-artifact-audit.md",
+    "verification_script": "verify_legacy_artifacts.py",
+    "author_committed_legacy_sources": {
+      "repository": "https://github.com/HirenMadhu/PointCloudNet",
+      "commit": "778f1e8644514746e6330d165abab82263de9507",
+      "scaled_cell_intensities_path": "archive/data/scaled_cell_intensities.csv",
+      "scaled_cell_intensities_sha256": "935f0e3ff7b3ee6af55b4740ad2fb24ce13412c4657500508f2c471a758df8d8",
+      "clinical_metadata_path": "archive/data/melanoma_clinical_info_MIBI.csv",
+      "clinical_metadata_sha256": "1969fa8ab985fef60d24dc3129173363db7d0b0dafba39063f94e81de4d11a71"
+    },
+    "point_cloud_reconstruction": {
+      "status": "resolved: deterministic numeric reconstruction",
+      "relation": "mendeley_cell = log10(1 + legacy_intensity) / row_sum(log10(1 + legacy_intensity))",
+      "patient_membership_match": true,
+      "feature_order_match": true,
+      "within_patient_cell_order_match": true,
+      "patient_cell_counts_match": true,
+      "patients_compared": 54,
+      "cells_compared": 54989,
+      "features_compared": 29,
+      "observed_maximum_absolute_error": 1.6653345369377348e-16,
+      "absolute_tolerance": 2e-15,
+      "legacy_library_size_rescale": 1000,
+      "mendeley_library_size_rescale": 1,
+      "classifier_invariance": "the released loader's per-patient StandardScaler removes the global positive rescale factor",
+      "remaining_boundary": "the unpublished pc_full.pkl byte serialization is unavailable"
+    },
+    "label_reconstruction": {
+      "status": "resolved: semantic identity independently corroborated",
+      "legacy_patient_id_rule": "R{376_1_col}C{376_1_row}",
+      "legacy_binary_mapping": {"NO": 0, "YES": 1},
+      "cohort_patients_compared": 54,
+      "missing_patients": 0,
+      "binary_label_mismatches": 0,
+      "response_multi_mismatches": 0,
+      "legacy_clinical_rows_outside_cohort": 9,
+      "remaining_boundary": "the unpublished labels_full.npy byte serialization is unavailable"
+    },
+    "seed_and_split_recovery": {
+      "status": "closed as forensically unrecoverable",
+      "submission_era_launcher_commit": "55db86112a042218a10162d35176d51d65fe3ae1",
+      "launcher_behavior": "repeats each melanoma command five times without a seed argument",
+      "classifier_behavior": "train_test_split(..., test_size=0.2) without random_state or stratification; no NumPy or PyTorch seed initialization",
+      "repository_audit": "all reachable branches, tags, objects, and both public forks contain no full array, seed, split, or headline checkpoint artifact; git fsck found no recoverable unreachable objects",
+      "run_log_audit": "committed early W&B logs do not contain the headline splits or seeds, and the later classification project is not publicly queryable",
+      "resolution": "use Foundry-selected seeds 0-4 and checked faithful_splits.json/csv assignments as the explicit replacement experiment identity"
+    }
+  },
+  "cohort": {
+    "task_id": "melanoma-immunotherapy-response",
+    "experimental_unit": "patient/sample",
+    "point_unit": "tumor-microenvironment T cell",
+    "modality": "29-marker MIBI spatial proteomics; spatial coordinates are excluded in this task",
+    "sample_count": 54,
+    "cell_count": 54989,
+    "cell_count_min": 489,
+    "cell_count_max": 1784,
+    "feature_count": 29,
+    "features": [
+      "beta-tubulin",
+      "CD11b",
+      "CD11c",
+      "CD14",
+      "CD163",
+      "CD20",
+      "CD3",
+      "CD31",
+      "CD4",
+      "CD45",
+      "CD45RO",
+      "CD56",
+      "CD68",
+      "CD8",
+      "dsDNA",
+      "FOXP3",
+      "Granzyme B",
+      "HLA class 1 A, B, and C, Na-K-ATPase",
+      "HLA DPDQDR",
+      "IDO-1",
+      "Ki-67",
+      "LAG3",
+      "PD-1",
+      "PD-L1",
+      "Podoplanin",
+      "SMA",
+      "SOX10",
+      "TIM-3",
+      "Vimentin"
+    ],
+    "reconstructed_target": {
+      "column": "response_binary",
+      "mapping": {
+        "0": "non-response: progressive disease or stable disease",
+        "1": "response: partial response or complete response/remission"
+      },
+      "class_counts": {
+        "0": 31,
+        "1": 23
+      },
+      "response_multi_cross_tab": {
+        "0": {"PD": 15, "SD": 16},
+        "1": {"PR": 15, "CR": 8}
+      },
+      "status": "semantically reconstructed: all 54 values independently agree with author-committed clinical metadata; only the unpublished NumPy file's byte serialization is unavailable"
+    },
+    "preprocessing": [
+      "Use the deposited v1 protein values as provided; the adapter performs no additional log transform or library-size normalization.",
+      "Group cells by id in patient_info.csv order to create 54 full point clouds.",
+      "Do not use the deposited spatial columns for this non-spatial task.",
+      "HiPoNet's released load_data function subsequently fits StandardScaler separately within each patient point cloud."
+    ],
+    "samples": [
+      {"sample_id": "R10C2", "cell_count": 913, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R10C3", "cell_count": 922, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R10C4", "cell_count": 827, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R10C5", "cell_count": 709, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R11C1", "cell_count": 489, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R11C3", "cell_count": 1017, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R11C4", "cell_count": 728, "response_binary": 1, "response_multi": "CR"},
+      {"sample_id": "R11C5", "cell_count": 1008, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R12C1", "cell_count": 1110, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R12C2", "cell_count": 879, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R12C3", "cell_count": 1193, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R12C4", "cell_count": 900, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R12C5", "cell_count": 846, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R1C2", "cell_count": 722, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R1C3", "cell_count": 1325, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R1C4", "cell_count": 1032, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R1C5", "cell_count": 979, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R2C2", "cell_count": 771, "response_binary": 1, "response_multi": "CR"},
+      {"sample_id": "R2C3", "cell_count": 775, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R2C4", "cell_count": 641, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R2C5", "cell_count": 1360, "response_binary": 1, "response_multi": "CR"},
+      {"sample_id": "R3C1", "cell_count": 962, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R3C2", "cell_count": 927, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R3C3", "cell_count": 1414, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R3C4", "cell_count": 867, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R3C5", "cell_count": 604, "response_binary": 1, "response_multi": "CR"},
+      {"sample_id": "R4C1", "cell_count": 1219, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R4C2", "cell_count": 1118, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R4C3", "cell_count": 1078, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R4C4", "cell_count": 837, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R4C5", "cell_count": 1155, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R5C1", "cell_count": 1143, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R5C3", "cell_count": 1019, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R5C4", "cell_count": 549, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R5C5", "cell_count": 809, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R6C1", "cell_count": 776, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R6C2", "cell_count": 749, "response_binary": 1, "response_multi": "CR"},
+      {"sample_id": "R6C3", "cell_count": 1124, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R6C4", "cell_count": 1207, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R6C5", "cell_count": 1125, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R7C1", "cell_count": 1369, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R7C2", "cell_count": 1009, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R7C3", "cell_count": 910, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R7C4", "cell_count": 719, "response_binary": 1, "response_multi": "CR"},
+      {"sample_id": "R7C5", "cell_count": 1021, "response_binary": 0, "response_multi": "SD"},
+      {"sample_id": "R8C1", "cell_count": 1565, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R8C2", "cell_count": 1784, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R8C3", "cell_count": 1737, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R8C4", "cell_count": 1420, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R8C5", "cell_count": 732, "response_binary": 1, "response_multi": "CR"},
+      {"sample_id": "R9C1", "cell_count": 1240, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R9C2", "cell_count": 1479, "response_binary": 1, "response_multi": "PR"},
+      {"sample_id": "R9C3", "cell_count": 1122, "response_binary": 0, "response_multi": "PD"},
+      {"sample_id": "R9C4", "cell_count": 1054, "response_binary": 1, "response_multi": "CR"}
+    ]
+  },
+  "published_evaluation": {
+    "metric": "accuracy_percent",
+    "mean": 90.9,
+    "standard_deviation": 4.92,
+    "run_count": 5,
+    "reported_procedure": {
+      "optimizer": "AdamW",
+      "learning_rate": 0.0001,
+      "weight_decay": 0.0001,
+      "epochs": 100,
+      "selection": "best test-set accuracy observed across epochs",
+      "uncertainty": "mean and standard deviation over five runs"
+    },
+    "paper_selected_parameters": {
+      "views": 4,
+      "maximum_simplex_order_K": 1,
+      "similarity_threshold": 0.5,
+      "kernel_bandwidth_sigma": 1.0
+    },
+    "publication_candidate_code_parameters": {
+      "wavelet_scales_J": 3,
+      "hidden_dim": 256,
+      "mlp_layers": 3,
+      "batch_size": 32
+    },
+    "split": {
+      "paper_assignments": null,
+      "paper_seeds": null,
+      "released_script": "train_test_split over the 54 point clouds with test_size=0.2, no random_state, no stratification, and no validation set",
+      "status": "closed as forensically unrecoverable: the recovered launcher repeated unseeded processes and the classifier neither fixed nor logged RNG state; Foundry's checked split contract is the explicit replacement identity"
+    }
+  },
+  "reproduction_execution": {
+    "protocol": "closest-recoverable-published-procedure",
+    "status": "five full MPS portability runs complete; locked Linux/CUDA runs not yet executed",
+    "split_contract": {
+      "json": "faithful_splits.json",
+      "csv": "faithful_splits.csv",
+      "generator": "generate_faithful_splits.py",
+      "seeds": [0, 1, 2, 3, 4],
+      "seed_origin": "Foundry-selected consecutive integers; not recovered paper seeds",
+      "test_fraction": 0.2,
+      "train_count": 43,
+      "test_count": 11,
+      "stratified": false,
+      "validation_count": 0,
+      "warning": "These assignments preserve the released split shape for the faithful arm and must not be used as the corrected evaluation design."
+    },
+    "runner": {
+      "path": "run_faithful.py",
+      "license": "Yale Non-Commercial License because the runner is a derivative of upstream main_classification.py",
+      "required_upstream_commit": "9dd23b9cdad5bf98e4af02df3681c415e9b3c961",
+      "required_checkout_state": "detached, exact commit, no tracked modifications",
+      "expected_hardware": "Linux host with one A100-class CUDA GPU",
+      "observability_additions": [
+        "explicit seed and checked split input",
+        "patient IDs and train/test membership",
+        "per-epoch train and test metrics",
+        "best-epoch train/test predictions and class probabilities",
+        "best checkpoint",
+        "runtime, hardware, source, environment, input, and output provenance"
+      ],
+      "method_preserved": [
+        "per-patient StandardScaler preprocessing from the released loader",
+        "unstratified 80/20 train/test split shape with no validation set",
+        "AdamW and 100x cross-entropy loss scaling from the released script",
+        "best test-set accuracy selection from epoch 0 through epoch 100"
+      ]
+    },
+    "mps_portability_execution": {
+      "status": "complete five-run contract; explicitly deviated from the faithful environment",
+      "device": "Apple M4 Pro MPS",
+      "operating_system": "macOS 26.5.2 arm64",
+      "python": "3.11.14",
+      "torch": "2.5.1",
+      "pytorch_enable_mps_fallback": true,
+      "reason_for_torch_downgrade": "PyTorch 2.8.0's MPS availability check rejects macOS 26.x; 2.5.1 exposes the Metal device but is below HiPoNet's declared torch>=2.8.0 requirement",
+      "execution_input_manifest_sha256": "369c8578b0b9e529d83369744262e5db5dbf7e41f8ba3c61b0eddc8808b9b902",
+      "execution_input_splits_sha256": "6f237eda48a871a8c12ae0a94198c49a6c35c8639d5dee459bdd963d01a3900c",
+      "result_directory": "results/mps-portability",
+      "accuracy_percent": [81.81818181818181, 54.54545454545455, 81.81818181818181, 54.54545454545455, 63.63636363636363],
+      "mean_accuracy_percent": 67.27272727272727,
+      "population_standard_deviation": 12.331509060227758,
+      "sample_standard_deviation": 13.787046261911907,
+      "paper_mean_delta_points": -23.62727272727274,
+      "interpretation": "Four runs selected epoch zero and predicted every test patient as class 0; the fifth predicted one class-1 patient. Accuracy largely tracks each unstratified split's majority-class prevalence.",
+      "post_execution_metadata_correction": "The execution manifest incorrectly described class 0 as PD-only and class 1 as SD/PR/CR. The deposited and executed numeric labels were unchanged: class 0 is PD/SD and class 1 is PR/CR. Exact pre-correction inputs are preserved beside the results."
+    }
+  },
+  "bounded_gaps": [
+    "No release or tag identifies the exact commit used for the proceedings results.",
+    "The original pc_full.pkl, patient_list_full.pkl, and labels_full.npy serializations are unavailable, but their numerical and semantic contents are deterministically reconstructed and independently corroborated from author-committed legacy data.",
+    "The five original process RNG states and patient assignments were neither fixed nor logged and are forensically unrecoverable; Foundry seeds 0-4 and checked assignments are replacements, not recovered author seeds.",
+    "The paper reports about 61,000 cells in its main table and 11,862 in Appendix G; the pinned v1 CSV contains exactly 54,989 cells.",
+    "The paper says 29 markers in the data appendix but refers to 30 in its learned-feature discussion.",
+    "The publication-proximal script defaults to two views and 20 epochs even though the headline paper setting uses four views and 100 epochs.",
+    "The faithful procedure selects the best epoch on the test set; corrected evaluation requires a validation set and must be reported separately."
+  ]
+}
