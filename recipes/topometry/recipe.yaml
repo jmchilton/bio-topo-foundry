@@ -41,8 +41,11 @@ build:
 
 requirements:
   host:
-  # Upstream advertises >=3.6, but `single_cell.py` uses PEP 604 unions (`TopOGraph | None`) in
-  # evaluated signature defaults, so 3.10 is the real floor.
+  # Upstream advertises >=3.6. That is stale (the single-cell stack it needs is far newer), but
+  # note the code itself does NOT force 3.10: `single_cell.py` carries
+  # `from __future__ import annotations`, so its PEP 604 unions (`TopOGraph | None`) are never
+  # evaluated and the package parses under 3.8. The floor here is a deliberate support choice
+  # driven by the scanpy/anndata closure, not a syntax requirement.
   - python >=3.10
   - pip
   - setuptools
@@ -55,7 +58,9 @@ requirements:
   - matplotlib-base
   - pandas
   - numba
-  - setuptools
+  # NB: upstream's install_requires also lists `setuptools`, deliberately NOT carried here —
+  # nothing in `topo/` imports setuptools or pkg_resources, and a spurious runtime setuptools
+  # dep would be flagged in conda-forge review.
   # required by the published single-cell workflow but undeclared upstream
   - scanpy
   - anndata

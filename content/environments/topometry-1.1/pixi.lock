@@ -187,7 +187,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/typing_extensions-4.16.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026c-h151e31d_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zarr-3.3.0-pyhc364b38_0.conda
-      - conda_source: topometry[9f0460d7] @ ../../../recipes/topometry
+      - conda_source: topometry[f9c406ed] @ ../../../recipes/topometry
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
   build_number: 20
@@ -2771,7 +2771,7 @@ packages:
   run_exports: {}
   size: 471664
   timestamp: 1785511642744
-- conda_source: topometry[9f0460d7] @ ../../../recipes/topometry
+- conda_source: topometry[f9c406ed] @ ../../../recipes/topometry
   variants:
     target_platform: noarch
   depends:
@@ -2783,7 +2783,6 @@ packages:
   - matplotlib-base
   - pandas
   - numba
-  - setuptools
   - scanpy
   - anndata
   - hnswlib

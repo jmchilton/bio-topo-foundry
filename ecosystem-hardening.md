@@ -10,6 +10,12 @@ Work upstreamed to strengthen the persistent-Laplacian TDA ecosystem rather than
   `topo/version.py` declares `1.1.0`, so anyone installing from git (i.e. anyone pinning a commit for
   reproducibility) gets a distribution that reports the wrong version. The PyPI sdist is correct, so the
   bump was applied at publish time and never committed — to draft
+- **TopoMetry: layouts ignore `random_state`** — the strongest finding from the P8 replication. Three
+  refits from the same matrix with identical params and `random_state=0` give spectral scaffolds that
+  agree to a pairwise-distance correlation of **1.0000** (deterministic), but MAP layouts that agree only
+  to ~0.9 — enough to swing a cell-cycle loop statistic from 0.532 to 0.918. The seed is accepted and
+  evidently not threaded into the layout stage. This makes any layout-level figure in the eLife paper
+  unreproducible even by its authors, and is the case for measuring on scaffolds rather than layouts — to draft
 - **TopoMetry: declare the single-cell runtime deps** — `install_requires` lists only numpy/scipy/
   scikit-learn/matplotlib/pandas/numba/setuptools, but the paper-facing workflow needs scanpy, anndata,
   hnswlib, pacmap, leidenalg/python-igraph, adjusttext, and scikit-misc (`topo.sc.preprocess` defaults to
