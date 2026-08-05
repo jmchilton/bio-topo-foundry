@@ -13,9 +13,19 @@ Work upstreamed to strengthen the persistent-Laplacian TDA ecosystem rather than
 - **TopoMetry: layouts ignore `random_state`** — the strongest finding from the P8 replication. Three
   refits from the same matrix with identical params and `random_state=0` give spectral scaffolds that
   agree to a pairwise-distance correlation of **1.0000** (deterministic), but MAP layouts that agree only
-  to ~0.9 — enough to swing a cell-cycle loop statistic from 0.532 to 0.918. The seed is accepted and
-  evidently not threaded into the layout stage. This makes any layout-level figure in the eLife paper
-  unreproducible even by its authors, and is the case for measuring on scaffolds rather than layouts — to draft
+  to ~0.9 — enough to swing a cell-cycle loop statistic from 0.532 to 0.918. This makes any layout-level
+  figure in the eLife paper unreproducible even by its authors, and is the case for measuring on scaffolds
+  rather than layouts. **Root-caused to four independent defects**, each with a verified fix: (1)
+  `_spectral.py:299` calls `eigsh` with no `v0`, and `LE`'s `random_state` only reaches the `lobpcg`
+  branch gated on n ≥ 1e6; (2) `eigen.py:556` calls `LE` with misaligned positional args, so `eigen_tol`
+  lands in `drop_first`, the real `eigen_tol` falls back to 0, and `random_state` is dropped; (3)
+  `map.py:57` defaults `parallel=True`, compiling the MAP SGD epoch under `numba.prange` where threads
+  share one `rng_state` and race on `head_embedding` — upstream UMAP passes `parallel=(random_state is
+  None)` and TopoMetry inherited that docstring without the gating; (4) `projector.py` never passes the
+  seed to `pacmap.PaCMAP`/`umap.UMAP`/`trimap.TRIMAP`. Holding the init constant and fixing the optimiser
+  makes both MAP and PaCMAP bit-reproducible, so the four are exhaustive. Synthetic reproducer + drafted
+  issue live in the replication repo (`scripts/05_seed_root_cause.py`,
+  `docs/upstream/topometry-random-state.md`); defects 2–4 are one-line PRs — to draft
 - **TopoMetry: declare the single-cell runtime deps** — `install_requires` lists only numpy/scipy/
   scikit-learn/matplotlib/pandas/numba/setuptools, but the paper-facing workflow needs scanpy, anndata,
   hnswlib, pacmap, leidenalg/python-igraph, adjusttext, and scikit-misc (`topo.sc.preprocess` defaults to
