@@ -1,0 +1,24 @@
+# TopoMetry 1.1.0 — the release the eLife version of record (13:RP100361, 2026-07-03) describes,
+# staged from an in-repo recipe because conda-forge is four years stale. bio-topo-foundry#11,
+# pipeline P8 (differentiation & cell-cycle loop topology).
+#
+# WHY NOT `content/environments/topometry/`: that env pins conda-forge topometry 0.2.1.1 — the
+# only build on the channel — which predates the `topo.sc.fit_adata` / `topo.sc.preprocess` API
+# the published pancreas workflow uses. It stays as the L3 conda-forge fixture; THIS env is the
+# one the replication runs against. The two are kept apart deliberately: one records what the
+# community channel actually offers, the other records what the paper actually needs.
+#
+# GRADE: L1 — one in-repo path recipe. Everything else resolves from conda-forge. The recipe is
+# pure-Python noarch and MIT, so upstreaming it to conda-forge (which would mean updating the
+# existing feedstock from 0.2.1.1 to 1.1.0) promotes this env to L3 and retires the split.
+# Tracked in ecosystem-hardening.md.
+#
+# The recipe declares the run deps upstream omits (scanpy, anndata, hnswlib, pacmap, scikit-misc,
+# leidenalg, python-igraph, adjusttext), so nothing extra is pinned here.
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+topometry = { path = "../../../recipes/topometry" }

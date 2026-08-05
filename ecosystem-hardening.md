@@ -6,4 +6,20 @@ Work upstreamed to strengthen the persistent-Laplacian TDA ecosystem rather than
 - **PETLS: request a license** — the reference impl ships with no license (all-rights-reserved by default); ask upstream to add one so it can be redistributed/repackaged — https://github.com/bdjones13/PETLS/issues/2
 - **tadasets → conda-forge** — add the scikit-tda synthetic-dataset generator to conda-forge, closing the packaging gap that blocks the petls-pytorch closure — https://github.com/conda-forge/staged-recipes/pull/34367
 - **float64 property-test branch (tracking)** — upstream independent double-precision invariant tests to petls-pytorch, after the deps PR lands — https://github.com/jmchilton/bio-topo-foundry/issues/6
+- **TopoMetry: commit the 1.1.0 version bump** — `setup.cfg` in `master` still declares `1.0.2` while
+  `topo/version.py` declares `1.1.0`, so anyone installing from git (i.e. anyone pinning a commit for
+  reproducibility) gets a distribution that reports the wrong version. The PyPI sdist is correct, so the
+  bump was applied at publish time and never committed — to draft
+- **TopoMetry: declare the single-cell runtime deps** — `install_requires` lists only numpy/scipy/
+  scikit-learn/matplotlib/pandas/numba/setuptools, but the paper-facing workflow needs scanpy, anndata,
+  hnswlib, pacmap, leidenalg/python-igraph, adjusttext, and scikit-misc (`topo.sc.preprocess` defaults to
+  the `seurat_v3` HVG flavour). The white paper already flags this; a PR would close it — to draft
+- **TopoMetry → conda-forge feedstock update** — the channel carries exactly one build, `0.2.1.1`, which
+  predates the `topo.sc.fit_adata` API the eLife version of record describes. Bumping the feedstock to
+  1.1.0 promotes `content/environments/topometry-1.1` from L1 to L3 and retires the two-env split — to draft
+- **scvelo_notebooks: request a licence** — `theislab/scvelo_notebooks` hosts the processed datasets
+  `scvelo.datasets.*` downloads (including the pancreas object behind bio-topo-foundry#11) with no licence
+  file, so they are all-rights-reserved by default and cannot be redistributed as workflow test fixtures.
+  A licence, or a Figshare/Zenodo deposit like the one `bonemarrow` already uses, would unblock it. The
+  accessor also points at the mutable `master` branch, so it is not reproducible as written — to draft
 - **TopoQA: report (x,y,y) edge-coordinate defect** — an independent reproduction of the released code + checkpoint found the all-atom edge-distance point cloud uses `(x, y, y)` instead of `(x, y, z)`; correcting only inference shifts published top-1 ranking loss (HAF2-12 0.110→0.147, DBM55-AF2 0.069→0.077), so the numbers depend on it — flagged to the authors for clarification/retrained-checkpoint — https://github.com/yubingapril/TopoQA/issues/1

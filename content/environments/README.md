@@ -15,7 +15,8 @@ derives it from the manifest, lockfile, and public metadata.
 | `gudhi` | gudhi 3.13.0 | conda-forge | **L3** |
 | `persim` | persim 0.3.8 | conda-forge | **L3** |
 | `dionysus` | dionysus 2.2.3 | conda-forge | **L3** |
-| `topometry` | topometry 0.2.1.1 (single-cell) | conda-forge | **L3** |
+| `topometry` | topometry 0.2.1.1 (single-cell) | conda-forge | **L3** — stale channel fixture, *not* the paper's API |
+| `topometry-1.1` | topometry 1.1.0 (the eLife VOR release) | recipe (pure-python noarch, **verified green** + linux-64 lock) | **L1** (feedstock update → L3) |
 | `kmapper` | KeplerMapper 2.1.0 | recipe (pure-python) | **L1** |
 | `scikit-tda` | scikit-tda 1.1.1 (meta) | recipe (pure-python) | **L1** (`tadasets` recipe now in `recipes/tadasets`) |
 | `giotto-ph` | giotto-ph 0.2.4 | recipe (compiled, **verified building on linux-64**) | **L1** |
@@ -38,6 +39,7 @@ derives it from the manifest, lockfile, and public metadata.
 | `phat` | phat 1.5.0a (PHAT C++ reduction backend) | recipe (compiled pybind11, **verified green** linux-64) | **L1** (LGPL-3.0 → L3 on publish) |
 | `scvi` | scvi-tools 1.5.0.post1 (deep generative embedding) | conda-forge (**locked green**) | **L3** |
 | `phate` | phate 2.0.0 (diffusion embedding) | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
+| `scvelo` | scvelo 0.3.4 + anndata 0.13.2 (RNA velocity) | conda-forge (**locked green**) | **L3** |
 | `ann-backends` | hnswlib 0.8.0 + pynndescent 0.5.13 (ANN kNN) | conda-forge (**locked green**) | **L3** |
 | `batch-integration` | harmonypy 2.0.0 + scanorama 1.7.4 (batch integration) | Bioconda (**locked green**) | **L3** — two Bioconda pkgs |
 | `pydowker` | pyDowker → pyrivet → rivet-console (2-param persistence) | recipe ×3 (**verified green** linux-64) + lock | **L1** (GPL/BSD/MIT → L3 on publish) |
@@ -100,6 +102,28 @@ derives it from the manifest, lockfile, and public metadata.
   cmake `<4`, `-j2` to dodge template-heavy OOM) supplies it. The conda package is named `rivet-console`,
   not `rivet` — the latter is an unrelated conda-forge project. Chain verified green (rivet compiles +
   `rivet_console --help`; pyrivet + pyDowker install, real `DowkerComplex` import + `pip check` clean).
+- **Two TopoMetry environments, deliberately:** `topometry` pins conda-forge **0.2.1.1** — the
+  only build on the channel, and four years behind — while `topometry-1.1` stages an in-repo recipe
+  for **1.1.0**, the release the eLife version of record (13:RP100361, 2026-07-03) actually describes.
+  0.2.1.1 predates the `topo.sc.fit_adata` / `topo.sc.preprocess` API the published single-cell
+  workflow is written against, so the conda-forge env is a **packaging fixture, not a replication
+  substrate**. Keeping both records the gap rather than hiding it; updating the feedstock would
+  collapse them into one L3 env. Two upstream defects are fixed at the recipe layer: (1) the recipe
+  builds from the **PyPI sdist**, not a GitHub archive, because upstream's committed `setup.cfg`
+  still says `1.0.2` while `topo/version.py` says `1.1.0` — a git build would report the wrong
+  version, whereas the sdist is correct and its `topo/` package is byte-identical to `master@f2653fa`;
+  (2) `install_requires` omits scanpy, anndata, hnswlib, pacmap, scikit-misc, leidenalg,
+  python-igraph and adjusttext, all of which the paper-facing workflow needs, so the recipe declares
+  them. Verified green on osx-arm64 (build + `pip check` + asserts on runtime version, distribution
+  version, and the presence of `fit_adata`/`preprocess`) with a solved linux-64 lock. Driven by
+  bio-topo-foundry#11 (pipeline P8).
+- **`scvelo` is the velocity half of P8:** the paper computes neighbours and moments on the
+  TopoMetry spectral scaffold *rather than* on PCA, then overlays the velocity field on the learned
+  geometry — so velocity estimation stays downstream of geometry learning. BSD-3, conda-forge → L3
+  (bioconda's scvelo is stuck at 0.2.5, so no auto-BioContainer). **Data caveat:**
+  `scvelo.datasets.pancreas()` downloads from the *mutable* master branch of
+  `theislab/scvelo_notebooks`, a repo with **no licence file** — fetchable and analysable locally,
+  but not redistributable and not bakeable into a container or test fixture.
 - **Single-cell companions (`scvi`, `phate`, `ann-backends`, `batch-integration`):** the supporting
   stack around TopoMetry's single-cell vertical — learned embedding (scVI), diffusion embedding (PHATE),
   reproducible kNN backends (hnswlib + pynndescent), and batch integration (harmonypy + scanorama). All

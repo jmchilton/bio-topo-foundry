@@ -1,0 +1,24 @@
+# scVelo — RNA velocity estimation (steady-state, stochastic and dynamical models) on
+# spliced/unspliced counts. The velocity half of TopoMetry's developing-pancreas result: the
+# paper computes neighbours and moments on the TopoMetry spectral scaffold RATHER than on PCA,
+# then overlays the resulting velocity field on the learned geometry. Also the source of the
+# pancreas dataset itself (`scvelo.datasets.pancreas()`). bio-topo-foundry#11, pipeline P8.
+#
+# BSD-3-Clause, conda-forge → L3. Not L4: conda-forge-only packages get no automatic
+# BioContainer, and bioconda's scvelo is stuck at 0.2.5.
+#
+# DATA CAVEAT, load-bearing: `scvelo.datasets.pancreas()` downloads from the *mutable* master
+# branch of github.com/theislab/scvelo_notebooks, a repository with NO LICENCE FILE. The object
+# is fine to fetch and analyse locally but is NOT redistributable — do not bake it into a
+# container or ship it as a test fixture. Pin the commit and checksum instead; see the
+# manifest in the topometry-cell-cycle-replication repo.
+#
+# anndata is pinned explicitly as the format contract, matching `content/environments/scanpy/`.
+# (conda-forge scvelo=0.3.4, anndata=0.13.2, 2026-08-05)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+scvelo = "==0.3.4"
+anndata = "==0.13.2"

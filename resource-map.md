@@ -9,7 +9,7 @@
 
 | Kind | Assembled now | Count | State |
 |---|---|---|---|
-| `environment` | `content/environments/*/pixi.toml` | **28** | assembled (20 locked, 8 lock-pending) |
+| `environment` | `content/environments/*/pixi.toml` | **30** | assembled (22 locked, 8 lock-pending) |
 | `manuscript` | — (original papers **we** author) | **0** | empty — aspirational; the whitepapers are reviews, not manuscripts |
 | `package` | tool whitepapers `content/packages/*.md` (petls, topometry, hiponet, topodockq, topoqa; petls-pytorch stub) + one lib behind each env/recipe | **6 writeups (1 stub) + ~13 latent** | 5 rough drafts + petls-pytorch stub; env-fixture packages still latent stubs |
 | `paper` (source note) | "synthesis of X" survey whitepapers `content/papers/*.md`: Su 2025, Wee & Jiang 2025 | **2 + ~5 latent** | review entities that link to source, not copies |
@@ -19,14 +19,14 @@
 | `tool` (Galaxy) | — | 0 | empty |
 | `workflow` | — | 0 | empty |
 | `training` | — | 0 | empty |
-| `recipe` *(planned)* | `recipes/*` (+ stub `content/recipes/<slug>/index.md`) | **13** | backing assembled; stub Kind planned. Never cast — catalog/display only |
+| `recipe` *(planned)* | `recipes/*` (+ stub `content/recipes/<slug>/index.md`) | **14** | backing assembled; stub Kind planned. Never cast — catalog/display only |
 
 Non-corpus meta already in place: `content/meta/glossary.md`, `content/environments/README.md`
 (fixtures index), `foundry-design-draft.md`, this file.
 
 ---
 
-## `environment` — the 28 biopixi fixtures
+## `environment` — the 30 biopixi fixtures
 
 Grade = anticipated biopixi L0–L4 (from `content/environments/README.md`). Recipe = has a custom
 build in `recipes/`. Lock = `pixi.lock` present (solved/verified). WP = has a whitepaper.
@@ -38,7 +38,8 @@ build in `recipes/`. Lock = `pixi.lock` present (solved/verified). WP = has a wh
 | gudhi | L3 | — | ✓ | — | GUDHI |
 | persim | L3 | — | ✓ | — | persim |
 | dionysus | L3 | — | ✓ | — | Dionysus |
-| topometry | L3 | — | ✓ | **✓** | TopoMetry |
+| topometry | L3 | — | ✓ | **✓** | TopoMetry 0.2.1.1 (conda-forge fixture — predates the paper's API) |
+| topometry-1.1 | L1 | ✓ | ✓ | **✓** | TopoMetry 1.1.0 (the eLife VOR release; recipe verified green) |
 | kmapper | L1 | ✓ | ✓ | — | KeplerMapper |
 | scikit-tda | L1 | ✓ | — | — | scikit-tda (meta) |
 | giotto-ph | L1 | ✓ | — | — | giotto-ph |
@@ -58,6 +59,7 @@ build in `recipes/`. Lock = `pixi.lock` present (solved/verified). WP = has a wh
 | phat | L1 | ✓ | — | — | PHAT (C++ reduction backend, LGPL — Tier-2 capability, recipe verified green) |
 | scvi | L3 | — | ✓ | — | scvi-tools (deep generative single-cell embedding — companion) |
 | phate | L4 | — | ✓ | — | PHATE (diffusion embedding, Krishnaswamy lab — companion) |
+| scvelo | L3 | — | ✓ | — | scVelo (RNA velocity; the velocity half of P8 — companion) |
 | ann-backends | L3 | — | ✓ | — | hnswlib + pynndescent (ANN kNN backends — companion; fixes TopoMetry repro gap) |
 | batch-integration | L3 | — | ✓ | — | harmonypy + scanorama (batch integration — companion) |
 | pydowker | L1 | ✓✓✓ | ✓ | — | pyDowker → pyrivet → rivet-console chain (2-param persistence; 3 in-repo recipes, verified green) |
@@ -113,7 +115,12 @@ becomes a *latent* `paper` behind it. The earlier `paper` filing came from the n
   petls-pytorch runtime dep to a benchmark extra.
 - **Package writeups** awaiting an environment: **topoqa** → candidate future `environment` build
   (hiponet + topodockq now have L0 envs).
-- **Environments without a whitepaper** (23 of 28): the workhorse TDA libs (ripser, gudhi, dionysus,
+- **P8 replication in flight:** `topometry-1.1` + `scvelo` + `scanpy` + `ripser-py` back the
+  developing-pancreas cell-cycle replication (bio-topo-foundry#11). Analysis code lives in its own
+  repo, `topometry-cell-cycle-replication`, following the `open-topoqa-*` precedent — the foundry keeps
+  the recipe, the environments and the writeup. It is the first resource pointed at the empty
+  `workflow` Kind, though it is not a Galaxy workflow yet.
+- **Environments without a whitepaper** (24 of 30): the workhorse TDA libs (ripser, gudhi, dionysus,
   persim, giotto-*, pyflagser, kmapper, scikit-tda, r-tda, r-tdastats, phat, pydowker) + the enabling deps
   (biopython, scanpy, dssp, mmseqs2, dockq) + the single-cell companions (scvi, phate, ann-backends,
   batch-integration) — packaged, not written up (enabling deps + companions are infra, not TDA methods).
