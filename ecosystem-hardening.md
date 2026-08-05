@@ -6,10 +6,12 @@ Work upstreamed to strengthen the persistent-Laplacian TDA ecosystem rather than
 - **PETLS: request a license** — the reference impl ships with no license (all-rights-reserved by default); ask upstream to add one so it can be redistributed/repackaged — https://github.com/bdjones13/PETLS/issues/2
 - **tadasets → conda-forge** — add the scikit-tda synthetic-dataset generator to conda-forge, closing the packaging gap that blocks the petls-pytorch closure — https://github.com/conda-forge/staged-recipes/pull/34367
 - **float64 property-test branch (tracking)** — upstream independent double-precision invariant tests to petls-pytorch, after the deps PR lands — https://github.com/jmchilton/bio-topo-foundry/issues/6
-- **TopoMetry: commit the 1.1.0 version bump** — `setup.cfg` in `master` still declares `1.0.2` while
-  `topo/version.py` declares `1.1.0`, so anyone installing from git (i.e. anyone pinning a commit for
-  reproducibility) gets a distribution that reports the wrong version. The PyPI sdist is correct, so the
-  bump was applied at publish time and never committed — to draft
+- **TopoMetry: merge the 1.1.0 version bump to `master`** — `setup.cfg` in `master` still declares
+  `1.0.2` while `topo/version.py` declares `1.1.0`, so anyone installing from git (i.e. anyone pinning a
+  commit for reproducibility) gets a distribution that reports the wrong version. The PyPI sdist is
+  correct, so the bump was applied at publish time and never committed. **Already fixed on
+  `integration-dev`** (`version = 1.1.0`, checked 2026-08-05), which is 7 commits ahead of `master` and 0
+  behind — so the ask is to merge, not to write. Cheap and low-risk — to draft
 - **TopoMetry: layouts ignore `random_state`** — the strongest finding from the P8 replication. Three
   refits from the same matrix with identical params and `random_state=0` give spectral scaffolds that
   agree to a pairwise-distance correlation of **1.0000** (deterministic), but MAP layouts that agree only
@@ -25,7 +27,10 @@ Work upstreamed to strengthen the persistent-Laplacian TDA ecosystem rather than
   seed to `pacmap.PaCMAP`/`umap.UMAP`/`trimap.TRIMAP`. Holding the init constant and fixing the optimiser
   makes both MAP and PaCMAP bit-reproducible, so the four are exhaustive. Synthetic reproducer + drafted
   issue live in the replication repo (`scripts/05_seed_root_cause.py`,
-  `docs/upstream/topometry-random-state.md`); defects 2–4 are one-line PRs — to draft
+  `docs/upstream/topometry-random-state.md`); defects 2–4 are one-line PRs. Applicability re-checked
+  2026-08-05: `f2653fa` is still `master`'s tip, 1.1.0 still the latest PyPI release, and all four files
+  are untouched on `integration-dev` (the only branch ahead of master), so every defect is live. No
+  existing upstream issue covers it — to draft
 - **TopoMetry: declare the single-cell runtime deps** — `install_requires` lists only numpy/scipy/
   scikit-learn/matplotlib/pandas/numba/setuptools, but the paper-facing workflow needs scanpy, anndata,
   hnswlib, pacmap, leidenalg/python-igraph, adjusttext, and scikit-misc (`topo.sc.preprocess` defaults to
