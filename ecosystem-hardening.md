@@ -29,10 +29,16 @@ Work upstreamed to strengthen the persistent-Laplacian TDA ecosystem rather than
   seed to `pacmap.PaCMAP`/`umap.UMAP`/`trimap.TRIMAP`. Holding the init constant and fixing the optimiser
   makes both MAP and PaCMAP bit-reproducible, so the four are exhaustive. Synthetic reproducer + drafted
   issue live in the replication repo (`scripts/05_seed_root_cause.py`,
-  `docs/upstream/topometry-random-state.md`); defects 2–4 are one-line PRs. Applicability re-checked
-  2026-08-05: `f2653fa` is still `master`'s tip, 1.1.0 still the latest PyPI release, and all four files
-  are untouched on `integration-dev` (the only branch ahead of master), so every defect is live. No
-  existing upstream issue covers it — to draft
+  `docs/upstream/topometry-random-state.md`). A **fifth** defect turned up while patching: the seed does
+  not survive a refit (`_parse_random_state` mutates `self.random_state` in place), and fixing that alone
+  is insufficient because `.project()` inherits the generator position `.fit()` left behind — and `.fit()`
+  draws less randomness on a refit that reuses cached intermediates (position 598 vs 398). Applicability
+  re-checked 2026-08-05: `f2653fa` is still `master`'s tip, 1.1.0 still the latest PyPI release, and all
+  the files are untouched on `integration-dev`, so every defect is live. No existing upstream issue covers
+  it. **Fixes are written and pushed to https://github.com/jmchilton/topometry** — one branch per defect
+  off `master`, `test/seed-determinism` adding six regression tests, and `all-fixes` merging everything;
+  6/6 red on `master`, 6/6 green on `all-fixes`, 25 pre-existing tests green on both. Nothing sent
+  upstream — to draft
 - **TopoMetry: declare the single-cell runtime deps** — `install_requires` lists only numpy/scipy/
   scikit-learn/matplotlib/pandas/numba/setuptools, but the paper-facing workflow needs scanpy, anndata,
   hnswlib, pacmap, leidenalg/python-igraph, adjusttext, and scikit-misc (`topo.sc.preprocess` defaults to
