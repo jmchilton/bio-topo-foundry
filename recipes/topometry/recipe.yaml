@@ -1,0 +1,97 @@
+# TopoMetry 1.1.0 — the version-of-record release behind eLife 13:RP100361 (Sidarta-Oliveira
+# et al., VOR 2026-07-03). MIT, pure-Python (noarch) → conda-forge-eligible, so this recipe is
+# L1 today and L3 once upstreamed. bio-topo-foundry#11 (pipeline P8).
+#
+# WHY A RECIPE WHEN conda-forge ALREADY HAS topometry: conda-forge carries exactly one build,
+# 0.2.1.1, which predates the `topo.sc.fit_adata` / `topo.sc.preprocess` API the published
+# workflow is written against. `content/environments/topometry/` keeps that stale package as
+# the conda-forge fixture; this recipe is what the replication actually runs.
+#
+# SOURCE CHOICE: the PyPI sdist, not a GitHub archive of master@f2653fa. They are equivalent —
+# the sdist's `topo/` package is byte-identical to that commit (verified by diff; the tree
+# differs only by `topo/logo.png`, which the sdist omits) — but the sdist additionally carries
+# the CORRECT version string. Upstream's committed `setup.cfg` still says 1.0.2 while
+# `topo/version.py` says 1.1.0, so building from git would produce a package that reports the
+# wrong version. Building from the sdist sidesteps a defect instead of inheriting it.
+#
+# RUN DEPS: `install_requires` upstream lists only numpy/scipy/scikit-learn/matplotlib/pandas/
+# numba/setuptools. The paper-facing single-cell workflow additionally imports scanpy and
+# anndata, defaults to the hnswlib ANN backend, offers a PaCMAP projection, clusters with
+# leidenalg/python-igraph, and — because `topo.sc.preprocess` defaults to the `seurat_v3` HVG
+# flavour — needs scikit-misc's loess. All are declared here. This is the packaging gap the
+# TopoMetry white paper flags ("optional runtime dependencies are not declared cleanly"), fixed
+# at the recipe layer; an upstream PR is tracked in ecosystem-hardening.md.
+context:
+  version: "1.1.0"
+  build_number: '0'
+  equivalent_git_commit: f2653faf97b26a6be3abc6f980be6a4b302e03a7
+
+package:
+  name: topometry
+  version: ${{ version }}
+
+source:
+- url: https://pypi.org/packages/source/t/topometry/topometry-${{ version }}.tar.gz
+  sha256: 5bb09958ba4d79078be3c6816070e60b2963ea1245537aabe3400f591c5ea4e4
+
+build:
+  number: ${{ build_number }}
+  noarch: python
+  script: python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+  # Upstream advertises >=3.6. That is stale (the single-cell stack it needs is far newer), but
+  # note the code itself does NOT force 3.10: `single_cell.py` carries
+  # `from __future__ import annotations`, so its PEP 604 unions (`TopOGraph | None`) are never
+  # evaluated and the package parses under 3.8. The floor here is a deliberate support choice
+  # driven by the scanpy/anndata closure, not a syntax requirement.
+  - python >=3.10
+  - pip
+  - setuptools
+  run:
+  - python >=3.10
+  # declared upstream
+  - numpy
+  - scipy
+  - scikit-learn
+  - matplotlib-base
+  - pandas
+  - numba
+  # NB: upstream's install_requires also lists `setuptools`, deliberately NOT carried here —
+  # nothing in `topo/` imports setuptools or pkg_resources, and a spurious runtime setuptools
+  # dep would be flagged in conda-forge review.
+  # required by the published single-cell workflow but undeclared upstream
+  - scanpy
+  - anndata
+  - hnswlib
+  - pacmap
+  - scikit-misc
+  - leidenalg
+  - python-igraph
+  - adjusttext
+
+tests:
+- python:
+    imports:
+    - topo
+    - topo.single_cell
+    pip_check: true
+- script:
+  - python -c "import topo; assert topo.__version__ == '1.1.0', topo.__version__"
+  - python -c "import topo; assert hasattr(topo.sc, 'fit_adata') and hasattr(topo.sc, 'preprocess')"
+  - python -c "from importlib.metadata import version; assert version('topometry') == '1.1.0'"
+
+about:
+  homepage: https://topometry.readthedocs.io
+  summary: Systematically learn and evaluate the latent geometry of single-cell data
+  description: |
+    TopoMetry builds a neighbourhood graph in the observed feature space, approximates its
+    Laplace-Beltrami operator, extracts fixed-time and multiscale spectral scaffolds, rebuilds
+    a graph in that learned space, and scores how well candidate representations preserve the
+    original diffusion geometry (PF1, PJS, spectral Procrustes).
+  license: MIT
+  license_file:
+  - LICENSE
+  repository: https://github.com/davisidarta/topometry
+  documentation: https://topometry.readthedocs.io
