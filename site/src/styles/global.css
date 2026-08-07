@@ -1,0 +1,240 @@
+@import "tailwindcss";
+@source "../../node_modules/@galaxy-foundry/site-kit/src";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-chrome: #173f3a;
+  --color-accent: #f0c66a;
+  --color-surface: #fbfaf5;
+  --color-text-primary: #1e2927;
+  --color-text-on-dark: #fbfaf5;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --color-brand: #23685e;
+  --color-border: #cbd7d2;
+  --color-border-subtle: #cbd7d2;
+  --color-surface-raised: #ffffff;
+  --color-text-secondary: #465753;
+  --color-text-muted: #5d6b68;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-license-verbatim: #16855d;
+  --color-license-own-words: #b46e14;
+  --color-license-copyleft: #b83a3a;
+}
+
+.dark {
+  --color-chrome: #102d2a;
+  --color-surface: #14201e;
+  --color-text-primary: #edf4f1;
+  --color-text-muted: #aabbb6;
+  --color-border: #3a504b;
+  --color-border-subtle: #3a504b;
+  --color-surface-raised: #1b2b28;
+  --color-text-secondary: #c8d5d1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  background: var(--color-accent);
+  color: #102d2a;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--color-border) 25%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-border) 25%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+}
+
+.nav-link-active {
+  color: var(--color-accent);
+}
+
+a {
+  color: var(--color-brand);
+  text-underline-offset: 0.18em;
+}
+
+.hero,
+.page-header {
+  max-width: 54rem;
+  padding: 3.5rem 0 2.5rem;
+}
+
+.hero h1,
+.page-header h1 {
+  margin: 0.2rem 0 1rem;
+  font-size: clamp(2.5rem, 7vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.page-header h1 {
+  font-size: clamp(2.3rem, 5vw, 4rem);
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--color-brand);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lede,
+.page-header p {
+  max-width: 48rem;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.primary-link {
+  display: inline-block;
+  margin-top: 1rem;
+  border-radius: 0.3rem;
+  background: var(--color-brand);
+  color: white;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.reference-grid,
+.collection-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1rem;
+}
+
+.reference-grid h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.collection-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  display: flex;
+  min-height: 8rem;
+  flex-direction: column;
+  gap: 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.45rem;
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  padding: 1.2rem;
+  text-decoration: none;
+}
+
+.card:hover {
+  border-color: var(--color-brand);
+}
+
+.card span {
+  color: var(--color-text-muted);
+}
+
+.package-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+  border-block: 1px solid var(--color-border);
+  padding: 1.1rem 0;
+}
+
+.package-facts > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.package-facts span {
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prose {
+  max-width: 50rem;
+  margin-top: 2.5rem;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.prose h1 {
+  margin-top: 0;
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+}
+
+.prose h2 {
+  margin-top: 2.4rem;
+  font-size: 1.55rem;
+}
+
+.prose h3 {
+  margin-top: 1.8rem;
+}
+
+.prose blockquote {
+  margin-inline: 0;
+  border-left: 0.25rem solid var(--color-accent);
+  background: var(--color-surface-raised);
+  padding: 0.7rem 1rem;
+}
+
+.prose code {
+  border-radius: 0.2rem;
+  background: color-mix(in srgb, var(--color-border) 30%, transparent);
+  padding: 0.08rem 0.28rem;
+}
+
+.prose li + li {
+  margin-top: 0.35rem;
+}

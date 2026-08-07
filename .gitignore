@@ -5,3 +5,9 @@
 output/
 
 .DS_Store
+
+# Foundry reader dependencies and generated output
+site/node_modules/
+site/dist/
+site/.astro/
+.pnpm-store/

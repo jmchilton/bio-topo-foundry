@@ -1,0 +1,13 @@
+version: 1
+facets:
+  method:
+    label: Method
+    description: The TDA or topological deep learning technique a note explains or implements.
+    values:
+      method/persistent-laplacian: Persistent topological Laplacian methods and implementations.
+  application:
+    label: Application
+    description: The bioinformatics problem or analysis setting a note serves.
+  modality:
+    label: Modality
+    description: The biological data modality a note consumes or describes.
