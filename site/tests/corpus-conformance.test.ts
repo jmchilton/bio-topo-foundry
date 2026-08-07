@@ -6,9 +6,10 @@ import { contentReader } from "../src/lib/content-reader";
 import { readFrontmatter } from "./frontmatter";
 
 describe("typed corpus slice", () => {
-  it("selects only the package intentionally migrated in this slice", () => {
+  it("selects exactly the packages intentionally migrated", () => {
     expect(contentReader.noteFiles("packages")).toEqual([
       "packages/petls-pytorch.md",
+      "packages/topometry.md",
     ]);
   });
 

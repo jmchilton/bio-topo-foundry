@@ -47,12 +47,13 @@ beforeAll(() => {
 }, 600_000);
 
 describe("the emitted reader slice", () => {
-  it("contains exactly the four routes this slice claims", () => {
+  it("contains exactly the five routes this slice claims", () => {
     expect(pages.map(relativePage).sort()).toEqual([
       "glossary/index.html",
       "index.html",
       "packages/index.html",
       "packages/petls-pytorch/index.html",
+      "packages/topometry/index.html",
     ]);
   });
 
@@ -92,14 +93,23 @@ describe("the emitted reader slice", () => {
     const home = read(path.join(DIST, "index.html"));
     expect(home).toContain('href="/bio-topo-foundry/packages/"');
     expect(home).toContain('href="/bio-topo-foundry/glossary/"');
+    expect(home).toContain("Browse 2 typed package");
   });
 
   it("renders the typed package facts through the shared content frame", () => {
-    const note = read(path.join(DIST, "packages/petls-pytorch/index.html"));
-    expect(note).toContain('class="content-note"');
-    expect(note).toContain("method/persistent-laplacian");
-    expect(note).toContain("Apache 2.0");
-    expect(note).toContain("verbatim OK");
+    const petls = read(path.join(DIST, "packages/petls-pytorch/index.html"));
+    expect(petls).toContain('class="content-note"');
+    expect(petls).toContain("method/persistent-laplacian");
+    expect(petls).toContain("Apache 2.0");
+    expect(petls).toContain("verbatim OK");
+
+    const topometry = read(path.join(DIST, "packages/topometry/index.html"));
+    expect(topometry).toContain('class="content-note"');
+    expect(topometry).toContain("method/spectral-geometry");
+    expect(topometry).toContain("application/single-cell");
+    expect(topometry).toContain("modality/high-dim-tabular");
+    expect(topometry).toContain("MIT");
+    expect(topometry).toContain("verbatim OK");
   });
 
   it("renders the loose glossary without corrupting wiki-link examples", () => {

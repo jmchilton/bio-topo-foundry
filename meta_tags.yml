@@ -5,9 +5,14 @@ facets:
     description: The TDA or topological deep learning technique a note explains or implements.
     values:
       method/persistent-laplacian: Persistent topological Laplacian methods and implementations.
+      method/spectral-geometry: Geometry-aware spectral and diffusion scaffolds.
   application:
     label: Application
     description: The bioinformatics problem or analysis setting a note serves.
+    values:
+      application/single-cell: Single-cell and cellular point-cloud analysis.
   modality:
     label: Modality
     description: The biological data modality a note consumes or describes.
+    values:
+      modality/high-dim-tabular: High-dimensional feature matrices such as single-cell count data.

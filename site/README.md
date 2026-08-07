@@ -1,7 +1,7 @@
 # Foundry content site
 
-This is a deliberately narrow content and validation slice. It renders the glossary and the one
-Package note that has been migrated to typed frontmatter: `petls-pytorch`.
+This is a deliberately narrow content and validation slice. It renders the glossary and the
+Package notes migrated to typed frontmatter: `petls-pytorch` and `topometry`.
 
 The Package contract is corpus-first:
 
