@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import TagChips from '@galaxy-foundry/site-kit/TagChips.astro';
+
+import Base from '../../layouts/Base.astro';
+import { base } from '../../lib/site-base';
+
+const packages = (await getCollection('packages')).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
+---
+<Base title="Packages" description="Typed profiles of upstream TDA software projects.">
+  <header class="page-header">
+    <p class="eyebrow">Software</p>
+    <h1>Packages</h1>
+    <p>
+      A Package is the software project we study and harden. Runnable environments and build
+      recipes are related artifacts, not part of the package's identity.
+    </p>
+  </header>
+
+  <ul class="collection-list">
+    {packages.map((entry) => (
+      <li>
+        <a class="card" href={`${base}/packages/${entry.id}/`}>
+          <strong>{entry.data.title}</strong>
+          <span>{entry.data.summary}</span>
+          <TagChips tags={entry.data.tags} />
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>

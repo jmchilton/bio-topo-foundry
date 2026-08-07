@@ -1,0 +1,12 @@
+---
+import path from 'node:path';
+
+import Base from '../layouts/Base.astro';
+import { renderVaultDoc } from '../lib/render-vault-doc';
+import { base } from '../lib/site-base';
+
+const html = renderVaultDoc(path.resolve('../content/meta/glossary.md'), base);
+---
+<Base title="Glossary" description="Pinned definitions for TDA Bioinformatics Foundry terminology.">
+  <article class="prose" set:html={html} />
+</Base>

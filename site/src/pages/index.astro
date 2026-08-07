@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+
+import Base from '../layouts/Base.astro';
+import { base } from '../lib/site-base';
+
+const packageCount = (await getCollection('packages')).length;
+---
+<Base title="Topological Data Analysis Bioinformatics Foundry">
+  <section class="hero">
+    <p class="eyebrow">Frontier → hardening → delivery</p>
+    <h1>Topological methods, made runnable.</h1>
+    <p class="lede">
+      A knowledge base connecting TDA research and software to reproducible bioinformatics
+      environments, Galaxy tools, workflows, and training.
+    </p>
+    <a class="primary-link" href={`${base}/packages/`}>Browse {packageCount} typed package →</a>
+  </section>
+
+  <section class="reference-grid" aria-labelledby="reference-heading">
+    <h2 id="reference-heading">Current typed content slice</h2>
+    <a class="card" href={`${base}/packages/`}>
+      <strong>Packages</strong>
+      <span>Profiles of upstream TDA software and the facts needed to harden it.</span>
+    </a>
+    <a class="card" href={`${base}/glossary/`}>
+      <strong>Glossary</strong>
+      <span>The terms that keep the Foundry's content and machinery precise.</span>
+    </a>
+  </section>
+</Base>

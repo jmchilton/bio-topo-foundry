@@ -1,32 +1,47 @@
+---
+type: package
+title: petls-pytorch
+summary: An Apache-2.0 PyTorch implementation of persistent topological Laplacians and the Foundry's shippable PETLS substitute.
+repository: https://github.com/Sylverity/petls-pytorch
+languages:
+  - Python
+software_license:
+  status: declared
+  id: Apache-2.0
+tags:
+  - method/persistent-laplacian
+---
+
 # White Paper: petls-pytorch
 
 ## An open, redistributable PyTorch engine for persistent topological Laplacians
 
 > **📝 Stub.** Placeholder `package` note — skeleton + verified packaging/provenance facts only. The
 > full analysis (architecture, numerics vs. the PETLS oracle, benchmarks, adoption guidance) is still
-> to be written, mirroring the sibling [PETLS writeup](./petls.md). Expand section-by-section.
+> to be written, mirroring the sibling [PETLS writeup](https://github.com/jmchilton/bio-topo-foundry/blob/main/content/packages/petls.md). Expand section-by-section.
 
 > **✅ Licensing — freely reusable (contrast PETLS).** petls-pytorch is **Apache-2.0** (repo `LICENSE`
-> + `NOTICE`, PyPI metadata, `pyproject.toml` all agree, checked July 2026). It is a pure-Python
+> and `NOTICE`, PyPI metadata, `pyproject.toml` all agree, checked July 2026). It is a pure-Python
 > `py3-none-any` noarch wheel, so it is **redistributable and Bioconda-eligible** — the property the
-> unlicensed upstream [PETLS](./petls.md) lacks. This is why we **adopt** it as the shippable
+> unlicensed upstream [PETLS](https://github.com/jmchilton/bio-topo-foundry/blob/main/content/packages/petls.md) lacks. This is why we **adopt** it as the shippable
 > persistent-Laplacian engine instead of cleanrooming PETLS.
 
 **Primary source:** the package itself — [Sylverity/petls-pytorch](https://github.com/Sylverity/petls-pytorch)
 (PyPI `petls-pytorch` 1.0.2, released 2026-06-29; author Sumner K. Marston). It is an **independent
 PyTorch reimplementation** of the PETLS persistent-Laplacian engine, not a wrapper; it does not ship
 with its own paper. For the mathematics and the reference implementation it reimplements, see the
-PETLS preprint (Jones & Wei, [arXiv:2508.11560](https://arxiv.org/abs/2508.11560)) and [petls.md](./petls.md).
+PETLS preprint (Jones & Wei, [arXiv:2508.11560](https://arxiv.org/abs/2508.11560)) and
+[petls.md](https://github.com/jmchilton/bio-topo-foundry/blob/main/content/packages/petls.md).
 
 **Relationship to the corpus:**
 - **Method:** persistent (combinatorial / Hodge) Laplacian — the same engine as PETLS.
-- **Reimplements / substitutes:** [PETLS](./petls.md) (upstream, unlicensed, Linux-x86-64 wheels only).
+- **Reimplements / substitutes:** [PETLS](https://github.com/jmchilton/bio-topo-foundry/blob/main/content/packages/petls.md) (upstream, unlicensed, Linux-x86-64 wheels only).
   petls-pytorch is the open drop-in; PETLS remains useful as a local numerical oracle.
-- **Environment:** [`content/environments/petls-pytorch/`](../environments/petls-pytorch/pixi.toml) —
+- **Environment:** [`content/environments/petls-pytorch/`](https://github.com/jmchilton/bio-topo-foundry/blob/main/content/environments/petls-pytorch/pixi.toml) —
   L1 in-repo recipe, biopixi env locked + green (linux-64).
-- **Recipe:** [`recipes/petls-pytorch/`](../../recipes/petls-pytorch/recipe.yaml) — noarch/Apache-2.0,
+- **Recipe:** [`recipes/petls-pytorch/`](https://github.com/jmchilton/bio-topo-foundry/blob/main/recipes/petls-pytorch/recipe.yaml) — noarch/Apache-2.0,
   builds green under rattler-build; a candidate conda-forge/Bioconda staged-recipe.
-- **Provenance review:** [`persistent-laplacian-implementation-review.md`](../../persistent-laplacian-implementation-review.md).
+- **Provenance review:** [`persistent-laplacian-implementation-review.md`](https://github.com/jmchilton/bio-topo-foundry/blob/main/persistent-laplacian-implementation-review.md).
 
 ## Executive summary
 
@@ -39,7 +54,7 @@ agreement with the PETLS reference and independent benchmarks are **to be valida
 ## Problem and scope
 
 _Stub._ Same problem PETLS addresses (persistent Laplacians as a spectral enrichment of persistent
-homology). See [petls.md](./petls.md) for the mathematical background; this note should cover only what
+homology). See [petls.md](https://github.com/jmchilton/bio-topo-foundry/blob/main/content/packages/petls.md) for the mathematical background; this note should cover only what
 differs in the PyTorch reimplementation.
 
 ## Software architecture

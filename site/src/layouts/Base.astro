@@ -1,0 +1,23 @@
+---
+import '../styles/global.css';
+import SiteShell from '@galaxy-foundry/site-kit/SiteShell.astro';
+
+import { base } from '../lib/site-base';
+import { SITE_IDENTITY } from '../lib/site-identity';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+<SiteShell
+  title={title}
+  description={description}
+  base={base}
+  pathname={Astro.url.pathname}
+  identity={SITE_IDENTITY}
+>
+  <slot />
+</SiteShell>
