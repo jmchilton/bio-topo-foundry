@@ -1,3 +1,19 @@
+---
+type: paper
+title: TDA and TDL Beyond Persistent Homology
+summary: Su and colleagues' map of the topological methods that extend past persistent homology, and what each one recovers.
+citation: Zhe Su, Xiang Liu, Layal Bou Hamdan, Vasileios Maroulas, Jie Wu, Gunnar Carlsson, and Guo-Wei Wei, "Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review," arXiv:2507.19504v1 (2025).
+source_url: https://arxiv.org/abs/2507.19504
+source_license:
+  status: declared
+  id: LicenseRef-arXiv-nonexclusive-distrib-1.0
+derived: own-words-summary
+tags:
+  - method/persistent-homology
+  - method/persistent-laplacian
+  - method/topological-deep-learning
+---
+
 # White Paper: TDA and TDL Beyond Persistent Homology
 
 ## A white paper synthesis of Su et al. (2025)
@@ -5,6 +21,8 @@
 **Primary source:** Zhe Su, Xiang Liu, Layal Bou Hamdan, Vasileios Maroulas, Jie Wu, Gunnar Carlsson, and Guo-Wei Wei, “Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review,” arXiv:2507.19504v1, submitted 12 July 2025. [arXiv](https://arxiv.org/abs/2507.19504) | [arXiv DOI](https://doi.org/10.48550/arXiv.2507.19504) | [later journal version](https://doi.org/10.1007/s10462-025-11462-w)
 
 A later peer-reviewed version appeared in *Artificial Intelligence Review*, volume 59, article 58 (2026), published online 21 December 2025.
+
+**Access and reuse:** arXiv's metadata record for this submission declares the [arXiv.org perpetual non-exclusive distribution license 1.0](http://arxiv.org/licenses/nonexclusive-distrib/1.0/). That grant lets arXiv distribute the preprint; it does not give third parties a redistribution right. This note is therefore an own-words summary that cites and links the source rather than carrying its prose. The later *Artificial Intelligence Review* version is a separately licensed item and was not the version reviewed here.
 
 This document distinguishes the review’s claims from the present synthesis. Phrases such as “the survey reports” and explicit section or page references describe the authors’ account. “Practical interpretation,” “recommendation,” and “assessment” identify conclusions drawn here from the survey’s taxonomy, examples, and stated limitations.
 

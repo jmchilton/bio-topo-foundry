@@ -47,13 +47,16 @@ beforeAll(() => {
 }, 600_000);
 
 describe("the emitted reader slice", () => {
-  it("contains exactly the five routes this slice claims", () => {
+  it("contains exactly the eight routes this slice claims", () => {
     expect(pages.map(relativePage).sort()).toEqual([
       "glossary/index.html",
       "index.html",
       "packages/index.html",
       "packages/petls-pytorch/index.html",
       "packages/topometry/index.html",
+      "papers/index.html",
+      "papers/tda-tdl-beyond-persistent-homology/index.html",
+      "papers/tda-tdl-molecular-sciences/index.html",
     ]);
   });
 
@@ -92,8 +95,9 @@ describe("the emitted reader slice", () => {
   it("uses the configured deployment base for internal links", () => {
     const home = read(path.join(DIST, "index.html"));
     expect(home).toContain('href="/bio-topo-foundry/packages/"');
+    expect(home).toContain('href="/bio-topo-foundry/papers/"');
     expect(home).toContain('href="/bio-topo-foundry/glossary/"');
-    expect(home).toContain("Browse 2 typed package");
+    expect(home).toContain("Browse 4 typed notes");
   });
 
   it("renders the typed package facts through the shared content frame", () => {
@@ -110,6 +114,29 @@ describe("the emitted reader slice", () => {
     expect(topometry).toContain("modality/high-dim-tabular");
     expect(topometry).toContain("MIT");
     expect(topometry).toContain("verbatim OK");
+  });
+
+  /**
+   * The two source notes summarize works whose licences differ but whose policy rows agree, so
+   * the page has to show the row it actually resolved rather than a posture typed by hand.
+   */
+  it("renders each source note's licence row and declared posture", () => {
+    const beyond = read(
+      path.join(DIST, "papers/tda-tdl-beyond-persistent-homology/index.html"),
+    );
+    expect(beyond).toContain('class="content-note"');
+    expect(beyond).toContain("method/topological-deep-learning");
+    expect(beyond).toContain("arXiv non-exclusive distribution 1.0");
+    expect(beyond).toContain("own-words only");
+    expect(beyond).toContain("Own words");
+
+    const molecular = read(
+      path.join(DIST, "papers/tda-tdl-molecular-sciences/index.html"),
+    );
+    expect(molecular).toContain("application/molecular-sciences");
+    expect(molecular).toContain("modality/molecular-structure");
+    expect(molecular).toContain("CC BY-NC-ND 4.0");
+    expect(molecular).toContain("own-words only");
   });
 
   it("renders the loose glossary without corrupting wiki-link examples", () => {

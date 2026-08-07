@@ -8,6 +8,7 @@ import {
 } from "./lib/frontmatter-schema";
 
 const packages = COLLECTIONS.packages;
+const papers = COLLECTIONS.papers;
 
 export const collections = {
   packages: defineCollection({
@@ -17,5 +18,13 @@ export const collections = {
       generateId: stripExtension,
     }),
     schema: packages.schema,
+  }),
+  papers: defineCollection({
+    loader: glob({
+      pattern: [...papers.pattern],
+      base: contentPath(papers.base),
+      generateId: stripExtension,
+    }),
+    schema: papers.schema,
   }),
 };

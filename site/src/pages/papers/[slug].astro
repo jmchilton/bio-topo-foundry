@@ -8,7 +8,7 @@ import { licensePolicy } from '../../lib/registries';
 import { base } from '../../lib/site-base';
 
 export async function getStaticPaths() {
-  return (await getCollection('packages')).map((entry) => ({
+  return (await getCollection('papers')).map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
   }));
@@ -16,30 +16,41 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const license = entry.data.software_license;
+const license = entry.data.source_license;
+
+// The posture is a property of the source's licence, so it is reported beside the licence rather
+// than as a badge of its own.
+const posture =
+  entry.data.derived === 'own-words-summary'
+    ? 'Own words'
+    : 'License-aware, with quotation';
 ---
 <Base title={entry.data.title} description={entry.data.summary}>
   <ContentNote
     title={entry.data.title}
     summary={entry.data.summary}
     tags={entry.data.tags}
-    back={{ href: `${base}/packages/`, label: 'Packages' }}
+    back={{ href: `${base}/papers/`, label: 'Papers' }}
     articleClass="prose"
   >
-    <aside slot="metadata" class="note-facts" aria-label="Package facts">
-      <div>
-        <span>Repository</span>
-        <a href={entry.data.repository}>{new URL(entry.data.repository).host}</a>
+    <aside slot="metadata" class="note-facts" aria-label="Source facts">
+      <div class="note-facts-wide">
+        <span>Reviewed work</span>
+        <cite>{entry.data.citation}</cite>
       </div>
       <div>
-        <span>Language</span>
-        <strong>{entry.data.languages.join(', ')}</strong>
+        <span>Source</span>
+        <a href={entry.data.source_url}>{new URL(entry.data.source_url).host}</a>
       </div>
       <div>
-        <span>Software license</span>
+        <span>Source license</span>
         {license.status === 'declared'
           ? <LicenseBadge license={license.id} policy={licensePolicy} />
-          : <strong>Not declared upstream</strong>}
+          : <strong>Not declared by the source</strong>}
+      </div>
+      <div>
+        <span>Summary posture</span>
+        <strong>{posture}</strong>
       </div>
     </aside>
 

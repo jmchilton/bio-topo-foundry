@@ -41,6 +41,14 @@ type Primitives = ReturnType<typeof buildPrimitives>;
 export interface KindContext {
   base: Primitives["base"];
   licenseId: Primitives["licenseId"];
+  /**
+   * The redistribution table itself, for kinds that must ask what a license permits.
+   *
+   * `licenseId` only answers whether an id is spellable. A Source note additionally has to know
+   * whether its source's row allows carrying upstream expression, which is a question about the
+   * row, not the id.
+   */
+  licensePolicy: LicensePolicy;
 }
 
 export type { KindShape };
@@ -53,5 +61,5 @@ export const defineKind = kindDefiner<KindContext>();
 export function buildKindContext(
   options: BuildKindContextOptions,
 ): KindContext {
-  return buildPrimitives(options);
+  return { ...buildPrimitives(options), licensePolicy: options.licensePolicy };
 }
