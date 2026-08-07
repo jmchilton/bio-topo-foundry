@@ -7,9 +7,12 @@ import { describe, expect, it } from "vitest";
 import { contentReader } from "../src/lib/content-reader";
 
 describe("shared content-reader binding", () => {
-  it("maps this foundry package into this foundry route", () => {
+  it("maps this foundry's packages into its package routes", () => {
     expect(contentReader.wikiLinkMap().get("petls-pytorch")).toEqual({
       path: "packages/petls-pytorch",
+    });
+    expect(contentReader.wikiLinkMap().get("topometry")).toEqual({
+      path: "packages/topometry",
     });
   });
 

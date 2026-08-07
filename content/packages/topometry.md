@@ -1,3 +1,19 @@
+---
+type: package
+title: TopoMetry
+summary: An MIT-licensed toolkit for learning and evaluating spectral manifold representations of high-dimensional single-cell data.
+repository: https://github.com/davisidarta/topometry
+languages:
+  - Python
+software_license:
+  status: declared
+  id: MIT
+tags:
+  - method/spectral-geometry
+  - application/single-cell
+  - modality/high-dim-tabular
+---
+
 # White Paper: TopoMetry
 
 ## Geometry-aware spectral scaffolds for single-cell data
