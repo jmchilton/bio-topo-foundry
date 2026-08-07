@@ -27,6 +27,10 @@ standalone corpus test. The shell, content frame, tag chips, license badge, tag-
 license-policy table, collection-backed content reader, and wiki-link grammar come from their focused
 `@galaxy-foundry/*` packages.
 
+`pnpm kinds` writes `src/types/kinds.generated.json` from the live kind definitions, collection
+table, `kind.md`, and `example.md`. The manifest is committed for cross-instance consumers;
+`pnpm check:kinds` and `pnpm validate` fail when it is stale.
+
 ## Shared content-reader boundary
 
 `src/lib/content-reader.ts` is a thin instance binding. It gives
