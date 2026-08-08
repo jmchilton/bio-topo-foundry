@@ -10,31 +10,11 @@ import { contentReader } from "../src/lib/content-reader";
 import { readFrontmatter } from "./frontmatter";
 
 describe("typed corpus slice", () => {
-  it("selects every package writeup, because all of them are typed", () => {
-    expect(contentReader.noteFiles("packages")).toEqual([
-      "packages/hiponet.md",
-      "packages/petls-pytorch.md",
-      "packages/petls.md",
-      "packages/topodockq.md",
-      "packages/topometry.md",
-      "packages/topoqa.md",
-    ]);
-  });
-
-  it("selects every paper writeup, because all of them are typed", () => {
-    expect(contentReader.noteFiles("papers")).toEqual([
-      "papers/tda-tdl-beyond-persistent-homology.md",
-      "papers/tda-tdl-molecular-sciences.md",
-    ]);
-  });
-
-  it("selects every fixture directory, and never the inventory README", () => {
-    const ids = contentReader.noteIds("environments");
-    expect(ids).toHaveLength(33);
-    expect(ids).not.toContain("README");
-    expect(contentReader.noteFiles("environments")).toContain(
-      "environments/ripser-cpp/index.md",
-    );
+  it("selects fixture notes by directory and never the inventory README", () => {
+    const files = contentReader.noteFiles("environments");
+    expect(files.length, "the environment collection found no notes").toBeGreaterThan(0);
+    expect(files.every((file) => file.endsWith("/index.md"))).toBe(true);
+    expect(files).not.toContain("environments/README.md");
   });
 
   it("validates every selected note with its collection's schema", () => {

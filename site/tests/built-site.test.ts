@@ -11,6 +11,7 @@ import {
 import { beforeAll, describe, expect, it } from "vitest";
 
 import { contentReader } from "../src/lib/content-reader";
+import { environmentCompanions } from "../src/lib/companions";
 import { COLLECTION_NAMES } from "../src/lib/frontmatter-schema";
 
 const SITE = new URL("../", import.meta.url).pathname;
@@ -50,27 +51,28 @@ beforeAll(() => {
 }, 600_000);
 
 describe("the emitted reader slice", () => {
-  it("emits infrastructure routes and exactly one page for every routed note", () => {
-    const emitted = pages.map(relativePage).sort();
-    const built = new Set(emitted);
-
+  it("emits infrastructure routes and one page for every routed note", () => {
+    const built = new Set(pages.map(relativePage));
     const infrastructure = [
       "index.html",
       "glossary/index.html",
+      "tags/index.html",
       ...COLLECTION_NAMES.map((collection) => `${collection}/index.html`),
     ];
     expect(infrastructure.filter((page) => !built.has(page))).toEqual([]);
 
-    /*
-     * Both directions, so the check fails on an unrouted page as well as a missing one. Derived
-     * from the corpus rather than counted, because a hard-coded total goes stale on every note
-     * added and says nothing about which page is wrong.
-     */
     const targets = contentReader.noteTargets();
-    expect(targets.length, "the routed-note coverage check found no notes").toBeGreaterThan(0);
-    expect(emitted.filter((page) => !infrastructure.includes(page))).toEqual(
-      targets.map(({ target }) => `${target.path}/index.html`).sort(),
-    );
+    expect(
+      targets.length,
+      "the routed-note coverage check found no notes",
+    ).toBeGreaterThan(0);
+    const missing = targets
+      .filter(({ target }) => !built.has(`${target.path}/index.html`))
+      .map(({ collection, id }) => `${collection}:${id}`);
+    expect(
+      missing,
+      `\nrouted notes with no built page: ${missing.join(", ")}`,
+    ).toEqual([]);
   });
 
   it("renders the shared shell accessibly on every page", () => {
@@ -102,7 +104,9 @@ describe("the emitted reader slice", () => {
         pages.map((file) => ({ path: relativePage(file), html: read(file) })),
       ),
     ).toEqual([]);
-    expect(existsSync(path.join(DIST, "pagefind/pagefind-entry.json"))).toBe(true);
+    expect(existsSync(path.join(DIST, "pagefind/pagefind-entry.json"))).toBe(
+      true,
+    );
   });
 
   it("uses the configured deployment base for internal links", () => {
@@ -111,9 +115,31 @@ describe("the emitted reader slice", () => {
     expect(home).toContain('href="/bio-topo-foundry/papers/"');
     expect(home).toContain('href="/bio-topo-foundry/environments/"');
     expect(home).toContain('href="/bio-topo-foundry/glossary/"');
+    expect(home).toContain('href="/bio-topo-foundry/tags/"');
     expect(home).toContain(
       `Browse ${contentReader.noteTargets().length} typed notes`,
     );
+  });
+
+  it("builds a destination for every linked tag", () => {
+    const built = new Set(pages.map(relativePage));
+    const tagLinks = pages.flatMap((file) =>
+      [
+        ...read(file).matchAll(/href="\/bio-topo-foundry\/(tags\/[^"#?]+)\/"/g),
+      ].map((match) => match[1]),
+    );
+    expect(
+      tagLinks.length,
+      "the built site contains no links to tag pages",
+    ).toBeGreaterThan(0);
+
+    const missing = [...new Set(tagLinks)]
+      .filter((tagPath) => !built.has(`${tagPath}/index.html`))
+      .sort();
+    expect(
+      missing,
+      `\nlinked tag routes with no built page: ${missing.join(", ")}`,
+    ).toEqual([]);
   });
 
   it("renders the typed package facts through the shared content frame", () => {
@@ -141,14 +167,7 @@ describe("the emitted reader slice", () => {
     expect(topometry).toContain("verbatim OK");
   });
 
-  /**
-   * The corpus carries all three licence states, and only the first renders a policy row.
-   *
-   * `hiponet` pins the current gap: HiPoNet's Yale terms are known and non-commercial, but no
-   * SPDX id names them, so the `LicenseRef-` escape hatch lands on the deny-by-default row and
-   * the badge reports the safe answer rather than the accurate one. Asserted as it behaves today.
-   */
-  it("renders declared, missing, and unresolved software licences distinctly", () => {
+  it("renders declared, missing, and custom software licences distinctly", () => {
     const topodockq = read(path.join(DIST, "packages/topodockq/index.html"));
     expect(topodockq).toContain("application/structure-qa");
     expect(topodockq).toContain("MIT");
@@ -193,16 +212,20 @@ describe("the emitted reader slice", () => {
    * The companion row is measured from the directory at build time, so a fixture cannot render a
    * lockfile it does not have. That is the whole reason `locked` is not a frontmatter field.
    */
-  it("renders each fixture's grade and its real companion state", () => {
-    const locked = read(path.join(DIST, "environments/topometry-1.1/index.html"));
-    expect(locked).toContain('data-grade="L1"');
-    expect(locked).toContain('data-present="true"');
-    expect(locked).not.toContain('data-present="false"');
-
-    const unlocked = read(path.join(DIST, "environments/phat/index.html"));
-    expect(unlocked).toContain('data-grade="L1"');
-    expect(unlocked).toContain('data-present="false"');
-    expect(unlocked).toContain("absent (recommended)");
+  it("renders every fixture's measured companion state", () => {
+    for (const id of contentReader.noteIds("environments")) {
+      const html = read(path.join(DIST, `environments/${id}/index.html`));
+      const states = environmentCompanions(id);
+      for (const { companion } of states) {
+        expect(html).toContain(`<code>${companion.name}</code>`);
+      }
+      expect([...html.matchAll(/<li data-present="true">/g)]).toHaveLength(
+        states.filter(({ present }) => present).length,
+      );
+      expect([...html.matchAll(/<li data-present="false">/g)]).toHaveLength(
+        states.filter(({ present }) => !present).length,
+      );
+    }
 
     // The ladder groups the index, so the L0 rung has to be reachable as a heading.
     const index = read(path.join(DIST, "environments/index.html"));

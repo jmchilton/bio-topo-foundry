@@ -22,12 +22,12 @@ const papers = (await getCollection('papers')).sort((a, b) =>
 
   <ul class="collection-list">
     {papers.map((entry) => (
-      <li>
-        <a class="card" href={`${base}/papers/${entry.id}/`}>
+      <li class="card">
+        <a class="card-primary" href={`${base}/papers/${entry.id}/`}>
           <strong>{entry.data.title}</strong>
           <span>{entry.data.summary}</span>
-          <TagChips tags={entry.data.tags} />
         </a>
+        <TagChips tags={entry.data.tags} tagBase={`${base}/tags`} />
       </li>
     ))}
   </ul>

@@ -1,0 +1,42 @@
+---
+import { facetLabelOf } from '@galaxy-foundry/tag-registry';
+
+import Base from '../../layouts/Base.astro';
+import { tagRegistry } from '../../lib/meta-tags';
+import { base } from '../../lib/site-base';
+import { getEntriesByTag, type TaggedEntry } from '../../lib/tags';
+
+export async function getStaticPaths() {
+  const byTag = await getEntriesByTag();
+  return [...byTag].map(([tag, entries]) => ({ params: { tag }, props: { tag, entries } }));
+}
+
+const { tag, entries } = Astro.props as { tag: string; entries: TaggedEntry[] };
+const registry = tagRegistry();
+const description = registry.tagDescription(tag);
+const facetLabel = facetLabelOf(registry, tag);
+const sorted = [...entries].sort((a, b) => a.name.localeCompare(b.name));
+---
+<Base title={`Tag: ${tag}`} description={description}>
+  <header class="page-header tag-heading">
+    <a href={`${base}/tags/`}>← All tags</a>
+    <p class="eyebrow">{facetLabel}</p>
+    <h1>{tag}</h1>
+    {description && <p>{description}</p>}
+  </header>
+
+  <section class="tag-results" aria-labelledby="tagged-notes">
+    <h2 id="tagged-notes">Notes</h2>
+    <ul class="collection-list">
+      {sorted.map((entry) => (
+        <li>
+          <a class="card" href={entry.url}>
+            <strong>{entry.name}</strong>
+            <span>{entry.summary}</span>
+            <small>{entry.kind}</small>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>

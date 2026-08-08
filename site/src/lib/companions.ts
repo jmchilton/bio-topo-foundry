@@ -3,10 +3,10 @@ import fs from "node:fs";
 import {
   checkCompanions,
   companionsOf,
-  NOTE_FILE,
   type CompanionCheck,
   type NormalizedCompanion,
 } from "@galaxy-foundry/kind-schema";
+import { kindOf } from "@galaxy-foundry/kind-schema/collections";
 
 import { DEFINITIONS } from "../types";
 import { COLLECTIONS, contentPath } from "./frontmatter-schema";
@@ -16,16 +16,19 @@ export interface CompanionState {
   present: boolean;
 }
 
-const directoryEntries = (directory: string) =>
-  fs.readdirSync(directory, { withFileTypes: true }).map((entry) => ({
-    name: entry.name,
-    directory: entry.isDirectory(),
-    // Filenames cannot distinguish a note from a companion, so the caller says which is which.
-    note: entry.name === NOTE_FILE,
-  }));
+const directoryEntries = (relativeDirectory: string) =>
+  fs
+    .readdirSync(contentPath(relativeDirectory), { withFileTypes: true })
+    .filter((entry) => !entry.name.startsWith("."))
+    .map((entry) => ({
+      name: entry.name,
+      directory: entry.isDirectory(),
+      note:
+        kindOf(COLLECTIONS, `${relativeDirectory}/${entry.name}`) !== undefined,
+    }));
 
 const environmentDirectory = (id: string) =>
-  contentPath(`${COLLECTIONS.environments.base}/${id}`);
+  `${COLLECTIONS.environments.base}/${id}`;
 
 /**
  * What a fixture's directory actually holds, measured rather than declared.

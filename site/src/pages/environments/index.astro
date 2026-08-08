@@ -39,12 +39,12 @@ const ladder = [...PORTABILITY_GRADES]
       </h2>
       <ul class="collection-list">
         {entries.map((entry) => (
-          <li>
-            <a class="card" href={`${base}/environments/${entry.id}/`}>
+          <li class="card">
+            <a class="card-primary" href={`${base}/environments/${entry.id}/`}>
               <strong>{entry.data.title}</strong>
               <span>{entry.data.summary}</span>
-              <TagChips tags={entry.data.tags} />
             </a>
+            <TagChips tags={entry.data.tags} tagBase={`${base}/tags`} />
           </li>
         ))}
       </ul>

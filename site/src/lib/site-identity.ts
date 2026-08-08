@@ -10,8 +10,9 @@ export const SITE_IDENTITY: SiteIdentity = {
     { path: "/packages/", label: "Packages" },
     { path: "/environments/", label: "Environments" },
     { path: "/papers/", label: "Papers" },
+    { path: "/tags/", label: "Tags" },
     { path: "/glossary/", label: "Glossary" },
   ],
-  navVisible: 4,
+  navVisible: 5,
   footerLinks: [],
 };

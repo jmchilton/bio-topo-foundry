@@ -1,0 +1,43 @@
+---
+import { groupTagsInUse } from '@galaxy-foundry/tag-registry';
+
+import Base from '../../layouts/Base.astro';
+import { tagRegistry } from '../../lib/meta-tags';
+import { base } from '../../lib/site-base';
+import { getEntriesByTag } from '../../lib/tags';
+
+const registry = tagRegistry();
+const byTag = await getEntriesByTag();
+const counts = new Map([...byTag].map(([tag, entries]) => [tag, entries.length] as const));
+const groups = groupTagsInUse(registry, counts);
+---
+<Base title="Tags" description="Browse the controlled vocabulary carried by typed TDA notes.">
+  <header class="page-header">
+    <p class="eyebrow">Controlled vocabulary</p>
+    <h1>Tags</h1>
+    <p>
+      Every tag in use, grouped by the facet that declares it. Each destination lists the typed
+      notes carrying that term.
+    </p>
+  </header>
+
+  <div class="tag-groups">
+    {groups.map((group) => (
+      <section aria-labelledby={`facet-${group.key}`}>
+        <h2 id={`facet-${group.key}`}>{group.label}</h2>
+        <p class="facet-description">{group.description}</p>
+        <ul class="collection-list">
+          {group.tags.map((usage) => (
+            <li>
+              <a class="card" href={`${base}/tags/${usage.tag}/`}>
+                <strong>{usage.tag}</strong>
+                {usage.gloss && <span>{usage.gloss}</span>}
+                <small>{usage.count} {usage.count === 1 ? 'note' : 'notes'}</small>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Base>

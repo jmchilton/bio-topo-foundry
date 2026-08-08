@@ -11,7 +11,10 @@ import { COLLECTIONS, contentPath } from "./frontmatter-schema";
 export const contentReader = createContentReader({
   collections: COLLECTIONS,
   contentPath,
-  targetOf: (collection, id) => ({ path: `${collection}/${id}` }),
+  targetOf: (collection, id, meta) => ({
+    path: `${collection}/${id}`,
+    ...(typeof meta?.summary === "string" ? { title: meta.summary } : {}),
+  }),
 
   /**
    * Every note is addressable as `<slug>-<kind>`, whatever else shares its slug.

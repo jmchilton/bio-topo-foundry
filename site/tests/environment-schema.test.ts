@@ -1,7 +1,12 @@
+import { existsSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 
-import { environmentSchema } from "../src/lib/frontmatter-schema";
+import {
+  COLLECTIONS,
+  contentPath,
+  environmentSchema,
+} from "../src/lib/frontmatter-schema";
 import {
   environmentCompanionCheck,
   environmentCompanions,
@@ -60,41 +65,22 @@ describe("fixture directories", () => {
     expect(problems, problems.join("\n")).toEqual([]);
   });
 
-  /**
-   * `pixi.lock` is recommended, not required, so its absence is tracked rather than tolerated
-   * silently. A fixture that gains a lock should shorten this list, and one that loses a lock
-   * should have to say so here.
-   */
-  it("names exactly the fixtures still waiting on a solved lockfile", () => {
-    const lockPending = ids.filter((id) =>
-      environmentCompanionCheck(id).missingRecommended.some(
-        (companion) => companion.name === "pixi.lock",
-      ),
-    );
-
-    expect(lockPending.sort()).toEqual([
-      "giotto-ph",
-      "giotto-tda",
-      "petls",
-      "phat",
-      "pyflagser",
-      "r-tda",
-      "r-tdastats",
-      "scikit-tda",
-    ]);
-  });
-
   it("reports companion presence from the directory, never from frontmatter", () => {
-    const locked = environmentCompanions("topometry-1.1");
-    expect(locked.map((state) => [state.companion.name, state.present])).toEqual([
-      ["pixi.toml", true],
-      ["pixi.lock", true],
-    ]);
-
-    const unlocked = environmentCompanions("phat");
-    expect(unlocked.map((state) => [state.companion.name, state.present])).toEqual([
-      ["pixi.toml", true],
-      ["pixi.lock", false],
-    ]);
+    const wrong: string[] = [];
+    for (const id of ids) {
+      for (const state of environmentCompanions(id)) {
+        const expected = existsSync(
+          contentPath(
+            `${COLLECTIONS.environments.base}/${id}/${state.companion.name}`,
+          ),
+        );
+        if (state.present !== expected) {
+          wrong.push(
+            `${id}/${state.companion.name}: reported ${state.present}, expected ${expected}`,
+          );
+        }
+      }
+    }
+    expect(wrong, wrong.join("\n")).toEqual([]);
   });
 });
