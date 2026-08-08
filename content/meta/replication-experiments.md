@@ -3,16 +3,20 @@ type: meta
 title: Replication Experiments
 summary: Why a replication recreates a paper's reported numbers rather than merely running its code, and which half of that work lives outside this Foundry.
 record_kind: foundation
-order: 1
-status: draft
+order: 4
+status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 1
+revision: 2
 tags:
   - meta
 ---
 
 # Replication Experiments
+
+This record owns the working practice: what a replication has to do to count as one, and which half
+of it lives outside this repository. Why replication is load-bearing here at all belongs to
+[[guiding-principles]], and where it sits in the system to [[architecture]].
 
 A replication experiment should try to recreate a paper's reported results, not merely run its
 software. Start from named claims, tables, metrics, and figures, then determine how each number or

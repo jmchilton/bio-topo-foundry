@@ -1072,6 +1072,206 @@ a {
   margin-top: 0.35rem;
 }
 
+/* The architecture map is inline SVG so its palette follows the reader's light/dark tokens. */
+.prose .architecture-map {
+  width: min(64rem, calc(100vw - 2rem));
+  max-width: none;
+  margin: 2.25rem 0 2rem 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-sans);
+}
+
+.architecture-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem 0.85rem 2.4rem 0.85rem;
+  background: var(--color-surface-raised);
+  box-shadow: 0 1.5rem 4rem
+    color-mix(in srgb, var(--color-chrome) 11%, transparent);
+  scrollbar-color: var(--color-brand) transparent;
+  scrollbar-width: thin;
+}
+
+.architecture-scroll:focus-visible {
+  outline: 0.2rem solid
+    color-mix(in srgb, var(--color-accent) 80%, var(--color-brand));
+  outline-offset: 0.22rem;
+}
+
+.architecture-diagram {
+  display: block;
+  width: 100%;
+  min-width: 48rem;
+  height: auto;
+  color: var(--color-text-primary);
+}
+
+.architecture-canvas {
+  fill: color-mix(in srgb, var(--color-surface-raised) 94%, var(--color-brand));
+}
+
+.architecture-grid-line {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-opacity: 0.28;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.architecture-node,
+.architecture-composition-shell {
+  vector-effect: non-scaling-stroke;
+}
+
+.architecture-node {
+  fill: var(--color-surface-raised);
+  stroke: var(--color-border);
+  stroke-width: 1.25;
+  transition:
+    fill 160ms ease,
+    stroke 160ms ease,
+    stroke-width 160ms ease;
+}
+
+.architecture-card-reader .architecture-node {
+  fill: color-mix(in srgb, var(--color-surface-raised) 88%, var(--color-brand));
+  stroke: color-mix(in srgb, var(--color-border) 55%, var(--color-brand));
+}
+
+.architecture-card-audit .architecture-node {
+  fill: color-mix(
+    in srgb,
+    var(--color-surface-raised) 88%,
+    var(--color-accent)
+  );
+  stroke: color-mix(in srgb, var(--color-border) 55%, var(--color-accent));
+}
+
+.architecture-card-substrate .architecture-node {
+  fill: color-mix(in srgb, var(--color-surface-raised) 84%, var(--color-brand));
+}
+
+.architecture-card .architecture-node-title,
+.architecture-card .architecture-link-glyph {
+  transition: fill 160ms ease;
+}
+
+.architecture-diagram a:hover .architecture-node,
+.architecture-diagram a:focus-visible .architecture-node {
+  fill: color-mix(in srgb, var(--color-surface-raised) 78%, var(--color-brand));
+  stroke: var(--color-brand);
+  stroke-width: 2.5;
+}
+
+.architecture-diagram a:hover .architecture-node-title,
+.architecture-diagram a:hover .architecture-link-glyph,
+.architecture-diagram a:focus-visible .architecture-node-title,
+.architecture-diagram a:focus-visible .architecture-link-glyph {
+  fill: var(--color-link-hover);
+}
+
+.architecture-diagram a:focus {
+  outline: none;
+}
+
+.architecture-composition-shell {
+  fill: color-mix(in srgb, var(--color-surface) 76%, var(--color-border));
+  stroke: color-mix(in srgb, var(--color-border) 66%, var(--color-brand));
+  stroke-width: 1.5;
+}
+
+.architecture-status-dot {
+  fill: var(--color-brand);
+}
+
+.architecture-card-audit .architecture-status-dot {
+  fill: var(--color-accent);
+}
+
+.architecture-tier-label,
+.architecture-owner-label,
+.architecture-node-label,
+.architecture-node-detail,
+.architecture-node-title,
+.architecture-link-glyph {
+  font-family: var(--font-sans);
+}
+
+.architecture-tier-label,
+.architecture-owner-label,
+.architecture-node-label {
+  fill: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+}
+
+.architecture-owner-label {
+  fill: var(--color-brand);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.architecture-node-title {
+  fill: var(--color-text-primary);
+  font-family: var(--font-serif);
+  font-size: 25px;
+  font-variation-settings: 'opsz' 24;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.architecture-node-title-small {
+  font-size: 20px;
+}
+
+.architecture-node-detail {
+  fill: var(--color-text-secondary);
+  font-size: 14px;
+  letter-spacing: 0.005em;
+}
+
+.architecture-link-glyph {
+  fill: var(--color-brand);
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.architecture-connector {
+  fill: none;
+  stroke: var(--color-brand);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.architecture-connector-audit {
+  stroke: var(--color-accent);
+  stroke-dasharray: 7 7;
+}
+
+.architecture-arrow-head {
+  fill: var(--color-brand);
+}
+
+.architecture-arrow-head-audit {
+  fill: var(--color-accent);
+}
+
+.architecture-map figcaption {
+  max-width: 48rem;
+  margin: 0.85rem auto 0;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
 @media (max-width: 58rem) {
   .hero--filtration {
     grid-template-columns: 1fr;
@@ -1124,6 +1324,19 @@ a {
   .point-cloud-fingerprint {
     width: 4.4rem;
   }
+
+  .prose .architecture-map {
+    width: calc(100vw - 1rem);
+  }
+
+  .architecture-scroll {
+    border-radius: 0.65rem 0.65rem 1.7rem 0.65rem;
+  }
+
+  .architecture-map figcaption {
+    padding-inline: 0.75rem;
+    text-align: left;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1134,7 +1347,10 @@ a {
   .filtration-points circle,
   .primary-link,
   .fingerprint-loop,
-  .card::before {
+  .card::before,
+  .architecture-node,
+  .architecture-node-title,
+  .architecture-link-glyph {
     transition-duration: 0.01ms;
   }
 }

@@ -370,13 +370,24 @@ describe("the emitted reader slice", () => {
      * shelf sorted by anything else — id, title, discovery — reads as a list of records rather
      * than a path through them, and nothing else would report the difference.
      */
-    const infrastructure = index.slice(index.indexOf('id="shelf-infrastructure"'));
-    const rendered = [
-      ...infrastructure.matchAll(
-        /href="\/bio-topo-foundry\/design\/([^"]+)\/"/g,
-      ),
-    ].map((match) => match[1]);
-    expect(rendered).toEqual([
+    const recordsIn = (section: string) =>
+      [
+        ...section.matchAll(/href="\/bio-topo-foundry\/design\/([^"]+)\/"/g),
+      ].map((match) => match[1]);
+
+    const foundationStart = index.indexOf('id="shelf-foundation"');
+    const infrastructureStart = index.indexOf('id="shelf-infrastructure"');
+    expect(foundationStart).toBeLessThan(infrastructureStart);
+
+    expect(
+      recordsIn(index.slice(foundationStart, infrastructureStart)),
+    ).toEqual([
+      "positioning",
+      "guiding-principles",
+      "architecture",
+      "replication-experiments",
+    ]);
+    expect(recordsIn(index.slice(infrastructureStart))).toEqual([
       "code-architecture",
       "content-model",
       "repository-layout",
@@ -395,6 +406,35 @@ describe("the emitted reader slice", () => {
     );
     expect(policy).toContain("Foundation — why");
     expect(policy).toContain('href="/bio-topo-foundry/design/content-model/"');
+  });
+
+  it("renders the code architecture as an accessible, theme-native dependency map", () => {
+    const architecture = read(
+      path.join(DIST, "design/code-architecture/index.html"),
+    );
+
+    expect(architecture).toContain('class="architecture-diagram"');
+    expect(architecture).toContain(
+      'aria-labelledby="architecture-title architecture-description"',
+    );
+    expect(architecture).toContain(
+      'aria-label="Scrollable code architecture dependency map"',
+    );
+    expect(architecture).toContain(
+      "https://github.com/jmchilton/foundry-lib/tree/main/packages/kind-schema",
+    );
+    expect(architecture).toContain(
+      "https://github.com/jmchilton/foundry-lib/tree/main/packages/content-reader",
+    );
+    expect(architecture).toContain(
+      "https://github.com/jmchilton/foundry-lib/tree/main/packages/site-kit",
+    );
+    expect(architecture).toContain(
+      "https://github.com/jmchilton/foundry-lib/tree/main/packages/audit-citations",
+    );
+    expect(css).toContain(".architecture-map");
+    expect(css).toContain("var(--color-surface-raised)");
+    expect(css).toContain("var(--color-text-primary)");
   });
 
   /** The glossary shares `content/meta/` with the records and is deliberately not one of them. */
