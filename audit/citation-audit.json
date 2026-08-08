@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-08T16:54:24.083Z",
+  "generatedAt": "2026-08-08T17:59:45.110Z",
   "corpus": {
     "digest": "47a77779838f74e72d4435dcda4594ae60625896dcd2c17d4ce3b58aa9411766",
-    "headRevision": "afc7193fd6935ff6d172738e5b1ba2e80386f765",
-    "workingTreeDirty": true
+    "headRevision": "e9abd8efebf6533f671fa10b20d314a0314722a2",
+    "workingTreeDirty": false
   },
   "evidenceSnapshotDigest": "eee2b6412352cfb89687fe55a3b580d3572f9d10b92755b52a22ab4c6e02d50a",
   "manualReviewStatus": "not-required",
@@ -2935,6 +2935,21 @@
         "artifactPath": "content/packages/hiponet.md",
         "line": 245,
         "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/b284aad9fb5c6d74b9535a30ece69e1c-Paper-Conference.pdf"
+      },
+      {
+        "artifactPath": "content/packages/open-topodockq-featurizer.md",
+        "line": 5,
+        "url": "https://github.com/jmchilton/open-topodockq-featurizer"
+      },
+      {
+        "artifactPath": "content/packages/open-topoqa-featurizer.md",
+        "line": 5,
+        "url": "https://github.com/jmchilton/open-topoqa-featurizer"
+      },
+      {
+        "artifactPath": "content/packages/open-topoqa-scorer.md",
+        "line": 5,
+        "url": "https://github.com/jmchilton/open-topoqa-scorer"
       },
       {
         "artifactPath": "content/packages/petls-pytorch.md",
