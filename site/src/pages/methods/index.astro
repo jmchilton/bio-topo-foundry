@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import TagChips from '@galaxy-foundry/site-kit/TagChips.astro';
+
+import Base from '../../layouts/Base.astro';
+import { base } from '../../lib/site-base';
+
+const methods = (await getCollection('methods')).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
+---
+<Base title="Methods" description="The TDA and topological deep learning techniques this corpus is built around.">
+  <header class="page-header">
+    <p class="eyebrow">Techniques</p>
+    <h1>Methods</h1>
+    <p>
+      A Method note explains one technique: what it computes, what it discards, and when to reach
+      for it over its nearest neighbour. Each one heads a tag — the tag page lists everything that
+      shares it, and the Method note says why those things belong together.
+    </p>
+  </header>
+
+  <ul class="collection-list">
+    {methods.map((entry) => (
+      <li class="card">
+        <a class="card-primary" href={`${base}/methods/${entry.id}/`}>
+          <strong>{entry.data.title}</strong>
+          <span>{entry.data.summary}</span>
+        </a>
+        <TagChips tags={entry.data.tags} tagBase={`${base}/tags`} />
+      </li>
+    ))}
+  </ul>
+</Base>

@@ -2,13 +2,15 @@
 import { getCollection } from 'astro:content';
 
 import Base from '../layouts/Base.astro';
+import { COLLECTION_NAMES } from '../lib/frontmatter-schema';
 import { base } from '../lib/site-base';
 
-const typedNoteCount =
-  (await getCollection('packages')).length +
-  (await getCollection('papers')).length +
-  (await getCollection('environments')).length +
-  (await getCollection('molds')).length;
+// Derived rather than summed by hand: a new collection must not be able to land without the
+// headline count following it.
+const counts = await Promise.all(
+  COLLECTION_NAMES.map(async (collection) => (await getCollection(collection)).length),
+);
+const typedNoteCount = counts.reduce((total, count) => total + count, 0);
 ---
 <Base title="Topological Data Analysis Bioinformatics Foundry">
   <section class="hero">
@@ -38,6 +40,10 @@ const typedNoteCount =
     <a class="card" href={`${base}/papers/`}>
       <strong>Papers</strong>
       <span>Reviews of external TDA papers and surveys, linked rather than copied.</span>
+    </a>
+    <a class="card" href={`${base}/methods/`}>
+      <strong>Methods</strong>
+      <span>The techniques themselves — what each computes, and what implements it here.</span>
     </a>
     <a class="card" href={`${base}/glossary/`}>
       <strong>Glossary</strong>
