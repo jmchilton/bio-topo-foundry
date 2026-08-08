@@ -341,6 +341,24 @@ describe("the emitted reader slice", () => {
       'href="/bio-topo-foundry/design/replication-experiments/"',
     );
 
+    /**
+     * `order` exists for exactly one thing, and this is it: the sequence is pedagogical, so a
+     * shelf sorted by anything else — id, title, discovery — reads as a list of records rather
+     * than a path through them, and nothing else would report the difference.
+     */
+    const infrastructure = index.slice(index.indexOf('id="shelf-infrastructure"'));
+    const rendered = [
+      ...infrastructure.matchAll(
+        /href="\/bio-topo-foundry\/design\/([^"]+)\/"/g,
+      ),
+    ].map((match) => match[1]);
+    expect(rendered).toEqual([
+      "code-architecture",
+      "content-model",
+      "repository-layout",
+      "build-and-validation",
+    ]);
+
     const record = read(path.join(DIST, "design/content-model/index.html"));
     expect(record).toContain('class="content-note"');
     expect(record).toContain("Infrastructure — what");
