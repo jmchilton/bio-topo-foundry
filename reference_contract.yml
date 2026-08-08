@@ -1,0 +1,7 @@
+# Reference kinds used by this Foundry's Mold manifests. The remaining vocabularies are inherited
+# from @galaxy-foundry/reference-contract.
+kinds:
+  environment:
+    label: Environment
+    description: A runnable biopixi fixture and its declared bundled companions.
+    ref_shape: wiki-link

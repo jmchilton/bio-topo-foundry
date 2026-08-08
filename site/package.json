@@ -18,6 +18,7 @@
     "@galaxy-foundry/kind-manifest": "^0.4.0",
     "@galaxy-foundry/kind-schema": "^0.5.1",
     "@galaxy-foundry/license-policy": "^0.4.1",
+    "@galaxy-foundry/reference-contract": "^0.4.0",
     "@galaxy-foundry/content-reader": "^0.2.1",
     "@galaxy-foundry/site-kit": "^0.9.1",
     "@galaxy-foundry/tag-registry": "^0.1.1",

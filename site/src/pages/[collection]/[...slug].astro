@@ -2,17 +2,21 @@
 import { getCollection, render } from 'astro:content';
 import ContentNote from '@galaxy-foundry/site-kit/ContentNote.astro';
 import LicenseBadge from '@galaxy-foundry/site-kit/LicenseBadge.astro';
+import ReferenceContract from '@galaxy-foundry/site-kit/ReferenceContract.astro';
 
 import Base from '../../layouts/Base.astro';
 import { environmentCompanions } from '../../lib/companions';
+import { contentReader } from '../../lib/content-reader';
 import { DETAIL_ROUTES } from '../../lib/detail-routes';
 import { licensePolicy } from '../../lib/registries';
+import { referenceContract } from '../../lib/reference-contract';
 import { base } from '../../lib/site-base';
 
 export async function getStaticPaths() {
-  // Written out so Astro retains a discriminated union of the three frontmatter shapes.
+  // Written out so Astro retains a discriminated union of the frontmatter shapes.
   const entries = [
     ...(await getCollection('environments')),
+    ...(await getCollection('molds')),
     ...(await getCollection('papers')),
     ...(await getCollection('packages')),
   ];
@@ -26,10 +30,12 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const route = DETAIL_ROUTES[entry.collection];
 const companions = entry.collection === 'environments' ? environmentCompanions(entry.id) : [];
+const heading = entry.collection === 'molds' ? entry.data.name : entry.data.title;
+const resolveRef = (ref: string) => contentReader.resolveLink(ref, { base });
 ---
-<Base title={entry.data.title} description={entry.data.summary}>
+<Base title={heading} description={entry.data.summary}>
   <ContentNote
-    title={entry.data.title}
+    title={heading}
     summary={entry.data.summary}
     tags={entry.data.tags}
     tagBase={`${base}/tags`}
@@ -100,6 +106,15 @@ const companions = entry.collection === 'environments' ? environmentCompanions(e
           </ul>
         </div>
       </aside>
+    )}
+
+    {entry.collection === 'molds' && (
+      <ReferenceContract
+        slot="reference"
+        references={entry.data.references ?? []}
+        contract={referenceContract()}
+        resolveRef={resolveRef}
+      />
     )}
 
     <Content />
