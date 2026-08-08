@@ -156,10 +156,10 @@ The one-sentence version, for a reader deciding whether to use the method: the p
 ## References
 
 1. Wang, R., Nguyen, D. D., and Wei, G.-W. "Persistent spectral graph." *International Journal for Numerical Methods in Biomedical Engineering* 36(9), e3376 (2020). [DOI](https://doi.org/10.1002/cnm.3376). Preprint: [arXiv:1912.04135](https://arxiv.org/abs/1912.04135).
-2. Wang, R., Zhao, R., Ribando-Gros, E., Chen, J., Tong, Y., and Wei, G.-W. "HERMES: Persistent spectral graph software." *Foundations of Data Science* 3(1), 67-97 (2021). [DOI](https://doi.org/10.3934/fods.2021004).
+2. Wang, R., Zhao, R., Ribando-Gros, E., Chen, J., Tong, Y., and Wei, G.-W. "HERMES: Persistent spectral graph software." *Foundations of Data Science* 3(1), 67-97 (2021). [DOI](https://doi.org/10.3934/fods.2021006).
 3. Memoli, F., Wan, Z., and Wang, Y. "Persistent Laplacians: Properties, Algorithms and Implications." *SIAM Journal on Mathematics of Data Science* 4(2), 858-884 (2022). [DOI](https://doi.org/10.1137/21M1435471).
 4. Jones, B. and Wei, G.-W. "PETLS: PErsistent Topological Laplacian Software." [arXiv:2508.11560](https://arxiv.org/abs/2508.11560).
 5. Bahar, I., Atilgan, A. R., and Erman, B. "Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential." *Folding and Design* 2(3), 173-181 (1997). [DOI](https://doi.org/10.1016/S1359-0278%2897%2900024-2).
 6. Atilgan, A. R., Durell, S. R., Jernigan, R. L., Demirel, M. C., Keskin, O., and Bahar, I. "Anisotropy of fluctuation dynamics of proteins with an elastic network model." *Biophysical Journal* 80(1), 505-515 (2001). [DOI](https://doi.org/10.1016/S0006-3495%2801%2976033-X).
 7. Bramer, D. and Wei, G.-W. "Blind prediction of protein B-factor and flexibility." *The Journal of Chemical Physics* 149(13), 134107 (2018). [DOI](https://doi.org/10.1063/1.5048469).
-8. Wei, X. and Wei, G.-W. "Persistent topological Laplacians - a survey." *Mathematics* 13(2), 278 (2025). [DOI](https://doi.org/10.3390/math13020278).
+8. Wei, X. and Wei, G.-W. "Persistent topological Laplacians - a survey." *Mathematics* 13(2), 208 (2025). [DOI](https://doi.org/10.3390/math13020208).
