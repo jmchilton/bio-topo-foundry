@@ -4,6 +4,9 @@
 # rattler-build output
 output/
 
+# Citation-audit scratch output; the reviewed artifacts live under audit/
+build/
+
 .DS_Store
 
 # Foundry reader dependencies and generated output

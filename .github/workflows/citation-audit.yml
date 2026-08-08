@@ -1,0 +1,95 @@
+name: Citation audit refresh
+
+# Re-resolves every cited identifier against the live providers, so a retracted DOI, a preprint
+# that acquired journal metadata, or a provider that changed its answer becomes visible without
+# putting the network in the pull-request path. `pnpm validate` replays the committed evidence
+# offline and stays deterministic.
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: citation-audit-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Enable pnpm
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: site
+
+      - name: Refresh provider evidence
+        run: pnpm audit:citations:refresh
+        working-directory: site
+
+      # A refresh restamps `observedAt` on every record it re-queries, so the evidence file always
+      # differs and cannot decide whether anything moved. The rendered report carries no timestamp
+      # and no revision, so it changes only when a verdict, a mismatch, or coverage changes.
+      - name: Detect a substantive change
+        id: changed
+        run: |
+          if git diff --quiet -- audit/citation-audit.md; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Providers agree with the committed report; discarding timestamp-only churn." >> "$GITHUB_STEP_SUMMARY"
+            git checkout -- audit/
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "### Citation audit changed"
+              echo
+              echo '```diff'
+              git diff -- audit/citation-audit.md
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Open or update the refresh pull request
+        if: steps.changed.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: citation-audit/refresh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add audit/
+          git commit -m "Refresh citation-audit provider evidence"
+          git push --force-with-lease origin "$BRANCH"
+          if [ -z "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            {
+              printf 'Opened by the scheduled citation-audit refresh. Providers now answer differently than the committed report records; the report diff is in the workflow run summary.\n\n'
+              printf 'Pull-request checks do not start on their own for a branch pushed with `GITHUB_TOKEN`. Push an empty commit to run them.\n'
+            } > /tmp/citation-audit-pr-body.md
+            gh pr create --head "$BRANCH" --base main \
+              --title "Refresh citation-audit provider evidence" \
+              --body-file /tmp/citation-audit-pr-body.md
+          fi
+
+      # Run after the pull request exists: a refresh that surfaces a real defect should still be
+      # delivered, and then fail loudly.
+      - name: Verify the refreshed corpus
+        if: steps.changed.outputs.changed == 'true'
+        run: pnpm vitest run tests/citation-audit.test.ts
+        working-directory: site

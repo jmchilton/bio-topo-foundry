@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "candidateId": "c1e73fa5548d6bb1",
+      "sourceDigest": "be6c6cac0379a55f68e1a378b2f89fedd533aec315fc5395201d8fd8aca92bac",
+      "classification": "resolver-false-positive",
+      "adjudicatedVerdict": "resolved",
+      "note": "Same three authors in two notations. The entry uses Vancouver initials-after-family form (Sidarta-Oliveira D, Domingos AI, Velloso LA); Crossref stores given-name form (David Sidarta-Oliveira, Ana I Domingos, Licio A Velloso). Verified directly against api.crossref.org/works/10.7554/eLife.100361.3 on 2026-08-08: title, journal, and all three names match. The comparator does not yet reduce a trailing initials blob to a given name.",
+      "reviewer": "jmchilton",
+      "reviewedAt": "2026-08-08T00:00:00Z"
+    },
+    {
+      "candidateId": "5c823466b4cdd332",
+      "sourceDigest": "bbf097d027423420543c6544511ded3cfa934a37ba77370f3e4ba26cd5cc1c24",
+      "classification": "resolver-false-positive",
+      "adjudicatedVerdict": "resolved",
+      "note": "Extractor read a truncated DOI. The cited DOI is 10.1016/S1359-0278(97)00024-2, percent-encoded in the Markdown link because an unescaped ) would close it; extraction stopped at the % and queried 10.1016/s1359-0278. Verified directly against api.crossref.org on 2026-08-08: Bahar, Atilgan, Erman, 'Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential', Folding and Design, 1997. The note is correct; the DOI grammar does not yet decode percent-encoded DOI URLs.",
+      "reviewer": "jmchilton",
+      "reviewedAt": "2026-08-08T00:00:00Z"
+    },
+    {
+      "candidateId": "2f4bcb325832b87c",
+      "sourceDigest": "a5c8f338ef7e4035560224b0f0554baabaa21cbc58966cdff7bb09fdc47b474f",
+      "classification": "resolver-false-positive",
+      "adjudicatedVerdict": "resolved",
+      "note": "Same percent-encoded DOI limitation. The cited DOI is 10.1016/S0006-3495(01)76033-X; extraction queried 10.1016/s0006-3495. Verified directly against api.crossref.org on 2026-08-08: Atilgan, Durell, Jernigan, Demirel, Keskin, Bahar, 'Anisotropy of Fluctuation Dynamics of Proteins with an Elastic Network Model', Biophysical Journal, 2001.",
+      "reviewer": "jmchilton",
+      "reviewedAt": "2026-08-08T00:00:00Z"
+    }
+  ]
+}
