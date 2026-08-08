@@ -13,6 +13,7 @@ import { DETAIL_ROUTES } from '../../lib/detail-routes';
 import { licensePolicy } from '../../lib/registries';
 import { referenceContract } from '../../lib/reference-contract';
 import { base } from '../../lib/site-base';
+import { SITE_IDENTITY } from '../../lib/site-identity';
 
 export async function getStaticPaths() {
   // Written out so Astro retains a discriminated union of the frontmatter shapes. A collection
@@ -25,6 +26,7 @@ export async function getStaticPaths() {
     ...(await getCollection('molds')),
     ...(await getCollection('papers')),
     ...(await getCollection('packages')),
+    ...(await getCollection('recipes')),
     ...(await getCollection('replication-experiments')),
   ];
   return entries.map((entry) => ({
@@ -164,6 +166,35 @@ const resolveRef = (ref: string) => contentReader.resolveLink(ref, { base });
           {entry.data.environment
             ? <a href={`${base}/environments/${entry.data.environment}/`}>{entry.data.environment}</a>
             : <strong>None yet — no biopixi rerun recorded here</strong>}
+        </div>
+      </aside>
+    )}
+
+    {entry.collection === 'recipes' && (
+      <aside slot="metadata" class="note-facts" aria-label="Recipe facts">
+        <div>
+          <span>Gap it closes</span>
+          <strong>{entry.data.gap === 'absent' ? 'On no conda channel' : 'Channel build is stale'}</strong>
+        </div>
+        <div>
+          <span>Build</span>
+          <strong>
+            {entry.data.build.status === 'verified'
+              ? `Verified on ${entry.data.build.platforms.join(', ')}`
+              : 'Never built here'}
+          </strong>
+        </div>
+        <div>
+          <span>Upstreaming</span>
+          {entry.data.submission
+            ? <a href={entry.data.submission}>{entry.data.upstreaming}</a>
+            : <strong>{entry.data.upstreaming}</strong>}
+        </div>
+        <div class="note-facts-wide">
+          <span>Recipe files</span>
+          <a href={`${SITE_IDENTITY.repoUrl}/tree/main/recipes/${entry.id}`}>
+            <code>recipes/{entry.id}/</code>
+          </a>
         </div>
       </aside>
     )}

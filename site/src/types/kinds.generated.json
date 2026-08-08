@@ -319,6 +319,61 @@
       ]
     },
     {
+      "kind": "recipe",
+      "title": "Recipe",
+      "layer": "instance",
+      "summary": "A rattler-build recipe in this repository that supplies a package the public conda channels do not, and the route by which it could leave.",
+      "shape": "file",
+      "companions": [],
+      "locations": [
+        "recipes"
+      ],
+      "doc": "# Recipe\n\nA Recipe note is one rattler-build recipe kept in this repository, under `recipes/<slug>/`. The\nrecipe exists because a public conda channel does not supply the package, and the note says which\ngap it closes, whether anyone has actually built it, and what stands between it and a channel.\n\nRequired fields:\n\n- `type: recipe`\n- `title`: the recipe's display name, matching its directory under `recipes/`\n- `summary`: short reader-facing description\n- `gap`: `absent` or `stale` — what the channels fail to supply\n- `build`: `{ status: verified, platforms: [...] }` or `{ status: unverified }`\n- `upstreaming`: `blocked`, `eligible`, `submitted`, or `published`\n- `tags`: at least one registered domain facet tag\n\n`submission` is a URL, and is required by exactly the two states that assert one exists.\n\n## Why the note is file-shaped\n\nEvery other packaging kind here is directory-shaped, and this one is not. The recipe's real files —\n`recipe.yaml`, `pixi.toml`, sometimes `variants.yaml` — live at `recipes/<slug>/`, outside\n`content/`, because a dozen fixture manifests reach them as `../../../recipes/<slug>` path\ndependencies. Companions describe a note's own directory, so declaring those files as companions\nwould describe a layout that does not exist. Copying them into `content/recipes/<slug>/` would\ncreate a second copy to drift.\n\nSo the note is `content/recipes/<slug>.md`, and its recipe is found by name. A test walks both\ndirections of that correspondence, which is what a companion declaration would have bought.\n\n## What the note does not restate\n\n`recipe.yaml` declares the package name, version, license, homepage, source URL, and every\ndependency. None of that is repeated here. A note that carried a version would be a second place to\nupdate it, and the one that got missed would be this one.\n\n`gap` is not derivable from the recipe file, which is why it is a field. `absent` means the package\nis on no public conda channel at all, which covers most of this set. `stale` means a channel does\ncarry it and the build there is too old to use — one recipe, `topometry`, where conda-forge stops\nat `0.2.1.1` and the published workflow needs the `1.1.0` API.\n\n## Verified means someone ran it\n\n`build.status` records whether `rattler-build` has actually produced a package, not whether the\nrecipe looks right. Three recipes are `unverified`, and that is the useful part: it makes \"which of\nthese has never been built?\" a query rather than an archaeology exercise.\n\n`platforms` lists where the build was exercised, not where the package works. A noarch package\nverified on `osx-arm64` runs everywhere; the field says what was tested, and the prose says what\nthat implies.\n\n## Upstreaming is a licence question first\n\n`blocked` is not a scheduling state. It means the licence forecloses publication, because\nconda-forge and Bioconda both require a bundled OSI licence and no amount of recipe work substitutes\nfor one. `petls` is the case: it declares no licence anywhere, so it is all rights reserved by\ndefault and its recipe will never leave this repository. A test ties this to the recipe file, so a\n`LicenseRef-` licence and an `eligible` claim cannot coexist.\n\n`eligible` is the ordinary state — redistributable, and nobody has opened the PR. `submitted` and\n`published` both assert something a reader would act on, so both must carry the link.",
+      "example": "---\ntype: recipe\ntitle: example-tda-package\nsummary: A small example showing the minimum metadata required for one in-repo build of a package the channels do not carry.\ngap: absent\nbuild:\n  status: verified\n  platforms:\n    - linux-64\nupstreaming: eligible\ntags:\n  - method/persistent-homology\n---\n\n# example-tda-package\n\nThe body says which gap the recipe closes, what was load-bearing about getting it to build, and\nwhat stands between it and a public channel. The `recipe.yaml` beside it stays the authority on\nthe version, the licence, and every dependency, so no note restates a pin.",
+      "fields": [
+        {
+          "name": "build",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "name": "gap",
+          "required": true,
+          "type": "absent | stale"
+        },
+        {
+          "name": "summary",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "required": true,
+          "type": "string[]"
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": "\"recipe\""
+        },
+        {
+          "name": "upstreaming",
+          "required": true,
+          "type": "blocked | eligible | submitted | published"
+        },
+        {
+          "name": "submission",
+          "required": false,
+          "type": "string"
+        }
+      ]
+    },
+    {
       "kind": "replication_experiment",
       "title": "Replication experiment",
       "layer": "instance",

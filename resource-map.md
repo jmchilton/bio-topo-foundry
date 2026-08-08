@@ -20,7 +20,7 @@
 | `tool` (Galaxy) | — | 0 | empty |
 | `workflow` | — | 0 | empty |
 | `training` | — | 0 | empty |
-| `recipe` *(planned)* | `recipes/*` (+ stub `content/recipes/<slug>/index.md`) | **17** | backing assembled; stub Kind planned. Never cast — catalog/display only |
+| `recipe` | notes `content/recipes/*.md` over the builds in `recipes/*` | **17** | assembled — 1 blocked on licence, 1 submitted, 3 never built. Never cast — catalog/display only |
 
 Non-corpus meta already in place: `content/meta/glossary.md`, `content/environments/README.md`
 (fixtures index), `foundry-design-draft.md`, this file.
@@ -166,11 +166,18 @@ formal-math frontier, all still ahead.
 
 ## Open placement questions
 
-1. ~~`recipe` home~~ — **resolved: its own (planned) `recipe` Kind. Stub at
-   `content/recipes/<slug>/index.md` links/renders the real files in repo-root `recipes/<slug>/`;
-   never cast (catalog/display only).**
-2. **`content/environments/` vs `recipes/` split** — two top-level homes for closely-related
-   packaging artifacts. Keep split, or co-locate per-tool (`content/packages/<tool>/{env,recipe}`)?
+1. ~~`recipe` home~~ — **resolved and assembled: its own `recipe` Kind, one note per build at
+   `content/recipes/<slug>.md`, with the real files staying at repo-root `recipes/<slug>/`. The
+   note is file-shaped rather than a stub directory, because the recipe files cannot move under
+   `content/` (a dozen fixture manifests reach them as `../../../recipes/<slug>` path deps) and a
+   companion cannot point outside its own directory; a round-trip test enforces the pairing
+   instead. Never cast (catalog/display only). See design draft §2e.**
+2. ~~**`content/environments/` vs `recipes/` split**~~ — **resolved by keeping it.** The two are
+   not the same artifact and do not pair one-to-one: `pydowker` is one fixture over three recipes,
+   `rivet` and `tadasets` have recipes and no fixture of their own, and `topometry` has two
+   fixtures over one recipe. Co-locating per tool would have to break one of those. The split is
+   now bridged by notes rather than by directory layout — the `recipe` Kind gives each build a
+   home, and the fixture notes wiki-link to it.
 3. ~~`topoqa` classification~~ — **resolved: `package`** (TopoQA is a software tool; its whitepaper is
    a tool profile). Han 2025 becomes a latent `paper` behind it.
 4. **`manuscript` reserved for our own original papers** — the 7 whitepapers are reviews of others'

@@ -11,6 +11,7 @@ export interface TaggedEntry {
     | "Mold"
     | "Package"
     | "Paper"
+    | "Recipe"
     | "Replication experiment";
   name: string;
   summary: string;
@@ -27,6 +28,7 @@ const KIND_LABELS = {
   mold: "Mold",
   package: "Package",
   paper: "Paper",
+  recipe: "Recipe",
   replication_experiment: "Replication experiment",
 } as const satisfies Record<
   (typeof COLLECTIONS)[keyof typeof COLLECTIONS]["kind"],

@@ -28,7 +28,9 @@ Two patterns recur and are worth reading as a group rather than one fixture at a
 
 - **L1 means the recipe is still in this repository.** Most L1 fixtures stage an in-repo recipe
   under `recipes/`; several are redistributable and would reach L3 or L4 on publication. `petls` is
-  the exception that will not move, because it declares no license at all.
+  the exception that will not move, because it declares no license at all. Each of those builds is
+  a `recipe` note of its own, and the site's `/recipes/` index groups them by how far they have
+  travelled toward a public channel — which is the same list as what holds these fixtures at L1.
 - **L0 means out of profile, and the reason differs.** `giotto-tda` is wheel-only on PyPI.
   `hiponet` and `topodockq` run from pinned git clones because neither has anything installable to
   build — for technical reasons in both cases, and additionally a licensing ceiling for `hiponet`.
