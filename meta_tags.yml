@@ -10,9 +10,12 @@ facets:
     label: Application
     description: The bioinformatics problem or analysis setting a note serves.
     values:
+      application/molecular-sciences: General molecular-science modeling and analysis.
       application/single-cell: Single-cell and cellular point-cloud analysis.
   modality:
     label: Modality
     description: The biological data modality a note consumes or describes.
     values:
+      modality/graph: Graphs, networks, and higher-order complexes.
       modality/high-dim-tabular: High-dimensional feature matrices such as single-cell count data.
+      modality/point-cloud: Point clouds and metric-space samples.

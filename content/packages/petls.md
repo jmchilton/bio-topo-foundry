@@ -1,3 +1,20 @@
+---
+type: package
+title: PETLS
+summary: A C++ and Python engine for persistent topological Laplacians whose upstream software currently declares no reuse license.
+repository: https://github.com/bdjones13/PETLS
+languages:
+  - C++
+  - Python
+software_license:
+  status: missing
+tags:
+  - method/persistent-laplacian
+  - application/molecular-sciences
+  - modality/point-cloud
+  - modality/graph
+---
+
 # White Paper: PETLS
 
 ## Packaged persistent topological Laplacians across complexes
