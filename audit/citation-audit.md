@@ -3,8 +3,8 @@
 > This report verifies scholarly citation identity. It does not determine whether a source
 > supports the surrounding scientific claim.
 
-Manual review: **completed**
-Reviewed flagged findings: **3/3**
+Manual review: **not-required**
+Reviewed flagged findings: **0/0**
 
 ## Partitions
 
@@ -70,7 +70,7 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 | `content/packages/topodockq.md:216` | OpenMM 7: Rapid development of high performance algorithms for molecular dynamics | crossref `doi:10.1371/journal.pcbi.1005659` → doi:10.1371/journal.pcbi.1005659 | — |
 | `content/packages/topodockq.md:217` | Development and benchmarking of Open Force Field 2.0.0: the Sage small molecule force field | crossref `doi:10.1021/acs.jctc.3c00039` → doi:10.1021/acs.jctc.3c00039 | — |
 | `content/packages/topometry.md:21` | TopoMetry systematically learns and evaluates the latent geometry of single-cell data | crossref `doi:10.7554/elife.100361.3` → doi:10.7554/elife.100361.3 | — |
-| `content/packages/topometry.md:261` | TopoMetry systematically learns and evaluates the latent geometry of single-cell data | crossref `doi:10.7554/elife.100361.3` → doi:10.7554/elife.100361.3 | crossref (doi:10.7554/elife.100361.3): author overlap 0.33: described "Sidarta-Oliveira D; Domingos AI; Velloso LA", observed "David Sidarta-Oliveira; Ana I Domingos; Licio A Velloso"; manual review: Same three authors in two notations. The entry uses Vancouver initials-after-family form (Sidarta-Oliveira D, Domingos AI, Velloso LA); Crossref stores given-name form (David Sidarta-Oliveira, Ana I Domingos, Licio A Velloso). Verified directly against api.crossref.org/works/10.7554/eLife.100361.3 on 2026-08-08: title, journal, and all three names match. The comparator does not yet reduce a trailing initials blob to a given name. |
+| `content/packages/topometry.md:261` | TopoMetry systematically learns and evaluates the latent geometry of single-cell data | crossref `doi:10.7554/elife.100361.3` → doi:10.7554/elife.100361.3 | — |
 | `content/packages/topometry.md:265` | Laplacian Eigenmaps for dimensionality reduction and data representation | crossref `doi:10.1162/089976603321780317` → doi:10.1162/089976603321780317 | — |
 | `content/packages/topometry.md:266` | Diffusion maps | crossref `doi:10.1016/j.acha.2006.04.006` → doi:10.1016/j.acha.2006.04.006 | — |
 | `content/packages/topometry.md:267` | SCANPY: large-scale single-cell gene expression data analysis | crossref `doi:10.1186/s13059-017-1382-0` → doi:10.1186/s13059-017-1382-0 | — |
@@ -91,8 +91,8 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 | `content/papers/persistent-spectral-graph.md:159` | HERMES: Persistent spectral graph software | crossref `doi:10.3934/fods.2021006` → doi:10.3934/fods.2021006 | — |
 | `content/papers/persistent-spectral-graph.md:160` | Persistent Laplacians: Properties, Algorithms and Implications | crossref `doi:10.1137/21m1435471` → doi:10.1137/21m1435471 | — |
 | `content/papers/persistent-spectral-graph.md:161` | PETLS: PErsistent Topological Laplacian Software | openalex `arxiv:2508.11560` → arxiv:2508.11560 | — |
-| `content/papers/persistent-spectral-graph.md:162` | Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential | crossref `doi:10.1016/s1359-0278` → unresolved | manual review: Extractor read a truncated DOI. The cited DOI is 10.1016/S1359-0278(97)00024-2, percent-encoded in the Markdown link because an unescaped ) would close it; extraction stopped at the % and queried 10.1016/s1359-0278. Verified directly against api.crossref.org on 2026-08-08: Bahar, Atilgan, Erman, 'Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential', Folding and Design, 1997. The note is correct; the DOI grammar does not yet decode percent-encoded DOI URLs. |
-| `content/papers/persistent-spectral-graph.md:163` | Anisotropy of fluctuation dynamics of proteins with an elastic network model | crossref `doi:10.1016/s0006-3495` → unresolved | manual review: Same percent-encoded DOI limitation. The cited DOI is 10.1016/S0006-3495(01)76033-X; extraction queried 10.1016/s0006-3495. Verified directly against api.crossref.org on 2026-08-08: Atilgan, Durell, Jernigan, Demirel, Keskin, Bahar, 'Anisotropy of Fluctuation Dynamics of Proteins with an Elastic Network Model', Biophysical Journal, 2001. |
+| `content/papers/persistent-spectral-graph.md:162` | Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential | crossref `doi:10.1016/s1359-0278(97)00024-2` → doi:10.1016/s1359-0278(97)00024-2 | — |
+| `content/papers/persistent-spectral-graph.md:163` | Anisotropy of fluctuation dynamics of proteins with an elastic network model | crossref `doi:10.1016/s0006-3495(01)76033-x` → doi:10.1016/s0006-3495(01)76033-x | — |
 | `content/papers/persistent-spectral-graph.md:164` | Blind prediction of protein B-factor and flexibility | crossref `doi:10.1063/1.5048469` → doi:10.1063/1.5048469 | — |
 | `content/papers/persistent-spectral-graph.md:165` | Persistent topological Laplacians - a survey | crossref `doi:10.3390/math13020208` → doi:10.3390/math13020208 | — |
 | `content/papers/tda-tdl-beyond-persistent-homology.md:5` | Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review | openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
