@@ -16,6 +16,16 @@ const validMethod = {
 const parses = (method: Record<string, unknown>) =>
   methodSchema.safeParse(method).success;
 
+function issuesOf(method: Record<string, unknown>) {
+  const result = methodSchema.safeParse(method);
+  expect(result.success).toBe(false);
+  if (result.success) return [];
+  return result.error.issues.map((issue) => ({
+    path: issue.path.join("."),
+    message: issue.message,
+  }));
+}
+
 describe("method kind", () => {
   it("validates its executable example", () => {
     expect(
@@ -28,12 +38,15 @@ describe("method kind", () => {
   it("anchors a value of the method facet, not merely a registered tag", () => {
     expect(parses(validMethod)).toBe(true);
     expect(
-      parses({
+      issuesOf({
         ...validMethod,
         facet_tag: "modality/point-cloud",
         tags: ["modality/point-cloud"],
       }),
-    ).toBe(false);
+    ).toContainEqual({
+      path: "facet_tag",
+      message: "must be a value of the `method` facet in meta_tags.yml",
+    });
     expect(parses({ ...validMethod, facet_tag: "method/not-a-real-value" })).toBe(
       false,
     );
@@ -44,13 +57,22 @@ describe("method kind", () => {
    * note goes missing from the one tag page it was written to head.
    */
   it("requires the note to carry the tag it anchors", () => {
-    const result = methodSchema.safeParse({
-      ...validMethod,
-      tags: ["modality/point-cloud"],
+    expect(
+      issuesOf({
+        ...validMethod,
+        tags: ["modality/point-cloud"],
+      }),
+    ).toContainEqual({
+      path: "tags",
+      message:
+        "a method note must carry the tag it anchors (`method/persistent-homology`)",
     });
-    expect(result.success).toBe(false);
-    expect(result.success ? [] : result.error.issues.map((i) => i.message)).toContain(
-      "a method note must carry the tag it anchors (`method/persistent-homology`)",
-    );
+  });
+
+  it.each([
+    ["empty tags", { ...validMethod, tags: [] }],
+    ["extra field", { ...validMethod, repository: "https://example.org/method" }],
+  ])("rejects an %s", (_case, candidate) => {
+    expect(parses(candidate)).toBe(false);
   });
 });

@@ -1,20 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
-
 import FiltrationHero from '../components/FiltrationHero.astro';
 import PersistenceDivider from '../components/PersistenceDivider.astro';
 import Base from '../layouts/Base.astro';
 import { designRecordShelves } from '../lib/design-records';
-import { COLLECTION_NAMES } from '../lib/frontmatter-schema';
+import { contentReader } from '../lib/content-reader';
 import { base } from '../lib/site-base';
 
-// Derived rather than summed by hand: a new collection must not be able to land without the
-// headline count following it. Design records are typed notes and are counted as such — the
-// headline links to the tag index, which lists them.
-const counts = await Promise.all(
-  COLLECTION_NAMES.map(async (collection) => (await getCollection(collection)).length),
-);
-const typedNoteCount = counts.reduce((total, count) => total + count, 0);
+const typedNoteCount = contentReader.noteTargets().length;
 
 const recordShelves = await designRecordShelves();
 ---

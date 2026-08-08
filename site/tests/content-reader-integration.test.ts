@@ -14,6 +14,8 @@ import {
   COLLECTION_NAMES,
   contentPath,
 } from "../src/lib/frontmatter-schema";
+import { base } from "../src/lib/site-base";
+import { getTaggedEntries } from "../src/lib/tags";
 import { readMarkdownNote } from "./frontmatter";
 
 describe("shared content-reader binding", () => {
@@ -77,6 +79,15 @@ describe("shared content-reader binding", () => {
     }
 
     expect(wrong, wrong.join("\n")).toEqual([]);
+  });
+
+  it("projects every routed note into tag browsing without another collection list", async () => {
+    const entries = await getTaggedEntries();
+    const routed = contentReader.noteTargets();
+    expect(entries).toHaveLength(routed.length);
+    expect(entries.map((entry) => entry.url).sort()).toEqual(
+      routed.map(({ target }) => `${base}/${target.path}/`).sort(),
+    );
   });
 
   it("resolves every wiki link authored in a typed note", () => {
