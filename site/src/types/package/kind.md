@@ -1,8 +1,9 @@
 # Package
 
-A Package note profiles one upstream software project that the Foundry may evaluate, package, or
-expose through Galaxy. The note describes the software; it is not the runnable Environment or the
-Recipe used to build it.
+A Package note profiles one software project that the Foundry may evaluate, package, or expose
+through Galaxy. Usually that project is upstream; sometimes it was written here, to replace an
+upstream one that cannot be redistributed. The note describes the software; it is not the runnable
+Environment or the Recipe used to build it.
 
 Required fields:
 

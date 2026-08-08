@@ -217,13 +217,13 @@
       "kind": "package",
       "title": "Package",
       "layer": "instance",
-      "summary": "A profile of one upstream TDA or topological deep learning software project and the code facts needed to evaluate and harden it.",
+      "summary": "A profile of one TDA or topological deep learning software project — upstream, or written here to replace one — and the code facts needed to evaluate and harden it.",
       "shape": "file",
       "companions": [],
       "locations": [
         "packages"
       ],
-      "doc": "# Package\n\nA Package note profiles one upstream software project that the Foundry may evaluate, package, or\nexpose through Galaxy. The note describes the software; it is not the runnable Environment or the\nRecipe used to build it.\n\nRequired fields:\n\n- `type: package`\n- `title`: the project's display name\n- `summary`: short reader-facing description\n- `repository`: canonical upstream source repository\n- `languages`: one or more implementation languages\n- `software_license`: either a declared SPDX/custom license id or an explicit `missing` status\n- `tags`: at least one registered domain facet tag\n\nMethod relationships and upstream-health observations remain in prose for now. They become typed\nonly when a real Method collection and a consumer for time-sensitive health evidence exist.",
+      "doc": "# Package\n\nA Package note profiles one software project that the Foundry may evaluate, package, or expose\nthrough Galaxy. Usually that project is upstream; sometimes it was written here, to replace an\nupstream one that cannot be redistributed. The note describes the software; it is not the runnable\nEnvironment or the Recipe used to build it.\n\nRequired fields:\n\n- `type: package`\n- `title`: the project's display name\n- `summary`: short reader-facing description\n- `repository`: canonical upstream source repository\n- `languages`: one or more implementation languages\n- `software_license`: either a declared SPDX/custom license id or an explicit `missing` status\n- `tags`: at least one registered domain facet tag\n\nMethod relationships and upstream-health observations remain in prose for now. They become typed\nonly when a real Method collection and a consumer for time-sensitive health evidence exist.",
       "example": "---\ntype: package\ntitle: Example TDA library\nsummary: A small example showing the minimum metadata required for an upstream software profile.\nrepository: https://github.com/example/tda-library\nlanguages:\n  - Python\nsoftware_license:\n  status: declared\n  id: Apache-2.0\ntags:\n  - method/persistent-laplacian\n---\n\n# Example TDA library\n\nThe body explains the package's purpose, architecture, evidence, limitations, and adoption guidance.",
       "fields": [
         {
