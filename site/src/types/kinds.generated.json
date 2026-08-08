@@ -56,6 +56,71 @@
       ]
     },
     {
+      "kind": "meta",
+      "title": "Design Record",
+      "layer": "substrate",
+      "summary": "A record of why the Foundry itself is built the way it is — the rationale behind the machinery, not the domain.",
+      "shape": "file",
+      "companions": [],
+      "locations": [
+        "meta"
+      ],
+      "doc": "# Design Record\n\nA Design Record says why the Foundry is built the way it is. It is the only kind here whose subject\nis the Foundry itself rather than topological data analysis — every other kind describes a\ntechnique, a piece of upstream software, a fixture, a source, or a study.\n\nRequired fields:\n\n- `type: meta`\n- `title`: the record's display name, which is also its address in prose and on a card\n- `summary`: 20–160 characters, the card text on the design index\n- `record_kind`: which shelf the record sits on, `foundation` or `infrastructure`\n- `order`: reading order within that shelf\n- `status`, `created`, `revised`, `revision`: the lifecycle envelope\n- `tags`: at least one registered tag, in practice `meta`\n\nWhich records exist is the collection's answer, not this file's. The Foundry pattern\n[names a core set](https://galaxyproject.github.io/foundry-pattern/pattern/design-records/) —\narchitecture, guiding principles, molds, mold-spec, casting, corpus, code-architecture,\ncontent-model, build-and-validation, repository-layout — and a listing here would be a second,\nstaler copy of whatever `content/meta/` actually holds.\n\n## The two shelves\n\n`record_kind` is a voice contract before it is a sort key.\n\nA **foundation** record answers *why*. It carries rationale, may argue, and names the design\npressure a choice responds to along with what that choice costs. A reader works through it.\n\nAn **infrastructure** record answers *what, where, and when*. It is developer-facing, present\ntense, and contract-shaped: components and their dependencies, the frontmatter contract, the\ncommands and gates, the physical layout. It does not argue.\n\nA record whose voice fights its shelf is usually two records. The split is also why the shelves\nrender as separate sections rather than one list with a boundary the reader has to infer.\n\n## Why `order` is a field\n\nReading order within a shelf, and the one thing about a hand-written registry array that\nfrontmatter could not otherwise express. The sequence is pedagogical rather than chronological — a\nreader wants the content model before the build gates — so neither `created` nor the title sorts it\ncorrectly.\n\nIt is unique **within a shelf** only. The two shelves number independently, so `order` never sorts\nthem together, and the index selects a shelf before it sorts.\n\n## Why this kind carries dates when nothing else here does\n\nEvery other kind in this instance declined a lifecycle rather than backfill values it could not\nrecover: an upstream package's health, a paper's reading date, and a fixture's provenance are all\nfacts this Foundry would have had to invent. A design record is different because it is written\n*here*. Its `created`, `revised`, and `revision` come from its own git history, so they can be\npopulated truthfully, and that — not symmetry with the other instances — is the test they pass.\n\n`revised` before `created`, and a `revised` status on a `revision: 1` record, are both checked. Both\nare frontmatter errors that read as true forever.\n\n## Shape, and where the files sit\n\nA **flat file**, like `package`, `paper`, `method`, and `replication_experiment`. A design record\nhas nothing to put beside it, so a directory per record would be a container with one file in it\nforever.\n\nThe records live in `content/meta/`, which the pattern fixes, and route at `/design/`, which it does\nnot. This is the first collection in this instance whose key and base differ, and the difference is\nload-bearing: `meta` is the kind's name and the directory the pattern shares across instances,\n`design` is what a reader is looking for in the navigation. Route policy is instance-owned; the\ndirectory is not.\n\n## The glossary is not one of these\n\n`content/meta/glossary.md` shares the directory and is deliberately **not** a note of this kind. It\nis hand-curated, alphabetical, and rendered by its own page, so the collection excludes it by name\nin the routing table rather than in any one consumer — the corpus walk has to honour the exclusion\ntoo. Sharing a directory is a filing decision, not a typing one.\n\n## Substrate, and what is not yet converged\n\nThis kind is **substrate**: all three Foundry instances declare it, because every instance\naccumulates a design record and every one faces the same question of where it lives. `meta`,\n`foundation`/`infrastructure`, and `order` are identical across the three, and the `meta` tag is\ncarried verbatim rather than coined here.\n\nTwo differences are real and not yet resolved. The Galaxy Workflow Foundry puts `status` in its\nbase envelope, so its `meta` kind declares only `title`, `record_kind`, and `order`; the Statistical\nGenomics Foundry and this instance declare the whole lifecycle on the kind, because neither base\nenvelope has one. And this instance is the only one that checks the lifecycle's internal\nconsistency. A substrate kind whose required fields differ per instance is not quite one kind, so\nthese are convergence debts rather than local preferences — the direction being back-porting from\nhere.",
+      "example": "---\ntype: meta\ntitle: Example design record\nsummary: A small example showing the minimum metadata a record needs to take its place on a shelf.\nrecord_kind: infrastructure\norder: 1\nstatus: draft\ncreated: 2026-08-08\nrevised: 2026-08-08\nrevision: 1\ntags:\n  - meta\n---\n\n# Example design record\n\nThe body says one thing about the Foundry's own machinery, in the voice its shelf calls for: an\n`infrastructure` record describes what exists, where it sits, and when it runs, in the present\ntense and without argument. `order: 1` is its place among the infrastructure records, not among all\nrecords — the two shelves number independently.",
+      "fields": [
+        {
+          "name": "created",
+          "required": true,
+          "type": "date"
+        },
+        {
+          "name": "order",
+          "required": true,
+          "type": "number"
+        },
+        {
+          "name": "record_kind",
+          "required": true,
+          "type": "foundation | infrastructure"
+        },
+        {
+          "name": "revised",
+          "required": true,
+          "type": "date"
+        },
+        {
+          "name": "revision",
+          "required": true,
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": "draft | reviewed | revised | stale | archived"
+        },
+        {
+          "name": "summary",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "required": true,
+          "type": "string[]"
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": "\"meta\""
+        }
+      ]
+    },
+    {
       "kind": "method",
       "title": "Method",
       "layer": "instance",

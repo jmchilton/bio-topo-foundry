@@ -5,6 +5,7 @@ import { base } from "./site-base";
 export interface TaggedEntry {
   id: string;
   kind:
+    | "Design record"
     | "Environment"
     | "Method"
     | "Mold"
@@ -67,6 +68,17 @@ export async function getTaggedEntries(): Promise<TaggedEntry[]> {
       summary: entry.data.summary,
       tags: entry.data.tags,
       url: `${base}/methods/${entry.id}/`,
+    })),
+    // Design records carry `meta`, the one tag no domain note carries. Omitting them here would
+    // leave that tag declared, rendered on every record's page, and pointing at a route the tag
+    // index never builds.
+    ...(await getCollection("design")).map((entry) => ({
+      id: entry.id,
+      kind: "Design record" as const,
+      name: entry.data.title,
+      summary: entry.data.summary,
+      tags: entry.data.tags,
+      url: `${base}/design/${entry.id}/`,
     })),
   ];
 }

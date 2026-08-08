@@ -7,6 +7,7 @@ import { REGISTRIES } from "./registries";
 const ctx = buildKindContext(REGISTRIES);
 
 export const environmentSchema = assemble(DEFINITIONS.environment, ctx);
+export const metaSchema = assemble(DEFINITIONS.meta, ctx);
 export const methodSchema = assemble(DEFINITIONS.method, ctx);
 export const moldSchema = assemble(DEFINITIONS.mold, ctx);
 export const packageSchema = assemble(DEFINITIONS.package, ctx);
@@ -18,6 +19,7 @@ export const replicationExperimentSchema = assemble(
 
 export const NOTE_KINDS = {
   environment: environmentSchema,
+  meta: metaSchema,
   method: methodSchema,
   mold: moldSchema,
   package: packageSchema,
@@ -44,6 +46,26 @@ export const contentPath = (relativePath: string) =>
  * frontmatter should fail the build rather than be quietly excluded.
  */
 export const COLLECTIONS = {
+  // First, and so lowest in precedence: a record about the Foundry's own machinery should never
+  // take a bare slug away from a note about topological data analysis, whatever the two happen to
+  // be called.
+  //
+  // The only row whose key is not its base. `content/meta/` is where the Foundry pattern puts
+  // design records and where the glossary already sits, so the directory is shared with the other
+  // instances; `/design/` is what a reader is looking for in the navigation, and route policy is
+  // this instance's to set. The two facts disagreeing is the honest state, not a mismatch to
+  // paper over by renaming one of them.
+  //
+  // `glossary.md` shares the directory and is deliberately not a note: it is hand-curated,
+  // alphabetical, and rendered by its own page. Excluded here, in the routing table, rather than
+  // in the Astro loader alone — the corpus walk and the wiki-link map read this table too, and an
+  // exclusion written in one consumer would start failing the glossary in the others.
+  design: {
+    base: "meta",
+    pattern: ["*.md", "!glossary.md"],
+    kind: "meta",
+    schema: metaSchema,
+  },
   // The first directory-shaped collection: the note is the `index.md`, and the manifest beside it
   // is a companion. `README.md` sits at the base rather than inside a fixture, so this pattern
   // never sees it.

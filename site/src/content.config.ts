@@ -8,6 +8,7 @@ import {
   stripNoteFile,
 } from "./lib/frontmatter-schema";
 
+const design = COLLECTIONS.design;
 const packages = COLLECTIONS.packages;
 const papers = COLLECTIONS.papers;
 const methods = COLLECTIONS.methods;
@@ -16,6 +17,14 @@ const molds = COLLECTIONS.molds;
 const replicationExperiments = COLLECTIONS["replication-experiments"];
 
 export const collections = {
+  design: defineCollection({
+    loader: glob({
+      pattern: [...design.pattern],
+      base: contentPath(design.base),
+      generateId: stripExtension,
+    }),
+    schema: design.schema,
+  }),
   packages: defineCollection({
     loader: glob({
       pattern: [...packages.pattern],

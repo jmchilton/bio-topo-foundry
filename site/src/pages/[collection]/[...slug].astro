@@ -19,6 +19,7 @@ export async function getStaticPaths() {
   // missing here still builds its index page, so the omission shows up only as absent detail
   // pages — which is what the routed-note coverage check in built-site.test.ts exists to catch.
   const entries = [
+    ...(await getCollection('design')),
     ...(await getCollection('environments')),
     ...(await getCollection('methods')),
     ...(await getCollection('molds')),
@@ -54,6 +55,31 @@ const resolveRef = (ref: string) => contentReader.resolveLink(ref, { base });
     tagBase={`${base}/tags`}
     articleClass="prose"
   >
+    {entry.collection === 'design' && (
+      <aside slot="metadata" class="note-facts" aria-label="Record facts">
+        <div>
+          <span>Shelf</span>
+          <strong>{entry.data.record_kind === 'foundation' ? 'Foundation — why' : 'Infrastructure — what'}</strong>
+        </div>
+        <div>
+          <span>Status</span>
+          <strong>{entry.data.status}</strong>
+        </div>
+        <div>
+          <span>Revision</span>
+          <strong>{entry.data.revision}</strong>
+        </div>
+        <div>
+          <span>Last revised</span>
+          <strong>
+            <time datetime={entry.data.revised.toISOString().slice(0, 10)}>
+              {entry.data.revised.toISOString().slice(0, 10)}
+            </time>
+          </strong>
+        </div>
+      </aside>
+    )}
+
     {entry.collection === 'packages' && (
       <aside slot="metadata" class="note-facts" aria-label="Package facts">
         <div>

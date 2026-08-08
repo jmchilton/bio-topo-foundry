@@ -4,15 +4,19 @@ import { getCollection } from 'astro:content';
 import FiltrationHero from '../components/FiltrationHero.astro';
 import PersistenceDivider from '../components/PersistenceDivider.astro';
 import Base from '../layouts/Base.astro';
+import { designRecordShelves } from '../lib/design-records';
 import { COLLECTION_NAMES } from '../lib/frontmatter-schema';
 import { base } from '../lib/site-base';
 
 // Derived rather than summed by hand: a new collection must not be able to land without the
-// headline count following it.
+// headline count following it. Design records are typed notes and are counted as such — the
+// headline links to the tag index, which lists them.
 const counts = await Promise.all(
   COLLECTION_NAMES.map(async (collection) => (await getCollection(collection)).length),
 );
 const typedNoteCount = counts.reduce((total, count) => total + count, 0);
+
+const recordShelves = await designRecordShelves();
 ---
 <Base title="Topological Data Analysis Bioinformatics Foundry">
   <FiltrationHero noteCount={typedNoteCount} />
@@ -52,5 +56,34 @@ const typedNoteCount = counts.reduce((total, count) => total + count, 0);
       <strong>Tags</strong>
       <span>Browse typed notes through the controlled vocabulary they carry.</span>
     </a>
+  </section>
+
+  <PersistenceDivider seed="home:the-foundry-itself" />
+
+  {/*
+    Its own band rather than a ninth card above, because the subject changes. Everything in that
+    grid is about topological data analysis; these records are about the thing holding it, and a
+    reader who wants one almost never wants the other in the same glance.
+  */}
+  <section class="foundry-record" aria-labelledby="foundry-record-heading">
+    <div>
+      <p class="eyebrow">The Foundry itself</p>
+      <h2 id="foundry-record-heading">Design records</h2>
+      <p>
+        Why this Foundry is shaped the way it is, and how it is built. Records are typed notes like
+        any other, split across two shelves: foundation records argue, infrastructure records
+        describe.
+      </p>
+    </div>
+    <ul>
+      {recordShelves.map(({ shelf, title, records }) => (
+        <li>
+          <a href={`${base}/design/#shelf-${shelf}`}>
+            <strong>{title}</strong>
+            <span>{records.length} {records.length === 1 ? 'record' : 'records'}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
 </Base>
