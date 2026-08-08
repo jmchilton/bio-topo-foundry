@@ -1,4 +1,18 @@
-# Replication experiments — design note
+---
+type: meta
+title: Replication Experiments
+summary: Why a replication recreates a paper's reported numbers rather than merely running its code, and which half of that work lives outside this Foundry.
+record_kind: foundation
+order: 1
+status: draft
+created: 2026-08-08
+revised: 2026-08-08
+revision: 1
+tags:
+  - meta
+---
+
+# Replication Experiments
 
 A replication experiment should try to recreate a paper's reported results, not merely run its
 software. Start from named claims, tables, metrics, and figures, then determine how each number or
@@ -32,7 +46,8 @@ evidence manifest. It should not duplicate the upstream writeup.
 
 The studies themselves are typed notes under `content/replication-experiments/`. This page stays
 policy; the inventory that used to sit here is gone, because the notes now carry it and a
-hand-maintained list beside them would only drift.
+hand-maintained list beside them would only drift. [[content-model]] owns the frontmatter contract
+those notes satisfy.
 
 No study currently has a biopixi-backed rerun recorded in this Foundry, so none can be marked
 complete. That is enforced rather than remembered: `status: complete` requires an `environment`.

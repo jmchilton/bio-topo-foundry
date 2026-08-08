@@ -1,0 +1,60 @@
+---
+import PersistenceDivider from '../../components/PersistenceDivider.astro';
+import Base from '../../layouts/Base.astro';
+import { designRecordHref, designRecordShelves } from '../../lib/design-records';
+
+// Both shelves render even when one is empty, and the empty one says so. A shelf that disappears
+// while it has no records is a corpus that looks finished at every stage of being written.
+const shelves = await designRecordShelves();
+---
+<Base
+  title="Design records"
+  description="Why the TDA Bioinformatics Foundry is built the way it is, and how it is built."
+>
+  <header class="page-header">
+    <p class="eyebrow">The Foundry itself</p>
+    <h1>Design records</h1>
+    <p>
+      Everywhere else on this site the subject is topological data analysis. Here it is the Foundry
+      holding it: why the machinery is shaped this way, and what is actually built. Records are
+      notes like any other — typed, tagged, and checked — so what this page lists is the corpus
+      rather than a hand-kept index of it.
+    </p>
+  </header>
+  <PersistenceDivider seed="collection:design" />
+
+  {shelves.map(({ shelf, title, summary, records }) => (
+    <section class="record-shelf" aria-labelledby={`shelf-${shelf}`}>
+      <h2 id={`shelf-${shelf}`}>
+        {title}
+        <span>{records.length} {records.length === 1 ? 'record' : 'records'}</span>
+      </h2>
+      <p class="shelf-description">{summary}</p>
+      {records.length === 0 ? (
+        <p class="shelf-empty">None written yet.</p>
+      ) : (
+        <ol class="collection-list">
+          {records.map((record) => (
+            <li class="card">
+              <a class="card-primary" href={designRecordHref(record)}>
+                <span class="card-title-row">
+                  <strong>{record.data.title}</strong>
+                  <span class="record-order">
+                    {String(record.data.order).padStart(2, '0')}
+                  </span>
+                </span>
+                <span>{record.data.summary}</span>
+              </a>
+              <small>
+                {record.data.status} &middot; revision {record.data.revision} &middot; revised{' '}
+                <time datetime={record.data.revised.toISOString().slice(0, 10)}>
+                  {record.data.revised.toISOString().slice(0, 10)}
+                </time>
+              </small>
+            </li>
+          ))}
+        </ol>
+      )}
+    </section>
+  ))}
+</Base>

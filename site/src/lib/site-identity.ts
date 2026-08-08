@@ -13,6 +13,10 @@ export const SITE_IDENTITY: SiteIdentity = {
     { path: "/papers/", label: "Papers" },
     { path: "/tags/", label: "Tags" },
     { path: "/glossary/", label: "Glossary" },
+    // Last, and so under "More" on a full bar. A reader arriving at this Foundry is looking for
+    // topological data analysis; the records about the Foundry's own machinery are for the
+    // handful who are here to work on it.
+    { path: "/design/", label: "Design" },
   ],
   navVisible: 5,
   footerLinks: [],

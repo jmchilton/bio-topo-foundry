@@ -830,6 +830,117 @@ a {
   line-height: 1.45;
 }
 
+/* The homepage band for the Foundry's own record — deliberately quieter than the content grid
+   above it, and set apart from it, because the subject changes rather than continues. */
+.foundry-record {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 1.5rem 2.5rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.foundry-record h2 {
+  margin: 0.2rem 0 0.6rem;
+  font-family: var(--font-serif);
+  font-variation-settings: 'opsz' 32;
+  font-weight: 580;
+  font-size: 1.6rem;
+  letter-spacing: -0.025em;
+}
+
+.foundry-record p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  max-width: 52ch;
+}
+
+.foundry-record ul {
+  display: grid;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.foundry-record a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--color-border);
+  color: inherit;
+  text-decoration: none;
+}
+
+.foundry-record a:hover strong {
+  color: var(--color-link);
+}
+
+.foundry-record a span {
+  flex: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  .foundry-record {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* The design-record shelves. Same grouped-index shape as the portability ladder, in the serif
+   voice the tag facets use — a shelf is a heading over prose, not a rung on a scale. */
+.record-shelf {
+  margin-top: 2.5rem;
+}
+
+.record-shelf h2 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-serif);
+  font-variation-settings: 'opsz' 28;
+  font-weight: 580;
+  letter-spacing: -0.025em;
+}
+
+.record-shelf h2 span {
+  flex: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.shelf-description {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--color-text-muted);
+}
+
+.shelf-empty {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.record-order {
+  flex: none;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
 .ladder-rung {
   margin-top: 2.5rem;
 }

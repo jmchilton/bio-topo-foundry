@@ -27,3 +27,18 @@ facets:
       modality/molecular-structure: Three-dimensional atomic structures of molecules and complexes.
       modality/point-cloud: Generic point clouds and distance matrices, without a fixed biological source.
       modality/sequence: Biological sequences, as reads, proteins, or nucleotide records.
+  # Last, because the three facets above describe what the corpus is about and this one describes
+  # the Foundry that holds it. Facet and member are carried verbatim from the other two instances
+  # rather than coined here: a design record is about machinery every instance has, so two
+  # instances independently inventing a word for it would be the drift this registry exists to
+  # prevent.
+  #
+  # `meta` is also the one member here with no slash, and it is the case that proves membership was
+  # never a prefix match — the registry declares each value, so a bare key is an ordinary member.
+  meta:
+    label: Meta
+    description: >-
+      Foundry-meta notes — about the Foundry's own design, machinery, or casting system rather
+      than about topological data analysis. The one facet whose member carries no slash.
+    values:
+      meta: Foundry-meta note — about the Foundry's own design, machinery, or casting system.

@@ -136,6 +136,7 @@ describe("the emitted reader slice", () => {
     expect(home).toContain('href="/bio-topo-foundry/molds/"');
     expect(home).toContain('href="/bio-topo-foundry/glossary/"');
     expect(home).toContain('href="/bio-topo-foundry/tags/"');
+    expect(home).toContain('href="/bio-topo-foundry/design/#shelf-foundation"');
     expect(home).toContain(
       `Browse ${contentReader.noteTargets().length} typed notes`,
     );
@@ -297,6 +298,41 @@ describe("the emitted reader slice", () => {
     const glossary = read(path.join(DIST, "glossary/index.html"));
     expect(glossary).toContain('<p id="package"><strong>Package</strong>');
     expect(glossary).toContain("<code>[[Target]]</code>");
+  });
+
+  /**
+   * The design index is the one page whose subject is the Foundry rather than the domain, and the
+   * separation is the point: both shelves are anchored so the homepage can land on one, and the
+   * records reach the reader through the same routed detail page every other note uses.
+   */
+  it("shelves the design records apart from the domain corpus", () => {
+    const index = read(path.join(DIST, "design/index.html"));
+    expect(index).toContain('id="shelf-foundation"');
+    expect(index).toContain('id="shelf-infrastructure"');
+    expect(index).toContain('href="/bio-topo-foundry/design/content-model/"');
+    expect(index).toContain(
+      'href="/bio-topo-foundry/design/replication-experiments/"',
+    );
+
+    const record = read(path.join(DIST, "design/content-model/index.html"));
+    expect(record).toContain('class="content-note"');
+    expect(record).toContain("Infrastructure — what");
+    expect(record).toContain('href="/bio-topo-foundry/tags/meta/"');
+    expect(record).toContain('href="/bio-topo-foundry/design/"');
+
+    // The record's own body link, resolved through the shared map like any other note's.
+    const policy = read(
+      path.join(DIST, "design/replication-experiments/index.html"),
+    );
+    expect(policy).toContain("Foundation — why");
+    expect(policy).toContain('href="/bio-topo-foundry/design/content-model/"');
+  });
+
+  /** The glossary shares `content/meta/` with the records and is deliberately not one of them. */
+  it("keeps the glossary out of the design collection's routes", () => {
+    const built = new Set(pages.map(relativePage));
+    expect(built.has("glossary/index.html")).toBe(true);
+    expect(built.has("design/glossary/index.html")).toBe(false);
   });
 
   it("renders each Mold's typed reference manifest", () => {
