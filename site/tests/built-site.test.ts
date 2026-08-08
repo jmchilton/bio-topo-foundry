@@ -346,13 +346,24 @@ describe("the emitted reader slice", () => {
      * shelf sorted by anything else — id, title, discovery — reads as a list of records rather
      * than a path through them, and nothing else would report the difference.
      */
-    const infrastructure = index.slice(index.indexOf('id="shelf-infrastructure"'));
-    const rendered = [
-      ...infrastructure.matchAll(
-        /href="\/bio-topo-foundry\/design\/([^"]+)\/"/g,
-      ),
-    ].map((match) => match[1]);
-    expect(rendered).toEqual([
+    const recordsIn = (section: string) =>
+      [
+        ...section.matchAll(/href="\/bio-topo-foundry\/design\/([^"]+)\/"/g),
+      ].map((match) => match[1]);
+
+    const foundationStart = index.indexOf('id="shelf-foundation"');
+    const infrastructureStart = index.indexOf('id="shelf-infrastructure"');
+    expect(foundationStart).toBeLessThan(infrastructureStart);
+
+    expect(
+      recordsIn(index.slice(foundationStart, infrastructureStart)),
+    ).toEqual([
+      "positioning",
+      "guiding-principles",
+      "architecture",
+      "replication-experiments",
+    ]);
+    expect(recordsIn(index.slice(infrastructureStart))).toEqual([
       "code-architecture",
       "content-model",
       "repository-layout",

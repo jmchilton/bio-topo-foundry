@@ -8,56 +8,13 @@
 Mirrors: `statistical-genomics-foundry/biopixi` (instance #2), parent `Galaxy Workflow Foundry`
 (instance #1), spec `galaxyproject/foundry-pattern` (PR #11). This would be **instance #3**.
 
----
-
-## 0. The one principle behind all three vocabularies
-
-Every vocabulary splits into two layers:
-
-- **Substrate** — the shared *framework* only: Kind machinery, tag-registry *format*,
-  license-policy, reference contract. Ships in `@galaxy-foundry/*`. **No shared Kind *definitions*
-  exist in the packages yet, and that stays** — the framework is shared, the vocabulary is not.
-- **Instance-specific** — ours, seeded **corpus-first** from what we actually have. Every Kind
-  below is instance-local; nothing is blocked on upstreaming.
-
-**Convergence direction:** this instance is the **rigorous reference build** — a more focused
-corpus and a more disciplined architecture than SGF was stood up with. The intent is to converge
-this and SGF over time by **back-porting from here to SGF**, not inheriting SGF's early ad-hoc
-shape. Design each vocabulary as the one we'd want SGF to adopt.
-
-Corpus we seed from = **7 whitepapers here** + **~14 biopixi env fixtures** (ripser, gudhi,
-dionysus, persim, giotto-ph/-tda, pyflagser, petls, topometry, kmapper, scikit-tda, r-tda,
-r-tdastats).
-
----
-
-## 1. Identity & spine  **[ours]**
-
-**Purpose:** build a corpus of TDA-in-bioinformatics research that simultaneously (a) **moves the
-field** — cutting-edge research + agent-executable analysis skills — and (b) **hardens the
-tooling** — gets TDA software into **Galaxy** and builds TDA **pipelines** for bio analyses.
-
-**Spine = a maturation arc, not a referee gate.** Where stat-genomics is *analyze → referee →
-revise*, this foundry is a **frontier → hardening → delivery** pipeline:
-
-```
-  frontier research     software        hardening              Galaxy delivery
-  (manuscript,     →   (package)    →   (recipe, environment, →  (tool, workflow,
-   proof, mold→skill)                    method)                  training/GTN)
-```
-
-Research earns its keep by advancing the field AND by maturing toward runnable Galaxy tooling. The
-whitepapers are rough today; they're reviews of existing tools/literature (`package`/`paper`), and
-the aspiration is to author our own original **manuscripts** on top of them.
-
-`replication_experiment` cross-cuts this arc: it records the evidence from testing a source claim,
-then optionally hardening or extending it, before a reusable Galaxy delivery necessarily exists.
-
-Working name: **Topological Data Analysis Bioinformatics Foundry**.
-
-> **Open Q1 (spine):** is "frontier → hardening → delivery" the right backbone, and is there an
-> obligation with teeth (e.g. "a method isn't *delivered* until it reaches a runnable Galaxy
-> tool/workflow"), or is this a looser atlas?
+> **Consumed, 2026-08-08.** §0 (substrate/instance split, convergence direction) and §1 (identity
+> and spine) have landed as design records and were removed from here:
+> `content/meta/positioning.md` owns the purpose, the spine, and the no-gate decision;
+> `content/meta/architecture.md` owns the substrate/instance split and the back-port direction;
+> `content/meta/guiding-principles.md` owns corpus-first and the licensing posture. The resolved
+> open questions went with them. What remains below is the Kind roster (including kinds that have
+> not shipped), the seed tag table, and the glossary sketch.
 
 ---
 
@@ -285,16 +242,8 @@ Construct/Critique/Calibrate · Method validity · Self-certification · Assessm
 
 ## Open questions (concise)
 
-1. ~~Spine teeth~~ — **resolved: looser atlas, no gate. Notes live at any stage.**
-2. ~~`proof` meaning~~ — **resolved: mathematical theorem+proof.**
-3. ~~`project` name~~ — **resolved: `package` (piece of software).**
-4. ~~`paper` collision~~ — **resolved: `manuscript` = ours, `paper` = external source note.**
-5. ~~`skill` Kind~~ — **resolved: skills are built molds; author `mold`, `skill` = cast output.**
-6. ~~`package` vs `environment`~~ — **resolved: separate. Package abstract (code to understand+wrap); environment composite+actionable.**
-7. ~~Galaxy objects~~ — **resolved: define our own here (not inheriting #1's shape).**
-8. ~~`method` Kind~~ — **resolved: keep as its own first-class connective Kind.**
-9. ~~Facets~~ — **resolved: keep method/application/modality (all three), singular, no artifact/maturation facet.**
-10. **Substrate-12** — verify exact inherited glossary set vs the `@galaxy-foundry` framework.
-11. ~~Replication evidence~~ — **resolved: add `replication_experiment` as a connective Kind. Its
-    note pins and interprets a standalone executable repository; at least one replicate arm is
-    required, with optional harden and extend arms.**
+Questions 1–9 and 11 are resolved and their answers have shipped — in the kind schemas, their
+`kind.md` files, `meta_tags.yml`, and the design records named at the top of this file. Only one is
+still open:
+
+- **Substrate-12** — verify exact inherited glossary set vs the `@galaxy-foundry` framework.
