@@ -3,11 +3,11 @@ type: meta
 title: Content Model
 summary: How TDA knowledge is represented here as kinds, collections, frontmatter, tags, links, references, and companions.
 record_kind: infrastructure
-order: 1
-status: draft
+order: 2
+status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 1
+revision: 2
 tags:
   - meta
 ---
@@ -15,9 +15,10 @@ tags:
 # Content Model
 
 This record owns the representation of knowledge: what kinds of notes exist, what each is required
-to carry, where they sit, and how they address each other. Where the files physically live and what
-the build does with them belong to records not yet written; what is described below is what the
-schemas, the collection table, and the corpus tests currently enforce.
+to carry, where they sit, and how they address each other. The code enforcing it belongs to
+[[code-architecture]], the directories to [[repository-layout]], and the checks to
+[[build-and-validation]]; what is described below is what the schemas, the collection table, and the
+corpus tests currently require.
 
 ## Notes, kinds, and collections
 
@@ -164,9 +165,12 @@ is **measured** from the directory at build time rather than asserted in frontma
 from the `design` collection by name — in the routing table, so the corpus walk and the link map
 honour the exclusion too. Sharing a directory is a filing decision, not a type declaration.
 
-The `recipes/` directory at the repository root holds real build recipes and is not content; the
-planning drafts beside it are working documents, not records. When a `recipe` kind lands it will
-stub into `content/`, and this record will say so.
+`content/environments/README.md` is the other, and is not excluded by name: it sits at the
+collection base, where the `*/index.md` pattern cannot reach it.
+
+Files outside `content/` are not notes and are not typed — the build recipes and the working drafts
+at the repository root both fall there. [[repository-layout]] owns what each of those locations
+implies; the point here is only that no kind claims them.
 
 Update this record when a kind, collection row, frontmatter contract, tag rule, link rule, reference
 relationship, or companion declaration changes.
