@@ -8,8 +8,9 @@ export const SITE_IDENTITY: SiteIdentity = {
   repoUrl: "https://github.com/jmchilton/bio-topo-foundry",
   navLinks: [
     { path: "/packages/", label: "Packages" },
+    { path: "/tags/", label: "Tags" },
     { path: "/glossary/", label: "Glossary" },
   ],
-  navVisible: 2,
+  navVisible: 3,
   footerLinks: [],
 };

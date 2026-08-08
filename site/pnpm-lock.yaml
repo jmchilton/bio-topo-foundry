@@ -27,8 +27,8 @@ importers:
         specifier: ^0.8.0
         version: 0.8.0(astro-pagefind@2.0.1(astro@7.2.0(@astrojs/markdown-remark@7.2.2)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(astro@7.2.0(@astrojs/markdown-remark@7.2.2)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0))
       '@galaxy-foundry/tag-registry':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.1
+        version: 0.1.1
       '@galaxy-foundry/wiki-links':
         specifier: ^0.4.0
         version: 0.4.0
@@ -482,8 +482,8 @@ packages:
       astro: '>=6'
       astro-pagefind: '>=2'
 
-  '@galaxy-foundry/tag-registry@0.1.0':
-    resolution: {integrity: sha512-BhMI6R0QChol9+gnQZH0TFXcP7mM1145XElC2N3s6C3sXCpUIZ2shs7/l23buZLEMR6t/rQih3Tm1vY9IjK5Bw==}
+  '@galaxy-foundry/tag-registry@0.1.1':
+    resolution: {integrity: sha512-PVsrJDuwPcbr0Eja/xGOpqo++eGz0YKrZQm73zuLdYMzStGErHZjE7+4qkg6b5WSpEwlGR49Cq37qaHzOPoXpA==}
     engines: {node: '>=20'}
 
   '@galaxy-foundry/wiki-links@0.4.0':
@@ -2787,7 +2787,7 @@ snapshots:
       astro: 7.2.0(@astrojs/markdown-remark@7.2.2)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)
       astro-pagefind: 2.0.1(astro@7.2.0(@astrojs/markdown-remark@7.2.2)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0))
 
-  '@galaxy-foundry/tag-registry@0.1.0':
+  '@galaxy-foundry/tag-registry@0.1.1':
     dependencies:
       js-yaml: 4.3.1
 
