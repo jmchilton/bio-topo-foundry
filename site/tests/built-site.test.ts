@@ -51,15 +51,26 @@ beforeAll(() => {
 describe("the emitted reader slice", () => {
   it("emits infrastructure routes and one page for every routed note", () => {
     const built = new Set(pages.map(relativePage));
-    const infrastructure = ["glossary/index.html", "index.html", "packages/index.html"];
+    const infrastructure = [
+      "glossary/index.html",
+      "index.html",
+      "packages/index.html",
+      "tags/index.html",
+    ];
     expect(infrastructure.filter((page) => !built.has(page))).toEqual([]);
 
     const targets = contentReader.noteTargets();
-    expect(targets.length, "the routed-note coverage check found no notes").toBeGreaterThan(0);
+    expect(
+      targets.length,
+      "the routed-note coverage check found no notes",
+    ).toBeGreaterThan(0);
     const missing = targets
       .filter(({ target }) => !built.has(`${target.path}/index.html`))
       .map(({ collection, id }) => `${collection}:${id}`);
-    expect(missing, `\nrouted notes with no built page: ${missing.join(", ")}`).toEqual([]);
+    expect(
+      missing,
+      `\nrouted notes with no built page: ${missing.join(", ")}`,
+    ).toEqual([]);
   });
 
   it("renders the shared shell accessibly on every page", () => {
@@ -91,16 +102,40 @@ describe("the emitted reader slice", () => {
         pages.map((file) => ({ path: relativePage(file), html: read(file) })),
       ),
     ).toEqual([]);
-    expect(existsSync(path.join(DIST, "pagefind/pagefind-entry.json"))).toBe(true);
+    expect(existsSync(path.join(DIST, "pagefind/pagefind-entry.json"))).toBe(
+      true,
+    );
   });
 
   it("uses the configured deployment base for internal links", () => {
     const home = read(path.join(DIST, "index.html"));
     expect(home).toContain('href="/bio-topo-foundry/packages/"');
     expect(home).toContain('href="/bio-topo-foundry/glossary/"');
+    expect(home).toContain('href="/bio-topo-foundry/tags/"');
     expect(home).toContain(
       `Browse ${contentReader.noteTargets("packages").length} typed package`,
     );
+  });
+
+  it("builds a destination for every linked tag", () => {
+    const built = new Set(pages.map(relativePage));
+    const tagLinks = pages.flatMap((file) =>
+      [
+        ...read(file).matchAll(/href="\/bio-topo-foundry\/(tags\/[^"#?]+)\/"/g),
+      ].map((match) => match[1]),
+    );
+    expect(
+      tagLinks.length,
+      "the built site contains no links to tag pages",
+    ).toBeGreaterThan(0);
+
+    const missing = [...new Set(tagLinks)]
+      .filter((tagPath) => !built.has(`${tagPath}/index.html`))
+      .sort();
+    expect(
+      missing,
+      `\nlinked tag routes with no built page: ${missing.join(", ")}`,
+    ).toEqual([]);
   });
 
   it("renders the typed package facts through the shared content frame", () => {
