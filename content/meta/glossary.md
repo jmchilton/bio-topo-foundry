@@ -52,6 +52,10 @@ A review of someone else's work is never a Manuscript. A software project closel
 one paper is a Package when the software is the artifact we intend to harden, and a Paper when only
 the result is being reviewed.
 
+A **Replication experiment** answers a different question: what did we run and observe when testing
+the external claim? It is our evidence-bearing study note, not the external **Paper**, the software
+**Package**, the reusable **Workflow**, or an original **Manuscript**.
+
 **Kind context** — what a kind's schema may draw on when it is built: the base frontmatter
 envelope plus whatever registries the Foundry hands it. Foundries agree on what a kind is and may
 disagree on what a kind draws from, so the shared contract is generic over the context and each
@@ -87,7 +91,9 @@ for publication. It is distinct from a **Package** profile and a **Paper** revie
 **Maturation arc** — *frontier → hardening → delivery*. Frontier research (**Manuscript**,
 **Proof**, **Mold**) connects to the **Package** it concerns; hardening produces a graded
 **Environment**; and Galaxy delivery produces **Tools**, **Workflows**, and **Training**. It is an
-atlas, not a gate: knowledge may enter at any stage.
+atlas, not a gate: knowledge may enter at any stage. **Replication experiments** cross-cut the arc
+by testing source claims and recording evidence through `replicate`, `harden`, and optionally
+`extend` arms before a reusable delivery necessarily exists.
 
 **Method** — a TDA note kind defining a TDA or topological deep learning technique, such as
 persistent homology, persistent Laplacian, Mapper, topological deep learning, or simplicial
@@ -137,6 +143,14 @@ specific artifact is real and where it came from.
 **Package** into a channel artifact. A thin catalog note points to the real files under
 `recipes/<slug>/`; it does not duplicate them. Recipe notes are not cast merely because they appear
 in the KB.
+
+**Replication experiment** — a TDA note kind for a bounded study this project ran to test claims
+from an external **Paper** or **Package** under a pinned protocol. Its standalone repository is the
+executable artifact; its Foundry note pins a revision and records claims, arms, deviations,
+evidence, outcomes, provenance, redistribution constraints, and the corresponding biopixi
+**Environment** used to run it. It must contain a `replicate` arm and may continue through `harden`
+and `extend`; an extend-only study is not a replication experiment. It may inform a **Workflow** or
+**Manuscript**, but is neither.
 
 **Reference** — a typed dependency a Mold declares. Its reference-kind discriminator controls how
 casting treats it, so resolving references is per-kind dispatch rather than “follow every link the

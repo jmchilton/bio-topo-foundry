@@ -11,6 +11,10 @@ export const methodSchema = assemble(DEFINITIONS.method, ctx);
 export const moldSchema = assemble(DEFINITIONS.mold, ctx);
 export const packageSchema = assemble(DEFINITIONS.package, ctx);
 export const paperSchema = assemble(DEFINITIONS.paper, ctx);
+export const replicationExperimentSchema = assemble(
+  DEFINITIONS.replication_experiment,
+  ctx,
+);
 
 export const NOTE_KINDS = {
   environment: environmentSchema,
@@ -18,6 +22,7 @@ export const NOTE_KINDS = {
   mold: moldSchema,
   package: packageSchema,
   paper: paperSchema,
+  replication_experiment: replicationExperimentSchema,
 } as const;
 
 export const CONTENT_DIR = "../content";
@@ -74,6 +79,16 @@ export const COLLECTIONS = {
     pattern: ["*.md"],
     kind: "package",
     schema: packageSchema,
+  },
+  // Last, so a study wins the bare slug over the software it tests. The three today are named for
+  // what was replicated, so `topoqa-interface-quality` and `topoqa` never contend — but if a
+  // future study took its subject's bare name, the note carrying our own evidence is the one a
+  // reader typing that name wants.
+  "replication-experiments": {
+    base: "replication-experiments",
+    pattern: ["*.md"],
+    kind: "replication_experiment",
+    schema: replicationExperimentSchema,
   },
 } as const satisfies Record<
   string,

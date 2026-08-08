@@ -1,6 +1,6 @@
 # TDA Bioinformatics Foundry — vocabulary design draft
 
-> **Status:** draft-for-reaction, rev 3 (2026-07-29). NOT setup. Assembles the three vocabularies
+> **Status:** draft-for-reaction, rev 4 (2026-08-06). NOT setup. Assembles the three vocabularies
 > the Foundry pattern makes you commit to up front — **Kinds**, **tags**, **glossary** — so we
 > don't repeat the ad-hoc early moves we regret in the stat-genomics instance. No code, no config,
 > no site. All provisional; open questions at the bottom.
@@ -50,6 +50,9 @@ Research earns its keep by advancing the field AND by maturing toward runnable G
 whitepapers are rough today; they're reviews of existing tools/literature (`package`/`paper`), and
 the aspiration is to author our own original **manuscripts** on top of them.
 
+`replication_experiment` cross-cuts this arc: it records the evidence from testing a source claim,
+then optionally hardening or extending it, before a reusable Galaxy delivery necessarily exists.
+
 Working name: **Topological Data Analysis Bioinformatics Foundry**.
 
 > **Open Q1 (spine):** is "frontier → hardening → delivery" the right backbone, and is there an
@@ -88,8 +91,92 @@ separate from Kinds. Roster spans both poles of the spine, so grouping matters.
 |---|---|---|---|
 | `method` | A TDA/TDL technique as a concept, wiki-linked across the corpus | persistent-homology, persistent-Laplacian, Mapper, TDL, simplicial learning | The glue: a `manuscript`/`proof` → the `package`/`environment`/`tool` that realizes it. Analog of SGF `pattern`. |
 | `paper` | A source note — reading note of an **external** paper (theirs) | Su 2025, Wee & Jiang 2025 (Han 2025 latent, behind the topoqa `package`) | Substrate-shaped source note (add `book`/`tutorial` only if the corpus needs them). |
+| `replication_experiment` | A bounded study **we ran** to test claims from an external paper or package against a pinned protocol and evidence | TopoQA interface quality, HiPoNet melanoma, TopoMetry cell cycle | Evidence-bearing connective note. The executable experiment lives in a standalone repository; the KB note pins its revision and interprets its evidence. It must include a `replicate` arm, but may continue through `harden` and `extend`. |
 
 Every note carries the shared **envelope** + **≥1 facet tag** (substrate `min(1)` rule).
+
+### 2d. `replication_experiment` evidence contract
+
+Best practices and repository-placement policy live in
+`content/meta/replication-experiments.md`.
+
+The note and repository are complementary artifacts. The standalone repository is the executable
+experiment—code, environment, protocol, inputs or acquisition instructions, and result files. The
+Foundry note is the durable KB entry: it identifies the claim under test, pins one repository
+revision, indexes the evidence, records deviations and outcomes, and links the work to later
+packages, methods, workflows, or manuscripts. A repository alone is not a note, and a planned
+workflow is not replication evidence.
+
+First-draft frontmatter shape:
+
+```yaml
+type: replication_experiment
+replicates: ["[[Han 2025]]"]
+evaluates: ["[[TopoQA]]"]
+uses: ["[[Persistent homology]]", "[[open-topoqa-scorer]]"]
+environment: "[[topoqa-interface-quality-replication]]"
+artifact:
+  repository: https://github.com/jmchilton/topoqa-interface-quality-replication
+  revision: <full-commit-id>
+  protocol: docs/protocol.md
+  evidence_manifest: results/reference/manifest.json
+arc: [replicate, harden]
+status: complete
+redistribution: mixed
+arms:
+  - id: released-checkpoint
+    stage: replicate
+    question: Does the released checkpoint reproduce the reported interface-quality result?
+    status: complete
+    replication_outcome: partially_reproduced
+    evidence: results/reference/released-checkpoint.json
+informs: ["[[Reference-free interface QA for AlphaFold complexes]]"]
+```
+
+Contract:
+
+- `replicates[]` is required and names one or more external `paper` claims. `evaluates[]` may name
+  the associated `package`; `uses[]` records material method, package, or environment dependencies.
+- `environment` is required and names the corresponding biopixi `environment` used for the recorded
+  run. The replication is not complete until this environment has produced the indexed evidence.
+- `artifact` is required and pins the standalone repository by full revision, plus its protocol and
+  evidence-manifest paths. Moving branch names are not sufficient evidence identifiers.
+- `arc` is an ordered subset of the closed stages `replicate`, `harden`, and `extend`. It is planning
+  and interpretation metadata, not a tag facet. Every `replication_experiment` contains at least one
+  `replicate` arm; an extend-only study belongs in a future, broader `experiment` Kind.
+- `status` and every `arms[].status` use `planned | running | complete | blocked | superseded`.
+  `arms[].stage` uses the arc-stage enum. A completed replicate arm records
+  `replication_outcome` as `reproduced | partially_reproduced | not_reproduced | inconclusive` and
+  links its evidence; harden and extend arms answer their own stated questions without borrowing a
+  replication outcome.
+- `redistribution` uses `open | restricted | mixed | noassertion` and summarizes the redistributable
+  experiment bundle, not merely the code license. Input data, weights, and upstream software must
+  still be described separately in the licensing/provenance section.
+- `informs[]` optionally points to the delivery or scholarship enabled by the experiment; it does
+  not imply that a workflow or manuscript already exists.
+
+The note body stays short: **Replication target**, **Outcome**, **Environment and rerun status**,
+**Upstream writeup and evidence**, and **Next delivery**. Detailed protocol, deviations, results,
+figures, provenance, and licensing analysis live in the pinned replication repository and are
+linked rather than duplicated here.
+
+**As shipped** (`site/src/types/replication_experiment/`), with three deviations from the sketch
+above:
+
+- `replicates[]`, `evaluates[]`, `uses[]`, and `informs[]` are body wiki-links rather than
+  frontmatter. Body links are resolved at build time and fail when they dangle; a frontmatter
+  string is never resolved. Moving them into prose makes them *more* checked. It is also what the
+  corpus can currently satisfy — none of the three papers under test has its own `paper` note, each
+  being reviewed inside its `package` note, so a required `replicates[]` would have been
+  unsatisfiable on day one.
+- `arms[]` is dropped. Every study has one arm per arc stage, so per-arm frontmatter would encode
+  structure the corpus does not have. `arc` records which stages ran; the body says what each did.
+- `environment` is optional in the schema and **required by `status: complete`**, rather than
+  required outright. A study whose fixture does not exist yet is unfinished, not invalid — and this
+  is what keeps all three current studies honestly incomplete.
+
+`artifact.revision` is format-checked as a full 40-character commit id, which is the one field
+where a plausible value silently voids the note.
 
 ---
 
@@ -159,6 +246,9 @@ Construct/Critique/Calibrate · Method validity · Self-certification · Assessm
 - **Tool** — a Galaxy tool wrapper exposing a **Package** in Galaxy.
 - **Workflow** — a Galaxy workflow / TDA pipeline for a bio analysis.
 - **Training** — a Galaxy Training Network (GTN) article teaching a TDA analysis.
+- **Replication experiment** — a bounded, Foundry-run study that tests claims from an external
+  paper or package under a pinned protocol. Its KB note records arms, evidence, outcomes,
+  deviations, and redistribution constraints while linking to the executable standalone repository.
 - **Method page** — reference note defining a TDA/TDL technique; wiki-linked from manuscripts,
   packages, tools, workflows. Domain *definitions* of techniques live here, NOT in this glossary.
 
@@ -176,3 +266,6 @@ Construct/Critique/Calibrate · Method validity · Self-certification · Assessm
 8. ~~`method` Kind~~ — **resolved: keep as its own first-class connective Kind.**
 9. ~~Facets~~ — **resolved: keep method/application/modality (all three), singular, no artifact/maturation facet.**
 10. **Substrate-12** — verify exact inherited glossary set vs the `@galaxy-foundry` framework.
+11. ~~Replication evidence~~ — **resolved: add `replication_experiment` as a connective Kind. Its
+    note pins and interprets a standalone executable repository; at least one replicate arm is
+    required, with optional harden and extend arms.**

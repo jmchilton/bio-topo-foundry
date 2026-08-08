@@ -245,6 +245,11 @@ from Foundry invention:
   needs to be selected.
 - **Foundry delta** — the work that is ours rather than a claim about what the source already delivered.
 
+These planning fields become the handoff into a `replication_experiment` note. The experiment note
+records the arms actually run, their status and outcomes, deviations, and a pinned standalone evidence
+repository plus the biopixi environment used to produce that evidence. A planned pipeline or workflow
+is not itself replication evidence.
+
 ### Structure / molecular
 - **P1 · Reference-free interface QA for AlphaFold complexes** (TopoQA-style, on our stack). *Q:* which
   decoy has the most native-like interface when there's no native? PDB decoys → interface residues
