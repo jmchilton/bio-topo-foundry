@@ -10,6 +10,7 @@ import {
 
 const packages = COLLECTIONS.packages;
 const papers = COLLECTIONS.papers;
+const methods = COLLECTIONS.methods;
 const environments = COLLECTIONS.environments;
 const molds = COLLECTIONS.molds;
 
@@ -21,6 +22,14 @@ export const collections = {
       generateId: stripExtension,
     }),
     schema: packages.schema,
+  }),
+  methods: defineCollection({
+    loader: glob({
+      pattern: [...methods.pattern],
+      base: contentPath(methods.base),
+      generateId: stripExtension,
+    }),
+    schema: methods.schema,
   }),
   papers: defineCollection({
     loader: glob({

@@ -56,6 +56,46 @@
       ]
     },
     {
+      "kind": "method",
+      "title": "Method",
+      "layer": "instance",
+      "summary": "This Foundry's account of one TDA or topological deep learning technique: what it computes, when to reach for it, and what here implements it.",
+      "shape": "file",
+      "companions": [],
+      "locations": [
+        "methods"
+      ],
+      "doc": "# Method\n\nA Method note is this Foundry's account of one technique — what it computes, what it costs, when to\nreach for it, and which papers, packages, and environments here belong to it. It is the landing note\nfor one value of the `method` facet.\n\nRequired fields:\n\n- `type: method`\n- `title`: the note's display name\n- `summary`: short reader-facing description\n- `facet_tag`: the `method/` facet value this note anchors\n- `tags`: at least one registered domain facet tag, including `facet_tag` itself\n\n## What separates it from the neighbouring kinds\n\nA Paper note reviews **one external work** and is governed by that work's license: it carries\n`source_license` and a `derived` posture because it describes someone else's expression. A Package\nnote profiles **one upstream project**. A Method note describes **a technique**, which no one owns\nand no single paper exhausts — so it has no source, no license posture, and no repository. It is\nFoundry prose throughout, and the absence of those fields is the point rather than an omission.\n\nThe practical test: if the note would have to change when a specific paper is retracted or a\nspecific project is archived, it is a Paper or Package note. A Method note cites many sources and\nsurvives any one of them.\n\n## Why `facet_tag` is a field and not a convention\n\nThe obvious alternative is to match the note's filename against the tag's last segment, so that\n`methods/persistent-homology.md` implicitly anchors `method/persistent-homology`. That works right\nup until someone renames a file or a tag, at which point the link is silently gone and nothing\nfails. Declaring the tag makes it checkable, and it is checked twice: the value must belong to the\n`method` facet, and the note must carry it among its own `tags`.\n\nThe second check exists because its failure mode is the quiet one. A note whose `facet_tag` names a\ntag it does not itself carry is absent from the tag page it was written to head — every other note\nabout the technique is listed there, and the one explaining the technique is not.\n\n## What a Method note owes the reader\n\nA technique is worth a note here when the corpus already assumes it. The note should say what the\nmethod computes and what it discards, what it costs, what it needs from the data, how to tell it\napart from its nearest neighbour, and where the honest limits are — including which of its\nguarantees come from papers this corpus has not reviewed. Naming what is *not* settled is part of\nthe job; a method note that reads like an advertisement is not doing it.\n\nLinking is the other half. A Method note is the hub: it links up to the Paper notes that define and\nsurvey it, and down to the Package notes implementing it and the Environment fixtures that run\nthem. A tag page lists everything sharing a tag; the Method note explains why those things belong\ntogether.",
+      "example": "---\ntype: method\ntitle: Example technique\nsummary: A small example showing the minimum metadata required for the landing note of one method facet value.\nfacet_tag: method/persistent-homology\ntags:\n  - method/persistent-homology\n  - modality/point-cloud\n---\n\n# Example technique\n\nThe body says what the technique computes and what it throws away, what it costs, when to reach for\nit over its nearest neighbour, and where its guarantees stop. It links up to the Paper notes that\ndefine it and down to the Packages and Environments here that implement and run it.",
+      "fields": [
+        {
+          "name": "facet_tag",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "required": true,
+          "type": "string[]"
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": "\"method\""
+        }
+      ]
+    },
+    {
       "kind": "mold",
       "title": "Mold",
       "layer": "substrate",

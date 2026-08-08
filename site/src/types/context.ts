@@ -96,6 +96,14 @@ export interface KindContext {
    * row, not the id.
    */
   licensePolicy: LicensePolicy;
+  /**
+   * The tag registry itself, for kinds that must ask which facet declared a tag.
+   *
+   * Exposed for the same reason as {@link KindContext.licensePolicy}: `base.tags` only answers
+   * whether a tag is registered, and a Method note additionally has to know that the tag it claims
+   * to anchor belongs to the `method` facet rather than to any facet that happens to exist.
+   */
+  tags: TagRegistry;
 }
 
 export type { KindShape };
@@ -108,5 +116,9 @@ export const defineKind = kindDefiner<KindContext>();
 export function buildKindContext(
   options: BuildKindContextOptions,
 ): KindContext {
-  return { ...buildPrimitives(options), licensePolicy: options.licensePolicy };
+  return {
+    ...buildPrimitives(options),
+    licensePolicy: options.licensePolicy,
+    tags: options.tags,
+  };
 }

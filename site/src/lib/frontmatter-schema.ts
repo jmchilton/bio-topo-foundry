@@ -7,12 +7,14 @@ import { REGISTRIES } from "./registries";
 const ctx = buildKindContext(REGISTRIES);
 
 export const environmentSchema = assemble(DEFINITIONS.environment, ctx);
+export const methodSchema = assemble(DEFINITIONS.method, ctx);
 export const moldSchema = assemble(DEFINITIONS.mold, ctx);
 export const packageSchema = assemble(DEFINITIONS.package, ctx);
 export const paperSchema = assemble(DEFINITIONS.paper, ctx);
 
 export const NOTE_KINDS = {
   environment: environmentSchema,
+  method: methodSchema,
   mold: moldSchema,
   package: packageSchema,
   paper: paperSchema,
@@ -45,6 +47,15 @@ export const COLLECTIONS = {
     pattern: ["*/index.md"],
     kind: "environment",
     schema: environmentSchema,
+  },
+  // A method slug names a technique, so it never contends with a tool name for a bare address.
+  // Ordered ahead of `packages` anyway: if the two ever did collide, the software should win the
+  // bare slug for the same reason it wins today.
+  methods: {
+    base: "methods",
+    pattern: ["*.md"],
+    kind: "method",
+    schema: methodSchema,
   },
   molds: {
     base: "molds",
