@@ -5,7 +5,9 @@ import Base from '../layouts/Base.astro';
 import { base } from '../lib/site-base';
 
 const typedNoteCount =
-  (await getCollection('packages')).length + (await getCollection('papers')).length;
+  (await getCollection('packages')).length +
+  (await getCollection('papers')).length +
+  (await getCollection('environments')).length;
 ---
 <Base title="Topological Data Analysis Bioinformatics Foundry">
   <section class="hero">
@@ -23,6 +25,10 @@ const typedNoteCount =
     <a class="card" href={`${base}/packages/`}>
       <strong>Packages</strong>
       <span>Profiles of upstream TDA software and the facts needed to harden it.</span>
+    </a>
+    <a class="card" href={`${base}/environments/`}>
+      <strong>Environments</strong>
+      <span>Runnable biopixi fixtures, graded L0 to L4 for how portable their packaging is.</span>
     </a>
     <a class="card" href={`${base}/papers/`}>
       <strong>Papers</strong>

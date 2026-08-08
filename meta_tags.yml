@@ -4,6 +4,8 @@ facets:
     label: Method
     description: The TDA or topological deep learning technique a note explains or implements.
     values:
+      method/mapper: Mapper graphs and other nerve-based topological summaries.
+      method/multiparameter-persistence: Persistence along more than one filtration parameter.
       method/persistent-homology: Barcodes and persistence diagrams read off a filtration.
       method/persistent-laplacian: Persistent topological Laplacian methods and implementations.
       method/simplicial-learning: Learning directly on simplicial complexes and their Hodge structure.
@@ -22,3 +24,5 @@ facets:
     values:
       modality/high-dim-tabular: High-dimensional feature matrices such as single-cell count data.
       modality/molecular-structure: Three-dimensional atomic structures of molecules and complexes.
+      modality/point-cloud: Generic point clouds and distance matrices, without a fixed biological source.
+      modality/sequence: Biological sequences, as reads, proteins, or nucleotide records.

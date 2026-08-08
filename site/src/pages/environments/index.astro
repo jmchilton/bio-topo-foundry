@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import TagChips from '@galaxy-foundry/site-kit/TagChips.astro';
+
+import Base from '../../layouts/Base.astro';
+import { base } from '../../lib/site-base';
+import { PORTABILITY_GRADES } from '../../types/environment/schema';
+
+const environments = await getCollection('environments');
+
+// Grouped by grade, because the ladder is the reason the corpus spans these fixtures at all: a
+// reader comparing L0 against L4 is comparing how packageable the work is, not how good it is.
+const ladder = [...PORTABILITY_GRADES]
+  .reverse()
+  .map((grade) => ({
+    grade,
+    entries: environments
+      .filter((entry) => entry.data.portability_grade === grade)
+      .sort((a, b) => a.data.title.localeCompare(b.data.title)),
+  }))
+  .filter((rung) => rung.entries.length > 0);
+---
+<Base title="Environments" description="Runnable biopixi fixtures, graded L0 to L4.">
+  <header class="page-header">
+    <p class="eyebrow">Hardening</p>
+    <h1>Environments</h1>
+    <p>
+      An Environment is one runnable biopixi fixture: a <code>pixi.toml</code> that installs and
+      runs without biopixi present. The grade scores how portable the packaging is, from L0
+      out-of-profile to L4 single-package auto-container. It says nothing about whether the science
+      inside is any good.
+    </p>
+  </header>
+
+  {ladder.map(({ grade, entries }) => (
+    <section class="ladder-rung" aria-labelledby={`grade-${grade}`}>
+      <h2 id={`grade-${grade}`}>
+        {grade} <span>{entries.length} {entries.length === 1 ? 'fixture' : 'fixtures'}</span>
+      </h2>
+      <ul class="collection-list">
+        {entries.map((entry) => (
+          <li>
+            <a class="card" href={`${base}/environments/${entry.id}/`}>
+              <strong>{entry.data.title}</strong>
+              <span>{entry.data.summary}</span>
+              <TagChips tags={entry.data.tags} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</Base>

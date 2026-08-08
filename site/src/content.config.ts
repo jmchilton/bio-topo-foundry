@@ -5,10 +5,12 @@ import {
   COLLECTIONS,
   contentPath,
   stripExtension,
+  stripNoteFile,
 } from "./lib/frontmatter-schema";
 
 const packages = COLLECTIONS.packages;
 const papers = COLLECTIONS.papers;
+const environments = COLLECTIONS.environments;
 
 export const collections = {
   packages: defineCollection({
@@ -26,5 +28,13 @@ export const collections = {
       generateId: stripExtension,
     }),
     schema: papers.schema,
+  }),
+  environments: defineCollection({
+    loader: glob({
+      pattern: [...environments.pattern],
+      base: contentPath(environments.base),
+      generateId: stripNoteFile,
+    }),
+    schema: environments.schema,
   }),
 };

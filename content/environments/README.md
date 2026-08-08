@@ -1,142 +1,34 @@
 # TDA environment fixtures
 
-One pixi environment per topological-data-analysis tool, chosen so the set spans biopixi's
-L0–L4 ladder with real packages. Each `pixi.toml` is a standalone manifest — `pixi install`
-works with biopixi nowhere in sight. Metadata verified against anaconda.org / PyPI / CRAN on
-2026-07-29; re-verify before trusting the grade.
+One pixi environment per topological-data-analysis tool, chosen so the set spans biopixi's L0–L4
+ladder with real packages. Each `pixi.toml` is a standalone manifest — `pixi install` works with
+biopixi nowhere in sight.
 
-Expected grade is the *anticipated* `biopixi grade` result, not a declared one — the grader
-derives it from the manifest, lockfile, and public metadata.
+Each fixture is a directory-shaped `environment` note: `index.md` is the note, and `pixi.toml` and
+`pixi.lock` are its declared companions. The note says what the fixture makes runnable, why it
+grades where it does, and what to know before trusting it. The manifest beside it stays the
+authority on versions and channels, so no note restates a pin.
 
-| Environment | Package(s) | Source | Expected grade |
-|---|---|---|---|
-| `ripser-cpp` | ripser 1.0.1 (C++ CLI) | Bioconda | **L4** — single Bioconda pkg, auto BioContainer |
-| `ripser-py` | ripser 0.6.14 (ripser.py) | conda-forge | **L3** |
-| `gudhi` | gudhi 3.13.0 | conda-forge | **L3** |
-| `persim` | persim 0.3.8 | conda-forge | **L3** |
-| `dionysus` | dionysus 2.2.3 | conda-forge | **L3** |
-| `topometry` | topometry 0.2.1.1 (single-cell) | conda-forge | **L3** — stale channel fixture, *not* the paper's API |
-| `topometry-1.1` | topometry 1.1.0 (the eLife VOR release) | recipe (pure-python noarch, **verified green** + linux-64 lock) | **L1** (feedstock update → L3) |
-| `kmapper` | KeplerMapper 2.1.0 | recipe (pure-python) | **L1** |
-| `scikit-tda` | scikit-tda 1.1.1 (meta) | recipe (pure-python) | **L1** (`tadasets` recipe now in `recipes/tadasets`) |
-| `giotto-ph` | giotto-ph 0.2.4 | recipe (compiled, **verified building on linux-64**) | **L1** |
-| `pyflagser` | pyflagser 0.4.7 | recipe (compiled, **verified building on linux-64**) | **L1** |
-| `petls` | PETLS 1.0.1 | recipe (compiled, **verified building on linux-64**) | **L1** |
-| `petls-pytorch` | petls-pytorch 1.0.2 (Apache-2.0 PETLS reimpl) | recipe (pure-python, **verified green** + linux-64 lock) | **L1** (Bioconda-eligible → L3/L4 on publish) |
-| `r-tdastats` | TDAstats 0.4.2 (R) | recipe (CRAN, compiled, **verified building on linux-64**) | **L1** |
-| `r-tda` | TDA 1.9.4 (R) | recipe (CRAN, compiled) | **L1** |
-| `giotto-tda` | giotto-tda 0.6.2 | PyPI (`[pypi-dependencies]`) | **L0** — out of profile |
-| `hiponet` | HiPoNet `@45a9d08` (`pointcloudnet`, single-cell) | git clone + PyPI closure (**locked green** linux-64) | **L0** — Yale non-commercial, not a packageable lib |
-| `topodockq` | TopoDockQ scorer `@5696f82` (struct QA) | git clone + conda/PyPI per `environment.yaml` (**locked green** linux-64) | **L0** — MIT but Py3.8 `.pyc` core, nothing to build |
-| `open-topodockq-featurizer` | open TopoDockQ interface featurizer (MIT clean-room; the `.pyc`-gated piece) | recipe ×2 w/ `petls-pytorch` (pure-python noarch, **verified green** + linux-64 lock) | **L1** (Bioconda-eligible → L3/L4 on publish) |
-| `open-topoqa-featurizer` | open TopoQA interface featurizer (MIT clean-room; the unlicensed-code piece) | recipe (pure-python noarch; all deps on channels incl. `dssp`, **verified green** + linux-64 lock) | **L1** (Bioconda-eligible → L3/L4 on publish) |
-| `open-topoqa-scorer` | open TopoQA ProteinGAT interface-quality scorer (MIT clean-room retrain from the paper) | recipe ×2 w/ `open-topoqa-featurizer` (pure-python noarch, **verified green** + linux-64 lock) | **L1** (Bioconda-eligible → L3/L4 on publish) |
-| `biopython` | Biopython 1.87 | conda-forge (**locked green**) | **L3** |
-| `dssp` | dssp 4.6.1 (provides `mkdssp`) | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
-| `mmseqs2` | MMseqs2 18.8cc5c | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
-| `dockq` | DockQ 2.1.3 | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
-| `scanpy` | scanpy 1.12.3 + anndata 0.13.2 | conda-forge (**locked green**) | **L3** |
-| `phat` | phat 1.5.0a (PHAT C++ reduction backend) | recipe (compiled pybind11, **verified green** linux-64) | **L1** (LGPL-3.0 → L3 on publish) |
-| `scvi` | scvi-tools 1.5.0.post1 (deep generative embedding) | conda-forge (**locked green**) | **L3** |
-| `phate` | phate 2.0.0 (diffusion embedding) | Bioconda (**locked green**) | **L4** — single Bioconda pkg |
-| `scvelo` | scvelo 0.3.4 + anndata 0.13.2 (RNA velocity) | conda-forge (**locked green**) | **L3** |
-| `ann-backends` | hnswlib 0.8.0 + pynndescent 0.5.13 (ANN kNN) | conda-forge (**locked green**) | **L3** |
-| `batch-integration` | harmonypy 2.0.0 + scanorama 1.7.4 (batch integration) | Bioconda (**locked green**) | **L3** — two Bioconda pkgs |
-| `pydowker` | pyDowker → pyrivet → rivet-console (2-param persistence) | recipe ×3 (**verified green** linux-64) + lock | **L1** (GPL/BSD/MIT → L3 on publish) |
+**This file deliberately holds no inventory table.** It used to carry one row per fixture plus a
+long notes section, which is exactly the hand-maintained second copy that drifts: the counts in the
+planning documents had already disagreed with the tree by the time the notes were written. The
+per-fixture detail now lives in each note, and the generated inventory is the site's
+`/environments/` index, grouped by grade and built from the corpus itself.
 
-## Notes
+## Reading a grade
 
-- **Name collision, deliberate:** `ripser-cpp` and `ripser-py` both pin a package literally named
-  `ripser` but from different channels (Bioconda C++ CLI 1.0.1 vs conda-forge Python lib 0.6.14).
-  The channel prefix is part of the mulled identity, so these are genuinely different environments.
-- **`giotto-tda` is the L0 fixture:** wheel-only on PyPI (no sdist, no conda pkg). Adding a recipe
-  under `recipes/giotto-tda` and switching to a path dependency would promote it to L1.
-- **`hiponet` / `topodockq` are clone-and-run L0 fixtures:** each reproduces a *dependency closure*
-  (locked green on linux-64), but the tool code is **run from its pinned git clone**, not installed —
-  neither is a packageable artifact. `hiponet` has no `[build-system]` (pyproject `name=pointcloudnet`,
-  flat scripts); `topodockq`'s core is Py3.8 `.pyc` bytecode with no source. So **no recipe** is possible
-  for either today — for technical reasons, *not* licensing (`hiponet` is capped at L0/L1 by its
-  non-commercial license regardless; `topodockq` is MIT and could reach L3 if upstream ships source).
-  The featurizer half of that `.pyc` gap is now independently closed: **`open-topodockq-featurizer`**
-  is an MIT clean-room reimplementation (L1 recipe + env, bit-exact vs the `.pyc` on 400 real complexes
-  + adversarial probes), so the open scorer's feature inputs no longer require any bytecode.
-- **`open-topoqa-featurizer` is the sibling TopoQA clean-room** (bio-topo-foundry#4): an MIT
-  reimplementation of TopoQA's element-specific persistent-homology interface featurizer, reproduced
-  **from the paper** (Han 2025, bbaf083) — the upstream code is unlicensed and was never read. It emits
-  the 172-dim node features (32 conventional + 140 element-specific PH) + 11-dim edges, fixing the
-  released code's `(x,y,y)` coordinate defect by construction. Unlike TopoDockQ there is **no bit-exact
-  oracle** (that defect + a retrained scorer, #5, mean divergence from the checkpoint is *correct*), so
-  it's validated against the paper spec + invariants (19 tests, incl. a real-`mkdssp` end-to-end run).
-  All run deps are on public channels (numpy/gudhi/biopython + bioconda `dssp` for `mkdssp`), so the env
-  stages a single path recipe — verified green (osx-arm64 build+install imports from site-packages,
-  featurizes the real 2fns fixture with the env's own `mkdssp`) with a solved linux-64 lock.
-- **`open-topoqa-scorer` closes the open TopoQA vertical** (bio-topo-foundry#5): the MIT clean-room
-  **ProteinGAT scorer** that consumes the featurizer's graphs and predicts a DockQ-like interface-quality
-  score. The *architecture* is reproduced from the paper (Han 2025, bbaf083, Eqs 3–9); the paper pins no
-  training/capacity hyperparameters, so the weights are **our retrain** on a reassembled MAF2 + Dockground
-  corpus. Like the featurizer there is **no bit-exact oracle** — an independent reproduction confirmed the
-  released code carries an `(x,y,y)` coordinate defect that ~⅓ of the paper's HAF2 ranking-loss margin
-  depends on, so divergence from the upstream checkpoint is *correct*; against a corrected `(x,y,z)` TopoQA
-  the retrain is at parity (matches/beats every correlation, HAF2 ranking-loss parity — see
-  `../packages/topoqa.md`). The env stages **two** in-repo path recipes (the scorer + its
-  `open-topoqa-featurizer` input, which is on no public channel yet) and drags a full `pytorch` /
-  `pytorch_geometric` closure. Verified green: the linux-64 lock solves cleanly (pytorch 2.13.0 cpu-mkl,
-  pytorch_geometric 2.8.0, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds + imports.
-- **Compiled recipes:** `petls`, `giotto-ph`, and `pyflagser` are all **verified building green on
-  linux-64** (rattler-build in a linux/amd64 container: compile + link + package + tests pass).
-  `petls` is linux-64-only (an upstream `std::chrono::_V2` libstdc++-ism won't compile under
-  macOS/libc++). `giotto-ph` and `pyflagser` both use a git source rather than a tarball because
-  they vendor their C++ engines as git submodules that setup.py force-fetches (pybind11/junction/turf
-  for giotto-ph; luetge/flagser for pyflagser); both also need `make` and a force-included `<cstdint>`
-  (GCC 13+ dropped transitive includes), giotto-ph additionally needs `cmake <4` (the junction
-  submodule's cmake_minimum_required predates 3.5), and pyflagser needs its `pkg_resources.extern`
-  version import repointed at standalone `packaging`.
-- **`scikit-tda` transitive gap — now closed:** its run closure includes `tadasets`, absent from conda,
-  so `recipes/tadasets` (pure-python, MIT, **verified green**) now provides it, letting `scikit-tda` resolve
-  entirely from conda channels + the in-repo recipe. (Upstream `petls-pytorch` also once declared `tadasets`
-  at runtime, but our fork demoted it to a benchmark extra — see below — so only `scikit-tda` needs it now.)
-- **`pydowker` is a 3-recipe chain built from source:** the whole 2-parameter-persistence stack —
-  `pyDowker` (Dowker complexes) → `pyrivet` (pure-Python API) → `rivet-console` (RIVET's Qt-free C++
-  engine). It retires a former "hollow green": `import pyDowker` used to pass while the tool couldn't run,
-  because `rivet_console` was on no package index. Compiling RIVET's console (GPL-3.0, header-only Boost,
-  cmake `<4`, `-j2` to dodge template-heavy OOM) supplies it. The conda package is named `rivet-console`,
-  not `rivet` — the latter is an unrelated conda-forge project. Chain verified green (rivet compiles +
-  `rivet_console --help`; pyrivet + pyDowker install, real `DowkerComplex` import + `pip check` clean).
-- **Two TopoMetry environments, deliberately:** `topometry` pins conda-forge **0.2.1.1** — the
-  only build on the channel, and four years behind — while `topometry-1.1` stages an in-repo recipe
-  for **1.1.0**, the release the eLife version of record (13:RP100361, 2026-07-03) actually describes.
-  0.2.1.1 predates the `topo.sc.fit_adata` / `topo.sc.preprocess` API the published single-cell
-  workflow is written against, so the conda-forge env is a **packaging fixture, not a replication
-  substrate**. Keeping both records the gap rather than hiding it; updating the feedstock would
-  collapse them into one L3 env. Two upstream defects are fixed at the recipe layer: (1) the recipe
-  builds from the **PyPI sdist**, not a GitHub archive, because upstream's committed `setup.cfg`
-  still says `1.0.2` while `topo/version.py` says `1.1.0` — a git build would report the wrong
-  version, whereas the sdist is correct and its `topo/` package is byte-identical to `master@f2653fa`;
-  (2) `install_requires` omits scanpy, anndata, hnswlib, pacmap, scikit-misc, leidenalg,
-  python-igraph and adjusttext, all of which the paper-facing workflow needs, so the recipe declares
-  them. Verified green on osx-arm64 (build + `pip check` + asserts on runtime version, distribution
-  version, and the presence of `fit_adata`/`preprocess`) with a solved linux-64 lock. Driven by
-  bio-topo-foundry#11 (pipeline P8).
-- **`scvelo` is the velocity half of P8:** the paper computes neighbours and moments on the
-  TopoMetry spectral scaffold *rather than* on PCA, then overlays the velocity field on the learned
-  geometry — so velocity estimation stays downstream of geometry learning. BSD-3, conda-forge → L3
-  (bioconda's scvelo is stuck at 0.2.5, so no auto-BioContainer). **Data caveat:**
-  `scvelo.datasets.pancreas()` downloads from the *mutable* master branch of
-  `theislab/scvelo_notebooks`, a repo with **no licence file** — fetchable and analysable locally,
-  but not redistributable and not bakeable into a container or test fixture.
-- **Single-cell companions (`scvi`, `phate`, `ann-backends`, `batch-integration`):** the supporting
-  stack around TopoMetry's single-cell vertical — learned embedding (scVI), diffusion embedding (PHATE),
-  reproducible kNN backends (hnswlib + pynndescent), and batch integration (harmonypy + scanorama). All
-  conda-only, locked green. Two of them pin **paired alternatives for one pipeline slot** into a single
-  env (`ann-backends`, `batch-integration`); that's why `batch-integration` grades L3 rather than the L4
-  each of harmonypy/scanorama would score alone.
-- **`petls-pytorch` is the open PETLS engine:** Apache-2.0 pure-Python reimplementation of PETLS (persistent
-  Laplacians). Unlike the unlicensed, compiled, linux-only `petls` (permanently L1), its noarch recipe is
-  redistributable and staged-recipes-eligible → promotes to L3/L4 once on conda-forge/Bioconda. Recipe +
-  linux-64 lock verified green; see `../../persistent-laplacian-implementation-review.md`. **Built from our
-  fork `jmchilton/petls-pytorch @ v2`, not the PyPI 1.0.2 sdist:** v2 carries three fixes on top of upstream
-  1.0.2 — most importantly, simplex-tree boundary extraction now indexes every simplex, so isolated vertices
-  no longer crash `Complex(simplex_tree=)`/`Rips(distances=)`. That crash blocked the **bipartite** interface
-  complexes needed for the TopoDockQ featurizer (bio-topo-foundry#3), where atoms with no cross-interface
-  neighbour within the cutoff are routine. The fork also demoted `tadasets` from a runtime dep to a benchmark
-  extra; upstream PRs pending.
+The grade is the *anticipated* `biopixi grade` result, not a declared one — the grader derives it
+from the manifest, lockfile, and public channel metadata. Metadata was verified against
+anaconda.org, PyPI, and CRAN on 2026-07-29; re-verify before trusting a grade.
+
+A grade scores **packaging**, not science. L4 means a fixture installs as one Bioconda package with
+an automatic container; it says nothing about whether the method inside it is correct or useful.
+
+Two patterns recur and are worth reading as a group rather than one fixture at a time:
+
+- **L1 means the recipe is still in this repository.** Most L1 fixtures stage an in-repo recipe
+  under `recipes/`; several are redistributable and would reach L3 or L4 on publication. `petls` is
+  the exception that will not move, because it declares no license at all.
+- **L0 means out of profile, and the reason differs.** `giotto-tda` is wheel-only on PyPI.
+  `hiponet` and `topodockq` run from pinned git clones because neither has anything installable to
+  build — for technical reasons in both cases, and additionally a licensing ceiling for `hiponet`.

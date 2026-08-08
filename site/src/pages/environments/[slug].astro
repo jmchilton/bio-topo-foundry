@@ -1,0 +1,48 @@
+---
+import { getCollection, render } from 'astro:content';
+import ContentNote from '@galaxy-foundry/site-kit/ContentNote.astro';
+
+import Base from '../../layouts/Base.astro';
+import { base } from '../../lib/site-base';
+import { environmentCompanions } from '../../lib/companions';
+
+export async function getStaticPaths() {
+  return (await getCollection('environments')).map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const companions = environmentCompanions(entry.id);
+---
+<Base title={entry.data.title} description={entry.data.summary}>
+  <ContentNote
+    title={entry.data.title}
+    summary={entry.data.summary}
+    tags={entry.data.tags}
+    back={{ href: `${base}/environments/`, label: 'Environments' }}
+    articleClass="prose"
+  >
+    <aside slot="metadata" class="note-facts" aria-label="Fixture facts">
+      <div>
+        <span>Portability grade</span>
+        <strong data-grade={entry.data.portability_grade}>{entry.data.portability_grade}</strong>
+      </div>
+      <div class="note-facts-wide">
+        <span>Manifest files</span>
+        <ul class="companion-list">
+          {companions.map(({ companion, present }) => (
+            <li data-present={String(present)}>
+              <code>{companion.name}</code>
+              <span>{present ? 'present' : `absent (${companion.requirement})`}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+
+    <Content />
+  </ContentNote>
+</Base>

@@ -28,6 +28,15 @@ describe("typed corpus slice", () => {
     ]);
   });
 
+  it("selects every fixture directory, and never the inventory README", () => {
+    const ids = contentReader.noteIds("environments");
+    expect(ids).toHaveLength(33);
+    expect(ids).not.toContain("README");
+    expect(contentReader.noteFiles("environments")).toContain(
+      "environments/ripser-cpp/index.md",
+    );
+  });
+
   it("validates every selected note with its collection's schema", () => {
     const problems: string[] = [];
 

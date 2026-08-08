@@ -10,6 +10,8 @@ import {
 } from "@galaxy-foundry/site-kit";
 import { beforeAll, describe, expect, it } from "vitest";
 
+import { contentReader } from "../src/lib/content-reader";
+
 const SITE = new URL("../", import.meta.url).pathname;
 const DIST = path.join(SITE, "dist");
 
@@ -47,21 +49,30 @@ beforeAll(() => {
 }, 600_000);
 
 describe("the emitted reader slice", () => {
-  it("contains exactly the twelve routes this slice claims", () => {
-    expect(pages.map(relativePage).sort()).toEqual([
-      "glossary/index.html",
-      "index.html",
-      "packages/hiponet/index.html",
-      "packages/index.html",
-      "packages/petls-pytorch/index.html",
-      "packages/petls/index.html",
-      "packages/topodockq/index.html",
-      "packages/topometry/index.html",
-      "packages/topoqa/index.html",
-      "papers/index.html",
-      "papers/tda-tdl-beyond-persistent-homology/index.html",
-      "papers/tda-tdl-molecular-sciences/index.html",
-    ]);
+  it("emits an index and a detail page for every note in every collection", () => {
+    const emitted = pages.map(relativePage).sort();
+    expect(emitted).toContain("index.html");
+    expect(emitted).toContain("glossary/index.html");
+
+    for (const [collection, ids] of [
+      ["packages", contentReader.noteIds("packages")],
+      ["papers", contentReader.noteIds("papers")],
+      ["environments", contentReader.noteIds("environments")],
+    ] as const) {
+      expect(emitted).toContain(`${collection}/index.html`);
+      expect(
+        ids.map((id) => `${collection}/${id}/index.html`).sort(),
+      ).toEqual(
+        emitted.filter(
+          (page) =>
+            page.startsWith(`${collection}/`) &&
+            page !== `${collection}/index.html`,
+        ),
+      );
+    }
+
+    // 33 fixtures + 6 packages + 2 papers, each with a detail page, plus 3 indexes, home, glossary.
+    expect(emitted).toHaveLength(46);
   });
 
   it("renders the shared shell accessibly on every page", () => {
@@ -100,8 +111,9 @@ describe("the emitted reader slice", () => {
     const home = read(path.join(DIST, "index.html"));
     expect(home).toContain('href="/bio-topo-foundry/packages/"');
     expect(home).toContain('href="/bio-topo-foundry/papers/"');
+    expect(home).toContain('href="/bio-topo-foundry/environments/"');
     expect(home).toContain('href="/bio-topo-foundry/glossary/"');
-    expect(home).toContain("Browse 8 typed notes");
+    expect(home).toContain("Browse 41 typed notes");
   });
 
   it("renders the typed package facts through the shared content frame", () => {
@@ -166,6 +178,43 @@ describe("the emitted reader slice", () => {
     expect(molecular).toContain("modality/molecular-structure");
     expect(molecular).toContain("CC BY-NC-ND 4.0");
     expect(molecular).toContain("own-words only");
+  });
+
+  /**
+   * The companion row is measured from the directory at build time, so a fixture cannot render a
+   * lockfile it does not have. That is the whole reason `locked` is not a frontmatter field.
+   */
+  it("renders each fixture's grade and its real companion state", () => {
+    const locked = read(path.join(DIST, "environments/topometry-1.1/index.html"));
+    expect(locked).toContain('data-grade="L1"');
+    expect(locked).toContain('data-present="true"');
+    expect(locked).not.toContain('data-present="false"');
+
+    const unlocked = read(path.join(DIST, "environments/phat/index.html"));
+    expect(unlocked).toContain('data-grade="L1"');
+    expect(unlocked).toContain('data-present="false"');
+    expect(unlocked).toContain("absent (recommended)");
+
+    // The ladder groups the index, so the L0 rung has to be reachable as a heading.
+    const index = read(path.join(DIST, "environments/index.html"));
+    expect(index).toContain('id="grade-L0"');
+    expect(index).toContain('id="grade-L4"');
+  });
+
+  /**
+   * `petls` names both a software profile and a fixture built from it, so the rendered link has to
+   * land on the one the author meant.
+   */
+  it("resolves a shared slug to the package and the fixture to its alias", () => {
+    const fixture = read(path.join(DIST, "environments/petls/index.html"));
+    expect(fixture).toContain('href="/bio-topo-foundry/packages/petls/"');
+
+    const featurizer = read(
+      path.join(DIST, "environments/open-topodockq-featurizer/index.html"),
+    );
+    expect(featurizer).toContain(
+      'href="/bio-topo-foundry/environments/petls-pytorch/"',
+    );
   });
 
   it("renders the loose glossary without corrupting wiki-link examples", () => {
