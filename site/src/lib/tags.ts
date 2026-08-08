@@ -4,7 +4,13 @@ import { base } from "./site-base";
 
 export interface TaggedEntry {
   id: string;
-  kind: "Environment" | "Method" | "Mold" | "Package" | "Paper";
+  kind:
+    | "Environment"
+    | "Method"
+    | "Mold"
+    | "Package"
+    | "Paper"
+    | "Replication experiment";
   name: string;
   summary: string;
   tags: string[];
@@ -45,6 +51,14 @@ export async function getTaggedEntries(): Promise<TaggedEntry[]> {
       summary: entry.data.summary,
       tags: entry.data.tags,
       url: `${base}/papers/${entry.id}/`,
+    })),
+    ...(await getCollection("replication-experiments")).map((entry) => ({
+      id: entry.id,
+      kind: "Replication experiment" as const,
+      name: entry.data.title,
+      summary: entry.data.summary,
+      tags: entry.data.tags,
+      url: `${base}/replication-experiments/${entry.id}/`,
     })),
     ...(await getCollection("methods")).map((entry) => ({
       id: entry.id,

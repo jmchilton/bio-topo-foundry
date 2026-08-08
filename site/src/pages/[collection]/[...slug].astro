@@ -22,6 +22,7 @@ export async function getStaticPaths() {
     ...(await getCollection('molds')),
     ...(await getCollection('papers')),
     ...(await getCollection('packages')),
+    ...(await getCollection('replication-experiments')),
   ];
   return entries.map((entry) => ({
     params: { collection: entry.collection, slug: entry.id },
@@ -96,6 +97,39 @@ const resolveRef = (ref: string) => contentReader.resolveLink(ref, { base });
         <div class="note-facts-wide">
           <span>Anchors the tag</span>
           <a href={`${base}/tags/${entry.data.facet_tag}/`}><code>{entry.data.facet_tag}</code></a>
+        </div>
+      </aside>
+    )}
+
+    {entry.collection === 'replication-experiments' && (
+      <aside slot="metadata" class="note-facts" aria-label="Replication facts">
+        <div>
+          <span>Status</span>
+          <strong>{entry.data.status}</strong>
+        </div>
+        <div>
+          <span>Arc</span>
+          <strong>{entry.data.arc.join(' → ')}</strong>
+        </div>
+        <div>
+          <span>Outcome</span>
+          <strong>{entry.data.replication_outcome?.replace(/_/g, ' ') ?? 'Not yet recorded'}</strong>
+        </div>
+        <div>
+          <span>Redistribution</span>
+          <strong>{entry.data.redistribution}</strong>
+        </div>
+        <div class="note-facts-wide">
+          <span>Pinned evidence</span>
+          <a href={`${entry.data.artifact.repository}/tree/${entry.data.artifact.revision}`}>
+            <code>{new URL(entry.data.artifact.repository).pathname.slice(1)}@{entry.data.artifact.revision.slice(0, 12)}</code>
+          </a>
+        </div>
+        <div class="note-facts-wide">
+          <span>Rerun environment</span>
+          {entry.data.environment
+            ? <a href={`${base}/environments/${entry.data.environment}/`}>{entry.data.environment}</a>
+            : <strong>None yet — no biopixi rerun recorded here</strong>}
         </div>
       </aside>
     )}

@@ -13,6 +13,7 @@ const papers = COLLECTIONS.papers;
 const methods = COLLECTIONS.methods;
 const environments = COLLECTIONS.environments;
 const molds = COLLECTIONS.molds;
+const replicationExperiments = COLLECTIONS["replication-experiments"];
 
 export const collections = {
   packages: defineCollection({
@@ -46,6 +47,14 @@ export const collections = {
       generateId: stripNoteFile,
     }),
     schema: environments.schema,
+  }),
+  "replication-experiments": defineCollection({
+    loader: glob({
+      pattern: [...replicationExperiments.pattern],
+      base: contentPath(replicationExperiments.base),
+      generateId: stripExtension,
+    }),
+    schema: replicationExperiments.schema,
   }),
   molds: defineCollection({
     loader: glob({

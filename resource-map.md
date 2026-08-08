@@ -1,7 +1,7 @@
 # Resource → Kind map
 
 > What we've actually assembled so far, mapped onto the anticipated Foundry KB **Kinds**
-> (see `foundry-design-draft.md` §2, `content/meta/glossary.md`). Draft, 2026-07-30.
+> (see `foundry-design-draft.md` §2, `content/meta/glossary.md`). Draft, 2026-08-06.
 > "Assembled" = a real file in the repo. "Latent" = implied by assembled resources but not yet
 > its own note. "Empty" = no resources yet.
 
@@ -12,10 +12,11 @@
 | `environment` | `content/environments/*/pixi.toml` | **33** | assembled (25 locked, 8 lock-pending) |
 | `manuscript` | — (original papers **we** author) | **0** | empty — aspirational; the whitepapers are reviews, not manuscripts |
 | `package` | tool whitepapers `content/packages/*.md` (petls, topometry, hiponet, topodockq, topoqa; petls-pytorch stub) + one lib behind each env/recipe | **6 writeups (1 stub) + ~13 latent** | 5 rough drafts + petls-pytorch stub; env-fixture packages still latent stubs |
-| `paper` (source note) | "synthesis of X" survey whitepapers `content/papers/*.md`: Su 2025, Wee & Jiang 2025 | **2 + ~5 latent** | review entities that link to source, not copies |
-| `method` | — (techniques referenced across the corpus) | ~6 | **latent** — to author |
+| `paper` (source note) | source notes `content/papers/*.md`: Su 2025, Wee & Jiang 2025, Wang/Nguyen/Wei 2020 | **3 + ~5 latent** | review entities that link to source, not copies |
+| `method` | landing notes `content/methods/*.md`, one per `method/` facet value | **7** | assembled — every facet value now has its note |
+| `replication_experiment` | notes `content/replication-experiments/*.md` pinning the standalone TopoQA, HiPoNet, and TopoMetry repositories | **3** | assembled — biopixi-backed reruns remain before any is complete |
 | `proof` | — | 0 | empty |
-| `mold` / `skill` | — | 0 | empty |
+| `mold` / `skill` | `content/molds/*/index.md` (score-docking-poses) | **1** | first vertical assembled; nothing cast yet |
 | `tool` (Galaxy) | — | 0 | empty |
 | `workflow` | — | 0 | empty |
 | `training` | — | 0 | empty |
@@ -120,9 +121,8 @@ becomes a *latent* `paper` behind it. The earlier `paper` filing came from the n
   (hiponet + topodockq now have L0 envs).
 - **P8 replication in flight:** `topometry-1.1` + `scvelo` + `scanpy` + `ripser-py` back the
   developing-pancreas cell-cycle replication (bio-topo-foundry#11). Analysis code lives in its own
-  repo, `topometry-cell-cycle-replication`, following the `open-topoqa-*` precedent — the foundry keeps
-  the recipe, the environments and the writeup. It is the first resource pointed at the empty
-  `workflow` Kind, though it is not a Galaxy workflow yet.
+  repo, `topometry-cell-cycle-replication`, following the `open-topoqa-*` precedent. It is a latent
+  `replication_experiment`, not a `workflow`; a later Galaxy workflow is one delivery it may inform.
 - **Environments without a whitepaper** (27 of 33): the workhorse TDA libs (ripser, gudhi, dionysus,
   persim, giotto-*, pyflagser, kmapper, scikit-tda, r-tda, r-tdastats, phat, pydowker) + the enabling deps
   (biopython, scanpy, dssp, mmseqs2, dockq) + the single-cell companions (scvi, phate, ann-backends,
@@ -143,6 +143,19 @@ becomes a *latent* `paper` behind it. The earlier `paper` filing came from the n
 - **`method`** (~6) — persistent-homology · persistent-laplacian · topological-deep-learning ·
   simplicial-learning · spectral-geometry · beyond-persistent-homology. Exactly the `method` tag
   facet; each becomes a wiki-link hub.
+- **`replication_experiment`** — three executable repositories exist, but no
+  `content/replication-experiments/*.md` KB notes pin and interpret them yet:
+
+  | Repository | Replication target | Arc represented | KB state |
+  |---|---|---|---|
+  | [`topoqa-interface-quality-replication`](https://github.com/jmchilton/topoqa-interface-quality-replication) | TopoQA interface-quality prediction | replicate → harden | latent note; biopixi rerun required |
+  | [`hiponet-melanoma-replication`](https://github.com/jmchilton/hiponet-melanoma-replication) | HiPoNet melanoma cohort classification | replicate → harden → extend | latent note; biopixi rerun required |
+  | [`topometry-cell-cycle-replication`](https://github.com/jmchilton/topometry-cell-cycle-replication) | TopoMetry cell-cycle and velocity analysis | replicate → harden | latent note; biopixi rerun required |
+
+  The repository is the executable artifact; the future note records a pinned revision, protocol,
+  evidence manifest, arm-level outcomes, deviations, redistribution constraints, and corresponding
+  biopixi environment. No biopixi-backed rerun is currently recorded for these repositories, so none
+  should be considered complete yet. See `content/meta/replication-experiments.md`.
 
 ## Empty kinds (no resources yet)
 
@@ -162,3 +175,6 @@ formal-math frontier, all still ahead.
    a tool profile). Han 2025 becomes a latent `paper` behind it.
 4. **`manuscript` reserved for our own original papers** — the 7 whitepapers are reviews of others'
    work → `package` (4 tool profiles) or `paper` (3 surveys/reviews); `manuscript` is empty for now.
+5. ~~Standalone replication repository placement~~ — **resolved: keep executable experiments in
+   their own repositories and assemble `content/replication-experiments/<slug>.md` notes here. The
+   note pins and interprets repository evidence; the repository is not a `workflow`.**
