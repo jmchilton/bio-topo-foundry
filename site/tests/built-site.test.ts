@@ -384,6 +384,35 @@ describe("the emitted reader slice", () => {
     expect(policy).toContain('href="/bio-topo-foundry/design/content-model/"');
   });
 
+  it("renders the code architecture as an accessible, theme-native dependency map", () => {
+    const architecture = read(
+      path.join(DIST, "design/code-architecture/index.html"),
+    );
+
+    expect(architecture).toContain('class="architecture-diagram"');
+    expect(architecture).toContain(
+      'aria-labelledby="architecture-title architecture-description"',
+    );
+    expect(architecture).toContain(
+      'aria-label="Scrollable code architecture dependency map"',
+    );
+    expect(architecture).toContain(
+      "https://github.com/jmchilton/foundry-lib/tree/main/packages/kind-schema",
+    );
+    expect(architecture).toContain(
+      "https://github.com/jmchilton/foundry-lib/tree/main/packages/content-reader",
+    );
+    expect(architecture).toContain(
+      "https://github.com/jmchilton/foundry-lib/tree/main/packages/site-kit",
+    );
+    expect(architecture).toContain(
+      "https://github.com/jmchilton/foundry-lib/tree/main/packages/audit-citations",
+    );
+    expect(css).toContain(".architecture-map");
+    expect(css).toContain("var(--color-surface-raised)");
+    expect(css).toContain("var(--color-text-primary)");
+  });
+
   /** The glossary shares `content/meta/` with the records and is deliberately not one of them. */
   it("keeps the glossary out of the design collection's routes", () => {
     const built = new Set(pages.map(relativePage));
