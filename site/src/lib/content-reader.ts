@@ -14,13 +14,19 @@ export const contentReader = createContentReader({
   targetOf: (collection, id) => ({ path: `${collection}/${id}` }),
 
   /**
-   * A fixture is always addressable as `<slug>-environment`, whether or not a package shares its
-   * slug.
+   * Every note is addressable as `<slug>-<kind>`, whatever else shares its slug.
    *
-   * Without this, `[[petls]]` means the software profile and the fixture has no address at all,
-   * because precedence hands the bare slug to exactly one of them. Aliases never overwrite a
-   * primary address, so this adds the second address without disturbing the first.
+   * Five slugs name both a package and an environment — `petls`, `topometry`, `hiponet`,
+   * `petls-pytorch`, `topodockq` — because this corpus builds a fixture per tool and names it
+   * after the tool. Precedence hands each bare slug to exactly one of them, so without a second
+   * address the other is unreachable. Aliases never overwrite a primary, so this adds an address
+   * without disturbing one.
+   *
+   * It is generated for every collection rather than only the colliding ones, because which slugs
+   * collide is a fact about the corpus today. Adding a `gudhi` package would silently retarget
+   * `[[gudhi]]`; the qualified form has to already exist for that to be a non-event. Keyed on the
+   * collection's `kind`, which is singular and authoritative, rather than on a singularized
+   * collection name.
    */
-  aliases: (_meta, id, collection) =>
-    collection === "environments" ? [`${id}-environment`] : [],
+  aliases: (_meta, id, collection) => [`${id}-${COLLECTIONS[collection].kind}`],
 });

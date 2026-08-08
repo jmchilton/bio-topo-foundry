@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 
 import { contentReader } from "../src/lib/content-reader";
 import {
+  COLLECTIONS,
   COLLECTION_NAMES,
   contentPath,
 } from "../src/lib/frontmatter-schema";
@@ -51,6 +52,32 @@ describe("shared content-reader binding", () => {
     expect(map.get("gudhi-environment")).toEqual({
       path: "environments/gudhi",
     });
+  });
+
+  /**
+   * The qualified address is uniform across kinds, so an author never has to know which slugs
+   * happen to collide to know how to address a note.
+   *
+   * This also guards the one hazard the alias mechanism carries: a primary always wins, so a note
+   * literally named `<slug>-<kind>` would take the address another note's alias wanted, and
+   * nothing would report it. Asserting that every alias lands on its own note turns that silent
+   * shadowing into a failure.
+   */
+  it("addresses every note as slug-kind, whatever else shares its slug", () => {
+    const wrong: string[] = [];
+
+    for (const collection of COLLECTION_NAMES) {
+      const kind = COLLECTIONS[collection].kind;
+      for (const id of contentReader.noteIds(collection)) {
+        const href = contentReader.resolveLink(`${id}-${kind}`).href;
+        const expected = `/${collection}/${id}/`;
+        if (href !== expected) {
+          wrong.push(`[[${id}-${kind}]] resolved to ${href}, wanted ${expected}`);
+        }
+      }
+    }
+
+    expect(wrong, wrong.join("\n")).toEqual([]);
   });
 
   it("resolves every wiki link authored in a typed note", () => {

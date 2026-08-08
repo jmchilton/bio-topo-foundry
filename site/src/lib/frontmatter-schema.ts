@@ -27,9 +27,8 @@ export const contentPath = (relativePath: string) =>
  * Package and environment slugs coincide by design — `petls`, `topometry`, `hiponet` and others
  * name both a software profile and a fixture built from it — so this order is a content decision,
  * not a formatting one. Prose that says `[[petls]]` almost always means the software, which is the
- * abstract subject, so `packages` sorts last and takes the bare slug. Every environment also
- * carries an explicit `<slug>-environment` alias, so the fixture is always addressable without
- * relying on this order at all.
+ * abstract subject, so `packages` sorts last and takes the bare slug. Every note also carries a
+ * `<slug>-<kind>` alias, so any note is addressable without relying on this order at all.
  *
  * The patterns are globs because every writeup in the corpus is typed. The named-file lists these
  * replaced existed only to hold back unmigrated prose; with none left, a note that skips its
