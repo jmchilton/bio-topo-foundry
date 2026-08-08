@@ -60,23 +60,21 @@ there, and both had already been copied into
 before the audit ran again. A wrong identifier propagates by citation reuse, which is the argument
 for checking it on every build rather than once.
 
+It has also caught two defects in its own tooling. Both reported correct notes as findings, which is
+the expensive direction: a reviewer spends attention on a citation that was right, and the exemption
+they write to silence it outlives the bug.
+
+| Reported as | Actually |
+|---|---|
+| `10.1016/S1359-0278(97)00024-2` and `10.1016/S0006-3495(01)76033-X` unresolved | Percent-encoded in the Markdown link, because an unescaped `)` would close it. The DOI grammar stopped at the `%` and queried a truncated identifier no agency registers |
+| A `topometry` entry's authors mostly absent from the record | Vancouver notation (`Domingos AI`) against Crossref's given-name form (`Ana I Domingos`). The same three people; the unpunctuated initials run read as one meaningless token |
+
+Both were fixed upstream in `@galaxy-foundry/audit-citations` 0.1.2 rather than adjudicated here, so
+`adjudications.json` is now empty. Three exemptions retired; the notes were never wrong.
+
 ## Standing exemptions
 
-Three findings are adjudicated in `adjudications.json` rather than repaired, because the notes are
-right and the tooling is not yet:
-
-- **Two percent-encoded DOIs.** `10.1016/S1359-0278(97)00024-2` and `10.1016/S0006-3495(01)76033-X`
-  are written percent-encoded in Markdown links, because an unescaped `)` would close the link. The
-  extractor's DOI grammar stops at the `%`. Both were verified by hand against Crossref.
-- **One author-notation mismatch.** A `topometry` entry names authors in Vancouver form
-  (`Domingos AI`); Crossref stores given-name form (`Ana I Domingos`). Same people; the comparator
-  does not yet reduce a trailing initials blob to a given name.
-
-Both are upstream gaps in `@galaxy-foundry/audit-citations`, not corpus defects. The adjudications
-are bound to the exact source text, so editing any of these lines retires the exemption and returns
-the finding to review.
-
-`uncited-reference-entries.json` is a different kind of exemption: source repositories, package
+`uncited-reference-entries.json` is the one remaining exemption: source repositories, package
 distributions, project documentation, and a funding record are cited by URL because they have no
 DOI. They are enumerated so that coverage means something — an entry the extractor cannot read is a
 build failure, not a silent gap. Narrative lines under a source-note heading are exempt by shape,
