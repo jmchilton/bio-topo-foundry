@@ -7,7 +7,7 @@ order: 2
 status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 3
+revision: 4
 tags:
   - meta
 ---
@@ -23,19 +23,14 @@ corpus tests currently require.
 ## Notes, kinds, and collections
 
 Every note declares one literal `type`. That value selects one strict kind definition and is never
-inferred from a path or a tag. Eight kinds are declared today:
+inferred from a path or a tag. `site/src/types/kinds.generated.json` is the exact current roster;
+this record owns the relationships that make that roster meaningful rather than copying its list.
 
-- `method` — one TDA or topological deep learning technique, and the landing note for one `method/`
-  facet value.
-- `package` — one upstream software project, with the code facts needed to evaluate and harden it.
-- `environment` — one runnable biopixi fixture, carrying an L0–L4 portability grade.
-- `paper` — a source note on one external work, governed by that work's license.
-- `replication_experiment` — one bounded study this Foundry ran, pinning the standalone repository
-  holding its evidence.
-- `recipe` — one in-repo `rattler-build` recipe for a package the public conda channels do not
-  supply.
-- `mold` — one abstract action and its typed reference manifest.
-- `meta` — a design record, the only kind whose subject is the Foundry rather than the domain.
+Most kinds describe the domain from one angle: a technique, an upstream implementation, a runnable
+environment, a source, a Foundry-run study, or an in-repository build recipe. They remain distinct
+because those subjects can truthfully support different metadata. A Mold is the action-oriented
+kind: it says what to do and names typed references to the knowledge it needs. A `meta` record is the
+opposite boundary, the one kind whose subject is the Foundry rather than the domain.
 
 A **collection** is a location, not a kind: a base directory under `content/`, a pattern selecting
 which files beneath it are notes, and the kind those notes are. The two are not one-to-one, and one
@@ -52,12 +47,11 @@ machinery never takes a bare slug from a note about the domain. Recipes sort nex
 reason one rung up — `petls`, `kmapper`, and `topometry` each name a package, a fixture, and a
 build, and the build is the least likely of the three to be what prose means.
 
-Two shapes exist. A **flat** kind is one Markdown file (`method`, `package`, `paper`,
-`replication_experiment`, `recipe`, `meta`). A **directory** kind is a directory holding an
-`index.md` (`environment`, `mold`), which is what lets it declare companions. Each kind's schema, its `kind.md`
-rationale, and a minimal `example.md` sit together under `site/src/types/<kind>/`;
-`kinds.generated.json` is the portable manifest derived from those definitions, and is checked
-rather than hand-edited.
+Every kind declares one of two shapes. A **flat** kind is one Markdown file. A **directory** kind is
+a directory whose note is `index.md`, which lets the kind declare non-note companions beside it.
+Each kind's schema, its `kind.md` rationale, and a minimal `example.md` sit together under
+`site/src/types/<kind>/`; the generated manifest records the exact shape and locations of every kind
+and is checked rather than hand-edited.
 
 ## Identity and addressing
 

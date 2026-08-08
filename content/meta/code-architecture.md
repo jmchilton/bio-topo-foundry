@@ -4,10 +4,10 @@ title: Code Architecture
 summary: The Astro and TypeScript implementation as it stands — components, dependency seams, entry points, and deliberate absences.
 record_kind: infrastructure
 order: 1
-status: draft
+status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 1
+revision: 2
 tags:
   - meta
 ---
@@ -139,12 +139,20 @@ The site is a pure reader. It validates and renders source; it does not mutate c
 notes, or cast artifacts. The only client-side code is progressive enhancement — the homepage
 filtration control — and there is no UI framework.
 
-## Generator
+## Generation and citation audit
 
 `site/scripts/generate-kind-manifest.ts` derives `src/types/kinds.generated.json` from the live kind
 definitions, their `kind.md` and `example.md`, and the collection table, through
 `@galaxy-foundry/kind-manifest`. It imports the same contracts validation does rather than building
 a parallel model, and it has a `--check` mode. [[build-and-validation]] owns when it runs.
+
+The citation audit is a second build-time path, not part of the reader stack above.
+`@galaxy-foundry/audit-citations` owns extraction, provider normalization, comparison,
+adjudication, and report rendering. `audit-citations.config.json` supplies this instance's corpus
+and provider policy; `site/src/lib/citation-audit.ts` binds the package to committed evidence and
+exposes the offline replay used by `site/tests/citation-audit.test.ts`. Live provider access stays in
+the scheduled workflow. [[repository-layout]] owns the committed files and
+[[build-and-validation]] the commands and gates.
 
 ## Deliberate absences
 
@@ -152,8 +160,6 @@ a parallel model, and it has a `--check` mode. [[build-and-validation]] owns whe
   turns a Mold into an artifact. Cast modes are narrowed to what this instance can honor.
 - **No package workspace.** One application, so contracts live beside it. Extracting them becomes
   worthwhile when a second consumer needs them without depending on the Astro project.
-- **No citation audit.** `@galaxy-foundry/audit-citations` is capability-triggered and no surface
-  here triggers it yet.
 - **No server or database.** The output is a static site with a static search index.
 
 A record must not describe machinery as running before it runs. A reader who finds a present-tense
@@ -176,6 +182,8 @@ aspirational or the checkout is broken.
 | domain furniture | `site/src/components/`, `site/src/lib/motifs.ts` |
 | routes | `site/src/pages/` |
 | corpus and contract tests | `site/tests/` |
-| generator | `site/scripts/` |
+| kind-manifest generator | `site/scripts/` |
+| citation-audit binding and test | `site/src/lib/citation-audit.ts`, `site/tests/citation-audit.test.ts` |
+| citation policy and committed evidence | `audit-citations.config.json`, `audit/` |
 
 Update this record when a component, dependency seam, entry point, or deliberate absence changes.
