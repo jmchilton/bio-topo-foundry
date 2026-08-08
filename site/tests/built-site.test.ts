@@ -11,6 +11,8 @@ import {
 import { beforeAll, describe, expect, it } from "vitest";
 
 import { contentReader } from "../src/lib/content-reader";
+import { environmentCompanions } from "../src/lib/companions";
+import { COLLECTION_NAMES } from "../src/lib/frontmatter-schema";
 
 const SITE = new URL("../", import.meta.url).pathname;
 const DIST = path.join(SITE, "dist");
@@ -52,10 +54,10 @@ describe("the emitted reader slice", () => {
   it("emits infrastructure routes and one page for every routed note", () => {
     const built = new Set(pages.map(relativePage));
     const infrastructure = [
-      "glossary/index.html",
       "index.html",
-      "packages/index.html",
+      "glossary/index.html",
       "tags/index.html",
+      ...COLLECTION_NAMES.map((collection) => `${collection}/index.html`),
     ];
     expect(infrastructure.filter((page) => !built.has(page))).toEqual([]);
 
@@ -110,10 +112,12 @@ describe("the emitted reader slice", () => {
   it("uses the configured deployment base for internal links", () => {
     const home = read(path.join(DIST, "index.html"));
     expect(home).toContain('href="/bio-topo-foundry/packages/"');
+    expect(home).toContain('href="/bio-topo-foundry/papers/"');
+    expect(home).toContain('href="/bio-topo-foundry/environments/"');
     expect(home).toContain('href="/bio-topo-foundry/glossary/"');
     expect(home).toContain('href="/bio-topo-foundry/tags/"');
     expect(home).toContain(
-      `Browse ${contentReader.noteTargets("packages").length} typed package`,
+      `Browse ${contentReader.noteTargets().length} typed notes`,
     );
   });
 
@@ -161,6 +165,89 @@ describe("the emitted reader slice", () => {
     expect(topometry).toContain("modality/high-dim-tabular");
     expect(topometry).toContain("MIT");
     expect(topometry).toContain("verbatim OK");
+  });
+
+  it("renders declared, missing, and custom software licences distinctly", () => {
+    const topodockq = read(path.join(DIST, "packages/topodockq/index.html"));
+    expect(topodockq).toContain("application/structure-qa");
+    expect(topodockq).toContain("MIT");
+    expect(topodockq).toContain("verbatim OK");
+
+    for (const slug of ["petls", "topoqa"]) {
+      expect(read(path.join(DIST, `packages/${slug}/index.html`))).toContain(
+        "Not declared upstream",
+      );
+    }
+
+    const hiponet = read(path.join(DIST, "packages/hiponet/index.html"));
+    expect(hiponet).toContain("method/simplicial-learning");
+    expect(hiponet).toContain('title="LicenseRef-yale-non-commercial"');
+    expect(hiponet).toContain(">yale-non-commercial</span>");
+    expect(hiponet).toContain("own-words only");
+  });
+
+  /**
+   * The two source notes summarize works whose licences differ but whose policy rows agree, so
+   * the page has to show the row it actually resolved rather than a posture typed by hand.
+   */
+  it("renders each source note's licence row and declared posture", () => {
+    const beyond = read(
+      path.join(DIST, "papers/tda-tdl-beyond-persistent-homology/index.html"),
+    );
+    expect(beyond).toContain('class="content-note"');
+    expect(beyond).toContain("method/topological-deep-learning");
+    expect(beyond).toContain("arXiv non-exclusive distribution 1.0");
+    expect(beyond).toContain("own-words only");
+    expect(beyond).toContain("Own words");
+
+    const molecular = read(
+      path.join(DIST, "papers/tda-tdl-molecular-sciences/index.html"),
+    );
+    expect(molecular).toContain("application/molecular-sciences");
+    expect(molecular).toContain("modality/molecular-structure");
+    expect(molecular).toContain("CC BY-NC-ND 4.0");
+    expect(molecular).toContain("own-words only");
+  });
+
+  /**
+   * The companion row is measured from the directory at build time, so a fixture cannot render a
+   * lockfile it does not have. That is the whole reason `locked` is not a frontmatter field.
+   */
+  it("renders every fixture's measured companion state", () => {
+    for (const id of contentReader.noteIds("environments")) {
+      const html = read(path.join(DIST, `environments/${id}/index.html`));
+      const states = environmentCompanions(id);
+      for (const { companion } of states) {
+        expect(html).toContain(`<code>${companion.name}</code>`);
+      }
+      expect([...html.matchAll(/<li data-present="true">/g)]).toHaveLength(
+        states.filter(({ present }) => present).length,
+      );
+      expect([...html.matchAll(/<li data-present="false">/g)]).toHaveLength(
+        states.filter(({ present }) => !present).length,
+      );
+    }
+
+    // The ladder groups the index, so the L0 rung has to be reachable as a heading.
+    const index = read(path.join(DIST, "environments/index.html"));
+    expect(index).toContain('id="grade-L0"');
+    expect(index).toContain('id="grade-L4"');
+  });
+
+  /**
+   * `petls` names both a software profile and a fixture built from it, so the rendered link has to
+   * land on the one the author meant.
+   */
+  it("resolves a shared slug to the package and the fixture to its alias", () => {
+    const fixture = read(path.join(DIST, "environments/petls/index.html"));
+    expect(fixture).toContain('href="/bio-topo-foundry/packages/petls/"');
+
+    const featurizer = read(
+      path.join(DIST, "environments/open-topodockq-featurizer/index.html"),
+    );
+    expect(featurizer).toContain(
+      'href="/bio-topo-foundry/environments/petls-pytorch/"',
+    );
   });
 
   it("renders the loose glossary without corrupting wiki-link examples", () => {

@@ -3,6 +3,59 @@
   "version": 1,
   "kinds": [
     {
+      "kind": "environment",
+      "title": "Environment",
+      "layer": "instance",
+      "summary": "A reproducible biopixi fixture that assembles packages and their dependencies into one runnable configuration, carrying a portability grade.",
+      "shape": "directory",
+      "companions": [
+        {
+          "file": "pixi.toml",
+          "requirement": "required",
+          "purpose": "Standalone pixi manifest; `pixi install` resolves it with biopixi nowhere in sight.",
+          "disposition": "bundled"
+        },
+        {
+          "file": "pixi.lock",
+          "requirement": "recommended",
+          "purpose": "Solved lockfile pinning the exact closure the manifest resolved to on a real platform.",
+          "disposition": "bundled"
+        }
+      ],
+      "locations": [
+        "environments"
+      ],
+      "doc": "# Environment\n\nAn Environment note is one runnable biopixi fixture: a directory whose `pixi.toml` assembles\npackages and their dependencies into a configuration that installs and runs. The note describes\nthat configuration. The upstream software it assembles is a Package, and the two are separate kinds\nbecause a Package is abstract — code to read, evaluate, and wrap — while an Environment is\ncomposite and actionable.\n\nThis is the first directory-shaped kind. The manifest is the note's companion, not its content, so\n`index.md` never restates what `pixi.toml` already declares.\n\nRequired fields:\n\n- `type: environment`\n- `title`: the fixture's display name, matching its directory\n- `summary`: short reader-facing description\n- `portability_grade`: the anticipated biopixi grade, `L0` through `L4`\n- `tags`: at least one registered domain facet tag\n\n`portability_grade` is *anticipated*, not declared: the grader derives a grade from the manifest,\nlockfile, and public channel metadata, so a note records what the fixture is expected to score and\nis corrected by running the grader. It grades packaging, never science — an L4 fixture is portable,\nwhich says nothing about whether the method inside it is sound.\n\nA grade ceiling and the route past it belong in prose, because they are arguments rather than\nfacts. \"L1 today, L3 once the recipe is on Bioconda\" is a claim about future packaging work, and it\nwould go stale silently in frontmatter.\n\nWhether a fixture is locked is not a field. `pixi.lock` is a declared companion, so its presence is\nread from the directory and can never disagree with the note. Which upstream Package a fixture\nassembles stays a body wiki link until a Mold actually resolves that dependency; a typed reference\nis what the Reference vocabulary is for, and no consumer needs one yet.",
+      "example": "---\ntype: environment\ntitle: example-tda-fixture\nsummary: A small example showing the minimum metadata required for one runnable biopixi fixture.\nportability_grade: L3\ntags:\n  - method/persistent-homology\n---\n\n# example-tda-fixture\n\nThe body says what the fixture makes runnable, why it grades where it does, and what a user should\nknow before trusting it. The manifest beside it stays the authority on versions and channels.",
+      "fields": [
+        {
+          "name": "portability_grade",
+          "required": true,
+          "type": "L0 | L1 | L2 | L3 | L4"
+        },
+        {
+          "name": "summary",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "required": true,
+          "type": "string[]"
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": "\"environment\""
+        }
+      ]
+    },
+    {
       "kind": "package",
       "title": "Package",
       "layer": "instance",
@@ -49,6 +102,61 @@
           "name": "type",
           "required": true,
           "type": "\"package\""
+        }
+      ]
+    },
+    {
+      "kind": "paper",
+      "title": "Paper",
+      "layer": "instance",
+      "summary": "A source note reviewing one external TDA or topological deep learning paper or survey, linking to the work rather than reproducing it.",
+      "shape": "file",
+      "companions": [],
+      "locations": [
+        "papers"
+      ],
+      "doc": "# Paper\n\nA Paper note is this Foundry's review of one external paper or survey. It links to the source and\nreviews it; it does not reproduce it. The note describes someone else's scholarship, which is what\nseparates it from a Manuscript (research we author) and from a Package (our profile of external\nsoftware).\n\nRequired fields:\n\n- `type: paper`\n- `title`: the note's display name, which is ours and need not repeat the source's title\n- `summary`: short reader-facing description\n- `citation`: authors, source title, and identifier for the external work\n- `source_url`: canonical link to the external work\n- `source_license`: either a declared license id for the source or an explicit `missing` status\n- `derived`: the summary posture, `own-words-summary` or `license-aware-summary`\n- `tags`: at least one registered domain facet tag\n\n`source_license` is the license of the reviewed work, never of the software that may accompany it.\nAn article and its repository routinely differ, so a Package note's `software_license` and a Paper\nnote's `source_license` are separate facts even when both describe the same project.\n\n`derived` is checked against `source_license`, not merely recorded. A note may always summarize in\nits own words; it may only claim `license-aware-summary` when the source's row in the shared\nlicense-policy table permits carrying upstream expression. A missing license resolves\ndeny-by-default and therefore forecloses that posture.\n\nDOIs, venue, and publication dates stay in prose for now. They become typed when a citation or\nreference consumer needs them, on the same terms as the deferred Package fields.",
+      "example": "---\ntype: paper\ntitle: Example TDA survey\nsummary: A small example showing the minimum metadata required for a review of one external work.\ncitation: A. Author and B. Author, \"An example review of topological methods,\" arXiv:0000.00000 (2025).\nsource_url: https://arxiv.org/abs/0000.00000\nsource_license:\n  status: declared\n  id: CC-BY-4.0\nderived: own-words-summary\ntags:\n  - method/persistent-homology\n---\n\n# Example TDA survey\n\nThe body reviews the source: what it claims, what evidence it offers, where it is weak, and what a\nreader of this Foundry should take from it.",
+      "fields": [
+        {
+          "name": "citation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "derived",
+          "required": true,
+          "type": "own-words-summary | license-aware-summary"
+        },
+        {
+          "name": "source_license",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "name": "source_url",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "required": true,
+          "type": "string[]"
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": "\"paper\""
         }
       ]
     }

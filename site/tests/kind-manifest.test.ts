@@ -12,6 +12,8 @@ import {
 import { KINDS } from "../src/types";
 
 const manifest = buildKindManifest();
+const kindNamed = (name: string) =>
+  manifest.kinds.find((entry) => entry.kind === name)!;
 
 describe("this Foundry's kind manifest", () => {
   it("names every declared kind in barrel order", () => {
@@ -27,7 +29,7 @@ describe("this Foundry's kind manifest", () => {
   });
 
   it("derives layout and locations from the kind and collection table", () => {
-    expect(manifest.kinds[0]).toMatchObject({
+    expect(kindNamed("package")).toMatchObject({
       kind: "package",
       shape: "file",
       companions: [],
@@ -35,8 +37,29 @@ describe("this Foundry's kind manifest", () => {
     });
   });
 
+  /**
+   * The directory-shaped kind is where `shape` and `companions` stop being defaults. A consumer
+   * reading `companions: []` on every kind cannot tell an empty set from an unmodelled one.
+   */
+  it("carries the directory shape and declared companions of a fixture kind", () => {
+    expect(kindNamed("environment")).toMatchObject({
+      kind: "environment",
+      shape: "directory",
+      locations: ["environments"],
+    });
+    expect(
+      kindNamed("environment").companions.map(({ file, requirement }) => [
+        file,
+        requirement,
+      ]),
+    ).toEqual([
+      ["pixi.toml", "required"],
+      ["pixi.lock", "recommended"],
+    ]);
+  });
+
   it("derives a correctly discriminated frontmatter field table", () => {
-    const packageKind = manifest.kinds[0]!;
+    const packageKind = kindNamed("package");
     const type = packageKind.fields.find(({ name }) => name === "type");
     expect(type).toEqual({ name: "type", required: true, type: '"package"' });
     expect(packageKind.fields.length).toBeGreaterThan(1);
@@ -47,8 +70,11 @@ describe("this Foundry's kind manifest", () => {
       docs: { package: "# Package\n\nContract." },
       examples: { package: "---\ntype: package\n---" },
     });
-    expect(withContent.kinds[0]?.doc).toBe("# Package\n\nContract.");
-    expect(withContent.kinds[0]?.example).toBe("---\ntype: package\n---");
+    const packageKind = withContent.kinds.find(
+      (entry) => entry.kind === "package",
+    );
+    expect(packageKind?.doc).toBe("# Package\n\nContract.");
+    expect(packageKind?.example).toBe("---\ntype: package\n---");
   });
 
   it("is deterministic and accepted by the shared reader", () => {

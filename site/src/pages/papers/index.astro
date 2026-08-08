@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import TagChips from '@galaxy-foundry/site-kit/TagChips.astro';
+
+import Base from '../../layouts/Base.astro';
+import { base } from '../../lib/site-base';
+
+const papers = (await getCollection('papers')).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
+---
+<Base title="Papers" description="Reviews of external TDA papers and surveys.">
+  <header class="page-header">
+    <p class="eyebrow">Sources</p>
+    <h1>Papers</h1>
+    <p>
+      A Paper note is our review of someone else's work. It links to the source and says what the
+      work claims, what it establishes, and where it stops — it is not a copy of the source, and it
+      is not scholarship we authored.
+    </p>
+  </header>
+
+  <ul class="collection-list">
+    {papers.map((entry) => (
+      <li class="card">
+        <a class="card-primary" href={`${base}/papers/${entry.id}/`}>
+          <strong>{entry.data.title}</strong>
+          <span>{entry.data.summary}</span>
+        </a>
+        <TagChips tags={entry.data.tags} tagBase={`${base}/tags`} />
+      </li>
+    ))}
+  </ul>
+</Base>

@@ -1,7 +1,7 @@
 ---
 type: package
 title: PETLS
-summary: A C++ and Python engine for persistent topological Laplacians whose upstream software currently declares no reuse license.
+summary: A C++ library with Python bindings for building persistent topological Laplacians and computing their matrices and spectra.
 repository: https://github.com/bdjones13/PETLS
 languages:
   - C++

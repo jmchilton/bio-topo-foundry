@@ -1,19 +1,15 @@
 # Foundry content site
 
-This is a deliberately narrow content and validation slice. It renders the glossary, a tag browse
-surface, and each Package note explicitly admitted by the collection table after migration to typed
-frontmatter.
+This is the typed reader and validation surface for the Foundry's current corpus. It renders the
+glossary, controlled tag browsing, and the Package, Paper, and Environment collections.
 
-The Package contract is corpus-first:
+The three current kinds keep distinct subjects:
 
-- package identity is `title`, `repository`, and one or more implementation `languages`;
-- software licensing distinguishes an upstream declaration from an explicitly missing license;
-- every note carries at least one registered facet tag; and
-- environment, recipe, method relationships, and dated upstream-health observations remain in the
-  body until their own typed notes or evidence contracts exist.
-
-The other package writeups are intentionally outside the Astro collection. Add a filename to the
-collection pattern only in the same change that adds valid frontmatter to that note.
+- a Package profiles upstream software and records its implementation and software-license facts;
+- a Paper reviews an external scholarly source and records its source-license and summary posture;
+- an Environment describes one runnable biopixi fixture, with manifest and lockfile state measured
+  from its declared companions; and
+- every note carries at least one registered facet tag.
 
 ## Checks
 
@@ -40,6 +36,9 @@ The package then owns filesystem enumeration,
 note IDs, link-map construction, remark links, and raw-Markdown link resolution. Shared
 `ContentNote` and `TagChips` components own the invariant reading frame and tag markup.
 
+All collection detail pages run through `src/pages/[collection]/[...slug].astro`. The common frame,
+tag links, and navigation live once; collection-specific metadata stays in explicit branches.
+
 ## Shared tag-browse boundary
 
 `src/lib/tags.ts` decides which local notes appear on the tag surface and supplies their labels,
@@ -49,5 +48,5 @@ membership, order, empty-facet rule, and absence of an invented catch-all bucket
 
 Astro collection exports and schema assembly remain explicit here on purpose. Keeping the
 collection entries spelled out preserves Astro's discriminated content types as more TDA kinds are
-added. Package fields, registries, package facts, route policy, identity, theme, and prose styling
-also remain local because they express this foundry's domain model and policy.
+added. Kind fields, registries, metadata furniture, route policy, identity, theme, and prose styling
+remain local because they express this foundry's domain model and policy.

@@ -4,7 +4,10 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { base } from '../lib/site-base';
 
-const packageCount = (await getCollection('packages')).length;
+const typedNoteCount =
+  (await getCollection('packages')).length +
+  (await getCollection('papers')).length +
+  (await getCollection('environments')).length;
 ---
 <Base title="Topological Data Analysis Bioinformatics Foundry">
   <section class="hero">
@@ -14,7 +17,7 @@ const packageCount = (await getCollection('packages')).length;
       A knowledge base connecting TDA research and software to reproducible bioinformatics
       environments, Galaxy tools, workflows, and training.
     </p>
-    <a class="primary-link" href={`${base}/packages/`}>Browse {packageCount} typed package →</a>
+    <a class="primary-link" href={`${base}/tags/`}>Browse {typedNoteCount} typed notes →</a>
   </section>
 
   <section class="reference-grid" aria-labelledby="reference-heading">
@@ -23,13 +26,21 @@ const packageCount = (await getCollection('packages')).length;
       <strong>Packages</strong>
       <span>Profiles of upstream TDA software and the facts needed to harden it.</span>
     </a>
+    <a class="card" href={`${base}/environments/`}>
+      <strong>Environments</strong>
+      <span>Runnable biopixi fixtures, graded L0 to L4 for how portable their packaging is.</span>
+    </a>
+    <a class="card" href={`${base}/papers/`}>
+      <strong>Papers</strong>
+      <span>Reviews of external TDA papers and surveys, linked rather than copied.</span>
+    </a>
     <a class="card" href={`${base}/glossary/`}>
       <strong>Glossary</strong>
       <span>The terms that keep the Foundry's content and machinery precise.</span>
     </a>
     <a class="card" href={`${base}/tags/`}>
       <strong>Tags</strong>
-      <span>Browse packages through the controlled vocabulary they carry.</span>
+      <span>Browse typed notes through the controlled vocabulary they carry.</span>
     </a>
   </section>
 </Base>

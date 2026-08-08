@@ -1,3 +1,20 @@
+---
+type: package
+title: HiPoNet
+summary: A multi-view simplicial complex network predicting cohort-level labels from high-dimensional cellular point clouds.
+repository: https://github.com/KrishnaswamyLab/HiPoNet
+languages:
+  - Python
+software_license:
+  status: declared
+  id: LicenseRef-yale-non-commercial
+tags:
+  - method/simplicial-learning
+  - method/topological-deep-learning
+  - application/single-cell
+  - modality/high-dim-tabular
+---
+
 # White Paper: HiPoNet
 
 ## Multi-view simplicial learning for cohort-scale cellular point clouds

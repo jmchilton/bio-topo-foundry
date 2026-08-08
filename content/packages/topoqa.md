@@ -1,6 +1,22 @@
+---
+type: package
+title: TopoQA
+summary: A topological deep learning model ranking predicted protein-complex structures by the quality of their interface.
+repository: https://github.com/yubingapril/TopoQA
+languages:
+  - Python
+software_license:
+  status: missing
+tags:
+  - method/persistent-homology
+  - method/topological-deep-learning
+  - application/structure-qa
+  - modality/molecular-structure
+---
+
 # White Paper: TopoQA
 
-## A technical synthesis of Han et al. (2025)
+## Persistent homology and graph attention for protein-complex interface QA
 
 **Primary source:** Bingqing Han, Yipeng Zhang, Longlong Li, Xinqi Gong, and Kelin Xia, "TopoQA: a topological deep learning-based approach for protein complex structure interface quality assessment," *Briefings in Bioinformatics* 26(2), bbaf083 (2025). [Journal DOI](https://doi.org/10.1093/bib/bbaf083) | [PMC full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC11891663/) | [arXiv:2410.17815](https://arxiv.org/abs/2410.17815)
 

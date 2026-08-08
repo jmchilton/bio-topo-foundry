@@ -25,14 +25,15 @@ const sorted = [...entries].sort((a, b) => a.name.localeCompare(b.name));
     {description && <p>{description}</p>}
   </header>
 
-  <section class="tag-results" aria-labelledby="tagged-packages">
-    <h2 id="tagged-packages">Packages</h2>
+  <section class="tag-results" aria-labelledby="tagged-notes">
+    <h2 id="tagged-notes">Notes</h2>
     <ul class="collection-list">
       {sorted.map((entry) => (
         <li>
           <a class="card" href={entry.url}>
             <strong>{entry.name}</strong>
             <span>{entry.summary}</span>
+            <small>{entry.kind}</small>
           </a>
         </li>
       ))}

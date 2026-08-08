@@ -1,8 +1,28 @@
+---
+type: paper
+title: TDA and TDL in Molecular Sciences
+summary: Wee and Jiang's account of how molecular problems pushed topology from description to conditioned, learnable representations.
+citation: JunJie Wee and Jian Jiang, "A review of topological data analysis and topological deep learning in molecular sciences," arXiv:2509.16877v1 (2025).
+source_url: https://arxiv.org/abs/2509.16877
+source_license:
+  status: declared
+  id: CC-BY-NC-ND-4.0
+derived: own-words-summary
+tags:
+  - method/persistent-homology
+  - method/persistent-laplacian
+  - method/topological-deep-learning
+  - application/molecular-sciences
+  - modality/molecular-structure
+---
+
 # White Paper: TDA and TDL in Molecular Sciences
 
 ## A white paper synthesis of Wee and Jiang (2025)
 
 **Primary source:** JunJie Wee and Jian Jiang, "A review of topological data analysis and topological deep learning in molecular sciences," arXiv:2509.16877v1, submitted 21 September 2025. [arXiv](https://arxiv.org/abs/2509.16877) | [arXiv DOI](https://doi.org/10.48550/arXiv.2509.16877) | [later journal version](https://doi.org/10.1021/acs.jcim.5c02266)
+
+**Access and reuse:** arXiv's metadata record for this submission declares [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/). The non-commercial and no-derivatives conditions make carrying the survey's prose unattractive regardless of scope, so this note is an own-words summary that cites and links the source. The later *Journal of Chemical Information and Modeling* version is a separately licensed item and was not the version reviewed here.
 
 ## Executive summary
 

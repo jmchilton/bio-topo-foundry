@@ -4,6 +4,7 @@ import { base } from "./site-base";
 
 export interface TaggedEntry {
   id: string;
+  kind: "Environment" | "Package" | "Paper";
   name: string;
   summary: string;
   tags: string[];
@@ -12,13 +13,32 @@ export interface TaggedEntry {
 
 /** The local seam: which routed notes count as entries on this foundry's tag pages. */
 export async function getTaggedEntries(): Promise<TaggedEntry[]> {
-  return (await getCollection("packages")).map((entry) => ({
-    id: entry.id,
-    name: entry.data.title,
-    summary: entry.data.summary,
-    tags: entry.data.tags,
-    url: `${base}/packages/${entry.id}/`,
-  }));
+  return [
+    ...(await getCollection("environments")).map((entry) => ({
+      id: entry.id,
+      kind: "Environment" as const,
+      name: entry.data.title,
+      summary: entry.data.summary,
+      tags: entry.data.tags,
+      url: `${base}/environments/${entry.id}/`,
+    })),
+    ...(await getCollection("packages")).map((entry) => ({
+      id: entry.id,
+      kind: "Package" as const,
+      name: entry.data.title,
+      summary: entry.data.summary,
+      tags: entry.data.tags,
+      url: `${base}/packages/${entry.id}/`,
+    })),
+    ...(await getCollection("papers")).map((entry) => ({
+      id: entry.id,
+      kind: "Paper" as const,
+      name: entry.data.title,
+      summary: entry.data.summary,
+      tags: entry.data.tags,
+      url: `${base}/papers/${entry.id}/`,
+    })),
+  ];
 }
 
 export async function getEntriesByTag(): Promise<Map<string, TaggedEntry[]>> {

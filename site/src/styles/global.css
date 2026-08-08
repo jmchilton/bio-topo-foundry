@@ -17,6 +17,8 @@
   --color-border: #cbd7d2;
   --color-border-subtle: #cbd7d2;
   --color-surface-raised: #ffffff;
+  --color-surface-hover: #edf4f1;
+  --color-link: #23685e;
   --color-text-secondary: #465753;
   --color-text-muted: #5d6b68;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -33,6 +35,8 @@
   --color-border: #3a504b;
   --color-border-subtle: #3a504b;
   --color-surface-raised: #1b2b28;
+  --color-surface-hover: #223532;
+  --color-link: #79b9ad;
   --color-text-secondary: #c8d5d1;
 }
 
@@ -80,7 +84,7 @@ body {
 }
 
 a {
-  color: var(--color-brand);
+  color: var(--color-link);
   text-underline-offset: 0.18em;
 }
 
@@ -206,7 +210,7 @@ a {
   margin-top: 1.5rem;
 }
 
-.package-facts {
+.note-facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   gap: 1rem;
@@ -214,19 +218,73 @@ a {
   padding: 1.1rem 0;
 }
 
-.package-facts > div {
+.note-facts-wide {
+  grid-column: 1 / -1;
+}
+
+.note-facts > div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.3rem;
 }
 
-.package-facts span {
+.note-facts span {
   color: var(--color-text-muted);
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.ladder-rung {
+  margin-top: 2.5rem;
+}
+
+.ladder-rung h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+}
+
+.ladder-rung h2 span {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.companion-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.companion-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.companion-list code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+/* Keyed on the measured state, never on a filename. */
+.companion-list li[data-present='true'] span {
+  color: var(--color-license-verbatim);
+}
+
+.companion-list li[data-present='false'] span {
+  color: var(--color-license-own-words);
 }
 
 .prose {
