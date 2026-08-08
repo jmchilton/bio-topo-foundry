@@ -19,7 +19,7 @@ export const contentPath = (relativePath: string) =>
 export const COLLECTIONS = {
   packages: {
     base: "packages",
-    pattern: ["petls-pytorch.md", "topometry.md"],
+    pattern: ["petls-pytorch.md", "petls.md", "topometry.md"],
     kind: "package",
     schema: packageSchema,
   },
