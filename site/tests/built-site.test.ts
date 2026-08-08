@@ -13,7 +13,12 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { contentReader } from "../src/lib/content-reader";
 import { environmentCompanions } from "../src/lib/companions";
-import { COLLECTION_NAMES } from "../src/lib/frontmatter-schema";
+import {
+  COLLECTION_NAMES,
+  contentPath,
+  methodSchema,
+} from "../src/lib/frontmatter-schema";
+import { readFrontmatter } from "./frontmatter";
 
 const SITE = new URL("../", import.meta.url).pathname;
 const DIST = path.join(SITE, "dist");
@@ -184,6 +189,28 @@ describe("the emitted reader slice", () => {
       missing,
       `\nlinked tag routes with no built page: ${missing.join(", ")}`,
     ).toEqual([]);
+  });
+
+  it("features every Method as the guide for the tag it anchors", () => {
+    const files = contentReader.noteFiles("methods");
+    const targets = contentReader.noteTargets("methods");
+    expect(targets).toHaveLength(files.length);
+
+    for (const [index, file] of files.entries()) {
+      const method = methodSchema.parse(readFrontmatter(contentPath(file)));
+      const html = read(path.join(DIST, `tags/${method.facet_tag}/index.html`));
+      const guideStart = html.indexOf('<h2 id="tag-guide">Method guide</h2>');
+      const guideEnd = html.indexOf("</section>", guideStart);
+      const methodLink = `href="/bio-topo-foundry/${targets[index].target.path}/"`;
+
+      expect(guideStart, `${method.facet_tag} has no Method guide`).toBeGreaterThan(-1);
+      expect(
+        html.indexOf(methodLink),
+        `${method.facet_tag} does not feature ${file}`,
+      ).toBeGreaterThan(guideStart);
+      expect(html.indexOf(methodLink)).toBeLessThan(guideEnd);
+      expect(html.split(methodLink)).toHaveLength(2);
+    }
   });
 
   it("renders the typed package facts through the shared content frame", () => {

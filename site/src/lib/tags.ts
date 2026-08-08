@@ -1,5 +1,5 @@
-import { getCollection } from "astro:content";
-
+import { contentReader } from "./content-reader";
+import { COLLECTIONS } from "./frontmatter-schema";
 import { base } from "./site-base";
 
 export interface TaggedEntry {
@@ -16,71 +16,58 @@ export interface TaggedEntry {
   summary: string;
   tags: string[];
   url: string;
+  /** The tag page this note leads, when the kind declares that relationship. */
+  anchorTag?: string;
 }
+
+const KIND_LABELS = {
+  environment: "Environment",
+  meta: "Design record",
+  method: "Method",
+  mold: "Mold",
+  package: "Package",
+  paper: "Paper",
+  replication_experiment: "Replication experiment",
+} as const satisfies Record<
+  (typeof COLLECTIONS)[keyof typeof COLLECTIONS]["kind"],
+  TaggedEntry["kind"]
+>;
 
 /** The local seam: which routed notes count as entries on this foundry's tag pages. */
 export async function getTaggedEntries(): Promise<TaggedEntry[]> {
-  return [
-    ...(await getCollection("environments")).map((entry) => ({
-      id: entry.id,
-      kind: "Environment" as const,
-      name: entry.data.title,
-      summary: entry.data.summary,
-      tags: entry.data.tags,
-      url: `${base}/environments/${entry.id}/`,
-    })),
-    ...(await getCollection("packages")).map((entry) => ({
-      id: entry.id,
-      kind: "Package" as const,
-      name: entry.data.title,
-      summary: entry.data.summary,
-      tags: entry.data.tags,
-      url: `${base}/packages/${entry.id}/`,
-    })),
-    ...(await getCollection("molds")).map((entry) => ({
-      id: entry.id,
-      kind: "Mold" as const,
-      name: entry.data.name,
-      summary: entry.data.summary,
-      tags: entry.data.tags,
-      url: `${base}/molds/${entry.id}/`,
-    })),
-    ...(await getCollection("papers")).map((entry) => ({
-      id: entry.id,
-      kind: "Paper" as const,
-      name: entry.data.title,
-      summary: entry.data.summary,
-      tags: entry.data.tags,
-      url: `${base}/papers/${entry.id}/`,
-    })),
-    ...(await getCollection("replication-experiments")).map((entry) => ({
-      id: entry.id,
-      kind: "Replication experiment" as const,
-      name: entry.data.title,
-      summary: entry.data.summary,
-      tags: entry.data.tags,
-      url: `${base}/replication-experiments/${entry.id}/`,
-    })),
-    ...(await getCollection("methods")).map((entry) => ({
-      id: entry.id,
-      kind: "Method" as const,
-      name: entry.data.title,
-      summary: entry.data.summary,
-      tags: entry.data.tags,
-      url: `${base}/methods/${entry.id}/`,
-    })),
-    // Design records carry `meta`, the one tag no domain note carries. Omitting them here would
-    // leave that tag declared, rendered on every record's page, and pointing at a route the tag
-    // index never builds.
-    ...(await getCollection("design")).map((entry) => ({
-      id: entry.id,
-      kind: "Design record" as const,
-      name: entry.data.title,
-      summary: entry.data.summary,
-      tags: entry.data.tags,
-      url: `${base}/design/${entry.id}/`,
-    })),
-  ];
+  return contentReader.contentIndex().notes.map((note) => {
+    const meta = note.meta;
+    if (!meta) {
+      throw new Error(`${note.file}: tag browsing requires frontmatter`);
+    }
+    const name =
+      typeof meta.name === "string"
+        ? meta.name
+        : typeof meta.title === "string"
+          ? meta.title
+          : undefined;
+    const summary = typeof meta.summary === "string" ? meta.summary : undefined;
+    const tags = meta.tags;
+    if (
+      !name ||
+      !summary ||
+      !Array.isArray(tags) ||
+      !tags.every((tag): tag is string => typeof tag === "string")
+    ) {
+      throw new Error(`${note.file}: tag browse fields did not survive frontmatter validation`);
+    }
+
+    const kind = COLLECTIONS[note.collection].kind;
+    return {
+      id: note.id,
+      kind: KIND_LABELS[kind],
+      name,
+      summary,
+      tags,
+      url: `${base}/${note.target.path}/`,
+      ...(typeof meta.facet_tag === "string" ? { anchorTag: meta.facet_tag } : {}),
+    };
+  });
 }
 
 export async function getEntriesByTag(): Promise<Map<string, TaggedEntry[]>> {

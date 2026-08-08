@@ -17,7 +17,10 @@ const { tag, entries } = Astro.props as { tag: string; entries: TaggedEntry[] };
 const registry = tagRegistry();
 const description = registry.tagDescription(tag);
 const facetLabel = facetLabelOf(registry, tag);
-const sorted = [...entries].sort((a, b) => a.name.localeCompare(b.name));
+const anchor = entries.find((entry) => entry.anchorTag === tag);
+const related = entries
+  .filter((entry) => entry !== anchor)
+  .sort((a, b) => a.name.localeCompare(b.name));
 ---
 <Base title={`Tag: ${tag}`} description={description}>
   <header class="page-header tag-heading">
@@ -28,21 +31,41 @@ const sorted = [...entries].sort((a, b) => a.name.localeCompare(b.name));
   </header>
   <PersistenceDivider seed={`tag:${tag}`} />
 
-  <section class="tag-results" aria-labelledby="tagged-notes">
-    <h2 id="tagged-notes">Notes</h2>
-    <ul class="collection-list">
-      {sorted.map((entry) => (
+  {anchor && (
+    <section class="tag-results" aria-labelledby="tag-guide">
+      <h2 id="tag-guide">Method guide</h2>
+      <ul class="collection-list">
         <li>
-          <a class="card" href={entry.url}>
+          <a class="card" href={anchor.url}>
             <span class="card-title-row">
-              <strong>{entry.name}</strong>
-              <PointCloudFingerprint seed={`${entry.kind}:${entry.id}:${entry.tags.join('|')}`} />
+              <strong>{anchor.name}</strong>
+              <PointCloudFingerprint seed={`${anchor.kind}:${anchor.id}:${anchor.tags.join('|')}`} />
             </span>
-            <span>{entry.summary}</span>
-            <small>{entry.kind}</small>
+            <span>{anchor.summary}</span>
+            <small>{anchor.kind}</small>
           </a>
         </li>
-      ))}
-    </ul>
-  </section>
+      </ul>
+    </section>
+  )}
+
+  {related.length > 0 && (
+    <section class="tag-results" aria-labelledby="tagged-notes">
+      <h2 id="tagged-notes">{anchor ? 'Related notes' : 'Notes'}</h2>
+      <ul class="collection-list">
+        {related.map((entry) => (
+          <li>
+            <a class="card" href={entry.url}>
+              <span class="card-title-row">
+                <strong>{entry.name}</strong>
+                <PointCloudFingerprint seed={`${entry.kind}:${entry.id}:${entry.tags.join('|')}`} />
+              </span>
+              <span>{entry.summary}</span>
+              <small>{entry.kind}</small>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
 </Base>

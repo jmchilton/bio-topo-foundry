@@ -4,6 +4,7 @@ import {
   COLLECTIONS,
   COLLECTION_NAMES,
   contentPath,
+  methodSchema,
 } from "../src/lib/frontmatter-schema";
 import { tagRegistry } from "../src/lib/meta-tags";
 import { contentReader } from "../src/lib/content-reader";
@@ -58,5 +59,36 @@ describe("typed corpus slice", () => {
     }
 
     expect([...carried].sort()).toEqual(tagRegistry().allTags().sort());
+  });
+
+  it("gives every method tag exactly one Method landing note", () => {
+    const registry = tagRegistry();
+    const declared = registry
+      .allTags()
+      .filter((tag) => registry.facetOf(tag) === "method")
+      .sort();
+    const notesByTag = new Map<string, string[]>();
+
+    for (const relativePath of contentReader.noteFiles("methods")) {
+      const method = methodSchema.parse(
+        readFrontmatter(contentPath(relativePath)),
+      );
+      const notes = notesByTag.get(method.facet_tag);
+      if (notes) notes.push(relativePath);
+      else notesByTag.set(method.facet_tag, [relativePath]);
+    }
+
+    const anchored = [...notesByTag.keys()].sort();
+    const duplicates = [...notesByTag]
+      .filter(([, notes]) => notes.length > 1)
+      .map(([tag, notes]) => `${tag}: ${notes.join(", ")}`);
+
+    expect(anchored, "method tags and Method landing notes drifted").toEqual(
+      declared,
+    );
+    expect(
+      duplicates,
+      `duplicate Method landing notes:\n${duplicates.join("\n")}`,
+    ).toEqual([]);
   });
 });
