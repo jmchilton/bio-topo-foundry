@@ -8,7 +8,7 @@ export const kind = defineKind({
   title: "Package",
   layer: "instance",
   summary:
-    "A profile of one upstream TDA or topological deep learning software project and the code facts needed to evaluate and harden it.",
+    "A profile of one TDA or topological deep learning software project — upstream, or written here to replace one — and the code facts needed to evaluate and harden it.",
   shape: "file",
   companions: [],
 
