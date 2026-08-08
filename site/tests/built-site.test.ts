@@ -182,6 +182,7 @@ describe("the emitted reader slice", () => {
     const hiponet = read(path.join(DIST, "packages/hiponet/index.html"));
     expect(hiponet).toContain("method/simplicial-learning");
     expect(hiponet).toContain('title="LicenseRef-yale-non-commercial"');
+    expect(hiponet).toContain(">yale-non-commercial</span>");
     expect(hiponet).toContain("own-words only");
   });
 
