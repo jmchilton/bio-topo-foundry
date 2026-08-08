@@ -6,6 +6,7 @@ facets:
     values:
       method/persistent-homology: Barcodes and persistence diagrams read off a filtration.
       method/persistent-laplacian: Persistent topological Laplacian methods and implementations.
+      method/simplicial-learning: Learning directly on simplicial complexes and their Hodge structure.
       method/spectral-geometry: Geometry-aware spectral and diffusion scaffolds.
       method/topological-deep-learning: Learning models built on topological representations.
   application:
@@ -14,6 +15,7 @@ facets:
     values:
       application/molecular-sciences: Molecular, biomolecular, and drug-discovery analysis.
       application/single-cell: Single-cell and cellular point-cloud analysis.
+      application/structure-qa: Quality assessment and ranking of predicted structures and interfaces.
   modality:
     label: Modality
     description: The biological data modality a note consumes or describes.

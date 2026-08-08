@@ -19,17 +19,16 @@ export const contentPath = (relativePath: string) =>
   `${CONTENT_DIR}/${relativePath}`;
 
 export const COLLECTIONS = {
-  // Named files, because four package writeups are still untyped prose and must stay out until
-  // they are migrated deliberately.
+  // Globs, now that every writeup under both directories is typed. The named-file patterns these
+  // replace existed only to hold back unmigrated prose; with none left, the stricter pattern is
+  // the honest one — a new note that skips its frontmatter should fail the build rather than be
+  // quietly excluded from the corpus.
   packages: {
     base: "packages",
-    pattern: ["petls-pytorch.md", "topometry.md"],
+    pattern: ["*.md"],
     kind: "package",
     schema: packageSchema,
   },
-  // A glob, because every paper writeup in the corpus is typed. The stricter pattern is the honest
-  // one here: a new paper note that skips its frontmatter should fail the build rather than be
-  // quietly excluded.
   papers: {
     base: "papers",
     pattern: ["*.md"],

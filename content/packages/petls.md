@@ -1,3 +1,17 @@
+---
+type: package
+title: PETLS
+summary: A C++ library with Python bindings for building persistent topological Laplacians and computing their matrices and spectra.
+repository: https://github.com/bdjones13/PETLS
+languages:
+  - C++
+  - Python
+software_license:
+  status: missing
+tags:
+  - method/persistent-laplacian
+---
+
 # White Paper: PETLS
 
 ## Packaged persistent topological Laplacians across complexes

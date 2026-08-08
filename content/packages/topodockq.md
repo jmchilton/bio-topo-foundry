@@ -1,3 +1,21 @@
+---
+type: package
+title: TopoDockQ
+summary: A persistent-Laplacian scorer predicting DockQ interface quality to rank and filter peptide-protein docking poses.
+repository: https://github.com/XDaiNYU/TopoDockQ
+languages:
+  - Python
+software_license:
+  status: declared
+  id: MIT
+tags:
+  - method/persistent-homology
+  - method/persistent-laplacian
+  - method/topological-deep-learning
+  - application/structure-qa
+  - modality/molecular-structure
+---
+
 # White Paper: TopoDockQ
 
 ## Topological confidence scoring and non-canonical peptide modeling

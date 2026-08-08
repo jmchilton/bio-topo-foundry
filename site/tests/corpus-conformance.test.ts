@@ -10,10 +10,14 @@ import { contentReader } from "../src/lib/content-reader";
 import { readFrontmatter } from "./frontmatter";
 
 describe("typed corpus slice", () => {
-  it("selects exactly the packages intentionally migrated", () => {
+  it("selects every package writeup, because all of them are typed", () => {
     expect(contentReader.noteFiles("packages")).toEqual([
+      "packages/hiponet.md",
       "packages/petls-pytorch.md",
+      "packages/petls.md",
+      "packages/topodockq.md",
       "packages/topometry.md",
+      "packages/topoqa.md",
     ]);
   });
 

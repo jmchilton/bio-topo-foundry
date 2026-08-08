@@ -47,13 +47,17 @@ beforeAll(() => {
 }, 600_000);
 
 describe("the emitted reader slice", () => {
-  it("contains exactly the eight routes this slice claims", () => {
+  it("contains exactly the twelve routes this slice claims", () => {
     expect(pages.map(relativePage).sort()).toEqual([
       "glossary/index.html",
       "index.html",
+      "packages/hiponet/index.html",
       "packages/index.html",
       "packages/petls-pytorch/index.html",
+      "packages/petls/index.html",
+      "packages/topodockq/index.html",
       "packages/topometry/index.html",
+      "packages/topoqa/index.html",
       "papers/index.html",
       "papers/tda-tdl-beyond-persistent-homology/index.html",
       "papers/tda-tdl-molecular-sciences/index.html",
@@ -97,7 +101,7 @@ describe("the emitted reader slice", () => {
     expect(home).toContain('href="/bio-topo-foundry/packages/"');
     expect(home).toContain('href="/bio-topo-foundry/papers/"');
     expect(home).toContain('href="/bio-topo-foundry/glossary/"');
-    expect(home).toContain("Browse 4 typed notes");
+    expect(home).toContain("Browse 8 typed notes");
   });
 
   it("renders the typed package facts through the shared content frame", () => {
@@ -114,6 +118,31 @@ describe("the emitted reader slice", () => {
     expect(topometry).toContain("modality/high-dim-tabular");
     expect(topometry).toContain("MIT");
     expect(topometry).toContain("verbatim OK");
+  });
+
+  /**
+   * The corpus carries all three licence states, and only the first renders a policy row.
+   *
+   * `hiponet` pins the current gap: HiPoNet's Yale terms are known and non-commercial, but no
+   * SPDX id names them, so the `LicenseRef-` escape hatch lands on the deny-by-default row and
+   * the badge reports the safe answer rather than the accurate one. Asserted as it behaves today.
+   */
+  it("renders declared, missing, and unresolved software licences distinctly", () => {
+    const topodockq = read(path.join(DIST, "packages/topodockq/index.html"));
+    expect(topodockq).toContain("application/structure-qa");
+    expect(topodockq).toContain("MIT");
+    expect(topodockq).toContain("verbatim OK");
+
+    for (const slug of ["petls", "topoqa"]) {
+      expect(read(path.join(DIST, `packages/${slug}/index.html`))).toContain(
+        "Not declared upstream",
+      );
+    }
+
+    const hiponet = read(path.join(DIST, "packages/hiponet/index.html"));
+    expect(hiponet).toContain("method/simplicial-learning");
+    expect(hiponet).toContain('title="LicenseRef-yale-non-commercial"');
+    expect(hiponet).toContain("own-words only");
   });
 
   /**
