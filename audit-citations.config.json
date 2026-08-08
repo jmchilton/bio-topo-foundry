@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "trackedOnly": true,
+  "sources": [
+    { "include": ["content/papers/*.md"], "artifactKind": "paper-note" },
+    { "include": ["content/packages/*.md"], "artifactKind": "package-note" },
+    { "include": ["content/methods/*.md"], "artifactKind": "method-note" },
+    { "include": ["content/molds/*/index.md"], "artifactKind": "mold-note" },
+    {
+      "include": ["content/replication-experiments/*.md"],
+      "artifactKind": "replication-experiment-note"
+    },
+    { "include": ["content/meta/*.md"], "artifactKind": "meta-note" }
+  ],
+  "scholarlyPageHosts": ["proceedings.mlr.press", "proceedings.neurips.cc"],
+  "userAgent": "bio-topo-foundry-citation-audit/1.0 (https://github.com/jmchilton/bio-topo-foundry)",
+  "requestTimeoutMs": 15000
+}

@@ -1,0 +1,3326 @@
+{
+  "schemaVersion": 1,
+  "auditKind": "citation-integrity",
+  "generatedAt": "2026-08-08T14:45:44.616Z",
+  "corpus": {
+    "digest": "b58359878c8d5609c1434d1ed4e1cc2da53819116e1c27bf189d7d8ffdb08c26",
+    "headRevision": "1165e934dfa9c21bb8b613513ac9c458ef54d0a6",
+    "workingTreeDirty": true
+  },
+  "evidenceSnapshotDigest": "7c266ed94b27de4e8acf66979a96e893d897b5bd4e2962ac386204d835641234",
+  "manualReviewStatus": "completed",
+  "manualReview": {
+    "required": 3,
+    "completed": 3
+  },
+  "summary": {
+    "total": 77,
+    "resolved": 77,
+    "resolved-mismatched": 0,
+    "unresolved": 0,
+    "unavailable": 0,
+    "extractorFalsePositives": 0
+  },
+  "candidates": [
+    {
+      "id": "e0c7d610e4480c4d",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/hiponet.md",
+        "startLine": 22,
+        "endLine": 22,
+        "sourceText": "**Primary source:** Siddharth Viswanath, Hiren Madhu, Dhananjay Bhaskar, Jake Kovalic, David R. Johnson, Christopher Tape, Ian Adelstein, Rex Ying, Michael Perlmutter, and Smita Krishnaswamy, \"HiPoNet: A Multi-View Simplicial Complex Network for High Dimensional Point-Cloud and Single-Cell data,\" *Advances in Neural Information Processing Systems 38* (NeurIPS 2025), Main Conference Track. [NeurIPS proceedings](https://proceedings.neurips.cc/paper_files/paper/2025/hash/b284aad9fb5c6d74b9535a30ece69e1c-Abstract-Conference.html) | [OpenReview](https://openreview.net/forum?id=UoKt9B1aY8) | [arXiv:2502.07746](https://arxiv.org/abs/2502.07746)",
+        "sourceDigest": "d3d20022d08c77984cb2baa82391d88673e7f86adca5f1f72f1eaf10d5532d7e"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2502.07746"
+        },
+        {
+          "kind": "url",
+          "value": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/b284aad9fb5c6d74b9535a30ece69e1c-Abstract-Conference.html"
+        }
+      ],
+      "described": {
+        "title": "HiPoNet: A Multi-View Simplicial Complex Network for High Dimensional Point-Cloud and Single-Cell data",
+        "authors": [
+          "Siddharth Viswanath",
+          "Hiren Madhu",
+          "Dhananjay Bhaskar",
+          "Jake Kovalic",
+          "David R. Johnson",
+          "Christopher Tape",
+          "Ian Adelstein",
+          "Rex Ying",
+          "Michael Perlmutter",
+          "Smita Krishnaswamy"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "749aefc850f60b81",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/hiponet.md",
+        "startLine": 24,
+        "endLine": 24,
+        "sourceText": "**Publication status, access, and license:** OpenReview records a NeurIPS 2025 poster published on 18 September 2025 and last modified on 29 October 2025; the official proceedings identify it as a Main Conference Track paper. Both OpenReview and arXiv mark the paper [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The official conference record does not list a proceedings DOI. `10.48550/arXiv.2502.07746` identifies the arXiv preprint, not the NeurIPS proceedings item. The software has different terms: the repository's Yale Copyright 2024 license permits non-commercial use, copying, modification, and distribution, requires distributed modifications and derivatives to be made available on GitHub, and requires a separate Yale license for commercial use.",
+        "sourceDigest": "773eb86ef1b835dd26a60c84c4cab5e0c76ed940ba6550e0552f6b963369749a"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.48550/arxiv.2502.07746"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2502.07746"
+        }
+      ]
+    },
+    {
+      "id": "498f790d741be9c6",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/hiponet.md",
+        "startLine": 238,
+        "endLine": 238,
+        "sourceText": "1. Viswanath, S. et al. \"HiPoNet: A Multi-View Simplicial Complex Network for High Dimensional Point-Cloud and Single-Cell data.\" *Advances in Neural Information Processing Systems 38* (2025). [Proceedings](https://proceedings.neurips.cc/paper_files/paper/2025/hash/b284aad9fb5c6d74b9535a30ece69e1c-Abstract-Conference.html)",
+        "sourceDigest": "626898e8d402b42fe940736bfc05fec274fc143a96031f747a2cfd389946d9bc"
+      },
+      "identifiers": [
+        {
+          "kind": "url",
+          "value": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/b284aad9fb5c6d74b9535a30ece69e1c-Abstract-Conference.html"
+        }
+      ],
+      "described": {
+        "title": "HiPoNet: A Multi-View Simplicial Complex Network for High Dimensional Point-Cloud and Single-Cell data",
+        "authors": [
+          "Viswanath",
+          "S. et al"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "e96ca3aa95ba540e",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/hiponet.md",
+        "startLine": 239,
+        "endLine": 239,
+        "sourceText": "2. Viswanath, S. et al. \"HiPoNet: A Multi-View Simplicial Complex Network for High Dimensional Point-Cloud and Single-Cell Data.\" arXiv:2502.07746, submitted 11 February 2025, revised 26 May 2025. [arXiv](https://arxiv.org/abs/2502.07746)",
+        "sourceDigest": "2eb59bee6375128aa5315951217c71ec49649901aebb0bcd748d315daa60a11d"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2502.07746"
+        }
+      ],
+      "described": {
+        "title": "HiPoNet: A Multi-View Simplicial Complex Network for High Dimensional Point-Cloud and Single-Cell Data",
+        "authors": [
+          "Viswanath",
+          "S. et al"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "c9f830d479707fa4",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/hiponet.md",
+        "startLine": 240,
+        "endLine": 240,
+        "sourceText": "3. Madhu, H., Gurugubelli, S., and Chepuri, S. P. \"Unsupervised parameter-free simplicial representation learning with scattering transforms.\" *Proceedings of Machine Learning Research* 235, 34145-34160 (2024). [PMLR](https://proceedings.mlr.press/v235/madhu24a.html)",
+        "sourceDigest": "7ce347f1ffb6b19b936d42c7b51fa6c5d834a94899a555c2362974bbd3ad14d7"
+      },
+      "identifiers": [
+        {
+          "kind": "url",
+          "value": "https://proceedings.mlr.press/v235/madhu24a.html"
+        }
+      ],
+      "described": {
+        "title": "Unsupervised parameter-free simplicial representation learning with scattering transforms",
+        "authors": [
+          "Madhu, H.",
+          "Gurugubelli, S.",
+          "Chepuri, S. P"
+        ],
+        "year": 2024
+      }
+    },
+    {
+      "id": "4c66d225265e6147",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/hiponet.md",
+        "startLine": 241,
+        "endLine": 241,
+        "sourceText": "4. Ramos Zapatero, M. et al. \"Trellis tree-based analysis reveals stromal regulation of patient-derived organoid drug responses.\" *Cell* 186, 5606-5619.e24 (2023). [DOI](https://doi.org/10.1016/j.cell.2023.11.005)",
+        "sourceDigest": "acb279c6f3470dbddb198b7993eb8ebed9b65fc493cf8c6b9332b304c2bc1337"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1016/j.cell.2023.11.005"
+        }
+      ],
+      "described": {
+        "title": "Trellis tree-based analysis reveals stromal regulation of patient-derived organoid drug responses",
+        "authors": [
+          "Ramos Zapatero",
+          "M. et al"
+        ],
+        "year": 2023
+      }
+    },
+    {
+      "id": "bdff18b7ad2ec9db",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/hiponet.md",
+        "startLine": 242,
+        "endLine": 242,
+        "sourceText": "5. Wu, Z. et al. \"Space-GM: geometric deep learning of disease-associated microenvironments from multiplex spatial protein profiles.\" bioRxiv (2022). [DOI](https://doi.org/10.1101/2022.05.12.491707)",
+        "sourceDigest": "9346f23f0510202f20e399f92d442a9836c1def3235fce0ef85f5a68b40a0ce9"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1101/2022.05.12.491707"
+        }
+      ],
+      "described": {
+        "title": "Space-GM: geometric deep learning of disease-associated microenvironments from multiplex spatial protein profiles",
+        "authors": [
+          "Wu",
+          "Z. et al"
+        ],
+        "year": 2022
+      }
+    },
+    {
+      "id": "e2b068d6ffe6545b",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/hiponet.md",
+        "startLine": 243,
+        "endLine": 243,
+        "sourceText": "6. Gao, F., Wolf, G., and Hirn, M. \"Geometric scattering for graph data analysis.\" *Proceedings of Machine Learning Research* 97, 2122-2131 (2019). [PMLR](https://proceedings.mlr.press/v97/gao19e.html)",
+        "sourceDigest": "94450c19d3fbfd7b8d1faaded47ed3627ef5f8d2a171a8dd1102d1cb5632698e"
+      },
+      "identifiers": [
+        {
+          "kind": "url",
+          "value": "https://proceedings.mlr.press/v97/gao19e.html"
+        }
+      ],
+      "described": {
+        "title": "Geometric scattering for graph data analysis",
+        "authors": [
+          "Gao, F.",
+          "Wolf, G.",
+          "Hirn, M"
+        ],
+        "year": 2019
+      }
+    },
+    {
+      "id": "8d6082ae0ef02540",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "startLine": 33,
+        "endLine": 33,
+        "sourceText": "PETLS preprint (Jones & Wei, [arXiv:2508.11560](https://arxiv.org/abs/2508.11560)) and",
+        "sourceDigest": "93b0f33c88243326bf6bfad65ad351f82fb43a045b6eee7de86c57fda18d63fa"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2508.11560"
+        }
+      ]
+    },
+    {
+      "id": "d419baddaeda38cb",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "startLine": 92,
+        "endLine": 92,
+        "sourceText": "(2026-06-29) · Apache-2.0. PETLS math/reference: Jones & Wei, arXiv:2508.11560.",
+        "sourceDigest": "d5cb37bd26f019532d3a774cb0ffb28cf0140881ab009ff24a8e6caca493d31b"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2508.11560"
+        }
+      ]
+    },
+    {
+      "id": "22a59d90db4c6dfb",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/petls.md",
+        "startLine": 24,
+        "endLine": 24,
+        "sourceText": "**Primary source:** Benjamin Jones and Guo-Wei Wei, \"PETLS: PErsistent Topological Laplacian Software,\" arXiv:2508.11560. The preprint was submitted August 15, 2025 and revised March 3, 2026. [arXiv record](https://arxiv.org/abs/2508.11560) | [Paper DOI](https://doi.org/10.48550/arXiv.2508.11560)",
+        "sourceDigest": "60aebbd883549c7f3217aec6f8d478dceec2571348289edf2df0199d84896abe"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.48550/arxiv.2508.11560"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2508.11560"
+        }
+      ],
+      "described": {
+        "title": "PETLS: PErsistent Topological Laplacian Software",
+        "authors": [
+          "Benjamin Jones",
+          "Guo-Wei Wei"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "cae3718df6688455",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/petls.md",
+        "startLine": 247,
+        "endLine": 247,
+        "sourceText": "1. Jones B, Wei G-W. \"PETLS: PErsistent Topological Laplacian Software.\" arXiv:2508.11560, v2, March 3, 2026. [arXiv](https://arxiv.org/abs/2508.11560)",
+        "sourceDigest": "df4dbd0afdf2c3afbdc6fe5d865ad6d0299cc610d25474cdef8e0d403f4199fb"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2508.11560"
+        }
+      ],
+      "described": {
+        "title": "PETLS: PErsistent Topological Laplacian Software",
+        "authors": [
+          "Jones B",
+          "Wei G-W"
+        ],
+        "year": 2026
+      }
+    },
+    {
+      "id": "80e45fc7da0dd955",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/petls.md",
+        "startLine": 251,
+        "endLine": 251,
+        "sourceText": "5. Memoli F, Wan Z, Wang Y. \"Persistent Laplacians: Properties, Algorithms and Implications.\" *SIAM Journal on Mathematics of Data Science* 4(2):858-884 (2022). [DOI](https://doi.org/10.1137/21M1435471)",
+        "sourceDigest": "56a12ebe6c8dda2ce0fbe9f6850d2243ed7723dea82af5b14c98dd6a721c8f84"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1137/21m1435471"
+        }
+      ],
+      "described": {
+        "title": "Persistent Laplacians: Properties, Algorithms and Implications",
+        "authors": [
+          "Memoli F",
+          "Wan Z",
+          "Wang Y"
+        ],
+        "year": 2022
+      }
+    },
+    {
+      "id": "91466d998b387dfb",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/petls.md",
+        "startLine": 252,
+        "endLine": 252,
+        "sourceText": "6. Wang R et al. \"HERMES: Persistent spectral graph software.\" *Foundations of Data Science* 3(1):67-97 (2021). [DOI](https://doi.org/10.3934/fods.2021006)",
+        "sourceDigest": "e4fb6e5ec3149ffa1bb2eaad80695c3af27b1a8c2e4b9f1de75ee4af1b122f68"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.3934/fods.2021006"
+        }
+      ],
+      "described": {
+        "title": "HERMES: Persistent spectral graph software",
+        "authors": [
+          "Wang R et al"
+        ],
+        "year": 2021
+      }
+    },
+    {
+      "id": "17795c18b4a7389b",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/petls.md",
+        "startLine": 253,
+        "endLine": 253,
+        "sourceText": "7. Wei X, Wei G-W. \"Persistent sheaf Laplacians.\" *Foundations of Data Science* 7(2):446-463 (2025). [DOI](https://doi.org/10.3934/fods.2024033)",
+        "sourceDigest": "3f3b9b719d5d9bab0e7efa7369ffb46a0f3ac3c1c32944e822a368769632625e"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.3934/fods.2024033"
+        }
+      ],
+      "described": {
+        "title": "Persistent sheaf Laplacians",
+        "authors": [
+          "Wei X",
+          "Wei G-W"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "89de5ccffb35da8c",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/petls.md",
+        "startLine": 254,
+        "endLine": 254,
+        "sourceText": "8. Wei X, Wei G-W. \"Persistent topological Laplacians - a survey.\" *Mathematics* 13(2):208 (2025). [DOI](https://doi.org/10.3390/math13020208)",
+        "sourceDigest": "0f664d3a5e9a7e77acd4827389491046b020eaac78de0157d2da9e4b1198b96d"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.3390/math13020208"
+        }
+      ],
+      "described": {
+        "title": "Persistent topological Laplacians - a survey",
+        "authors": [
+          "Wei X",
+          "Wei G-W"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "10caaf08a32942df",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topodockq.md",
+        "startLine": 23,
+        "endLine": 23,
+        "sourceText": "**Primary source:** Xuhang Dai, Rui Wang, and Yingkai Zhang, \"Topological deep learning for enhancing peptide-protein complex prediction,\" *Communications Chemistry* 8, 347 (2025), published 12 November 2025. [Journal article](https://doi.org/10.1038/s42004-025-01727-4) | [PMC full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC12612092/) | [Supporting Information](https://static-content.springer.com/esm/art%3A10.1038%2Fs42004-025-01727-4/MediaObjects/42004_2025_1727_MOESM2_ESM.pdf)",
+        "sourceDigest": "388523aa1dae852942ea064a2ae944bfde48c82196faf7d38d36d0e89650bf98"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1038/s42004-025-01727-4"
+        },
+        {
+          "kind": "pmcid",
+          "value": "PMC12612092"
+        }
+      ],
+      "described": {
+        "title": "Topological deep learning for enhancing peptide-protein complex prediction",
+        "authors": [
+          "Xuhang Dai",
+          "Rui Wang",
+          "Yingkai Zhang"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "dd96e8097e272ad3",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topodockq.md",
+        "startLine": 211,
+        "endLine": 211,
+        "sourceText": "1. Dai, X., Wang, R., and Zhang, Y. \"Topological deep learning for enhancing peptide-protein complex prediction.\" *Communications Chemistry* 8, 347 (2025). [DOI](https://doi.org/10.1038/s42004-025-01727-4)",
+        "sourceDigest": "f90a33e1a248cff0d56bfa8ee50d98c3572f77bf036ba47ae3de25558f1a52fa"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1038/s42004-025-01727-4"
+        }
+      ],
+      "described": {
+        "title": "Topological deep learning for enhancing peptide-protein complex prediction",
+        "authors": [
+          "Dai, X.",
+          "Wang, R.",
+          "Zhang, Y"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "454c87a94f21db8e",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topodockq.md",
+        "startLine": 212,
+        "endLine": 212,
+        "sourceText": "2. Basu, S. and Wallner, B. \"DockQ: A Quality Measure for Protein-Protein Docking Models.\" *PLoS ONE* 11, e0161879 (2016). [DOI](https://doi.org/10.1371/journal.pone.0161879)",
+        "sourceDigest": "bc482ded544be5a53a373993e5bf367de013d7fdd1becfdddb6f2de5530744ff"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1371/journal.pone.0161879"
+        }
+      ],
+      "described": {
+        "title": "DockQ: A Quality Measure for Protein-Protein Docking Models",
+        "authors": [
+          "Basu, S.",
+          "Wallner, B"
+        ],
+        "year": 2016
+      }
+    },
+    {
+      "id": "f48fce7229adb6ab",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topodockq.md",
+        "startLine": 213,
+        "endLine": 213,
+        "sourceText": "3. Wang, R., Nguyen, D. D., and Wei, G.-W. \"Persistent spectral graph.\" *International Journal for Numerical Methods in Biomedical Engineering* 36, e3376 (2020). [DOI](https://doi.org/10.1002/cnm.3376)",
+        "sourceDigest": "277d26bd432acdccaa8a37b1b0f8bc06e6ce526e37d3d6798228c37996e8980b"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1002/cnm.3376"
+        }
+      ],
+      "described": {
+        "title": "Persistent spectral graph",
+        "authors": [
+          "Wang, R.",
+          "Nguyen, D. D.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2020
+      }
+    },
+    {
+      "id": "c09a7da23c75e4b8",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topodockq.md",
+        "startLine": 214,
+        "endLine": 214,
+        "sourceText": "4. Wang, R. et al. \"HERMES: Persistent spectral graph software.\" *Foundations of Data Science* 3, 67-97 (2021). [DOI](https://doi.org/10.3934/fods.2021006)",
+        "sourceDigest": "80b5da567594c8b84b0ba5f07b6d96e2408662c2098e52742823d0bde2502eff"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.3934/fods.2021006"
+        }
+      ],
+      "described": {
+        "title": "HERMES: Persistent spectral graph software",
+        "authors": [
+          "Wang",
+          "R. et al"
+        ],
+        "year": 2021
+      }
+    },
+    {
+      "id": "4ff01673f236c566",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topodockq.md",
+        "startLine": 215,
+        "endLine": 215,
+        "sourceText": "5. Alam, N. et al. \"High-resolution global peptide-protein docking using fragments-based PIPER-FlexPepDock.\" *PLoS Computational Biology* 13, e1005905 (2017). [DOI](https://doi.org/10.1371/journal.pcbi.1005905)",
+        "sourceDigest": "6c57e2bd1f0a49d826c8abe8397f5167571a2c7f50d6938200c74e587744d890"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1371/journal.pcbi.1005905"
+        }
+      ],
+      "described": {
+        "title": "High-resolution global peptide-protein docking using fragments-based PIPER-FlexPepDock",
+        "authors": [
+          "Alam",
+          "N. et al"
+        ],
+        "year": 2017
+      }
+    },
+    {
+      "id": "bd68d07533be92c1",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topodockq.md",
+        "startLine": 216,
+        "endLine": 216,
+        "sourceText": "6. Eastman, P. et al. \"OpenMM 7: Rapid development of high performance algorithms for molecular dynamics.\" *PLoS Computational Biology* 13, e1005659 (2017). [DOI](https://doi.org/10.1371/journal.pcbi.1005659)",
+        "sourceDigest": "c9c6eed98020c583ddcc9402e54d866ee81dd745feede6021b71f4cc9ad44385"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1371/journal.pcbi.1005659"
+        }
+      ],
+      "described": {
+        "title": "OpenMM 7: Rapid development of high performance algorithms for molecular dynamics",
+        "authors": [
+          "Eastman",
+          "P. et al"
+        ],
+        "year": 2017
+      }
+    },
+    {
+      "id": "1cc5623b2e46f285",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topodockq.md",
+        "startLine": 217,
+        "endLine": 217,
+        "sourceText": "7. Boothroyd, S. et al. \"Development and benchmarking of Open Force Field 2.0.0: the Sage small molecule force field.\" *Journal of Chemical Theory and Computation* 19, 3251-3275 (2023). [DOI](https://doi.org/10.1021/acs.jctc.3c00039)",
+        "sourceDigest": "030791045f034478a92d21df33ad679304b7fd166c966a15f36061d390c586b5"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1021/acs.jctc.3c00039"
+        }
+      ],
+      "described": {
+        "title": "Development and benchmarking of Open Force Field 2.0.0: the Sage small molecule force field",
+        "authors": [
+          "Boothroyd",
+          "S. et al"
+        ],
+        "year": 2023
+      }
+    },
+    {
+      "id": "332d5d9245ecb2cd",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topometry.md",
+        "startLine": 21,
+        "endLine": 21,
+        "sourceText": "**Primary publication:** David Sidarta-Oliveira, Ana I. Domingos, and Licio A. Velloso, \"TopoMetry systematically learns and evaluates the latent geometry of single-cell data,\" *eLife* 13:RP100361. The version of record was published July 3, 2026, DOI: [10.7554/eLife.100361.3](https://doi.org/10.7554/eLife.100361.3).",
+        "sourceDigest": "8ff74f672b612b67e5c8be839c88bf824ea18cdf5113a7038ea1c622d4919fff"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.7554/elife.100361.3"
+        }
+      ],
+      "described": {
+        "title": "TopoMetry systematically learns and evaluates the latent geometry of single-cell data",
+        "authors": [
+          "David Sidarta-Oliveira",
+          "Ana I. Domingos",
+          "Licio A. Velloso"
+        ],
+        "year": 2026
+      }
+    },
+    {
+      "id": "c1e73fa5548d6bb1",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topometry.md",
+        "startLine": 261,
+        "endLine": 261,
+        "sourceText": "1. Sidarta-Oliveira D, Domingos AI, Velloso LA. TopoMetry systematically learns and evaluates the latent geometry of single-cell data. *eLife*. 2026;13:RP100361. [Version-specific DOI](https://doi.org/10.7554/eLife.100361.3).",
+        "sourceDigest": "be6c6cac0379a55f68e1a378b2f89fedd533aec315fc5395201d8fd8aca92bac"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.7554/elife.100361.3"
+        }
+      ],
+      "described": {
+        "title": "TopoMetry systematically learns and evaluates the latent geometry of single-cell data",
+        "authors": [
+          "Sidarta-Oliveira D",
+          "Domingos AI",
+          "Velloso LA"
+        ],
+        "year": 2026
+      }
+    },
+    {
+      "id": "57a21ce78c6b9e11",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topometry.md",
+        "startLine": 265,
+        "endLine": 265,
+        "sourceText": "5. Belkin M, Niyogi P. Laplacian Eigenmaps for dimensionality reduction and data representation. *Neural Computation*. 2003;15:1373-1396. [DOI](https://doi.org/10.1162/089976603321780317).",
+        "sourceDigest": "c16872fc9dac88340d9ad4da70893bb7f39b48f6b446cc9251b602a35c11228d"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1162/089976603321780317"
+        }
+      ],
+      "described": {
+        "title": "Laplacian Eigenmaps for dimensionality reduction and data representation",
+        "authors": [
+          "Belkin M",
+          "Niyogi P"
+        ],
+        "year": 2003
+      }
+    },
+    {
+      "id": "11aef45c2cf8360e",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topometry.md",
+        "startLine": 266,
+        "endLine": 266,
+        "sourceText": "6. Coifman RR, Lafon S. Diffusion maps. *Applied and Computational Harmonic Analysis*. 2006;21:5-30. [DOI](https://doi.org/10.1016/j.acha.2006.04.006).",
+        "sourceDigest": "35facfa46f35087f25f068673981ecc42da6084fd8958fa551f59dd0e060764b"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1016/j.acha.2006.04.006"
+        }
+      ],
+      "described": {
+        "title": "Diffusion maps",
+        "authors": [
+          "Coifman RR",
+          "Lafon S"
+        ],
+        "year": 2006
+      }
+    },
+    {
+      "id": "c6ef3aa4aa8234e7",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topometry.md",
+        "startLine": 267,
+        "endLine": 267,
+        "sourceText": "7. Wolf FA, Angerer P, Theis FJ. SCANPY: large-scale single-cell gene expression data analysis. *Genome Biology*. 2018;19:15. [DOI](https://doi.org/10.1186/s13059-017-1382-0).",
+        "sourceDigest": "3056fb65504404e8d8d2cda873dabf652cfe37628a99a8ebd82e442967e5f287"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1186/s13059-017-1382-0"
+        }
+      ],
+      "described": {
+        "title": "SCANPY: large-scale single-cell gene expression data analysis",
+        "authors": [
+          "Wolf FA",
+          "Angerer P",
+          "Theis FJ"
+        ],
+        "year": 2018
+      }
+    },
+    {
+      "id": "046bae78128ae433",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topometry.md",
+        "startLine": 268,
+        "endLine": 268,
+        "sourceText": "8. McInnes L, Healy J, Melville J. UMAP: Uniform Manifold Approximation and Projection for dimension reduction. [arXiv](https://arxiv.org/abs/1802.03426).",
+        "sourceDigest": "87e712a74c92486e737a5af8154315e2335da2820da613724fbef4cd3318ce3a"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "1802.03426"
+        }
+      ],
+      "described": {
+        "title": "UMAP: Uniform Manifold Approximation and Projection for dimension reduction",
+        "authors": [
+          "McInnes L",
+          "Healy J",
+          "Melville J"
+        ]
+      }
+    },
+    {
+      "id": "58e30eb6f394fa17",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topometry.md",
+        "startLine": 269,
+        "endLine": 269,
+        "sourceText": "9. Moon KR et al. Visualizing structure and transitions in high-dimensional biological data. *Nature Biotechnology*. 2019;37:1482-1492. [DOI](https://doi.org/10.1038/s41587-019-0336-3).",
+        "sourceDigest": "8e0bc966ffbea15ca6100b4f819d4da13c215185d2d8349c5ec8c08bded0697b"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1038/s41587-019-0336-3"
+        }
+      ],
+      "described": {
+        "title": "Visualizing structure and transitions in high-dimensional biological data",
+        "authors": [
+          "Moon KR et al"
+        ],
+        "year": 2019
+      }
+    },
+    {
+      "id": "21a02ce6bcce456a",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topoqa.md",
+        "startLine": 21,
+        "endLine": 21,
+        "sourceText": "**Primary source:** Bingqing Han, Yipeng Zhang, Longlong Li, Xinqi Gong, and Kelin Xia, \"TopoQA: a topological deep learning-based approach for protein complex structure interface quality assessment,\" *Briefings in Bioinformatics* 26(2), bbaf083 (2025). [Journal DOI](https://doi.org/10.1093/bib/bbaf083) | [PMC full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC11891663/) | [arXiv:2410.17815](https://arxiv.org/abs/2410.17815)",
+        "sourceDigest": "decf824a72c868ad8faca731833a43a6ac3c47d87c3abe19b0bcba9b9f144de4"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1093/bib/bbaf083"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2410.17815"
+        },
+        {
+          "kind": "pmcid",
+          "value": "PMC11891663"
+        }
+      ],
+      "described": {
+        "title": "TopoQA: a topological deep learning-based approach for protein complex structure interface quality assessment",
+        "authors": [
+          "Bingqing Han",
+          "Yipeng Zhang",
+          "Longlong Li",
+          "Xinqi Gong",
+          "Kelin Xia"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "0a4dafae2ad04dbf",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topoqa.md",
+        "startLine": 227,
+        "endLine": 227,
+        "sourceText": "1. Han, B., Zhang, Y., Li, L., Gong, X., and Xia, K. \"TopoQA: a topological deep learning-based approach for protein complex structure interface quality assessment.\" *Briefings in Bioinformatics* 26(2), bbaf083 (2025). [DOI 10.1093/bib/bbaf083](https://doi.org/10.1093/bib/bbaf083).",
+        "sourceDigest": "820c24f350ef80de4b6b468e9b397e8c16bae61da54d4900fd02225499b26f89"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1093/bib/bbaf083"
+        }
+      ],
+      "described": {
+        "title": "TopoQA: a topological deep learning-based approach for protein complex structure interface quality assessment",
+        "authors": [
+          "Han, B.",
+          "Zhang, Y.",
+          "Li, L.",
+          "Gong, X.",
+          "Xia, K"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "024a66a6af463513",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topoqa.md",
+        "startLine": 228,
+        "endLine": 228,
+        "sourceText": "2. Basu, S. and Wallner, B. \"DockQ: a quality measure for protein-protein docking models.\" *PLOS ONE* 11, e0161879 (2016). [DOI 10.1371/journal.pone.0161879](https://doi.org/10.1371/journal.pone.0161879).",
+        "sourceDigest": "6f22fd19a8af87dfa4b702161ed06aa7e1a3587fc736280484b26550cda2ed64"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1371/journal.pone.0161879"
+        }
+      ],
+      "described": {
+        "title": "DockQ: a quality measure for protein-protein docking models",
+        "authors": [
+          "Basu, S.",
+          "Wallner, B"
+        ],
+        "year": 2016
+      }
+    },
+    {
+      "id": "85ba3d66b9c4b0a5",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topoqa.md",
+        "startLine": 229,
+        "endLine": 229,
+        "sourceText": "3. Chen, X., Morehead, A., Liu, J., and Cheng, J. \"A gated graph transformer for protein complex structure quality assessment and its performance in CASP15.\" *Bioinformatics* 39, i308-i317 (2023). [DOI 10.1093/bioinformatics/btad203](https://doi.org/10.1093/bioinformatics/btad203).",
+        "sourceDigest": "c3c2d59b2b563806487b935cf57ada495ef4bad3bc6714e11a8cc6f057db120b"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1093/bioinformatics/btad203"
+        }
+      ],
+      "described": {
+        "title": "A gated graph transformer for protein complex structure quality assessment and its performance in CASP15",
+        "authors": [
+          "Chen, X.",
+          "Morehead, A.",
+          "Liu, J.",
+          "Cheng, J"
+        ],
+        "year": 2023
+      }
+    },
+    {
+      "id": "e5be5ed9fbfd3ee5",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topoqa.md",
+        "startLine": 230,
+        "endLine": 230,
+        "sourceText": "4. Zhang, L., Wang, S., Hou, J., et al. \"ComplexQA: a deep graph learning approach for protein complex structure assessment.\" *Briefings in Bioinformatics* 24, bbad287 (2023). [DOI 10.1093/bib/bbad287](https://doi.org/10.1093/bib/bbad287).",
+        "sourceDigest": "b7dcade77ffa3899b57794cb67c1cdce51b5f04d2176ac5d839656371bbdb18d"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1093/bib/bbad287"
+        }
+      ],
+      "described": {
+        "title": "ComplexQA: a deep graph learning approach for protein complex structure assessment",
+        "authors": [
+          "Zhang, L.",
+          "Wang, S.",
+          "Hou, J."
+        ],
+        "year": 2023
+      }
+    },
+    {
+      "id": "be15cc46620f5cab",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topoqa.md",
+        "startLine": 231,
+        "endLine": 231,
+        "sourceText": "5. Abramson, J., Adler, J., Dunger, J., et al. \"Accurate structure prediction of biomolecular interactions with AlphaFold 3.\" *Nature* 630, 493-500 (2024). [DOI 10.1038/s41586-024-07487-w](https://doi.org/10.1038/s41586-024-07487-w).",
+        "sourceDigest": "6c57bb55aa011e19f636087100fe5ecd34732d43f37bdbce5691141d816416a8"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1038/s41586-024-07487-w"
+        }
+      ],
+      "described": {
+        "title": "Accurate structure prediction of biomolecular interactions with AlphaFold 3",
+        "authors": [
+          "Abramson, J.",
+          "Adler, J.",
+          "Dunger, J."
+        ],
+        "year": 2024
+      }
+    },
+    {
+      "id": "6091d605d968aad2",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topoqa.md",
+        "startLine": 232,
+        "endLine": 232,
+        "sourceText": "6. Pun, C. S., Lee, S. X., and Xia, K. \"Persistent-homology-based machine learning: a survey and a comparative study.\" *Artificial Intelligence Review* 55, 5169-5213 (2022). [DOI 10.1007/s10462-022-10146-z](https://doi.org/10.1007/s10462-022-10146-z).",
+        "sourceDigest": "035d4673d65ad84d100ab29859e78c2d2cf0533598a1688b7ac11ea45fb209b5"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1007/s10462-022-10146-z"
+        }
+      ],
+      "described": {
+        "title": "Persistent-homology-based machine learning: a survey and a comparative study",
+        "authors": [
+          "Pun, C. S.",
+          "Lee, S. X.",
+          "Xia, K"
+        ],
+        "year": 2022
+      }
+    },
+    {
+      "id": "cec5c306531c9354",
+      "span": {
+        "artifactKind": "package-note",
+        "artifactPath": "content/packages/topoqa.md",
+        "startLine": 233,
+        "endLine": 233,
+        "sourceText": "7. Zhao, N., Han, B., Zhao, C., Xu, J., and Gong, X. \"ABAG-docking benchmark: a non-redundant structure benchmark dataset for antibody-antigen computational docking.\" *Briefings in Bioinformatics* 25, bbae048 (2024). [DOI 10.1093/bib/bbae048](https://doi.org/10.1093/bib/bbae048).",
+        "sourceDigest": "91a4c813f3fa15c16da4d5605b1ca51811f365240af260fbca3e1108928e0940"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1093/bib/bbae048"
+        }
+      ],
+      "described": {
+        "title": "ABAG-docking benchmark: a non-redundant structure benchmark dataset for antibody-antigen computational docking",
+        "authors": [
+          "Zhao, N.",
+          "Han, B.",
+          "Zhao, C.",
+          "Xu, J.",
+          "Gong, X"
+        ],
+        "year": 2024
+      }
+    },
+    {
+      "id": "a9c95e4fd9d6a22d",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "citation: Rui Wang, Duc Duy Nguyen, and Guo-Wei Wei, \"Persistent spectral graph,\" International Journal for Numerical Methods in Biomedical Engineering 36(9), e3376 (2020); preprint arXiv:1912.04135v2.",
+        "sourceDigest": "5e4ad0872f92f821714f07a882d0ad1a16d455e8a61be2a901dbd56a8b6a49ce"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "1912.04135"
+        }
+      ],
+      "described": {
+        "title": "Persistent spectral graph",
+        "authors": [
+          "citation: Rui Wang",
+          "Duc Duy Nguyen",
+          "Guo-Wei Wei"
+        ],
+        "year": 2020
+      }
+    },
+    {
+      "id": "f0b4724cd0748945",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "source_url: https://arxiv.org/abs/1912.04135",
+        "sourceDigest": "8b48ee50bea47cf464ddf98ecc5c832e338e2e88cb7b6906bc35a83520f5503c"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "1912.04135"
+        }
+      ]
+    },
+    {
+      "id": "b1b4eba6009c95e5",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 23,
+        "endLine": 23,
+        "sourceText": "**Primary source:** Rui Wang, Duc Duy Nguyen, and Guo-Wei Wei, \"Persistent spectral graph.\" Preprint submitted to arXiv 9 December 2019, revised 11 December 2019 as v2. [arXiv:1912.04135](https://arxiv.org/abs/1912.04135) | [arXiv DOI](https://doi.org/10.48550/arXiv.1912.04135) | [journal version](https://doi.org/10.1002/cnm.3376), *International Journal for Numerical Methods in Biomedical Engineering* 36(9), e3376 (2020).",
+        "sourceDigest": "8a5d897cd006212b2c7aa90cfff3298b749530721f69e9ea6e2b726a021bfedf"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.48550/arxiv.1912.04135"
+        },
+        {
+          "kind": "doi",
+          "value": "10.1002/cnm.3376"
+        },
+        {
+          "kind": "arxiv",
+          "value": "1912.04135"
+        }
+      ],
+      "described": {
+        "title": "Persistent spectral graph",
+        "authors": [
+          "Rui Wang",
+          "Duc Duy Nguyen",
+          "Guo-Wei Wei"
+        ],
+        "year": 2019
+      }
+    },
+    {
+      "id": "a6585c4eba33d5a1",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 158,
+        "endLine": 158,
+        "sourceText": "1. Wang, R., Nguyen, D. D., and Wei, G.-W. \"Persistent spectral graph.\" *International Journal for Numerical Methods in Biomedical Engineering* 36(9), e3376 (2020). [DOI](https://doi.org/10.1002/cnm.3376). Preprint: [arXiv:1912.04135](https://arxiv.org/abs/1912.04135).",
+        "sourceDigest": "c711b532b29b233f8463c08db9468468291370c459997e94ecb62938b55d008e"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1002/cnm.3376"
+        },
+        {
+          "kind": "arxiv",
+          "value": "1912.04135"
+        }
+      ],
+      "described": {
+        "title": "Persistent spectral graph",
+        "authors": [
+          "Wang, R.",
+          "Nguyen, D. D.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2020
+      }
+    },
+    {
+      "id": "611b726d08317617",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 159,
+        "endLine": 159,
+        "sourceText": "2. Wang, R., Zhao, R., Ribando-Gros, E., Chen, J., Tong, Y., and Wei, G.-W. \"HERMES: Persistent spectral graph software.\" *Foundations of Data Science* 3(1), 67-97 (2021). [DOI](https://doi.org/10.3934/fods.2021006).",
+        "sourceDigest": "52cf1b6b86fccf922482bf0b1f13949c18fbc280a2675272a92ba5236e417461"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.3934/fods.2021006"
+        }
+      ],
+      "described": {
+        "title": "HERMES: Persistent spectral graph software",
+        "authors": [
+          "Wang, R.",
+          "Zhao, R.",
+          "Ribando-Gros, E.",
+          "Chen, J.",
+          "Tong, Y.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2021
+      }
+    },
+    {
+      "id": "fe8916fa9648466c",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 160,
+        "endLine": 160,
+        "sourceText": "3. Memoli, F., Wan, Z., and Wang, Y. \"Persistent Laplacians: Properties, Algorithms and Implications.\" *SIAM Journal on Mathematics of Data Science* 4(2), 858-884 (2022). [DOI](https://doi.org/10.1137/21M1435471).",
+        "sourceDigest": "5dbf35cf971a69ef65fadc6ae6ce2e8e59a8e1a8f6fc968c7703013764f57f01"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1137/21m1435471"
+        }
+      ],
+      "described": {
+        "title": "Persistent Laplacians: Properties, Algorithms and Implications",
+        "authors": [
+          "Memoli, F.",
+          "Wan, Z.",
+          "Wang, Y"
+        ],
+        "year": 2022
+      }
+    },
+    {
+      "id": "7d70bb5bf72f69e9",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 161,
+        "endLine": 161,
+        "sourceText": "4. Jones, B. and Wei, G.-W. \"PETLS: PErsistent Topological Laplacian Software.\" [arXiv:2508.11560](https://arxiv.org/abs/2508.11560).",
+        "sourceDigest": "c2e74115f2836c0acdaeae918e44aabc27504c111ade0eb4f644f39d10230faa"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2508.11560"
+        }
+      ],
+      "described": {
+        "title": "PETLS: PErsistent Topological Laplacian Software",
+        "authors": [
+          "Jones, B.",
+          "Wei",
+          "G.-W"
+        ]
+      }
+    },
+    {
+      "id": "5c823466b4cdd332",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 162,
+        "endLine": 162,
+        "sourceText": "5. Bahar, I., Atilgan, A. R., and Erman, B. \"Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential.\" *Folding and Design* 2(3), 173-181 (1997). [DOI](https://doi.org/10.1016/S1359-0278%2897%2900024-2).",
+        "sourceDigest": "bbf097d027423420543c6544511ded3cfa934a37ba77370f3e4ba26cd5cc1c24"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1016/s1359-0278"
+        }
+      ],
+      "described": {
+        "title": "Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential",
+        "authors": [
+          "Bahar, I.",
+          "Atilgan, A. R.",
+          "Erman, B"
+        ],
+        "year": 1997
+      }
+    },
+    {
+      "id": "2f4bcb325832b87c",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 163,
+        "endLine": 163,
+        "sourceText": "6. Atilgan, A. R., Durell, S. R., Jernigan, R. L., Demirel, M. C., Keskin, O., and Bahar, I. \"Anisotropy of fluctuation dynamics of proteins with an elastic network model.\" *Biophysical Journal* 80(1), 505-515 (2001). [DOI](https://doi.org/10.1016/S0006-3495%2801%2976033-X).",
+        "sourceDigest": "a5c8f338ef7e4035560224b0f0554baabaa21cbc58966cdff7bb09fdc47b474f"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1016/s0006-3495"
+        }
+      ],
+      "described": {
+        "title": "Anisotropy of fluctuation dynamics of proteins with an elastic network model",
+        "authors": [
+          "Atilgan, A. R.",
+          "Durell, S. R.",
+          "Jernigan, R. L.",
+          "Demirel, M. C.",
+          "Keskin, O.",
+          "Bahar, I"
+        ],
+        "year": 2001
+      }
+    },
+    {
+      "id": "20682781b87de4d4",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 164,
+        "endLine": 164,
+        "sourceText": "7. Bramer, D. and Wei, G.-W. \"Blind prediction of protein B-factor and flexibility.\" *The Journal of Chemical Physics* 149(13), 134107 (2018). [DOI](https://doi.org/10.1063/1.5048469).",
+        "sourceDigest": "13601fd60f3c552b2fcc4f49d78c643d60767f9b701163c0b9d38eb81e86c647"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1063/1.5048469"
+        }
+      ],
+      "described": {
+        "title": "Blind prediction of protein B-factor and flexibility",
+        "authors": [
+          "Bramer, D.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2018
+      }
+    },
+    {
+      "id": "9e3afca83d040a50",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 165,
+        "endLine": 165,
+        "sourceText": "8. Wei, X. and Wei, G.-W. \"Persistent topological Laplacians - a survey.\" *Mathematics* 13(2), 208 (2025). [DOI](https://doi.org/10.3390/math13020208).",
+        "sourceDigest": "d023c4f5d7c05f703113634042d85a21c2c5337a2e9a99495b291291dc706f13"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.3390/math13020208"
+        }
+      ],
+      "described": {
+        "title": "Persistent topological Laplacians - a survey",
+        "authors": [
+          "Wei, X.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "90fa7ac7293984cc",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "citation: Zhe Su, Xiang Liu, Layal Bou Hamdan, Vasileios Maroulas, Jie Wu, Gunnar Carlsson, and Guo-Wei Wei, \"Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review,\" arXiv:2507.19504v1 (2025).",
+        "sourceDigest": "a9a48a2b437e6c36eda6fb81746739cfbbb34456ca49d6a9c3d5729be3df7b63"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2507.19504"
+        }
+      ],
+      "described": {
+        "title": "Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review",
+        "authors": [
+          "citation: Zhe Su",
+          "Xiang Liu",
+          "Layal Bou Hamdan",
+          "Vasileios Maroulas",
+          "Jie Wu",
+          "Gunnar Carlsson",
+          "Guo-Wei Wei"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "66253cd323d39470",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "source_url: https://arxiv.org/abs/2507.19504",
+        "sourceDigest": "3f8404fa8d11601d3d0e31dc9ad6d027e6a12b0b4c521be321d0544e8380b56a"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2507.19504"
+        }
+      ]
+    },
+    {
+      "id": "903a1aafcd52c844",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "startLine": 21,
+        "endLine": 21,
+        "sourceText": "**Primary source:** Zhe Su, Xiang Liu, Layal Bou Hamdan, Vasileios Maroulas, Jie Wu, Gunnar Carlsson, and Guo-Wei Wei, “Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review,” arXiv:2507.19504v1, submitted 12 July 2025. [arXiv](https://arxiv.org/abs/2507.19504) | [arXiv DOI](https://doi.org/10.48550/arXiv.2507.19504) | [later journal version](https://doi.org/10.1007/s10462-025-11462-w)",
+        "sourceDigest": "4ec94a7c5babdc7078fbd712d987424099cebcb11271e525b5af6aabc0604131"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.48550/arxiv.2507.19504"
+        },
+        {
+          "kind": "doi",
+          "value": "10.1007/s10462-025-11462-w"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2507.19504"
+        }
+      ],
+      "described": {
+        "title": "Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review",
+        "authors": [
+          "Zhe Su",
+          "Xiang Liu",
+          "Layal Bou Hamdan",
+          "Vasileios Maroulas",
+          "Jie Wu",
+          "Gunnar Carlsson",
+          "Guo-Wei Wei"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "f453917dc05f7546",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "startLine": 206,
+        "endLine": 206,
+        "sourceText": "1. Su, Z., Liu, X., Bou Hamdan, L., Maroulas, V., Wu, J., Carlsson, G., and Wei, G.-W. “Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review.” [arXiv:2507.19504](https://arxiv.org/abs/2507.19504); later version: [DOI 10.1007/s10462-025-11462-w](https://doi.org/10.1007/s10462-025-11462-w).",
+        "sourceDigest": "1efef5ee40a753e01544e567e68febe3dc57d735f51fc2ec88715621ce1920aa"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1007/s10462-025-11462-w"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2507.19504"
+        }
+      ],
+      "described": {
+        "title": "Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review",
+        "authors": [
+          "Su, Z.",
+          "Liu, X.",
+          "Bou Hamdan, L.",
+          "Maroulas, V.",
+          "Wu, J.",
+          "Carlsson, G.",
+          "Wei",
+          "G.-W"
+        ]
+      }
+    },
+    {
+      "id": "39077e3196be9238",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "startLine": 207,
+        "endLine": 207,
+        "sourceText": "2. Mémoli, F., Wan, Z., and Wang, Y. “Persistent Laplacians: Properties, Algorithms and Implications.” *SIAM Journal on Mathematics of Data Science* 4(2), 858-884 (2022). [DOI 10.1137/21M1435471](https://doi.org/10.1137/21M1435471).",
+        "sourceDigest": "7fea7d7de4f94d1f5e7ff8416d8cba1f78f6d2ef4491c5c63ac949fe03c74b1d"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1137/21m1435471"
+        }
+      ],
+      "described": {
+        "title": "Persistent Laplacians: Properties, Algorithms and Implications",
+        "authors": [
+          "Mémoli, F.",
+          "Wan, Z.",
+          "Wang, Y"
+        ],
+        "year": 2022
+      }
+    },
+    {
+      "id": "b5fa04db1e311657",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "startLine": 208,
+        "endLine": 208,
+        "sourceText": "3. Chen, J., Zhao, R., Tong, Y., and Wei, G.-W. “Evolutionary de Rham-Hodge Method.” *Discrete and Continuous Dynamical Systems - B* 26(7), 3785-3821 (2021). [DOI 10.3934/dcdsb.2020257](https://doi.org/10.3934/dcdsb.2020257).",
+        "sourceDigest": "26bf622218431ddad5872073e534c2d19fb6aab7a3a992c91f5bef43c94d6bc0"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.3934/dcdsb.2020257"
+        }
+      ],
+      "described": {
+        "title": "Evolutionary de Rham-Hodge Method",
+        "authors": [
+          "Chen, J.",
+          "Zhao, R.",
+          "Tong, Y.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2021
+      }
+    },
+    {
+      "id": "85502e6e3fdb4252",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "startLine": 209,
+        "endLine": 209,
+        "sourceText": "4. Su, Z., Tong, Y., and Wei, G.-W. “Persistent de Rham-Hodge Laplacians in Eulerian Representation for Manifold Topological Learning.” *AIMS Mathematics* 9(10), 27438-27470 (2024). [DOI 10.3934/math.20241333](https://doi.org/10.3934/math.20241333); [arXiv:2408.00220](https://arxiv.org/abs/2408.00220).",
+        "sourceDigest": "90a05db6e61ed42ec5c7bc0e61bd02f385bad38f8d173f3f9426e2e3b79372cd"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.3934/math.20241333"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2408.00220"
+        }
+      ],
+      "described": {
+        "title": "Persistent de Rham-Hodge Laplacians in Eulerian Representation for Manifold Topological Learning",
+        "authors": [
+          "Su, Z.",
+          "Tong, Y.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2024
+      }
+    },
+    {
+      "id": "213818a317250831",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "startLine": 210,
+        "endLine": 210,
+        "sourceText": "5. Shen, L., Liu, J., and Wei, G.-W. “Persistent Mayer Homology and Persistent Mayer Laplacian.” *Foundations of Data Science* 6(4), 584-612 (2024). [DOI 10.3934/fods.2024032](https://doi.org/10.3934/fods.2024032); [arXiv:2312.01268](https://arxiv.org/abs/2312.01268).",
+        "sourceDigest": "2331de04b3bf6e4e7ebd594c125bee04f0ad07c179f850ffea84fd83841eda8c"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.3934/fods.2024032"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2312.01268"
+        }
+      ],
+      "described": {
+        "title": "Persistent Mayer Homology and Persistent Mayer Laplacian",
+        "authors": [
+          "Shen, L.",
+          "Liu, J.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2024
+      }
+    },
+    {
+      "id": "ed6ca17857bea3ee",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "startLine": 211,
+        "endLine": 211,
+        "sourceText": "6. Liu, J., Chen, D., and Wei, G.-W. “Persistent Interaction Topology in Data Analysis.” [arXiv:2404.11799](https://arxiv.org/abs/2404.11799) (2024).",
+        "sourceDigest": "e097d58b8e867d4c5fce88dae85ce3bd38ef5869eccdf944d18e2f2fe92636ba"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2404.11799"
+        }
+      ],
+      "described": {
+        "title": "Persistent Interaction Topology in Data Analysis",
+        "authors": [
+          "Liu, J.",
+          "Chen, D.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2024
+      }
+    },
+    {
+      "id": "3680bbb36afecfea",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "startLine": 212,
+        "endLine": 212,
+        "sourceText": "7. Shen, L., Feng, H., Li, F., Lei, F., Wu, J., and Wei, G.-W. “Knot Data Analysis Using Multiscale Gauss Link Integral.” *Proceedings of the National Academy of Sciences* 121(42), e2408431121 (2024). [DOI 10.1073/pnas.2408431121](https://doi.org/10.1073/pnas.2408431121); [arXiv:2311.12834](https://arxiv.org/abs/2311.12834).",
+        "sourceDigest": "6c996be681219902f1b9fd0b1a84080def6dd0737eec9d8c6a4e32da2039bf9e"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1073/pnas.2408431121"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2311.12834"
+        }
+      ],
+      "described": {
+        "title": "Knot Data Analysis Using Multiscale Gauss Link Integral",
+        "authors": [
+          "Shen, L.",
+          "Feng, H.",
+          "Li, F.",
+          "Lei, F.",
+          "Wu, J.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2024
+      }
+    },
+    {
+      "id": "9ae9ee196eca4fb4",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "startLine": 213,
+        "endLine": 213,
+        "sourceText": "8. Liu, X., Su, Z., Shi, Y., Tong, Y., Wang, G., and Wei, G.-W. “Manifold Topological Deep Learning for Biomedical Data.” [arXiv:2503.00175](https://arxiv.org/abs/2503.00175) (2025).",
+        "sourceDigest": "66f46852ac439cd7ae1b2ecd71203e7f2509bf4fadfe34a4dfe52bf3b84bc908"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2503.00175"
+        }
+      ],
+      "described": {
+        "title": "Manifold Topological Deep Learning for Biomedical Data",
+        "authors": [
+          "Liu, X.",
+          "Su, Z.",
+          "Shi, Y.",
+          "Tong, Y.",
+          "Wang, G.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "b6f56a2dfd34c045",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "citation: JunJie Wee and Jian Jiang, \"A review of topological data analysis and topological deep learning in molecular sciences,\" arXiv:2509.16877v1 (2025).",
+        "sourceDigest": "b245bdf1f22badc15bedb0276f2ec2ae798968b5b0bd72f40dd19cbc68903ad0"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2509.16877"
+        }
+      ],
+      "described": {
+        "title": "A review of topological data analysis and topological deep learning in molecular sciences",
+        "authors": [
+          "citation: JunJie Wee",
+          "Jian Jiang"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "efe29486fa1c9912",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "source_url: https://arxiv.org/abs/2509.16877",
+        "sourceDigest": "2dd291eecbf530d825478a4dbeb15785dcd93b51b45a4c6a21efecd33c43467c"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2509.16877"
+        }
+      ]
+    },
+    {
+      "id": "81559f9904b64dd7",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 23,
+        "endLine": 23,
+        "sourceText": "**Primary source:** JunJie Wee and Jian Jiang, \"A review of topological data analysis and topological deep learning in molecular sciences,\" arXiv:2509.16877v1, submitted 21 September 2025. [arXiv](https://arxiv.org/abs/2509.16877) | [arXiv DOI](https://doi.org/10.48550/arXiv.2509.16877) | [later journal version](https://doi.org/10.1021/acs.jcim.5c02266)",
+        "sourceDigest": "0c317855ecdcc7284189a9aeb37142958df706c675e4a6e6424472d8875ac3b8"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.48550/arxiv.2509.16877"
+        },
+        {
+          "kind": "doi",
+          "value": "10.1021/acs.jcim.5c02266"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2509.16877"
+        }
+      ],
+      "described": {
+        "title": "A review of topological data analysis and topological deep learning in molecular sciences",
+        "authors": [
+          "JunJie Wee",
+          "Jian Jiang"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "52088a532daee31e",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 219,
+        "endLine": 219,
+        "sourceText": "1. Wee, J.; Jiang, J. \"A review of topological data analysis and topological deep learning in molecular sciences.\" arXiv:2509.16877v1 (2025). [arXiv](https://arxiv.org/abs/2509.16877) | [journal DOI](https://doi.org/10.1021/acs.jcim.5c02266)",
+        "sourceDigest": "19f099dcc67a78f8ef50760107e595192798f0109a1c664f67421cdbba91713f"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1021/acs.jcim.5c02266"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2509.16877"
+        }
+      ],
+      "described": {
+        "title": "A review of topological data analysis and topological deep learning in molecular sciences",
+        "authors": [
+          "Wee, J.",
+          "Jiang, J"
+        ],
+        "year": 2025
+      }
+    },
+    {
+      "id": "706ed68a5d9b74de",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 220,
+        "endLine": 220,
+        "sourceText": "2. Xia, K.; Wei, G.-W. \"Persistent homology analysis of protein structure, flexibility, and folding.\" *International Journal for Numerical Methods in Biomedical Engineering* 30, 814-844 (2014). [DOI](https://doi.org/10.1002/cnm.2655)",
+        "sourceDigest": "7ad2227e687e6f573d8a1371c26372f9f865d1d04b2a449cef43307f4db02f2a"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1002/cnm.2655"
+        }
+      ],
+      "described": {
+        "title": "Persistent homology analysis of protein structure, flexibility, and folding",
+        "authors": [
+          "Xia, K.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2014
+      }
+    },
+    {
+      "id": "4fa4ba59490adfe9",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 221,
+        "endLine": 221,
+        "sourceText": "3. Cang, Z.; Wei, G.-W. \"Analysis and prediction of protein folding energy changes upon mutation by element specific persistent homology.\" *Bioinformatics* 33, 3549-3557 (2017). [DOI](https://doi.org/10.1093/bioinformatics/btx460)",
+        "sourceDigest": "e76a6f27aed226995facdbdfedb6a49c1d9522cbef2ccf593800aad297399a16"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1093/bioinformatics/btx460"
+        }
+      ],
+      "described": {
+        "title": "Analysis and prediction of protein folding energy changes upon mutation by element specific persistent homology",
+        "authors": [
+          "Cang, Z.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2017
+      }
+    },
+    {
+      "id": "f62a0738b3b3962c",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 222,
+        "endLine": 222,
+        "sourceText": "4. Cang, Z.; Wei, G.-W. \"TopologyNet: Topology based deep convolutional and multi-task neural networks for biomolecular property predictions.\" *PLOS Computational Biology* 13, e1005690 (2017). [DOI](https://doi.org/10.1371/journal.pcbi.1005690)",
+        "sourceDigest": "5cc4ba3850ba96046ac53bbd5f22dc65c116e2ef438358d6987e01c5f5afcd13"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1371/journal.pcbi.1005690"
+        }
+      ],
+      "described": {
+        "title": "TopologyNet: Topology based deep convolutional and multi-task neural networks for biomolecular property predictions",
+        "authors": [
+          "Cang, Z.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2017
+      }
+    },
+    {
+      "id": "fc31f9246377fd0f",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 223,
+        "endLine": 223,
+        "sourceText": "5. Cang, Z.; Mu, L.; Wei, G.-W. \"Representability of algebraic topology for biomolecules in machine learning based scoring and virtual screening.\" *PLOS Computational Biology* 14, e1005929 (2018). [DOI](https://doi.org/10.1371/journal.pcbi.1005929)",
+        "sourceDigest": "1075d7b842769c8df02e393cb8b36fcb72be62f5f627342353605893a6210e8d"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1371/journal.pcbi.1005929"
+        }
+      ],
+      "described": {
+        "title": "Representability of algebraic topology for biomolecules in machine learning based scoring and virtual screening",
+        "authors": [
+          "Cang, Z.",
+          "Mu, L.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2018
+      }
+    },
+    {
+      "id": "9ef9b0d31a85234a",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 224,
+        "endLine": 224,
+        "sourceText": "6. Cang, Z.; Wei, G.-W. \"Integration of element specific persistent homology and machine learning for protein-ligand binding affinity prediction.\" *International Journal for Numerical Methods in Biomedical Engineering* 34, e2914 (2018). [DOI](https://doi.org/10.1002/cnm.2914)",
+        "sourceDigest": "c7870d555f29907b6b0018e1f818760c54a0630cf7d29e7600028ce557d0879d"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1002/cnm.2914"
+        }
+      ],
+      "described": {
+        "title": "Integration of element specific persistent homology and machine learning for protein-ligand binding affinity prediction",
+        "authors": [
+          "Cang, Z.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2018
+      }
+    },
+    {
+      "id": "59e6f369d1fe2bfe",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 225,
+        "endLine": 225,
+        "sourceText": "7. Wang, M.; Cang, Z.; Wei, G.-W. \"A topology-based network tree for the prediction of protein-protein binding affinity changes following mutation.\" *Nature Machine Intelligence* 2, 116-123 (2020). [DOI](https://doi.org/10.1038/s42256-020-0149-6)",
+        "sourceDigest": "d1349b4976f9e4c2c4b8aff11b9adf74dba5b23f44b4206923f8511c39a94389"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1038/s42256-020-0149-6"
+        }
+      ],
+      "described": {
+        "title": "A topology-based network tree for the prediction of protein-protein binding affinity changes following mutation",
+        "authors": [
+          "Wang, M.",
+          "Cang, Z.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2020
+      }
+    },
+    {
+      "id": "a04fe9efbde598e1",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 226,
+        "endLine": 226,
+        "sourceText": "8. Wang, R.; Nguyen, D. D.; Wei, G.-W. \"Persistent spectral graph.\" *International Journal for Numerical Methods in Biomedical Engineering* 36, e3376 (2020). [DOI](https://doi.org/10.1002/cnm.3376)",
+        "sourceDigest": "34d28dbf7187055da1da856cd6186c8535b58b817eece1fdfaac84ff07ace6b2"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1002/cnm.3376"
+        }
+      ],
+      "described": {
+        "title": "Persistent spectral graph",
+        "authors": [
+          "Wang, R.",
+          "Nguyen, D. D.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2020
+      }
+    },
+    {
+      "id": "2be01bc993489d53",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 227,
+        "endLine": 227,
+        "sourceText": "9. Memoli, F.; Wan, Z.; Wang, Y. \"Persistent Laplacians: Properties, Algorithms and Implications.\" *SIAM Journal on Mathematics of Data Science* 4, 858-884 (2022). [DOI](https://doi.org/10.1137/21M1435471)",
+        "sourceDigest": "679552096bb55ae0c081f42fc97973e981dc65e5acf4fb4b581d3e2dc520abed"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1137/21m1435471"
+        }
+      ],
+      "described": {
+        "title": "Persistent Laplacians: Properties, Algorithms and Implications",
+        "authors": [
+          "Memoli, F.",
+          "Wan, Z.",
+          "Wang, Y"
+        ],
+        "year": 2022
+      }
+    },
+    {
+      "id": "358250e59b1764e0",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 228,
+        "endLine": 228,
+        "sourceText": "10. Qiu, Y.; Wei, G.-W. \"Persistent spectral theory-guided protein engineering.\" *Nature Computational Science* 3, 149-163 (2023). [DOI](https://doi.org/10.1038/s43588-022-00394-y)",
+        "sourceDigest": "f0ce4cdb80276ba45f2fd291c110edee1449d50f9f6216f2153a3cd998cc4ad3"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1038/s43588-022-00394-y"
+        }
+      ],
+      "described": {
+        "title": "Persistent spectral theory-guided protein engineering",
+        "authors": [
+          "Qiu, Y.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2023
+      }
+    },
+    {
+      "id": "e5dfc332edc0dd02",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 229,
+        "endLine": 229,
+        "sourceText": "11. Chen, J.; Wei, G.-W. \"Omicron BA.2 (B.1.1.529.2): High Potential for Becoming the Next Dominant Variant.\" *The Journal of Physical Chemistry Letters* 13, 3840-3849 (2022). [DOI](https://doi.org/10.1021/acs.jpclett.2c00469)",
+        "sourceDigest": "08175092c89ea04a78b05cdadfd9f5a6efa9ecf24039dbb9709910e128e18111"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1021/acs.jpclett.2c00469"
+        }
+      ],
+      "described": {
+        "title": "Omicron BA.2 (B.1.1.529.2): High Potential for Becoming the Next Dominant Variant",
+        "authors": [
+          "Chen, J.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2022
+      }
+    },
+    {
+      "id": "3edc6a8510cc1880",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 230,
+        "endLine": 230,
+        "sourceText": "12. Chen, J.; Qiu, Y.; Wang, R.; Wei, G.-W. \"Persistent Laplacian projected Omicron BA.4 and BA.5 to become new dominating variants.\" *Computers in Biology and Medicine* 151, 106262 (2022). [DOI](https://doi.org/10.1016/j.compbiomed.2022.106262)",
+        "sourceDigest": "732e220ec39509bddbb85de5cb5617881883b523cd70a9cd9826b75801ec3738"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1016/j.compbiomed.2022.106262"
+        }
+      ],
+      "described": {
+        "title": "Persistent Laplacian projected Omicron BA.4 and BA.5 to become new dominating variants",
+        "authors": [
+          "Chen, J.",
+          "Qiu, Y.",
+          "Wang, R.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2022
+      }
+    },
+    {
+      "id": "bd74d4f8c19f2902",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "startLine": 231,
+        "endLine": 231,
+        "sourceText": "13. Su, Z.; Liu, X.; Bou Hamdan, L.; Maroulas, V.; Wu, J.; Carlsson, G.; Wei, G.-W. \"Topological data analysis and topological deep learning beyond persistent homology - a review.\" arXiv:2507.19504 (2025). [arXiv](https://arxiv.org/abs/2507.19504)",
+        "sourceDigest": "da6807c4c4a0d7903d7cda9676d23111f42fac196d42a6ebf4df4e81125764c1"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2507.19504"
+        }
+      ],
+      "described": {
+        "title": "Topological data analysis and topological deep learning beyond persistent homology - a review",
+        "authors": [
+          "Su, Z.",
+          "Liu, X.",
+          "Bou Hamdan, L.",
+          "Maroulas, V.",
+          "Wu, J.",
+          "Carlsson, G.",
+          "Wei",
+          "G.-W"
+        ],
+        "year": 2025
+      }
+    }
+  ],
+  "findings": [
+    {
+      "candidateId": "e0c7d610e4480c4d",
+      "evidenceIds": [
+        "ba225514f22c81de",
+        "79ef98e5dfaf7457"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "749aefc850f60b81",
+      "evidenceIds": [
+        "ba225514f22c81de"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "498f790d741be9c6",
+      "evidenceIds": [
+        "79ef98e5dfaf7457"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "e96ca3aa95ba540e",
+      "evidenceIds": [
+        "ba225514f22c81de"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "c9f830d479707fa4",
+      "evidenceIds": [
+        "7a5049718e604da3"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "4c66d225265e6147",
+      "evidenceIds": [
+        "5a8c79335face0be"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "bdff18b7ad2ec9db",
+      "evidenceIds": [
+        "ca8c85b77ec9fb9d"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "e2b068d6ffe6545b",
+      "evidenceIds": [
+        "55a8286741f0fc86"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "8d6082ae0ef02540",
+      "evidenceIds": [
+        "ddf2100d140c8029"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "d419baddaeda38cb",
+      "evidenceIds": [
+        "ddf2100d140c8029"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "22a59d90db4c6dfb",
+      "evidenceIds": [
+        "ddf2100d140c8029"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "cae3718df6688455",
+      "evidenceIds": [
+        "ddf2100d140c8029"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [
+        {
+          "code": "year",
+          "severity": "warning",
+          "detail": "openalex (arxiv:2508.11560): year differs: described 2026, observed 2025"
+        }
+      ],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "80e45fc7da0dd955",
+      "evidenceIds": [
+        "985dcf7aa4a1b4ac"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "91466d998b387dfb",
+      "evidenceIds": [
+        "648067b0410c567b"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "17795c18b4a7389b",
+      "evidenceIds": [
+        "31c0d37db49bc633"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "89de5ccffb35da8c",
+      "evidenceIds": [
+        "d2ade3d7a7e38c8c"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "10caaf08a32942df",
+      "evidenceIds": [
+        "d681bad4654bf601",
+        "96b8ec293d3ffb7f"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "dd96e8097e272ad3",
+      "evidenceIds": [
+        "d681bad4654bf601"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "454c87a94f21db8e",
+      "evidenceIds": [
+        "7b01ac2ca0008daf"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "f48fce7229adb6ab",
+      "evidenceIds": [
+        "7e691f42f591527b"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "c09a7da23c75e4b8",
+      "evidenceIds": [
+        "648067b0410c567b"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "4ff01673f236c566",
+      "evidenceIds": [
+        "b5a98d9d3e27f44f"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "bd68d07533be92c1",
+      "evidenceIds": [
+        "8397f5b76a5aebef"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "1cc5623b2e46f285",
+      "evidenceIds": [
+        "e25d166fb74ad62d"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "332d5d9245ecb2cd",
+      "evidenceIds": [
+        "b3e8e6d56c0bdb12"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "c1e73fa5548d6bb1",
+      "evidenceIds": [
+        "b3e8e6d56c0bdb12"
+      ],
+      "verdict": "resolved-mismatched",
+      "effectiveVerdict": "resolved",
+      "mismatches": [
+        {
+          "code": "author-list",
+          "severity": "error",
+          "detail": "crossref (doi:10.7554/elife.100361.3): author overlap 0.33: described \"Sidarta-Oliveira D; Domingos AI; Velloso LA\", observed \"David Sidarta-Oliveira; Ana I Domingos; Licio A Velloso\""
+        }
+      ],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "57a21ce78c6b9e11",
+      "evidenceIds": [
+        "53d618f4d86c5937"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "11aef45c2cf8360e",
+      "evidenceIds": [
+        "a5653f366e1a5c0e"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "c6ef3aa4aa8234e7",
+      "evidenceIds": [
+        "0681b5856870f2e6"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "046bae78128ae433",
+      "evidenceIds": [
+        "b4f448d77ec9abfd"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "58e30eb6f394fa17",
+      "evidenceIds": [
+        "672a25d57c37854e"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "21a02ce6bcce456a",
+      "evidenceIds": [
+        "5e0ae59dad88c215",
+        "cf917746fa4086c3",
+        "91efa4098041df81"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [
+        {
+          "code": "year",
+          "severity": "warning",
+          "detail": "openalex (arxiv:2410.17815): year differs: described 2025, observed 2024"
+        }
+      ],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "0a4dafae2ad04dbf",
+      "evidenceIds": [
+        "5e0ae59dad88c215"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "024a66a6af463513",
+      "evidenceIds": [
+        "7b01ac2ca0008daf"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "85ba3d66b9c4b0a5",
+      "evidenceIds": [
+        "1c0f1c3e03273be0"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "e5be5ed9fbfd3ee5",
+      "evidenceIds": [
+        "ea2f9c4a3171d833"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "be15cc46620f5cab",
+      "evidenceIds": [
+        "0e574ecf19a9a760"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "6091d605d968aad2",
+      "evidenceIds": [
+        "b9c90807fa021e6c"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "cec5c306531c9354",
+      "evidenceIds": [
+        "a34b2fe038c309d7"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "a9c95e4fd9d6a22d",
+      "evidenceIds": [
+        "eb6527166f71e713"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [
+        {
+          "code": "year",
+          "severity": "warning",
+          "detail": "openalex (arxiv:1912.04135): year differs: described 2020, observed 2019"
+        }
+      ],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "f0b4724cd0748945",
+      "evidenceIds": [
+        "eb6527166f71e713"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "b1b4eba6009c95e5",
+      "evidenceIds": [
+        "7e691f42f591527b",
+        "eb6527166f71e713"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [
+        {
+          "code": "year",
+          "severity": "warning",
+          "detail": "crossref (doi:10.1002/cnm.3376): year differs: described 2019, observed 2020"
+        }
+      ],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "a6585c4eba33d5a1",
+      "evidenceIds": [
+        "7e691f42f591527b",
+        "eb6527166f71e713"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [
+        {
+          "code": "year",
+          "severity": "warning",
+          "detail": "openalex (arxiv:1912.04135): year differs: described 2020, observed 2019"
+        }
+      ],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "611b726d08317617",
+      "evidenceIds": [
+        "648067b0410c567b"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "fe8916fa9648466c",
+      "evidenceIds": [
+        "985dcf7aa4a1b4ac"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "7d70bb5bf72f69e9",
+      "evidenceIds": [
+        "ddf2100d140c8029"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "5c823466b4cdd332",
+      "evidenceIds": [
+        "de9ae59d2cdcf497"
+      ],
+      "verdict": "unresolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "2f4bcb325832b87c",
+      "evidenceIds": [
+        "45774f8ce3165da4"
+      ],
+      "verdict": "unresolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "20682781b87de4d4",
+      "evidenceIds": [
+        "0b9b9f843d891fa3"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "9e3afca83d040a50",
+      "evidenceIds": [
+        "d2ade3d7a7e38c8c"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "90fa7ac7293984cc",
+      "evidenceIds": [
+        "dd2cee96062158e9"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "66253cd323d39470",
+      "evidenceIds": [
+        "dd2cee96062158e9"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "903a1aafcd52c844",
+      "evidenceIds": [
+        "355b302eae102ed6",
+        "dd2cee96062158e9"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "f453917dc05f7546",
+      "evidenceIds": [
+        "355b302eae102ed6",
+        "dd2cee96062158e9"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "39077e3196be9238",
+      "evidenceIds": [
+        "985dcf7aa4a1b4ac"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "b5fa04db1e311657",
+      "evidenceIds": [
+        "3d81a7693f5dded7"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "85502e6e3fdb4252",
+      "evidenceIds": [
+        "2e1d42985891adad",
+        "8ec076acc86b35a9"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "213818a317250831",
+      "evidenceIds": [
+        "6dc7f54c692c0076",
+        "d8c4b62284f6a8e5"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [
+        {
+          "code": "year",
+          "severity": "warning",
+          "detail": "openalex (arxiv:2312.01268): year differs: described 2024, observed 2023"
+        }
+      ],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "ed6ca17857bea3ee",
+      "evidenceIds": [
+        "a4289d915cbcfea6"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "3680bbb36afecfea",
+      "evidenceIds": [
+        "d31aedaa93e58469",
+        "718c3a624cab8ea3"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [
+        {
+          "code": "year",
+          "severity": "warning",
+          "detail": "openalex (arxiv:2311.12834): year differs: described 2024, observed 2023"
+        }
+      ],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "9ae9ee196eca4fb4",
+      "evidenceIds": [
+        "bf3ba366e37a62b7"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "b6f56a2dfd34c045",
+      "evidenceIds": [
+        "1ba0de69afc02046"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "efe29486fa1c9912",
+      "evidenceIds": [
+        "1ba0de69afc02046"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "81559f9904b64dd7",
+      "evidenceIds": [
+        "aab3ed2d937cfa8b",
+        "1ba0de69afc02046"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "52088a532daee31e",
+      "evidenceIds": [
+        "aab3ed2d937cfa8b",
+        "1ba0de69afc02046"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "706ed68a5d9b74de",
+      "evidenceIds": [
+        "3e3d70aa1e85fbe0"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "4fa4ba59490adfe9",
+      "evidenceIds": [
+        "5a26b83f628534d7"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "f62a0738b3b3962c",
+      "evidenceIds": [
+        "59c3901bcfd5c200"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "fc31f9246377fd0f",
+      "evidenceIds": [
+        "5529b7d2a71c04b4"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "9ef9b0d31a85234a",
+      "evidenceIds": [
+        "8c44743476b62011"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "59e6f369d1fe2bfe",
+      "evidenceIds": [
+        "46c1230ac8147895"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "a04fe9efbde598e1",
+      "evidenceIds": [
+        "7e691f42f591527b"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "2be01bc993489d53",
+      "evidenceIds": [
+        "985dcf7aa4a1b4ac"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "358250e59b1764e0",
+      "evidenceIds": [
+        "edf19fc362aab69e"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "e5dfc332edc0dd02",
+      "evidenceIds": [
+        "0c97449b0f9da783"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "3edc6a8510cc1880",
+      "evidenceIds": [
+        "274cb6be72686924"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "bd74d4f8c19f2902",
+      "evidenceIds": [
+        "dd2cee96062158e9"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    }
+  ],
+  "adjudications": [
+    {
+      "candidateId": "c1e73fa5548d6bb1",
+      "sourceDigest": "be6c6cac0379a55f68e1a378b2f89fedd533aec315fc5395201d8fd8aca92bac",
+      "classification": "resolver-false-positive",
+      "adjudicatedVerdict": "resolved",
+      "note": "Same three authors in two notations. The entry uses Vancouver initials-after-family form (Sidarta-Oliveira D, Domingos AI, Velloso LA); Crossref stores given-name form (David Sidarta-Oliveira, Ana I Domingos, Licio A Velloso). Verified directly against api.crossref.org/works/10.7554/eLife.100361.3 on 2026-08-08: title, journal, and all three names match. The comparator does not yet reduce a trailing initials blob to a given name.",
+      "reviewer": "jmchilton",
+      "reviewedAt": "2026-08-08T00:00:00Z"
+    },
+    {
+      "candidateId": "5c823466b4cdd332",
+      "sourceDigest": "bbf097d027423420543c6544511ded3cfa934a37ba77370f3e4ba26cd5cc1c24",
+      "classification": "resolver-false-positive",
+      "adjudicatedVerdict": "resolved",
+      "note": "Extractor read a truncated DOI. The cited DOI is 10.1016/S1359-0278(97)00024-2, percent-encoded in the Markdown link because an unescaped ) would close it; extraction stopped at the % and queried 10.1016/s1359-0278. Verified directly against api.crossref.org on 2026-08-08: Bahar, Atilgan, Erman, 'Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential', Folding and Design, 1997. The note is correct; the DOI grammar does not yet decode percent-encoded DOI URLs.",
+      "reviewer": "jmchilton",
+      "reviewedAt": "2026-08-08T00:00:00Z"
+    },
+    {
+      "candidateId": "2f4bcb325832b87c",
+      "sourceDigest": "a5c8f338ef7e4035560224b0f0554baabaa21cbc58966cdff7bb09fdc47b474f",
+      "classification": "resolver-false-positive",
+      "adjudicatedVerdict": "resolved",
+      "note": "Same percent-encoded DOI limitation. The cited DOI is 10.1016/S0006-3495(01)76033-X; extraction queried 10.1016/s0006-3495. Verified directly against api.crossref.org on 2026-08-08: Atilgan, Durell, Jernigan, Demirel, Keskin, Bahar, 'Anisotropy of Fluctuation Dynamics of Proteins with an Elastic Network Model', Biophysical Journal, 2001.",
+      "reviewer": "jmchilton",
+      "reviewedAt": "2026-08-08T00:00:00Z"
+    }
+  ],
+  "diagnostics": {
+    "excludedUrls": [
+      {
+        "artifactPath": "content/packages/hiponet.md",
+        "line": 5,
+        "url": "https://github.com/KrishnaswamyLab/HiPoNet"
+      },
+      {
+        "artifactPath": "content/packages/hiponet.md",
+        "line": 22,
+        "url": "https://openreview.net/forum?id=UoKt9B1aY8"
+      },
+      {
+        "artifactPath": "content/packages/hiponet.md",
+        "line": 24,
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      {
+        "artifactPath": "content/packages/hiponet.md",
+        "line": 245,
+        "url": "https://github.com/KrishnaswamyLab/HiPoNet"
+      },
+      {
+        "artifactPath": "content/packages/hiponet.md",
+        "line": 245,
+        "url": "https://openreview.net/forum?id=UoKt9B1aY8"
+      },
+      {
+        "artifactPath": "content/packages/hiponet.md",
+        "line": 245,
+        "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/b284aad9fb5c6d74b9535a30ece69e1c-Paper-Conference.pdf"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 5,
+        "url": "https://github.com/Sylverity/petls-pytorch"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 21,
+        "url": "https://github.com/jmchilton/bio-topo-foundry/blob/main/content/packages/petls.md"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 26,
+        "url": "https://github.com/jmchilton/bio-topo-foundry/blob/main/content/packages/petls.md"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 29,
+        "url": "https://github.com/Sylverity/petls-pytorch"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 34,
+        "url": "https://github.com/jmchilton/bio-topo-foundry/blob/main/content/packages/petls.md"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 38,
+        "url": "https://github.com/jmchilton/bio-topo-foundry/blob/main/content/packages/petls.md"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 40,
+        "url": "https://github.com/jmchilton/bio-topo-foundry/blob/main/content/environments/petls-pytorch/pixi.toml"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 42,
+        "url": "https://github.com/jmchilton/bio-topo-foundry/blob/main/recipes/petls-pytorch/recipe.yaml"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 44,
+        "url": "https://github.com/jmchilton/bio-topo-foundry/blob/main/persistent-laplacian-implementation-review.md"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 57,
+        "url": "https://github.com/jmchilton/bio-topo-foundry/blob/main/content/packages/petls.md"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 70,
+        "url": "https://github.com/Sylverity/petls-pytorch/pull/1"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 78,
+        "url": "https://github.com/jmchilton/bio-topo-foundry/issues/6"
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 91,
+        "url": "https://github.com/Sylverity/petls-pytorch"
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 5,
+        "url": "https://github.com/bdjones13/PETLS"
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 22,
+        "url": "https://github.com/bdjones13/PETLS/issues/2"
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 26,
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 26,
+        "url": "https://reporter.nih.gov/search/DSvtOjSUDkGqTPYpit3gCg/project-details/10551576"
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 248,
+        "url": "https://github.com/bdjones13/PETLS"
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 249,
+        "url": "https://pypi.org/project/petls/"
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 250,
+        "url": "https://www.benjones-math.com/software/PETLS/"
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 255,
+        "url": "https://reporter.nih.gov/search/DSvtOjSUDkGqTPYpit3gCg/project-details/10551576"
+      },
+      {
+        "artifactPath": "content/packages/topodockq.md",
+        "line": 5,
+        "url": "https://github.com/XDaiNYU/TopoDockQ"
+      },
+      {
+        "artifactPath": "content/packages/topodockq.md",
+        "line": 23,
+        "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs42004-025-01727-4/MediaObjects/42004_2025_1727_MOESM2_ESM.pdf"
+      },
+      {
+        "artifactPath": "content/packages/topodockq.md",
+        "line": 25,
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      {
+        "artifactPath": "content/packages/topodockq.md",
+        "line": 219,
+        "url": "https://github.com/XDaiNYU/TopoDockQ"
+      },
+      {
+        "artifactPath": "content/packages/topodockq.md",
+        "line": 219,
+        "url": "https://github.com/wangru25/TopoDockQ-Feature"
+      },
+      {
+        "artifactPath": "content/packages/topodockq.md",
+        "line": 219,
+        "url": "https://github.com/XDaiNYU/ResidueX"
+      },
+      {
+        "artifactPath": "content/packages/topodockq.md",
+        "line": 219,
+        "url": "https://zenodo.org/records/15469415"
+      },
+      {
+        "artifactPath": "content/packages/topometry.md",
+        "line": 5,
+        "url": "https://github.com/davisidarta/topometry"
+      },
+      {
+        "artifactPath": "content/packages/topometry.md",
+        "line": 23,
+        "url": "https://github.com/davisidarta/topometry"
+      },
+      {
+        "artifactPath": "content/packages/topometry.md",
+        "line": 193,
+        "url": "https://github.com/davisidarta/topometry/commit/f2653faf97b26a6be3abc6f980be6a4b302e03a7"
+      },
+      {
+        "artifactPath": "content/packages/topometry.md",
+        "line": 262,
+        "url": "https://github.com/davisidarta/topometry"
+      },
+      {
+        "artifactPath": "content/packages/topometry.md",
+        "line": 263,
+        "url": "https://pypi.org/project/topometry/"
+      },
+      {
+        "artifactPath": "content/packages/topometry.md",
+        "line": 264,
+        "url": "https://topometry.readthedocs.io/en/latest/"
+      },
+      {
+        "artifactPath": "content/packages/topoqa.md",
+        "line": 5,
+        "url": "https://github.com/yubingapril/TopoQA"
+      },
+      {
+        "artifactPath": "content/packages/topoqa.md",
+        "line": 23,
+        "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+      },
+      {
+        "artifactPath": "content/packages/topoqa.md",
+        "line": 200,
+        "url": "https://github.com/yubingapril/TopoQA"
+      },
+      {
+        "artifactPath": "content/packages/topoqa.md",
+        "line": 234,
+        "url": "https://github.com/yubingapril/TopoQA"
+      },
+      {
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "line": 25,
+        "url": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+      },
+      {
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "line": 25,
+        "url": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+      },
+      {
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "line": 25,
+        "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+      },
+      {
+        "artifactPath": "content/replication-experiments/hiponet-melanoma.md",
+        "line": 6,
+        "url": "https://github.com/jmchilton/hiponet-melanoma-replication"
+      },
+      {
+        "artifactPath": "content/replication-experiments/topometry-cell-cycle.md",
+        "line": 6,
+        "url": "https://github.com/jmchilton/topometry-cell-cycle-replication"
+      },
+      {
+        "artifactPath": "content/replication-experiments/topoqa-interface-quality.md",
+        "line": 6,
+        "url": "https://github.com/jmchilton/topoqa-interface-quality-replication"
+      }
+    ],
+    "authorYearPatternCount": 2,
+    "unextractedReferenceLines": [
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 132
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 133
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 134
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 135
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 136
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 138
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 139
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 140
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 141
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 142
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 143
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 145
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 146
+      },
+      {
+        "artifactPath": "content/meta/content-model.md",
+        "line": 147
+      },
+      {
+        "artifactPath": "content/packages/hiponet.md",
+        "line": 236
+      },
+      {
+        "artifactPath": "content/packages/hiponet.md",
+        "line": 245
+      },
+      {
+        "artifactPath": "content/packages/petls-pytorch.md",
+        "line": 91
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 245
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 248
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 249
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 250
+      },
+      {
+        "artifactPath": "content/packages/petls.md",
+        "line": 255
+      },
+      {
+        "artifactPath": "content/packages/topodockq.md",
+        "line": 209
+      },
+      {
+        "artifactPath": "content/packages/topodockq.md",
+        "line": 219
+      },
+      {
+        "artifactPath": "content/packages/topometry.md",
+        "line": 259
+      },
+      {
+        "artifactPath": "content/packages/topometry.md",
+        "line": 262
+      },
+      {
+        "artifactPath": "content/packages/topometry.md",
+        "line": 263
+      },
+      {
+        "artifactPath": "content/packages/topometry.md",
+        "line": 264
+      },
+      {
+        "artifactPath": "content/packages/topoqa.md",
+        "line": 225
+      },
+      {
+        "artifactPath": "content/packages/topoqa.md",
+        "line": 234
+      },
+      {
+        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
+        "line": 204
+      },
+      {
+        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
+        "line": 215
+      }
+    ]
+  }
+}

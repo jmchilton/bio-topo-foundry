@@ -11,6 +11,9 @@
     "kinds": "vite-node scripts/generate-kind-manifest.ts",
     "check:kinds": "vite-node scripts/generate-kind-manifest.ts --check",
     "test": "vitest run",
+    "audit:citations": "foundry-audit-citations audit --root .. --config audit-citations.config.json --evidence audit/provider-evidence.json --adjudications audit/adjudications.json --output audit/citation-audit.json --markdown audit/citation-audit.md",
+    "audit:citations:refresh": "pnpm audit:citations --refresh",
+    "audit:citations:scan": "foundry-audit-citations scan --root .. --config audit-citations.config.json --output build/citation-scan.json",
     "validate": "pnpm check:kinds && vitest run && astro check && astro build --force"
   },
   "dependencies": {
@@ -36,6 +39,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@galaxy-foundry/audit-citations": "^0.1.1",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.10.0",
     "typescript": "^5.7.0",

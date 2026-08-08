@@ -1,0 +1,2272 @@
+{
+  "schemaVersion": 1,
+  "evidence": [
+    {
+      "id": "0681b5856870f2e6",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1186/s13059-017-1382-0"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:36.957Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1186/s13059-017-1382-0"
+      },
+      "metadata": {
+        "title": "SCANPY: large-scale single-cell gene expression data analysis",
+        "authors": [
+          "F. Alexander Wolf",
+          "Philipp Angerer",
+          "Fabian J. Theis"
+        ],
+        "year": 2018,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1186/s13059-017-1382-0"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1186%2Fs13059-017-1382-0"
+      }
+    },
+    {
+      "id": "0b9b9f843d891fa3",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1063/1.5048469"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:39.986Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1063/1.5048469"
+      },
+      "metadata": {
+        "title": "Blind prediction of protein B-factor and flexibility",
+        "authors": [
+          "David Bramer",
+          "Guo-Wei Wei"
+        ],
+        "year": 2018,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1063/1.5048469"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1063%2F1.5048469"
+      }
+    },
+    {
+      "id": "0c97449b0f9da783",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1021/acs.jpclett.2c00469"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:44.222Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1021/acs.jpclett.2c00469"
+      },
+      "metadata": {
+        "title": "Omicron BA.2 (B.1.1.529.2): High Potential for Becoming the Next Dominant Variant",
+        "authors": [
+          "Jiahui Chen",
+          "Guo-Wei Wei"
+        ],
+        "year": 2022,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1021/acs.jpclett.2c00469"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1021%2Facs.jpclett.2c00469"
+      }
+    },
+    {
+      "id": "0e574ecf19a9a760",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1038/s41586-024-07487-w"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:38.472Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1038/s41586-024-07487-w"
+      },
+      "metadata": {
+        "title": "Accurate structure prediction of biomolecular interactions with AlphaFold 3",
+        "authors": [
+          "Josh Abramson",
+          "Jonas Adler",
+          "Jack Dunger",
+          "Richard Evans",
+          "Tim Green",
+          "Alexander Pritzel",
+          "Olaf Ronneberger",
+          "Lindsay Willmore",
+          "Andrew J. Ballard",
+          "Joshua Bambrick",
+          "Sebastian W. Bodenstein",
+          "David A. Evans",
+          "Chia-Chun Hung",
+          "Michael O’Neill",
+          "David Reiman",
+          "Kathryn Tunyasuvunakool",
+          "Zachary Wu",
+          "Akvilė Žemgulytė",
+          "Eirini Arvaniti",
+          "Charles Beattie",
+          "Ottavia Bertolli",
+          "Alex Bridgland",
+          "Alexey Cherepanov",
+          "Miles Congreve",
+          "Alexander I. Cowen-Rivers",
+          "Andrew Cowie",
+          "Michael Figurnov",
+          "Fabian B. Fuchs",
+          "Hannah Gladman",
+          "Rishub Jain",
+          "Yousuf A. Khan",
+          "Caroline M. R. Low",
+          "Kuba Perlin",
+          "Anna Potapenko",
+          "Pascal Savy",
+          "Sukhdeep Singh",
+          "Adrian Stecula",
+          "Ashok Thillaisundaram",
+          "Catherine Tong",
+          "Sergei Yakneen",
+          "Ellen D. Zhong",
+          "Michal Zielinski",
+          "Augustin Žídek",
+          "Victor Bapst",
+          "Pushmeet Kohli",
+          "Max Jaderberg",
+          "Demis Hassabis",
+          "John M. Jumper"
+        ],
+        "year": 2024,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1038/s41586-024-07487-w"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1038%2Fs41586-024-07487-w"
+      }
+    },
+    {
+      "id": "1ba0de69afc02046",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2509.16877"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:41.790Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2509.16877"
+      },
+      "metadata": {
+        "title": "A review of topological data analysis and topological deep learning in molecular sciences",
+        "authors": [
+          "JunJie Wee",
+          "Jian Jiang"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2509.16877"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2509.16877"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2509.16877"
+      }
+    },
+    {
+      "id": "1c0f1c3e03273be0",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1093/bioinformatics/btad203"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:37.854Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1093/bioinformatics/btad203"
+      },
+      "metadata": {
+        "title": "A gated graph transformer for protein complex structure quality assessment and its performance in CASP15",
+        "authors": [
+          "Xiao Chen",
+          "Alex Morehead",
+          "Jian Liu",
+          "Jianlin Cheng"
+        ],
+        "year": 2023,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1093/bioinformatics/btad203"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1093%2Fbioinformatics%2Fbtad203"
+      }
+    },
+    {
+      "id": "274cb6be72686924",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1016/j.compbiomed.2022.106262"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:44.523Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1016/j.compbiomed.2022.106262"
+      },
+      "metadata": {
+        "title": "Persistent Laplacian projected Omicron BA.4 and BA.5 to become new dominating variants",
+        "authors": [
+          "Jiahui Chen",
+          "Yuchi Qiu",
+          "Rui Wang",
+          "Guo-Wei Wei"
+        ],
+        "year": 2022,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1016/j.compbiomed.2022.106262"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1016%2Fj.compbiomed.2022.106262"
+      }
+    },
+    {
+      "id": "2e1d42985891adad",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.3934/math.20241333"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:40.894Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.3934/math.20241333"
+      },
+      "metadata": {
+        "title": "Persistent de Rham-Hodge Laplacians in Eulerian representation for manifold topological learning",
+        "authors": [
+          "Zhe Su",
+          "Yiying Tong",
+          "Guo-Wei Wei"
+        ],
+        "year": 2024,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.3934/math.20241333"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.3934%2Fmath.20241333"
+      }
+    },
+    {
+      "id": "31c0d37db49bc633",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.3934/fods.2024033"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:32.753Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.3934/fods.2024033"
+      },
+      "metadata": {
+        "title": "Persistent sheaf Laplacians",
+        "authors": [
+          "Xiaoqi Wei",
+          "Guo-Wei Wei"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.3934/fods.2024033"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.3934%2Ffods.2024033"
+      }
+    },
+    {
+      "id": "355b302eae102ed6",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1007/s10462-025-11462-w"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:40.300Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1007/s10462-025-11462-w"
+      },
+      "metadata": {
+        "title": "Topological data analysis and topological deep learning beyond persistent homology: a review",
+        "authors": [
+          "Zhe Su",
+          "Xiang Liu",
+          "Layal Bou Hamdan",
+          "Vasileios Maroulas",
+          "Jie Wu",
+          "Gunnar Carlsson",
+          "Guo-Wei Wei"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1007/s10462-025-11462-w"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1007%2Fs10462-025-11462-w"
+      }
+    },
+    {
+      "id": "3d81a7693f5dded7",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.3934/dcdsb.2020257"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:40.592Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.3934/dcdsb.2020257"
+      },
+      "metadata": {
+        "title": "Evolutionary de Rham-Hodge method",
+        "authors": [
+          "Jiahui Chen",
+          "Rundong Zhao",
+          "Yiying Tong",
+          "Guo-Wei Wei"
+        ],
+        "year": 2021,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.3934/dcdsb.2020257"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.3934%2Fdcdsb.2020257"
+      }
+    },
+    {
+      "id": "3e3d70aa1e85fbe0",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1002/cnm.2655"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:42.132Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1002/cnm.2655"
+      },
+      "metadata": {
+        "title": "Persistent homology analysis of protein structure, flexibility, and folding",
+        "authors": [
+          "Kelin Xia",
+          "Guo‐Wei Wei"
+        ],
+        "year": 2014,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1002/cnm.2655"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1002%2Fcnm.2655"
+      }
+    },
+    {
+      "id": "45774f8ce3165da4",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1016/s0006-3495"
+        }
+      },
+      "provider": "crossref",
+      "state": "unresolved",
+      "observedAt": "2026-08-08T14:45:39.684Z",
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1016%2Fs0006-3495"
+      },
+      "error": "HTTP 404"
+    },
+    {
+      "id": "46c1230ac8147895",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1038/s42256-020-0149-6"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:43.631Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1038/s42256-020-0149-6"
+      },
+      "metadata": {
+        "title": "A topology-based network tree for the prediction of protein–protein binding affinity changes following mutation",
+        "authors": [
+          "Menglun Wang",
+          "Zixuan Cang",
+          "Guo-Wei Wei"
+        ],
+        "year": 2020,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1038/s42256-020-0149-6"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1038%2Fs42256-020-0149-6"
+      }
+    },
+    {
+      "id": "53d618f4d86c5937",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1162/089976603321780317"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:36.363Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1162/089976603321780317"
+      },
+      "metadata": {
+        "title": "Laplacian Eigenmaps for Dimensionality Reduction and Data Representation",
+        "authors": [
+          "Mikhail Belkin",
+          "Partha Niyogi"
+        ],
+        "year": 2003,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1162/089976603321780317"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1162%2F089976603321780317"
+      }
+    },
+    {
+      "id": "5529b7d2a71c04b4",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1371/journal.pcbi.1005929"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:43.037Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1371/journal.pcbi.1005929"
+      },
+      "metadata": {
+        "title": "Representability of algebraic topology for biomolecules in machine learning based scoring and virtual screening",
+        "authors": [
+          "Zixuan Cang",
+          "Lin Mu",
+          "Guo-Wei Wei"
+        ],
+        "year": 2018,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1371/journal.pcbi.1005929"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1371%2Fjournal.pcbi.1005929"
+      }
+    },
+    {
+      "id": "55a8286741f0fc86",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "url",
+          "value": "https://proceedings.mlr.press/v97/gao19e.html"
+        }
+      },
+      "provider": "citation-metadata-page",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:31.881Z",
+      "matchedIdentifier": {
+        "kind": "url",
+        "value": "https://proceedings.mlr.press/v97/gao19e.html"
+      },
+      "metadata": {
+        "title": "Geometric Scattering for Graph Data Analysis",
+        "authors": [
+          "Feng Gao",
+          "Guy Wolf",
+          "Matthew Hirn"
+        ],
+        "year": 2019,
+        "identifiers": [
+          {
+            "kind": "url",
+            "value": "https://proceedings.mlr.press/v97/gao19e.html"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://proceedings.mlr.press/v97/gao19e.html"
+      }
+    },
+    {
+      "id": "59c3901bcfd5c200",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1371/journal.pcbi.1005690"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:42.737Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1371/journal.pcbi.1005690"
+      },
+      "metadata": {
+        "title": "TopologyNet: Topology based deep convolutional and multi-task neural networks for biomolecular property predictions",
+        "authors": [
+          "Zixuan Cang",
+          "Guo-Wei Wei"
+        ],
+        "year": 2017,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1371/journal.pcbi.1005690"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1371%2Fjournal.pcbi.1005690"
+      }
+    },
+    {
+      "id": "5a26b83f628534d7",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1093/bioinformatics/btx460"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:42.431Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1093/bioinformatics/btx460"
+      },
+      "metadata": {
+        "title": "Analysis and prediction of protein folding energy changes upon mutation by element specific persistent homology",
+        "authors": [
+          "Zixuan Cang",
+          "Guowei Wei"
+        ],
+        "year": 2017,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1093/bioinformatics/btx460"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1093%2Fbioinformatics%2Fbtx460"
+      }
+    },
+    {
+      "id": "5a8c79335face0be",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1016/j.cell.2023.11.005"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:31.541Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1016/j.cell.2023.11.005"
+      },
+      "metadata": {
+        "title": "Trellis tree-based analysis reveals stromal regulation of patient-derived organoid drug responses",
+        "authors": [
+          "María Ramos Zapatero",
+          "Alexander Tong",
+          "James W. Opzoomer",
+          "Rhianna O’Sullivan",
+          "Ferran Cardoso Rodriguez",
+          "Jahangir Sufi",
+          "Petra Vlckova",
+          "Callum Nattress",
+          "Xiao Qin",
+          "Jeroen Claus",
+          "Daniel Hochhauser",
+          "Smita Krishnaswamy",
+          "Christopher J. Tape"
+        ],
+        "year": 2023,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1016/j.cell.2023.11.005"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1016%2Fj.cell.2023.11.005"
+      }
+    },
+    {
+      "id": "5c216ec5b5515e7f",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.3390/math13020278"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:36:12.742Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.3390/math13020278"
+      },
+      "metadata": {
+        "title": "Prioritization of Preventive Measures: A Multi-Criteria Approach to Risk Mitigation in Road Infrastructure Projects",
+        "authors": [
+          "Aleksandar Senić",
+          "Marija Ivanović",
+          "Momčilo Dobrodolac",
+          "Zoran Stojadinović"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.3390/math13020278"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.3390%2Fmath13020278"
+      }
+    },
+    {
+      "id": "5e0ae59dad88c215",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1093/bib/bbaf083"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:37.560Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1093/bib/bbaf083"
+      },
+      "metadata": {
+        "title": "TopoQA: a topological deep learning-based approach for protein complex structure interface quality assessment",
+        "authors": [
+          "Bingqing Han",
+          "Yipeng Zhang",
+          "Longlong Li",
+          "Xinqi Gong",
+          "Kelin Xia"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1093/bib/bbaf083"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1093%2Fbib%2Fbbaf083"
+      }
+    },
+    {
+      "id": "648067b0410c567b",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.3934/fods.2021006"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:32.440Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.3934/fods.2021006"
+      },
+      "metadata": {
+        "title": "HERMES: Persistent spectral graph software",
+        "authors": [
+          "Rui Wang",
+          "Rundong Zhao",
+          "Emily Ribando-Gros",
+          "Jiahui Chen",
+          "Yiying Tong",
+          "Guo-Wei Wei"
+        ],
+        "year": 2021,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.3934/fods.2021006"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.3934%2Ffods.2021006"
+      }
+    },
+    {
+      "id": "672a25d57c37854e",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1038/s41587-019-0336-3"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:37.256Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1038/s41587-019-0336-3"
+      },
+      "metadata": {
+        "title": "Visualizing structure and transitions in high-dimensional biological data",
+        "authors": [
+          "Kevin R. Moon",
+          "David van Dijk",
+          "Zheng Wang",
+          "Scott Gigante",
+          "Daniel B. Burkhardt",
+          "William S. Chen",
+          "Kristina Yim",
+          "Antonia van den Elzen",
+          "Matthew J. Hirn",
+          "Ronald R. Coifman",
+          "Natalia B. Ivanova",
+          "Guy Wolf",
+          "Smita Krishnaswamy"
+        ],
+        "year": 2019,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1038/s41587-019-0336-3"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1038%2Fs41587-019-0336-3"
+      }
+    },
+    {
+      "id": "6dc7f54c692c0076",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.3934/fods.2024032"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:41.194Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.3934/fods.2024032"
+      },
+      "metadata": {
+        "title": "Persistent Mayer homology and persistent Mayer Laplacian",
+        "authors": [
+          "Li Shen",
+          "Jian Liu",
+          "Guo-Wei Wei"
+        ],
+        "year": 2024,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.3934/fods.2024032"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.3934%2Ffods.2024032"
+      }
+    },
+    {
+      "id": "718c3a624cab8ea3",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2311.12834"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:41.581Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2311.12834"
+      },
+      "metadata": {
+        "title": "Knot data analysis using multiscale Gauss link integral",
+        "authors": [
+          "Li Shen",
+          "Hongsong Feng",
+          "Fengling Li",
+          "Fengchun Lei",
+          "Jie Wu",
+          "Guo‐Wei Wei"
+        ],
+        "year": 2023,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2311.12834"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2311.12834"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2311.12834"
+      }
+    },
+    {
+      "id": "79ef98e5dfaf7457",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "url",
+          "value": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/b284aad9fb5c6d74b9535a30ece69e1c-Abstract-Conference.html"
+        }
+      },
+      "provider": "citation-metadata-page",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:31.187Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.52202/085713-4107"
+      },
+      "metadata": {
+        "title": "HiPoNet: A Multi-View Simplicial Complex Network for High Dimensional Point-Cloud and Single-Cell data",
+        "authors": [
+          "Viswanath, Siddharth",
+          "Madhu, Hiren",
+          "Bhaskar, Dhananjay",
+          "Kovalic, Jake",
+          "Johnson, Dave",
+          "Tape, Christopher",
+          "Adelstein, Ian",
+          "Ying, Rex",
+          "Perlmutter, Michael",
+          "Krishnaswamy, Smita"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.52202/085713-4107"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/b284aad9fb5c6d74b9535a30ece69e1c-Abstract-Conference.html"
+      }
+    },
+    {
+      "id": "7a5049718e604da3",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "url",
+          "value": "https://proceedings.mlr.press/v235/madhu24a.html"
+        }
+      },
+      "provider": "citation-metadata-page",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:31.302Z",
+      "matchedIdentifier": {
+        "kind": "url",
+        "value": "https://proceedings.mlr.press/v235/madhu24a.html"
+      },
+      "metadata": {
+        "title": "Unsupervised Parameter-free Simplicial Representation Learning with Scattering Transforms",
+        "authors": [
+          "Hiren Madhu",
+          "Sravanthi Gurugubelli",
+          "Sundeep Prabhakar Chepuri"
+        ],
+        "year": 2024,
+        "identifiers": [
+          {
+            "kind": "url",
+            "value": "https://proceedings.mlr.press/v235/madhu24a.html"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://proceedings.mlr.press/v235/madhu24a.html"
+      }
+    },
+    {
+      "id": "7b01ac2ca0008daf",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1371/journal.pone.0161879"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:34.576Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1371/journal.pone.0161879"
+      },
+      "metadata": {
+        "title": "DockQ: A Quality Measure for Protein-Protein Docking Models",
+        "authors": [
+          "Sankar Basu",
+          "Björn Wallner"
+        ],
+        "year": 2016,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1371/journal.pone.0161879"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1371%2Fjournal.pone.0161879"
+      }
+    },
+    {
+      "id": "7e691f42f591527b",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1002/cnm.3376"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:34.881Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1002/cnm.3376"
+      },
+      "metadata": {
+        "title": "Persistent spectral graph",
+        "authors": [
+          "Rui Wang",
+          "Duc Duy Nguyen",
+          "Guo‐Wei Wei"
+        ],
+        "year": 2020,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1002/cnm.3376"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1002%2Fcnm.3376"
+      }
+    },
+    {
+      "id": "8397f5b76a5aebef",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1371/journal.pcbi.1005659"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:35.483Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1371/journal.pcbi.1005659"
+      },
+      "metadata": {
+        "title": "OpenMM 7: Rapid development of high performance algorithms for molecular dynamics",
+        "authors": [
+          "Peter Eastman",
+          "Jason Swails",
+          "John D. Chodera",
+          "Robert T. McGibbon",
+          "Yutong Zhao",
+          "Kyle A. Beauchamp",
+          "Lee-Ping Wang",
+          "Andrew C. Simmonett",
+          "Matthew P. Harrigan",
+          "Chaya D. Stern",
+          "Rafal P. Wiewiora",
+          "Bernard R. Brooks",
+          "Vijay S. Pande"
+        ],
+        "year": 2017,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1371/journal.pcbi.1005659"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1371%2Fjournal.pcbi.1005659"
+      }
+    },
+    {
+      "id": "8c44743476b62011",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1002/cnm.2914"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:43.332Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1002/cnm.2914"
+      },
+      "metadata": {
+        "title": "Integration of element specific persistent homology and machine learning for protein‐ligand binding affinity prediction",
+        "authors": [
+          "Zixuan Cang",
+          "Guo‐Wei Wei"
+        ],
+        "year": 2018,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1002/cnm.2914"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1002%2Fcnm.2914"
+      }
+    },
+    {
+      "id": "8ec076acc86b35a9",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2408.00220"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:41.002Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2408.00220"
+      },
+      "metadata": {
+        "title": "Persistent de Rham-Hodge Laplacians in Eulerian representation for manifold topological learning",
+        "authors": [
+          "Zhe Su",
+          "Yiying Tong",
+          "Guo‐Wei Wei"
+        ],
+        "year": 2024,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2408.00220"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2408.00220"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2408.00220"
+      }
+    },
+    {
+      "id": "91efa4098041df81",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "pmcid",
+          "value": "PMC11891663"
+        }
+      },
+      "provider": "europe-pmc",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:37.772Z",
+      "matchedIdentifier": {
+        "kind": "pmcid",
+        "value": "PMC11891663"
+      },
+      "metadata": {
+        "title": "TopoQA: a topological deep learning-based approach for protein complex structure interface quality assessment.",
+        "authors": [
+          "Han B",
+          "Zhang Y",
+          "Li L",
+          "Gong X",
+          "Xia K."
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "pmid",
+            "value": "40062613"
+          },
+          {
+            "kind": "pmcid",
+            "value": "PMC11891663"
+          },
+          {
+            "kind": "doi",
+            "value": "10.1093/bib/bbaf083"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC11891663&format=json&pageSize=1"
+      }
+    },
+    {
+      "id": "96b8ec293d3ffb7f",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "pmcid",
+          "value": "PMC12612092"
+        }
+      },
+      "provider": "europe-pmc",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:34.521Z",
+      "matchedIdentifier": {
+        "kind": "pmcid",
+        "value": "PMC12612092"
+      },
+      "metadata": {
+        "title": "Topological deep learning for enhancing peptide-protein complex prediction.",
+        "authors": [
+          "Dai X",
+          "Wang R",
+          "Zhang Y."
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "pmid",
+            "value": "41225185"
+          },
+          {
+            "kind": "pmcid",
+            "value": "PMC12612092"
+          },
+          {
+            "kind": "doi",
+            "value": "10.1038/s42004-025-01727-4"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC12612092&format=json&pageSize=1"
+      }
+    },
+    {
+      "id": "985dcf7aa4a1b4ac",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1137/21m1435471"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:32.130Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1137/21m1435471"
+      },
+      "metadata": {
+        "title": "Persistent Laplacians: Properties, Algorithms and Implications",
+        "authors": [
+          "Facundo Mémoli",
+          "Zhengchao Wan",
+          "Yusu Wang"
+        ],
+        "year": 2022,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1137/21m1435471"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1137%2F21m1435471"
+      }
+    },
+    {
+      "id": "a34b2fe038c309d7",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1093/bib/bbae048"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:39.097Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1093/bib/bbae048"
+      },
+      "metadata": {
+        "title": "ABAG-docking benchmark: a non-redundant structure benchmark dataset for antibody–antigen computational docking",
+        "authors": [
+          "Nan Zhao",
+          "Bingqing Han",
+          "Cuicui Zhao",
+          "Jinbo Xu",
+          "Xinqi Gong"
+        ],
+        "year": 2024,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1093/bib/bbae048"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1093%2Fbib%2Fbbae048"
+      }
+    },
+    {
+      "id": "a4289d915cbcfea6",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2404.11799"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:41.432Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2404.11799"
+      },
+      "metadata": {
+        "title": "Persistent interaction topology in data analysis",
+        "authors": [
+          "Jian Liu",
+          "Dong Chen",
+          "Guo‐Wei Wei"
+        ],
+        "year": 2024,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2404.11799"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2404.11799"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2404.11799"
+      }
+    },
+    {
+      "id": "a5653f366e1a5c0e",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1016/j.acha.2006.04.006"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:36.663Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1016/j.acha.2006.04.006"
+      },
+      "metadata": {
+        "title": "Diffusion maps",
+        "authors": [
+          "Ronald R. Coifman",
+          "Stéphane Lafon"
+        ],
+        "year": 2006,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1016/j.acha.2006.04.006"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1016%2Fj.acha.2006.04.006"
+      }
+    },
+    {
+      "id": "aab3ed2d937cfa8b",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1021/acs.jcim.5c02266"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:41.840Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1021/acs.jcim.5c02266"
+      },
+      "metadata": {
+        "title": "A Review of Topological Data Analysis and Topological Deep Learning in Molecular Sciences",
+        "authors": [
+          "JunJie Wee",
+          "Jian Jiang"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1021/acs.jcim.5c02266"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1021%2Facs.jcim.5c02266"
+      }
+    },
+    {
+      "id": "b3e8e6d56c0bdb12",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.7554/elife.100361.3"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:36.073Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.7554/elife.100361.3"
+      },
+      "metadata": {
+        "title": "TopoMetry systematically learns and evaluates the latent geometry of single-cell data",
+        "authors": [
+          "David Sidarta-Oliveira",
+          "Ana I Domingos",
+          "Licio A Velloso"
+        ],
+        "year": 2026,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.7554/elife.100361.3"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.7554%2Felife.100361.3"
+      }
+    },
+    {
+      "id": "b4f448d77ec9abfd",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "1802.03426"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:37.129Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "1802.03426"
+      },
+      "metadata": {
+        "title": "UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction",
+        "authors": [
+          "Leland McInnes",
+          "John J. Healy",
+          "Melville, James"
+        ],
+        "year": 2018,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.1802.03426"
+          },
+          {
+            "kind": "arxiv",
+            "value": "1802.03426"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.1802.03426"
+      }
+    },
+    {
+      "id": "b5a98d9d3e27f44f",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1371/journal.pcbi.1005905"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:35.182Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1371/journal.pcbi.1005905"
+      },
+      "metadata": {
+        "title": "High-resolution global peptide-protein docking using fragments-based PIPER-FlexPepDock",
+        "authors": [
+          "Nawsad Alam",
+          "Oriel Goldstein",
+          "Bing Xia",
+          "Kathryn A. Porter",
+          "Dima Kozakov",
+          "Ora Schueler-Furman"
+        ],
+        "year": 2017,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1371/journal.pcbi.1005905"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1371%2Fjournal.pcbi.1005905"
+      }
+    },
+    {
+      "id": "b9c90807fa021e6c",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1007/s10462-022-10146-z"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:38.799Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1007/s10462-022-10146-z"
+      },
+      "metadata": {
+        "title": "Persistent-homology-based machine learning: a survey and a comparative study",
+        "authors": [
+          "Chi Seng Pun",
+          "Si Xian Lee",
+          "Kelin Xia"
+        ],
+        "year": 2022,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1007/s10462-022-10146-z"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1007%2Fs10462-022-10146-z"
+      }
+    },
+    {
+      "id": "ba225514f22c81de",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2502.07746"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:30.737Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2502.07746"
+      },
+      "metadata": {
+        "title": "HiPoNet: A Multi-View Simplicial Complex Network for High Dimensional Point-Cloud and Single-Cell Data",
+        "authors": [
+          "Siddharth Viswanath",
+          "Hiren Madhu",
+          "Dhananjay Bhaskar",
+          "Jake Kovalic",
+          "Dave Johnson",
+          "Christopher J. Tape",
+          "Ian Adelstein",
+          "Rex Ying",
+          "Michael Perlmutter",
+          "Smita Krishnaswamy"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2502.07746"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2502.07746"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2502.07746"
+      }
+    },
+    {
+      "id": "bf3ba366e37a62b7",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2503.00175"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:41.689Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2503.00175"
+      },
+      "metadata": {
+        "title": "Manifold Topological Deep Learning for Biomedical Data",
+        "authors": [
+          "Xiang Liu",
+          "Zhe Su",
+          "Yongyi Shi",
+          "Yiying Tong",
+          "Ge Wang",
+          "Guo‐Wei Wei"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2503.00175"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2503.00175"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2503.00175"
+      }
+    },
+    {
+      "id": "c9cecd62a55ae85e",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.3934/fods.2021004"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:36:11.572Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.3934/fods.2021004"
+      },
+      "metadata": {
+        "title": "Markov chain simulation for multilevel Monte Carlo",
+        "authors": [
+          "Ajay Jasra",
+          "Kody J. H. Law",
+          "Yaxian Xu"
+        ],
+        "year": 2021,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.3934/fods.2021004"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.3934%2Ffods.2021004"
+      }
+    },
+    {
+      "id": "ca8c85b77ec9fb9d",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1101/2022.05.12.491707"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:31.839Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1101/2022.05.12.491707"
+      },
+      "metadata": {
+        "title": "SPACE-GM: geometric deep learning of disease-associated microenvironments from multiplex spatial protein profiles",
+        "authors": [
+          "Zhenqin Wu",
+          "Alexandro E. Trevino",
+          "Eric Wu",
+          "Kyle Swanson",
+          "Honesty J. Kim",
+          "H. Blaize D’Angio",
+          "Ryan Preska",
+          "Gregory W. Charville",
+          "Piero D. Dalerba",
+          "Ann Marie Egloff",
+          "Ravindra Uppaluri",
+          "Umamaheswar Duvvuri",
+          "Aaron T. Mayer",
+          "James Zou"
+        ],
+        "year": 2022,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1101/2022.05.12.491707"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1101%2F2022.05.12.491707"
+      }
+    },
+    {
+      "id": "cf917746fa4086c3",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2410.17815"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:37.639Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2410.17815"
+      },
+      "metadata": {
+        "title": "TopoQA: a topological deep learning-based approach for protein complex structure interface quality assessment",
+        "authors": [
+          "Bingqing Han",
+          "Yipeng Zhang",
+          "Longlong Li",
+          "Xinqi Gong",
+          "Kelin Xia"
+        ],
+        "year": 2024,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2410.17815"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2410.17815"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2410.17815"
+      }
+    },
+    {
+      "id": "d2ade3d7a7e38c8c",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.3390/math13020208"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:33.059Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.3390/math13020208"
+      },
+      "metadata": {
+        "title": "Persistent Topological Laplacians—A Survey",
+        "authors": [
+          "Xiaoqi Wei",
+          "Guo-Wei Wei"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.3390/math13020208"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.3390%2Fmath13020208"
+      }
+    },
+    {
+      "id": "d31aedaa93e58469",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1073/pnas.2408431121"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:41.486Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1073/pnas.2408431121"
+      },
+      "metadata": {
+        "title": "Knot data analysis using multiscale Gauss link integral",
+        "authors": [
+          "Li Shen",
+          "Hongsong Feng",
+          "Fengling Li",
+          "Fengchun Lei",
+          "Jie Wu",
+          "Guo-Wei Wei"
+        ],
+        "year": 2024,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1073/pnas.2408431121"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1073%2Fpnas.2408431121"
+      }
+    },
+    {
+      "id": "d681bad4654bf601",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1038/s42004-025-01727-4"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:33.355Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1038/s42004-025-01727-4"
+      },
+      "metadata": {
+        "title": "Topological deep learning for enhancing peptide-protein complex prediction",
+        "authors": [
+          "Xuhang Dai",
+          "Rui Wang",
+          "Yingkai Zhang"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1038/s42004-025-01727-4"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1038%2Fs42004-025-01727-4"
+      }
+    },
+    {
+      "id": "d8c4b62284f6a8e5",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2312.01268"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:41.315Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2312.01268"
+      },
+      "metadata": {
+        "title": "Persistent Mayer homology and persistent Mayer Laplacian",
+        "authors": [
+          "Li Shen",
+          "Jian Liu",
+          "Guo‐Wei Wei"
+        ],
+        "year": 2023,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2312.01268"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2312.01268"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2312.01268"
+      }
+    },
+    {
+      "id": "dd2cee96062158e9",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2507.19504"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:40.073Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2507.19504"
+      },
+      "metadata": {
+        "title": "Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology -- A Review",
+        "authors": [
+          "Zhe Su",
+          "Xiang Liu",
+          "Layal Bou Hamdan",
+          "Vasileios Maroulas",
+          "Jie Wu",
+          "Gunnar Carlsson",
+          "Guo‐Wei Wei"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2507.19504"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2507.19504"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2507.19504"
+      }
+    },
+    {
+      "id": "ddf2100d140c8029",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2508.11560"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:31.964Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2508.11560"
+      },
+      "metadata": {
+        "title": "PETLS: PErsistent Topological Laplacian Software",
+        "authors": [
+          "Benjamin Jones",
+          "Guo-Wei Wei"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2508.11560"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2508.11560"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2508.11560"
+      }
+    },
+    {
+      "id": "de9ae59d2cdcf497",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1016/s1359-0278"
+        }
+      },
+      "provider": "crossref",
+      "state": "unresolved",
+      "observedAt": "2026-08-08T14:45:39.390Z",
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1016%2Fs1359-0278"
+      },
+      "error": "HTTP 404"
+    },
+    {
+      "id": "e25d166fb74ad62d",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1021/acs.jctc.3c00039"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:35.781Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1021/acs.jctc.3c00039"
+      },
+      "metadata": {
+        "title": "Development and Benchmarking of Open Force Field 2.0.0: The Sage Small Molecule Force Field",
+        "authors": [
+          "Simon Boothroyd",
+          "Pavan Kumar Behara",
+          "Owen C. Madin",
+          "David F. Hahn",
+          "Hyesu Jang",
+          "Vytautas Gapsys",
+          "Jeffrey R. Wagner",
+          "Joshua T. Horton",
+          "David L. Dotson",
+          "Matthew W. Thompson",
+          "Jessica Maat",
+          "Trevor Gokey",
+          "Lee-Ping Wang",
+          "Daniel J. Cole",
+          "Michael K. Gilson",
+          "John D. Chodera",
+          "Christopher I. Bayly",
+          "Michael R. Shirts",
+          "David L. Mobley"
+        ],
+        "year": 2023,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1021/acs.jctc.3c00039"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1021%2Facs.jctc.3c00039"
+      }
+    },
+    {
+      "id": "ea2f9c4a3171d833",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1093/bib/bbad287"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:38.147Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1093/bib/bbad287"
+      },
+      "metadata": {
+        "title": "ComplexQA: a deep graph learning approach for protein complex structure assessment",
+        "authors": [
+          "Lei Zhang",
+          "Sheng Wang",
+          "Jie Hou",
+          "Dong Si",
+          "Junyong Zhu",
+          "Renzhi Cao"
+        ],
+        "year": 2023,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1093/bib/bbad287"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1093%2Fbib%2Fbbad287"
+      }
+    },
+    {
+      "id": "eb6527166f71e713",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "1912.04135"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:39.191Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "1912.04135"
+      },
+      "metadata": {
+        "title": "Persistent spectral graph",
+        "authors": [
+          "Rui Wang",
+          "Duc Duy Nguyen",
+          "Guo‐Wei Wei"
+        ],
+        "year": 2019,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.1912.04135"
+          },
+          {
+            "kind": "arxiv",
+            "value": "1912.04135"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.1912.04135"
+      }
+    },
+    {
+      "id": "edf19fc362aab69e",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1038/s43588-022-00394-y"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-08T14:45:43.927Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1038/s43588-022-00394-y"
+      },
+      "metadata": {
+        "title": "Persistent spectral theory-guided protein engineering",
+        "authors": [
+          "Yuchi Qiu",
+          "Guo-Wei Wei"
+        ],
+        "year": 2023,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1038/s43588-022-00394-y"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1038%2Fs43588-022-00394-y"
+      }
+    }
+  ]
+}

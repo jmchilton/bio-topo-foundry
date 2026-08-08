@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "artifactPath": "content/packages/petls.md",
+      "sourceDigest": "e81dd031d28b07e2aeea48ed1cc0f60fdbc3bf85c7a19a6e9bdb85d83afde795",
+      "note": "PETLS source repository on GitHub. Software, not a scholarly work."
+    },
+    {
+      "artifactPath": "content/packages/petls.md",
+      "sourceDigest": "ea017cf2f7bd55c2a1333fa7ddb798120e6b84d59bc351a71435335c7374c35f",
+      "note": "PETLS distribution on PyPI. Software, not a scholarly work."
+    },
+    {
+      "artifactPath": "content/packages/petls.md",
+      "sourceDigest": "211e794b2ec621a03d174fec7afae9f139233bc8993b2ba48711f085335a0ae1",
+      "note": "PETLS project documentation. Software documentation, not a scholarly work."
+    },
+    {
+      "artifactPath": "content/packages/petls.md",
+      "sourceDigest": "4060d177442633bd49dec7174c6fa859ba2e62a389a06263c38c37ae98d3eac0",
+      "note": "NIH RePORTER award record R35GM148196. A funding record, not a scholarly work."
+    },
+    {
+      "artifactPath": "content/packages/topometry.md",
+      "sourceDigest": "ebe876f3218ae0dacedefcde7034df4ea92e453acdba6a7fdb274e72b2b1272c",
+      "note": "TopoMetry source repository on GitHub, cited at a named commit. Software, not a scholarly work."
+    },
+    {
+      "artifactPath": "content/packages/topometry.md",
+      "sourceDigest": "6232d36a64300e6b3ab16d49c23fc5fdf59885c33906c30e16b4979091bdc089",
+      "note": "TopoMetry distribution on PyPI. Software, not a scholarly work."
+    },
+    {
+      "artifactPath": "content/packages/topometry.md",
+      "sourceDigest": "48e25a785f3a1456fb71a6c8c7c5c1512e4ce13d3911a8cad23d8ff05f7f1699",
+      "note": "TopoMetry documentation on Read the Docs. Software documentation, not a scholarly work."
+    },
+    {
+      "artifactPath": "content/packages/topoqa.md",
+      "sourceDigest": "213bd03b527cf62b805df8ff34616870fc36997e929607c208b08567c557e136",
+      "note": "TopoQA source and pretrained-model repository on GitHub, cited at a named commit. Software, not a scholarly work."
+    }
+  ]
+}
