@@ -7,7 +7,8 @@ import { base } from '../lib/site-base';
 const typedNoteCount =
   (await getCollection('packages')).length +
   (await getCollection('papers')).length +
-  (await getCollection('environments')).length;
+  (await getCollection('environments')).length +
+  (await getCollection('molds')).length;
 ---
 <Base title="Topological Data Analysis Bioinformatics Foundry">
   <section class="hero">
@@ -29,6 +30,10 @@ const typedNoteCount =
     <a class="card" href={`${base}/environments/`}>
       <strong>Environments</strong>
       <span>Runnable biopixi fixtures, graded L0 to L4 for how portable their packaging is.</span>
+    </a>
+    <a class="card" href={`${base}/molds/`}>
+      <strong>Molds</strong>
+      <span>Abstract actions with typed dependencies, ready to become castable artifacts.</span>
     </a>
     <a class="card" href={`${base}/papers/`}>
       <strong>Papers</strong>

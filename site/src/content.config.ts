@@ -11,6 +11,7 @@ import {
 const packages = COLLECTIONS.packages;
 const papers = COLLECTIONS.papers;
 const environments = COLLECTIONS.environments;
+const molds = COLLECTIONS.molds;
 
 export const collections = {
   packages: defineCollection({
@@ -36,5 +37,13 @@ export const collections = {
       generateId: stripNoteFile,
     }),
     schema: environments.schema,
+  }),
+  molds: defineCollection({
+    loader: glob({
+      pattern: [...molds.pattern],
+      base: contentPath(molds.base),
+      generateId: stripNoteFile,
+    }),
+    schema: molds.schema,
   }),
 };

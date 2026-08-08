@@ -4,7 +4,7 @@ import { base } from "./site-base";
 
 export interface TaggedEntry {
   id: string;
-  kind: "Environment" | "Package" | "Paper";
+  kind: "Environment" | "Mold" | "Package" | "Paper";
   name: string;
   summary: string;
   tags: string[];
@@ -29,6 +29,14 @@ export async function getTaggedEntries(): Promise<TaggedEntry[]> {
       summary: entry.data.summary,
       tags: entry.data.tags,
       url: `${base}/packages/${entry.id}/`,
+    })),
+    ...(await getCollection("molds")).map((entry) => ({
+      id: entry.id,
+      kind: "Mold" as const,
+      name: entry.data.name,
+      summary: entry.data.summary,
+      tags: entry.data.tags,
+      url: `${base}/molds/${entry.id}/`,
     })),
     ...(await getCollection("papers")).map((entry) => ({
       id: entry.id,

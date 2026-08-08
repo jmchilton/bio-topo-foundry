@@ -7,11 +7,13 @@ import { REGISTRIES } from "./registries";
 const ctx = buildKindContext(REGISTRIES);
 
 export const environmentSchema = assemble(DEFINITIONS.environment, ctx);
+export const moldSchema = assemble(DEFINITIONS.mold, ctx);
 export const packageSchema = assemble(DEFINITIONS.package, ctx);
 export const paperSchema = assemble(DEFINITIONS.paper, ctx);
 
 export const NOTE_KINDS = {
   environment: environmentSchema,
+  mold: moldSchema,
   package: packageSchema,
   paper: paperSchema,
 } as const;
@@ -43,6 +45,12 @@ export const COLLECTIONS = {
     pattern: ["*/index.md"],
     kind: "environment",
     schema: environmentSchema,
+  },
+  molds: {
+    base: "molds",
+    pattern: ["*/index.md"],
+    kind: "mold",
+    schema: moldSchema,
   },
   papers: {
     base: "papers",

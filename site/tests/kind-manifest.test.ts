@@ -58,6 +58,26 @@ describe("this Foundry's kind manifest", () => {
     ]);
   });
 
+  it("declares the Mold layout without putting authoring companions in cast output", () => {
+    expect(kindNamed("mold")).toMatchObject({
+      kind: "mold",
+      shape: "directory",
+      locations: ["molds"],
+    });
+    expect(
+      kindNamed("mold").companions.map(
+        ({ file, requirement, disposition }) => [
+          file,
+          requirement,
+          disposition,
+        ],
+      ),
+    ).toEqual([
+      ["eval.md", "recommended", "foundry-only"],
+      ["scenarios.md", "recommended", "foundry-only"],
+    ]);
+  });
+
   it("derives a correctly discriminated frontmatter field table", () => {
     const packageKind = kindNamed("package");
     const type = packageKind.fields.find(({ name }) => name === "type");

@@ -19,12 +19,17 @@
   --color-surface-raised: #ffffff;
   --color-surface-hover: #edf4f1;
   --color-link: #23685e;
+  --color-link-hover: #174b44;
   --color-text-secondary: #465753;
   --color-text-muted: #5d6b68;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
   --color-license-verbatim: #16855d;
   --color-license-own-words: #b46e14;
   --color-license-copyleft: #b83a3a;
+  --color-evidence-provisional-bg: #fff4dc;
+  --color-evidence-provisional-text: #8a570e;
+  --color-evidence-grounded-bg: #e4f4ed;
+  --color-evidence-grounded-text: #116848;
 }
 
 .dark {
@@ -37,7 +42,12 @@
   --color-surface-raised: #1b2b28;
   --color-surface-hover: #223532;
   --color-link: #79b9ad;
+  --color-link-hover: #a4d7cd;
   --color-text-secondary: #c8d5d1;
+  --color-evidence-provisional-bg: #3b2d16;
+  --color-evidence-provisional-text: #f0c66a;
+  --color-evidence-grounded-bg: #173c31;
+  --color-evidence-grounded-text: #86d3b5;
 }
 
 html {

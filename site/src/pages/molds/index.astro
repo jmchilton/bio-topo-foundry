@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import TagChips from '@galaxy-foundry/site-kit/TagChips.astro';
+
+import Base from '../../layouts/Base.astro';
+import { base } from '../../lib/site-base';
+
+const molds = (await getCollection('molds')).sort((a, b) =>
+  a.data.name.localeCompare(b.data.name),
+);
+---
+<Base title="Molds" description="Typed, reusable actions over the TDA Foundry corpus.">
+  <header class="page-header">
+    <p class="eyebrow">Actions</p>
+    <h1>Molds</h1>
+    <p>
+      A Mold defines one action and the typed references a cast needs to perform it. Domain logic
+      stays here; shared readers, contracts, and casting machinery stay upstream.
+    </p>
+  </header>
+
+  <ul class="collection-list">
+    {molds.map((entry) => (
+      <li class="card">
+        <a class="card-primary" href={`${base}/molds/${entry.id}/`}>
+          <strong>{entry.data.name}</strong>
+          <span>{entry.data.summary}</span>
+        </a>
+        <TagChips tags={entry.data.tags} tagBase={`${base}/tags`} />
+      </li>
+    ))}
+  </ul>
+</Base>

@@ -5,6 +5,7 @@ import path from "node:path";
 import {
   contentReaderStyleGaps,
   licenseBadgeStyleGaps,
+  referenceStyleGaps,
   searchIndexGaps,
   shellStyleGaps,
 } from "@galaxy-foundry/site-kit";
@@ -92,6 +93,7 @@ describe("the emitted reader slice", () => {
     expect(shellStyleGaps(css)).toEqual([]);
     expect(contentReaderStyleGaps(css)).toEqual([]);
     expect(licenseBadgeStyleGaps(css)).toEqual([]);
+    expect(referenceStyleGaps(css)).toEqual([]);
 
     // Constructed so Tailwind cannot satisfy this assertion by scanning the test itself.
     const kitOnlyUtility = ["min", "h", "dvh"].join("-");
@@ -114,6 +116,7 @@ describe("the emitted reader slice", () => {
     expect(home).toContain('href="/bio-topo-foundry/packages/"');
     expect(home).toContain('href="/bio-topo-foundry/papers/"');
     expect(home).toContain('href="/bio-topo-foundry/environments/"');
+    expect(home).toContain('href="/bio-topo-foundry/molds/"');
     expect(home).toContain('href="/bio-topo-foundry/glossary/"');
     expect(home).toContain('href="/bio-topo-foundry/tags/"');
     expect(home).toContain(
@@ -254,5 +257,14 @@ describe("the emitted reader slice", () => {
     const glossary = read(path.join(DIST, "glossary/index.html"));
     expect(glossary).toContain('<p id="package"><strong>Package</strong>');
     expect(glossary).toContain("<code>[[Target]]</code>");
+  });
+
+  it("renders each Mold's typed reference manifest", () => {
+    const mold = read(path.join(DIST, "molds/score-docking-poses/index.html"));
+    expect(mold).toContain('class="reference-contract"');
+    expect(mold).toContain('class="reference-card"');
+    expect(mold).toContain('href="/bio-topo-foundry/environments/open-topoqa-scorer/"');
+    expect(mold).toContain("Supplies the runnable featurizer and scorer");
+    expect(mold).toContain("Corpus Observed");
   });
 });

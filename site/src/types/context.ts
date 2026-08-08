@@ -9,14 +9,20 @@ import {
   isValidLicenseId,
   type LicensePolicy,
 } from "@galaxy-foundry/license-policy";
+import {
+  contractKeys,
+  type ContractGroup,
+  type ReferenceContract,
+} from "@galaxy-foundry/reference-contract";
 import type { TagRegistry } from "@galaxy-foundry/tag-registry";
 
 export interface BuildKindContextOptions {
   tags: TagRegistry;
+  contract: ReferenceContract;
   licensePolicy: LicensePolicy;
 }
 
-function buildPrimitives({ tags, licensePolicy }: BuildKindContextOptions) {
+function buildPrimitives({ tags, contract, licensePolicy }: BuildKindContextOptions) {
   const tag = z.string().refine((value) => tags.isValidTag(value), {
     message: "tag must be registered in meta_tags.yml",
   });
@@ -26,6 +32,44 @@ function buildPrimitives({ tags, licensePolicy }: BuildKindContextOptions) {
       message: "must be a curated SPDX id or a LicenseRef-<slug>",
     });
 
+  const keys = (group: ContractGroup): [string, ...string[]] => {
+    const values = contractKeys(contract, group);
+    if (values.length === 0) {
+      throw new Error(`reference contract: \`${group}\` is empty`);
+    }
+    return values as [string, ...string[]];
+  };
+
+  const reference = z
+    .object({
+      kind: z.enum(keys("kinds")),
+      ref: z.string().min(1),
+      used_at: z.enum(keys("used_at")),
+      load: z.enum(keys("load")),
+      mode: z.enum(keys("modes")),
+      evidence: z.enum(keys("evidence")),
+      purpose: z.string().optional(),
+      trigger: z.string().optional(),
+      verification: z.string().optional(),
+    })
+    .strict()
+    .superRefine((value, ctx) => {
+      if (value.load === "on-demand" && !value.trigger) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["trigger"],
+          message: `on-demand ref "${value.ref}" requires a trigger`,
+        });
+      }
+      if (value.evidence === "hypothesis" && !value.verification) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["verification"],
+          message: `hypothesis-evidence ref "${value.ref}" requires a verification`,
+        });
+      }
+    });
+
   return {
     base: {
       tags: z
@@ -33,6 +77,7 @@ function buildPrimitives({ tags, licensePolicy }: BuildKindContextOptions) {
         .min(1, "every note must carry at least one registered facet tag"),
     },
     licenseId,
+    reference,
   };
 }
 
@@ -41,6 +86,8 @@ type Primitives = ReturnType<typeof buildPrimitives>;
 export interface KindContext {
   base: Primitives["base"];
   licenseId: Primitives["licenseId"];
+  /** One entry in a Mold's typed reference manifest. */
+  reference: Primitives["reference"];
   /**
    * The redistribution table itself, for kinds that must ask what a license permits.
    *
