@@ -9,6 +9,11 @@
 # runtime dep are supplied here. Real imports across src/pyDowker: gudhi, pyrivet, numpy.
 # (Stray committed src/pyDowker/{a.out, MNeighborComplex.c++} are non-.py and excluded from the wheel.)
 # Source: GitHub archive of master commit 7f043c3 (2024-09-19); no tags/PyPI release.
+#
+# This directory is `pydowker` while everything upstream is `pyDowker`, and the split is deliberate:
+# a recipe directory is named after the package it builds, and conda package names are lowercase.
+# Every sibling recipe follows that rule. The import name below keeps upstream's casing, because
+# that one is not ours to choose.
 context:
   build_number: '0'
 

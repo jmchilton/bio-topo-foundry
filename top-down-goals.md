@@ -109,7 +109,7 @@ RIVET's C++ console — now built as `recipes/rivet` (rivet-console).*
   **Unblocked by packaging the chain from source** (2026-07-30): the old "hollow green" is retired.
   `DowkerComplex.py` → `from pyrivet import rivet` → `rivet_console`. We built all three as in-repo recipes:
   `recipes/rivet` (RIVET's **Qt-free** `rivet_console` engine, GPL-3.0, from source), `recipes/pyrivet`
-  (pure-Python API, BSD), `recipes/pyDowker` (MIT). Env `content/environments/pydowker/` **L1**, locked;
+  (pure-Python API, BSD), `recipes/pydowker` (MIT). Env `content/environments/pydowker/` **L1**, locked;
   chain **verified green** in a linux/amd64 container (rivet compiles + `rivet_console --help`; pyrivet +
   pyDowker install, real `pyDowker.DowkerComplex` import pulls gudhi+pyrivet, `pip check` clean). All three
   licenses are redistributable → L3-eligible once upstreamed. *Key fixes:* pin `cmake <4`; re-quote RIVET's
