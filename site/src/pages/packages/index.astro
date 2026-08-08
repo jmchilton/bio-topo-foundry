@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import TagChips from '@galaxy-foundry/site-kit/TagChips.astro';
 
+import PersistenceDivider from '../../components/PersistenceDivider.astro';
+import PointCloudFingerprint from '../../components/PointCloudFingerprint.astro';
 import Base from '../../layouts/Base.astro';
 import { base } from '../../lib/site-base';
 
@@ -18,12 +20,16 @@ const packages = (await getCollection('packages')).sort((a, b) =>
       recipes are related artifacts, not part of the package's identity.
     </p>
   </header>
+  <PersistenceDivider seed="collection:packages" />
 
   <ul class="collection-list">
     {packages.map((entry) => (
       <li class="card">
         <a class="card-primary" href={`${base}/packages/${entry.id}/`}>
-          <strong>{entry.data.title}</strong>
+          <span class="card-title-row">
+            <strong>{entry.data.title}</strong>
+            <PointCloudFingerprint seed={`package:${entry.id}:${entry.data.tags.join('|')}`} />
+          </span>
           <span>{entry.data.summary}</span>
         </a>
         <TagChips tags={entry.data.tags} tagBase={`${base}/tags`} />

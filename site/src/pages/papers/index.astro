@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import TagChips from '@galaxy-foundry/site-kit/TagChips.astro';
 
+import PersistenceDivider from '../../components/PersistenceDivider.astro';
+import PointCloudFingerprint from '../../components/PointCloudFingerprint.astro';
 import Base from '../../layouts/Base.astro';
 import { base } from '../../lib/site-base';
 
@@ -19,12 +21,16 @@ const papers = (await getCollection('papers')).sort((a, b) =>
       is not scholarship we authored.
     </p>
   </header>
+  <PersistenceDivider seed="collection:papers" />
 
   <ul class="collection-list">
     {papers.map((entry) => (
       <li class="card">
         <a class="card-primary" href={`${base}/papers/${entry.id}/`}>
-          <strong>{entry.data.title}</strong>
+          <span class="card-title-row">
+            <strong>{entry.data.title}</strong>
+            <PointCloudFingerprint seed={`paper:${entry.id}:${entry.data.tags.join('|')}`} />
+          </span>
           <span>{entry.data.summary}</span>
         </a>
         <TagChips tags={entry.data.tags} tagBase={`${base}/tags`} />

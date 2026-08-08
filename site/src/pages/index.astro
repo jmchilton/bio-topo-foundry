@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 
+import FiltrationHero from '../components/FiltrationHero.astro';
+import PersistenceDivider from '../components/PersistenceDivider.astro';
 import Base from '../layouts/Base.astro';
 import { COLLECTION_NAMES } from '../lib/frontmatter-schema';
 import { base } from '../lib/site-base';
@@ -13,15 +15,8 @@ const counts = await Promise.all(
 const typedNoteCount = counts.reduce((total, count) => total + count, 0);
 ---
 <Base title="Topological Data Analysis Bioinformatics Foundry">
-  <section class="hero">
-    <p class="eyebrow">Frontier → hardening → delivery</p>
-    <h1>Topological methods, made runnable.</h1>
-    <p class="lede">
-      A knowledge base connecting TDA research and software to reproducible bioinformatics
-      environments, Galaxy tools, workflows, and training.
-    </p>
-    <a class="primary-link" href={`${base}/tags/`}>Browse {typedNoteCount} typed notes →</a>
-  </section>
+  <FiltrationHero noteCount={typedNoteCount} />
+  <PersistenceDivider seed="home:frontier-hardening-delivery" />
 
   <section class="reference-grid" aria-labelledby="reference-heading">
     <h2 id="reference-heading">Current typed content slice</h2>

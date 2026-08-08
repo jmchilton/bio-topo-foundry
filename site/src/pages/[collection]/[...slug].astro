@@ -5,6 +5,8 @@ import LicenseBadge from '@galaxy-foundry/site-kit/LicenseBadge.astro';
 import ReferenceContract from '@galaxy-foundry/site-kit/ReferenceContract.astro';
 
 import Base from '../../layouts/Base.astro';
+import PersistenceDivider from '../../components/PersistenceDivider.astro';
+import TopologyBreadcrumb from '../../components/TopologyBreadcrumb.astro';
 import { environmentCompanions } from '../../lib/companions';
 import { contentReader } from '../../lib/content-reader';
 import { DETAIL_ROUTES } from '../../lib/detail-routes';
@@ -37,12 +39,18 @@ const heading = entry.collection === 'molds' ? entry.data.name : entry.data.titl
 const resolveRef = (ref: string) => contentReader.resolveLink(ref, { base });
 ---
 <Base title={heading} description={entry.data.summary}>
+  <TopologyBreadcrumb
+    href={`${base}/${entry.collection}/`}
+    label={route.label}
+    current={heading}
+    seed={`${entry.collection}:${entry.id}:${entry.data.tags.join('|')}`}
+  />
+  <PersistenceDivider seed={`detail:${entry.collection}:${entry.id}`} />
   <ContentNote
     title={heading}
     summary={entry.data.summary}
     tags={entry.data.tags}
     tagBase={`${base}/tags`}
-    back={{ href: `${base}/${entry.collection}/`, label: route.label }}
     articleClass="prose"
   >
     {entry.collection === 'packages' && (

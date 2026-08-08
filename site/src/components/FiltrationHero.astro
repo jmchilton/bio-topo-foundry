@@ -1,0 +1,147 @@
+---
+import { base } from '../lib/site-base';
+
+interface Props {
+  noteCount: number;
+}
+
+const { noteCount } = Astro.props;
+---
+
+<section class="hero hero--filtration" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow">Frontier → hardening → delivery</p>
+    <h1 id="hero-title">Topological methods, made runnable.</h1>
+    <p class="lede">
+      A knowledge base connecting TDA research and software to reproducible bioinformatics
+      environments, Galaxy tools, workflows, and training.
+    </p>
+    <a class="primary-link" href={`${base}/tags/`}>Browse {noteCount} typed notes →</a>
+  </div>
+
+  <figure class="filtration" data-filtration data-filtration-stage="3">
+    <div class="filtration-heading">
+      <div>
+        <p class="filtration-kicker">Vietoris–Rips filtration</p>
+        <h2>Structure appears across scale.</h2>
+      </div>
+      <output class="filtration-state" data-filtration-output for="filtration-scale">
+        03 · stable loop
+      </output>
+    </div>
+
+    <svg
+      class="filtration-plot"
+      viewBox="0 0 460 390"
+      role="img"
+      aria-labelledby="filtration-title filtration-description"
+    >
+      <title id="filtration-title">Interactive filtration of a point cloud</title>
+      <desc id="filtration-description">
+        Increasing the scale joins nearby points into edges and filled triangles. A central loop
+        remains unfilled at the final scale, illustrating a persistent topological feature.
+      </desc>
+
+      <g class="filtration-guides" aria-hidden="true">
+        <path d="M48 204C54 98 132 36 237 43C347 51 415 126 410 226C405 320 329 366 224 360C111 353 42 302 48 204Z" />
+        <path d="M74 205C78 119 144 68 233 72C326 76 382 139 378 224C374 301 313 336 225 333C131 329 69 289 74 205Z" />
+      </g>
+
+      <g class="filtration-faces" aria-hidden="true">
+        <path class="filtration-face birth-2" d="M90 150L145 85L165 155Z" />
+        <path class="filtration-face birth-2" d="M145 85L230 70L165 155Z" />
+        <path class="filtration-face birth-2" d="M230 70L285 150L165 155Z" />
+        <path class="filtration-face birth-2" d="M230 70L315 105L285 150Z" />
+        <path class="filtration-face birth-2" d="M315 105L385 170L285 150Z" />
+        <path class="filtration-face birth-3" d="M385 170L300 250L285 150Z" />
+        <path class="filtration-face birth-2" d="M385 170L370 260L300 250Z" />
+        <path class="filtration-face birth-2" d="M370 260L305 325L300 250Z" />
+        <path class="filtration-face birth-3" d="M305 325L210 340L300 250Z" />
+        <path class="filtration-face birth-2" d="M210 340L160 255L300 250Z" />
+        <path class="filtration-face birth-2" d="M210 340L125 300L160 255Z" />
+        <path class="filtration-face birth-2" d="M125 300L70 230L160 255Z" />
+        <path class="filtration-face birth-3" d="M70 230L90 150L160 255Z" />
+        <path class="filtration-face birth-2" d="M90 150L165 155L160 255Z" />
+      </g>
+
+      <g class="filtration-edges" aria-hidden="true">
+        <path class="filtration-edge birth-1" d="M90 150L145 85L230 70L315 105L385 170" />
+        <path class="filtration-edge birth-1" d="M385 170L370 260L305 325L210 340L125 300L70 230L90 150" />
+        <path class="filtration-edge birth-1" d="M90 150L165 155M145 85L165 155M230 70L285 150M315 105L285 150" />
+        <path class="filtration-edge birth-1" d="M385 170L300 250M370 260L300 250M305 325L300 250" />
+        <path class="filtration-edge birth-1" d="M210 340L160 255M125 300L160 255M70 230L160 255" />
+        <path class="filtration-edge birth-2" d="M230 70L165 155L285 150L230 70" />
+        <path class="filtration-edge birth-2" d="M285 150L385 170L300 250L370 260" />
+        <path class="filtration-edge birth-2" d="M300 250L210 340L160 255L125 300" />
+        <path class="filtration-edge birth-2" d="M160 255L70 230L90 150L165 155" />
+        <path class="filtration-edge birth-3" d="M315 105L385 170M370 260L305 325M125 300L70 230" />
+      </g>
+
+      <path
+        class="persistent-cycle"
+        aria-hidden="true"
+        d="M165 155L285 150L300 250L160 255Z"
+      />
+
+      <g class="filtration-points" aria-hidden="true">
+        <circle cx="90" cy="150" r="6" /><circle cx="145" cy="85" r="6" />
+        <circle cx="230" cy="70" r="6" /><circle cx="315" cy="105" r="6" />
+        <circle cx="385" cy="170" r="6" /><circle cx="370" cy="260" r="6" />
+        <circle cx="305" cy="325" r="6" /><circle cx="210" cy="340" r="6" />
+        <circle cx="125" cy="300" r="6" /><circle cx="70" cy="230" r="6" />
+        <circle cx="165" cy="155" r="6" /><circle cx="285" cy="150" r="6" />
+        <circle cx="300" cy="250" r="6" /><circle cx="160" cy="255" r="6" />
+      </g>
+
+      <g class="cycle-annotation" aria-hidden="true">
+        <path d="M307 212C332 202 347 190 357 173" />
+        <text x="315" y="228">persistent loop</text>
+      </g>
+    </svg>
+
+    <div class="filtration-control">
+      <label for="filtration-scale">Increase the neighborhood scale <span>ε</span></label>
+      <input
+        id="filtration-scale"
+        data-filtration-input
+        type="range"
+        min="0"
+        max="3"
+        step="1"
+        value="3"
+        aria-describedby="filtration-help"
+      />
+      <div class="filtration-ticks" aria-hidden="true">
+        <span>points</span><span>neighbors</span><span>complex</span><span>feature</span>
+      </div>
+      <p id="filtration-help" class="filtration-help">
+        Move the scale to watch local observations become a stable global shape.
+      </p>
+    </div>
+
+    <figcaption>
+      The Foundry follows the same idea: connect evidence across scales until a runnable method
+      holds its shape.
+    </figcaption>
+  </figure>
+</section>
+
+<script>
+  const labels = ['00 · points', '01 · neighborhoods', '02 · complex', '03 · stable loop'];
+
+  document.querySelectorAll<HTMLElement>('[data-filtration]').forEach((filtration) => {
+    const input = filtration.querySelector<HTMLInputElement>('[data-filtration-input]');
+    const output = filtration.querySelector<HTMLOutputElement>('[data-filtration-output]');
+    if (!input || !output) return;
+
+    const update = () => {
+      const stage = Number(input.value);
+      filtration.dataset.filtrationStage = String(stage);
+      output.value = labels[stage] ?? labels[0];
+      input.setAttribute('aria-valuetext', labels[stage] ?? labels[0]);
+    };
+
+    input.addEventListener('input', update);
+    update();
+  });
+</script>

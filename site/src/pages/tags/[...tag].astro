@@ -1,6 +1,8 @@
 ---
 import { facetLabelOf } from '@galaxy-foundry/tag-registry';
 
+import PersistenceDivider from '../../components/PersistenceDivider.astro';
+import PointCloudFingerprint from '../../components/PointCloudFingerprint.astro';
 import Base from '../../layouts/Base.astro';
 import { tagRegistry } from '../../lib/meta-tags';
 import { base } from '../../lib/site-base';
@@ -24,6 +26,7 @@ const sorted = [...entries].sort((a, b) => a.name.localeCompare(b.name));
     <h1>{tag}</h1>
     {description && <p>{description}</p>}
   </header>
+  <PersistenceDivider seed={`tag:${tag}`} />
 
   <section class="tag-results" aria-labelledby="tagged-notes">
     <h2 id="tagged-notes">Notes</h2>
@@ -31,7 +34,10 @@ const sorted = [...entries].sort((a, b) => a.name.localeCompare(b.name));
       {sorted.map((entry) => (
         <li>
           <a class="card" href={entry.url}>
-            <strong>{entry.name}</strong>
+            <span class="card-title-row">
+              <strong>{entry.name}</strong>
+              <PointCloudFingerprint seed={`${entry.kind}:${entry.id}:${entry.tags.join('|')}`} />
+            </span>
             <span>{entry.summary}</span>
             <small>{entry.kind}</small>
           </a>

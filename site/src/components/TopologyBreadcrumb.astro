@@ -1,0 +1,29 @@
+---
+import PointCloudFingerprint from './PointCloudFingerprint.astro';
+
+interface Props {
+  href: string;
+  label: string;
+  current: string;
+  seed: string;
+}
+
+const { href, label, current, seed } = Astro.props;
+---
+
+<nav class="topology-breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li>
+      <span class="breadcrumb-node" aria-hidden="true"></span>
+      <a href={href}>{label}</a>
+    </li>
+    <li class="breadcrumb-edge" aria-hidden="true">
+      <span></span>
+    </li>
+    <li aria-current="page">
+      <span class="breadcrumb-node breadcrumb-node-current" aria-hidden="true"></span>
+      <span class="breadcrumb-current">{current}</span>
+    </li>
+  </ol>
+  <PointCloudFingerprint seed={seed} />
+</nav>
