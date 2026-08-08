@@ -80,7 +80,7 @@ separate from Kinds. Roster spans both poles of the spine, so grouping matters.
 |---|---|---|---|
 | `package` | A piece of TDA **software** (upstream library), with its KB writeup | 5 tool whitepapers (petls, topometry, hiponet, topodockq, topoqa) + ~14 env fixtures (GUDHI, Ripser, giotto-* …) | Was `project`. The upstream subject; `implements[]` → method. Fields: repo, language, license, upstream health. **The whitepaper *is* the package's KB entry;** env-fixture packages start as thin stubs and can grow a writeup. |
 | `environment` | A reproducible lightweight **biopixi** env fixture — *composite and actionable* | ~14 biopixi recipes | `portability_grade` (L0–L4), `recipe_status`, `platforms`. **Kept separate from `package`:** package is *abstract* (code to understand + wrap), environment is *runnable*. |
-| `recipe` *(planned)* | A rattler-build/conda recipe that builds a `package` when it's not in conda | 7 in `recipes/` | **Stub** at `content/recipes/<slug>/index.md` links/renders the real files in repo-root `recipes/<slug>/` (not duplicated). **Never cast** — catalog/display only (borderline Kind). |
+| `recipe` | A rattler-build recipe that builds a `package` the public conda channels do not supply | 17 in `recipes/` | Note at `content/recipes/<slug>.md`; the real files stay at repo-root `recipes/<slug>/` (not duplicated). Fields: `gap`, `build`, `upstreaming`. **Never cast** — catalog/display only. See §2e. |
 | `tool` | A Galaxy tool wrapper exposing a package in Galaxy | — none yet | These 3 echo Galaxy-native objects the parent Foundry (#1) models — reference its shape, but define here (we back-port, not inherit). |
 | `workflow` | A Galaxy workflow / TDA bio pipeline | — none yet | ″ (gxformat2) |
 | `training` | A Galaxy Training Network (GTN) article | — none yet | ″ |
@@ -177,6 +177,35 @@ above:
 
 `artifact.revision` is format-checked as a full 40-character commit id, which is the one field
 where a plausible value silently voids the note.
+
+### 2e. `recipe` — the one file-shaped packaging kind
+
+**As shipped** (`site/src/types/recipe/`), with one deviation from the sketch above: the note is
+`content/recipes/<slug>.md`, a **file**, not `content/recipes/<slug>/index.md` with the recipe
+files rendered beside it.
+
+The sketch assumed a stub directory could point at repo-root `recipes/<slug>/`. It cannot, for two
+reasons that only appear at implementation. Companions describe a note's **own** directory, so
+declaring `recipe.yaml` as a companion of a directory that does not contain it describes a layout
+that does not exist — `checkCompanions` would report every recipe as missing-required. And the
+files cannot simply move under `content/`, because a dozen fixture manifests reach them as
+`../../../recipes/<slug>` path dependencies, several with solved locks. Copying rather than moving
+creates the second copy the whole design avoids.
+
+So the note is file-shaped and the correspondence is checked in a test that walks it both ways: no
+recipe without a note, no note without a recipe. That is what the companion declaration would have
+bought, at the one place it can actually be enforced.
+
+Fields are the three things `recipe.yaml` cannot state: `gap` (`absent` or `stale` — what the
+channels fail to supply), `build` (a discriminated union, `verified` carrying the platforms it was
+verified on, or `unverified`), and `upstreaming` (`blocked` / `eligible` / `submitted` /
+`published`, with a required `submission` URL for the last two). Name, version, licence, source,
+and dependencies are read from the recipe file and never restated.
+
+`upstreaming: blocked` is licence-determined rather than chosen: a test ties it to the recipe's own
+`about.license`, so a `LicenseRef-` id forces `blocked` and an SPDX id forbids it. One recipe,
+`petls`, is blocked; three are `unverified`, which is the field's main return — "never actually
+built" was previously recoverable only by reading seventeen files of comments.
 
 ---
 

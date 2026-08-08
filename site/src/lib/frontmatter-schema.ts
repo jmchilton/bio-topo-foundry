@@ -12,6 +12,7 @@ export const methodSchema = assemble(DEFINITIONS.method, ctx);
 export const moldSchema = assemble(DEFINITIONS.mold, ctx);
 export const packageSchema = assemble(DEFINITIONS.package, ctx);
 export const paperSchema = assemble(DEFINITIONS.paper, ctx);
+export const recipeSchema = assemble(DEFINITIONS.recipe, ctx);
 export const replicationExperimentSchema = assemble(
   DEFINITIONS.replication_experiment,
   ctx,
@@ -24,6 +25,7 @@ export const NOTE_KINDS = {
   mold: moldSchema,
   package: packageSchema,
   paper: paperSchema,
+  recipe: recipeSchema,
   replication_experiment: replicationExperimentSchema,
 } as const;
 
@@ -65,6 +67,21 @@ export const COLLECTIONS = {
     pattern: ["*.md", "!glossary.md"],
     kind: "meta",
     schema: metaSchema,
+  },
+  // Next-lowest, for the same reason one rung up: a recipe should never take a bare slug from the
+  // fixture or the software that shares its name — `petls`, `kmapper`, and `topometry` are all
+  // three at once. A build is the least likely of the three to be what prose means, and
+  // `<slug>-recipe` still addresses it directly.
+  //
+  // Alone among the collections, this one's notes have no files beside them: the recipe itself
+  // lives at repo-root `recipes/<slug>/`, where a dozen fixture manifests reach it as a path
+  // dependency. See the kind for why that makes the note file-shaped rather than a directory of
+  // companions that are not there.
+  recipes: {
+    base: "recipes",
+    pattern: ["*.md"],
+    kind: "recipe",
+    schema: recipeSchema,
   },
   // The first directory-shaped collection: the note is the `index.md`, and the manifest beside it
   // is a companion. `README.md` sits at the base rather than inside a fixture, so this pattern

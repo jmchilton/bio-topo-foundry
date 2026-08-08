@@ -139,10 +139,12 @@ demonstration.
 revision, which target, which references resolved, and which checks ran. It identifies which
 specific artifact is real and where it came from.
 
-**Recipe** — a TDA note kind for a `rattler-build` or conda recipe that reproducibly builds a
-**Package** into a channel artifact. A thin catalog note points to the real files under
-`recipes/<slug>/`; it does not duplicate them. Recipe notes are not cast merely because they appear
-in the KB.
+**Recipe** — a TDA note kind for a `rattler-build` recipe that builds a **Package** the public
+conda channels do not supply. The note points to the real files under `recipes/<slug>/` and does
+not duplicate them, so it records only what those files cannot state: which channel gap the build
+closes, whether anyone has actually built it and where, and how far it has travelled toward a
+public channel. A blocked route is a licence fact, not a scheduling one. Recipe notes are not cast
+merely because they appear in the KB.
 
 **Replication experiment** — a TDA note kind for a bounded study this project ran to test claims
 from an external **Paper** or **Package** under a pinned protocol. Its standalone repository is the

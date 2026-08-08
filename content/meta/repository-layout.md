@@ -4,10 +4,10 @@ title: Repository Layout
 summary: Where authored knowledge, implementation code, generated metadata, and build recipes belong, and what each location implies.
 record_kind: infrastructure
 order: 3
-status: draft
+status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 1
+revision: 2
 tags:
   - meta
 ---
@@ -49,6 +49,7 @@ content/
 ├── methods/*.md
 ├── packages/*.md
 ├── papers/*.md
+├── recipes/*.md                   one note per directory under the root `recipes/`
 └── replication-experiments/*.md
 ```
 
@@ -68,10 +69,12 @@ Seventeen directories, each holding a `recipe.yaml` and the `pixi.toml` that exe
 build packages that conda does not yet carry, and several are the reason a fixture in
 `content/environments/` can be graded at all.
 
-They are not notes. There is no `recipe` kind, so nothing here validates or renders, and a reader
-finds them only through the environment notes that mention them. When a `recipe` kind lands it will
-stub into `content/` and link out to these files rather than copy them — the manifest stays the
-authority on what it builds.
+They are not notes. Each is described by one, at `content/recipes/<slug>.md`, which links out to
+these files rather than copying them — the manifest stays the authority on the name, the version,
+the licence, and every dependency. The files stay here because a dozen fixture manifests reach them
+as `../../../recipes/<slug>` path dependencies, which is also why the note is flat and declares no
+companions: a companion describes a note's own directory. [[content-model]] owns that reasoning; a
+round-trip test enforces the pairing in both directions.
 
 ## `site/`: the engineering surface
 

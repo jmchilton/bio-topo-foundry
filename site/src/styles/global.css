@@ -964,6 +964,12 @@ a {
   text-transform: uppercase;
 }
 
+.rung-blurb {
+  margin: -0.5rem 0 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
 .companion-list {
   display: flex;
   flex-wrap: wrap;

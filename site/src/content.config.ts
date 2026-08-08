@@ -14,6 +14,7 @@ const papers = COLLECTIONS.papers;
 const methods = COLLECTIONS.methods;
 const environments = COLLECTIONS.environments;
 const molds = COLLECTIONS.molds;
+const recipes = COLLECTIONS.recipes;
 const replicationExperiments = COLLECTIONS["replication-experiments"];
 
 export const collections = {
@@ -64,6 +65,14 @@ export const collections = {
       generateId: stripExtension,
     }),
     schema: replicationExperiments.schema,
+  }),
+  recipes: defineCollection({
+    loader: glob({
+      pattern: [...recipes.pattern],
+      base: contentPath(recipes.base),
+      generateId: stripExtension,
+    }),
+    schema: recipes.schema,
   }),
   molds: defineCollection({
     loader: glob({

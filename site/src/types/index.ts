@@ -4,6 +4,7 @@ import { kind as methodKind } from "./method/schema";
 import { kind as moldKind } from "./mold/schema";
 import { kind as packageKind } from "./package/schema";
 import { kind as paperKind } from "./paper/schema";
+import { kind as recipeKind } from "./recipe/schema";
 import { kind as replicationExperimentKind } from "./replication_experiment/schema";
 
 export const DEFINITIONS = {
@@ -13,6 +14,7 @@ export const DEFINITIONS = {
   mold: moldKind,
   package: packageKind,
   paper: paperKind,
+  recipe: recipeKind,
   replication_experiment: replicationExperimentKind,
 } as const;
 export const KINDS = [
@@ -22,6 +24,7 @@ export const KINDS = [
   moldKind,
   packageKind,
   paperKind,
+  recipeKind,
   replicationExperimentKind,
 ] as const;
 

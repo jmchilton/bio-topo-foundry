@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+import TagChips from '@galaxy-foundry/site-kit/TagChips.astro';
+
+import Base from '../../layouts/Base.astro';
+import { base } from '../../lib/site-base';
+import { UPSTREAMING_STATES } from '../../types/recipe/schema';
+
+const recipes = await getCollection('recipes');
+
+// Grouped by how far each build has travelled, because that is the only axis a reader can act on:
+// every recipe here is a package the channels do not supply, and the question is which of them
+// could stop being our problem. Ordered most-departed first, so the ones still waiting on a PR
+// read as the backlog they are.
+const GROUPS: Record<(typeof UPSTREAMING_STATES)[number], { heading: string; blurb: string }> = {
+  published: {
+    heading: 'Published',
+    blurb: 'On a public channel. The recipe here is history.',
+  },
+  submitted: {
+    heading: 'Submitted',
+    blurb: 'A pull request is open against a public channel.',
+  },
+  eligible: {
+    heading: 'Eligible',
+    blurb: 'Redistributable and unblocked. Nobody has opened the pull request.',
+  },
+  blocked: {
+    heading: 'Blocked',
+    blurb: 'The licence forecloses publication, so this build stays here.',
+  },
+};
+
+const ladder = [...UPSTREAMING_STATES]
+  .reverse()
+  .map((state) => ({
+    state,
+    ...GROUPS[state],
+    entries: recipes
+      .filter((entry) => entry.data.upstreaming === state)
+      .sort((a, b) => a.data.title.localeCompare(b.data.title)),
+  }))
+  .filter((group) => group.entries.length > 0);
+
+const unbuilt = recipes.filter((entry) => entry.data.build.status === 'unverified').length;
+---
+<Base title="Recipes" description="In-repo rattler-build recipes for packages the public conda channels do not carry.">
+  <header class="page-header">
+    <p class="eyebrow">Hardening</p>
+    <h1>Recipes</h1>
+    <p>
+      A Recipe is a <code>rattler-build</code> build kept in this repository because no public conda
+      channel supplies the package. Each one is the reason some fixture grades L1 rather than L3,
+      so this page is also the list of what stands between the corpus and portable packaging.
+      {unbuilt > 0 && (
+        <> Of the {recipes.length} here, <strong>{unbuilt}</strong> have never actually been built.</>
+      )}
+    </p>
+  </header>
+
+  {ladder.map(({ state, heading, blurb, entries }) => (
+    <section class="ladder-rung" aria-labelledby={`upstreaming-${state}`}>
+      <h2 id={`upstreaming-${state}`}>
+        {heading} <span>{entries.length} {entries.length === 1 ? 'recipe' : 'recipes'}</span>
+      </h2>
+      <p class="rung-blurb">{blurb}</p>
+      <ul class="collection-list">
+        {entries.map((entry) => (
+          <li class="card">
+            <a class="card-primary" href={`${base}/recipes/${entry.id}/`}>
+              <strong>{entry.data.title}</strong>
+              <span>{entry.data.summary}</span>
+            </a>
+            <TagChips tags={entry.data.tags} tagBase={`${base}/tags`} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</Base>

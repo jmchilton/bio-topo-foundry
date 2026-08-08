@@ -7,7 +7,7 @@ order: 2
 status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 2
+revision: 3
 tags:
   - meta
 ---
@@ -23,7 +23,7 @@ corpus tests currently require.
 ## Notes, kinds, and collections
 
 Every note declares one literal `type`. That value selects one strict kind definition and is never
-inferred from a path or a tag. Seven kinds are declared today:
+inferred from a path or a tag. Eight kinds are declared today:
 
 - `method` — one TDA or topological deep learning technique, and the landing note for one `method/`
   facet value.
@@ -32,6 +32,8 @@ inferred from a path or a tag. Seven kinds are declared today:
 - `paper` — a source note on one external work, governed by that work's license.
 - `replication_experiment` — one bounded study this Foundry ran, pinning the standalone repository
   holding its evidence.
+- `recipe` — one in-repo `rattler-build` recipe for a package the public conda channels do not
+  supply.
 - `mold` — one abstract action and its typed reference manifest.
 - `meta` — a design record, the only kind whose subject is the Foundry rather than the domain.
 
@@ -46,11 +48,13 @@ precedence, so when two collections hold the same slug the later row takes the b
 slugs are shared between a package and the fixture built from it — `petls`, `petls-pytorch`,
 `topometry`, `topodockq`, `hiponet` — and packages sort after environments because prose writing
 `[[petls]]` almost always means the software. Design records sort first: a record about the
-machinery never takes a bare slug from a note about the domain.
+machinery never takes a bare slug from a note about the domain. Recipes sort next, for the same
+reason one rung up — `petls`, `kmapper`, and `topometry` each name a package, a fixture, and a
+build, and the build is the least likely of the three to be what prose means.
 
 Two shapes exist. A **flat** kind is one Markdown file (`method`, `package`, `paper`,
-`replication_experiment`, `meta`). A **directory** kind is a directory holding an `index.md`
-(`environment`, `mold`), which is what lets it declare companions. Each kind's schema, its `kind.md`
+`replication_experiment`, `recipe`, `meta`). A **directory** kind is a directory holding an
+`index.md` (`environment`, `mold`), which is what lets it declare companions. Each kind's schema, its `kind.md`
 rationale, and a minimal `example.md` sit together under `site/src/types/<kind>/`;
 `kinds.generated.json` is the portable manifest derived from those definitions, and is checked
 rather than hand-edited.
@@ -168,9 +172,15 @@ honour the exclusion too. Sharing a directory is a filing decision, not a type d
 `content/environments/README.md` is the other, and is not excluded by name: it sits at the
 collection base, where the `*/index.md` pattern cannot reach it.
 
-Files outside `content/` are not notes and are not typed — the build recipes and the working drafts
-at the repository root both fall there. [[repository-layout]] owns what each of those locations
-implies; the point here is only that no kind claims them.
+Files outside `content/` are not notes and are not typed. One kind nonetheless has its subject
+there: a `recipe` note is `content/recipes/<slug>.md`, and the build it describes stays at
+`recipes/<slug>/`. The files cannot move, because a dozen fixture manifests reach them as
+`../../../recipes/<slug>` path dependencies; and they cannot be companions, because a companion
+describes a note's own directory and would report every recipe as missing. A round-trip corpus test
+enforces the pairing instead — no recipe without a note, no note without a recipe — which is what
+the companion declaration would have bought. The working drafts at the repository root have no such
+note and are claimed by no kind at all. [[repository-layout]] owns what each of those locations
+implies.
 
 Update this record when a kind, collection row, frontmatter contract, tag rule, link rule, reference
 relationship, or companion declaration changes.

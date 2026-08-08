@@ -11,6 +11,7 @@ export const DETAIL_ROUTES: Record<CollectionName, DetailRoute> = {
   methods: { label: "Methods" },
   molds: { label: "Molds" },
   papers: { label: "Papers" },
+  recipes: { label: "Recipes" },
   "replication-experiments": { label: "Replication experiments" },
   packages: { label: "Packages" },
 };
