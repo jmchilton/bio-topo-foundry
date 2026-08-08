@@ -7,7 +7,7 @@ order: 1
 status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 2
+revision: 3
 tags:
   - meta
 ---
@@ -135,6 +135,14 @@ properties the kit names but does not ship), and the domain components in `src/c
 stylesheet also has to point Tailwind at the package, because source detection does not look inside
 `node_modules`, and the built-output test is what checks it did.
 
+`site/src/pages/gallery/` is the visual acceptance surface for that boundary. It imports every case
+from `@galaxy-foundry/site-kit/specimens` and renders the shared components through this instance's
+theme; package-declared `isolated` and `document` surfaces receive generated standalone routes.
+Local specimen groups place the filtration hero, persistence divider, point-cloud fingerprint,
+topology breadcrumb, and every declared reference kind beside the shared cases without moving
+their domain vocabulary into the package. Built-output tests require complete shared and local
+coverage, every standalone route, the gallery's design-index link, and the intended search policy.
+
 The site is a pure reader. It validates and renders source; it does not mutate content, author
 notes, or cast artifacts. The only client-side code is progressive enhancement — the homepage
 filtration control — and there is no UI framework.
@@ -179,6 +187,7 @@ aspirational or the checkout is broken.
 | companion measurement | `site/src/lib/companions.ts` |
 | presentation registries | `site/src/lib/tags.ts`, `design-records.ts`, `detail-routes.ts` |
 | shell composition and identity | `site/src/layouts/Base.astro`, `site/src/lib/site-identity.ts` |
+| shared and local visual acceptance | `site/src/pages/gallery/`, `site/src/lib/gallery.ts` |
 | domain furniture | `site/src/components/`, `site/src/lib/motifs.ts` |
 | routes | `site/src/pages/` |
 | corpus and contract tests | `site/tests/` |

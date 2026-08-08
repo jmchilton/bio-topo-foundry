@@ -1,0 +1,103 @@
+---
+// These routes do not pass through Base because one specimen is the document shell itself and the
+// others must be isolated from document-unique ids. Import the same theme composition first so a
+// framed component still wears precisely the site around it.
+import '../../styles/site-theme';
+
+import { sharesPage, specimenPath } from '@galaxy-foundry/site-kit/specimens';
+
+import { ALL_SPECIMENS } from '../../lib/gallery';
+import { GALLERY_RENDERERS } from '../../lib/gallery-renderers';
+import { base } from '../../lib/site-base';
+
+export function getStaticPaths() {
+  return ALL_SPECIMENS.filter((group) => !sharesPage(group)).flatMap((group) =>
+    group.specimens.map((specimen) => ({
+      params: { specimen: specimenPath(group, specimen) },
+      props: { groupId: group.id, specimenId: specimen.id },
+    })),
+  );
+}
+
+interface Props {
+  groupId: string;
+  specimenId: string;
+}
+
+const { groupId, specimenId } = Astro.props as Props;
+const group = ALL_SPECIMENS.find((candidate) => candidate.id === groupId);
+const specimen = group?.specimens.find((candidate) => candidate.id === specimenId);
+const Component = group ? GALLERY_RENDERERS[group.component] : undefined;
+
+if (!group || !specimen || !Component || sharesPage(group)) {
+  throw new Error(`gallery has no standalone specimen at ${groupId}/${specimenId}`);
+}
+
+const props = specimen.props as Record<string, unknown>;
+const backHref = `${base}/gallery/#${group.id}`;
+const isHeader = group.component === 'SiteHeader';
+---
+
+{
+  group.surface === 'document' ? (
+    <Component {...props}>
+      <div class="standalone-shell-copy">
+        <p class="eyebrow">Component specimen</p>
+        <h1>{specimen.name}</h1>
+        <p>{specimen.why}</p>
+        <a href={backHref}>Back to the component gallery</a>
+      </div>
+    </Component>
+  ) : (
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{specimen.name} - TDA Bioinformatics Foundry gallery</title>
+        <meta name="robots" content="noindex" />
+        <script is:inline>
+          {`const dark = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+document.documentElement.classList.toggle('dark', dark);
+document.documentElement.dataset.pfTheme = dark ? 'dark' : 'light';`}
+        </script>
+      </head>
+      <body style="background: var(--color-surface)">
+        {isHeader ? (
+          <Component {...props} />
+        ) : (
+          <main class="standalone-local-component">
+            <Component {...props} />
+          </main>
+        )}
+      </body>
+    </html>
+  )
+}
+
+<style>
+  .standalone-shell-copy {
+    max-width: 48rem;
+    padding: clamp(2rem, 6vw, 5rem) 0;
+  }
+
+  .standalone-shell-copy h1 {
+    margin: 0.35rem 0 1rem;
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 6vw, 4.6rem);
+    font-variation-settings: 'opsz' 48;
+    font-weight: 560;
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .standalone-shell-copy p:not(.eyebrow) {
+    max-width: 60ch;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .standalone-local-component {
+    width: min(100% - 2rem, 74rem);
+    margin: 0 auto;
+  }
+</style>
