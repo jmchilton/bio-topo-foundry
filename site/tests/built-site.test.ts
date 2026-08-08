@@ -9,10 +9,12 @@ import {
   searchIndexGaps,
   shellStyleGaps,
 } from "@galaxy-foundry/site-kit";
+import { sharesPage, specimenPath } from "@galaxy-foundry/site-kit/specimens";
 import { beforeAll, describe, expect, it } from "vitest";
 
 import { contentReader } from "../src/lib/content-reader";
 import { environmentCompanions } from "../src/lib/companions";
+import { ALL_SPECIMENS, TDA_SPECIMENS } from "../src/lib/gallery";
 import {
   COLLECTION_NAMES,
   contentPath,
@@ -40,6 +42,24 @@ function builtPages(dir: string = DIST): string[] {
 const relativePage = (file: string) => path.relative(DIST, file);
 const read = (file: string) => readFileSync(file, "utf8");
 
+const STANDALONE_SPECIMEN_PAGES = ALL_SPECIMENS.filter(
+  (group) => !sharesPage(group),
+).flatMap((group) =>
+  group.specimens.map(
+    (specimen) => `gallery/${specimenPath(group, specimen)}/index.html`,
+  ),
+);
+
+// Isolated specimens intentionally render one component in an otherwise bare document. Document
+// specimens are SiteShell itself and must continue satisfying the ordinary shell assertions.
+const BARE_SPECIMEN_PAGES = ALL_SPECIMENS.filter(
+  (group) => group.surface === "isolated",
+).flatMap((group) =>
+  group.specimens.map(
+    (specimen) => `gallery/${specimenPath(group, specimen)}/index.html`,
+  ),
+);
+
 let pages: string[];
 let css: string;
 
@@ -61,6 +81,7 @@ describe("the emitted reader slice", () => {
     const built = new Set(pages.map(relativePage));
     const infrastructure = [
       "index.html",
+      "gallery/index.html",
       "glossary/index.html",
       "tags/index.html",
       ...COLLECTION_NAMES.map((collection) => `${collection}/index.html`),
@@ -83,6 +104,7 @@ describe("the emitted reader slice", () => {
 
   it("renders the shared shell accessibly on every page", () => {
     const broken = pages.filter((file) => {
+      if (BARE_SPECIMEN_PAGES.includes(relativePage(file))) return false;
       const html = read(file);
       return (
         !html.includes('href="#main"') ||
@@ -126,6 +148,7 @@ describe("the emitted reader slice", () => {
     expect(
       searchIndexGaps(
         pages.map((file) => ({ path: relativePage(file), html: read(file) })),
+        STANDALONE_SPECIMEN_PAGES,
       ),
     ).toEqual([]);
     expect(existsSync(path.join(DIST, "pagefind/pagefind-entry.json"))).toBe(
@@ -340,6 +363,7 @@ describe("the emitted reader slice", () => {
     expect(index).toContain(
       'href="/bio-topo-foundry/design/replication-experiments/"',
     );
+    expect(index).toContain('href="/bio-topo-foundry/gallery/"');
 
     /**
      * `order` exists for exactly one thing, and this is it: the sequence is pedagogical, so a
@@ -378,6 +402,52 @@ describe("the emitted reader slice", () => {
     const built = new Set(pages.map(relativePage));
     expect(built.has("glossary/index.html")).toBe(true);
     expect(built.has("design/glossary/index.html")).toBe(false);
+  });
+
+  it("renders every shared and TDA specimen in the component gallery", () => {
+    const gallery = read(path.join(DIST, "gallery/index.html"));
+    const expectedCases = ALL_SPECIMENS.reduce(
+      (total, group) => total + group.specimens.length,
+      0,
+    );
+
+    expect(
+      [...gallery.matchAll(/class="gallery-specimen"/g)],
+      "the gallery dropped a specimen case",
+    ).toHaveLength(expectedCases);
+
+    for (const group of ALL_SPECIMENS) {
+      expect(gallery).toContain(`id="${group.id}"`);
+      expect(gallery).toContain(`data-gallery-component="${group.component}"`);
+    }
+
+    for (const group of TDA_SPECIMENS) {
+      expect(gallery).toContain(`id="${group.id}"`);
+      expect(gallery).toContain('data-gallery-origin="tda"');
+    }
+  });
+
+  it("builds and frames every specimen that cannot share the gallery page", () => {
+    const gallery = read(path.join(DIST, "gallery/index.html"));
+    const built = new Set(pages.map(relativePage));
+
+    expect(STANDALONE_SPECIMEN_PAGES.length).toBeGreaterThan(0);
+    expect(
+      STANDALONE_SPECIMEN_PAGES.filter((page) => !built.has(page)),
+      "standalone specimen routes missing from the build",
+    ).toEqual([]);
+
+    for (const page of STANDALONE_SPECIMEN_PAGES) {
+      const route = page.replace(/index\.html$/, "");
+      expect(gallery).toContain(`src="/bio-topo-foundry/${route}"`);
+    }
+
+    const filtration = read(
+      path.join(DIST, "gallery/tda-filtration-hero/stable-loop/index.html"),
+    );
+    expect(filtration).toContain('data-filtration-stage="3"');
+    expect(filtration).toContain('type="range"');
+    expect(filtration).toContain('<meta name="robots" content="noindex">');
   });
 
   it("renders each Mold's typed reference manifest", () => {

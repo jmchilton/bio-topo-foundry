@@ -1,7 +1,9 @@
 ---
 import PersistenceDivider from '../../components/PersistenceDivider.astro';
+import PointCloudFingerprint from '../../components/PointCloudFingerprint.astro';
 import Base from '../../layouts/Base.astro';
 import { designRecordHref, designRecordShelves } from '../../lib/design-records';
+import { base } from '../../lib/site-base';
 
 // Both shelves render even when one is empty, and the empty one says so. A shelf that disappears
 // while it has no records is a corpus that looks finished at every stage of being written.
@@ -57,4 +59,64 @@ const shelves = await designRecordShelves();
       )}
     </section>
   ))}
+
+  <section class="visual-system-callout" aria-labelledby="visual-system-heading">
+    <div>
+      <p class="eyebrow">Rendered evidence</p>
+      <h2 id="visual-system-heading">See the visual system under load.</h2>
+      <p>
+        The component gallery renders every case the shared site kit declares in this Foundry's
+        theme, then places the filtration, barcode, point-cloud, and topology-navigation motifs
+        beside them. It is both a design record and a regression surface.
+      </p>
+      <a class="primary-link" href={`${base}/gallery/`}>Open the component gallery →</a>
+    </div>
+    <PointCloudFingerprint seed="design:component-gallery" />
+  </section>
 </Base>
+
+<style>
+  .visual-system-callout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.42fr);
+    gap: clamp(2rem, 7vw, 6rem);
+    align-items: center;
+    margin-top: clamp(4rem, 9vw, 8rem);
+    padding: clamp(2rem, 5vw, 4rem) 0;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .visual-system-callout h2 {
+    max-width: 15ch;
+    margin: 0.35rem 0 1rem;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3.6rem);
+    font-variation-settings: 'opsz' 42;
+    font-weight: 570;
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  .visual-system-callout p:not(.eyebrow) {
+    max-width: 60ch;
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    text-wrap: pretty;
+  }
+
+  .visual-system-callout :global(.point-cloud-fingerprint) {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 700px) {
+    .visual-system-callout {
+      grid-template-columns: 1fr;
+    }
+
+    .visual-system-callout :global(.point-cloud-fingerprint) {
+      width: min(100%, 22rem);
+    }
+  }
+</style>

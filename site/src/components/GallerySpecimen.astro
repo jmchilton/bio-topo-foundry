@@ -1,0 +1,126 @@
+---
+import { specimenPath, type Specimen, type SpecimenGroup } from '@galaxy-foundry/site-kit/specimens';
+
+interface Props {
+  group: SpecimenGroup;
+  specimen: Specimen;
+  origin: 'shared' | 'tda';
+}
+
+const { group, specimen, origin } = Astro.props;
+const anchor = specimenPath(group, specimen).replace('/', '--');
+---
+
+<article
+  id={anchor}
+  class="gallery-specimen"
+  data-gallery-component={group.component}
+  data-gallery-origin={origin}
+>
+  <header class="gallery-specimen-copy">
+    <span>{origin === 'shared' ? 'Shared case' : 'TDA case'}</span>
+    <h3><a href={`#${anchor}`}>{specimen.name}</a></h3>
+    <p>{specimen.why}</p>
+    <code>{specimenPath(group, specimen)}</code>
+  </header>
+  <div class="gallery-specimen-stage bg-grid">
+    <slot />
+  </div>
+</article>
+
+<style>
+  .gallery-specimen {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.34fr) minmax(0, 1fr);
+    gap: clamp(1.25rem, 4vw, 3.5rem);
+    padding: clamp(1.5rem, 4vw, 3rem) 0;
+    border-top: 1px solid var(--color-border-subtle);
+    scroll-margin-top: 6rem;
+  }
+
+  .gallery-specimen-copy {
+    align-self: start;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .gallery-specimen-copy > span {
+    color: var(--color-brand);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .gallery-specimen-copy h3 {
+    margin: 0.45rem 0 0.7rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+    font-variation-settings: 'opsz' 28;
+    font-weight: 580;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+  }
+
+  .gallery-specimen-copy h3 a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+  }
+
+  .gallery-specimen-copy h3 a:hover {
+    color: var(--color-link);
+  }
+
+  .gallery-specimen-copy p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .gallery-specimen-copy code {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+  }
+
+  .gallery-specimen-stage {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.8rem 0.8rem 2rem 0.8rem;
+    background-color: var(--color-surface-raised);
+    box-shadow: 0 1.2rem 3.5rem color-mix(in srgb, var(--color-chrome) 8%, transparent);
+    padding: clamp(1rem, 2.5vw, 1.75rem);
+  }
+
+  [data-gallery-component='SiteFooter'] .gallery-specimen-stage,
+  [data-gallery-component='SiteHeader'] .gallery-specimen-stage,
+  [data-gallery-component='SiteShell'] .gallery-specimen-stage,
+  [data-gallery-component='FiltrationHero'] .gallery-specimen-stage {
+    padding: 0;
+  }
+
+  [data-gallery-component='PersistenceDivider'] .gallery-specimen-stage,
+  [data-gallery-component='PointCloudFingerprint'] .gallery-specimen-stage,
+  [data-gallery-component='TopologyBreadcrumb'] .gallery-specimen-stage {
+    display: grid;
+    min-height: 9rem;
+    align-items: center;
+  }
+
+  @media (max-width: 760px) {
+    .gallery-specimen {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .gallery-specimen-copy {
+      position: static;
+    }
+  }
+</style>
