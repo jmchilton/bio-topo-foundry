@@ -18,13 +18,12 @@ const withoutCode = (markdown: string) =>
   markdown.replace(/```[\s\S]*?```/g, "").replace(/`[^`\n]*`/g, "");
 
 describe("shared content-reader binding", () => {
-  it("maps this foundry's packages into its package routes", () => {
-    expect(contentReader.wikiLinkMap().get("petls-pytorch")).toEqual({
-      path: "packages/petls-pytorch",
-    });
-    expect(contentReader.wikiLinkMap().get("topometry")).toEqual({
-      path: "packages/topometry",
-    });
+  it("maps every routed package into its package route", () => {
+    const targets = contentReader.noteTargets("packages");
+    expect(targets.length, "the route check found no packages").toBeGreaterThan(0);
+    for (const { id, target } of targets) {
+      expect(target).toEqual({ path: `packages/${id}` });
+    }
   });
 
   it("maps this foundry's papers into its paper routes", () => {

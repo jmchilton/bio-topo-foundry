@@ -22,6 +22,7 @@ facets:
     label: Modality
     description: The biological data modality a note consumes or describes.
     values:
+      modality/graph: Graphs, networks, and higher-order complexes.
       modality/high-dim-tabular: High-dimensional feature matrices such as single-cell count data.
       modality/molecular-structure: Three-dimensional atomic structures of molecules and complexes.
       modality/point-cloud: Generic point clouds and distance matrices, without a fixed biological source.

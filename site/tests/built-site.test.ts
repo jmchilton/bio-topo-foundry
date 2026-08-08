@@ -11,6 +11,7 @@ import {
 import { beforeAll, describe, expect, it } from "vitest";
 
 import { contentReader } from "../src/lib/content-reader";
+import { COLLECTION_NAMES } from "../src/lib/frontmatter-schema";
 
 const SITE = new URL("../", import.meta.url).pathname;
 const DIST = path.join(SITE, "dist");
@@ -49,30 +50,27 @@ beforeAll(() => {
 }, 600_000);
 
 describe("the emitted reader slice", () => {
-  it("emits an index and a detail page for every note in every collection", () => {
+  it("emits infrastructure routes and exactly one page for every routed note", () => {
     const emitted = pages.map(relativePage).sort();
-    expect(emitted).toContain("index.html");
-    expect(emitted).toContain("glossary/index.html");
+    const built = new Set(emitted);
 
-    for (const [collection, ids] of [
-      ["packages", contentReader.noteIds("packages")],
-      ["papers", contentReader.noteIds("papers")],
-      ["environments", contentReader.noteIds("environments")],
-    ] as const) {
-      expect(emitted).toContain(`${collection}/index.html`);
-      expect(
-        ids.map((id) => `${collection}/${id}/index.html`).sort(),
-      ).toEqual(
-        emitted.filter(
-          (page) =>
-            page.startsWith(`${collection}/`) &&
-            page !== `${collection}/index.html`,
-        ),
-      );
-    }
+    const infrastructure = [
+      "index.html",
+      "glossary/index.html",
+      ...COLLECTION_NAMES.map((collection) => `${collection}/index.html`),
+    ];
+    expect(infrastructure.filter((page) => !built.has(page))).toEqual([]);
 
-    // 33 fixtures + 6 packages + 2 papers, each with a detail page, plus 3 indexes, home, glossary.
-    expect(emitted).toHaveLength(46);
+    /*
+     * Both directions, so the check fails on an unrouted page as well as a missing one. Derived
+     * from the corpus rather than counted, because a hard-coded total goes stale on every note
+     * added and says nothing about which page is wrong.
+     */
+    const targets = contentReader.noteTargets();
+    expect(targets.length, "the routed-note coverage check found no notes").toBeGreaterThan(0);
+    expect(emitted.filter((page) => !infrastructure.includes(page))).toEqual(
+      targets.map(({ target }) => `${target.path}/index.html`).sort(),
+    );
   });
 
   it("renders the shared shell accessibly on every page", () => {
@@ -113,7 +111,9 @@ describe("the emitted reader slice", () => {
     expect(home).toContain('href="/bio-topo-foundry/papers/"');
     expect(home).toContain('href="/bio-topo-foundry/environments/"');
     expect(home).toContain('href="/bio-topo-foundry/glossary/"');
-    expect(home).toContain("Browse 41 typed notes");
+    expect(home).toContain(
+      `Browse ${contentReader.noteTargets().length} typed notes`,
+    );
   });
 
   it("renders the typed package facts through the shared content frame", () => {
@@ -122,6 +122,15 @@ describe("the emitted reader slice", () => {
     expect(petls).toContain("method/persistent-laplacian");
     expect(petls).toContain("Apache 2.0");
     expect(petls).toContain("verbatim OK");
+
+    const upstreamPetls = read(path.join(DIST, "packages/petls/index.html"));
+    expect(upstreamPetls).toContain('class="content-note"');
+    expect(upstreamPetls).toContain("method/persistent-laplacian");
+    expect(upstreamPetls).toContain("application/molecular-sciences");
+    expect(upstreamPetls).toContain("modality/point-cloud");
+    expect(upstreamPetls).toContain("modality/graph");
+    expect(upstreamPetls).toContain("C++, Python");
+    expect(upstreamPetls).toContain("Not declared upstream");
 
     const topometry = read(path.join(DIST, "packages/topometry/index.html"));
     expect(topometry).toContain('class="content-note"');

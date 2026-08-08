@@ -39,9 +39,11 @@ describe("typed corpus slice", () => {
 
   it("validates every selected note with its collection's schema", () => {
     const problems: string[] = [];
+    let checked = 0;
 
     for (const collection of COLLECTION_NAMES) {
       for (const relativePath of contentReader.noteFiles(collection)) {
+        checked += 1;
         const frontmatter = readFrontmatter(contentPath(relativePath));
         const result = COLLECTIONS[collection].schema.safeParse(frontmatter);
         if (result.success) continue;
@@ -54,6 +56,7 @@ describe("typed corpus slice", () => {
     }
 
     expect(problems, problems.join("\n")).toEqual([]);
+    expect(checked, "the conformance check found no notes").toBeGreaterThan(0);
   });
 
   /**

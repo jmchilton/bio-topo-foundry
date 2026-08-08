@@ -12,8 +12,8 @@ importers:
         specifier: ^7.2.2
         version: 7.2.2
       '@galaxy-foundry/content-reader':
-        specifier: ^0.2.0
-        version: 0.2.0(zod@4.4.3)
+        specifier: ^0.2.1
+        version: 0.2.1(zod@4.4.3)
       '@galaxy-foundry/kind-manifest':
         specifier: ^0.4.0
         version: 0.4.0(zod@4.4.3)
@@ -451,8 +451,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@galaxy-foundry/content-reader@0.2.0':
-    resolution: {integrity: sha512-eofPrWB1BuXYyaifCaW4W4jdi79azu/SPZgVjTwXZkSDXGngxA7ErB/YWQQ6L+ZpX2vmqS6/8tMfvrFg2/N0iw==}
+  '@galaxy-foundry/content-reader@0.2.1':
+    resolution: {integrity: sha512-8RsXZrUWoVGuZgR8C+PObqYh58KkWo8jObMkJ2dq0/fp3pPvwLnpw3W6P6srIxuOiAIjT+N9u/vpXIJkdX9HnQ==}
     engines: {node: '>=20'}
 
   '@galaxy-foundry/kind-manifest@0.4.0':
@@ -2755,7 +2755,7 @@ snapshots:
   '@esbuild/win32-x64@0.28.1':
     optional: true
 
-  '@galaxy-foundry/content-reader@0.2.0(zod@4.4.3)':
+  '@galaxy-foundry/content-reader@0.2.1(zod@4.4.3)':
     dependencies:
       '@galaxy-foundry/kind-schema': 0.5.1(zod@4.4.3)
       '@galaxy-foundry/wiki-links': 0.4.0

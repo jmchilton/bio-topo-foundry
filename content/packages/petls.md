@@ -10,6 +10,9 @@ software_license:
   status: missing
 tags:
   - method/persistent-laplacian
+  - application/molecular-sciences
+  - modality/point-cloud
+  - modality/graph
 ---
 
 # White Paper: PETLS
