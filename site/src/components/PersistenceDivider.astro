@@ -1,0 +1,29 @@
+---
+import { barcodeMotif } from '../lib/motifs';
+
+interface Props {
+  seed: string;
+}
+
+const { seed } = Astro.props;
+const intervals = barcodeMotif(seed);
+const persistentIndex = intervals.reduce(
+  (longest, interval, index) =>
+    interval.x2 - interval.x1 > intervals[longest].x2 - intervals[longest].x1 ? index : longest,
+  0,
+);
+---
+
+<div class="persistence-divider" data-persistence-divider aria-hidden="true">
+  <span class="persistence-rule"></span>
+  <svg viewBox="0 0 100 20" focusable="false">
+    {intervals.map(({ x1, x2, y }, index) => (
+      <g class:list={{ 'barcode-interval': true, 'barcode-persistent': index === persistentIndex }}>
+        <line x1={x1} x2={x2} y1={y} y2={y} />
+        <circle cx={x1} cy={y} r="0.9" />
+        <circle cx={x2} cy={y} r="0.9" />
+      </g>
+    ))}
+  </svg>
+  <span class="persistence-rule persistence-rule-reverse"></span>
+</div>

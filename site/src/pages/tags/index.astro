@@ -1,6 +1,7 @@
 ---
 import { groupTagsInUse } from '@galaxy-foundry/tag-registry';
 
+import PersistenceDivider from '../../components/PersistenceDivider.astro';
 import Base from '../../layouts/Base.astro';
 import { tagRegistry } from '../../lib/meta-tags';
 import { base } from '../../lib/site-base';
@@ -20,6 +21,7 @@ const groups = groupTagsInUse(registry, counts);
       notes carrying that term.
     </p>
   </header>
+  <PersistenceDivider seed="collection:tags" />
 
   <div class="tag-groups">
     {groups.map((group) => (

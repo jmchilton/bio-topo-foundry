@@ -1,0 +1,30 @@
+---
+import { pointCloudMotif } from '../lib/motifs';
+
+interface Props {
+  seed: string;
+}
+
+const { seed } = Astro.props;
+const motif = pointCloudMotif(seed);
+---
+
+<svg
+  class="point-cloud-fingerprint"
+  data-point-cloud-fingerprint={motif.key}
+  viewBox="0 0 104 44"
+  aria-hidden="true"
+  focusable="false"
+>
+  <g class="fingerprint-edges">
+    {motif.edges.map(({ from, to }) => (
+      <line x1={from.x} y1={from.y} x2={to.x} y2={to.y} />
+    ))}
+  </g>
+  <path class="fingerprint-loop" d={motif.loop} />
+  <g class="fingerprint-points">
+    {motif.points.map(({ x, y }, index) => (
+      <circle cx={x} cy={y} r={index % 3 === 0 ? 1.75 : 1.35} />
+    ))}
+  </g>
+</svg>

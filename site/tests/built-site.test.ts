@@ -100,6 +100,23 @@ describe("the emitted reader slice", () => {
     expect(css).toContain(`.${kitOnlyUtility}`);
   });
 
+  it("self-hosts the editorial serif, sans, and mono type system", () => {
+    expect(css).toContain("Source Serif 4 Variable");
+    expect(css).toContain("IBM Plex Sans Variable");
+    expect(css).toContain("IBM Plex Mono");
+
+    const assets = readdirSync(path.join(DIST, "_astro"));
+    expect(assets.some((asset) => asset.includes("source-serif-4") && asset.endsWith(".woff2"))).toBe(
+      true,
+    );
+    expect(assets.some((asset) => asset.includes("ibm-plex-sans") && asset.endsWith(".woff2"))).toBe(
+      true,
+    );
+    expect(assets.some((asset) => asset.includes("ibm-plex-mono") && asset.endsWith(".woff2"))).toBe(
+      true,
+    );
+  });
+
   it("keeps every emitted page in the shared search contract", () => {
     expect(
       searchIndexGaps(
@@ -122,6 +139,29 @@ describe("the emitted reader slice", () => {
     expect(home).toContain(
       `Browse ${contentReader.noteTargets().length} typed notes`,
     );
+  });
+
+  it("renders the homepage filtration as an accessible progressive enhancement", () => {
+    const home = read(path.join(DIST, "index.html"));
+    expect(home).toContain('data-filtration-stage="3"');
+    expect(home).toContain('type="range"');
+    expect(home).toContain('aria-labelledby="filtration-title filtration-description"');
+    expect(home).toContain('class="persistent-cycle"');
+    expect(home).toContain('class="filtration-control"');
+    expect(home).toContain('data-persistence-divider');
+  });
+
+  it("renders deterministic geometric marginalia on note indexes and details", () => {
+    const packages = read(path.join(DIST, "packages/index.html"));
+    const detail = read(path.join(DIST, "packages/petls-pytorch/index.html"));
+
+    expect(packages).toContain('data-point-cloud-fingerprint');
+    expect(packages).toContain('class="fingerprint-loop"');
+    expect(detail).toContain('class="topology-breadcrumb"');
+    expect(detail).toContain('aria-current="page"');
+    expect(detail).toContain('data-point-cloud-fingerprint');
+    expect(detail).toContain('data-persistence-divider');
+    expect(detail).not.toContain('class="content-back"');
   });
 
   it("builds a destination for every linked tag", () => {

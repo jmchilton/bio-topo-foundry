@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import TagChips from '@galaxy-foundry/site-kit/TagChips.astro';
 
+import PersistenceDivider from '../../components/PersistenceDivider.astro';
+import PointCloudFingerprint from '../../components/PointCloudFingerprint.astro';
 import Base from '../../layouts/Base.astro';
 import { base } from '../../lib/site-base';
 import { PORTABILITY_GRADES } from '../../types/environment/schema';
@@ -31,6 +33,7 @@ const ladder = [...PORTABILITY_GRADES]
       inside is any good.
     </p>
   </header>
+  <PersistenceDivider seed="collection:environments" />
 
   {ladder.map(({ grade, entries }) => (
     <section class="ladder-rung" aria-labelledby={`grade-${grade}`}>
@@ -41,7 +44,12 @@ const ladder = [...PORTABILITY_GRADES]
         {entries.map((entry) => (
           <li class="card">
             <a class="card-primary" href={`${base}/environments/${entry.id}/`}>
-              <strong>{entry.data.title}</strong>
+              <span class="card-title-row">
+                <strong>{entry.data.title}</strong>
+                <PointCloudFingerprint
+                  seed={`environment:${entry.id}:${entry.data.tags.join('|')}`}
+                />
+              </span>
               <span>{entry.data.summary}</span>
             </a>
             <TagChips tags={entry.data.tags} tagBase={`${base}/tags`} />
