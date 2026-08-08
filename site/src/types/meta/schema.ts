@@ -25,7 +25,7 @@ export const kind = defineKind({
   title: "Design Record",
   layer: "substrate",
   summary:
-    "A record of why the Foundry itself is built the way it is — the rationale behind the machinery, not the domain.",
+    "A record of the Foundry's rationale or present implementation — knowledge about the machinery rather than the domain.",
 
   // Flat, like `package`, `paper`, `method`, and `replication_experiment`. A design record has
   // nothing to put beside it, so a directory per record would be a container with one file in it

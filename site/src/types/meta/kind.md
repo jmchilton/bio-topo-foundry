@@ -1,8 +1,9 @@
 # Design Record
 
-A Design Record says why the Foundry is built the way it is. It is the only kind here whose subject
-is the Foundry itself rather than topological data analysis — every other kind describes a
-technique, a piece of upstream software, a fixture, a source, or a study.
+A Design Record keeps knowledge about the Foundry itself inside the corpus. Foundation records say
+why it is shaped this way; infrastructure records describe what is implemented, where it lives,
+and when it runs. It is the only kind here whose subject is the Foundry rather than topological data
+analysis.
 
 Required fields:
 

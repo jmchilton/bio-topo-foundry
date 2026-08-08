@@ -7,7 +7,7 @@ order: 3
 status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 2
+revision: 3
 tags:
   - meta
 ---
@@ -24,8 +24,10 @@ location implies. Note semantics belong to [[content-model]], implementation dep
 topological-data-analysis-bioinformatics-foundry/
 ├── content/                authored knowledge
 ├── recipes/<slug>/         rattler-build recipes for packages not yet in conda
-├── site/                   Astro app, contracts, tests, and the one generator
-├── .github/workflows/      validation and Pages deployment
+├── site/                   Astro app, contracts, tests, and local adapters
+├── audit/                  committed citation evidence, verdicts, and reports
+├── .github/workflows/      validation, Pages deployment, and live citation refresh
+├── audit-citations.config.json  citation corpus and provider policy
 ├── meta_tags.yml           instance tag vocabulary
 ├── reference_contract.yml  instance reference kinds
 └── *.md                    working planning drafts — not records, not notes
@@ -65,8 +67,10 @@ are the files beside it. Nothing else belongs there.
 
 ## `recipes/`: build inputs, not content
 
-Seventeen directories, each holding a `recipe.yaml` and the `pixi.toml` that exercises it. These
-build packages that conda does not yet carry, and several are the reason a fixture in
+Each recipe directory holds a `recipe.yaml`. Most also carry a local `pixi.toml` that exercises the
+build; `topometry` is the exception, exercised by
+`content/environments/topometry-1.1/pixi.toml` as the path dependency that fixture exists to test.
+These build packages that conda does not yet carry, and several are the reason a fixture in
 `content/environments/` can be graded at all.
 
 They are not notes. Each is described by one, at `content/recipes/<slug>.md`, which links out to
@@ -95,6 +99,18 @@ The site directory holds both the application and the content contract. That is 
 there is one consumer; extracting an instance package becomes worthwhile when a second application
 or a caster needs those contracts without depending on the Astro project.
 
+## `audit/`: committed citation evidence
+
+The citation audit is reproducible offline because its provider answers are committed under
+`audit/` beside the machine-readable run, rendered report, adjudications, and reviewed exclusions.
+`audit-citations.config.json` stays at the root as the instance policy: which files belong to the
+corpus, which scholarly hosts are trusted, and how live requests are bounded.
+
+`@galaxy-foundry/audit-citations` owns extraction, provider normalization, comparison, and report
+formats. This repository owns the configuration and acceptance decisions. The generated run and
+report are checked by `site/tests/citation-audit.test.ts`; provider evidence is refreshed by the
+scheduled workflow and reviewed through a pull request when its rendered verdict changes.
+
 ## Working drafts at the root
 
 The Markdown files at the repository root — the vocabulary design draft, the top-down goals, the
@@ -110,9 +126,10 @@ cannot quietly acquire the authority of a note by sitting in a directory that gr
 ## Generated and ignored material
 
 `site/src/types/kinds.generated.json` is generated from the kind definitions and committed, because
-its audience is cross-instance consumers who should not have to run this repository's toolchain. It
-has a check command, and that is the rule: every committed generated file has one. If output cannot
-be regenerated and checked, it is authored source and must not be labelled generated.
+its audience is cross-instance consumers who should not have to run this repository's toolchain.
+The machine-readable citation run and its Markdown report are likewise generated and committed so
+the offline gate and reviewers see the same verdict. Both generators have drift checks. If output
+cannot be regenerated and checked, it is authored source and must not be labelled generated.
 
 Uncommitted: `site/node_modules/`, `site/dist/`, `site/.astro/`, the pnpm store, and the `.pixi/`
 and `output/` trees that pixi and rattler-build produce beside a recipe. Build output is derived, so
@@ -120,10 +137,10 @@ it is never source.
 
 ## Root contracts
 
-`meta_tags.yml` and `reference_contract.yml` are repository-wide controlled vocabularies rather than
-notes. They sit at the root because they are read from outside the site as well as inside it, and
-because they are edited deliberately — adding a value is a registry change with a corpus consequence,
-not a free-form slug.
+`meta_tags.yml`, `reference_contract.yml`, and `audit-citations.config.json` are repository-wide
+contracts rather than notes. They sit at the root because they are read from outside the site as
+well as inside it, and because they are edited deliberately — adding a vocabulary value or changing
+the audited corpus is a policy change with a corpus consequence, not a free-form slug.
 
 ## Placement rules
 
