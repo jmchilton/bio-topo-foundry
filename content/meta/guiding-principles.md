@@ -6,17 +6,13 @@ record_kind: foundation
 order: 2
 status: draft
 created: 2026-08-08
-revised: 2026-08-08
-revision: 1
+revised: 2026-08-09
+revision: 2
 tags:
   - meta
 ---
 
 # Guiding Principles
-
-[[positioning]] says what this Foundry is and what it refuses to be. These are the pressures behind
-that shape — each one written because something in this corpus made it necessary, not because it
-sounded like a good idea. Where a principle costs something, the cost is named.
 
 ## Source Authority Beats Local Copies
 
@@ -25,19 +21,16 @@ behaviour belongs to the package, a build's contents belong to its `recipe.yaml`
 environment's contents belong to its `pixi.toml`. This Foundry connects, explains, grades, and
 tests; it does not compete to be the canonical home for any of it.
 
-The rule bites hardest where an authority is *executable*. A recipe note that carried a version
-number would be a second place to update it, and the one that got missed would be the note — so a
-recipe note carries only the three things `recipe.yaml` cannot state: what channel gap it closes,
-whether anyone has actually built it, and what stands between it and publication. The same reasoning
-is why an environment's companion files are measured from disk rather than declared in frontmatter.
-
 ## Runnable Beats Described
 
 A writeup of a tool is not knowledge about the tool until something can run it. This is why
-`package` and `environment` are separate kinds rather than one kind with a field: a package is the
-abstract subject — code to understand, licence to check, upstream to watch — and an environment is a
-graded, locked, executable fixture. Collapsing them would let a corpus of thorough descriptions
-report full coverage of software nobody had ever installed.
+`package` and `environment` are separate kinds rather than one kind with a field. A package is
+abstract — code to read, a licence to check, an upstream to watch. An environment is composite and
+actionable: a `pixi.toml` assembling packages and their dependencies into one configuration that
+installs and runs. The two do not correspond one to one in either direction —
+[[ann-backends-environment]] pins two libraries together, and a package can appear in several
+fixtures — so neither could be a field on the other. Keeping them separate is also what stops a
+corpus of thorough descriptions from reporting full coverage of software nobody has installed.
 
 The cost is real: most packages here have an environment, and building each one surfaced problems
 that reading never would — unsolvable dependency closures, absent channels, a build that needs
@@ -102,11 +95,11 @@ and are described as such.
 ## Corpus-First, Not Invention-First
 
 Abstractions appear after content demands them, not before. The tag vocabulary was seeded from the
-notes that existed; the reference contract declares exactly the reference kinds and cast modes the
-current Molds actually use, checked in both directions. Kinds that the design draft anticipated —
-`manuscript`, `proof`, `tool`, `workflow`, `training` — do not exist, because declaring an empty
-kind creates a schema nobody has tested against a real note and a browse surface that renders
-nothing.
+notes that existed; the reference contract declares exactly the reference kinds the current Molds
+use, and narrows cast modes to implemented and exercised capacity. Kinds that the design draft
+anticipated — `manuscript`, `proof`, `tool`, `workflow`, `training` — do not exist, because
+declaring an empty kind creates a schema nobody has tested against a real note and a browse surface
+that renders nothing.
 
 The same restraint applies to prose. A comprehensive-looking note that no contact with a real tool
 forced into existence is indistinguishable, to a reader, from an earned one.
