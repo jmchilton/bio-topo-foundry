@@ -113,10 +113,12 @@ artifact can be produced from it without the graph being the artifact.
 
 ## Deferred Machinery Stays Named as Deferred
 
-No caster exists. No `casts/` directory exists. Cast modes are narrowed to the one mode this
-instance could actually honour, because a mode is a commitment to machinery and a manifest that
-validates but cannot be cast is worse than one that fails. Records say *would cast* and never imply
-an artifact is available.
+Cast modes are narrowed to the one mode this instance can actually honour, because a mode is a
+commitment to machinery and a manifest that validates but cannot be cast is worse than one that
+fails. That narrowing is what made the first cast cheap: until the caster landed these records said
+*would cast* and named no artifact, and when it landed there was exactly one mode to implement.
+[[build-and-validation]] owns which target and which mode are real. A package workspace and the
+Galaxy delivery kinds are still absent, and are named that way rather than described.
 
 The reason is a reader's failure mode: someone acts on a present-tense sentence, goes looking for
 the output, finds nothing, and cannot tell whether the record was aspirational or their checkout is

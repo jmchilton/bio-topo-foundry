@@ -38,8 +38,8 @@ answered better by the thing that has them.
             │                       │
             └───────────┬───────────┘
                         ▼
-              validated and rendered today
-              cast into artifacts in future
+              validated, rendered, and cast
+               into committed bundles
 ```
 
 Two things sit at the centre of that diagram rather than at its end. A **replication experiment** is
@@ -106,8 +106,8 @@ documentation carries the current example.
   experiment records what happened when it did. The boundary is why a claim about behaviour is
   supposed to name evidence rather than a reading.
 - **Present versus planned machinery.** The content contract, validator, generators, citation audit,
-  and site exist. A caster, a cast tree, a package workspace, and Galaxy delivery kinds do not. A
-  record may state a contract for deferred machinery; it must not describe it as running.
+  caster, and site exist. A package workspace and Galaxy delivery kinds do not. A record may state a
+  contract for deferred machinery; it must not describe it as running.
 
 ## Focused records
 
@@ -132,9 +132,9 @@ Named rather than overlooked, because a missing record reads as an oversight oth
 - **Molds and the Mold spec.** One Mold exists, [[score-docking-poses]]. One note is not enough to
   argue an authoring contract from, and its kind documentation carries the current shape. These
   become records when a second and third Mold show what actually recurs.
-- **Casting.** Deferred entirely. There is no caster, and the reference contract narrows cast modes
-  to the single one this instance could honour. Writing a casting record now would describe
-  machinery by imagining it.
+- **Casting.** Implemented, but narrowly: one target, one mode, one committed bundle.
+  [[build-and-validation]] owns the boundary and [[repository-layout]] owns where bundles sit. A
+  record earns its place when there is more than one target to arbitrate between.
 - **Corpus.** The sibling instances have a record for how external sources are ingested without
   becoming a mirror. Here the same pressure is currently answered by the source-authority principle
   and by the citation audit, which checks that a citation names the work its own bibliography
@@ -148,7 +148,7 @@ Named rather than overlooked, because a missing record reads as an oversight oth
 
 Independent of each other; each is something that must stay true, not a step in a sequence.
 
-- The knowledge base is authored for people and remains the source of truth for any future cast.
+- The knowledge base is authored for people and remains the source of truth for any cast.
 - A claim about behaviour is recoverable from evidence — a run, a manifest, a licence file — rather
   than from a reading or from model memory.
 - Description and execution stay separately typed, so coverage of one is never reported as coverage
