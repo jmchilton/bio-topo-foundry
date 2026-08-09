@@ -6,8 +6,8 @@ record_kind: foundation
 order: 3
 status: draft
 created: 2026-08-08
-revised: 2026-08-08
-revision: 1
+revised: 2026-08-09
+revision: 2
 tags:
   - meta
 ---
@@ -56,14 +56,15 @@ generated manifest and on the site.
 - A **research pole** describes work at the frontier: the techniques, the external sources that
   introduce them, and eventually original scholarship of our own.
 - A **delivery pole** describes what it takes to run that work: the upstream software, the recipe
-  that builds it when no channel does, and the graded environment that executes it.
+  that builds it when no channel does, and the graded environment that assembles software into
+  something that installs and runs.
 - **Connective tissue** joins the two: a method note is the concept both poles refer to, and a
   replication experiment is the evidence that the delivery pole actually reproduces the research
   pole's claim.
 
 [[content-model]] owns what each kind requires and how they address each other. What matters here is
-that the two poles are separate kinds rather than fields on one kind, so a thorough description can
-never be mistaken for a working install — [[guiding-principles]] holds that argument.
+that describing software and running it are different kinds, so a thorough description can never be
+counted as a working install — [[guiding-principles]] holds that argument.
 
 ## What is inherited, what changes, what is added
 
