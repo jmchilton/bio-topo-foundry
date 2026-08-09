@@ -1,132 +1,96 @@
 ---
 type: meta
 title: Positioning
-summary: What this Foundry is, what it refuses to be, and the measured state of TDA bioinformatics tooling that makes it worth building.
+summary: A knowledge base connecting TDA research and software to reproducible bioinformatics environments, Galaxy tools, workflows, and training.
 record_kind: foundation
 order: 1
-status: draft
+status: revised
 created: 2026-08-08
-revised: 2026-08-08
-revision: 1
+revised: 2026-08-09
+revision: 2
 tags:
   - meta
 ---
 
 # Positioning
 
-This record owns what the Foundry is, what it refuses to be, and why — written down once so the
-boundary is not re-argued in every other record. [[guiding-principles]] turns it into design
-pressure; [[architecture]] turns it into a map.
+A knowledge base connecting topological data analysis research and software to reproducible
+bioinformatics environments, Galaxy tools, workflows, and training.
 
-## The problem is not the mathematics
+Three kinds of work sit behind that sentence — understanding what the field has published, making it
+installable, and turning it into something a person or an agent can use. [[guiding-principles]]
+turns them into design pressure; [[architecture]] turns them into a map.
 
-Persistent homology, persistent and combinatorial Laplacians, Hodge decomposition, and Mapper are
-decades-old public mathematics, and the bioinformatics results built on them are real work by people
-publishing openly at the frontier. What fails is the distance between a published topological result
-and a second person running it.
+## Frontier
 
-That is measured here rather than asserted, and the measurements are in this corpus:
+We read the literature and write it down in a form that stays navigable: method notes for the
+techniques, paper notes for the surveys and foundational results, package notes for the software
+that implements them. The organising question is which mathematics actually earns its place against
+which biological problem — persistent homology and Mapper are decades old and public, so what is
+genuinely unsettled is where they beat the ordinary alternative and where they only look like they
+do. We also re-run published work: [[replication-experiments]] recreate a paper's reported numbers
+rather than merely executing its code, and doing that here has already found defects that survived
+peer review — see [[topoqa-interface-quality]] and [[topometry-cell-cycle]]. Original scholarship of
+our own belongs at this end too, and does not exist yet.
 
-- **Redistribution.** Of the five flagship tools profiled here, one — [[topometry]] — could be
-  redistributed as found. [[petls]] declares no software licence anywhere, which is all rights
-  reserved by default. [[topoqa]] is the same. [[topodockq]]'s scorer is MIT, but its featurizer
-  shipped as Python 3.8 `.pyc` bytecode from a repository with no licence. [[hiponet]] is licensed
-  non-commercially. In every one of these the article is openly licensed and the software is not;
-  they are separate grants, and the open article is what makes the confusion easy.
-- **Availability.** Every recipe under `recipes/` exists because a public conda channel does not
-  supply that package at all, or supplies a build too old for the API the paper describes.
-- **Correctness under re-execution.** Re-running published work here has found defects that survived
-  peer review. A released interface-quality scorer built its edge point cloud from `(x, y, y)` where
-  it meant `(x, y, z)`, and part of the published margin depends on it. A manifold-learning toolkit
-  produces layouts that are not reproducible even by its authors from a fixed seed, which makes
-  layout-level figures unrepeatable. [[topoqa-interface-quality]] and [[topometry-cell-cycle]] carry
-  that evidence; both defects were traced to a specific line and reported upstream.
+## Hardening
 
-Nobody's incentives currently close this gap. A methods paper is complete when the method is
-published; a package is complete when it runs on the author's machine; a survey is complete when it
-cites both. The work of making a topological method installable, licensed, reproducible, and checked
-by someone who did not write it belongs to no one.
+Reading a tool is not running it, so every method worth keeping has to become an install. That means
+conda recipes where the public channels carry nothing, or nothing recent enough for the API the
+paper describes; pixi environments graded by biopixi on the L0–L4 portability ladder, so that
+"it runs" is a measured claim rather than an assertion; and licensing handled as a fact recorded on
+the note. Licensing is the part people underestimate. The flagship TDA tools in bioinformatics are
+overwhelmingly described by openly licensed articles and shipped as software that grants nothing —
+an article licence and a software licence are separate grants, and which one a tool has decides
+whether it can be redistributed at all. Where a method is sound and its implementation is
+unredistributable, the remaining move is to reimplement it from the published description.
 
-## What we are building
+## Delivery
 
-A knowledge base that carries a topological method from the literature to something another person
-can run, and that records — in checkable frontmatter rather than prose — how far each one actually
-got.
+The far end is what someone else uses without knowing any of this happened: Galaxy tools and
+workflows, training material, and agent-runnable analysis procedures — Molds that state what to do
+and declare typed references to the knowledge that doing it would need. This is the least built of
+the three. One Mold exists, [[score-docking-poses]], and there are no Galaxy kinds, no wrappers, and
+no training material yet. Naming the gap is deliberate: a Foundry that stops after packaging is a
+distribution channel.
 
-Two obligations are held together, and neither is sufficient alone:
+Nothing enforces progression along that arc. A note may sit anywhere on it, most sit early, and no
+kind requires a downstream kind to exist — the maturity of a note is visible from its own typed
+fields, which is a more honest answer than a gate nothing could pass on day one.
 
-- **Move the field.** Original scholarship, and analysis procedures an agent can execute. This half
-  is aspirational today: there is no `manuscript` kind and no manuscripts, and the writeups in this
-  corpus are reviews of other people's work. Naming it here rather than quietly dropping it is the
-  point — a Foundry that only packages other people's tools is a distribution channel.
-- **Harden the tooling.** Get TDA software into conda channels and into Galaxy, with reproducible
-  environments, recipes, wrappers, workflows, and training behind it. This half is where the corpus
-  actually is.
+## Related efforts
 
-## The spine, and that it has no teeth
+Surveyed from public sources rather than checked tool by tool, so read this as orientation and not
+as the verified prior-art comparison the sibling Foundries carry.
 
-```text
-  frontier research        software          hardening              delivery
-  (paper, method,     →    (package)    →    (recipe,          →    (Galaxy tool,
-   proof, manuscript)                         environment)           workflow, training)
-```
+- **scikit-tda** — the nearest curated hub, and an active one: a home for Python TDA libraries aimed
+  at non-topologists. It curates and documents. It does not package for conda, grade environments,
+  or re-run published results — this Foundry carries [[scikit-tda-recipe]] precisely because
+  conda-forge does not.
+- **TopoX and the ICML Topological Deep Learning Challenges** — the closest thing to replication as
+  a community output, with participants contributing open implementations of published topological
+  neural networks. Scoped to topological deep learning and to implementing methods, rather than to
+  reproducing a paper's numbers or delivering into a bioinformatics platform.
+- **The Topology ToolKit** — a mature TDA library delivered inside a visualization application. It
+  is the delivery model this Foundry wants, hosted somewhere else.
+- **TopoPilot** — an agentic framework that drives TDA and visualization workflows over MCP, with a
+  verifier checking the plan before it runs. The nearest thing to the agent half of delivery, but it
+  automates a tool rather than curating what an agent should know about the field.
+- **`awesome-tda`-style link lists** — broad coverage, no facts attached: no licence status, no
+  build evidence, no environment.
+- **Bioconda and conda-forge** — substrate rather than comparison. TDA coverage is partial, which is
+  the reason recipes exist here at all.
 
-A note may sit anywhere on this arc, and most sit early. The spine is an **atlas, not a gate**: no
-note is refused because an earlier stage is missing, no kind requires a downstream kind to exist,
-and nothing in the schema enforces progression. That was a deliberate choice against the
-alternative, which would have been a rule like "a method is not delivered until it reaches a
-runnable Galaxy tool." Such a rule would have been unsatisfiable on day one and would have made the
-corpus dishonest rather than disciplined — the maturity of each note is visible from its own typed
-fields, which is a better answer than a gate nothing can pass.
+Nothing found combines the four things this Foundry is trying to hold together: a bioinformatics
+focus, licence status as typed data, graded executable environments, and evidence from re-running
+the work.
 
-One collision is worth naming because both halves are load-bearing and both use the word *harden*.
-The spine's **hardening** is about software: making a package installable and reproducible. The
-`arc` a replication experiment declares — `replicate`, `harden`, `extend` — is about a *claim*:
-making a published result reliable without changing its scientific intent. They are different axes
-that happen to rhyme, and [[replication-experiments]] owns the second one. The `arc` enum is
-checked; the spine is not.
+## What this is not
 
-## What we refuse to be
-
-- **Not a TDA textbook.** A method note defines a technique well enough to make the corpus navigable
-  and to say which packages implement it. It does not teach the mathematics; the papers do that
-  better and are linked.
-- **Not a mirror of upstream documentation.** A package note profiles software and links to it. A
-  `recipe.yaml` and a `pixi.toml` stay the authority on names, versions, licences, and dependencies,
-  and no note restates them.
-- **Not a benchmark leaderboard.** Numbers here belong to a replication experiment with a pinned
-  protocol, a named environment, and an evidence manifest, or they do not belong here.
-- **Not an advocate for topology.** This is the refusal that costs something. Both surveys in this
-  corpus flag the same weakness in the field — topological methods are often reported without a
-  matched non-topological baseline under the same split — and our own replication found a
-  substantial part of one published margin was an artifact of a coordinate bug. A Foundry built
-  around a technique is exactly the place where that failure would go unnoticed, so it is written
-  down as a refusal rather than left to good intentions.
-
-## What is distinctly ours
-
-These are properties of the machinery, not claims about quality, and each is checked:
-
-- **Replication is a typed, evidence-bearing kind.** Neither sibling Foundry has one. A
-  `replication_experiment` pins a standalone repository by full commit id, names the biopixi
-  environment that re-ran it, and cannot be marked complete without one.
-- **A licence is a typed field with deny-by-default resolution.** `missing` is a declared value
-  rather than an omitted field, because an absent licence is a fact worth recording. A recipe's
-  `upstreaming: blocked` is tied by test to the recipe's own `about.license`, so the state cannot be
-  claimed or waived by an author.
-- **Upstream fixes are an output, not a side effect.** When a replication finds a defect, the fix is
-  made where the defect lives. That has produced merged upstream changes, filed licence requests,
-  reported defects, and prepared branches — rather than downstream workarounds that would leave the
-  next person to rediscover the same bug.
-- **Cleanroom from the paper, never from the code.** Where a method was sound and its implementation
-  unlicensed, it was reimplemented from the published description without reading the code or
-  decompiling the bytecode. Methods are not copyrightable; code is. That is how three of the blocked
-  tools above became redistributable.
-
-## What this record does not yet contain
-
-A verified prior-art comparison. The Statistical Genomics Foundry's positioning names its nearest
-neighbours on each axis, having checked each system individually, with a repository-root receipts
-file behind every claim. No equivalent survey has been done for this instance, so no such claim is
-made here — the TDA-tooling and reproducibility-infrastructure landscape is unexamined, not empty.
-Doing that work is what would let this record say where we sit rather than only what we do.
+- **Not a TDA textbook.** A method note makes the corpus navigable and says which packages implement
+  what. The papers teach the mathematics and are linked.
+- **Not a mirror of upstream documentation.** A `recipe.yaml` and a `pixi.toml` stay the authority on
+  names, versions, and dependencies; no note restates them.
+- **Not an advocate for topology.** A comparative claim needs a matched non-topological baseline
+  under the same split and a stated metric, or it is not made here. A Foundry built around a
+  technique is exactly where that discipline would otherwise slip.

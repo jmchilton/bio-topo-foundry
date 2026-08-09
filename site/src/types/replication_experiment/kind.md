@@ -19,6 +19,10 @@ Required fields:
 Optional: `replication_outcome`, `environment`, `artifact.protocol`,
 `artifact.evidence_manifest` — with conditions, below.
 
+The `harden` stage in `arc` means making a *claim* reliable without changing its scientific intent.
+It is a different axis from hardening in the sense the rest of the Foundry uses — making software
+installable and reproducible — and the two happen to share a word. This enum is the checked one.
+
 Working practice for running these studies is a separate document:
 `content/meta/replication-experiments.md`.
 

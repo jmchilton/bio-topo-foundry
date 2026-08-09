@@ -112,8 +112,7 @@ documentation carries the current example.
 
 Foundation — why the Foundry is shaped this way:
 
-- [[positioning]] — what it is, what it refuses to be, and the measured state of the field behind
-  that.
+- [[positioning]] — what it is, the three kinds of work behind it, and what it refuses to be.
 - [[guiding-principles]] — the design pressure, and what each principle costs.
 - [[replication-experiments]] — how a replication is conducted and which half of it lives outside
   this repository.
@@ -141,7 +140,7 @@ Named rather than overlooked, because a missing record reads as an oversight oth
   describes. A separate record is warranted when the ingestion posture is more than that.
 - **A gate record.** The Statistical Genomics Foundry's referee loop is machinery around a rule with
   teeth. This instance deliberately has no such rule; the spine is descriptive, so there is no loop
-  to document, and [[positioning]] argues that choice rather than a record describing enforcement
+  to document, and [[positioning]] states that choice rather than a record describing enforcement
   that does not exist.
 
 ## Architectural invariants
