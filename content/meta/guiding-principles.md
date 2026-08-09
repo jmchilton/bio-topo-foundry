@@ -147,6 +147,6 @@ The resulting division of labour:
 
 ## See Also
 
-- [[positioning]] — what this Foundry is and refuses to be, and the measurements behind it.
+- [[positioning]] — what this Foundry is, what it refuses to be, and its nearest neighbours.
 - [[architecture]] — the system map and the routes to the records that own each part.
 - [[replication-experiments]] — the working practice behind *replicate before you extend*.
