@@ -35,5 +35,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Validate site and generated artifacts
+      - name: Validate site, generated artifacts, and casts
         run: pnpm validate

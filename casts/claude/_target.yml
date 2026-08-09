@@ -1,0 +1,18 @@
+# Claude target. The directory names the target; this file declares its bundle and document policy.
+bundle_path: "skills/{mold}"
+
+document:
+  path: SKILL.md
+  noun: skill
+
+kinds:
+  environment:
+    dst_dir: references/environments/
+    dst_extension: .md
+    modes: [verbatim]
+
+skill_constraints:
+  frontmatter_required: [name, description]
+  forbidden_runtime_paths:
+    - content/molds/
+    - content/environments/

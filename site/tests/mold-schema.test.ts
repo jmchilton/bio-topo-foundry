@@ -8,7 +8,7 @@ import { readFrontmatter } from "./frontmatter";
 
 const validReference = {
   kind: "environment",
-  ref: "open-topoqa-scorer-environment",
+  ref: "[[open-topoqa-scorer-environment]]",
   used_at: "runtime",
   load: "upfront",
   mode: "verbatim",
@@ -18,7 +18,8 @@ const validReference = {
 const validMold = {
   type: "mold",
   name: "score-docking-poses",
-  summary: "Rank candidate structures with a reproducible interface-quality scorer.",
+  summary:
+    "Rank candidate structures with a reproducible interface-quality scorer.",
   tags: ["application/structure-qa"],
   references: [validReference],
 };
@@ -29,9 +30,9 @@ describe("mold kind", () => {
       "src/types/mold/example.md",
       "../content/molds/score-docking-poses/index.md",
     ]) {
-      expect(moldSchema.safeParse(readFrontmatter(path.resolve(file))).success).toBe(
-        true,
-      );
+      expect(
+        moldSchema.safeParse(readFrontmatter(path.resolve(file))).success,
+      ).toBe(true);
     }
   });
 
@@ -48,6 +49,26 @@ describe("mold kind", () => {
         references: [{ ...validReference, mode: "sidecar" }],
       }).success,
     ).toBe(false);
+  });
+
+  it("requires the target shape declared by the reference kind", () => {
+    const result = moldSchema.safeParse({
+      ...validMold,
+      references: [
+        { ...validReference, ref: "open-topoqa-scorer-environment" },
+      ],
+    });
+
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(result.error.issues).toContainEqual(
+        expect.objectContaining({
+          path: ["references", 0, "ref"],
+          message:
+            "kind=environment ref must be a [[wiki-link]] (got open-topoqa-scorer-environment)",
+        }),
+      );
+    }
   });
 
   it("enforces conditional reference fields and rejects unknown ones", () => {
@@ -80,7 +101,9 @@ describe("mold kind", () => {
   it("resolves every typed reference authored by a corpus Mold", () => {
     const broken: string[] = [];
     for (const file of contentReader.noteFiles("molds")) {
-      const note = moldSchema.parse(readFrontmatter(path.resolve("../content", file)));
+      const note = moldSchema.parse(
+        readFrontmatter(path.resolve("../content", file)),
+      );
       for (const reference of note.references ?? []) {
         if (contentReader.resolveLink(reference.ref).href === null) {
           broken.push(`${file}: ${reference.kind}:${reference.ref}`);

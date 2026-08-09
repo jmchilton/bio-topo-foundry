@@ -11,6 +11,7 @@ import {
 } from "@galaxy-foundry/license-policy";
 import {
   contractKeys,
+  referenceShapeIssue,
   type ContractGroup,
   type ReferenceContract,
 } from "@galaxy-foundry/reference-contract";
@@ -22,7 +23,11 @@ export interface BuildKindContextOptions {
   licensePolicy: LicensePolicy;
 }
 
-function buildPrimitives({ tags, contract, licensePolicy }: BuildKindContextOptions) {
+function buildPrimitives({
+  tags,
+  contract,
+  licensePolicy,
+}: BuildKindContextOptions) {
   const tag = z.string().refine((value) => tags.isValidTag(value), {
     message: "tag must be registered in meta_tags.yml",
   });
@@ -54,6 +59,10 @@ function buildPrimitives({ tags, contract, licensePolicy }: BuildKindContextOpti
     })
     .strict()
     .superRefine((value, ctx) => {
+      const shapeIssue = referenceShapeIssue(contract, value);
+      if (shapeIssue) {
+        ctx.addIssue({ code: "custom", path: ["ref"], message: shapeIssue });
+      }
       if (value.load === "on-demand" && !value.trigger) {
         ctx.addIssue({
           code: "custom",

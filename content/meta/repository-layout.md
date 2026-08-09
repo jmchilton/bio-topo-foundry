@@ -7,7 +7,7 @@ order: 3
 status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 3
+revision: 4
 tags:
   - meta
 ---
@@ -25,6 +25,7 @@ topological-data-analysis-bioinformatics-foundry/
 ├── content/                authored knowledge
 ├── recipes/<slug>/         rattler-build recipes for packages not yet in conda
 ├── site/                   Astro app, contracts, tests, and local adapters
+├── casts/<target>/         target policy and committed generated bundles
 ├── audit/                  committed citation evidence, verdicts, and reports
 ├── .github/workflows/      validation, Pages deployment, and live citation refresh
 ├── audit-citations.config.json  citation corpus and provider policy
@@ -33,9 +34,9 @@ topological-data-analysis-bioinformatics-foundry/
 └── *.md                    working planning drafts — not records, not notes
 ```
 
-There is no `packages/`, `casts/`, or fixture tree. Add one only when implemented machinery gives it
-an owner and a lifecycle: an empty directory with a plausible name reads as machinery to everyone
-who did not create it.
+There is no `packages/` or standalone fixture tree. Add one only when implemented machinery gives
+it an owner and a lifecycle: an empty directory with a plausible name reads as machinery to
+everyone who did not create it.
 
 Two things are missing rather than absent by design, and are recorded here so they stay visible:
 this repository has no root `LICENSE` and no root `README.md`. The corpus takes licensing seriously
@@ -91,13 +92,27 @@ site/
 ├── src/layouts/        where the installed shell meets this site's identity
 ├── src/styles/         palette, type system, and the Tailwind source directive
 ├── tests/              corpus, contract, and built-output checks
-├── scripts/            the kind-manifest generator
+├── scripts/            kind-manifest and cast command adapters
 └── package.json        the toolchain and its commands
 ```
 
 The site directory holds both the application and the content contract. That is intentional while
-there is one consumer; extracting an instance package becomes worthwhile when a second application
-or a caster needs those contracts without depending on the Astro project.
+there is one TypeScript toolchain. The caster imports only filesystem-based modules from that tree,
+not Astro runtime APIs. Extracting an instance package becomes worthwhile when another application
+needs those contracts without depending on the Astro project.
+
+## `casts/`: target policy and reproducible bundles
+
+Each target directory owns a `_target.yml` declaring where bundles land, what its document is
+called, where each reference kind is placed, and which runtime paths are forbidden. A bundle is
+named for its source Mold and carries the generated document, packaged runtime references, and the
+provenance record that connects every destination byte to its source.
+
+The bundles are generated and committed. `pnpm cast <mold>` writes one, `pnpm casts` rewrites the
+committed set, and `pnpm check:casts` re-derives that set without writing. Source notes and Kind
+companion declarations remain authoritative: for example, an Environment's `pixi.toml` and present
+`pixi.lock` are bundled because the Environment Kind says so, while a Mold's evaluation and scenario
+companions stay in the Foundry because their disposition is `foundry-only`.
 
 ## `audit/`: committed citation evidence
 
@@ -128,8 +143,10 @@ cannot quietly acquire the authority of a note by sitting in a directory that gr
 `site/src/types/kinds.generated.json` is generated from the kind definitions and committed, because
 its audience is cross-instance consumers who should not have to run this repository's toolchain.
 The machine-readable citation run and its Markdown report are likewise generated and committed so
-the offline gate and reviewers see the same verdict. Both generators have drift checks. If output
-cannot be regenerated and checked, it is authored source and must not be labelled generated.
+the offline gate and reviewers see the same verdict. Cast bundles are committed for the same reason:
+the runtime consumer should not need the Foundry toolchain, while provenance and the cast drift gate
+make their derivation reviewable. Every committed generated artifact has a check. If output cannot
+be regenerated and checked, it is authored source and must not be labelled generated.
 
 Uncommitted: `site/node_modules/`, `site/dist/`, `site/.astro/`, the pnpm store, and the `.pixi/`
 and `output/` trees that pixi and rattler-build produce beside a recipe. Build output is derived, so
@@ -139,8 +156,9 @@ it is never source.
 
 `meta_tags.yml`, `reference_contract.yml`, and `audit-citations.config.json` are repository-wide
 contracts rather than notes. They sit at the root because they are read from outside the site as
-well as inside it, and because they are edited deliberately — adding a vocabulary value or changing
-the audited corpus is a policy change with a corpus consequence, not a free-form slug.
+well as inside it, and because they are edited deliberately — adding a vocabulary value, changing
+how a reference casts, or changing the audited corpus is a policy change with a corpus consequence,
+not a free-form slug.
 
 ## Placement rules
 
@@ -150,6 +168,8 @@ the audited corpus is a policy change with a corpus consequence, not a free-form
   consumer.
 - Keep a file that is authority for something — a `pixi.toml`, a `recipe.yaml` — where it is
   executable, and link to it rather than restating its contents in prose.
+- Put a target's policy and generated bundles together under `casts/<target>/`; keep their source
+  knowledge under `content/`.
 - Keep the provisional at the root, where it cannot be mistaken for the authored corpus.
 - Do not create a placeholder top-level directory before a real artifact needs one.
 - Add a new top-level owner only with code, an entry point, and a drift story.

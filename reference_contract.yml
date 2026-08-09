@@ -5,3 +5,6 @@ kinds:
     label: Environment
     description: A runnable biopixi fixture and its declared bundled companions.
     ref_shape: wiki-link
+    cast:
+      resolve: note
+      default_mode: verbatim

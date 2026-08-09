@@ -1,0 +1,21 @@
+# open-topoqa-scorer — clean-room MIT retrain of the TopoQA ProteinGAT interface-quality scorer
+# (bio-topo-foundry#5). Pure-Python (noarch) in-repo recipe → L1 today, conda-forge/Bioconda-
+# eligible → L3/L4 on upstreaming. Completes the open, retrainable TopoQA vertical (pipeline P1):
+# the sibling open-topoqa-featurizer emits 172-dim node / 11-dim edge interface graphs, and this
+# ProteinGAT scores them to a DockQ-like interface-quality value — no unlicensed code in the path.
+#
+# Stages TWO in-repo recipes as path deps (like open-topodockq-featurizer / pydowker): the scorer
+# and its open-topoqa-featurizer input, which is on no public channel yet. `pytorch` +
+# `pytorch_geometric` (the ProteinGAT model) drag a torch closure, so a full lockfile solve is
+# heavy; linux-64 to match that closure.
+#
+# NOTE this env installs the importable scorer + its inference stack; the retrained checkpoints
+# and the training/eval scripts live in the source repo, not the wheel (as with the featurizer).
+[workspace]
+preview = ["pixi-build"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+open-topoqa-scorer = { path = "../../../recipes/open-topoqa-scorer" }
+open-topoqa-featurizer = { path = "../../../recipes/open-topoqa-featurizer" }

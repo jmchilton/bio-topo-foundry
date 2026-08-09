@@ -7,7 +7,7 @@ order: 1
 status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 3
+revision: 4
 tags:
   - meta
 ---
@@ -36,9 +36,9 @@ dependencies flow. Note semantics belong to [[content-model]], physical placemen
     >
       <title id="architecture-title">Bio Topo Foundry code architecture</title>
       <desc id="architecture-description">
-        The Astro reader and build-time verification paths both use instance composition, which
-        depends on local kind definitions, local vocabularies, and shared foundry-lib packages.
-        Every box is a link to the relevant source or documentation.
+        The Astro reader, casting commands, and build-time verification paths all use instance
+        composition, which depends on local kind definitions, local vocabularies, and shared
+        foundry-lib packages. Every box is a link to the relevant source or documentation.
       </desc>
       <defs>
         <pattern id="architecture-grid" width="24" height="24" patternUnits="userSpaceOnUse">
@@ -92,9 +92,9 @@ dependencies flow. Note semantics belong to [[content-model]], physical placemen
         <g class="architecture-card architecture-card-audit">
           <rect x="550" y="58" width="430" height="126" rx="18" class="architecture-node" />
           <circle cx="582" cy="90" r="8" class="architecture-status-dot" />
-          <text x="602" y="96" class="architecture-node-label">BUILD-TIME VERIFICATION</text>
-          <text x="578" y="132" class="architecture-node-title">Evidence and checks</text>
-          <text x="578" y="158" class="architecture-node-detail">tests · manifests · citation audit</text>
+          <text x="602" y="96" class="architecture-node-label">BUILD-TIME PRODUCTION + VERIFICATION</text>
+          <text x="578" y="132" class="architecture-node-title">Artifacts and checks</text>
+          <text x="578" y="158" class="architecture-node-detail">casts · tests · manifests · citation audit</text>
           <text x="946" y="151" class="architecture-link-glyph" aria-hidden="true">↗</text>
         </g>
       </a>
@@ -146,8 +146,8 @@ dependencies flow. Note semantics belong to [[content-model]], physical placemen
           <g class="architecture-card">
             <rect x="682" y="330" width="270" height="116" rx="16" class="architecture-node" />
             <text x="706" y="362" class="architecture-node-label">03 · ADAPTERS</text>
-            <text x="706" y="396" class="architecture-node-title architecture-node-title-small">Reader + renderers</text>
-            <text x="706" y="423" class="architecture-node-detail">links · routes · shell binding</text>
+            <text x="706" y="396" class="architecture-node-title architecture-node-title-small">Reader + caster</text>
+            <text x="706" y="423" class="architecture-node-detail">links · routes · cast binding</text>
             <text x="922" y="421" class="architecture-link-glyph" aria-hidden="true">↗</text>
           </g>
         </a>
@@ -207,8 +207,9 @@ Dependencies run one way. Shared packages take explicit inputs; they never disco
 repository's paths, vocabulary, or acceptance rules. The instance never reimplements a mechanism a
 package owns.
 
-There is one application, `site/`. There is no package workspace, no build CLI, no caster, and no
-cast tree. Those are absences, not implied layers.
+There is one application, `site/`, and no local package workspace or standalone build CLI. The
+casting commands also live under `site/` because they consume the same TypeScript kinds and content
+binding; their generated artifacts live at the repository root under `casts/`.
 
 ## Kind definitions
 
@@ -255,9 +256,11 @@ built from:
 
 - `meta-tags.ts` loads `meta_tags.yml` through
   [`@galaxy-foundry/tag-registry`](https://github.com/jmchilton/foundry-lib/tree/main/packages/tag-registry);
-- `reference-contract.ts` loads `reference_contract.yml` through
+- `reference-contract.ts` loads both the reference vocabulary and its cast declarations through
+  [`@galaxy-foundry/cast`](https://github.com/jmchilton/foundry-lib/tree/main/packages/cast), which
+  composes the shared
   [`@galaxy-foundry/reference-contract`](https://github.com/jmchilton/foundry-lib/tree/main/packages/reference-contract)
-  and narrows cast modes to this instance's supported set;
+  terms and narrows cast modes to this instance's supported set;
 - [`@galaxy-foundry/license-policy`](https://github.com/jmchilton/foundry-lib/tree/main/packages/license-policy)
   supplies the redistribution table as bundled data, with no local file to keep in step.
 
@@ -269,9 +272,10 @@ supply paths and concrete vocabularies; they do not re-export or reimplement a p
 [`site/src/lib/content-reader.ts`](https://github.com/jmchilton/bio-topo-foundry/blob/main/site/src/lib/content-reader.ts)
 binds
 [`@galaxy-foundry/content-reader`](https://github.com/jmchilton/foundry-lib/tree/main/packages/content-reader)
-to the collection table, the content path, a route mapping, and this corpus's alias rule. The
-package then owns filesystem enumeration, note ids, link-map construction, remark traversal, and
-raw-Markdown resolution — so rendering and validation read one map and cannot drift apart. Its
+to the collection table, a route mapping, and this corpus's alias rule. Its exported factory accepts
+a content-path resolver: Astro supplies its content-relative frame, while casting supplies a
+repository-root frame. Both therefore get filesystem enumeration, note ids, frontmatter, aliases,
+and link targets from the same reader rather than maintaining parallel corpus walks. Its
 [boundary design](https://github.com/jmchilton/foundry-lib/blob/main/docs/architecture/content-reader-boundary.md)
 shows why Astro types stay on the application side of that seam.
 
@@ -327,11 +331,11 @@ topology breadcrumb, and every declared reference kind beside the shared cases w
 their domain vocabulary into the package. Built-output tests require complete shared and local
 coverage, every standalone route, the gallery's design-index link, and the intended search policy.
 
-The site is a pure reader. It validates and renders source; it does not mutate content, author
-notes, or cast artifacts. The only client-side code is progressive enhancement — the homepage
-filtration control — and there is no UI framework.
+The Astro application is a pure reader. It validates and renders source but does not mutate notes
+or cast artifacts. The only client-side code is progressive enhancement — the homepage filtration
+control — and there is no UI framework. Mutation is confined to explicit build-time commands.
 
-## Generation and citation audit
+## Generation, citation audit, and casting
 
 `site/scripts/generate-kind-manifest.ts` derives `src/types/kinds.generated.json` from the live kind
 definitions, their `kind.md` and `example.md`, and the collection table, through
@@ -352,10 +356,16 @@ and gates. See the shared
 [citation-audit architecture](https://github.com/jmchilton/foundry-lib/blob/main/docs/architecture/audit-citations.md)
 for the separation between evidence acquisition, replay, and adjudication.
 
+Casting is the other build-time path. `cast-corpus.ts` projects the shared content index into the
+two maps the cast engine consumes. `cast-spec.ts` composes that corpus with the Kind definitions,
+reference contract, target-independent hooks, and supported modes. The local scripts are thin
+terminal adapters over `@galaxy-foundry/cast`: one casts a named Mold, and one checks or rewrites
+the committed set. The target file under `casts/claude/` owns bundle placement and runtime-path
+constraints; the Environment Kind owns which companions are bundled. TDA code contributes the
+domain prose around those shared mechanics, not a second caster.
+
 ## Deliberate absences
 
-- **No caster.** `@galaxy-foundry/cast` is not installed, there is no `casts/` tree, and no command
-  turns a Mold into an artifact. Cast modes are narrowed to what this instance can honor.
 - **No package workspace.** One application, so contracts live beside it. Extracting them becomes
   worthwhile when a second consumer needs them without depending on the Astro project.
 - **No server or database.** The output is a static site with a static search index.
@@ -366,23 +376,25 @@ aspirational or the checkout is broken.
 
 ## Code orientation
 
-| Concern | Primary location |
-|---|---|
-| note kinds, context, enumeration | `site/src/types/` |
-| schema and collection composition | `site/src/lib/frontmatter-schema.ts` |
-| Astro collection wiring | `site/src/content.config.ts` |
-| instance registries | `site/src/lib/registries.ts` and its loaders |
-| file discovery, ids, link map | `site/src/lib/content-reader.ts` |
-| Markdown link adapters | `site/src/lib/remark-wiki-links.ts`, `render-vault-doc.ts` |
-| companion measurement | `site/src/lib/companions.ts` |
-| presentation registries | `site/src/lib/tags.ts`, `design-records.ts`, `detail-routes.ts` |
-| shell composition and identity | `site/src/layouts/Base.astro`, `site/src/lib/site-identity.ts` |
-| shared and local visual acceptance | `site/src/pages/gallery/`, `site/src/lib/gallery.ts` |
-| domain furniture | `site/src/components/`, `site/src/lib/motifs.ts` |
-| routes | `site/src/pages/` |
-| corpus and contract tests | `site/tests/` |
-| kind-manifest generator | `site/scripts/` |
-| citation-audit binding and test | `site/src/lib/citation-audit.ts`, `site/tests/citation-audit.test.ts` |
-| citation policy and committed evidence | `audit-citations.config.json`, `audit/` |
+| Concern                                | Primary location                                                                |
+| -------------------------------------- | ------------------------------------------------------------------------------- |
+| note kinds, context, enumeration       | `site/src/types/`                                                               |
+| schema and collection composition      | `site/src/lib/frontmatter-schema.ts`                                            |
+| Astro collection wiring                | `site/src/content.config.ts`                                                    |
+| instance registries                    | `site/src/lib/registries.ts` and its loaders                                    |
+| file discovery, ids, link map          | `site/src/lib/content-reader.ts`                                                |
+| Markdown link adapters                 | `site/src/lib/remark-wiki-links.ts`, `render-vault-doc.ts`                      |
+| companion measurement                  | `site/src/lib/companions.ts`                                                    |
+| presentation registries                | `site/src/lib/tags.ts`, `design-records.ts`, `detail-routes.ts`                 |
+| shell composition and identity         | `site/src/layouts/Base.astro`, `site/src/lib/site-identity.ts`                  |
+| shared and local visual acceptance     | `site/src/pages/gallery/`, `site/src/lib/gallery.ts`                            |
+| domain furniture                       | `site/src/components/`, `site/src/lib/motifs.ts`                                |
+| routes                                 | `site/src/pages/`                                                               |
+| corpus and contract tests              | `site/tests/`                                                                   |
+| kind-manifest generator                | `site/scripts/`                                                                 |
+| cast composition and commands          | `site/src/lib/cast-*.ts`, `site/scripts/cast.ts`, `site/scripts/check-casts.ts` |
+| cast target and committed bundles      | `casts/`                                                                        |
+| citation-audit binding and test        | `site/src/lib/citation-audit.ts`, `site/tests/citation-audit.test.ts`           |
+| citation policy and committed evidence | `audit-citations.config.json`, `audit/`                                         |
 
 Update this record when a component, dependency seam, entry point, or deliberate absence changes.

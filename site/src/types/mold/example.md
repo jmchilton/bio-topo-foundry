@@ -6,7 +6,7 @@ tags:
   - application/structure-qa
 references:
   - kind: environment
-    ref: example-tda-fixture-environment
+    ref: "[[example-tda-fixture-environment]]"
     used_at: runtime
     load: upfront
     mode: verbatim
