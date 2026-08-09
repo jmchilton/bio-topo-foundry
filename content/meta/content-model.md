@@ -7,7 +7,7 @@ order: 2
 status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 4
+revision: 5
 tags:
   - meta
 ---
@@ -102,7 +102,7 @@ through the shared policy table.
 `meta_tags.yml` declares a closed vocabulary grouped into four facets. Three describe the subject
 of a note — `method` (the technique), `application` (the bioinformatics problem), `modality` (the
 input data object) — and the fourth, `meta`, marks a note as being about the Foundry itself. What a
-note *is* is carried by `type`, so no facet describes artifact type or maturation stage.
+note _is_ is carried by `type`, so no facet describes artifact type or maturation stage.
 
 Membership is declared, never parsed from the `/` prefix; `meta` is a bare member and is the case
 that proves it. Every value carries a one-line gloss and there is no free-form escape hatch. The
@@ -128,7 +128,7 @@ when the literal token is the subject.
 
 ## Typed references
 
-A `mold` may carry `references`, a manifest of what casting the Mold would need. Each entry declares
+A `mold` may carry `references`, the manifest casting consumes. Each entry declares
 a `kind`, a `ref`, and four behavior fields — `used_at`, `load`, `mode`, `evidence` — plus optional
 `purpose`, `trigger`, and `verification`. Two of those are conditionally required: an `on-demand`
 reference must state its trigger, and a `hypothesis`-grade reference must state how it would be
@@ -136,14 +136,14 @@ verified.
 
 The behavior vocabularies are inherited from `@galaxy-foundry/reference-contract`. The reference
 **kinds** are this instance's, declared in `reference_contract.yml`, which holds exactly one today:
-`environment`. Cast modes are narrowed to `verbatim`, because a mode is a commitment to machinery
-and this Foundry has no caster — declaring one it could not honor would produce manifests that
-validate and cannot be cast. Both narrowings are asserted against the corpus: the contract declares
-exactly the kinds and modes the current Molds actually use.
+`environment`. Cast modes are narrowed to `verbatim`, because a mode is a commitment to implemented
+machinery rather than a label for intended behavior. Both narrowings are asserted against the
+corpus: the contract declares exactly the kinds and modes the current Molds actually use.
 
-A reference's vocabulary is checked and its target is not. `ref` is resolved through the same link
-map at render time, and an unresolved one renders as plain text rather than failing a test. The body
-link check covers prose only; this is the half still open.
+A reference kind also declares whether its target is a wiki link or a path. The assembled schema
+enforces that shape, and the corpus test resolves every Mold reference through the same alias-aware
+content index used by rendering and casting. An unresolved typed reference therefore fails before
+it can become plain text on the site or a missing source during casting.
 
 ## Companions
 

@@ -9,7 +9,7 @@ tags:
   - modality/molecular-structure
 references:
   - kind: environment
-    ref: open-topoqa-scorer-environment
+    ref: "[[open-topoqa-scorer-environment]]"
     used_at: runtime
     load: upfront
     mode: verbatim

@@ -1,0 +1,57 @@
+{
+  "provenance_schema_version": 4,
+  "cast_target": "claude",
+  "mold": {
+    "name": "score-docking-poses",
+    "path": "content/molds/score-docking-poses/index.md",
+    "content_hash": "5d005415e198962379b2ea4b081d51d87e70dede6bcf9b58c0e6112558bd965b",
+    "commit": "7fc30dfe5822238beaba9f693723ed2719bb0738"
+  },
+  "cast_at": "2026-08-08T16:56:45.728Z",
+  "refs": [
+    {
+      "kind": "environment",
+      "mode": "verbatim",
+      "ref": "[[open-topoqa-scorer-environment]]",
+      "src": "content/environments/open-topoqa-scorer/index.md",
+      "dst": "references/environments/open-topoqa-scorer.md",
+      "used_at": "runtime",
+      "load": "upfront",
+      "evidence": "corpus-observed",
+      "purpose": "Supplies the runnable featurizer and scorer together with their solved package closure.",
+      "src_hash": "f702780cfdc01a592f25ed45a44853505b72619d265827e6785ae06f13b59e54",
+      "dst_hash": "f702780cfdc01a592f25ed45a44853505b72619d265827e6785ae06f13b59e54",
+      "source": "deterministic"
+    },
+    {
+      "kind": "environment",
+      "mode": "verbatim",
+      "ref": "[[open-topoqa-scorer-environment]]",
+      "src": "content/environments/open-topoqa-scorer/pixi.lock",
+      "dst": "references/environments/pixi.lock",
+      "used_at": "runtime",
+      "load": "upfront",
+      "evidence": "corpus-observed",
+      "purpose": "Supplies the runnable featurizer and scorer together with their solved package closure.",
+      "companion_of": "references/environments/open-topoqa-scorer.md",
+      "src_hash": "b4a52262e7a30a6fdd9c68fe873b545a7ef8ba9c0af8a81dd2b296c55196f627",
+      "dst_hash": "b4a52262e7a30a6fdd9c68fe873b545a7ef8ba9c0af8a81dd2b296c55196f627",
+      "source": "deterministic"
+    },
+    {
+      "kind": "environment",
+      "mode": "verbatim",
+      "ref": "[[open-topoqa-scorer-environment]]",
+      "src": "content/environments/open-topoqa-scorer/pixi.toml",
+      "dst": "references/environments/pixi.toml",
+      "used_at": "runtime",
+      "load": "upfront",
+      "evidence": "corpus-observed",
+      "purpose": "Supplies the runnable featurizer and scorer together with their solved package closure.",
+      "companion_of": "references/environments/open-topoqa-scorer.md",
+      "src_hash": "4cd0a2523686d507ff7da7feacc0d668dfa9f794a4e1e9e752ecd991e16a0835",
+      "dst_hash": "4cd0a2523686d507ff7da7feacc0d668dfa9f794a4e1e9e752ecd991e16a0835",
+      "source": "deterministic"
+    }
+  ]
+}

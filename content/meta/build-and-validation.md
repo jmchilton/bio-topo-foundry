@@ -7,7 +7,7 @@ order: 4
 status: revised
 created: 2026-08-08
 revised: 2026-08-08
-revision: 2
+revision: 3
 tags:
   - meta
 ---
@@ -30,29 +30,35 @@ edit content, registries, or kind definitions
       corpus, contract, and built-output tests
                     │
                     ▼
+           committed cast drift check
+                    │
+                    ▼
               Astro typecheck
                     │
                     ▼
            production static build
 ```
 
-Every command runs from `site/`. There is no casting step in this flow, and no repository-root
-toolchain: the recipes under `recipes/` are built by pixi and rattler-build outside it.
+Every command runs from `site/`. The recipes under `recipes/` are built by pixi and rattler-build
+outside this flow.
 
 ## Commands
 
-| Command | What it does |
-|---|---|
-| `pnpm validate` | The gate. Runs the four stages above in order. |
-| `pnpm test` | Vitest once, without the manifest check or the Astro stages. |
-| `pnpm typecheck` | `astro check` over components, pages, and TypeScript. |
-| `pnpm build` | Forced production build into `dist/`, including the Pagefind index. |
-| `pnpm kinds` | Rewrites `src/types/kinds.generated.json` from the live definitions. |
-| `pnpm check:kinds` | Fails when that file is byte-stale. |
-| `pnpm audit:citations` | Replays citation resolution offline from committed evidence and rewrites the run and report. |
-| `pnpm audit:citations:refresh` | Re-queries live providers before producing the run and report. |
-| `pnpm audit:citations:scan` | Extracts citation candidates without resolving them. |
-| `pnpm dev` | The local reader. Not a check. |
+| Command                        | What it does                                                                                 |
+| ------------------------------ | -------------------------------------------------------------------------------------------- |
+| `pnpm validate`                | The gate. Runs the five stages above in order.                                               |
+| `pnpm test`                    | Vitest once, without the manifest check or the Astro stages.                                 |
+| `pnpm typecheck`               | `astro check` over components, pages, and TypeScript.                                        |
+| `pnpm build`                   | Forced production build into `dist/`, including the Pagefind index.                          |
+| `pnpm kinds`                   | Rewrites `src/types/kinds.generated.json` from the live definitions.                         |
+| `pnpm check:kinds`             | Fails when that file is byte-stale.                                                          |
+| `pnpm cast <mold>`             | Rebuilds one Mold's bundle for the default target; add `--check` to inspect only.            |
+| `pnpm casts`                   | Rebuilds every already-committed bundle.                                                     |
+| `pnpm check:casts`             | Re-derives every already-committed bundle and fails on errors or byte drift.                 |
+| `pnpm audit:citations`         | Replays citation resolution offline from committed evidence and rewrites the run and report. |
+| `pnpm audit:citations:refresh` | Re-queries live providers before producing the run and report.                               |
+| `pnpm audit:citations:scan`    | Extracts citation candidates without resolving them.                                         |
+| `pnpm dev`                     | The local reader. Not a check.                                                               |
 
 One thing about `pnpm validate` is worth knowing before it surprises someone: the built-output test
 runs a production build of its own inside Vitest, so the site is built twice — once to be read by
@@ -69,7 +75,7 @@ failure, and each kind's `example.md` is parsed against its own schema so the do
 rot into something that would not validate.
 
 **Drift, in both directions.** A one-way check is half a check. The corpus may not carry a tag the
-registry does not declare, *and* the registry may not declare a tag no note carries — an unused
+registry does not declare, _and_ the registry may not declare a tag no note carries — an unused
 value is a browse axis that renders an empty page. The reference contract is held the same way: it
 declares exactly the reference kinds and cast modes the current Molds actually use.
 
@@ -80,6 +86,15 @@ compared byte-for-byte against what the definitions currently produce.
 **Links.** Every `[[Target]]` written in the body of a typed note is resolved through the same map
 the renderer uses, so a link naming nothing fails validation rather than waiting to be noticed. Note
 aliases are checked to land on their own notes, which turns silent address shadowing into a failure.
+Each typed Mold reference is also shape-checked against its reference kind and resolved through the
+same alias-aware content index the caster consumes.
+
+**Cast reproducibility.** The cast integration test checks the boundary itself: the site and caster
+share aliases and frontmatter; target-required outputs and resolved references exist; Kind-bundled
+companions appear in provenance; foundry-only companions do not; and generated documents obey the
+target's frontmatter, title, and forbidden-path constraints. `pnpm check:casts` then runs the actual
+cast engine in check mode, so changes to source, policy, hooks, or generated bytes fail until the
+bundle is regenerated and reviewed.
 
 **Citation identity.** `tests/citation-audit.test.ts` extracts scholarly identifiers and replays
 their resolution from committed provider evidence, without network access. It fails on missing
@@ -113,6 +128,11 @@ offline drift guard. `audit/provider-evidence.json` changes only through a live 
 report deliberately carries no observation timestamp, so the scheduled workflow can distinguish a
 substantive provider or verdict change from timestamp-only churn.
 
+`pnpm cast <mold>` produces a target bundle under `casts/` from the Mold, its typed references, the
+content index, Kind companion declarations, the reference contract, and target policy. The generated
+document, packaged references, and `_provenance.json` are committed. `pnpm check:casts` is their
+drift guard; timestamps that record only the check run are excluded from the provenance comparison.
+
 ## Continuous integration and deployment
 
 `.github/workflows/ci.yml` runs `pnpm validate` from `site/` on every pull request and every push to
@@ -130,20 +150,21 @@ committed evidence offline.
 
 ## The casting boundary
 
-Casting is designed and not implemented. What exists is the source side: Molds carry typed reference
-manifests, and the reference contract narrows cast modes to `verbatim` because a mode is a
-commitment to machinery. What does not exist is any machinery — no caster command, no `casts/`
-directory, no artifact.
+Casting is implemented for the committed target and the `verbatim` mode. `@galaxy-foundry/cast`
+owns command parsing, contract loading, reference and companion assembly, target placement,
+provenance, reconciliation, and the multi-Mold sweep. This instance supplies its content-index
+projection, Kind layouts, reference vocabulary, target declaration, and TDA-specific document
+sections. That line is deliberate: filesystem walking, wiki-link aliases, and bundle mechanics do
+not fork here, while domain language and domain contracts do not move upstream.
 
-Until it does, prose says *would cast* and never implies an artifact is available. A reader who acts
-on a present-tense sentence, goes looking for the output, and finds nothing cannot tell whether the
-record was aspirational or the checkout is broken.
+The first committed bundle casts `score-docking-poses` as a Claude skill and carries the
+`open-topoqa-scorer` Environment note with its manifest and lockfile. Evaluation and scenario files
+stay Foundry-side because the Mold Kind declares them `foundry-only`.
 
 ## Known gaps
 
-- A typed reference's `ref` target is not resolved by any check. Its vocabulary is validated and its
-  target is not, so a manifest may point at nothing and pass. The body-link check covers prose only;
-  [[content-model]] states the same gap from the contract side.
+- The cast sweep checks bundles that are already committed; it does not require every new Mold to
+  have an artifact for every target. Casting remains an explicit publication decision.
 - A backticked `[[Target]]` is invisible to the link check by construction, since the rewriter and
   the checker both walk text nodes. Closing that mechanically would fail every correct mention of
   the syntax, so the rule carries it instead.
