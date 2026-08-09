@@ -15,4 +15,4 @@ persistence diagrams as arrays, which is what a scripted analysis usually wants.
 entirely from conda-forge, so it needs no in-repo recipe, but it is not a single Bioconda
 package and so does not pick up an automatic container.
 
-See [[ripser-cpp]] for why two fixtures pin a package of the same name.
+See [[ripser-cpp-environment]] for why two fixtures pin a package of the same name.

@@ -14,7 +14,7 @@ carries meaning and an undirected Rips complex would discard it — directed net
 connectomes being the usual motivation.
 
 No conda package exists, so this fixture stages an in-repo recipe, capping it at L1. The recipe
-is verified building green on linux-64. Like [[giotto-ph]] it builds from git rather than a
+is verified building green on linux-64. Like [[giotto-ph-recipe]] it builds from git rather than a
 tarball because the C++ engine (luetge/flagser) arrives as a submodule, and it needs `make`, a
 force-included `<cstdint>`, and its `pkg_resources.extern` version import repointed at the
 standalone `packaging` distribution.
