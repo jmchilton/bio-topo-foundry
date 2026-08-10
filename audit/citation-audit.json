@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-10T01:28:16.110Z",
+  "generatedAt": "2026-08-10T01:39:01.063Z",
   "corpus": {
     "digest": "47a77779838f74e72d4435dcda4594ae60625896dcd2c17d4ce3b58aa9411766",
-    "headRevision": "5d215f15d11531826947f4f9b3f45946a5fb57c7",
+    "headRevision": "2dc162d94a4995b3824e19824f90ddc4c26e9bf8",
     "workingTreeDirty": false
   },
   "evidenceSnapshotDigest": "eee2b6412352cfb89687fe55a3b580d3572f9d10b92755b52a22ab4c6e02d50a",
@@ -3082,9 +3082,19 @@
         "url": "https://bitbucket.org/phat-code/phat"
       },
       {
+        "artifactPath": "content/packages/pydowker.md",
+        "line": 5,
+        "url": "https://github.com/nihell/pyDowker"
+      },
+      {
         "artifactPath": "content/packages/pyflagser.md",
         "line": 5,
         "url": "https://github.com/giotto-ai/pyflagser"
+      },
+      {
+        "artifactPath": "content/packages/pyrivet.md",
+        "line": 5,
+        "url": "https://github.com/rivetTDA/rivet-python"
       },
       {
         "artifactPath": "content/packages/ripser-cpp.md",
@@ -3095,6 +3105,11 @@
         "artifactPath": "content/packages/ripser-py.md",
         "line": 5,
         "url": "https://github.com/scikit-tda/ripser.py"
+      },
+      {
+        "artifactPath": "content/packages/rivet.md",
+        "line": 5,
+        "url": "https://github.com/rivetTDA/rivet"
       },
       {
         "artifactPath": "content/packages/topodockq.md",
