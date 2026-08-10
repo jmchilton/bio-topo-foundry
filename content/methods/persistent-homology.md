@@ -77,7 +77,7 @@ Eleven fixtures here compute persistent homology, and they are not interchangeab
 
 - **[[gudhi-environment]]** — the broadest: Rips, alpha, witness, simplex trees, plus the
   representations layer. The default when you do not know yet what you need.
-- **[[ripser-cpp]]** and **[[ripser-py]]** — Vietoris–Rips only, and the fastest thing available at
+- **[[ripser-cpp-environment]]** and **[[ripser-py-environment]]** — Vietoris–Rips only, and the fastest thing available at
   it. The right answer when Rips is what you want.
 - **[[giotto-ph-environment]]** — parallelized Rips, scikit-learn-shaped API.
 - **[[phat-environment]]** — matrix reduction only; you bring the boundary matrix. A building

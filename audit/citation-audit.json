@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-08T17:59:45.110Z",
+  "generatedAt": "2026-08-09T18:13:33.166Z",
   "corpus": {
     "digest": "47a77779838f74e72d4435dcda4594ae60625896dcd2c17d4ce3b58aa9411766",
-    "headRevision": "e9abd8efebf6533f671fa10b20d314a0314722a2",
+    "headRevision": "024062afc78a7a4b5cbb9521e1b6a556576b80d3",
     "workingTreeDirty": false
   },
   "evidenceSnapshotDigest": "eee2b6412352cfb89687fe55a3b580d3572f9d10b92755b52a22ab4c6e02d50a",
@@ -2907,6 +2907,16 @@
   "diagnostics": {
     "excludedUrls": [
       {
+        "artifactPath": "content/packages/dionysus.md",
+        "line": 5,
+        "url": "https://github.com/mrzv/dionysus"
+      },
+      {
+        "artifactPath": "content/packages/gudhi.md",
+        "line": 5,
+        "url": "https://github.com/GUDHI/gudhi-devel"
+      },
+      {
         "artifactPath": "content/packages/hiponet.md",
         "line": 5,
         "url": "https://github.com/KrishnaswamyLab/HiPoNet"
@@ -3055,6 +3065,21 @@
         "artifactPath": "content/packages/petls.md",
         "line": 255,
         "url": "https://reporter.nih.gov/search/DSvtOjSUDkGqTPYpit3gCg/project-details/10551576"
+      },
+      {
+        "artifactPath": "content/packages/phat.md",
+        "line": 5,
+        "url": "https://bitbucket.org/phat-code/phat"
+      },
+      {
+        "artifactPath": "content/packages/ripser-cpp.md",
+        "line": 5,
+        "url": "https://github.com/Ripser/ripser"
+      },
+      {
+        "artifactPath": "content/packages/ripser-py.md",
+        "line": 5,
+        "url": "https://github.com/scikit-tda/ripser.py"
       },
       {
         "artifactPath": "content/packages/topodockq.md",

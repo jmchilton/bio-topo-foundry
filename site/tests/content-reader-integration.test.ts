@@ -48,10 +48,14 @@ describe("shared content-reader binding", () => {
       path: "environments/petls",
     });
 
-    // A fixture with no package of the same name keeps the bare slug for itself.
-    expect(map.get("gudhi")).toMatchObject({ path: "environments/gudhi" });
-    expect(map.get("gudhi-environment")).toMatchObject({
-      path: "environments/gudhi",
+    // A fixture with no package of the same name keeps the bare slug for itself. The example is an
+    // enabling dependency rather than a TDA library, because those are ruled out of the `package`
+    // kind by decision rather than by nobody having written them yet — so the case stays covered
+    // however many profiles the corpus grows. A TDA fixture named here would quietly be recording
+    // which profiles were still missing, and would fail the day one was added.
+    expect(map.get("mmseqs2")).toMatchObject({ path: "environments/mmseqs2" });
+    expect(map.get("mmseqs2-environment")).toMatchObject({
+      path: "environments/mmseqs2",
     });
   });
 
