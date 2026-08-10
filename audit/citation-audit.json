@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-09T18:13:33.166Z",
+  "generatedAt": "2026-08-10T01:28:16.110Z",
   "corpus": {
     "digest": "47a77779838f74e72d4435dcda4594ae60625896dcd2c17d4ce3b58aa9411766",
-    "headRevision": "024062afc78a7a4b5cbb9521e1b6a556576b80d3",
+    "headRevision": "5d215f15d11531826947f4f9b3f45946a5fb57c7",
     "workingTreeDirty": false
   },
   "evidenceSnapshotDigest": "eee2b6412352cfb89687fe55a3b580d3572f9d10b92755b52a22ab4c6e02d50a",
@@ -2912,6 +2912,16 @@
         "url": "https://github.com/mrzv/dionysus"
       },
       {
+        "artifactPath": "content/packages/giotto-ph.md",
+        "line": 5,
+        "url": "https://github.com/giotto-ai/giotto-ph"
+      },
+      {
+        "artifactPath": "content/packages/giotto-tda.md",
+        "line": 5,
+        "url": "https://github.com/giotto-ai/giotto-tda"
+      },
+      {
         "artifactPath": "content/packages/gudhi.md",
         "line": 5,
         "url": "https://github.com/GUDHI/gudhi-devel"
@@ -3070,6 +3080,11 @@
         "artifactPath": "content/packages/phat.md",
         "line": 5,
         "url": "https://bitbucket.org/phat-code/phat"
+      },
+      {
+        "artifactPath": "content/packages/pyflagser.md",
+        "line": 5,
+        "url": "https://github.com/giotto-ai/pyflagser"
       },
       {
         "artifactPath": "content/packages/ripser-cpp.md",

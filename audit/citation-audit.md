@@ -155,5 +155,5 @@ None.
 
 ## Extractor diagnostics
 
-- Generic/non-scholarly URLs excluded: 58
+- Generic/non-scholarly URLs excluded: 61
 - Potential free-form `Author Year` patterns measured (diagnostic only): 2
