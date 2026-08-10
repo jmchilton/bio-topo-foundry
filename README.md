@@ -6,6 +6,25 @@ and training.
 
 Site: <https://jmchilton.github.io/bio-topo-foundry/>
 
+## Built on the Foundry Pattern
+
+This repository is one instance of the
+[**Foundry Pattern**](https://github.com/galaxyproject/foundry-pattern) — the stack-independent
+design pattern behind a knowledge base that compiles itself into frozen, provenance-carrying agent
+artifacts. Its case, in a line: *agent skills should be a packaging format, not a source format*. A
+skill is a compile target cast from an inspectable corpus, and the corpus rather than the skill is
+the source of record.
+
+The substrate is shared with the pattern's other instances — the knowledge base, Mold → Cast →
+provenance, and the human-readable reading surface. What varies is what a domain extends it with.
+This is the third instance, and it adds three things this domain forced into existence: replication
+as a first-class evidence-bearing kind, licensing typed on the note with deny-by-default resolution,
+and a packaging kind for the builds no channel supplies.
+[Architecture](https://jmchilton.github.io/bio-topo-foundry/design/architecture/) tells the
+inherited-versus-added story in full.
+
+Read the pattern: <https://galaxyproject.github.io/foundry-pattern/>
+
 ## Why
 
 Topological data analysis has a large and growing bioinformatics literature, and a link list of the

@@ -7,7 +7,7 @@ order: 3
 status: draft
 created: 2026-08-08
 revised: 2026-08-09
-revision: 2
+revision: 3
 tags:
   - meta
 ---
@@ -73,6 +73,9 @@ kind machinery, the tag-registry format, the licence-policy table, the reference
 reading shell — and ships in the installed `@galaxy-foundry/*` packages. The **vocabulary** is ours:
 no shared kind *definitions* exist in those packages, and that is deliberate. The framework is
 shared; what a Foundry is about is not.
+
+The pattern itself is documented at <https://galaxyproject.github.io/foundry-pattern/>, which is
+where its abstract spec, its argument, and the diff between instances live.
 
 From the pattern this instance inherits the source-to-cast distinction, the provenance requirement,
 typed references, progressive disclosure, strict content contracts, a declared tag vocabulary, and a
