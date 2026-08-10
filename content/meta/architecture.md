@@ -6,8 +6,8 @@ record_kind: foundation
 order: 3
 status: draft
 created: 2026-08-08
-revised: 2026-08-08
-revision: 1
+revised: 2026-08-09
+revision: 2
 tags:
   - meta
 ---
@@ -38,8 +38,8 @@ answered better by the thing that has them.
             │                       │
             └───────────┬───────────┘
                         ▼
-              validated and rendered today
-              cast into artifacts in future
+              validated, rendered, and cast
+               into committed bundles
 ```
 
 Two things sit at the centre of that diagram rather than at its end. A **replication experiment** is
@@ -56,14 +56,15 @@ generated manifest and on the site.
 - A **research pole** describes work at the frontier: the techniques, the external sources that
   introduce them, and eventually original scholarship of our own.
 - A **delivery pole** describes what it takes to run that work: the upstream software, the recipe
-  that builds it when no channel does, and the graded environment that executes it.
+  that builds it when no channel does, and the graded environment that assembles software into
+  something that installs and runs.
 - **Connective tissue** joins the two: a method note is the concept both poles refer to, and a
   replication experiment is the evidence that the delivery pole actually reproduces the research
   pole's claim.
 
 [[content-model]] owns what each kind requires and how they address each other. What matters here is
-that the two poles are separate kinds rather than fields on one kind, so a thorough description can
-never be mistaken for a working install — [[guiding-principles]] holds that argument.
+that describing software and running it are different kinds, so a thorough description can never be
+counted as a working install — [[guiding-principles]] holds that argument.
 
 ## What is inherited, what changes, what is added
 
@@ -105,8 +106,8 @@ documentation carries the current example.
   experiment records what happened when it did. The boundary is why a claim about behaviour is
   supposed to name evidence rather than a reading.
 - **Present versus planned machinery.** The content contract, validator, generators, citation audit,
-  and site exist. A caster, a cast tree, a package workspace, and Galaxy delivery kinds do not. A
-  record may state a contract for deferred machinery; it must not describe it as running.
+  caster, and site exist. A package workspace and Galaxy delivery kinds do not. A record may state a
+  contract for deferred machinery; it must not describe it as running.
 
 ## Focused records
 
@@ -131,9 +132,9 @@ Named rather than overlooked, because a missing record reads as an oversight oth
 - **Molds and the Mold spec.** One Mold exists, [[score-docking-poses]]. One note is not enough to
   argue an authoring contract from, and its kind documentation carries the current shape. These
   become records when a second and third Mold show what actually recurs.
-- **Casting.** Deferred entirely. There is no caster, and the reference contract narrows cast modes
-  to the single one this instance could honour. Writing a casting record now would describe
-  machinery by imagining it.
+- **Casting.** Implemented, but narrowly: one target, one mode, one committed bundle.
+  [[build-and-validation]] owns the boundary and [[repository-layout]] owns where bundles sit. A
+  record earns its place when there is more than one target to arbitrate between.
 - **Corpus.** The sibling instances have a record for how external sources are ingested without
   becoming a mirror. Here the same pressure is currently answered by the source-authority principle
   and by the citation audit, which checks that a citation names the work its own bibliography
@@ -147,7 +148,7 @@ Named rather than overlooked, because a missing record reads as an oversight oth
 
 Independent of each other; each is something that must stay true, not a step in a sequence.
 
-- The knowledge base is authored for people and remains the source of truth for any future cast.
+- The knowledge base is authored for people and remains the source of truth for any cast.
 - A claim about behaviour is recoverable from evidence — a run, a manifest, a licence file — rather
   than from a reading or from model memory.
 - Description and execution stay separately typed, so coverage of one is never reported as coverage

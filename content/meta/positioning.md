@@ -7,7 +7,7 @@ order: 1
 status: revised
 created: 2026-08-08
 revised: 2026-08-09
-revision: 2
+revision: 3
 tags:
   - meta
 ---
@@ -50,9 +50,9 @@ unredistributable, the remaining move is to reimplement it from the published de
 The far end is what someone else uses without knowing any of this happened: Galaxy tools and
 workflows, training material, and agent-runnable analysis procedures — Molds that state what to do
 and declare typed references to the knowledge that doing it would need. This is the least built of
-the three. One Mold exists, [[score-docking-poses]], and there are no Galaxy kinds, no wrappers, and
-no training material yet. Naming the gap is deliberate: a Foundry that stops after packaging is a
-distribution channel.
+the three. One Mold exists, [[score-docking-poses]], and it casts to a Claude skill; there are no
+Galaxy kinds, no wrappers, and no training material yet. Naming the gap is deliberate: a Foundry
+that stops after packaging is a distribution channel.
 
 Nothing enforces progression along that arc. A note may sit anywhere on it, most sit early, and no
 kind requires a downstream kind to exist — the maturity of a note is visible from its own typed
