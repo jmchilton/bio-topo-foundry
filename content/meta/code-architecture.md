@@ -233,6 +233,14 @@ Foundries, not a local preference. The library's
 [package-boundary rationale](https://github.com/jmchilton/foundry-lib/blob/main/docs/architecture/package-boundaries.md)
 explains why the reusable mechanism stops short of owning those kinds.
 
+The Paper kind is the one exception to a kind being wholly local, and it is a deliberate one. Its
+source-facing frontmatter — bibliographic identity, license posture, and read coverage — is the
+shared contract from
+[`@galaxy-foundry/source-note`](https://github.com/jmchilton/foundry-lib/tree/main/packages/source-note),
+spread into the kind and refined by that package's coherence rules. Describing someone else's work
+is the same problem in every Foundry; what stays local is which kinds are source notes, and
+everything that describes the note rather than its source.
+
 ## Contract composition
 
 [`site/src/lib/frontmatter-schema.ts`](https://github.com/jmchilton/bio-topo-foundry/blob/main/site/src/lib/frontmatter-schema.ts)

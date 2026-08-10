@@ -1,17 +1,24 @@
 import {
-  declaresVerbatimCarry,
-  resolveLicenseRow,
-} from "@galaxy-foundry/license-policy";
+  sourceNoteCoherence,
+  sourceNoteFields,
+} from "@galaxy-foundry/source-note";
 import { z } from "zod";
 
 import { defineKind } from "../context";
 import type { KindContext } from "../context";
 
-/** The two summary postures a Source note may declare, per the glossary. */
-export const SUMMARY_POSTURES = [
-  "own-words-summary",
-  "license-aware-summary",
-] as const;
+export { SUMMARY_POSTURES } from "@galaxy-foundry/source-note";
+
+/**
+ * The source-note contract, read against this instance's license table rather than the bundled one.
+ *
+ * `licenseId` is passed through so a bad id fails with this Foundry's wording, which the tag and
+ * reference primitives in {@link KindContext} also do.
+ */
+const sourceNote = (ctx: KindContext) => ({
+  licensePolicy: ctx.licensePolicy,
+  licenseId: ctx.licenseId,
+});
 
 export const kind = defineKind({
   kind: "paper",
@@ -28,15 +35,7 @@ export const kind = defineKind({
         type: z.literal("paper"),
         title: z.string().min(1),
         summary: z.string().min(20).max(160),
-        citation: z.string().min(20),
-        source_url: z.url(),
-        source_license: z.discriminatedUnion("status", [
-          z
-            .object({ status: z.literal("declared"), id: ctx.licenseId })
-            .strict(),
-          z.object({ status: z.literal("missing") }).strict(),
-        ]),
-        derived: z.enum(SUMMARY_POSTURES),
+        ...sourceNoteFields(sourceNote(ctx)),
         ...ctx.base,
       })
       .strict(),
@@ -45,24 +44,8 @@ export const kind = defineKind({
    * Summary posture is determined by the source's license, not chosen by the author.
    *
    * A note may always fall back to own words; it may only claim to carry upstream expression when
-   * the source's row permits it. An undeclared license resolves deny-by-default, so `missing`
-   * forecloses the license-aware posture without a separate branch here.
+   * the source's row permits it, and then only with the notice and license copy that row obliges.
    */
-  refine: (frontmatter, refinement, ctx: KindContext) => {
-    if (!declaresVerbatimCarry(frontmatter.derived)) return;
-
-    const licenseId =
-      frontmatter.source_license.status === "declared"
-        ? frontmatter.source_license.id
-        : undefined;
-    if (resolveLicenseRow(ctx.licensePolicy, licenseId).policy === "verbatim-ok")
-      return;
-
-    refinement.addIssue({
-      code: "custom",
-      path: ["derived"],
-      message:
-        "license-aware-summary requires a source license whose policy row is verbatim-ok",
-    });
-  },
+  refine: (frontmatter, refinement, ctx: KindContext) =>
+    sourceNoteCoherence(sourceNote(ctx))(frontmatter, refinement),
 });
