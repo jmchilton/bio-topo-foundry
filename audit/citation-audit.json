@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-10T01:39:01.063Z",
+  "generatedAt": "2026-08-10T01:46:04.286Z",
   "corpus": {
     "digest": "47a77779838f74e72d4435dcda4594ae60625896dcd2c17d4ce3b58aa9411766",
-    "headRevision": "2dc162d94a4995b3824e19824f90ddc4c26e9bf8",
+    "headRevision": "a1520de888038d8b2210ebedfe0fd55dff8bbe51",
     "workingTreeDirty": false
   },
   "evidenceSnapshotDigest": "eee2b6412352cfb89687fe55a3b580d3572f9d10b92755b52a22ab4c6e02d50a",
@@ -2957,6 +2957,11 @@
         "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/b284aad9fb5c6d74b9535a30ece69e1c-Paper-Conference.pdf"
       },
       {
+        "artifactPath": "content/packages/kmapper.md",
+        "line": 5,
+        "url": "https://github.com/scikit-tda/kepler-mapper"
+      },
+      {
         "artifactPath": "content/packages/open-topodockq-featurizer.md",
         "line": 5,
         "url": "https://github.com/jmchilton/open-topodockq-featurizer"
@@ -2970,6 +2975,11 @@
         "artifactPath": "content/packages/open-topoqa-scorer.md",
         "line": 5,
         "url": "https://github.com/jmchilton/open-topoqa-scorer"
+      },
+      {
+        "artifactPath": "content/packages/persim.md",
+        "line": 5,
+        "url": "https://github.com/scikit-tda/persim"
       },
       {
         "artifactPath": "content/packages/petls-pytorch.md",
@@ -3110,6 +3120,16 @@
         "artifactPath": "content/packages/rivet.md",
         "line": 5,
         "url": "https://github.com/rivetTDA/rivet"
+      },
+      {
+        "artifactPath": "content/packages/scikit-tda.md",
+        "line": 5,
+        "url": "https://github.com/scikit-tda/scikit-tda"
+      },
+      {
+        "artifactPath": "content/packages/tadasets.md",
+        "line": 5,
+        "url": "https://github.com/scikit-tda/tadasets"
       },
       {
         "artifactPath": "content/packages/topodockq.md",
