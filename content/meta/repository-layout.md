@@ -6,8 +6,8 @@ record_kind: infrastructure
 order: 3
 status: revised
 created: 2026-08-08
-revised: 2026-08-09
-revision: 5
+revised: 2026-08-10
+revision: 6
 tags:
   - meta
 ---
@@ -27,6 +27,7 @@ bio-topo-foundry/
 ├── site/                   Astro app, contracts, tests, and local adapters
 ├── casts/<target>/         target policy and committed generated bundles
 ├── audit/                  committed citation evidence, verdicts, and reports
+├── .claude/commands/       repository-scoped agent commands; unvalidated, like AGENTS.md
 ├── .github/workflows/      validation, Pages deployment, and live citation refresh
 ├── audit-citations.config.json  citation corpus and provider policy
 ├── meta_tags.yml           instance tag vocabulary
