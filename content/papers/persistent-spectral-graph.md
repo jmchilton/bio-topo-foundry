@@ -4,6 +4,13 @@ title: Persistent Spectral Graph
 summary: "The founding persistent-Laplacian paper: harmonic spectra recover persistent homology exactly, and non-harmonic spectra carry the geometry it discards."
 citation: Rui Wang, Duc Duy Nguyen, and Guo-Wei Wei, "Persistent spectral graph," International Journal for Numerical Methods in Biomedical Engineering 36(9), e3376 (2020); preprint arXiv:1912.04135v2.
 source_url: https://arxiv.org/abs/1912.04135
+source_ids:
+  status: declared
+  doi: 10.1002/cnm.3376
+  arxiv: "1912.04135"
+version: v2
+access_date: "2026-08-08"
+source_read: full-text
 source_license:
   status: declared
   id: LicenseRef-arXiv-nonexclusive-distrib-1.0

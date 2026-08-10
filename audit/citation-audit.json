@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-10T01:46:04.286Z",
+  "generatedAt": "2026-08-10T18:40:18.078Z",
   "corpus": {
-    "digest": "47a77779838f74e72d4435dcda4594ae60625896dcd2c17d4ce3b58aa9411766",
-    "headRevision": "a1520de888038d8b2210ebedfe0fd55dff8bbe51",
-    "workingTreeDirty": false
+    "digest": "637085d9af88244cd93891e70f6387cda2fce97983a9671ab4377f415e7e4ad5",
+    "headRevision": "8a6bc3737590ffcca1205605f6b09ad1cb232efe",
+    "workingTreeDirty": true
   },
-  "evidenceSnapshotDigest": "eee2b6412352cfb89687fe55a3b580d3572f9d10b92755b52a22ab4c6e02d50a",
+  "evidenceSnapshotDigest": "54c954007165e9924575598da381a1174ccff86452b4b00762708dfd30abe776",
   "manualReviewStatus": "not-required",
   "manualReview": {
     "required": 0,
     "completed": 0
   },
   "summary": {
-    "total": 77,
-    "resolved": 77,
+    "total": 78,
+    "resolved": 78,
     "resolved-mismatched": 0,
     "unresolved": 0,
     "unavailable": 0,
@@ -1071,12 +1071,29 @@
       ]
     },
     {
+      "id": "4e353731e196c2cc",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/persistent-spectral-graph.md",
+        "startLine": 9,
+        "endLine": 9,
+        "sourceText": "  doi: 10.1002/cnm.3376",
+        "sourceDigest": "30a616884f4c8e664b0b16c4bb40bf6125213a6c802535ed5961e45d6e9df17f"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1002/cnm.3376"
+        }
+      ]
+    },
+    {
       "id": "b1b4eba6009c95e5",
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 23,
-        "endLine": 23,
+        "startLine": 30,
+        "endLine": 30,
         "sourceText": "**Primary source:** Rui Wang, Duc Duy Nguyen, and Guo-Wei Wei, \"Persistent spectral graph.\" Preprint submitted to arXiv 9 December 2019, revised 11 December 2019 as v2. [arXiv:1912.04135](https://arxiv.org/abs/1912.04135) | [arXiv DOI](https://doi.org/10.48550/arXiv.1912.04135) | [journal version](https://doi.org/10.1002/cnm.3376), *International Journal for Numerical Methods in Biomedical Engineering* 36(9), e3376 (2020).",
         "sourceDigest": "8a5d897cd006212b2c7aa90cfff3298b749530721f69e9ea6e2b726a021bfedf"
       },
@@ -1109,8 +1126,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 158,
-        "endLine": 158,
+        "startLine": 165,
+        "endLine": 165,
         "sourceText": "1. Wang, R., Nguyen, D. D., and Wei, G.-W. \"Persistent spectral graph.\" *International Journal for Numerical Methods in Biomedical Engineering* 36(9), e3376 (2020). [DOI](https://doi.org/10.1002/cnm.3376). Preprint: [arXiv:1912.04135](https://arxiv.org/abs/1912.04135).",
         "sourceDigest": "c711b532b29b233f8463c08db9468468291370c459997e94ecb62938b55d008e"
       },
@@ -1140,8 +1157,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 159,
-        "endLine": 159,
+        "startLine": 166,
+        "endLine": 166,
         "sourceText": "2. Wang, R., Zhao, R., Ribando-Gros, E., Chen, J., Tong, Y., and Wei, G.-W. \"HERMES: Persistent spectral graph software.\" *Foundations of Data Science* 3(1), 67-97 (2021). [DOI](https://doi.org/10.3934/fods.2021006).",
         "sourceDigest": "52cf1b6b86fccf922482bf0b1f13949c18fbc280a2675272a92ba5236e417461"
       },
@@ -1170,8 +1187,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 160,
-        "endLine": 160,
+        "startLine": 167,
+        "endLine": 167,
         "sourceText": "3. Memoli, F., Wan, Z., and Wang, Y. \"Persistent Laplacians: Properties, Algorithms and Implications.\" *SIAM Journal on Mathematics of Data Science* 4(2), 858-884 (2022). [DOI](https://doi.org/10.1137/21M1435471).",
         "sourceDigest": "5dbf35cf971a69ef65fadc6ae6ce2e8e59a8e1a8f6fc968c7703013764f57f01"
       },
@@ -1196,8 +1213,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 161,
-        "endLine": 161,
+        "startLine": 168,
+        "endLine": 168,
         "sourceText": "4. Jones, B. and Wei, G.-W. \"PETLS: PErsistent Topological Laplacian Software.\" [arXiv:2508.11560](https://arxiv.org/abs/2508.11560).",
         "sourceDigest": "c2e74115f2836c0acdaeae918e44aabc27504c111ade0eb4f644f39d10230faa"
       },
@@ -1221,8 +1238,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 162,
-        "endLine": 162,
+        "startLine": 169,
+        "endLine": 169,
         "sourceText": "5. Bahar, I., Atilgan, A. R., and Erman, B. \"Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential.\" *Folding and Design* 2(3), 173-181 (1997). [DOI](https://doi.org/10.1016/S1359-0278%2897%2900024-2).",
         "sourceDigest": "bbf097d027423420543c6544511ded3cfa934a37ba77370f3e4ba26cd5cc1c24"
       },
@@ -1247,8 +1264,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 163,
-        "endLine": 163,
+        "startLine": 170,
+        "endLine": 170,
         "sourceText": "6. Atilgan, A. R., Durell, S. R., Jernigan, R. L., Demirel, M. C., Keskin, O., and Bahar, I. \"Anisotropy of fluctuation dynamics of proteins with an elastic network model.\" *Biophysical Journal* 80(1), 505-515 (2001). [DOI](https://doi.org/10.1016/S0006-3495%2801%2976033-X).",
         "sourceDigest": "a5c8f338ef7e4035560224b0f0554baabaa21cbc58966cdff7bb09fdc47b474f"
       },
@@ -1276,8 +1293,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 164,
-        "endLine": 164,
+        "startLine": 171,
+        "endLine": 171,
         "sourceText": "7. Bramer, D. and Wei, G.-W. \"Blind prediction of protein B-factor and flexibility.\" *The Journal of Chemical Physics* 149(13), 134107 (2018). [DOI](https://doi.org/10.1063/1.5048469).",
         "sourceDigest": "13601fd60f3c552b2fcc4f49d78c643d60767f9b701163c0b9d38eb81e86c647"
       },
@@ -1302,8 +1319,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 165,
-        "endLine": 165,
+        "startLine": 172,
+        "endLine": 172,
         "sourceText": "8. Wei, X. and Wei, G.-W. \"Persistent topological Laplacians - a survey.\" *Mathematics* 13(2), 208 (2025). [DOI](https://doi.org/10.3390/math13020208).",
         "sourceDigest": "d023c4f5d7c05f703113634042d85a21c2c5337a2e9a99495b291291dc706f13"
       },
@@ -1375,8 +1392,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "startLine": 21,
-        "endLine": 21,
+        "startLine": 27,
+        "endLine": 27,
         "sourceText": "**Primary source:** Zhe Su, Xiang Liu, Layal Bou Hamdan, Vasileios Maroulas, Jie Wu, Gunnar Carlsson, and Guo-Wei Wei, “Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review,” arXiv:2507.19504v1, submitted 12 July 2025. [arXiv](https://arxiv.org/abs/2507.19504) | [arXiv DOI](https://doi.org/10.48550/arXiv.2507.19504) | [later journal version](https://doi.org/10.1007/s10462-025-11462-w)",
         "sourceDigest": "4ec94a7c5babdc7078fbd712d987424099cebcb11271e525b5af6aabc0604131"
       },
@@ -1413,8 +1430,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "startLine": 206,
-        "endLine": 206,
+        "startLine": 212,
+        "endLine": 212,
         "sourceText": "1. Su, Z., Liu, X., Bou Hamdan, L., Maroulas, V., Wu, J., Carlsson, G., and Wei, G.-W. “Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review.” [arXiv:2507.19504](https://arxiv.org/abs/2507.19504); later version: [DOI 10.1007/s10462-025-11462-w](https://doi.org/10.1007/s10462-025-11462-w).",
         "sourceDigest": "1efef5ee40a753e01544e567e68febe3dc57d735f51fc2ec88715621ce1920aa"
       },
@@ -1447,8 +1464,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "startLine": 207,
-        "endLine": 207,
+        "startLine": 213,
+        "endLine": 213,
         "sourceText": "2. Mémoli, F., Wan, Z., and Wang, Y. “Persistent Laplacians: Properties, Algorithms and Implications.” *SIAM Journal on Mathematics of Data Science* 4(2), 858-884 (2022). [DOI 10.1137/21M1435471](https://doi.org/10.1137/21M1435471).",
         "sourceDigest": "7fea7d7de4f94d1f5e7ff8416d8cba1f78f6d2ef4491c5c63ac949fe03c74b1d"
       },
@@ -1473,8 +1490,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "startLine": 208,
-        "endLine": 208,
+        "startLine": 214,
+        "endLine": 214,
         "sourceText": "3. Chen, J., Zhao, R., Tong, Y., and Wei, G.-W. “Evolutionary de Rham-Hodge Method.” *Discrete and Continuous Dynamical Systems - B* 26(7), 3785-3821 (2021). [DOI 10.3934/dcdsb.2020257](https://doi.org/10.3934/dcdsb.2020257).",
         "sourceDigest": "26bf622218431ddad5872073e534c2d19fb6aab7a3a992c91f5bef43c94d6bc0"
       },
@@ -1501,8 +1518,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "startLine": 209,
-        "endLine": 209,
+        "startLine": 215,
+        "endLine": 215,
         "sourceText": "4. Su, Z., Tong, Y., and Wei, G.-W. “Persistent de Rham-Hodge Laplacians in Eulerian Representation for Manifold Topological Learning.” *AIMS Mathematics* 9(10), 27438-27470 (2024). [DOI 10.3934/math.20241333](https://doi.org/10.3934/math.20241333); [arXiv:2408.00220](https://arxiv.org/abs/2408.00220).",
         "sourceDigest": "90a05db6e61ed42ec5c7bc0e61bd02f385bad38f8d173f3f9426e2e3b79372cd"
       },
@@ -1532,8 +1549,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "startLine": 210,
-        "endLine": 210,
+        "startLine": 216,
+        "endLine": 216,
         "sourceText": "5. Shen, L., Liu, J., and Wei, G.-W. “Persistent Mayer Homology and Persistent Mayer Laplacian.” *Foundations of Data Science* 6(4), 584-612 (2024). [DOI 10.3934/fods.2024032](https://doi.org/10.3934/fods.2024032); [arXiv:2312.01268](https://arxiv.org/abs/2312.01268).",
         "sourceDigest": "2331de04b3bf6e4e7ebd594c125bee04f0ad07c179f850ffea84fd83841eda8c"
       },
@@ -1563,8 +1580,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "startLine": 211,
-        "endLine": 211,
+        "startLine": 217,
+        "endLine": 217,
         "sourceText": "6. Liu, J., Chen, D., and Wei, G.-W. “Persistent Interaction Topology in Data Analysis.” [arXiv:2404.11799](https://arxiv.org/abs/2404.11799) (2024).",
         "sourceDigest": "e097d58b8e867d4c5fce88dae85ce3bd38ef5869eccdf944d18e2f2fe92636ba"
       },
@@ -1590,8 +1607,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "startLine": 212,
-        "endLine": 212,
+        "startLine": 218,
+        "endLine": 218,
         "sourceText": "7. Shen, L., Feng, H., Li, F., Lei, F., Wu, J., and Wei, G.-W. “Knot Data Analysis Using Multiscale Gauss Link Integral.” *Proceedings of the National Academy of Sciences* 121(42), e2408431121 (2024). [DOI 10.1073/pnas.2408431121](https://doi.org/10.1073/pnas.2408431121); [arXiv:2311.12834](https://arxiv.org/abs/2311.12834).",
         "sourceDigest": "6c996be681219902f1b9fd0b1a84080def6dd0737eec9d8c6a4e32da2039bf9e"
       },
@@ -1624,8 +1641,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "startLine": 213,
-        "endLine": 213,
+        "startLine": 219,
+        "endLine": 219,
         "sourceText": "8. Liu, X., Su, Z., Shi, Y., Tong, Y., Wang, G., and Wei, G.-W. “Manifold Topological Deep Learning for Biomedical Data.” [arXiv:2503.00175](https://arxiv.org/abs/2503.00175) (2025).",
         "sourceDigest": "66f46852ac439cd7ae1b2ecd71203e7f2509bf4fadfe34a4dfe52bf3b84bc908"
       },
@@ -1696,8 +1713,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 23,
-        "endLine": 23,
+        "startLine": 29,
+        "endLine": 29,
         "sourceText": "**Primary source:** JunJie Wee and Jian Jiang, \"A review of topological data analysis and topological deep learning in molecular sciences,\" arXiv:2509.16877v1, submitted 21 September 2025. [arXiv](https://arxiv.org/abs/2509.16877) | [arXiv DOI](https://doi.org/10.48550/arXiv.2509.16877) | [later journal version](https://doi.org/10.1021/acs.jcim.5c02266)",
         "sourceDigest": "0c317855ecdcc7284189a9aeb37142958df706c675e4a6e6424472d8875ac3b8"
       },
@@ -1729,8 +1746,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 219,
-        "endLine": 219,
+        "startLine": 225,
+        "endLine": 225,
         "sourceText": "1. Wee, J.; Jiang, J. \"A review of topological data analysis and topological deep learning in molecular sciences.\" arXiv:2509.16877v1 (2025). [arXiv](https://arxiv.org/abs/2509.16877) | [journal DOI](https://doi.org/10.1021/acs.jcim.5c02266)",
         "sourceDigest": "19f099dcc67a78f8ef50760107e595192798f0109a1c664f67421cdbba91713f"
       },
@@ -1758,8 +1775,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 220,
-        "endLine": 220,
+        "startLine": 226,
+        "endLine": 226,
         "sourceText": "2. Xia, K.; Wei, G.-W. \"Persistent homology analysis of protein structure, flexibility, and folding.\" *International Journal for Numerical Methods in Biomedical Engineering* 30, 814-844 (2014). [DOI](https://doi.org/10.1002/cnm.2655)",
         "sourceDigest": "7ad2227e687e6f573d8a1371c26372f9f865d1d04b2a449cef43307f4db02f2a"
       },
@@ -1784,8 +1801,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 221,
-        "endLine": 221,
+        "startLine": 227,
+        "endLine": 227,
         "sourceText": "3. Cang, Z.; Wei, G.-W. \"Analysis and prediction of protein folding energy changes upon mutation by element specific persistent homology.\" *Bioinformatics* 33, 3549-3557 (2017). [DOI](https://doi.org/10.1093/bioinformatics/btx460)",
         "sourceDigest": "e76a6f27aed226995facdbdfedb6a49c1d9522cbef2ccf593800aad297399a16"
       },
@@ -1810,8 +1827,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 222,
-        "endLine": 222,
+        "startLine": 228,
+        "endLine": 228,
         "sourceText": "4. Cang, Z.; Wei, G.-W. \"TopologyNet: Topology based deep convolutional and multi-task neural networks for biomolecular property predictions.\" *PLOS Computational Biology* 13, e1005690 (2017). [DOI](https://doi.org/10.1371/journal.pcbi.1005690)",
         "sourceDigest": "5cc4ba3850ba96046ac53bbd5f22dc65c116e2ef438358d6987e01c5f5afcd13"
       },
@@ -1836,8 +1853,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 223,
-        "endLine": 223,
+        "startLine": 229,
+        "endLine": 229,
         "sourceText": "5. Cang, Z.; Mu, L.; Wei, G.-W. \"Representability of algebraic topology for biomolecules in machine learning based scoring and virtual screening.\" *PLOS Computational Biology* 14, e1005929 (2018). [DOI](https://doi.org/10.1371/journal.pcbi.1005929)",
         "sourceDigest": "1075d7b842769c8df02e393cb8b36fcb72be62f5f627342353605893a6210e8d"
       },
@@ -1863,8 +1880,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 224,
-        "endLine": 224,
+        "startLine": 230,
+        "endLine": 230,
         "sourceText": "6. Cang, Z.; Wei, G.-W. \"Integration of element specific persistent homology and machine learning for protein-ligand binding affinity prediction.\" *International Journal for Numerical Methods in Biomedical Engineering* 34, e2914 (2018). [DOI](https://doi.org/10.1002/cnm.2914)",
         "sourceDigest": "c7870d555f29907b6b0018e1f818760c54a0630cf7d29e7600028ce557d0879d"
       },
@@ -1889,8 +1906,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 225,
-        "endLine": 225,
+        "startLine": 231,
+        "endLine": 231,
         "sourceText": "7. Wang, M.; Cang, Z.; Wei, G.-W. \"A topology-based network tree for the prediction of protein-protein binding affinity changes following mutation.\" *Nature Machine Intelligence* 2, 116-123 (2020). [DOI](https://doi.org/10.1038/s42256-020-0149-6)",
         "sourceDigest": "d1349b4976f9e4c2c4b8aff11b9adf74dba5b23f44b4206923f8511c39a94389"
       },
@@ -1916,8 +1933,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 226,
-        "endLine": 226,
+        "startLine": 232,
+        "endLine": 232,
         "sourceText": "8. Wang, R.; Nguyen, D. D.; Wei, G.-W. \"Persistent spectral graph.\" *International Journal for Numerical Methods in Biomedical Engineering* 36, e3376 (2020). [DOI](https://doi.org/10.1002/cnm.3376)",
         "sourceDigest": "34d28dbf7187055da1da856cd6186c8535b58b817eece1fdfaac84ff07ace6b2"
       },
@@ -1943,8 +1960,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 227,
-        "endLine": 227,
+        "startLine": 233,
+        "endLine": 233,
         "sourceText": "9. Memoli, F.; Wan, Z.; Wang, Y. \"Persistent Laplacians: Properties, Algorithms and Implications.\" *SIAM Journal on Mathematics of Data Science* 4, 858-884 (2022). [DOI](https://doi.org/10.1137/21M1435471)",
         "sourceDigest": "679552096bb55ae0c081f42fc97973e981dc65e5acf4fb4b581d3e2dc520abed"
       },
@@ -1969,8 +1986,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 228,
-        "endLine": 228,
+        "startLine": 234,
+        "endLine": 234,
         "sourceText": "10. Qiu, Y.; Wei, G.-W. \"Persistent spectral theory-guided protein engineering.\" *Nature Computational Science* 3, 149-163 (2023). [DOI](https://doi.org/10.1038/s43588-022-00394-y)",
         "sourceDigest": "f0ce4cdb80276ba45f2fd291c110edee1449d50f9f6216f2153a3cd998cc4ad3"
       },
@@ -1995,8 +2012,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 229,
-        "endLine": 229,
+        "startLine": 235,
+        "endLine": 235,
         "sourceText": "11. Chen, J.; Wei, G.-W. \"Omicron BA.2 (B.1.1.529.2): High Potential for Becoming the Next Dominant Variant.\" *The Journal of Physical Chemistry Letters* 13, 3840-3849 (2022). [DOI](https://doi.org/10.1021/acs.jpclett.2c00469)",
         "sourceDigest": "08175092c89ea04a78b05cdadfd9f5a6efa9ecf24039dbb9709910e128e18111"
       },
@@ -2021,8 +2038,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 230,
-        "endLine": 230,
+        "startLine": 236,
+        "endLine": 236,
         "sourceText": "12. Chen, J.; Qiu, Y.; Wang, R.; Wei, G.-W. \"Persistent Laplacian projected Omicron BA.4 and BA.5 to become new dominating variants.\" *Computers in Biology and Medicine* 151, 106262 (2022). [DOI](https://doi.org/10.1016/j.compbiomed.2022.106262)",
         "sourceDigest": "732e220ec39509bddbb85de5cb5617881883b523cd70a9cd9826b75801ec3738"
       },
@@ -2049,8 +2066,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 231,
-        "endLine": 231,
+        "startLine": 237,
+        "endLine": 237,
         "sourceText": "13. Su, Z.; Liu, X.; Bou Hamdan, L.; Maroulas, V.; Wu, J.; Carlsson, G.; Wei, G.-W. \"Topological data analysis and topological deep learning beyond persistent homology - a review.\" arXiv:2507.19504 (2025). [arXiv](https://arxiv.org/abs/2507.19504)",
         "sourceDigest": "da6807c4c4a0d7903d7cda9676d23111f42fac196d42a6ebf4df4e81125764c1"
       },
@@ -2503,6 +2520,16 @@
       "candidateId": "f0b4724cd0748945",
       "evidenceIds": [
         "eb6527166f71e713"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "4e353731e196c2cc",
+      "evidenceIds": [
+        "7e691f42f591527b"
       ],
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
@@ -3218,17 +3245,17 @@
       },
       {
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "line": 25,
+        "line": 32,
         "url": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
       },
       {
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "line": 25,
+        "line": 31,
         "url": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
       },
       {
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "line": 25,
+        "line": 31,
         "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
       },
       {
@@ -3315,11 +3342,11 @@
       },
       {
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "line": 204
+        "line": 210
       },
       {
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "line": 215
+        "line": 221
       }
     ]
   }

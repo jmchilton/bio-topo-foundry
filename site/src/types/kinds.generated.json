@@ -273,9 +273,14 @@
       "locations": [
         "papers"
       ],
-      "doc": "# Paper\n\nA Paper note is this Foundry's review of one external paper or survey. It links to the source and\nreviews it; it does not reproduce it. The note describes someone else's scholarship, which is what\nseparates it from a Manuscript (research we author) and from a Package (our profile of external\nsoftware).\n\nRequired fields:\n\n- `type: paper`\n- `title`: the note's display name, which is ours and need not repeat the source's title\n- `summary`: short reader-facing description\n- `citation`: authors, source title, and identifier for the external work\n- `source_url`: canonical link to the external work\n- `source_license`: either a declared license id for the source or an explicit `missing` status\n- `derived`: the summary posture, `own-words-summary` or `license-aware-summary`\n- `tags`: at least one registered domain facet tag\n\n`source_license` is the license of the reviewed work, never of the software that may accompany it.\nAn article and its repository routinely differ, so a Package note's `software_license` and a Paper\nnote's `source_license` are separate facts even when both describe the same project.\n\n`derived` is checked against `source_license`, not merely recorded. A note may always summarize in\nits own words; it may only claim `license-aware-summary` when the source's row in the shared\nlicense-policy table permits carrying upstream expression. A missing license resolves\ndeny-by-default and therefore forecloses that posture.\n\nDOIs, venue, and publication dates stay in prose for now. They become typed when a citation or\nreference consumer needs them, on the same terms as the deferred Package fields.",
-      "example": "---\ntype: paper\ntitle: Example TDA survey\nsummary: A small example showing the minimum metadata required for a review of one external work.\ncitation: A. Author and B. Author, \"An example review of topological methods,\" arXiv:0000.00000 (2025).\nsource_url: https://arxiv.org/abs/0000.00000\nsource_license:\n  status: declared\n  id: CC-BY-4.0\nderived: own-words-summary\ntags:\n  - method/persistent-homology\n---\n\n# Example TDA survey\n\nThe body reviews the source: what it claims, what evidence it offers, where it is weak, and what a\nreader of this Foundry should take from it.",
+      "doc": "# Paper\n\nA Paper note is this Foundry's review of one external paper or survey. It links to the source and\nreviews it; it does not reproduce it. The note describes someone else's scholarship, which is what\nseparates it from a Manuscript (research we author) and from a Package (our profile of external\nsoftware).\n\nMost of the frontmatter is the shared source-note contract from\n[`@galaxy-foundry/source-note`](https://www.npmjs.com/package/@galaxy-foundry/source-note), which\nthis kind spreads rather than restates. Required fields:\n\n- `type: paper`\n- `title`: the note's display name, which is ours and need not repeat the source's title\n- `summary`: short reader-facing description\n- `citation`: authors, source title, and identifier for the external work\n- `source_url`: canonical link to the external work\n- `source_ids`: the identifiers the work is addressable by, or `status: none` with a reason\n- `access_date`: the quoted `YYYY-MM-DD` on which the source was read\n- `source_read`: how much of it was read — `full-text`, `partial`, or `abstract-only`\n- `source_license`: either a declared license id for the source or an explicit `missing` status\n- `derived`: the summary posture, `own-words-summary` or `verbatim-quotes-summary`\n- `tags`: at least one registered domain facet tag\n\nOptional: `oa_url` for a free mirror of a paywalled record, `version` for the edition summarized,\n`attribution` and `license_file` where carrying upstream expression obliges them, and\n`license_statement` where the source's wording is the evidence for its id.\n\n`source_license` is the license of the reviewed work, never of the software that may accompany it.\nAn article and its repository routinely differ, so a Package note's `software_license` and a Paper\nnote's `source_license` are separate facts even when both describe the same project.\n\n`derived` is checked against `source_license`, not merely recorded. A note may always summarize in\nits own words; it may only claim `verbatim-quotes-summary` when the source's row in the shared\nlicense-policy table permits carrying upstream expression, and then only with the `attribution`\nnotice and the vendored `license_file` that row obliges. A missing license resolves deny-by-default\nand therefore forecloses that posture.\n\n`source_ids` carries identity; `source_url` carries a location. A DOI belongs in the first even when\nit also appears inside the second, because a URL addresses one copy through one host and the host is\nthe part that rots. Identifiers are bare — `10.1002/cnm.3376`, not `https://doi.org/10.1002/cnm.3376`\n— and a work that genuinely has none says so with `status: none` and a reason, so that an unresolved\nsource is a reviewable claim rather than a silent omission.\n\n`source_read` is testimony rather than something a checker can verify, and it is required precisely\nbecause silence used to read as `full-text`. A summary built from an abstract cannot support a claim\nabout methods or results detail, and the field is what makes that visible.",
+      "example": "---\ntype: paper\ntitle: Example TDA survey\nsummary: A small example showing the minimum metadata required for a review of one external work.\ncitation: A. Author and B. Author, \"An example review of topological methods,\" arXiv:0000.00000 (2025).\nsource_url: https://arxiv.org/abs/0000.00000\nsource_ids:\n  status: declared\n  arxiv: \"0000.00000\"\naccess_date: \"2026-07-29\"\nsource_read: full-text\nsource_license:\n  status: declared\n  id: CC-BY-4.0\nderived: own-words-summary\ntags:\n  - method/persistent-homology\n---\n\n# Example TDA survey\n\nThe body reviews the source: what it claims, what evidence it offers, where it is weak, and what a\nreader of this Foundry should take from it.",
       "fields": [
+        {
+          "name": "access_date",
+          "required": true,
+          "type": "string"
+        },
         {
           "name": "citation",
           "required": true,
@@ -284,12 +289,22 @@
         {
           "name": "derived",
           "required": true,
-          "type": "own-words-summary | license-aware-summary"
+          "type": "own-words-summary | verbatim-quotes-summary"
+        },
+        {
+          "name": "source_ids",
+          "required": true,
+          "type": "object"
         },
         {
           "name": "source_license",
           "required": true,
           "type": "object"
+        },
+        {
+          "name": "source_read",
+          "required": true,
+          "type": "full-text | partial | abstract-only"
         },
         {
           "name": "source_url",
@@ -315,6 +330,31 @@
           "name": "type",
           "required": true,
           "type": "\"paper\""
+        },
+        {
+          "name": "attribution",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "license_file",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "license_statement",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "oa_url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": "string"
         }
       ]
     },

@@ -4,6 +4,12 @@ title: TDA and TDL in Molecular Sciences
 summary: Wee and Jiang's account of how molecular problems pushed topology from description to conditioned, learnable representations.
 citation: JunJie Wee and Jian Jiang, "A review of topological data analysis and topological deep learning in molecular sciences," arXiv:2509.16877v1 (2025).
 source_url: https://arxiv.org/abs/2509.16877
+source_ids:
+  status: declared
+  arxiv: "2509.16877"
+version: v1
+access_date: "2026-07-29"
+source_read: full-text
 source_license:
   status: declared
   id: CC-BY-NC-ND-4.0

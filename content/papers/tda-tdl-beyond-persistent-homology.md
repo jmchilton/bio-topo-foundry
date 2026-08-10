@@ -4,6 +4,12 @@ title: TDA and TDL Beyond Persistent Homology
 summary: Su and colleagues' map of the topological methods that extend past persistent homology, and what each one recovers.
 citation: Zhe Su, Xiang Liu, Layal Bou Hamdan, Vasileios Maroulas, Jie Wu, Gunnar Carlsson, and Guo-Wei Wei, "Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review," arXiv:2507.19504v1 (2025).
 source_url: https://arxiv.org/abs/2507.19504
+source_ids:
+  status: declared
+  arxiv: "2507.19504"
+version: v1
+access_date: "2026-07-29"
+source_read: full-text
 source_license:
   status: declared
   id: LicenseRef-arXiv-nonexclusive-distrib-1.0

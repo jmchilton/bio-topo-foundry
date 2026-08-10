@@ -33,14 +33,17 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1(zod@4.4.3)
       '@galaxy-foundry/license-policy':
-        specifier: ^0.5.0
-        version: 0.5.0
+        specifier: ^0.6.0
+        version: 0.6.0
       '@galaxy-foundry/reference-contract':
         specifier: ^0.4.1
         version: 0.4.1
       '@galaxy-foundry/site-kit':
         specifier: ^0.9.2
         version: 0.9.2(astro-pagefind@2.0.1(astro@7.2.0(@astrojs/markdown-remark@7.2.2)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(astro@7.2.0(@astrojs/markdown-remark@7.2.2)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0))
+      '@galaxy-foundry/source-note':
+        specifier: ^0.1.0
+        version: 0.1.0(zod@4.4.3)
       '@galaxy-foundry/tag-registry':
         specifier: ^0.1.1
         version: 0.1.1
@@ -513,6 +516,10 @@ packages:
     resolution: {integrity: sha512-jQQzcPwxICvTWYjutgYOsuiIyZgIFB9Lz7yPp3uSqW4E9ffo1BVdL0nqCGot3zn3KfSaThXV60I0mSHsjyQoLA==}
     engines: {node: '>=20'}
 
+  '@galaxy-foundry/license-policy@0.6.0':
+    resolution: {integrity: sha512-nHJ5SpXzAhp6t33xwNbfE8DQCYzgk/fxfdrZ94au9dIJj+CScRzOufU0E6KfqqoD+fh7lpAQHftfU+xiaimovw==}
+    engines: {node: '>=20'}
+
   '@galaxy-foundry/reference-contract@0.4.1':
     resolution: {integrity: sha512-mLncnIqjbYtotl9RvSVuacsLnsv5y8G6dHIDZiErzzQrBneQ3BexKRToJ1rJfmSqRMlENGlOWBUZJpysOOSMYw==}
     engines: {node: '>=20'}
@@ -523,6 +530,12 @@ packages:
     peerDependencies:
       astro: '>=6'
       astro-pagefind: '>=2'
+
+  '@galaxy-foundry/source-note@0.1.0':
+    resolution: {integrity: sha512-46YiK8SVC6FXd416rUkYXRxnk/VMukvwKwpcmKGHzy0mj6PLJ1Cb9T+J5hnlgt1DXJBGei5VNCTp9pu8Z/Byvw==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      zod: ^4.0.0
 
   '@galaxy-foundry/tag-registry@0.1.1':
     resolution: {integrity: sha512-PVsrJDuwPcbr0Eja/xGOpqo++eGz0YKrZQm73zuLdYMzStGErHZjE7+4qkg6b5WSpEwlGR49Cq37qaHzOPoXpA==}
@@ -2948,6 +2961,10 @@ snapshots:
     dependencies:
       js-yaml: 4.3.1
 
+  '@galaxy-foundry/license-policy@0.6.0':
+    dependencies:
+      js-yaml: 4.3.1
+
   '@galaxy-foundry/reference-contract@0.4.1':
     dependencies:
       '@galaxy-foundry/wiki-links': 0.4.0
@@ -2959,6 +2976,11 @@ snapshots:
       '@galaxy-foundry/reference-contract': 0.4.1
       astro: 7.2.0(@astrojs/markdown-remark@7.2.2)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)
       astro-pagefind: 2.0.1(astro@7.2.0(@astrojs/markdown-remark@7.2.2)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0))
+
+  '@galaxy-foundry/source-note@0.1.0(zod@4.4.3)':
+    dependencies:
+      '@galaxy-foundry/license-policy': 0.6.0
+      zod: 4.4.3
 
   '@galaxy-foundry/tag-registry@0.1.1':
     dependencies:

@@ -83,8 +83,9 @@ documented by each `kind.md` and enumerated by the generated manifest, not resta
 Several constraints are cross-field rather than per-field, and are expressed as kind refinements:
 
 - a `method` note must carry the `method/` tag it declares itself the anchor of;
-- a `paper` may only claim the `license-aware-summary` posture when its source license resolves to
-  a `verbatim-ok` policy row, so posture follows the license rather than the author;
+- a `paper` may only claim the `verbatim-quotes-summary` posture when its source license resolves
+  to a `verbatim-ok` policy row and the note carries the notice and license file that row obliges,
+  so posture follows the license rather than the author;
 - a `replication_experiment` must include a `replicate` stage, list its arc stages in order, and —
   once `status: complete` — name both the environment that re-ran it here and its outcome;
 - a `meta` record cannot be revised before it was created, and cannot claim `status: revised` at

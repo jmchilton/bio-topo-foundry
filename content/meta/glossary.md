@@ -70,11 +70,6 @@ versioned because it crosses repository boundaries.
 Foundry. It is authored to be read and learned by a human, not merely stored for an agent to
 retrieve. The KB is the source; a skill is the package.
 
-**License-aware summary** — a **Source note** whose license resolves to `verbatim-ok`, permitting
-short, marked, load-bearing quotations subject to the license's obligations. Its `derived` value is
-`license-aware-summary`. The label records that upstream expression is carried; it does not assert
-that attribution or other obligations have been satisfied.
-
 **License-policy table** — the shared SPDX-id → redistribution-policy table:
 `{ name, policy, license_file, copyleft, obligations }`, with unknown or missing identifiers
 resolving deny-by-default. It answers what a license permits and whether a note's `derived` posture
@@ -171,8 +166,8 @@ authored note kind.
 project's framing and graded by recoverability rather than coverage. It links to and reviews the
 source rather than reproducing it, and its **Summary posture** is driven by the source's license.
 
-**Summary posture** — whether a **Source note** is an own-words summary or a license-aware
-summary. It is determined by the source's license through the **License-policy table**, not by
+**Summary posture** — whether a **Source note** is an own-words summary or a **Verbatim-quotes
+summary**. It is determined by the source's license through the **License-policy table**, not by
 source type, and is recorded in the note's `derived` field.
 
 **Tag and facet** — the controlled browse vocabulary: every note carries at least one tag, every
@@ -187,6 +182,12 @@ Galaxy.
 
 **Training** — a TDA note kind for a Galaxy Training Network article teaching an analysis through
 delivered **Tools** and **Workflows**.
+
+**Verbatim-quotes summary** — a **Source note** whose license resolves to `verbatim-ok`, permitting
+short, marked, load-bearing quotations subject to the license's obligations. Its `derived` value is
+`verbatim-quotes-summary`. The label records that upstream expression is carried; the obligations
+that carry brings — the `attribution` notice and the vendored `license_file` — are checked
+separately rather than implied by it.
 
 **Wiki link** — `[[Target]]`, the authoring syntax for addressing a note from typed frontmatter or
 body prose. Rendering and validation use one resolver and one link map so cross-file referential
