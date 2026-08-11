@@ -16,3 +16,16 @@ Write one Paper note for: $ARGUMENTS
    `meta_tags.yml` already declares. Adding a tag value is a separate deliberate change.
 5. Gate: `pnpm audit:citations:refresh` (network) then `pnpm validate`, both from `site/`. Commit the
    refreshed evidence.
+
+Then assess what the paper would take downstream, and report it *beside* the note — a note may not
+describe machinery that does not exist. A reasoned no is the common answer and a useful one.
+
+- **Replication.** Which named claims, tables, or figures it would target; whether code, data,
+  weights, splits, and seeds are actually obtainable; whether a matched non-topological baseline
+  exists. Read `content/meta/replication-experiments.md` — the study lives in its own upstream
+  repository and cannot be complete without an Environment that reran it. Say what the arms would
+  be, or say why there are none.
+- **Packaging.** Whether the software is already in conda-forge or bioconda; if not, whether a
+  `recipes/<slug>/` recipe is warranted, under the *software's* licence rather than the article's.
+  Then whether a biopixi Environment has anything to execute — a paper that released no code has no
+  environment, and that is the answer, not a gap.
