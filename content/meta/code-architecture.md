@@ -67,10 +67,8 @@ dependencies flow. Note semantics belong to [[content-model]], physical placemen
           <path d="M 0 0 L 10 5 L 0 10 z" class="architecture-arrow-head-audit" />
         </marker>
       </defs>
-
       <rect width="1040" height="700" rx="28" class="architecture-canvas" />
       <rect width="1040" height="700" rx="28" fill="url(#architecture-grid)" />
-
       <text x="60" y="38" class="architecture-tier-label">CONSUMERS</text>
       <a
         href="https://github.com/jmchilton/bio-topo-foundry/tree/main/site/src"
@@ -98,7 +96,6 @@ dependencies flow. Note semantics belong to [[content-model]], physical placemen
           <text x="946" y="151" class="architecture-link-glyph" aria-hidden="true">↗</text>
         </g>
       </a>
-
       <path
         d="M 275 184 V 236 H 520 V 272"
         class="architecture-connector"
@@ -109,12 +106,10 @@ dependencies flow. Note semantics belong to [[content-model]], physical placemen
         class="architecture-connector architecture-connector-audit"
         marker-end="url(#architecture-arrow-audit)"
       />
-
       <g class="architecture-composition">
         <rect x="60" y="272" width="920" height="204" rx="24" class="architecture-composition-shell" />
         <text x="88" y="307" class="architecture-tier-label">INSTANCE COMPOSITION</text>
         <text x="950" y="307" text-anchor="end" class="architecture-owner-label">owned here</text>
-
         <a
           href="https://github.com/jmchilton/bio-topo-foundry/blob/main/site/src/lib/frontmatter-schema.ts"
           aria-label="Open the frontmatter schema composition source on GitHub"
@@ -152,11 +147,9 @@ dependencies flow. Note semantics belong to [[content-model]], physical placemen
           </g>
         </a>
       </g>
-
       <path d="M 520 476 V 512 H 207 V 550" class="architecture-connector" marker-end="url(#architecture-arrow)" />
       <path d="M 520 476 V 550" class="architecture-connector" marker-end="url(#architecture-arrow)" />
       <path d="M 520 512 H 833 V 550" class="architecture-connector" marker-end="url(#architecture-arrow)" />
-
       <text x="60" y="536" class="architecture-tier-label">DEPENDENCIES</text>
       <a
         href="https://github.com/jmchilton/bio-topo-foundry/tree/main/site/src/types"
@@ -195,7 +188,6 @@ dependencies flow. Note semantics belong to [[content-model]], physical placemen
         </g>
       </a>
     </svg>
-
   </div>
   <figcaption>
     Solid lines follow runtime dependencies; the dashed line is the verification path. Arrows point

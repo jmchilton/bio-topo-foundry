@@ -435,6 +435,16 @@ describe("the emitted reader slice", () => {
     expect(css).toContain(".architecture-map");
     expect(css).toContain("var(--color-surface-raised)");
     expect(css).toContain("var(--color-text-primary)");
+
+    // A blank line inside the raw block ends it, and Markdown reads the indented remainder as a
+    // code fence. The opening tags survive that, so assert the whole figure came through as markup.
+    expect(architecture).not.toContain("&#x3C;");
+    expect(architecture.slice(architecture.indexOf("architecture-map"))).not.toContain(
+      "astro-code",
+    );
+    expect(architecture).toContain('class="architecture-canvas"');
+    expect(architecture).toContain("</svg>");
+    expect(architecture).toContain("</figure>");
   });
 
   /** The glossary shares `content/meta/` with the records and is deliberately not one of them. */

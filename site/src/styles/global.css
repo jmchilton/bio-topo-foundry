@@ -1073,11 +1073,13 @@ a {
 }
 
 /* The architecture map is inline SVG so its palette follows the reader's light/dark tokens. */
+/* Widens past the reading measure, but only rightwards: the prose column sits left of centre
+   inside its container, so a symmetric bleed pushes the diagram's left edge off-screen where
+   nothing can scroll it back. */
 .prose .architecture-map {
-  width: min(64rem, calc(100vw - 2rem));
+  width: min(64rem, calc(100vw - 3rem));
   max-width: none;
-  margin: 2.25rem 0 2rem 50%;
-  transform: translateX(-50%);
+  margin: 2.25rem 0 2rem;
   font-family: var(--font-sans);
 }
 
@@ -1326,7 +1328,7 @@ a {
   }
 
   .prose .architecture-map {
-    width: calc(100vw - 1rem);
+    width: 100%;
   }
 
   .architecture-scroll {
