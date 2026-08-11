@@ -15,6 +15,7 @@ facets:
     label: Application
     description: The bioinformatics problem or analysis setting a note serves.
     values:
+      application/clinical-outcome: Patient-level prognosis, survival, and risk stratification.
       application/molecular-sciences: Molecular, biomolecular, and drug-discovery analysis.
       application/single-cell: Single-cell and cellular point-cloud analysis.
       application/structure-qa: Quality assessment and ranking of predicted structures and interfaces.

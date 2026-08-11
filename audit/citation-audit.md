@@ -10,15 +10,15 @@ Reviewed flagged findings: **0/0**
 
 | Verdict | Count |
 |---|---:|
-| resolved | 78 |
+| resolved | 83 |
 | resolved-mismatched | 0 |
 | unresolved | 0 |
 | unavailable | 0 |
-| total | 78 |
+| total | 83 |
 
 ## Extraction coverage
 
-Extracted **78 of 96** reference-section lines. The verdict counts above describe only the extracted lines.
+Extracted **83 of 101** reference-section lines. The verdict counts above describe only the extracted lines.
 
 A wrapped entry counts once per physical line, so this is a lower bound on coverage.
 
@@ -84,6 +84,11 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 | `content/packages/topoqa.md:231` | Accurate structure prediction of biomolecular interactions with AlphaFold 3 | crossref `doi:10.1038/s41586-024-07487-w` → doi:10.1038/s41586-024-07487-w | — |
 | `content/packages/topoqa.md:232` | Persistent-homology-based machine learning: a survey and a comparative study | crossref `doi:10.1007/s10462-022-10146-z` → doi:10.1007/s10462-022-10146-z | — |
 | `content/packages/topoqa.md:233` | ABAG-docking benchmark: a non-redundant structure benchmark dataset for antibody-antigen computational docking | crossref `doi:10.1093/bib/bbae048` → doi:10.1093/bib/bbae048 | — |
+| `content/papers/mapper-brca-survival.md:5` | Topology-Informed Survival Analysis of Breast Cancer Patients Using the Mapper Algorithm | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
+| `content/papers/mapper-brca-survival.md:6` | arxiv:2607.15022 | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
+| `content/papers/mapper-brca-survival.md:9` | doi:10.48550/arxiv.2607.15022; arxiv:2607.15022 | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
+| `content/papers/mapper-brca-survival.md:32` | arxiv:2607.15022 | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
+| `content/papers/mapper-brca-survival.md:33` | doi:10.48550/arxiv.2607.15022; arxiv:2607.15022 | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
 | `content/papers/persistent-spectral-graph.md:5` | Persistent spectral graph | openalex `arxiv:1912.04135` → arxiv:1912.04135 | warning: openalex (arxiv:1912.04135): year differs: described 2020, observed 2019 |
 | `content/papers/persistent-spectral-graph.md:6` | arxiv:1912.04135 | openalex `arxiv:1912.04135` → arxiv:1912.04135 | — |
 | `content/papers/persistent-spectral-graph.md:9` | doi:10.1002/cnm.3376 | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376 | — |
@@ -146,6 +151,7 @@ None.
 | `content/packages/topodockq.md` | 8 | 0 |
 | `content/packages/topometry.md` | 7 | 0 |
 | `content/packages/topoqa.md` | 8 | 0 |
+| `content/papers/mapper-brca-survival.md` | 5 | 0 |
 | `content/papers/persistent-spectral-graph.md` | 12 | 0 |
 | `content/papers/tda-tdl-beyond-persistent-homology.md` | 11 | 0 |
 | `content/papers/tda-tdl-molecular-sciences.md` | 16 | 0 |
@@ -157,4 +163,4 @@ None.
 ## Extractor diagnostics
 
 - Generic/non-scholarly URLs excluded: 68
-- Potential free-form `Author Year` patterns measured (diagnostic only): 2
+- Potential free-form `Author Year` patterns measured (diagnostic only): 3

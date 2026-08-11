@@ -12,7 +12,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:10.466Z",
+      "observedAt": "2026-08-11T20:29:42.895Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1186/s13059-017-1382-0"
@@ -47,7 +47,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:13.458Z",
+      "observedAt": "2026-08-11T20:29:45.880Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1063/1.5048469"
@@ -81,7 +81,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:17.717Z",
+      "observedAt": "2026-08-11T20:29:50.094Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1021/acs.jpclett.2c00469"
@@ -115,7 +115,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:11.969Z",
+      "observedAt": "2026-08-11T20:29:44.403Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1038/s41586-024-07487-w"
@@ -195,7 +195,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:15.321Z",
+      "observedAt": "2026-08-11T20:29:47.679Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2509.16877"
@@ -233,7 +233,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:11.361Z",
+      "observedAt": "2026-08-11T20:29:43.805Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1093/bioinformatics/btad203"
@@ -269,7 +269,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:12.861Z",
+      "observedAt": "2026-08-11T20:29:45.292Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1016/s1359-0278(97)00024-2"
@@ -304,7 +304,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:18.006Z",
+      "observedAt": "2026-08-11T20:29:50.404Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1016/j.compbiomed.2022.106262"
@@ -340,7 +340,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:14.379Z",
+      "observedAt": "2026-08-11T20:29:46.771Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3934/math.20241333"
@@ -375,7 +375,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:06.863Z",
+      "observedAt": "2026-08-11T20:29:39.284Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3934/fods.2024033"
@@ -409,7 +409,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:13.769Z",
+      "observedAt": "2026-08-11T20:29:46.183Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1007/s10462-025-11462-w"
@@ -448,7 +448,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:14.072Z",
+      "observedAt": "2026-08-11T20:29:46.470Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3934/dcdsb.2020257"
@@ -484,7 +484,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:15.659Z",
+      "observedAt": "2026-08-11T20:29:48.015Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1002/cnm.2655"
@@ -525,6 +525,45 @@
       "error": "HTTP 404"
     },
     {
+      "id": "45d41008107c4190",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2607.15022"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-11T20:29:45.085Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2607.15022"
+      },
+      "metadata": {
+        "title": "Topology-Informed Survival Analysis of Breast Cancer Patients Using the Mapper Algorithm",
+        "authors": [
+          "Emmanuel Kibisi",
+          "Olakunle Abawonse",
+          "Donald Woukeng"
+        ],
+        "year": 2026,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2607.15022"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2607.15022"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2607.15022"
+      }
+    },
+    {
       "id": "46c1230ac8147895",
       "query": {
         "type": "identifier",
@@ -535,7 +574,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:17.131Z",
+      "observedAt": "2026-08-11T20:29:49.506Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1038/s42256-020-0149-6"
@@ -570,7 +609,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:09.884Z",
+      "observedAt": "2026-08-11T20:29:42.315Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1162/089976603321780317"
@@ -604,7 +643,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:16.543Z",
+      "observedAt": "2026-08-11T20:29:48.911Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1371/journal.pcbi.1005929"
@@ -639,7 +678,7 @@
       },
       "provider": "citation-metadata-page",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:06.060Z",
+      "observedAt": "2026-08-11T20:29:38.458Z",
       "matchedIdentifier": {
         "kind": "url",
         "value": "https://proceedings.mlr.press/v97/gao19e.html"
@@ -674,7 +713,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:16.246Z",
+      "observedAt": "2026-08-11T20:29:48.612Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1371/journal.pcbi.1005690"
@@ -708,7 +747,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:15.943Z",
+      "observedAt": "2026-08-11T20:29:48.309Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1093/bioinformatics/btx460"
@@ -742,7 +781,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:05.659Z",
+      "observedAt": "2026-08-11T20:29:38.097Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1016/j.cell.2023.11.005"
@@ -823,7 +862,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:11.059Z",
+      "observedAt": "2026-08-11T20:29:43.503Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1093/bib/bbaf083"
@@ -860,7 +899,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:06.572Z",
+      "observedAt": "2026-08-11T20:29:38.997Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3934/fods.2021006"
@@ -898,7 +937,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:10.769Z",
+      "observedAt": "2026-08-11T20:29:43.200Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1038/s41587-019-0336-3"
@@ -943,7 +982,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:14.668Z",
+      "observedAt": "2026-08-11T20:29:47.066Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3934/fods.2024032"
@@ -978,7 +1017,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:15.081Z",
+      "observedAt": "2026-08-11T20:29:47.456Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2311.12834"
@@ -1020,7 +1059,7 @@
       },
       "provider": "citation-metadata-page",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:05.230Z",
+      "observedAt": "2026-08-11T20:29:37.793Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.52202/085713-4107"
@@ -1062,7 +1101,7 @@
       },
       "provider": "citation-metadata-page",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:05.496Z",
+      "observedAt": "2026-08-11T20:29:37.909Z",
       "matchedIdentifier": {
         "kind": "url",
         "value": "https://proceedings.mlr.press/v235/madhu24a.html"
@@ -1097,7 +1136,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:08.083Z",
+      "observedAt": "2026-08-11T20:29:40.552Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1371/journal.pone.0161879"
@@ -1131,7 +1170,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:08.376Z",
+      "observedAt": "2026-08-11T20:29:40.845Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1002/cnm.3376"
@@ -1166,7 +1205,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:08.960Z",
+      "observedAt": "2026-08-11T20:29:41.438Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1371/journal.pcbi.1005659"
@@ -1211,7 +1250,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:16.836Z",
+      "observedAt": "2026-08-11T20:29:49.211Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1002/cnm.2914"
@@ -1245,7 +1284,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:14.476Z",
+      "observedAt": "2026-08-11T20:29:46.856Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2408.00220"
@@ -1284,7 +1323,7 @@
       },
       "provider": "europe-pmc",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:11.303Z",
+      "observedAt": "2026-08-11T20:29:43.701Z",
       "matchedIdentifier": {
         "kind": "pmcid",
         "value": "PMC11891663"
@@ -1329,7 +1368,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:13.164Z",
+      "observedAt": "2026-08-11T20:29:45.594Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1016/s0006-3495(01)76033-x"
@@ -1367,7 +1406,7 @@
       },
       "provider": "europe-pmc",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:08.041Z",
+      "observedAt": "2026-08-11T20:29:40.520Z",
       "matchedIdentifier": {
         "kind": "pmcid",
         "value": "PMC12612092"
@@ -1410,7 +1449,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:06.281Z",
+      "observedAt": "2026-08-11T20:29:38.705Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1137/21m1435471"
@@ -1445,7 +1484,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:12.562Z",
+      "observedAt": "2026-08-11T20:29:45.001Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1093/bib/bbae048"
@@ -1482,7 +1521,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:14.921Z",
+      "observedAt": "2026-08-11T20:29:47.235Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2404.11799"
@@ -1521,7 +1560,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:10.173Z",
+      "observedAt": "2026-08-11T20:29:42.606Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1016/j.acha.2006.04.006"
@@ -1555,7 +1594,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:15.368Z",
+      "observedAt": "2026-08-11T20:29:47.725Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1021/acs.jcim.5c02266"
@@ -1589,7 +1628,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:09.591Z",
+      "observedAt": "2026-08-11T20:29:42.020Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.7554/elife.100361.3"
@@ -1624,7 +1663,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:10.641Z",
+      "observedAt": "2026-08-11T20:29:43.080Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "1802.03426"
@@ -1663,7 +1702,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:08.666Z",
+      "observedAt": "2026-08-11T20:29:41.143Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1371/journal.pcbi.1005905"
@@ -1701,7 +1740,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:12.267Z",
+      "observedAt": "2026-08-11T20:29:44.701Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1007/s10462-022-10146-z"
@@ -1736,7 +1775,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:04.729Z",
+      "observedAt": "2026-08-11T20:29:37.345Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2502.07746"
@@ -1782,7 +1821,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:15.210Z",
+      "observedAt": "2026-08-11T20:29:47.567Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2503.00175"
@@ -1859,7 +1898,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:05.954Z",
+      "observedAt": "2026-08-11T20:29:38.410Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1101/2022.05.12.491707"
@@ -1905,7 +1944,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:11.171Z",
+      "observedAt": "2026-08-11T20:29:43.588Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2410.17815"
@@ -1946,7 +1985,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:07.160Z",
+      "observedAt": "2026-08-11T20:29:39.593Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3390/math13020208"
@@ -1980,7 +2019,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:14.968Z",
+      "observedAt": "2026-08-11T20:29:47.355Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1073/pnas.2408431121"
@@ -2018,7 +2057,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:07.456Z",
+      "observedAt": "2026-08-11T20:29:39.900Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1038/s42004-025-01727-4"
@@ -2053,7 +2092,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:14.787Z",
+      "observedAt": "2026-08-11T20:29:47.161Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2312.01268"
@@ -2092,7 +2131,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:13.558Z",
+      "observedAt": "2026-08-11T20:29:45.967Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2507.19504"
@@ -2135,7 +2174,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:06.167Z",
+      "observedAt": "2026-08-11T20:29:38.533Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2508.11560"
@@ -2190,7 +2229,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:09.268Z",
+      "observedAt": "2026-08-11T20:29:41.732Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1021/acs.jctc.3c00039"
@@ -2241,7 +2280,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:11.662Z",
+      "observedAt": "2026-08-11T20:29:44.103Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1093/bib/bbad287"
@@ -2279,7 +2318,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:12.721Z",
+      "observedAt": "2026-08-11T20:29:45.170Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "1912.04135"
@@ -2318,7 +2357,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-10T18:40:17.425Z",
+      "observedAt": "2026-08-11T20:29:49.797Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1038/s43588-022-00394-y"
