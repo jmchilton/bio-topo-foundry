@@ -117,7 +117,8 @@ documentation carries the current example.
 Foundation — why the Foundry is shaped this way:
 
 - [[positioning]] — what it is, the three kinds of work behind it, and what it refuses to be.
-- [[guiding-principles]] — the design pressure, and what each principle costs.
+- [[guiding-principles]] — the pattern's principles as this domain realises them: inherited,
+  specialised, added, and what each one costs.
 - [[replication-experiments]] — how a replication is conducted and which half of it lives outside
   this repository.
 
