@@ -1,0 +1,918 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-12T23:37:41.182Z",
+  "corpus": {
+    "digest": "781b9a26aef7a8a11cff794109c66cdaaba3e8dfbe53bc1ecbd64e53245fb881",
+    "claimCount": 34,
+    "headRevision": "145f69442efb441ab6651f4e22e49176c7d598b7",
+    "workingTreeDirty": true
+  },
+  "claims": [
+    {
+      "id": "170599f7e7ebb5eb",
+      "kind": "dependency-count",
+      "environment": "ann-backends",
+      "asserted": "2",
+      "span": {
+        "artifactPath": "content/environments/ann-backends/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "96224ea48b766d4ddf3236f8b0373ac046e8ae07c2e94d9bc7b2da8767762b5c"
+      },
+      "context": "Two conda-forge packages in one fixture, locked green."
+    },
+    {
+      "id": "17930e25457658d2",
+      "kind": "package-channel",
+      "environment": "ann-backends",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactPath": "content/environments/ann-backends/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "96224ea48b766d4ddf3236f8b0373ac046e8ae07c2e94d9bc7b2da8767762b5c"
+      },
+      "context": "Two conda-forge packages in one fixture, locked green."
+    },
+    {
+      "id": "889bd07383d35aa3",
+      "kind": "dependency-count",
+      "environment": "batch-integration",
+      "asserted": "2",
+      "span": {
+        "artifactPath": "content/environments/batch-integration/index.md",
+        "startLine": 17,
+        "endLine": 17,
+        "sourceDigest": "7e276d69cc97c24eea91880c2d2902181f9d905dfc1b31a88a8aa7bdc7ce4bcf"
+      },
+      "context": "Two Bioconda packages, locked green."
+    },
+    {
+      "id": "13eae69615959994",
+      "kind": "package-channel",
+      "environment": "batch-integration",
+      "asserted": "bioconda",
+      "span": {
+        "artifactPath": "content/environments/batch-integration/index.md",
+        "startLine": 17,
+        "endLine": 17,
+        "sourceDigest": "7e276d69cc97c24eea91880c2d2902181f9d905dfc1b31a88a8aa7bdc7ce4bcf"
+      },
+      "context": "Two Bioconda packages, locked green."
+    },
+    {
+      "id": "694d24084aabe411",
+      "kind": "package-channel",
+      "environment": "biopython",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactPath": "content/environments/biopython/index.md",
+        "startLine": 17,
+        "endLine": 17,
+        "sourceDigest": "00b413e999c309d8380659757605fb5d3c05c2ab66a7099897d355d91fb3e06e"
+      },
+      "context": "It resolves from conda-forge and is locked green."
+    },
+    {
+      "id": "fe377f2cb25ca3a2",
+      "kind": "package-channel",
+      "environment": "dionysus",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactPath": "content/environments/dionysus/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "0cb44cac0f0a47a640fac53e7cf3dc281cbc65d79934b01d0fbadcecfa34eab5"
+      },
+      "context": "It resolves from conda-forge with no recipe required."
+    },
+    {
+      "id": "e16e277a0016f49e",
+      "kind": "dependency-count",
+      "environment": "dockq",
+      "asserted": "1",
+      "span": {
+        "artifactPath": "content/environments/dockq/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "772ec4fb882dcafeb8b61e2d575757a594a8ac58a09fbee2a45d6f574d5b63b9"
+      },
+      "context": "One conda-forge package, locked green."
+    },
+    {
+      "id": "e07b67747b1b4e4a",
+      "kind": "package-channel",
+      "environment": "dockq",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactPath": "content/environments/dockq/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "772ec4fb882dcafeb8b61e2d575757a594a8ac58a09fbee2a45d6f574d5b63b9"
+      },
+      "context": "One conda-forge package, locked green."
+    },
+    {
+      "id": "fa5f493c94419131",
+      "kind": "package-version",
+      "environment": "dockq",
+      "asserted": "2.1.3",
+      "subject": "dockq",
+      "span": {
+        "artifactPath": "content/environments/dockq/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "772ec4fb882dcafeb8b61e2d575757a594a8ac58a09fbee2a45d6f574d5b63b9"
+      },
+      "context": "`dockq` 2.1.3 is on Bioconda as well, but strict channel priority resolves it from conda-forge, and conda-forge builds no BioContainer, so the publication candidate stays `UNREGISTERED`."
+    },
+    {
+      "id": "df3c8243dc693aef",
+      "kind": "dependency-count",
+      "environment": "dssp",
+      "asserted": "1",
+      "span": {
+        "artifactPath": "content/environments/dssp/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "ec11e9caf0e56cd287df506fd3ad7f68bded204f770096dade501eab36895e9b"
+      },
+      "context": "One conda-forge package, locked green."
+    },
+    {
+      "id": "a44c23591a45885d",
+      "kind": "package-channel",
+      "environment": "dssp",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactPath": "content/environments/dssp/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "ec11e9caf0e56cd287df506fd3ad7f68bded204f770096dade501eab36895e9b"
+      },
+      "context": "One conda-forge package, locked green."
+    },
+    {
+      "id": "80bba8ac3cd86c0e",
+      "kind": "package-channel",
+      "environment": "gudhi",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactPath": "content/environments/gudhi/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "0cb44cac0f0a47a640fac53e7cf3dc281cbc65d79934b01d0fbadcecfa34eab5"
+      },
+      "context": "It resolves from conda-forge with no recipe required."
+    },
+    {
+      "id": "f255cb458f4e7d1f",
+      "kind": "lock-platform",
+      "environment": "hiponet",
+      "asserted": "linux-64",
+      "span": {
+        "artifactPath": "content/environments/hiponet/index.md",
+        "startLine": 15,
+        "endLine": 15,
+        "sourceDigest": "b6c78d5bf2cebc33ce8e11c3edcc1010fe7809537655a48aa8c31b5ccdd151c3"
+      },
+      "context": "This fixture reproduces HiPoNet's dependency closure — locked green on linux-64 — and runs the tool from its pinned git clone at `@45a9d08`."
+    },
+    {
+      "id": "1ba874dec136d22c",
+      "kind": "dependency-count",
+      "environment": "mmseqs2",
+      "asserted": "1",
+      "span": {
+        "artifactPath": "content/environments/mmseqs2/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "d69d079ce545ad1a38ed706b9ba22fe996c60f2604dbe4fa0c24b49ed71973b6"
+      },
+      "context": "One Bioconda package, locked green."
+    },
+    {
+      "id": "7e699eea05c76b15",
+      "kind": "package-channel",
+      "environment": "mmseqs2",
+      "asserted": "bioconda",
+      "span": {
+        "artifactPath": "content/environments/mmseqs2/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "d69d079ce545ad1a38ed706b9ba22fe996c60f2604dbe4fa0c24b49ed71973b6"
+      },
+      "context": "One Bioconda package, locked green."
+    },
+    {
+      "id": "db2fc475b14d6017",
+      "kind": "lock-platform",
+      "environment": "open-topodockq-featurizer",
+      "asserted": "linux-64",
+      "span": {
+        "artifactPath": "content/environments/open-topodockq-featurizer/index.md",
+        "startLine": 25,
+        "endLine": 25,
+        "sourceDigest": "e0ec08c68d703cbd46dd9b10f36e71bd50024d14b21ba28597b5063d34a02f16"
+      },
+      "context": "Verified green with a solved linux-64 lock."
+    },
+    {
+      "id": "c504b24662cb3f3d",
+      "kind": "lock-platform",
+      "environment": "open-topoqa-featurizer",
+      "asserted": "linux-64",
+      "span": {
+        "artifactPath": "content/environments/open-topoqa-featurizer/index.md",
+        "startLine": 28,
+        "endLine": 28,
+        "sourceDigest": "0f4849fa3e37b22c3cc6ecb780482823f7d89a5d166fb474e897a00fac1863c2"
+      },
+      "context": "Verified green with a solved linux-64 lock;"
+    },
+    {
+      "id": "5ae21cddd962d027",
+      "kind": "lock-platform",
+      "environment": "open-topoqa-scorer",
+      "asserted": "linux-64",
+      "span": {
+        "artifactPath": "content/environments/open-topoqa-scorer/index.md",
+        "startLine": 28,
+        "endLine": 28,
+        "sourceDigest": "4e4e06f8108c047fc72751fa2114b83ea636714d73cb7f94761e71f2222907bc"
+      },
+      "context": "The linux-64 lock solves cleanly (pytorch 2.13.0 cpu-mkl, pytorch_geometric 2.8.0.post1, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds and imports."
+    },
+    {
+      "id": "c763d6d0e88f0366",
+      "kind": "package-version",
+      "environment": "open-topoqa-scorer",
+      "asserted": "2.13.0",
+      "subject": "pytorch",
+      "span": {
+        "artifactPath": "content/environments/open-topoqa-scorer/index.md",
+        "startLine": 28,
+        "endLine": 28,
+        "sourceDigest": "4e4e06f8108c047fc72751fa2114b83ea636714d73cb7f94761e71f2222907bc"
+      },
+      "context": "The linux-64 lock solves cleanly (pytorch 2.13.0 cpu-mkl, pytorch_geometric 2.8.0.post1, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds and imports."
+    },
+    {
+      "id": "6b051969eb66b54f",
+      "kind": "package-version",
+      "environment": "open-topoqa-scorer",
+      "asserted": "2.8.0.post1",
+      "subject": "pytorch-geometric",
+      "span": {
+        "artifactPath": "content/environments/open-topoqa-scorer/index.md",
+        "startLine": 29,
+        "endLine": 29,
+        "sourceDigest": "45791cd8a677ccd0bcf19dee26e351a3214c6321080b8f16df6d0d19c5054c84"
+      },
+      "context": "The linux-64 lock solves cleanly (pytorch 2.13.0 cpu-mkl, pytorch_geometric 2.8.0.post1, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds and imports."
+    },
+    {
+      "id": "f87ff6791dfd40cc",
+      "kind": "package-version",
+      "environment": "open-topoqa-scorer",
+      "asserted": "3.13.0",
+      "subject": "gudhi",
+      "span": {
+        "artifactPath": "content/environments/open-topoqa-scorer/index.md",
+        "startLine": 29,
+        "endLine": 29,
+        "sourceDigest": "45791cd8a677ccd0bcf19dee26e351a3214c6321080b8f16df6d0d19c5054c84"
+      },
+      "context": "The linux-64 lock solves cleanly (pytorch 2.13.0 cpu-mkl, pytorch_geometric 2.8.0.post1, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds and imports."
+    },
+    {
+      "id": "04f794a9aff81cf4",
+      "kind": "package-version",
+      "environment": "open-topoqa-scorer",
+      "asserted": "4.6.1",
+      "subject": "dssp",
+      "span": {
+        "artifactPath": "content/environments/open-topoqa-scorer/index.md",
+        "startLine": 29,
+        "endLine": 29,
+        "sourceDigest": "45791cd8a677ccd0bcf19dee26e351a3214c6321080b8f16df6d0d19c5054c84"
+      },
+      "context": "The linux-64 lock solves cleanly (pytorch 2.13.0 cpu-mkl, pytorch_geometric 2.8.0.post1, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds and imports."
+    },
+    {
+      "id": "ce0c8177bc610d7e",
+      "kind": "package-version",
+      "environment": "open-topoqa-scorer",
+      "asserted": "1.87",
+      "subject": "biopython",
+      "span": {
+        "artifactPath": "content/environments/open-topoqa-scorer/index.md",
+        "startLine": 29,
+        "endLine": 29,
+        "sourceDigest": "45791cd8a677ccd0bcf19dee26e351a3214c6321080b8f16df6d0d19c5054c84"
+      },
+      "context": "The linux-64 lock solves cleanly (pytorch 2.13.0 cpu-mkl, pytorch_geometric 2.8.0.post1, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds and imports."
+    },
+    {
+      "id": "f48b99ac9429b5f9",
+      "kind": "lock-platform",
+      "environment": "petls-pytorch",
+      "asserted": "linux-64",
+      "span": {
+        "artifactPath": "content/environments/petls-pytorch/index.md",
+        "startLine": 25,
+        "endLine": 25,
+        "sourceDigest": "79eb58f9410df7140952735224d4195ad1d01070b36650914e83ba013a2b16ae"
+      },
+      "context": "Recipe and linux-64 lock are verified green."
+    },
+    {
+      "id": "5ec9505e15f81096",
+      "kind": "dependency-count",
+      "environment": "phate",
+      "asserted": "1",
+      "span": {
+        "artifactPath": "content/environments/phate/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "d69d079ce545ad1a38ed706b9ba22fe996c60f2604dbe4fa0c24b49ed71973b6"
+      },
+      "context": "One Bioconda package, locked green."
+    },
+    {
+      "id": "9037c4f07c4f4616",
+      "kind": "package-channel",
+      "environment": "phate",
+      "asserted": "bioconda",
+      "span": {
+        "artifactPath": "content/environments/phate/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "d69d079ce545ad1a38ed706b9ba22fe996c60f2604dbe4fa0c24b49ed71973b6"
+      },
+      "context": "One Bioconda package, locked green."
+    },
+    {
+      "id": "8160637b5e6eb67d",
+      "kind": "package-channel",
+      "environment": "ripser-cpp",
+      "asserted": "bioconda",
+      "span": {
+        "artifactPath": "content/environments/ripser-cpp/index.md",
+        "startLine": 15,
+        "endLine": 15,
+        "sourceDigest": "40680050fc309ff93c8e515c5297e2abd83f0e7ca09e300aebac71f4645085f2"
+      },
+      "context": "It is the cleanest point on the ladder in this corpus: one Bioconda package, no recipe, no glue, and so an inferred BioContainer — the publication candidate that makes it L4-eligible, pending an observation of the image itself."
+    },
+    {
+      "id": "bb4147bf44bb369e",
+      "kind": "package-channel",
+      "environment": "scanpy",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactPath": "content/environments/scanpy/index.md",
+        "startLine": 17,
+        "endLine": 17,
+        "sourceDigest": "835508c77a083438cdfa717ee42169d764e3a27d3a3d17722a6607a8ba731492"
+      },
+      "context": "Resolves from conda-forge, locked green."
+    },
+    {
+      "id": "09b15acb58f1be73",
+      "kind": "dependency-count",
+      "environment": "scvelo",
+      "asserted": "2",
+      "span": {
+        "artifactPath": "content/environments/scvelo/index.md",
+        "startLine": 19,
+        "endLine": 19,
+        "sourceDigest": "7e90d979751e7d0ac73a51beb03c21754f7faf0d52afa8df543fc4a7dcae245e"
+      },
+      "context": "Two conda-forge packages, locked green."
+    },
+    {
+      "id": "e593b1153cdedcbc",
+      "kind": "package-channel",
+      "environment": "scvelo",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactPath": "content/environments/scvelo/index.md",
+        "startLine": 19,
+        "endLine": 19,
+        "sourceDigest": "7e90d979751e7d0ac73a51beb03c21754f7faf0d52afa8df543fc4a7dcae245e"
+      },
+      "context": "Two conda-forge packages, locked green."
+    },
+    {
+      "id": "c2903eaa534258d2",
+      "kind": "package-channel",
+      "environment": "scvi",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactPath": "content/environments/scvi/index.md",
+        "startLine": 18,
+        "endLine": 18,
+        "sourceDigest": "835508c77a083438cdfa717ee42169d764e3a27d3a3d17722a6607a8ba731492"
+      },
+      "context": "Resolves from conda-forge, locked green."
+    },
+    {
+      "id": "01839af07f11d72a",
+      "kind": "lock-platform",
+      "environment": "topodockq",
+      "asserted": "linux-64",
+      "span": {
+        "artifactPath": "content/environments/topodockq/index.md",
+        "startLine": 16,
+        "endLine": 16,
+        "sourceDigest": "b138575b4bd12c6eea4f0229b0180a8afc79a3eef9e87d5b6ceaf0ca23f50b73"
+      },
+      "context": "This fixture reproduces TopoDockQ's dependency closure from its `environment.yaml` — locked green on linux-64 — and runs the scorer from its pinned clone at `@5696f82`."
+    },
+    {
+      "id": "211cc7997543e47c",
+      "kind": "package-channel",
+      "environment": "topometry",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactPath": "content/environments/topometry/index.md",
+        "startLine": 14,
+        "endLine": 14,
+        "sourceDigest": "011d73f0fe31823f4a5eecf9702a75cc73782b2ceb064065d345e43b9401870e"
+      },
+      "context": "This fixture pins the single TopoMetry build that exists on conda-forge, 0.2.1.1."
+    },
+    {
+      "id": "0008b30340bc65e6",
+      "kind": "lock-platform",
+      "environment": "topometry-1.1",
+      "asserted": "linux-64",
+      "span": {
+        "artifactPath": "content/environments/topometry-1.1/index.md",
+        "startLine": 27,
+        "endLine": 27,
+        "sourceDigest": "424fdee33138e2aacf03a578fac602db7b5ae121cbb5f158daed760f8733431e"
+      },
+      "context": "Verified green on osx-arm64 — build, `pip check`, and asserts on the runtime version, the distribution version, and the presence of `fit_adata` and `preprocess` — with a solved linux-64 lock."
+    }
+  ],
+  "findings": [
+    {
+      "claimId": "170599f7e7ebb5eb",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "17930e25457658d2",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "889bd07383d35aa3",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "13eae69615959994",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "bioconda",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "694d24084aabe411",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "fe377f2cb25ca3a2",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "e16e277a0016f49e",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "1",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "e07b67747b1b4e4a",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "fa5f493c94419131",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2.1.3",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "df3c8243dc693aef",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "1",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "a44c23591a45885d",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "80bba8ac3cd86c0e",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "f255cb458f4e7d1f",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "linux-64",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "1ba874dec136d22c",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "1",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "7e699eea05c76b15",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "bioconda",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "db2fc475b14d6017",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "linux-64",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "c504b24662cb3f3d",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "linux-64",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "5ae21cddd962d027",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "linux-64",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "c763d6d0e88f0366",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2.13.0",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "6b051969eb66b54f",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2.8.0.post1",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "f87ff6791dfd40cc",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "3.13.0",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "04f794a9aff81cf4",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "4.6.1",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "ce0c8177bc610d7e",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "1.87",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "f48b99ac9429b5f9",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "linux-64",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "5ec9505e15f81096",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "1",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "9037c4f07c4f4616",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "bioconda",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "8160637b5e6eb67d",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "bioconda",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "bb4147bf44bb369e",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "09b15acb58f1be73",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "e593b1153cdedcbc",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "c2903eaa534258d2",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "01839af07f11d72a",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "linux-64",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "211cc7997543e47c",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists"
+    },
+    {
+      "claimId": "0008b30340bc65e6",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "linux-64",
+      "effectiveVerdict": "exists"
+    }
+  ],
+  "diagnostics": [
+    {
+      "artifactPath": "content/environments/ann-backends/index.md",
+      "line": 20,
+      "reason": "no-subject",
+      "text": "that inference follows from a single Bioconda package, and neither of these is on Bioconda at all."
+    },
+    {
+      "artifactPath": "content/environments/ann-backends/index.md",
+      "line": 20,
+      "reason": "no-subject",
+      "text": "that inference follows from a single Bioconda package, and neither of these is on Bioconda at all."
+    },
+    {
+      "artifactPath": "content/environments/dockq/index.md",
+      "line": 18,
+      "reason": "no-subject",
+      "text": "One conda-forge package, locked green. `dockq` 2.1.3 is on Bioconda as well, but strict channel"
+    },
+    {
+      "artifactPath": "content/environments/dockq/index.md",
+      "line": 19,
+      "reason": "no-subject",
+      "text": "priority resolves it from conda-forge, and conda-forge builds no BioContainer, so the publication"
+    },
+    {
+      "artifactPath": "content/environments/dockq/index.md",
+      "line": 19,
+      "reason": "no-subject",
+      "text": "priority resolves it from conda-forge, and conda-forge builds no BioContainer, so the publication"
+    },
+    {
+      "artifactPath": "content/environments/dockq/index.md",
+      "line": 20,
+      "reason": "no-subject",
+      "text": "candidate stays `UNREGISTERED`. Selecting Bioconda for the dependency would reach a container that"
+    },
+    {
+      "artifactPath": "content/environments/dssp/index.md",
+      "line": 18,
+      "reason": "no-subject",
+      "text": "One conda-forge package, locked green. Bioconda publishes no `dssp` release, so there is no"
+    },
+    {
+      "artifactPath": "content/environments/giotto-ph/index.md",
+      "line": 17,
+      "reason": "build-subject",
+      "text": "The recipe is verified building green on linux-64 under rattler-build. It builds from a git"
+    },
+    {
+      "artifactPath": "content/environments/giotto-ph/index.md",
+      "line": 21,
+      "reason": "unknown-package",
+      "text": "`cmake <4`, because the junction submodule's `cmake_minimum_required` predates 3.5."
+    },
+    {
+      "artifactPath": "content/environments/mmseqs2/index.md",
+      "line": 18,
+      "reason": "no-subject",
+      "text": "One Bioconda package, locked green. Bioconda builds one image per recipe build, so the fixture"
+    },
+    {
+      "artifactPath": "content/environments/open-topodockq-featurizer/index.md",
+      "line": 24,
+      "reason": "no-subject",
+      "text": "engine, which is what holds it at L1. Both are pure-Python noarch and Bioconda-eligible, so"
+    },
+    {
+      "artifactPath": "content/environments/open-topodockq-featurizer/index.md",
+      "line": 24,
+      "reason": "no-subject",
+      "text": "engine, which is what holds it at L1. Both are pure-Python noarch and Bioconda-eligible, so"
+    },
+    {
+      "artifactPath": "content/environments/open-topoqa-featurizer/index.md",
+      "line": 26,
+      "reason": "no-subject",
+      "text": "Every runtime dependency is on public channels — numpy, gudhi, biopython, and Bioconda's"
+    },
+    {
+      "artifactPath": "content/environments/open-topoqa-scorer/index.md",
+      "line": 29,
+      "reason": "build-subject",
+      "text": "pytorch_geometric 2.8.0.post1, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds"
+    },
+    {
+      "artifactPath": "content/environments/petls/index.md",
+      "line": 18,
+      "reason": "no-subject",
+      "text": "reserved and cannot be redistributed to conda-forge or Bioconda no matter how good the recipe"
+    },
+    {
+      "artifactPath": "content/environments/petls/index.md",
+      "line": 18,
+      "reason": "no-subject",
+      "text": "reserved and cannot be redistributed to conda-forge or Bioconda no matter how good the recipe"
+    },
+    {
+      "artifactPath": "content/environments/petls/index.md",
+      "line": 22,
+      "reason": "build-subject",
+      "text": "The recipe is verified building green on linux-64 and is linux-64 only: an upstream"
+    },
+    {
+      "artifactPath": "content/environments/petls/index.md",
+      "line": 22,
+      "reason": "build-subject",
+      "text": "The recipe is verified building green on linux-64 and is linux-64 only: an upstream"
+    },
+    {
+      "artifactPath": "content/environments/petls-pytorch/index.md",
+      "line": 13,
+      "reason": "build-subject",
+      "text": "Apache-2.0, pure Python, and therefore a noarch recipe that is eligible for staged-recipes."
+    },
+    {
+      "artifactPath": "content/environments/petls-pytorch/index.md",
+      "line": 17,
+      "reason": "unknown-package",
+      "text": "The fixture builds from our fork `jmchilton/petls-pytorch @ v2` rather than the PyPI 1.0.2"
+    },
+    {
+      "artifactPath": "content/environments/phat/index.md",
+      "line": 17,
+      "reason": "build-subject",
+      "text": "The in-repo recipe compiles the C++ with pybind11 and is verified green on linux-64. PHAT is"
+    },
+    {
+      "artifactPath": "content/environments/phate/index.md",
+      "line": 18,
+      "reason": "no-subject",
+      "text": "One Bioconda package, locked green. Bioconda builds one image per recipe build, so the fixture"
+    },
+    {
+      "artifactPath": "content/environments/pydowker/index.md",
+      "line": 28,
+      "reason": "no-subject",
+      "text": "`rivet-console`, not `rivet` — the latter is an unrelated conda-forge project. GPL-3.0 for"
+    },
+    {
+      "artifactPath": "content/environments/pyflagser/index.md",
+      "line": 17,
+      "reason": "build-subject",
+      "text": "is verified building green on linux-64. Like [[giotto-ph-recipe]] it builds from git rather than a"
+    },
+    {
+      "artifactPath": "content/environments/r-tdastats/index.md",
+      "line": 18,
+      "reason": "build-subject",
+      "text": "linux-64, which holds it at L1."
+    },
+    {
+      "artifactPath": "content/environments/ripser-cpp/index.md",
+      "line": 20,
+      "reason": "no-subject",
+      "text": "but from different channels — the Bioconda C++ CLI here, the conda-forge Python library there."
+    },
+    {
+      "artifactPath": "content/environments/ripser-cpp/index.md",
+      "line": 20,
+      "reason": "no-subject",
+      "text": "but from different channels — the Bioconda C++ CLI here, the conda-forge Python library there."
+    },
+    {
+      "artifactPath": "content/environments/ripser-py/index.md",
+      "line": 15,
+      "reason": "no-subject",
+      "text": "entirely from conda-forge, so it needs no in-repo recipe, but it is not a single Bioconda"
+    },
+    {
+      "artifactPath": "content/environments/ripser-py/index.md",
+      "line": 15,
+      "reason": "no-subject",
+      "text": "entirely from conda-forge, so it needs no in-repo recipe, but it is not a single Bioconda"
+    },
+    {
+      "artifactPath": "content/environments/scvelo/index.md",
+      "line": 19,
+      "reason": "no-subject",
+      "text": "Two conda-forge packages, locked green. Bioconda's scvelo is stuck at 0.2.5, so there is no"
+    },
+    {
+      "artifactPath": "content/environments/topodockq/index.md",
+      "line": 21,
+      "reason": "unknown-package",
+      "text": "CPython 3.8 `.pyc` bytecode with no corresponding source, so there is nothing to compile and"
+    },
+    {
+      "artifactPath": "content/environments/topometry/index.md",
+      "line": 22,
+      "reason": "no-subject",
+      "text": "Keeping both fixtures records the gap instead of hiding it. Updating the conda-forge feedstock"
+    },
+    {
+      "artifactPath": "content/environments/topometry-1.1/index.md",
+      "line": 26,
+      "reason": "build-subject",
+      "text": "Verified green on osx-arm64 — build, `pip check`, and asserts on the runtime version, the"
+    }
+  ],
+  "summary": {
+    "total": 34,
+    "byVerdict": {
+      "exists": 34,
+      "absent": 0,
+      "wrong-value": 0,
+      "unpinned": 0,
+      "unavailable": 0
+    },
+    "coverage": {
+      "extracted": 34,
+      "declined": 33
+    },
+    "review": {
+      "required": 0,
+      "completed": 0
+    }
+  }
+}

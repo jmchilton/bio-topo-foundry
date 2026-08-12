@@ -7,7 +7,7 @@ order: 4
 status: revised
 created: 2026-08-08
 revised: 2026-08-12
-revision: 5
+revision: 6
 tags:
   - meta
 ---
@@ -58,6 +58,7 @@ outside this flow.
 | `pnpm audit:citations`         | Replays citation resolution offline from committed evidence and rewrites the run and report. |
 | `pnpm audit:citations:refresh` | Re-queries live providers before producing the run and report.                               |
 | `pnpm audit:citations:scan`    | Extracts citation candidates without resolving them.                                         |
+| `pnpm audit:tools`             | Checks each Environment note's runtime claims against its own manifest and lock.             |
 | `pnpm dev`                     | The local reader. Not a check.                                                               |
 
 One thing about `pnpm validate` is worth knowing before it surprises someone: the built-output test
@@ -121,6 +122,18 @@ is also what makes a note's DOI and its arXiv id checkable against each other. T
 its extraction options separately from the CLI, so a new config field reaches one and not the other;
 the run-matches-replay assertion is what catches that.
 
+**Runtime claims.** `tests/tool-alignment.test.ts` reads the assertions an Environment note makes
+about its own runtime — the platform its lock solved, how many packages it declares, the channel
+they resolve from, the version each is pinned at — and checks each against the `pixi.toml` and
+`pixi.lock` committed beside it. The lock is the record of a solve that already happened, so no
+stage of this fetches, solves, or executes anything.
+
+Two properties are deliberate. A claim the runtime cannot falsify is never a failure: `unpinned` and
+`unavailable` are reported apart from `absent` and `wrong-value`, because a fixture that declares
+less is not a fixture caught lying. And every recognized token the grammar refuses to promote is
+counted rather than discarded, so the run states how much prose it could read — a rate over an
+unstated denominator is a number nobody can size.
+
 **Built output.** The last layer reads the emitted HTML and CSS, because the defects that matter most
 here exist only after compilation and every earlier stage reports success. It checks that every
 routed note has a page and every infrastructure route was emitted; that the shared shell, its style
@@ -146,6 +159,11 @@ configured corpus, committed provider evidence, and adjudications. The citation-
 offline drift guard. `audit/provider-evidence.json` changes only through a live refresh; the rendered
 report deliberately carries no observation timestamp, so the scheduled workflow can distinguish a
 substantive provider or verdict change from timestamp-only churn.
+
+`pnpm audit:tools` produces `audit/tool-alignment.json` and `audit/tool-alignment.md` from the
+Environment corpus and `audit/tool-alignment-adjudications.json`. The tool-alignment test is their
+drift guard, and it replays from committed files only. An adjudication binds to the digest of the
+source text it reviewed, so editing a claim retires the decision that cleared it.
 
 `pnpm cast <mold>` produces a target bundle under `casts/` from the Mold, its typed references, the
 content index, Kind companion declarations, the reference contract, and target policy. The generated
@@ -189,6 +207,15 @@ stay Foundry-side because the Mold Kind declares them `foundry-only`.
   the syntax, so the rule carries it instead.
 - Nothing checks that a recipe under `recipes/` still builds, or that a fixture's `pixi.lock`
   resolves today. Environment companions are measured for presence, not for freshness.
+- The tool-alignment grammar reads note prose only. A claim written in a `pixi.toml` header comment
+  is invisible to it, and the corpus has carried a wrong one there while the note beside it was
+  correct.
+- Tool alignment is tuned for precision over recall, so a claim the grammar declines is a claim
+  nobody checked. The declined count is reported for exactly that reason; it is not a backlog the
+  gate will ever work through on its own.
+- A portability grade is checked for internal consistency, never against a registry. `L4` asserts an
+  observed BioContainer, and no committed file records an observation, so nothing here can tell a
+  correct grade from an optimistic one.
 - Citation resolution checks identity only: a real paper cited for a claim it does not support
   passes. Design records are outside the audited corpus, and nothing checks the transitive step from
   a domain note's wiki link to the scholarly identifier held by the linked source note.
