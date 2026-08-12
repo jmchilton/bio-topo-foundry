@@ -12,7 +12,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:12.273Z",
+      "observedAt": "2026-08-12T23:29:43.171Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1186/s13059-017-1382-0"
@@ -47,7 +47,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:15.690Z",
+      "observedAt": "2026-08-12T23:29:46.139Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1063/1.5048469"
@@ -81,7 +81,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:20.723Z",
+      "observedAt": "2026-08-12T23:29:50.334Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1021/acs.jpclett.2c00469"
@@ -115,7 +115,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:14.007Z",
+      "observedAt": "2026-08-12T23:29:44.670Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1038/s41586-024-07487-w"
@@ -185,6 +185,43 @@
       }
     },
     {
+      "id": "11c97c962f11d17a",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1137/22m1482299"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-12T23:29:51.628Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1137/22m1482299"
+      },
+      "metadata": {
+        "title": "Combinatorial and Hodge Laplacians: Similarities and Differences",
+        "authors": [
+          "Emily Ribando-Gros",
+          "Rui Wang",
+          "Jiahui Chen",
+          "Yiying Tong",
+          "Guo-Wei Wei"
+        ],
+        "year": 2024,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1137/22m1482299"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1137%2F22m1482299"
+      }
+    },
+    {
       "id": "12cf43c10ef7e972",
       "query": {
         "type": "identifier",
@@ -195,7 +232,7 @@
       },
       "provider": "europe-pmc",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:21.939Z",
+      "observedAt": "2026-08-12T23:29:51.500Z",
       "matchedIdentifier": {
         "kind": "pmid",
         "value": "42437450"
@@ -233,7 +270,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:18.077Z",
+      "observedAt": "2026-08-12T23:29:47.947Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2509.16877"
@@ -271,7 +308,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:13.347Z",
+      "observedAt": "2026-08-12T23:29:44.068Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1093/bioinformatics/btad203"
@@ -307,7 +344,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:21.363Z",
+      "observedAt": "2026-08-12T23:29:50.919Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1093/bib/bbag370"
@@ -341,7 +378,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:15.009Z",
+      "observedAt": "2026-08-12T23:29:45.550Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1016/s1359-0278(97)00024-2"
@@ -376,7 +413,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:21.053Z",
+      "observedAt": "2026-08-12T23:29:50.627Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1016/j.compbiomed.2022.106262"
@@ -412,7 +449,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:16.771Z",
+      "observedAt": "2026-08-12T23:29:47.025Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3934/math.20241333"
@@ -447,7 +484,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:08.201Z",
+      "observedAt": "2026-08-12T23:29:39.591Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3934/fods.2024033"
@@ -468,6 +505,41 @@
       },
       "locator": {
         "url": "https://api.crossref.org/works/10.3934%2Ffods.2024033"
+      }
+    },
+    {
+      "id": "31eab13e3033bd90",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1002/jcc.70073"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-12T23:29:52.214Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1002/jcc.70073"
+      },
+      "metadata": {
+        "title": "Multiscale Differential Geometry Learning for Protein Flexibility Analysis",
+        "authors": [
+          "Hongsong Feng",
+          "Jeffrey Y. Zhao",
+          "Guo‐Wei Wei"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1002/jcc.70073"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1002%2Fjcc.70073"
       }
     },
     {
@@ -498,7 +570,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:16.081Z",
+      "observedAt": "2026-08-12T23:29:46.433Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1007/s10462-025-11462-w"
@@ -527,6 +599,80 @@
       }
     },
     {
+      "id": "35e31382e77f4ef4",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1063/1.4882258"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-12T23:29:53.237Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1063/1.4882258"
+      },
+      "metadata": {
+        "title": "Fast and anisotropic flexibility-rigidity index for protein flexibility and fluctuation analysis",
+        "authors": [
+          "Kristopher Opron",
+          "Kelin Xia",
+          "Guo-Wei Wei"
+        ],
+        "year": 2014,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1063/1.4882258"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1063%2F1.4882258"
+      }
+    },
+    {
+      "id": "3d2745933d048554",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2608.00244"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-12T23:29:51.590Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2608.00244"
+      },
+      "metadata": {
+        "title": "Weighted Hodge Laplacians on Manifolds with Boundary",
+        "authors": [
+          "Zhe Su",
+          "Yiying Tong",
+          "Guo-Wei Wei"
+        ],
+        "year": 2026,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2608.00244"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2608.00244"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2608.00244"
+      }
+    },
+    {
       "id": "3d81a7693f5dded7",
       "query": {
         "type": "identifier",
@@ -537,7 +683,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:16.438Z",
+      "observedAt": "2026-08-12T23:29:46.732Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3934/dcdsb.2020257"
@@ -573,7 +719,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:18.468Z",
+      "observedAt": "2026-08-12T23:29:48.277Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1002/cnm.2655"
@@ -624,7 +770,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:14.807Z",
+      "observedAt": "2026-08-12T23:29:45.339Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2607.15022"
@@ -663,7 +809,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:20.076Z",
+      "observedAt": "2026-08-12T23:29:49.740Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1038/s42256-020-0149-6"
@@ -698,7 +844,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:11.608Z",
+      "observedAt": "2026-08-12T23:29:42.549Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1162/089976603321780317"
@@ -732,7 +878,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:19.447Z",
+      "observedAt": "2026-08-12T23:29:49.154Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1371/journal.pcbi.1005929"
@@ -767,7 +913,7 @@
       },
       "provider": "citation-metadata-page",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:07.323Z",
+      "observedAt": "2026-08-12T23:29:38.762Z",
       "matchedIdentifier": {
         "kind": "url",
         "value": "https://proceedings.mlr.press/v97/gao19e.html"
@@ -802,7 +948,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:19.116Z",
+      "observedAt": "2026-08-12T23:29:48.863Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1371/journal.pcbi.1005690"
@@ -836,7 +982,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:18.789Z",
+      "observedAt": "2026-08-12T23:29:48.565Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1093/bioinformatics/btx460"
@@ -870,7 +1016,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:06.906Z",
+      "observedAt": "2026-08-12T23:29:38.414Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1016/j.cell.2023.11.005"
@@ -951,7 +1097,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:12.927Z",
+      "observedAt": "2026-08-12T23:29:43.766Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1093/bib/bbaf083"
@@ -988,7 +1134,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:07.862Z",
+      "observedAt": "2026-08-12T23:29:39.298Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3934/fods.2021006"
@@ -1026,7 +1172,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:12.597Z",
+      "observedAt": "2026-08-12T23:29:43.469Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1038/s41587-019-0336-3"
@@ -1071,7 +1217,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:17.078Z",
+      "observedAt": "2026-08-12T23:29:47.331Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3934/fods.2024032"
@@ -1106,7 +1252,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:17.559Z",
+      "observedAt": "2026-08-12T23:29:47.745Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2311.12834"
@@ -1148,7 +1294,7 @@
       },
       "provider": "citation-metadata-page",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:06.414Z",
+      "observedAt": "2026-08-12T23:29:38.167Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.52202/085713-4107"
@@ -1190,7 +1336,7 @@
       },
       "provider": "citation-metadata-page",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:06.668Z",
+      "observedAt": "2026-08-12T23:29:38.298Z",
       "matchedIdentifier": {
         "kind": "url",
         "value": "https://proceedings.mlr.press/v235/madhu24a.html"
@@ -1225,7 +1371,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:09.637Z",
+      "observedAt": "2026-08-12T23:29:40.800Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1371/journal.pone.0161879"
@@ -1259,7 +1405,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:09.952Z",
+      "observedAt": "2026-08-12T23:29:41.089Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1002/cnm.3376"
@@ -1294,7 +1440,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:10.613Z",
+      "observedAt": "2026-08-12T23:29:41.665Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1371/journal.pcbi.1005659"
@@ -1339,7 +1485,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:19.762Z",
+      "observedAt": "2026-08-12T23:29:49.445Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1002/cnm.2914"
@@ -1373,7 +1519,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:16.908Z",
+      "observedAt": "2026-08-12T23:29:47.099Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2408.00220"
@@ -1412,7 +1558,7 @@
       },
       "provider": "europe-pmc",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:13.200Z",
+      "observedAt": "2026-08-12T23:29:43.972Z",
       "matchedIdentifier": {
         "kind": "pmcid",
         "value": "PMC11891663"
@@ -1457,7 +1603,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:15.344Z",
+      "observedAt": "2026-08-12T23:29:45.849Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1016/s0006-3495(01)76033-x"
@@ -1495,7 +1641,7 @@
       },
       "provider": "europe-pmc",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:09.573Z",
+      "observedAt": "2026-08-12T23:29:40.762Z",
       "matchedIdentifier": {
         "kind": "pmcid",
         "value": "PMC12612092"
@@ -1538,7 +1684,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:07.545Z",
+      "observedAt": "2026-08-12T23:29:39.002Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1137/21m1435471"
@@ -1563,6 +1709,39 @@
       }
     },
     {
+      "id": "9a94cc1068b9730a",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1090/s0002-9947-99-02021-8"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-12T23:29:51.920Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1090/s0002-9947-99-02021-8"
+      },
+      "metadata": {
+        "title": "The heat kernel weighted Hodge Laplacian on noncompact manifolds",
+        "authors": [
+          "Edward Bueler"
+        ],
+        "year": 1999,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1090/s0002-9947-99-02021-8"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1090%2Fs0002-9947-99-02021-8"
+      }
+    },
+    {
       "id": "a34b2fe038c309d7",
       "query": {
         "type": "identifier",
@@ -1573,7 +1752,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:14.694Z",
+      "observedAt": "2026-08-12T23:29:45.263Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1093/bib/bbae048"
@@ -1610,7 +1789,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:17.347Z",
+      "observedAt": "2026-08-12T23:29:47.550Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2404.11799"
@@ -1649,7 +1828,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:11.946Z",
+      "observedAt": "2026-08-12T23:29:42.871Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1016/j.acha.2006.04.006"
@@ -1683,7 +1862,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:18.143Z",
+      "observedAt": "2026-08-12T23:29:47.988Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1021/acs.jcim.5c02266"
@@ -1717,7 +1896,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:11.294Z",
+      "observedAt": "2026-08-12T23:29:42.252Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.7554/elife.100361.3"
@@ -1752,7 +1931,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:12.513Z",
+      "observedAt": "2026-08-12T23:29:43.356Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "1802.03426"
@@ -1791,7 +1970,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:10.288Z",
+      "observedAt": "2026-08-12T23:29:41.381Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1371/journal.pcbi.1005905"
@@ -1829,7 +2008,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:14.350Z",
+      "observedAt": "2026-08-12T23:29:44.975Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1007/s10462-022-10146-z"
@@ -1864,7 +2043,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:05.746Z",
+      "observedAt": "2026-08-12T23:29:37.666Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2502.07746"
@@ -1910,7 +2089,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:17.944Z",
+      "observedAt": "2026-08-12T23:29:47.842Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2503.00175"
@@ -1987,7 +2166,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:07.225Z",
+      "observedAt": "2026-08-12T23:29:38.708Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1101/2022.05.12.491707"
@@ -2033,7 +2212,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:13.063Z",
+      "observedAt": "2026-08-12T23:29:43.853Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2410.17815"
@@ -2074,7 +2253,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:08.539Z",
+      "observedAt": "2026-08-12T23:29:39.892Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.3390/math13020208"
@@ -2108,7 +2287,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:17.416Z",
+      "observedAt": "2026-08-12T23:29:47.631Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1073/pnas.2408431121"
@@ -2146,7 +2325,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:08.886Z",
+      "observedAt": "2026-08-12T23:29:40.186Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1038/s42004-025-01727-4"
@@ -2181,7 +2360,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:17.214Z",
+      "observedAt": "2026-08-12T23:29:47.419Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2312.01268"
@@ -2220,7 +2399,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:15.819Z",
+      "observedAt": "2026-08-12T23:29:46.216Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2507.19504"
@@ -2263,7 +2442,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:07.434Z",
+      "observedAt": "2026-08-12T23:29:38.839Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "2508.11560"
@@ -2318,7 +2497,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:10.943Z",
+      "observedAt": "2026-08-12T23:29:41.960Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1021/acs.jctc.3c00039"
@@ -2369,7 +2548,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:13.664Z",
+      "observedAt": "2026-08-12T23:29:44.370Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1093/bib/bbad287"
@@ -2397,6 +2576,81 @@
       }
     },
     {
+      "id": "eb5f9b61966d42df",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1021/acs.jpcb.5c01287"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-12T23:29:52.505Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1021/acs.jpcb.5c01287"
+      },
+      "metadata": {
+        "title": "Persistent Sheaf Laplacian Analysis of Protein Flexibility",
+        "authors": [
+          "Nicole Hayes",
+          "Xiaoqi Wei",
+          "Hongsong Feng",
+          "Ekaterina Merkurjev",
+          "Guo-Wei Wei"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1021/acs.jpcb.5c01287"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1021%2Facs.jpcb.5c01287"
+      }
+    },
+    {
+      "id": "eb5fd927908f160e",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "arxiv",
+          "value": "2607.00879"
+        }
+      },
+      "provider": "openalex",
+      "state": "resolved",
+      "observedAt": "2026-08-12T23:29:53.191Z",
+      "matchedIdentifier": {
+        "kind": "arxiv",
+        "value": "2607.00879"
+      },
+      "metadata": {
+        "title": "Commutative Algebra Learning for Protein Flexibility Analysis",
+        "authors": [
+          "Honghao Zhang",
+          "H. Feng"
+        ],
+        "year": 2026,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.48550/arxiv.2607.00879"
+          },
+          {
+            "kind": "arxiv",
+            "value": "2607.00879"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.openalex.org/works/https%3A%2F%2Fdoi.org%2F10.48550%2Farxiv.2607.00879"
+      }
+    },
+    {
       "id": "eb6527166f71e713",
       "query": {
         "type": "identifier",
@@ -2407,7 +2661,7 @@
       },
       "provider": "openalex",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:14.930Z",
+      "observedAt": "2026-08-12T23:29:45.429Z",
       "matchedIdentifier": {
         "kind": "arxiv",
         "value": "1912.04135"
@@ -2446,7 +2700,7 @@
       },
       "provider": "crossref",
       "state": "resolved",
-      "observedAt": "2026-08-12T21:07:20.408Z",
+      "observedAt": "2026-08-12T23:29:50.038Z",
       "matchedIdentifier": {
         "kind": "doi",
         "value": "10.1038/s43588-022-00394-y"
@@ -2467,6 +2721,43 @@
       },
       "locator": {
         "url": "https://api.crossref.org/works/10.1038%2Fs43588-022-00394-y"
+      }
+    },
+    {
+      "id": "f086abcafee339bf",
+      "query": {
+        "type": "identifier",
+        "identifier": {
+          "kind": "doi",
+          "value": "10.1021/acs.jpcb.5c03679"
+        }
+      },
+      "provider": "crossref",
+      "state": "resolved",
+      "observedAt": "2026-08-12T23:29:52.795Z",
+      "matchedIdentifier": {
+        "kind": "doi",
+        "value": "10.1021/acs.jpcb.5c03679"
+      },
+      "metadata": {
+        "title": "Correction to “Persistent Sheaf Laplacian Analysis of Protein Flexibility”",
+        "authors": [
+          "Nicole Hayes",
+          "Xiaoqi Wei",
+          "Hongsong Feng",
+          "Ekaterina Merkurjev",
+          "Guo-Wei Wei"
+        ],
+        "year": 2025,
+        "identifiers": [
+          {
+            "kind": "doi",
+            "value": "10.1021/acs.jpcb.5c03679"
+          }
+        ]
+      },
+      "locator": {
+        "url": "https://api.crossref.org/works/10.1021%2Facs.jpcb.5c03679"
       }
     }
   ]
