@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-10T18:40:18.078Z",
+  "generatedAt": "2026-08-11T20:29:50.462Z",
   "corpus": {
-    "digest": "637085d9af88244cd93891e70f6387cda2fce97983a9671ab4377f415e7e4ad5",
-    "headRevision": "8a6bc3737590ffcca1205605f6b09ad1cb232efe",
+    "digest": "ef53853590c80ea35c62fcddb143eee585e970cb4ecd7d71b7760c73c5cceb5d",
+    "headRevision": "aceca67321ce88b53d9016295405299e993ac027",
     "workingTreeDirty": true
   },
-  "evidenceSnapshotDigest": "54c954007165e9924575598da381a1174ccff86452b4b00762708dfd30abe776",
+  "evidenceSnapshotDigest": "f21ce78483d77723704a4047d94a61f5c4a85fad3c705436ea6a895af7069966",
   "manualReviewStatus": "not-required",
   "manualReview": {
     "required": 0,
     "completed": 0
   },
   "summary": {
-    "total": 78,
-    "resolved": 78,
+    "total": 83,
+    "resolved": 83,
     "resolved-mismatched": 0,
     "unresolved": 0,
     "unavailable": 0,
@@ -1026,6 +1026,108 @@
         ],
         "year": 2024
       }
+    },
+    {
+      "id": "530be2cf4151a2b4",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/mapper-brca-survival.md",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "citation: Emmanuel Kibisi, Olakunle Abawonse, and Donald Woukeng, \"Topology-Informed Survival Analysis of Breast Cancer Patients Using the Mapper Algorithm,\" arXiv:2607.15022v1 (2026).",
+        "sourceDigest": "c213075b2150ad98d9e7e1ed18d6a7964b4fb00aab86aa47aec642823ae5da9c"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2607.15022"
+        }
+      ],
+      "described": {
+        "title": "Topology-Informed Survival Analysis of Breast Cancer Patients Using the Mapper Algorithm",
+        "authors": [
+          "citation: Emmanuel Kibisi",
+          "Olakunle Abawonse",
+          "Donald Woukeng"
+        ],
+        "year": 2026
+      }
+    },
+    {
+      "id": "7b16d322c16d02c9",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/mapper-brca-survival.md",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "source_url: https://arxiv.org/abs/2607.15022",
+        "sourceDigest": "77c724c6922b1d8c7d7509617797318b9cd182ffb7f8a71b9edd3308891301bf"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2607.15022"
+        }
+      ]
+    },
+    {
+      "id": "3e99ae05649b5d7c",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/mapper-brca-survival.md",
+        "startLine": 9,
+        "endLine": 9,
+        "sourceText": "  doi: 10.48550/arXiv.2607.15022",
+        "sourceDigest": "8dd0254d431250555c82d9e13c8d503f9344c77b8ab09274d8ec95ad3b8ff4e9"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.48550/arxiv.2607.15022"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2607.15022"
+        }
+      ]
+    },
+    {
+      "id": "ac5439cc1b94f949",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/mapper-brca-survival.md",
+        "startLine": 32,
+        "endLine": 32,
+        "sourceText": "[arXiv:2607.15022](https://arxiv.org/abs/2607.15022) |",
+        "sourceDigest": "f6888d712ad43b3db10988d9602563559eba6461f96ae781e2d2a5818519bf66"
+      },
+      "identifiers": [
+        {
+          "kind": "arxiv",
+          "value": "2607.15022"
+        }
+      ]
+    },
+    {
+      "id": "fe126e3fc0265402",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/mapper-brca-survival.md",
+        "startLine": 33,
+        "endLine": 33,
+        "sourceText": "[arXiv DOI](https://doi.org/10.48550/arXiv.2607.15022)",
+        "sourceDigest": "cecf3f17e4239ea072b3201ae441dce1cab5393f1dfa1885c97e8e34256b3b72"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.48550/arxiv.2607.15022"
+        },
+        {
+          "kind": "arxiv",
+          "value": "2607.15022"
+        }
+      ]
     },
     {
       "id": "a9c95e4fd9d6a22d",
@@ -2501,6 +2603,56 @@
       "excludedFromDenominator": false
     },
     {
+      "candidateId": "530be2cf4151a2b4",
+      "evidenceIds": [
+        "45d41008107c4190"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "7b16d322c16d02c9",
+      "evidenceIds": [
+        "45d41008107c4190"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "3e99ae05649b5d7c",
+      "evidenceIds": [
+        "45d41008107c4190"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "ac5439cc1b94f949",
+      "evidenceIds": [
+        "45d41008107c4190"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "fe126e3fc0265402",
+      "evidenceIds": [
+        "45d41008107c4190"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
       "candidateId": "a9c95e4fd9d6a22d",
       "evidenceIds": [
         "eb6527166f71e713"
@@ -3274,7 +3426,7 @@
         "url": "https://github.com/jmchilton/topoqa-interface-quality-replication"
       }
     ],
-    "authorYearPatternCount": 2,
+    "authorYearPatternCount": 3,
     "unextractedReferenceLines": [
       {
         "artifactPath": "content/packages/hiponet.md",

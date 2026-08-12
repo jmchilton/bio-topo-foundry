@@ -66,6 +66,13 @@ question to ask. Used as evidence, it will eventually embarrass you.
   the parameter sweep above can be run as an ordinary grid search.
 - **[[scikit-tda-environment]]** — bundles KeplerMapper with ripser.py and persim.
 
+## Where it has been used
+
+[[mapper-brca-survival]] is the application evidence: Mapper on TCGA-BRCA expression, stratifying
+breast-cancer patients by survival. It is also a case study in all three cautions above — the
+parameters are never varied, and its strongest claim rests on a subgroup that the outcome variable
+defines.
+
 ## Related
 
 [[persistent-homology]] is the stable, non-visual counterpart, and the right tool once you know
