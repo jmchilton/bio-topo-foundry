@@ -6,8 +6,8 @@ record_kind: infrastructure
 order: 1
 status: revised
 created: 2026-08-08
-revised: 2026-08-08
-revision: 4
+revised: 2026-08-12
+revision: 5
 tags:
   - meta
 ---
@@ -331,6 +331,12 @@ topology breadcrumb, and every declared reference kind beside the shared cases w
 their domain vocabulary into the package. Built-output tests require complete shared and local
 coverage, every standalone route, the gallery's design-index link, and the intended search policy.
 
+`src/pages/usage/` is the publication surface for committed casts. `lib/casts.ts` discovers targets
+from their `_target.yml` declarations, resolves bundle placement through `@galaxy-foundry/cast`,
+and exposes the same inventory to the usage index, per-skill static routes, and the source Mold's
+cast panel. `lib/repo-root.ts` anchors that filesystem read on Astro's configured project root, so
+prerender bundling cannot silently turn a populated cast tree into an empty page.
+
 The Astro application is a pure reader. It validates and renders source but does not mutate notes
 or cast artifacts. The only client-side code is progressive enhancement — the homepage filtration
 control — and there is no UI framework. Mutation is confined to explicit build-time commands.
@@ -364,6 +370,12 @@ the committed set. The target file under `casts/claude/` owns bundle placement a
 constraints; the Environment Kind owns which companions are bundled. TDA code contributes the
 domain prose around those shared mechanics, not a second caster.
 
+Publication adds no second cast. The `claude` target is a portable Agent Skills tree, with one thin
+plugin manifest for Claude Code and one for Codex inside the target directory, plus each runtime's
+repository marketplace manifest at the repository root. Both runtime adapters point at
+`casts/claude/skills/`; `tests/cast-publishing.test.ts` checks their identity, placement, and
+portable `name`/`description` frontmatter.
+
 ## Deliberate absences
 
 - **No package workspace.** One application, so contracts live beside it. Extracting them becomes
@@ -390,10 +402,12 @@ aspirational or the checkout is broken.
 | shared and local visual acceptance     | `site/src/pages/gallery/`, `site/src/lib/gallery.ts`                            |
 | domain furniture                       | `site/src/components/`, `site/src/lib/motifs.ts`                                |
 | routes                                 | `site/src/pages/`                                                               |
+| committed-cast discovery and usage UI  | `site/src/lib/casts.ts`, `site/src/pages/usage/`, `site/src/components/CastArtifacts.astro` |
 | corpus and contract tests              | `site/tests/`                                                                   |
 | kind-manifest generator                | `site/scripts/`                                                                 |
 | cast composition and commands          | `site/src/lib/cast-*.ts`, `site/scripts/cast.ts`, `site/scripts/check-casts.ts` |
 | cast target and committed bundles      | `casts/`                                                                        |
+| runtime plugin and marketplace adapters | `casts/claude/.{claude,codex}-plugin/`, `.claude-plugin/`, `.agents/plugins/`   |
 | citation-audit binding and test        | `site/src/lib/citation-audit.ts`, `site/tests/citation-audit.test.ts`           |
 | citation policy and committed evidence | `audit-citations.config.json`, `audit/`                                         |
 

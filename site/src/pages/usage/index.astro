@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+
+import Base from '../../layouts/Base.astro';
+import { listAllCasts } from '../../lib/casts';
+import { REPO_ROOT } from '../../lib/repo-root';
+import { base } from '../../lib/site-base';
+
+const casts = listAllCasts(REPO_ROOT);
+const molds = (await getCollection('molds')).sort((left, right) => left.id.localeCompare(right.id));
+const moldIds = new Set(molds.map((mold) => mold.id));
+const sharedSkills = casts.filter((cast) => cast.target === 'claude' && cast.hasSkill);
+---
+<Base title="Install and use cast skills" description="Install TDA Foundry skills in Claude Code or Codex.">
+  <header class="page-header usage-header">
+    <p class="eyebrow">Cast skills</p>
+    <h1>Install once. Run a focused TDA action.</h1>
+    <p>
+      Each published Mold is cast into a self-contained Agent Skill with its runtime references and
+      provenance. The same committed bundle is packaged for Claude Code and Codex; the knowledge
+      base remains the source.
+    </p>
+    <dl class="usage-stats" aria-label="Published cast inventory">
+      <div><dt>Shared skills</dt><dd>{sharedSkills.length}</dd></div>
+      <div><dt>Targets</dt><dd>{new Set(casts.map((cast) => cast.target)).size}</dd></div>
+      <div><dt>Published casts</dt><dd>{casts.length}</dd></div>
+    </dl>
+  </header>
+
+  <section id="install" class="usage-section" aria-labelledby="install-heading">
+    <div class="usage-section-heading">
+      <p class="eyebrow">01 · Install</p>
+      <h2 id="install-heading">One bundle, two runtimes</h2>
+    </div>
+    <div class="install-grid">
+      <article class="install-card">
+        <h3>Claude Code</h3>
+        <p>Add this repository as a marketplace, then install the shared plugin.</p>
+        <pre><code>/plugin marketplace add jmchilton/bio-topo-foundry
+/plugin install tda-foundry-skills@tda-bioinformatics-foundry</code></pre>
+        <p>Invoke a skill by its namespaced command:</p>
+        <pre><code>/tda-foundry-skills:score-docking-poses</code></pre>
+      </article>
+      <article class="install-card">
+        <h3>Codex</h3>
+        <p>Add the same repository marketplace and install the same shared plugin.</p>
+        <pre><code>codex plugin marketplace add jmchilton/bio-topo-foundry
+codex plugin add tda-foundry-skills@tda-bioinformatics-foundry</code></pre>
+        <p>Run <code>/skills</code>, type <code>$</code>, or invoke the skill explicitly:</p>
+        <pre><code>$score-docking-poses</code></pre>
+      </article>
+    </div>
+    <details class="manual-install">
+      <summary>Install one skill without a plugin</summary>
+      <pre><code>git clone https://github.com/jmchilton/bio-topo-foundry
+cp -r bio-topo-foundry/casts/claude/skills/&lt;name&gt; ~/.claude/skills/&lt;name&gt;
+cp -r bio-topo-foundry/casts/claude/skills/&lt;name&gt; ~/.agents/skills/&lt;name&gt;</code></pre>
+    </details>
+  </section>
+
+  <section class="usage-section" aria-labelledby="skills-heading">
+    <div class="usage-section-heading">
+      <p class="eyebrow">02 · Choose</p>
+      <h2 id="skills-heading">Published skills</h2>
+    </div>
+    <ul class="skill-catalog">
+      {sharedSkills.map((cast) => (
+        <li>
+          <a href={`${base}/usage/claude/${cast.moldSlug}/`}>
+            <span class="skill-catalog-target">Agent Skill · {cast.target}</span>
+            <strong><code>{cast.name ?? cast.moldSlug}</code></strong>
+            <span>{cast.description}</span>
+          </a>
+          {moldIds.has(cast.moldSlug) && (
+            <a class="skill-source-link" href={`${base}/molds/${cast.moldSlug}/`}>Source Mold →</a>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>

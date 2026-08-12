@@ -1,0 +1,31 @@
+---
+import { listCastsForMold } from '../lib/casts';
+import { REPO_ROOT } from '../lib/repo-root';
+import { base } from '../lib/site-base';
+
+interface Props {
+  moldSlug: string;
+}
+
+const { moldSlug } = Astro.props;
+const casts = listCastsForMold(moldSlug, REPO_ROOT);
+---
+{casts.length > 0 && (
+  <aside class="cast-panel" aria-labelledby="cast-artifacts-heading">
+    <div>
+      <p class="eyebrow">Published artifact</p>
+      <h2 id="cast-artifacts-heading">Install the cast skill</h2>
+      <p>The generated bundle is committed, provenance-bearing, and ready for Claude Code or Codex.</p>
+    </div>
+    <ul>
+      {casts.map((cast) => (
+        <li>
+          {cast.target === 'claude' && cast.hasSkill
+            ? <a href={`${base}/usage/claude/${cast.moldSlug}/`}><code>{cast.moldSlug}</code> →</a>
+            : <code>{cast.moldSlug}</code>}
+          <span>{cast.description}</span>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}
