@@ -112,8 +112,14 @@ are non-empty, because an audit finds nothing wrong with a repository holding no
 their resolution from committed provider evidence, without network access. It fails on missing
 evidence, an unresolved or mismatched work without adjudication, an unaccounted bibliography entry,
 or a committed run and report that no longer match the replay. This proves that a citation names the
-work its own bibliography text describes; it does not prove that the work supports the surrounding
-claim.
+work its own text describes; it does not prove that the work supports the surrounding claim.
+
+A source note splits that text in two: `citation` describes the work and `source_ids` carries the
+identifiers, so read line by line neither half can check the other. The `noteFrontmatter` block in
+`audit-citations.config.json` names both, and the frontmatter then resolves as one citation — which
+is also what makes a note's DOI and its arXiv id checkable against each other. The replay assembles
+its extraction options separately from the CLI, so a new config field reaches one and not the other;
+the run-matches-replay assertion is what catches that.
 
 **Built output.** The last layer reads the emitted HTML and CSS, because the defects that matter most
 here exist only after compilation and every earlier stage reports success. It checks that every
@@ -186,6 +192,9 @@ stay Foundry-side because the Mold Kind declares them `foundry-only`.
 - Citation resolution checks identity only: a real paper cited for a claim it does not support
   passes. Design records are outside the audited corpus, and nothing checks the transitive step from
   a domain note's wiki link to the scholarly identifier held by the linked source note.
+- An identifier written in body prose with no work named beside it resolves and can report no
+  mismatch, because there is nothing to compare a provider's answer against. Those are counted apart
+  from verified ones under **Verification** in the report and are not a gate failure.
 
 ## The expected gate
 

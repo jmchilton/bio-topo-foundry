@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@galaxy-foundry/audit-citations": "^0.1.2",
+    "@galaxy-foundry/audit-citations": "^0.2.0",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.10.0",
     "typescript": "^5.7.0",

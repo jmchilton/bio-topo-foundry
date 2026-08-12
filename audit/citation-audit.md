@@ -10,15 +10,30 @@ Reviewed flagged findings: **0/0**
 
 | Verdict | Count |
 |---|---:|
-| resolved | 86 |
+| resolved | 79 |
 | resolved-mismatched | 0 |
 | unresolved | 0 |
 | unavailable | 0 |
-| total | 86 |
+| total | 79 |
+
+## Verification
+
+Verified against a described work: **73 of 79** resolved citations.
+
+The remaining **6** resolved an identifier that no nearby text describes, so the only thing checked was that the identifier exists. Give the citation a title, or record the identifier in a note field the extraction config declares, and it becomes checkable.
+
+| Source | Identifier |
+|---|---|
+| `content/packages/hiponet.md:24` | doi:10.48550/arxiv.2502.07746; arxiv:2502.07746 |
+| `content/packages/petls-pytorch.md:33` | arxiv:2508.11560 |
+| `content/packages/petls-pytorch.md:92` | arxiv:2508.11560 |
+| `content/papers/mapper-brca-survival.md:32` | arxiv:2607.15022 |
+| `content/papers/mapper-brca-survival.md:33` | doi:10.48550/arxiv.2607.15022; arxiv:2607.15022 |
+| `content/papers/tdl-docking-benchmark-review.md:41` | doi:10.1093/bib/bbag370 |
 
 ## Extraction coverage
 
-Extracted **86 of 104** reference-section lines. The verdict counts above describe only the extracted lines.
+Extracted **79 of 97** reference-section lines. The verdict counts above describe only the extracted lines.
 
 A wrapped entry counts once per physical line, so this is a lower bound on coverage.
 
@@ -84,14 +99,10 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 | `content/packages/topoqa.md:231` | Accurate structure prediction of biomolecular interactions with AlphaFold 3 | crossref `doi:10.1038/s41586-024-07487-w` → doi:10.1038/s41586-024-07487-w | — |
 | `content/packages/topoqa.md:232` | Persistent-homology-based machine learning: a survey and a comparative study | crossref `doi:10.1007/s10462-022-10146-z` → doi:10.1007/s10462-022-10146-z | — |
 | `content/packages/topoqa.md:233` | ABAG-docking benchmark: a non-redundant structure benchmark dataset for antibody-antigen computational docking | crossref `doi:10.1093/bib/bbae048` → doi:10.1093/bib/bbae048 | — |
-| `content/papers/mapper-brca-survival.md:5` | Topology-Informed Survival Analysis of Breast Cancer Patients Using the Mapper Algorithm | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
-| `content/papers/mapper-brca-survival.md:6` | arxiv:2607.15022 | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
-| `content/papers/mapper-brca-survival.md:9` | doi:10.48550/arxiv.2607.15022; arxiv:2607.15022 | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
+| `content/papers/mapper-brca-survival.md:2` | Topology-Informed Survival Analysis of Breast Cancer Patients Using the Mapper Algorithm | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
 | `content/papers/mapper-brca-survival.md:32` | arxiv:2607.15022 | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
 | `content/papers/mapper-brca-survival.md:33` | doi:10.48550/arxiv.2607.15022; arxiv:2607.15022 | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
-| `content/papers/persistent-spectral-graph.md:5` | Persistent spectral graph | openalex `arxiv:1912.04135` → arxiv:1912.04135 | warning: openalex (arxiv:1912.04135): year differs: described 2020, observed 2019 |
-| `content/papers/persistent-spectral-graph.md:6` | arxiv:1912.04135 | openalex `arxiv:1912.04135` → arxiv:1912.04135 | — |
-| `content/papers/persistent-spectral-graph.md:9` | doi:10.1002/cnm.3376 | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376 | — |
+| `content/papers/persistent-spectral-graph.md:2` | Persistent spectral graph | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376; openalex `arxiv:1912.04135` → arxiv:1912.04135 | warning: openalex (arxiv:1912.04135): year differs: described 2020, observed 2019 |
 | `content/papers/persistent-spectral-graph.md:30` | Persistent spectral graph | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376; openalex `arxiv:1912.04135` → arxiv:1912.04135 | warning: crossref (doi:10.1002/cnm.3376): year differs: described 2019, observed 2020 |
 | `content/papers/persistent-spectral-graph.md:165` | Persistent spectral graph | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376; openalex `arxiv:1912.04135` → arxiv:1912.04135 | warning: openalex (arxiv:1912.04135): year differs: described 2020, observed 2019 |
 | `content/papers/persistent-spectral-graph.md:166` | HERMES: Persistent spectral graph software | crossref `doi:10.3934/fods.2021006` → doi:10.3934/fods.2021006 | — |
@@ -101,8 +112,7 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 | `content/papers/persistent-spectral-graph.md:170` | Anisotropy of fluctuation dynamics of proteins with an elastic network model | crossref `doi:10.1016/s0006-3495(01)76033-x` → doi:10.1016/s0006-3495(01)76033-x | — |
 | `content/papers/persistent-spectral-graph.md:171` | Blind prediction of protein B-factor and flexibility | crossref `doi:10.1063/1.5048469` → doi:10.1063/1.5048469 | — |
 | `content/papers/persistent-spectral-graph.md:172` | Persistent topological Laplacians - a survey | crossref `doi:10.3390/math13020208` → doi:10.3390/math13020208 | — |
-| `content/papers/tda-tdl-beyond-persistent-homology.md:5` | Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review | openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
-| `content/papers/tda-tdl-beyond-persistent-homology.md:6` | arxiv:2507.19504 | openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
+| `content/papers/tda-tdl-beyond-persistent-homology.md:2` | Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review | openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
 | `content/papers/tda-tdl-beyond-persistent-homology.md:27` | Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review | crossref `doi:10.1007/s10462-025-11462-w` → doi:10.1007/s10462-025-11462-w; openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
 | `content/papers/tda-tdl-beyond-persistent-homology.md:212` | Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review | crossref `doi:10.1007/s10462-025-11462-w` → doi:10.1007/s10462-025-11462-w; openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
 | `content/papers/tda-tdl-beyond-persistent-homology.md:213` | Persistent Laplacians: Properties, Algorithms and Implications | crossref `doi:10.1137/21m1435471` → doi:10.1137/21m1435471 | — |
@@ -112,8 +122,7 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 | `content/papers/tda-tdl-beyond-persistent-homology.md:217` | Persistent Interaction Topology in Data Analysis | openalex `arxiv:2404.11799` → arxiv:2404.11799 | — |
 | `content/papers/tda-tdl-beyond-persistent-homology.md:218` | Knot Data Analysis Using Multiscale Gauss Link Integral | crossref `doi:10.1073/pnas.2408431121` → doi:10.1073/pnas.2408431121; openalex `arxiv:2311.12834` → arxiv:2311.12834 | warning: openalex (arxiv:2311.12834): year differs: described 2024, observed 2023 |
 | `content/papers/tda-tdl-beyond-persistent-homology.md:219` | Manifold Topological Deep Learning for Biomedical Data | openalex `arxiv:2503.00175` → arxiv:2503.00175 | — |
-| `content/papers/tda-tdl-molecular-sciences.md:5` | A review of topological data analysis and topological deep learning in molecular sciences | openalex `arxiv:2509.16877` → arxiv:2509.16877 | — |
-| `content/papers/tda-tdl-molecular-sciences.md:6` | arxiv:2509.16877 | openalex `arxiv:2509.16877` → arxiv:2509.16877 | — |
+| `content/papers/tda-tdl-molecular-sciences.md:2` | A review of topological data analysis and topological deep learning in molecular sciences | openalex `arxiv:2509.16877` → arxiv:2509.16877 | — |
 | `content/papers/tda-tdl-molecular-sciences.md:29` | A review of topological data analysis and topological deep learning in molecular sciences | crossref `doi:10.1021/acs.jcim.5c02266` → doi:10.1021/acs.jcim.5c02266; openalex `arxiv:2509.16877` → arxiv:2509.16877 | — |
 | `content/papers/tda-tdl-molecular-sciences.md:225` | A review of topological data analysis and topological deep learning in molecular sciences | crossref `doi:10.1021/acs.jcim.5c02266` → doi:10.1021/acs.jcim.5c02266; openalex `arxiv:2509.16877` → arxiv:2509.16877 | — |
 | `content/papers/tda-tdl-molecular-sciences.md:226` | Persistent homology analysis of protein structure, flexibility, and folding | crossref `doi:10.1002/cnm.2655` → doi:10.1002/cnm.2655 | — |
@@ -128,8 +137,7 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 | `content/papers/tda-tdl-molecular-sciences.md:235` | Omicron BA.2 (B.1.1.529.2): High Potential for Becoming the Next Dominant Variant | crossref `doi:10.1021/acs.jpclett.2c00469` → doi:10.1021/acs.jpclett.2c00469 | — |
 | `content/papers/tda-tdl-molecular-sciences.md:236` | Persistent Laplacian projected Omicron BA.4 and BA.5 to become new dominating variants | crossref `doi:10.1016/j.compbiomed.2022.106262` → doi:10.1016/j.compbiomed.2022.106262 | — |
 | `content/papers/tda-tdl-molecular-sciences.md:237` | Topological data analysis and topological deep learning beyond persistent homology - a review | openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
-| `content/papers/tdl-docking-benchmark-review.md:9` | doi:10.1093/bib/bbag370 | crossref `doi:10.1093/bib/bbag370` → doi:10.1093/bib/bbag370 | — |
-| `content/papers/tdl-docking-benchmark-review.md:21` | doi:10.1093/bib/bbag370 | crossref `doi:10.1093/bib/bbag370` → doi:10.1093/bib/bbag370 | — |
+| `content/papers/tdl-docking-benchmark-review.md:2` | Topological deep learning for drug–target interaction, virtual screening, and docking scoring: a practical, benchmark-driven review | crossref `doi:10.1093/bib/bbag370` → doi:10.1093/bib/bbag370; europe-pmc `pmid:42437450` → pmid:42437450 | — |
 | `content/papers/tdl-docking-benchmark-review.md:41` | doi:10.1093/bib/bbag370 | crossref `doi:10.1093/bib/bbag370` → doi:10.1093/bib/bbag370 | — |
 
 ## resolved-mismatched
@@ -154,11 +162,11 @@ None.
 | `content/packages/topodockq.md` | 8 | 0 |
 | `content/packages/topometry.md` | 7 | 0 |
 | `content/packages/topoqa.md` | 8 | 0 |
-| `content/papers/mapper-brca-survival.md` | 5 | 0 |
-| `content/papers/persistent-spectral-graph.md` | 12 | 0 |
-| `content/papers/tda-tdl-beyond-persistent-homology.md` | 11 | 0 |
-| `content/papers/tda-tdl-molecular-sciences.md` | 16 | 0 |
-| `content/papers/tdl-docking-benchmark-review.md` | 3 | 0 |
+| `content/papers/mapper-brca-survival.md` | 3 | 0 |
+| `content/papers/persistent-spectral-graph.md` | 10 | 0 |
+| `content/papers/tda-tdl-beyond-persistent-homology.md` | 10 | 0 |
+| `content/papers/tda-tdl-molecular-sciences.md` | 15 | 0 |
+| `content/papers/tdl-docking-benchmark-review.md` | 2 | 0 |
 
 ## Adjudicated extractor false positives
 
@@ -166,5 +174,5 @@ None.
 
 ## Extractor diagnostics
 
-- Generic/non-scholarly URLs excluded: 69
+- Generic/non-scholarly URLs excluded: 41
 - Potential free-form `Author Year` patterns measured (diagnostic only): 4

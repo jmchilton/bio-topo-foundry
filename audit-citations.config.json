@@ -11,6 +11,10 @@
       "artifactKind": "replication-experiment-note"
     }
   ],
+  "noteFrontmatter": {
+    "descriptionField": "citation",
+    "identifierFields": ["doi", "arxiv", "pmid", "pmcid"]
+  },
   "scholarlyPageHosts": ["proceedings.mlr.press", "proceedings.neurips.cc"],
   "userAgent": "bio-topo-foundry-citation-audit/1.0 (https://github.com/jmchilton/bio-topo-foundry)",
   "requestTimeoutMs": 15000

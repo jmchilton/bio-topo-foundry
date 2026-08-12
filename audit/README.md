@@ -1,20 +1,21 @@
 # Citation-integrity audit
 
 Every scholarly identifier cited in this knowledge base is resolved against public metadata
-providers and compared against the bibliography text around it. The question this answers is narrow
+providers and compared against the text that describes it. The question this answers is narrow
 and worth stating exactly: **does this citation identify the work its own text describes?** It does
 not ask whether that work supports the claim it is cited for.
 
 The mechanics belong to [`@galaxy-foundry/audit-citations`](https://github.com/jmchilton/foundry-lib/tree/main/packages/audit-citations)
 — extraction grammar, provider normalization, comparison, adjudication, and report rendering. This
 repository owns only what the package refuses to own: which files are in the corpus, which citation
-hosts are trusted, and what an acceptable corpus looks like.
+hosts are trusted, which note fields carry a source's identity, and what an acceptable corpus looks
+like.
 
 ## Files
 
 | File | |
 |---|---|
-| `../audit-citations.config.json` | Corpus definition: source globs, artifact kinds, trusted citation hosts, request budget |
+| `../audit-citations.config.json` | Corpus definition: source globs, artifact kinds, trusted citation hosts, note frontmatter contract, request budget |
 | `provider-evidence.json` | Normalized provider answers, one per distinct query. The offline replay reads only this |
 | `citation-audit.json` | The machine-readable run: candidates, findings, coverage, digests |
 | `citation-audit.md` | The same run, rendered. Carries no timestamp or revision, so it diffs cleanly |
@@ -39,10 +40,54 @@ pnpm audit:citations:scan      # extraction only, to build/citation-scan.json
   `uncited-reference-entries.json`; or
 - the committed run and report no longer match a replay of the committed evidence.
 
+That last one is load-bearing beyond staleness. The report is written by the CLI and the replay is
+assembled in `site/src/lib/citation-audit.ts`, so the two build their extraction options from the
+same config by separate paths. Adding `noteFrontmatter` to the config wired the CLI and not the
+replay, and this is the check that said so.
+
 The audit itself is offline and deterministic. Live re-resolution runs weekly in
 [`citation-audit.yml`](../.github/workflows/citation-audit.yml), which opens a pull request only
 when the rendered report changes — a refresh restamps every record's `observedAt`, so the evidence
 file alone cannot say whether anything moved.
+
+## How a source note is read
+
+A source note records the work it summarizes in fields, not sentences: `citation` carries the
+bibliographic record, `source_ids` carries the identifiers. Read line by line those two halves never
+meet, and until this change they did not. The `citation` line named a work; the `source_ids.doi`
+line a few lines below it named an identifier and described nothing, so the only thing checked was
+that the identifier resolved. **A wrong journal DOI in a note's own frontmatter would have passed**
+— the exact error class this audit exists to catch, and the one it has caught twice elsewhere.
+
+`noteFrontmatter` in the config closes that. It declares which field describes the work and which
+fields carry identifiers, and the whole frontmatter block becomes one citation:
+
+```json
+"noteFrontmatter": {
+  "descriptionField": "citation",
+  "identifierFields": ["doi", "arxiv", "pmid", "pmcid"]
+}
+```
+
+Every identifier in the block is then attributed to the one work the block describes, which buys a
+check that did not exist before: a note carrying both a DOI and an arXiv id now has to have them
+name the same paper. `content/papers/tdl-docking-benchmark-review.md` is verified through Crossref
+and Europe PMC at once for the same reason.
+
+Because the fields are declared, the four identifier keys must stay bare identifiers. A `doi:` field
+holding a `https://doi.org/…` URL, or an `arxiv:` field holding an unquoted number YAML would read
+as a float, is a schema matter — the `source_ids` contract enforces it, and this audit depends on it.
+
+### Resolved is not verified
+
+The report's headline counts resolutions, and a resolution answers a weaker question than it looks
+like it answers. An identifier with no description near it resolves and can report no mismatch,
+because there is nothing to compare the provider's answer against. It is unfalsifiable, not correct.
+
+The **Verification** section of `citation-audit.md` states that split, and the identifiers still
+counted only as dereferenced are listed there by line. They are body prose — a package note pointing
+at a paper mid-sentence — and each becomes checkable by naming the work beside the identifier. This
+is reported rather than gated: a body-prose identifier is a weaker citation, not a defect.
 
 ## What the audit has caught
 
@@ -72,6 +117,12 @@ they write to silence it outlives the bug.
 Both were fixed upstream in `@galaxy-foundry/audit-citations` 0.1.2 rather than adjudicated here, so
 `adjudications.json` is now empty. Three exemptions retired; the notes were never wrong.
 
+The third tooling defect ran the other way, and nothing in the report could have surfaced it. Every
+frontmatter identifier was counted in a `resolved` headline it could not have failed, so the number
+grew more reassuring as the corpus grew. It was found by reading a note beside its own report and
+asking what a wrong DOI there would have done. `noteFrontmatter` in 0.2.0 is the fix, and the
+`verifiable` split is the instrument that would now say it out loud.
+
 ## Standing exemptions
 
 `uncited-reference-entries.json` is the one remaining exemption: source repositories, package
@@ -82,12 +133,15 @@ since the extractor only ever treats numbered entries as bibliography.
 
 ## Known limits
 
-- Free-form `Author (Year)` prose is counted as a diagnostic and never becomes a candidate. Two such
-  patterns exist in the corpus today.
+- Free-form `Author (Year)` prose is counted as a diagnostic and never becomes a candidate. The
+  extractor diagnostics at the foot of `citation-audit.md` carry the current count.
+- An identifier written in body prose with no work named beside it is dereferenced, not verified.
+  Those are listed under **Verification** in the report rather than gated, on the argument that a
+  weaker citation is not a defect. Only frontmatter is joined to a description automatically.
 - Notes under `content/methods/`, `content/molds/`, and `content/replication-experiments/` are in
-  the corpus but contribute no candidates: they cite by `[[wiki-link]]` into the paper and package
-  notes that hold the identifiers. Their citation integrity is therefore transitive, and nothing
-  checks the transitive step yet.
+  the corpus but contribute no candidates: they carry no `citation` frontmatter and cite by
+  `[[wiki-link]]` into the paper and package notes that hold the identifiers. Their citation
+  integrity is therefore transitive, and nothing checks the transitive step yet.
 - `content/meta/` is out of the corpus. Design records describe this repository rather than the
   literature, and one of them carries a `## Typed references` section about the Mold reference
   contract. The heading vocabulary is matched as a substring and cannot be anchored through

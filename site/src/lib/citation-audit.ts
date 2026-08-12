@@ -94,6 +94,7 @@ export async function replayCitationAudit(): Promise<CitationAuditReplay> {
   const scan = extractCitations(await loadConfiguredDocuments(REPO_ROOT, config), {
     ...(headingPattern ? { referenceHeadingPattern: headingPattern } : {}),
     scholarlyPageHosts: config.scholarlyPageHosts ?? [],
+    ...(config.noteFrontmatter ? { noteFrontmatter: config.noteFrontmatter } : {}),
   });
 
   const snapshot = parseCitationEvidenceSnapshot(await readJson(EVIDENCE_PATH));

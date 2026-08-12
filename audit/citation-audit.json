@@ -1,24 +1,25 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-12T16:03:15.487Z",
+  "generatedAt": "2026-08-12T21:07:22.045Z",
   "corpus": {
-    "digest": "32b2144bfc803f9a2c9f2dfc6aae51382623ebaaeaa2a0eaa66b14ba4d57c90c",
-    "headRevision": "d75c305970fd6f5bb5167f64a1c730c21f2d4215",
+    "digest": "a42fac2d1e381bcaabe10baea773bade8e6855ff3cddb635e261b9afc73282f2",
+    "headRevision": "92e38fe474e6122ba65e822c6916d40116d82ffc",
     "workingTreeDirty": true
   },
-  "evidenceSnapshotDigest": "cd6c0d29b1129fdd446f721c95ac804b304c3d108c53bc8e3bc96703930d3a8d",
+  "evidenceSnapshotDigest": "612cf0c9da5e54712a1aa95ad539fb8d1156ca1cdefe4eba9f712f8f959df088",
   "manualReviewStatus": "not-required",
   "manualReview": {
     "required": 0,
     "completed": 0
   },
   "summary": {
-    "total": 86,
-    "resolved": 86,
+    "total": 79,
+    "resolved": 79,
     "resolved-mismatched": 0,
     "unresolved": 0,
     "unavailable": 0,
+    "resolvedUnverified": 6,
     "extractorFalsePositives": 0
   },
   "candidates": [
@@ -1028,57 +1029,14 @@
       }
     },
     {
-      "id": "530be2cf4151a2b4",
+      "id": "62872cf9df3baccc",
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/mapper-brca-survival.md",
-        "startLine": 5,
-        "endLine": 5,
-        "sourceText": "citation: Emmanuel Kibisi, Olakunle Abawonse, and Donald Woukeng, \"Topology-Informed Survival Analysis of Breast Cancer Patients Using the Mapper Algorithm,\" arXiv:2607.15022v1 (2026).",
-        "sourceDigest": "c213075b2150ad98d9e7e1ed18d6a7964b4fb00aab86aa47aec642823ae5da9c"
-      },
-      "identifiers": [
-        {
-          "kind": "arxiv",
-          "value": "2607.15022"
-        }
-      ],
-      "described": {
-        "title": "Topology-Informed Survival Analysis of Breast Cancer Patients Using the Mapper Algorithm",
-        "authors": [
-          "citation: Emmanuel Kibisi",
-          "Olakunle Abawonse",
-          "Donald Woukeng"
-        ],
-        "year": 2026
-      }
-    },
-    {
-      "id": "7b16d322c16d02c9",
-      "span": {
-        "artifactKind": "paper-note",
-        "artifactPath": "content/papers/mapper-brca-survival.md",
-        "startLine": 6,
-        "endLine": 6,
-        "sourceText": "source_url: https://arxiv.org/abs/2607.15022",
-        "sourceDigest": "77c724c6922b1d8c7d7509617797318b9cd182ffb7f8a71b9edd3308891301bf"
-      },
-      "identifiers": [
-        {
-          "kind": "arxiv",
-          "value": "2607.15022"
-        }
-      ]
-    },
-    {
-      "id": "3e99ae05649b5d7c",
-      "span": {
-        "artifactKind": "paper-note",
-        "artifactPath": "content/papers/mapper-brca-survival.md",
-        "startLine": 9,
-        "endLine": 9,
-        "sourceText": "  doi: 10.48550/arXiv.2607.15022",
-        "sourceDigest": "8dd0254d431250555c82d9e13c8d503f9344c77b8ab09274d8ec95ad3b8ff4e9"
+        "startLine": 2,
+        "endLine": 22,
+        "sourceText": "type: paper\ntitle: Mapper Survival Analysis on TCGA-BRCA\nsummary: Mapper risk tiers on breast-cancer expression that survive a held-out split, beside a discordant-survivor result defined by the outcome it predicts.\ncitation: Emmanuel Kibisi, Olakunle Abawonse, and Donald Woukeng, \"Topology-Informed Survival Analysis of Breast Cancer Patients Using the Mapper Algorithm,\" arXiv:2607.15022v1 (2026).\nsource_url: https://arxiv.org/abs/2607.15022\nsource_ids:\n  status: declared\n  doi: 10.48550/arXiv.2607.15022\n  arxiv: \"2607.15022\"\nversion: v1\naccess_date: \"2026-08-11\"\nsource_read: full-text\nsource_license:\n  status: declared\n  id: CC-BY-SA-4.0\nlicense_statement: The arXiv record and the article's own header both declare CC BY-SA 4.0.\nderived: own-words-summary\ntags:\n  - method/mapper\n  - application/clinical-outcome\n  - modality/high-dim-tabular",
+        "sourceDigest": "1736cf958a720294346ba1e028c5c9b4e60b49db4a71557eb570fd595ed80a50"
       },
       "identifiers": [
         {
@@ -1089,7 +1047,16 @@
           "kind": "arxiv",
           "value": "2607.15022"
         }
-      ]
+      ],
+      "described": {
+        "title": "Topology-Informed Survival Analysis of Breast Cancer Patients Using the Mapper Algorithm",
+        "authors": [
+          "Emmanuel Kibisi",
+          "Olakunle Abawonse",
+          "Donald Woukeng"
+        ],
+        "year": 2026
+      }
     },
     {
       "id": "ac5439cc1b94f949",
@@ -1130,16 +1097,20 @@
       ]
     },
     {
-      "id": "a9c95e4fd9d6a22d",
+      "id": "8a5e47094d7bd50c",
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 5,
-        "endLine": 5,
-        "sourceText": "citation: Rui Wang, Duc Duy Nguyen, and Guo-Wei Wei, \"Persistent spectral graph,\" International Journal for Numerical Methods in Biomedical Engineering 36(9), e3376 (2020); preprint arXiv:1912.04135v2.",
-        "sourceDigest": "5e4ad0872f92f821714f07a882d0ad1a16d455e8a61be2a901dbd56a8b6a49ce"
+        "startLine": 2,
+        "endLine": 23,
+        "sourceText": "type: paper\ntitle: Persistent Spectral Graph\nsummary: \"The founding persistent-Laplacian paper: harmonic spectra recover persistent homology exactly, and non-harmonic spectra carry the geometry it discards.\"\ncitation: Rui Wang, Duc Duy Nguyen, and Guo-Wei Wei, \"Persistent spectral graph,\" International Journal for Numerical Methods in Biomedical Engineering 36(9), e3376 (2020); preprint arXiv:1912.04135v2.\nsource_url: https://arxiv.org/abs/1912.04135\nsource_ids:\n  status: declared\n  doi: 10.1002/cnm.3376\n  arxiv: \"1912.04135\"\nversion: v2\naccess_date: \"2026-08-08\"\nsource_read: full-text\nsource_license:\n  status: declared\n  id: LicenseRef-arXiv-nonexclusive-distrib-1.0\nderived: own-words-summary\ntags:\n  - method/persistent-laplacian\n  - method/persistent-homology\n  - application/molecular-sciences\n  - modality/point-cloud\n  - modality/molecular-structure",
+        "sourceDigest": "f21a80016c619bee377896d311242ed7d6391bd9d335dccddce862bf4d576764"
       },
       "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1002/cnm.3376"
+        },
         {
           "kind": "arxiv",
           "value": "1912.04135"
@@ -1148,46 +1119,12 @@
       "described": {
         "title": "Persistent spectral graph",
         "authors": [
-          "citation: Rui Wang",
+          "Rui Wang",
           "Duc Duy Nguyen",
           "Guo-Wei Wei"
         ],
         "year": 2020
       }
-    },
-    {
-      "id": "f0b4724cd0748945",
-      "span": {
-        "artifactKind": "paper-note",
-        "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 6,
-        "endLine": 6,
-        "sourceText": "source_url: https://arxiv.org/abs/1912.04135",
-        "sourceDigest": "8b48ee50bea47cf464ddf98ecc5c832e338e2e88cb7b6906bc35a83520f5503c"
-      },
-      "identifiers": [
-        {
-          "kind": "arxiv",
-          "value": "1912.04135"
-        }
-      ]
-    },
-    {
-      "id": "4e353731e196c2cc",
-      "span": {
-        "artifactKind": "paper-note",
-        "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 9,
-        "endLine": 9,
-        "sourceText": "  doi: 10.1002/cnm.3376",
-        "sourceDigest": "30a616884f4c8e664b0b16c4bb40bf6125213a6c802535ed5961e45d6e9df17f"
-      },
-      "identifiers": [
-        {
-          "kind": "doi",
-          "value": "10.1002/cnm.3376"
-        }
-      ]
     },
     {
       "id": "b1b4eba6009c95e5",
@@ -1443,14 +1380,14 @@
       }
     },
     {
-      "id": "90fa7ac7293984cc",
+      "id": "b0494a81efa0e519",
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "startLine": 5,
-        "endLine": 5,
-        "sourceText": "citation: Zhe Su, Xiang Liu, Layal Bou Hamdan, Vasileios Maroulas, Jie Wu, Gunnar Carlsson, and Guo-Wei Wei, \"Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review,\" arXiv:2507.19504v1 (2025).",
-        "sourceDigest": "a9a48a2b437e6c36eda6fb81746739cfbbb34456ca49d6a9c3d5729be3df7b63"
+        "startLine": 2,
+        "endLine": 20,
+        "sourceText": "type: paper\ntitle: TDA and TDL Beyond Persistent Homology\nsummary: Su and colleagues' map of the topological methods that extend past persistent homology, and what each one recovers.\ncitation: Zhe Su, Xiang Liu, Layal Bou Hamdan, Vasileios Maroulas, Jie Wu, Gunnar Carlsson, and Guo-Wei Wei, \"Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review,\" arXiv:2507.19504v1 (2025).\nsource_url: https://arxiv.org/abs/2507.19504\nsource_ids:\n  status: declared\n  arxiv: \"2507.19504\"\nversion: v1\naccess_date: \"2026-07-29\"\nsource_read: full-text\nsource_license:\n  status: declared\n  id: LicenseRef-arXiv-nonexclusive-distrib-1.0\nderived: own-words-summary\ntags:\n  - method/persistent-homology\n  - method/persistent-laplacian\n  - method/topological-deep-learning",
+        "sourceDigest": "90f02aa19a3ebb035a93be90cd0025db24b5f4d0745fcd3ccecbdd4b6cccd4bf"
       },
       "identifiers": [
         {
@@ -1461,7 +1398,7 @@
       "described": {
         "title": "Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review",
         "authors": [
-          "citation: Zhe Su",
+          "Zhe Su",
           "Xiang Liu",
           "Layal Bou Hamdan",
           "Vasileios Maroulas",
@@ -1471,23 +1408,6 @@
         ],
         "year": 2025
       }
-    },
-    {
-      "id": "66253cd323d39470",
-      "span": {
-        "artifactKind": "paper-note",
-        "artifactPath": "content/papers/tda-tdl-beyond-persistent-homology.md",
-        "startLine": 6,
-        "endLine": 6,
-        "sourceText": "source_url: https://arxiv.org/abs/2507.19504",
-        "sourceDigest": "3f8404fa8d11601d3d0e31dc9ad6d027e6a12b0b4c521be321d0544e8380b56a"
-      },
-      "identifiers": [
-        {
-          "kind": "arxiv",
-          "value": "2507.19504"
-        }
-      ]
     },
     {
       "id": "903a1aafcd52c844",
@@ -1769,14 +1689,14 @@
       }
     },
     {
-      "id": "b6f56a2dfd34c045",
+      "id": "337198ef4a10f456",
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 5,
-        "endLine": 5,
-        "sourceText": "citation: JunJie Wee and Jian Jiang, \"A review of topological data analysis and topological deep learning in molecular sciences,\" arXiv:2509.16877v1 (2025).",
-        "sourceDigest": "b245bdf1f22badc15bedb0276f2ec2ae798968b5b0bd72f40dd19cbc68903ad0"
+        "startLine": 2,
+        "endLine": 22,
+        "sourceText": "type: paper\ntitle: TDA and TDL in Molecular Sciences\nsummary: Wee and Jiang's account of how molecular problems pushed topology from description to conditioned, learnable representations.\ncitation: JunJie Wee and Jian Jiang, \"A review of topological data analysis and topological deep learning in molecular sciences,\" arXiv:2509.16877v1 (2025).\nsource_url: https://arxiv.org/abs/2509.16877\nsource_ids:\n  status: declared\n  arxiv: \"2509.16877\"\nversion: v1\naccess_date: \"2026-07-29\"\nsource_read: full-text\nsource_license:\n  status: declared\n  id: CC-BY-NC-ND-4.0\nderived: own-words-summary\ntags:\n  - method/persistent-homology\n  - method/persistent-laplacian\n  - method/topological-deep-learning\n  - application/molecular-sciences\n  - modality/molecular-structure",
+        "sourceDigest": "67e2c979e96fd888cc2ad6a91a945e7184683d8c7cac260e6935f39726f05df2"
       },
       "identifiers": [
         {
@@ -1787,28 +1707,11 @@
       "described": {
         "title": "A review of topological data analysis and topological deep learning in molecular sciences",
         "authors": [
-          "citation: JunJie Wee",
+          "JunJie Wee",
           "Jian Jiang"
         ],
         "year": 2025
       }
-    },
-    {
-      "id": "efe29486fa1c9912",
-      "span": {
-        "artifactKind": "paper-note",
-        "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
-        "startLine": 6,
-        "endLine": 6,
-        "sourceText": "source_url: https://arxiv.org/abs/2509.16877",
-        "sourceDigest": "2dd291eecbf530d825478a4dbeb15785dcd93b51b45a4c6a21efecd33c43467c"
-      },
-      "identifiers": [
-        {
-          "kind": "arxiv",
-          "value": "2509.16877"
-        }
-      ]
     },
     {
       "id": "81559f9904b64dd7",
@@ -2195,38 +2098,33 @@
       }
     },
     {
-      "id": "77ab5bf01eeb9749",
+      "id": "80f1807afff7b492",
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tdl-docking-benchmark-review.md",
-        "startLine": 9,
-        "endLine": 9,
-        "sourceText": "  doi: 10.1093/bib/bbag370",
-        "sourceDigest": "dfd7c93c1ad92bb7bb5c37d93d035d6cc7067f7a246479d26fcbfe3abf057f4a"
+        "startLine": 2,
+        "endLine": 31,
+        "sourceText": "type: paper\ntitle: TDL for Docking, Screening, and Drug-Target Interaction\nsummary: Suay-García and Falcó's evaluation playbook for topological drug discovery, prescriptive where this corpus's other surveys are descriptive.\ncitation: 'Beatriz Suay-García and Antonio Falcó, \"Topological deep learning for drug–target interaction, virtual screening, and docking scoring: a practical, benchmark-driven review,\" Briefings in Bioinformatics 27(4), bbag370 (2026).'\nsource_url: https://academic.oup.com/bib/article/27/4/bbag370/8732820\nsource_ids:\n  status: declared\n  doi: 10.1093/bib/bbag370\n  pmid: \"42437450\"\naccess_date: \"2026-08-12\"\nsource_read: full-text\nsource_license:\n  status: declared\n  id: CC-BY-4.0\nlicense_statement: \"The article's own permissions block: © The Author(s) 2026, published by Oxford University Press, distributed under the terms of the Creative Commons Attribution License, which permits unrestricted reuse, distribution, and reproduction in any medium, provided the original work is properly cited.\"\nattribution: >-\n  \"Topological deep learning for drug–target interaction, virtual screening, and docking scoring: a\n  practical, benchmark-driven review\" © 2026 Beatriz Suay-García and Antonio Falcó, published in\n  Briefings in Bioinformatics by Oxford University Press and licensed under CC BY 4.0\n  (https://doi.org/10.1093/bib/bbag370). The passages inside quotation marks below are reproduced\n  exactly and unaltered; everything else is this Foundry's own summary and assessment, and no\n  modified wording is presented as the authors'.\nlicense_file: LICENSES/CC-BY-4.0.LICENSE\nderived: verbatim-quotes-summary\ntags:\n  - method/persistent-homology\n  - method/topological-deep-learning\n  - application/molecular-sciences\n  - application/structure-qa\n  - modality/molecular-structure",
+        "sourceDigest": "d488ca75bc9ef4e3bd079356a94b4357d2004ded4d7326fbf7028d52e5fa7c0e"
       },
       "identifiers": [
         {
           "kind": "doi",
           "value": "10.1093/bib/bbag370"
-        }
-      ]
-    },
-    {
-      "id": "48c966004ca2900b",
-      "span": {
-        "artifactKind": "paper-note",
-        "artifactPath": "content/papers/tdl-docking-benchmark-review.md",
-        "startLine": 21,
-        "endLine": 21,
-        "sourceText": "  (https://doi.org/10.1093/bib/bbag370). The passages inside quotation marks below are reproduced",
-        "sourceDigest": "f65a5e5a5ecb40b4ed812e3575dca43b57ae0dfabc4084d87908bb3416fc4621"
-      },
-      "identifiers": [
+        },
         {
-          "kind": "doi",
-          "value": "10.1093/bib/bbag370"
+          "kind": "pmid",
+          "value": "42437450"
         }
-      ]
+      ],
+      "described": {
+        "title": "Topological deep learning for drug–target interaction, virtual screening, and docking scoring: a practical, benchmark-driven review",
+        "authors": [
+          "Beatriz Suay-García",
+          "Antonio Falcó"
+        ],
+        "year": 2026
+      }
     },
     {
       "id": "4af27f84cb381e11",
@@ -2256,6 +2154,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2266,6 +2165,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": false,
       "excludedFromDenominator": false
     },
     {
@@ -2276,6 +2176,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2286,6 +2187,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2296,6 +2198,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2306,6 +2209,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2316,6 +2220,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2326,6 +2231,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2336,6 +2242,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": false,
       "excludedFromDenominator": false
     },
     {
@@ -2346,6 +2253,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": false,
       "excludedFromDenominator": false
     },
     {
@@ -2356,6 +2264,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2372,6 +2281,7 @@
           "detail": "openalex (arxiv:2508.11560): year differs: described 2026, observed 2025"
         }
       ],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2382,6 +2292,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2392,6 +2303,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2402,6 +2314,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2412,6 +2325,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2423,6 +2337,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2433,6 +2348,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2443,6 +2359,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2453,6 +2370,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2463,6 +2381,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2473,6 +2392,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2483,6 +2403,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2493,6 +2414,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2503,6 +2425,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2513,6 +2436,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2523,6 +2447,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2533,6 +2458,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2543,6 +2469,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2553,6 +2480,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2563,6 +2491,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2581,6 +2510,7 @@
           "detail": "openalex (arxiv:2410.17815): year differs: described 2025, observed 2024"
         }
       ],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2591,6 +2521,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2601,6 +2532,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2611,6 +2543,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2621,6 +2554,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2631,6 +2565,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2641,6 +2576,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2651,36 +2587,18 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
-      "candidateId": "530be2cf4151a2b4",
+      "candidateId": "62872cf9df3baccc",
       "evidenceIds": [
         "45d41008107c4190"
       ],
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
-      "excludedFromDenominator": false
-    },
-    {
-      "candidateId": "7b16d322c16d02c9",
-      "evidenceIds": [
-        "45d41008107c4190"
-      ],
-      "verdict": "resolved",
-      "effectiveVerdict": "resolved",
-      "mismatches": [],
-      "excludedFromDenominator": false
-    },
-    {
-      "candidateId": "3e99ae05649b5d7c",
-      "evidenceIds": [
-        "45d41008107c4190"
-      ],
-      "verdict": "resolved",
-      "effectiveVerdict": "resolved",
-      "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2691,6 +2609,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": false,
       "excludedFromDenominator": false
     },
     {
@@ -2701,11 +2620,13 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": false,
       "excludedFromDenominator": false
     },
     {
-      "candidateId": "a9c95e4fd9d6a22d",
+      "candidateId": "8a5e47094d7bd50c",
       "evidenceIds": [
+        "7e691f42f591527b",
         "eb6527166f71e713"
       ],
       "verdict": "resolved",
@@ -2717,26 +2638,7 @@
           "detail": "openalex (arxiv:1912.04135): year differs: described 2020, observed 2019"
         }
       ],
-      "excludedFromDenominator": false
-    },
-    {
-      "candidateId": "f0b4724cd0748945",
-      "evidenceIds": [
-        "eb6527166f71e713"
-      ],
-      "verdict": "resolved",
-      "effectiveVerdict": "resolved",
-      "mismatches": [],
-      "excludedFromDenominator": false
-    },
-    {
-      "candidateId": "4e353731e196c2cc",
-      "evidenceIds": [
-        "7e691f42f591527b"
-      ],
-      "verdict": "resolved",
-      "effectiveVerdict": "resolved",
-      "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2754,6 +2656,7 @@
           "detail": "crossref (doi:10.1002/cnm.3376): year differs: described 2019, observed 2020"
         }
       ],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2771,6 +2674,7 @@
           "detail": "openalex (arxiv:1912.04135): year differs: described 2020, observed 2019"
         }
       ],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2781,6 +2685,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2791,6 +2696,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2801,6 +2707,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2811,6 +2718,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2821,6 +2729,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2831,6 +2740,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2841,26 +2751,18 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
-      "candidateId": "90fa7ac7293984cc",
+      "candidateId": "b0494a81efa0e519",
       "evidenceIds": [
         "dd2cee96062158e9"
       ],
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
-      "excludedFromDenominator": false
-    },
-    {
-      "candidateId": "66253cd323d39470",
-      "evidenceIds": [
-        "dd2cee96062158e9"
-      ],
-      "verdict": "resolved",
-      "effectiveVerdict": "resolved",
-      "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2872,6 +2774,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2883,6 +2786,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2893,6 +2797,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2903,6 +2808,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2914,6 +2820,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2931,6 +2838,7 @@
           "detail": "openalex (arxiv:2312.01268): year differs: described 2024, observed 2023"
         }
       ],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2941,6 +2849,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2958,6 +2867,7 @@
           "detail": "openalex (arxiv:2311.12834): year differs: described 2024, observed 2023"
         }
       ],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2968,26 +2878,18 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
-      "candidateId": "b6f56a2dfd34c045",
+      "candidateId": "337198ef4a10f456",
       "evidenceIds": [
         "1ba0de69afc02046"
       ],
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
-      "excludedFromDenominator": false
-    },
-    {
-      "candidateId": "efe29486fa1c9912",
-      "evidenceIds": [
-        "1ba0de69afc02046"
-      ],
-      "verdict": "resolved",
-      "effectiveVerdict": "resolved",
-      "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -2999,6 +2901,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3010,6 +2913,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3020,6 +2924,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3030,6 +2935,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3040,6 +2946,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3050,6 +2957,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3060,6 +2968,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3070,6 +2979,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3080,6 +2990,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3090,6 +3001,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3100,6 +3012,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3110,6 +3023,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3120,6 +3034,7 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3130,26 +3045,19 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
-      "candidateId": "77ab5bf01eeb9749",
+      "candidateId": "80f1807afff7b492",
       "evidenceIds": [
-        "2220d0af08b9948e"
+        "2220d0af08b9948e",
+        "12cf43c10ef7e972"
       ],
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
-      "excludedFromDenominator": false
-    },
-    {
-      "candidateId": "48c966004ca2900b",
-      "evidenceIds": [
-        "2220d0af08b9948e"
-      ],
-      "verdict": "resolved",
-      "effectiveVerdict": "resolved",
-      "mismatches": [],
+      "verifiable": true,
       "excludedFromDenominator": false
     },
     {
@@ -3160,37 +3068,13 @@
       "verdict": "resolved",
       "effectiveVerdict": "resolved",
       "mismatches": [],
+      "verifiable": false,
       "excludedFromDenominator": false
     }
   ],
   "adjudications": [],
   "diagnostics": {
     "excludedUrls": [
-      {
-        "artifactPath": "content/packages/dionysus.md",
-        "line": 5,
-        "url": "https://github.com/mrzv/dionysus"
-      },
-      {
-        "artifactPath": "content/packages/giotto-ph.md",
-        "line": 5,
-        "url": "https://github.com/giotto-ai/giotto-ph"
-      },
-      {
-        "artifactPath": "content/packages/giotto-tda.md",
-        "line": 5,
-        "url": "https://github.com/giotto-ai/giotto-tda"
-      },
-      {
-        "artifactPath": "content/packages/gudhi.md",
-        "line": 5,
-        "url": "https://github.com/GUDHI/gudhi-devel"
-      },
-      {
-        "artifactPath": "content/packages/hiponet.md",
-        "line": 5,
-        "url": "https://github.com/KrishnaswamyLab/HiPoNet"
-      },
       {
         "artifactPath": "content/packages/hiponet.md",
         "line": 22,
@@ -3215,36 +3099,6 @@
         "artifactPath": "content/packages/hiponet.md",
         "line": 245,
         "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/b284aad9fb5c6d74b9535a30ece69e1c-Paper-Conference.pdf"
-      },
-      {
-        "artifactPath": "content/packages/kmapper.md",
-        "line": 5,
-        "url": "https://github.com/scikit-tda/kepler-mapper"
-      },
-      {
-        "artifactPath": "content/packages/open-topodockq-featurizer.md",
-        "line": 5,
-        "url": "https://github.com/jmchilton/open-topodockq-featurizer"
-      },
-      {
-        "artifactPath": "content/packages/open-topoqa-featurizer.md",
-        "line": 5,
-        "url": "https://github.com/jmchilton/open-topoqa-featurizer"
-      },
-      {
-        "artifactPath": "content/packages/open-topoqa-scorer.md",
-        "line": 5,
-        "url": "https://github.com/jmchilton/open-topoqa-scorer"
-      },
-      {
-        "artifactPath": "content/packages/persim.md",
-        "line": 5,
-        "url": "https://github.com/scikit-tda/persim"
-      },
-      {
-        "artifactPath": "content/packages/petls-pytorch.md",
-        "line": 5,
-        "url": "https://github.com/Sylverity/petls-pytorch"
       },
       {
         "artifactPath": "content/packages/petls-pytorch.md",
@@ -3308,11 +3162,6 @@
       },
       {
         "artifactPath": "content/packages/petls.md",
-        "line": 5,
-        "url": "https://github.com/bdjones13/PETLS"
-      },
-      {
-        "artifactPath": "content/packages/petls.md",
         "line": 22,
         "url": "https://github.com/bdjones13/PETLS/issues/2"
       },
@@ -3347,56 +3196,6 @@
         "url": "https://reporter.nih.gov/search/DSvtOjSUDkGqTPYpit3gCg/project-details/10551576"
       },
       {
-        "artifactPath": "content/packages/phat.md",
-        "line": 5,
-        "url": "https://bitbucket.org/phat-code/phat"
-      },
-      {
-        "artifactPath": "content/packages/pydowker.md",
-        "line": 5,
-        "url": "https://github.com/nihell/pyDowker"
-      },
-      {
-        "artifactPath": "content/packages/pyflagser.md",
-        "line": 5,
-        "url": "https://github.com/giotto-ai/pyflagser"
-      },
-      {
-        "artifactPath": "content/packages/pyrivet.md",
-        "line": 5,
-        "url": "https://github.com/rivetTDA/rivet-python"
-      },
-      {
-        "artifactPath": "content/packages/ripser-cpp.md",
-        "line": 5,
-        "url": "https://github.com/Ripser/ripser"
-      },
-      {
-        "artifactPath": "content/packages/ripser-py.md",
-        "line": 5,
-        "url": "https://github.com/scikit-tda/ripser.py"
-      },
-      {
-        "artifactPath": "content/packages/rivet.md",
-        "line": 5,
-        "url": "https://github.com/rivetTDA/rivet"
-      },
-      {
-        "artifactPath": "content/packages/scikit-tda.md",
-        "line": 5,
-        "url": "https://github.com/scikit-tda/scikit-tda"
-      },
-      {
-        "artifactPath": "content/packages/tadasets.md",
-        "line": 5,
-        "url": "https://github.com/scikit-tda/tadasets"
-      },
-      {
-        "artifactPath": "content/packages/topodockq.md",
-        "line": 5,
-        "url": "https://github.com/XDaiNYU/TopoDockQ"
-      },
-      {
         "artifactPath": "content/packages/topodockq.md",
         "line": 23,
         "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs42004-025-01727-4/MediaObjects/42004_2025_1727_MOESM2_ESM.pdf"
@@ -3428,11 +3227,6 @@
       },
       {
         "artifactPath": "content/packages/topometry.md",
-        "line": 5,
-        "url": "https://github.com/davisidarta/topometry"
-      },
-      {
-        "artifactPath": "content/packages/topometry.md",
         "line": 23,
         "url": "https://github.com/davisidarta/topometry"
       },
@@ -3455,11 +3249,6 @@
         "artifactPath": "content/packages/topometry.md",
         "line": 264,
         "url": "https://topometry.readthedocs.io/en/latest/"
-      },
-      {
-        "artifactPath": "content/packages/topoqa.md",
-        "line": 5,
-        "url": "https://github.com/yubingapril/TopoQA"
       },
       {
         "artifactPath": "content/packages/topoqa.md",
@@ -3490,26 +3279,6 @@
         "artifactPath": "content/papers/tda-tdl-molecular-sciences.md",
         "line": 31,
         "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
-      },
-      {
-        "artifactPath": "content/papers/tdl-docking-benchmark-review.md",
-        "line": 6,
-        "url": "https://academic.oup.com/bib/article/27/4/bbag370/8732820"
-      },
-      {
-        "artifactPath": "content/replication-experiments/hiponet-melanoma.md",
-        "line": 6,
-        "url": "https://github.com/jmchilton/hiponet-melanoma-replication"
-      },
-      {
-        "artifactPath": "content/replication-experiments/topometry-cell-cycle.md",
-        "line": 6,
-        "url": "https://github.com/jmchilton/topometry-cell-cycle-replication"
-      },
-      {
-        "artifactPath": "content/replication-experiments/topoqa-interface-quality.md",
-        "line": 6,
-        "url": "https://github.com/jmchilton/topoqa-interface-quality-replication"
       }
     ],
     "authorYearPatternCount": 4,
