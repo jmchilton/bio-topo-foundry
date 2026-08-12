@@ -10,15 +10,15 @@ Reviewed flagged findings: **0/0**
 
 | Verdict | Count |
 |---|---:|
-| resolved | 83 |
+| resolved | 85 |
 | resolved-mismatched | 0 |
 | unresolved | 0 |
 | unavailable | 0 |
-| total | 83 |
+| total | 85 |
 
 ## Extraction coverage
 
-Extracted **83 of 101** reference-section lines. The verdict counts above describe only the extracted lines.
+Extracted **85 of 103** reference-section lines. The verdict counts above describe only the extracted lines.
 
 A wrapped entry counts once per physical line, so this is a lower bound on coverage.
 
@@ -128,6 +128,8 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 | `content/papers/tda-tdl-molecular-sciences.md:235` | Omicron BA.2 (B.1.1.529.2): High Potential for Becoming the Next Dominant Variant | crossref `doi:10.1021/acs.jpclett.2c00469` → doi:10.1021/acs.jpclett.2c00469 | — |
 | `content/papers/tda-tdl-molecular-sciences.md:236` | Persistent Laplacian projected Omicron BA.4 and BA.5 to become new dominating variants | crossref `doi:10.1016/j.compbiomed.2022.106262` → doi:10.1016/j.compbiomed.2022.106262 | — |
 | `content/papers/tda-tdl-molecular-sciences.md:237` | Topological data analysis and topological deep learning beyond persistent homology - a review | openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
+| `content/papers/tdl-docking-benchmark-review.md:9` | doi:10.1093/bib/bbag370 | crossref `doi:10.1093/bib/bbag370` → doi:10.1093/bib/bbag370 | — |
+| `content/papers/tdl-docking-benchmark-review.md:33` | doi:10.1093/bib/bbag370 | crossref `doi:10.1093/bib/bbag370` → doi:10.1093/bib/bbag370 | — |
 
 ## resolved-mismatched
 
@@ -155,6 +157,7 @@ None.
 | `content/papers/persistent-spectral-graph.md` | 12 | 0 |
 | `content/papers/tda-tdl-beyond-persistent-homology.md` | 11 | 0 |
 | `content/papers/tda-tdl-molecular-sciences.md` | 16 | 0 |
+| `content/papers/tdl-docking-benchmark-review.md` | 2 | 0 |
 
 ## Adjudicated extractor false positives
 
@@ -162,5 +165,5 @@ None.
 
 ## Extractor diagnostics
 
-- Generic/non-scholarly URLs excluded: 68
-- Potential free-form `Author Year` patterns measured (diagnostic only): 3
+- Generic/non-scholarly URLs excluded: 69
+- Potential free-form `Author Year` patterns measured (diagnostic only): 4

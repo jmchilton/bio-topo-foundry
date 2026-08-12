@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-11T20:29:50.462Z",
+  "generatedAt": "2026-08-12T13:02:27.007Z",
   "corpus": {
-    "digest": "ef53853590c80ea35c62fcddb143eee585e970cb4ecd7d71b7760c73c5cceb5d",
-    "headRevision": "aceca67321ce88b53d9016295405299e993ac027",
+    "digest": "1045690dc1e6bbc9a698cfcde8027bd3229e3bc36bb6cc8f76c55ac98d5a9d25",
+    "headRevision": "145f69442efb441ab6651f4e22e49176c7d598b7",
     "workingTreeDirty": true
   },
-  "evidenceSnapshotDigest": "f21ce78483d77723704a4047d94a61f5c4a85fad3c705436ea6a895af7069966",
+  "evidenceSnapshotDigest": "9fd114fddfbcd4e6c3f9594391586e21728559486733334a40044c98bc0f6896",
   "manualReviewStatus": "not-required",
   "manualReview": {
     "required": 0,
     "completed": 0
   },
   "summary": {
-    "total": 83,
-    "resolved": 83,
+    "total": 85,
+    "resolved": 85,
     "resolved-mismatched": 0,
     "unresolved": 0,
     "unavailable": 0,
@@ -2193,6 +2193,40 @@
         ],
         "year": 2025
       }
+    },
+    {
+      "id": "77ab5bf01eeb9749",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tdl-docking-benchmark-review.md",
+        "startLine": 9,
+        "endLine": 9,
+        "sourceText": "  doi: 10.1093/bib/bbag370",
+        "sourceDigest": "dfd7c93c1ad92bb7bb5c37d93d035d6cc7067f7a246479d26fcbfe3abf057f4a"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1093/bib/bbag370"
+        }
+      ]
+    },
+    {
+      "id": "4af27f84cb381e11",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tdl-docking-benchmark-review.md",
+        "startLine": 33,
+        "endLine": 33,
+        "sourceText": "2026. [Journal article](https://doi.org/10.1093/bib/bbag370)",
+        "sourceDigest": "8cb61410bf395130f4b6621bb656f25564ad766a1a0081cbdb4f26ac9960430b"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1093/bib/bbag370"
+        }
+      ]
     }
   ],
   "findings": [
@@ -3080,6 +3114,26 @@
       "effectiveVerdict": "resolved",
       "mismatches": [],
       "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "77ab5bf01eeb9749",
+      "evidenceIds": [
+        "2220d0af08b9948e"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "4af27f84cb381e11",
+      "evidenceIds": [
+        "2220d0af08b9948e"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
     }
   ],
   "adjudications": [],
@@ -3411,6 +3465,11 @@
         "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
       },
       {
+        "artifactPath": "content/papers/tdl-docking-benchmark-review.md",
+        "line": 6,
+        "url": "https://academic.oup.com/bib/article/27/4/bbag370/8732820"
+      },
+      {
         "artifactPath": "content/replication-experiments/hiponet-melanoma.md",
         "line": 6,
         "url": "https://github.com/jmchilton/hiponet-melanoma-replication"
@@ -3426,7 +3485,7 @@
         "url": "https://github.com/jmchilton/topoqa-interface-quality-replication"
       }
     ],
-    "authorYearPatternCount": 3,
+    "authorYearPatternCount": 4,
     "unextractedReferenceLines": [
       {
         "artifactPath": "content/packages/hiponet.md",
