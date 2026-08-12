@@ -1,7 +1,7 @@
 # DSSP (mkdssp) — secondary-structure assignment + solvent-accessible surface area; required for
-# TopoQA's conventional (non-topological) node features. Modern mkdssp v4 ships as the Bioconda
-# `dssp` package and provides the `mkdssp` CLI. Single Bioconda pkg → L4 (auto BioContainer).
-# (Bioconda dssp=4.6.1, provides the `mkdssp` binary, 2026-07-30)
+# TopoQA's conventional (non-topological) node features. Modern mkdssp v4 ships as the conda-forge
+# `dssp` package and provides the `mkdssp` CLI. Bioconda has no `dssp` at all, so no container
+# follows → L3. (conda-forge dssp=4.6.1, provides the `mkdssp` binary; rechecked 2026-08-12)
 [workspace]
 channels = ["conda-forge", "bioconda"]
 platforms = ["linux-64"]

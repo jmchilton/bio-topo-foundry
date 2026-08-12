@@ -21,8 +21,16 @@ The grade is the *anticipated* `biopixi grade` result, not a declared one — th
 from the manifest, lockfile, and public channel metadata. Metadata was verified against
 anaconda.org, PyPI, and CRAN on 2026-07-29; re-verify before trusting a grade.
 
-A grade scores **packaging**, not science. L4 means a fixture installs as one Bioconda package with
-an automatic container; it says nothing about whether the method inside it is correct or useful.
+A grade scores **packaging**, not science. It says nothing about whether the method inside a fixture
+is correct or useful.
+
+**L4 is the one grade a file cannot establish.** L1–L3 are decidable from the lockfile, because the
+channel on every resolved artifact is recorded there. L4 also asserts that a container for the
+fixture's root target set can be pulled, which no file here records, so profile v0 forbids assigning
+it offline. An offline grade stops at L3 and carries a *publication candidate*: the image's name and
+the state of the evidence for it — `UNREGISTERED`, `INFERRED`, `REGISTERED`, or `CONFIRMED`. Only
+the last is an observation, and only an observation reaches L4, so an L4 note records the image, its
+digest, and when the registry was asked. The kind rejects one that does not.
 
 Two patterns recur and are worth reading as a group rather than one fixture at a time:
 
