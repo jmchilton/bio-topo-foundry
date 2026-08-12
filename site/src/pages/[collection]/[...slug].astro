@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import ContentNote from '@galaxy-foundry/site-kit/ContentNote.astro';
+import { licenseFileIdFromPath } from '@galaxy-foundry/license-policy';
 import LicenseBadge from '@galaxy-foundry/site-kit/LicenseBadge.astro';
 import ReferenceContract from '@galaxy-foundry/site-kit/ReferenceContract.astro';
 
@@ -120,11 +121,23 @@ const resolveRef = (ref: string) => contentReader.resolveLink(ref, { base });
         <div>
           <span>Summary posture</span>
           <strong>
-            {entry.data.derived === 'own-words-summary'
-              ? 'Own words'
-              : 'License-aware, with quotation'}
+            {entry.data.derived === 'own-words-summary' ? 'Own words' : 'Verbatim quotes'}
           </strong>
         </div>
+        {entry.data.license_file && (
+          <div>
+            <span>Redistributed under</span>
+            <a href={`${base}/licenses/${licenseFileIdFromPath(entry.data.license_file)}/`}>
+              {entry.data.license_file}
+            </a>
+          </div>
+        )}
+        {entry.data.attribution && (
+          <div class="note-facts-wide">
+            <span>Attribution</span>
+            <span>{entry.data.attribution}</span>
+          </div>
+        )}
       </aside>
     )}
 

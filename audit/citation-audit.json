@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-12T13:02:27.007Z",
+  "generatedAt": "2026-08-12T16:03:15.487Z",
   "corpus": {
-    "digest": "1045690dc1e6bbc9a698cfcde8027bd3229e3bc36bb6cc8f76c55ac98d5a9d25",
-    "headRevision": "145f69442efb441ab6651f4e22e49176c7d598b7",
+    "digest": "32b2144bfc803f9a2c9f2dfc6aae51382623ebaaeaa2a0eaa66b14ba4d57c90c",
+    "headRevision": "d75c305970fd6f5bb5167f64a1c730c21f2d4215",
     "workingTreeDirty": true
   },
-  "evidenceSnapshotDigest": "9fd114fddfbcd4e6c3f9594391586e21728559486733334a40044c98bc0f6896",
+  "evidenceSnapshotDigest": "cd6c0d29b1129fdd446f721c95ac804b304c3d108c53bc8e3bc96703930d3a8d",
   "manualReviewStatus": "not-required",
   "manualReview": {
     "required": 0,
     "completed": 0
   },
   "summary": {
-    "total": 85,
-    "resolved": 85,
+    "total": 86,
+    "resolved": 86,
     "resolved-mismatched": 0,
     "unresolved": 0,
     "unavailable": 0,
@@ -2212,12 +2212,29 @@
       ]
     },
     {
+      "id": "48c966004ca2900b",
+      "span": {
+        "artifactKind": "paper-note",
+        "artifactPath": "content/papers/tdl-docking-benchmark-review.md",
+        "startLine": 21,
+        "endLine": 21,
+        "sourceText": "  (https://doi.org/10.1093/bib/bbag370). The passages inside quotation marks below are reproduced",
+        "sourceDigest": "f65a5e5a5ecb40b4ed812e3575dca43b57ae0dfabc4084d87908bb3416fc4621"
+      },
+      "identifiers": [
+        {
+          "kind": "doi",
+          "value": "10.1093/bib/bbag370"
+        }
+      ]
+    },
+    {
       "id": "4af27f84cb381e11",
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/tdl-docking-benchmark-review.md",
-        "startLine": 33,
-        "endLine": 33,
+        "startLine": 41,
+        "endLine": 41,
         "sourceText": "2026. [Journal article](https://doi.org/10.1093/bib/bbag370)",
         "sourceDigest": "8cb61410bf395130f4b6621bb656f25564ad766a1a0081cbdb4f26ac9960430b"
       },
@@ -3117,6 +3134,16 @@
     },
     {
       "candidateId": "77ab5bf01eeb9749",
+      "evidenceIds": [
+        "2220d0af08b9948e"
+      ],
+      "verdict": "resolved",
+      "effectiveVerdict": "resolved",
+      "mismatches": [],
+      "excludedFromDenominator": false
+    },
+    {
+      "candidateId": "48c966004ca2900b",
       "evidenceIds": [
         "2220d0af08b9948e"
       ],

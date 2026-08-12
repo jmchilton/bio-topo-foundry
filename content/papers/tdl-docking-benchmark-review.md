@@ -14,7 +14,15 @@ source_license:
   status: declared
   id: CC-BY-4.0
 license_statement: "The article's own permissions block: © The Author(s) 2026, published by Oxford University Press, distributed under the terms of the Creative Commons Attribution License, which permits unrestricted reuse, distribution, and reproduction in any medium, provided the original work is properly cited."
-derived: own-words-summary
+attribution: >-
+  "Topological deep learning for drug–target interaction, virtual screening, and docking scoring: a
+  practical, benchmark-driven review" © 2026 Beatriz Suay-García and Antonio Falcó, published in
+  Briefings in Bioinformatics by Oxford University Press and licensed under CC BY 4.0
+  (https://doi.org/10.1093/bib/bbag370). The passages inside quotation marks below are reproduced
+  exactly and unaltered; everything else is this Foundry's own summary and assessment, and no
+  modified wording is presented as the authors'.
+license_file: LICENSES/CC-BY-4.0.LICENSE
+derived: verbatim-quotes-summary
 tags:
   - method/persistent-homology
   - method/topological-deep-learning
@@ -40,14 +48,17 @@ resolve and identify the same work.
 
 **Access and reuse:** the version of record is gold open access under CC BY 4.0 — plain CC BY, with
 no non-commercial, no-derivatives, or share-alike term. That resolves `verbatim-ok` in the shared
-policy table, which makes this the first source in the corpus for which
-`verbatim-quotes-summary` was actually available. This note declines it. Carrying upstream prose
-obliges an attribution notice and a vendored licence copy under a top-level `LICENSES/` directory
-that does not exist here, and opening a new top-level owner is a deliberate layout decision rather
-than a side effect of ingesting a paper. Nothing in this review needs to travel verbatim more than
-it needs to be assessed. Short phrases quoted below for criticism ride on the quotation right
-rather than on the licence; parameter values, dataset names, metric names, and counts are facts and
-are reproduced as such.
+policy table, and this is the first note in the corpus to take the posture that permits.
+
+The reason is specific rather than opportunistic. Most of what follows is assessment, and assessment
+belongs in our own words. But the central criticisms below are criticisms of the review's own
+*wording* — what it tells a reader its table contains, and what its reproducibility rule actually
+asks for — and a criticism that paraphrases the sentence it objects to is asking the reader to trust
+the paraphrase. Those sentences are therefore quoted exactly, marked as quotations, and
+attributed. CC BY 4.0's obligations are met by the `attribution` notice in the frontmatter and by
+the verbatim licence text at `LICENSES/CC-BY-4.0.LICENSE`, which this note is the first here to
+oblige. Everything outside quotation marks is ours; parameter values, dataset names, metric names,
+and counts are facts and are reproduced as such.
 
 ## What it is, and what makes it different
 
@@ -59,9 +70,11 @@ multimodal fusion. That taxonomy is competent and unsurprising.
 
 What is not unsurprising is the second half. Sections on benchmarks, splits, metrics, baselines,
 and ablations set out per-task minimum standards, and they close with a reporting checklist. The
-review states in its own framing that topology should be considered compelling only when it is
-validated under deployment-relevant splits, against strong baselines, with uncertainty reporting
-and transparent compute budgets.
+review sets its own bar in a single sentence:
+
+> topology should be considered compelling only if it is validated under deployment-relevant
+> splits, against strong baselines, with uncertainty reporting and transparent compute/tuning
+> budgets.
 
 That is [[guiding-principles]]'s *Be Honest About What Topology Buys*, arrived at independently by
 authors with no connection to this Foundry. It is worth reading the two side by side, because they
@@ -100,8 +113,10 @@ that it is not a sufficient one.
 
 One difference, and it is structural rather than a matter of degree: **everything the review
 prescribes is advice, and nothing in it is a gate.** Its standards are recommendations, its
-checklist is a checklist, and its reproducibility rule carries an explicit opt-out — share code and
-configuration when possible, or state the limitations clearly.
+checklist is a checklist, and its reproducibility rule carries an explicit opt-out written into the
+rule itself: "Share code and configuration when possible (or state limitations clearly)". The
+checklist row says the same thing in the passive — "Code/configuration shared when possible (or
+limitations clearly stated)."
 
 [[guiding-principles]] distrusts exactly this form under *Deterministic Tools Do Deterministic
 Work*: a prose caveat is advisory, and an author can restate one accurately and violate it in the
@@ -120,8 +135,9 @@ an author. The review has no equivalent, and could not have one.
 A benchmark-driven review is judged on whether it drives benchmarks, and this one does not close
 the loop.
 
-Its opening guidance tells the reader that Table 1 summarizes representative methods by
-construction, integration strategy, **and validation setup**. Table 1 has seven columns — task,
+Its opening guidance tells the reader where to look: "Table 1 summarizes representative methods
+(construction, integration strategy, and validation setup)." The third of those three is the one to
+hold on to. Table 1 has seven columns — task,
 method, family, topological object, filtration and signals, vectorization and learner, code — and
 none of them is validation setup. No split, no benchmark, no metric, no baseline appears against
 any of the eighteen methods.
@@ -131,9 +147,9 @@ eighteen methods without recording whether a single one of them meets it. The ob
 valuable version of this paper — the standard applied retrospectively, each method graded, the
 field's compliance rate reported as a number — is the version that was not written. What is left
 tells a practitioner how to evaluate their own next model and gives them nothing with which to
-re-read the results already in the literature. For a review whose stated purpose is reducing
-overoptimistic claims driven by leakage or incomparable setups, that is the wrong half to leave
-out.
+re-read the results already in the literature. For a review whose stated contribution is an
+evaluation playbook offered "to reduce overoptimistic claims driven by leakage or incomparable
+setups", that is the wrong half to leave out.
 
 The illustrative worked example has the same shape at smaller scale. It specifies a complete
 docking-scoring protocol — PDBbind refined set filtered at 2.5 Å resolution, pockets as heavy atoms
