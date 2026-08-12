@@ -10,6 +10,7 @@ export const SITE_IDENTITY: SiteIdentity = {
     { path: "/packages/", label: "Packages" },
     { path: "/environments/", label: "Environments" },
     { path: "/molds/", label: "Molds" },
+    { path: "/usage/", label: "Usage" },
     { path: "/papers/", label: "Papers" },
     { path: "/tags/", label: "Tags" },
     { path: "/glossary/", label: "Glossary" },

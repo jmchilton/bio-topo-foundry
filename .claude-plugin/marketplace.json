@@ -1,0 +1,16 @@
+{
+  "name": "tda-bioinformatics-foundry",
+  "description": "Cast skills produced by the Topological Data Analysis Bioinformatics Foundry.",
+  "owner": {
+    "name": "John Chilton",
+    "email": "jmchilton@gmail.com",
+    "url": "https://github.com/jmchilton"
+  },
+  "plugins": [
+    {
+      "name": "tda-foundry-skills",
+      "source": "./casts/claude",
+      "description": "Runnable TDA bioinformatics skills cast from the Foundry's typed knowledge base."
+    }
+  ]
+}
