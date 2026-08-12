@@ -95,6 +95,10 @@ from an implementation defect rather than from the method.
 ## Related
 
 [[persistent-homology]] and [[persistent-laplacian]] are the usual feature sources.
-[[simplicial-learning]] is the architectural branch. Both survey notes —
-[[tda-tdl-molecular-sciences]] and [[tda-tdl-beyond-persistent-homology]] — are surveys of this
-area specifically and are the right starting point for the literature.
+[[simplicial-learning]] is the architectural branch. Three survey notes cover this area:
+[[tda-tdl-molecular-sciences]] and [[tda-tdl-beyond-persistent-homology]] are the broad ones and
+the right starting point for the literature, while [[tdl-docking-benchmark-review]] is narrow —
+drug–target interaction, screening, and docking scoring — and prescriptive rather than descriptive.
+It also carries the sharpest statement in this corpus of what topology contributes that geometry
+does not: a fixed-cutoff equivariant network cannot recover a pocket feature that only appears at a
+larger scale, however deep it is.

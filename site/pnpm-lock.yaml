@@ -33,8 +33,8 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1(zod@4.4.3)
       '@galaxy-foundry/license-policy':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^0.8.0
+        version: 0.8.0
       '@galaxy-foundry/reference-contract':
         specifier: ^0.4.1
         version: 0.4.1
@@ -520,8 +520,8 @@ packages:
     resolution: {integrity: sha512-nHJ5SpXzAhp6t33xwNbfE8DQCYzgk/fxfdrZ94au9dIJj+CScRzOufU0E6KfqqoD+fh7lpAQHftfU+xiaimovw==}
     engines: {node: '>=20'}
 
-  '@galaxy-foundry/license-policy@0.7.0':
-    resolution: {integrity: sha512-JttsSV3g6qf84a2qO3O16YXk4JexGJWm2OU42gr2f5WgzVxNKK3vO5mydW3pv70BPVx/qzLl8q7pAnV4baylrg==}
+  '@galaxy-foundry/license-policy@0.8.0':
+    resolution: {integrity: sha512-uVBZtyoLFK0eh2Wqh15onl5ot9QEpxECz7hmMCjRi9vJhuwTKM7z4gD+O52CseG9E9iP1fkHP9nxaghntloLFg==}
     engines: {node: '>=20'}
 
   '@galaxy-foundry/reference-contract@0.4.1':
@@ -2969,7 +2969,7 @@ snapshots:
     dependencies:
       js-yaml: 4.3.1
 
-  '@galaxy-foundry/license-policy@0.7.0':
+  '@galaxy-foundry/license-policy@0.8.0':
     dependencies:
       js-yaml: 4.3.1
 

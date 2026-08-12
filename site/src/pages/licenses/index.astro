@@ -1,0 +1,44 @@
+---
+import PersistenceDivider from '../../components/PersistenceDivider.astro';
+import Base from '../../layouts/Base.astro';
+import { vendoredLicenses } from '../../lib/licenses';
+import { base } from '../../lib/site-base';
+
+const licenses = vendoredLicenses();
+---
+<Base
+  title="Upstream licenses"
+  description="Verbatim license texts under which this Foundry redistributes upstream expression."
+>
+  <header class="page-header">
+    <p class="eyebrow">Redistribution terms</p>
+    <h1>Upstream licenses</h1>
+    <p>
+      A note that carries someone else's wording carries their license with it. These are the
+      verbatim texts, and the notes that redistribute under each. Nothing here governs this
+      repository's own contents, which are MIT.
+    </p>
+  </header>
+  <PersistenceDivider seed="collection:licenses" />
+
+  {licenses.length === 0 ? (
+    <p>
+      No note currently carries upstream expression, so no license text is redistributed here.
+    </p>
+  ) : (
+    <ul class="collection-list">
+      {licenses.map((license) => (
+        <li>
+          <a class="card" href={`${base}/licenses/${license.file.id}/`}>
+            <strong>{license.file.filename}</strong>
+            <span>
+              {license.carriers.length}{' '}
+              {license.carriers.length === 1 ? 'note carries' : 'notes carry'} under this copy
+            </span>
+            <small>{license.file.id}</small>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</Base>

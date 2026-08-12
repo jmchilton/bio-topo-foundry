@@ -7,7 +7,7 @@ order: 4
 status: revised
 created: 2026-08-08
 revised: 2026-08-12
-revision: 4
+revision: 5
 tags:
   - meta
 ---
@@ -101,6 +101,12 @@ marketplaces, proves they share one plugin identity and one `casts/claude/skills
 a skill directory without `SKILL.md` or with frontmatter outside the portable `name`/`description`
 core. It then exercises the same target-driven inventory the site uses and requires every
 provenance reference it surfaces to exist in the bundle.
+
+**Redistribution terms.** `tests/license-files.test.ts` audits the vendored `LICENSES/` directory
+against every note's `license_file`, in both directions. The schema can require that field and
+cannot open it, so until this ran, a note claiming to carry upstream wording could name a license
+copy that was never there and pass every other layer. It also asserts the corpus and the directory
+are non-empty, because an audit finds nothing wrong with a repository holding nothing.
 
 **Citation identity.** `tests/citation-audit.test.ts` extracts scholarly identifiers and replays
 their resolution from committed provider evidence, without network access. It fails on missing

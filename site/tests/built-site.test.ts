@@ -16,6 +16,7 @@ import { contentReader } from "../src/lib/content-reader";
 import { environmentCompanions } from "../src/lib/companions";
 import { listAllCasts } from "../src/lib/casts";
 import { ALL_SPECIMENS, TDA_SPECIMENS } from "../src/lib/gallery";
+import { vendoredLicenses } from "../src/lib/licenses";
 import {
   COLLECTION_NAMES,
   contentPath,
@@ -85,11 +86,13 @@ describe("the emitted reader slice", () => {
       "gallery/index.html",
       "glossary/index.html",
       "tags/index.html",
+      "licenses/index.html",
       "usage/index.html",
       ...listAllCasts(path.resolve(SITE, ".."))
         .filter((cast) => cast.target === "claude" && cast.hasSkill)
         .map((cast) => `usage/claude/${cast.moldSlug}/index.html`),
       ...COLLECTION_NAMES.map((collection) => `${collection}/index.html`),
+      ...vendoredLicenses().map((license) => `licenses/${license.file.id}/index.html`),
     ];
     expect(infrastructure.filter((page) => !built.has(page))).toEqual([]);
 

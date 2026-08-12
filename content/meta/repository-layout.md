@@ -7,7 +7,7 @@ order: 3
 status: revised
 created: 2026-08-08
 revised: 2026-08-12
-revision: 7
+revision: 8
 tags:
   - meta
 ---
@@ -29,6 +29,7 @@ bio-topo-foundry/
 ├── .claude-plugin/         Claude Code marketplace metadata for published casts
 ├── .agents/plugins/        Codex marketplace metadata for the same published casts
 ├── audit/                  committed citation evidence, verdicts, and reports
+├── LICENSES/               verbatim upstream license texts a note redistributes under
 ├── .claude/commands/       repository-scoped agent commands; unvalidated, like AGENTS.md
 ├── .github/workflows/      validation, Pages deployment, and live citation refresh
 ├── audit-citations.config.json  citation corpus and provider policy
@@ -137,11 +138,31 @@ formats. This repository owns the configuration and acceptance decisions. The ge
 report are checked by `site/tests/citation-audit.test.ts`; provider evidence is refreshed by the
 scheduled workflow and reviewed through a pull request when its rendered verdict changes.
 
+## `LICENSES/`: terms we redistribute under
+
+Verbatim copies of upstream license texts, one file per set of terms, named `<SPDX-id>.LICENSE` when
+a license is shared across notes and `<source-slug>.LICENSE` when a copy belongs to one source. The
+stem therefore identifies a *copy*, not a license: two sources under one license vendor two files.
+
+The directory is top-level rather than under `content/` because these are not knowledge and are not
+authored here. They are the terms a redistribution is made under, which puts them beside `LICENSE`
+and not beside the notes. They are also not generated — a copy arrives by hand, byte-for-byte from
+upstream, and is never edited afterwards.
+
+A file lands here only because a note obliges it. A `verbatim-quotes-summary` names one in
+`license_file`; an own-words note redistributes no expression, obliges nothing, and adds nothing.
+That makes the directory's contents a consequence of the corpus rather than a collection, so it
+carries no inventory of itself: `/licenses/` generates the list, with the notes carrying under each
+copy, and `site/tests/license-files.test.ts` fails the build when the two directions disagree.
+[[content-model]] owns the field and the rule; this record owns the location.
+
 ## Permanent root files
 
 Four files at the root are permanent, and they are the only ones that are neither drafts nor notes.
 `LICENSE` grants MIT over this repository's own contents — distinct from the `license` field a note
-carries, which is a recorded fact about upstream rather than a grant made here. `README.md`
+carries, which is a recorded fact about upstream rather than a grant made here, and distinct again
+from `LICENSES/`, which holds grants made to us by someone else. One file, one field, one directory,
+three different directions of permission. `README.md`
 addresses someone arriving without context: what this is, why it exists, and how to read it.
 `AGENTS.md` addresses someone changing it: what to read first, the gate, and the invariants.
 `CLAUDE.md` is a four-line pointer at `AGENTS.md`, so one set of instructions serves every agent.
@@ -198,6 +219,8 @@ not a free-form slug.
   knowledge under `content/`.
 - When a target's bundle format is portable across runtimes, keep one generated tree and put only
   runtime manifests around it; do not generate a second copy under a runtime-named target.
+- Keep a verbatim upstream license text in `LICENSES/`, added only when a note obliges it, and never
+  edited after it is copied.
 - Keep the provisional at the root, where it cannot be mistaken for the authored corpus.
 - Keep the four permanent root files explaining and routing; route a detail to the record owning it.
 - Do not create a placeholder top-level directory before a real artifact needs one.

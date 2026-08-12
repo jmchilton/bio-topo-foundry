@@ -1,0 +1,65 @@
+---
+import PersistenceDivider from '../../components/PersistenceDivider.astro';
+import Base from '../../layouts/Base.astro';
+import { vendoredLicenses, type VendoredLicense } from '../../lib/licenses';
+import { base } from '../../lib/site-base';
+
+export function getStaticPaths() {
+  return vendoredLicenses().map((license) => ({
+    params: { id: license.file.id },
+    props: { license },
+  }));
+}
+
+const { license } = Astro.props as { license: VendoredLicense };
+---
+<Base
+  title={`License: ${license.file.filename}`}
+  description={`The verbatim text of ${license.file.filename}, and the notes redistributing under it.`}
+>
+  <header class="page-header">
+    <a href={`${base}/licenses/`}>← All licenses</a>
+    <p class="eyebrow">Redistribution terms</p>
+    <h1>{license.file.filename}</h1>
+  </header>
+  <PersistenceDivider seed={`license:${license.file.id}`} />
+
+  <section aria-labelledby="carriers">
+    <h2 id="carriers">Redistributed by</h2>
+    {license.carriers.length === 0 ? (
+      <p>No note carries under this copy.</p>
+    ) : (
+      <ul class="collection-list">
+        {license.carriers.map((carrier) => (
+          <li>
+            <a class="card" href={carrier.url}>
+              <strong>{carrier.title}</strong>
+              <small>{carrier.source}</small>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+
+  <section aria-labelledby="text">
+    <h2 id="text">Verbatim text</h2>
+    <p>
+      Reproduced exactly as received. This is the upstream license, not a summary of it — the
+      shared policy table's reading of it is a separate artifact and does not replace it.
+    </p>
+    <pre class="license-text">{license.file.text}</pre>
+  </section>
+</Base>
+
+<style>
+  .license-text {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: var(--surface-raised, rgba(127, 127, 127, 0.08));
+  }
+</style>

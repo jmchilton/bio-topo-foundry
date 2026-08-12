@@ -6,8 +6,8 @@ record_kind: infrastructure
 order: 2
 status: revised
 created: 2026-08-08
-revised: 2026-08-08
-revision: 5
+revised: 2026-08-12
+revision: 6
 tags:
   - meta
 ---
@@ -97,6 +97,19 @@ Several constraints are cross-field rather than per-field, and are expressed as 
 with a curated SPDX id or a `LicenseRef-<slug>`, or `missing`. An absent license is a fact worth
 recording, so it is a declared value rather than an omitted field, and it resolves deny-by-default
 through the shared policy table.
+
+A `paper` that carries upstream expression also carries what the row obliges: an `attribution`
+notice, and `license_file` naming a verbatim copy of the license text under `LICENSES/`. Both are
+optional fields made conditionally required by the posture refinement, so an own-words note declares
+neither and a `verbatim-quotes-summary` cannot omit either.
+
+`license_file` is where a typed field runs out. It is a string, so the schema can require it and
+cannot open it — a misspelled path satisfies `.strict()`, satisfies the refinement, and is not a
+wiki link, so nothing resolves it. `site/tests/license-files.test.ts` closes that with
+`auditLicenseFiles` from the shared package, checked in both directions like the tag and reference
+registries: a declaration naming an absent copy fails, and so does a vendored copy no note declares,
+because license text that outlived the note it was carried for no longer describes anything this
+repository redistributes. [[repository-layout]] owns where the directory sits.
 
 ## Tags and facets
 
