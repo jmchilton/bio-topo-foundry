@@ -76,8 +76,8 @@ importers:
         specifier: ^0.9.4
         version: 0.9.10(prettier@3.9.6)(typescript@5.9.3)
       '@galaxy-foundry/audit-citations':
-        specifier: ^0.1.2
-        version: 0.1.2(zod@4.4.3)
+        specifier: ^0.2.0
+        version: 0.2.0(zod@4.4.3)
       '@types/js-yaml':
         specifier: ^4.0.9
         version: 4.0.9
@@ -481,8 +481,8 @@ packages:
   '@fontsource/ibm-plex-mono@5.3.0':
     resolution: {integrity: sha512-eTgnZjZEGk1QtD3ZstF+Vclo2HLAni8YMy34/DxllwZvyz1lR/1RF/xTiAquOBO7MvqBx8D2Ig2WCPMVfdZu7Q==}
 
-  '@galaxy-foundry/audit-citations@0.1.2':
-    resolution: {integrity: sha512-kodST9M1rzq8nFRl/W5F2suLgrELRWFhrTGfTSQERESh2rbahlx5KzKwaWLWU+/xS4rufn0DdH0WneAaFv6IfA==}
+  '@galaxy-foundry/audit-citations@0.2.0':
+    resolution: {integrity: sha512-3D3kUEgNwwsNBgbVNLAJ4H2z/rgFoaC6MSC5lhQRCNJIBgnmI+W6ObkvUDeWMQP15F4zPZfxaPKKYAzBU5E9Cw==}
     engines: {node: '>=20'}
     hasBin: true
     peerDependencies:
@@ -2924,7 +2924,7 @@ snapshots:
 
   '@fontsource/ibm-plex-mono@5.3.0': {}
 
-  '@galaxy-foundry/audit-citations@0.1.2(zod@4.4.3)':
+  '@galaxy-foundry/audit-citations@0.2.0(zod@4.4.3)':
     dependencies:
       fast-glob: 3.3.3
       zod: 4.4.3
