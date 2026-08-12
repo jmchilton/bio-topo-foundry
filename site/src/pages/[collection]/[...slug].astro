@@ -6,6 +6,7 @@ import LicenseBadge from '@galaxy-foundry/site-kit/LicenseBadge.astro';
 import ReferenceContract from '@galaxy-foundry/site-kit/ReferenceContract.astro';
 
 import Base from '../../layouts/Base.astro';
+import CastArtifacts from '../../components/CastArtifacts.astro';
 import PersistenceDivider from '../../components/PersistenceDivider.astro';
 import TopologyBreadcrumb from '../../components/TopologyBreadcrumb.astro';
 import { environmentCompanions } from '../../lib/companions';
@@ -243,4 +244,5 @@ const resolveRef = (ref: string) => contentReader.resolveLink(ref, { base });
 
     <Content />
   </ContentNote>
+  {entry.collection === 'molds' && <CastArtifacts moldSlug={entry.data.name} />}
 </Base>

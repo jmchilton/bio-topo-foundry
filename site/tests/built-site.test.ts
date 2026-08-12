@@ -14,6 +14,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { contentReader } from "../src/lib/content-reader";
 import { environmentCompanions } from "../src/lib/companions";
+import { listAllCasts } from "../src/lib/casts";
 import { ALL_SPECIMENS, TDA_SPECIMENS } from "../src/lib/gallery";
 import { vendoredLicenses } from "../src/lib/licenses";
 import {
@@ -86,6 +87,10 @@ describe("the emitted reader slice", () => {
       "glossary/index.html",
       "tags/index.html",
       "licenses/index.html",
+      "usage/index.html",
+      ...listAllCasts(path.resolve(SITE, ".."))
+        .filter((cast) => cast.target === "claude" && cast.hasSkill)
+        .map((cast) => `usage/claude/${cast.moldSlug}/index.html`),
       ...COLLECTION_NAMES.map((collection) => `${collection}/index.html`),
       ...vendoredLicenses().map((license) => `licenses/${license.file.id}/index.html`),
     ];
@@ -165,6 +170,7 @@ describe("the emitted reader slice", () => {
     expect(home).toContain('href="/bio-topo-foundry/papers/"');
     expect(home).toContain('href="/bio-topo-foundry/environments/"');
     expect(home).toContain('href="/bio-topo-foundry/molds/"');
+    expect(home).toContain('href="/bio-topo-foundry/usage/"');
     expect(home).toContain('href="/bio-topo-foundry/glossary/"');
     expect(home).toContain('href="/bio-topo-foundry/tags/"');
     expect(home).toContain('href="/bio-topo-foundry/design/#shelf-foundation"');
@@ -510,5 +516,23 @@ describe("the emitted reader slice", () => {
     expect(mold).toContain('href="/bio-topo-foundry/environments/open-topoqa-scorer/"');
     expect(mold).toContain("Supplies the runnable featurizer and scorer");
     expect(mold).toContain("Corpus Observed");
+    expect(mold).toContain('href="/bio-topo-foundry/usage/claude/score-docking-poses/"');
+  });
+
+  it("publishes install instructions and one inspectable page per cast skill", () => {
+    const usage = read(path.join(DIST, "usage/index.html"));
+    expect(usage).toContain("/plugin marketplace add jmchilton/bio-topo-foundry");
+    expect(usage).toContain("codex plugin marketplace add jmchilton/bio-topo-foundry");
+    expect(usage).toContain(
+      'href="/bio-topo-foundry/usage/claude/score-docking-poses/"',
+    );
+
+    const skill = read(
+      path.join(DIST, "usage/claude/score-docking-poses/index.html"),
+    );
+    expect(skill).toContain("Packaged runtime material");
+    expect(skill).toContain("references/environments/pixi.toml");
+    expect(skill).toContain("Provenance schema");
+    expect(skill).toContain("SKILL.md");
   });
 });

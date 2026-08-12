@@ -1,0 +1,28 @@
+{
+  "name": "tda-foundry-skills",
+  "version": "0.1.0",
+  "description": "Runnable skills for topological data analysis in bioinformatics.",
+  "author": {
+    "name": "John Chilton",
+    "email": "jmchilton@gmail.com",
+    "url": "https://github.com/jmchilton"
+  },
+  "homepage": "https://jmchilton.github.io/bio-topo-foundry/usage/",
+  "repository": "https://github.com/jmchilton/bio-topo-foundry",
+  "license": "MIT",
+  "keywords": ["topological-data-analysis", "bioinformatics", "agent-skills"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "TDA Bioinformatics Foundry",
+    "shortDescription": "Run TDA bioinformatics skills",
+    "longDescription": "Use provenance-bearing skills cast from a typed knowledge base to run topological data analysis actions in bioinformatics.",
+    "developerName": "TDA Bioinformatics Foundry",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://jmchilton.github.io/bio-topo-foundry/",
+    "defaultPrompt": [
+      "Rank these candidate protein-complex structures with the open TopoQA scorer.",
+      "Use the score-docking-poses skill on this directory of candidate structures."
+    ]
+  }
+}

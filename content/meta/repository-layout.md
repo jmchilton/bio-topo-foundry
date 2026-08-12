@@ -7,7 +7,7 @@ order: 3
 status: revised
 created: 2026-08-08
 revised: 2026-08-12
-revision: 7
+revision: 8
 tags:
   - meta
 ---
@@ -26,6 +26,8 @@ bio-topo-foundry/
 ├── recipes/<slug>/         rattler-build recipes for packages not yet in conda
 ├── site/                   Astro app, contracts, tests, and local adapters
 ├── casts/<target>/         target policy and committed generated bundles
+├── .claude-plugin/         Claude Code marketplace metadata for published casts
+├── .agents/plugins/        Codex marketplace metadata for the same published casts
 ├── audit/                  committed citation evidence, verdicts, and reports
 ├── LICENSES/               verbatim upstream license texts a note redistributes under
 ├── .claude/commands/       repository-scoped agent commands; unvalidated, like AGENTS.md
@@ -116,6 +118,13 @@ committed set, and `pnpm check:casts` re-derives that set without writing. Sourc
 companion declarations remain authoritative: for example, an Environment's `pixi.toml` and present
 `pixi.lock` are bundled because the Environment Kind says so, while a Mold's evaluation and scenario
 companions stay in the Foundry because their disposition is `foundry-only`.
+
+The `claude` target directory is also the shared Agent Skills plugin root. Its generated bundles
+remain under `skills/<mold>/`; `.claude-plugin/plugin.json` and `.codex-plugin/plugin.json` are thin
+authored adapters that point both runtimes at that one tree. The repository-level
+`.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json` publish the same plugin
+identity for Claude Code and Codex. None of the four manifests duplicates a skill body, reference,
+or provenance record.
 
 ## `audit/`: committed citation evidence
 
@@ -208,6 +217,8 @@ not a free-form slug.
   executable, and link to it rather than restating its contents in prose.
 - Put a target's policy and generated bundles together under `casts/<target>/`; keep their source
   knowledge under `content/`.
+- When a target's bundle format is portable across runtimes, keep one generated tree and put only
+  runtime manifests around it; do not generate a second copy under a runtime-named target.
 - Keep a verbatim upstream license text in `LICENSES/`, added only when a note obliges it, and never
   edited after it is copied.
 - Keep the provisional at the root, where it cannot be mistaken for the authored corpus.

@@ -214,6 +214,302 @@ a {
   outline-offset: 3px;
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.8rem 1.2rem;
+  margin-top: 1rem;
+}
+
+.hero-actions .primary-link {
+  margin-top: 0;
+}
+
+.secondary-link {
+  color: var(--color-brand);
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+}
+
+.usage-header {
+  max-width: 66rem;
+}
+
+.usage-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  max-width: 48rem;
+  margin: 2rem 0 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 0.55rem;
+  background: var(--color-surface-raised);
+}
+
+.usage-stats div {
+  padding: 0.9rem 1rem;
+  border-right: 1px solid var(--color-border-subtle);
+}
+
+.usage-stats div:last-child {
+  border-right: 0;
+}
+
+.usage-stats dt {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.usage-stats dd {
+  margin: 0.2rem 0 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+}
+
+.usage-section,
+.bundle-section {
+  margin: 1.5rem 0 5rem;
+  scroll-margin-top: 5rem;
+}
+
+.usage-section-heading {
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.8rem;
+}
+
+.usage-section-heading h2,
+.quick-install h2,
+.cast-panel h2 {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  font-variation-settings: 'opsz' 32;
+  font-weight: 580;
+  letter-spacing: -0.035em;
+}
+
+.install-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.install-card,
+.quick-install,
+.reference-bundles article,
+.cast-panel {
+  border: 1px solid var(--color-border);
+  border-radius: 0.55rem;
+  background: var(--color-surface-raised);
+}
+
+.install-card {
+  padding: clamp(1.1rem, 3vw, 1.6rem);
+}
+
+.install-card h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+}
+
+.install-card p {
+  color: var(--color-text-muted);
+}
+
+.install-card pre,
+.manual-install pre,
+.quick-install pre,
+.skill-source {
+  overflow-x: auto;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 0.4rem;
+  background: color-mix(in srgb, var(--color-surface) 72%, var(--color-surface-raised));
+  padding: 0.9rem;
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.manual-install {
+  margin-top: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.8rem 0;
+}
+
+.manual-install summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.skill-catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-catalog li {
+  display: flex;
+  min-height: 10rem;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--color-border);
+  border-radius: 0.55rem;
+  background: var(--color-surface-raised);
+  padding: 1.2rem;
+}
+
+.skill-catalog li > a:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.skill-catalog strong {
+  color: var(--color-link);
+  font-size: 1.1rem;
+}
+
+.skill-catalog-target {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skill-source-link {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+}
+
+.skill-header h1 code {
+  font-family: var(--font-mono);
+  font-size: 0.68em;
+  letter-spacing: -0.045em;
+}
+
+.skill-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  font-size: 0.84rem;
+}
+
+.quick-install {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.6fr) repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 4rem;
+  padding: 1.25rem;
+}
+
+.quick-install pre {
+  margin-bottom: 0;
+}
+
+.bundle-stats {
+  max-width: none;
+  margin-bottom: 1.2rem;
+}
+
+.reference-bundles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: 1rem;
+}
+
+.reference-bundles article {
+  padding: 1rem;
+}
+
+.reference-bundles header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.reference-bundles header span {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+
+.reference-bundles article > p {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+}
+
+.reference-bundles dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.35rem 0.7rem;
+  margin-bottom: 0;
+  font-size: 0.72rem;
+}
+
+.reference-bundles dt {
+  color: var(--color-text-muted);
+}
+
+.reference-bundles dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.skill-source {
+  max-height: 46rem;
+  white-space: pre-wrap;
+}
+
+.cast-panel {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.65fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0 4rem;
+  padding: 1.25rem;
+}
+
+.cast-panel p {
+  color: var(--color-text-muted);
+}
+
+.cast-panel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cast-panel li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-left: 2px solid var(--color-accent);
+  padding: 0.4rem 0 0.4rem 1rem;
+}
+
+.cast-panel li span {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
 .filtration {
   position: relative;
   isolation: isolate;
@@ -1289,6 +1585,16 @@ a {
     width: min(100%, 39rem);
     justify-self: center;
   }
+
+  .install-grid,
+  .quick-install,
+  .cast-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .usage-stats div:nth-child(2n) {
+    border-right: 0;
+  }
 }
 
 @media (max-width: 34rem) {
@@ -1338,6 +1644,28 @@ a {
   .architecture-map figcaption {
     padding-inline: 0.75rem;
     text-align: left;
+  }
+
+  .usage-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .usage-stats div,
+  .usage-stats div:nth-child(2n) {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .usage-stats div:last-child {
+    border-bottom: 0;
+  }
+
+  .reference-bundles dl {
+    grid-template-columns: 1fr;
+  }
+
+  .reference-bundles dd + dt {
+    margin-top: 0.4rem;
   }
 }
 

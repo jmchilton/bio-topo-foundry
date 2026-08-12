@@ -1,0 +1,100 @@
+---
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+
+import Base from '../../../layouts/Base.astro';
+import { listAllCasts, loadSkillBundle, type CastAttachedFile } from '../../../lib/casts';
+import { REPO_ROOT } from '../../../lib/repo-root';
+import { base } from '../../../lib/site-base';
+
+export function getStaticPaths() {
+  return listAllCasts(REPO_ROOT)
+    .filter((cast) => cast.target === 'claude' && cast.hasSkill)
+    .map((cast) => ({ params: { skill: cast.moldSlug }, props: { moldSlug: cast.moldSlug } }));
+}
+
+const { moldSlug } = Astro.props;
+const bundle = loadSkillBundle(moldSlug, REPO_ROOT);
+if (!bundle) throw new Error(`Missing committed Claude skill bundle for ${moldSlug}`);
+const parsedSkill = readFileSync(bundle.skillPath, 'utf8');
+const skillBody = parsedSkill.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '');
+const upfront = bundle.attachedFiles.filter((ref) => ref.load === 'upfront');
+const onDemand = bundle.attachedFiles.filter((ref) => ref.load !== 'upfront');
+
+function bytes(value: number | null): string {
+  if (value === null) return 'missing';
+  if (value < 1024) return `${value} B`;
+  return `${(value / 1024).toFixed(1)} KB`;
+}
+
+function label(ref: CastAttachedFile): string {
+  return ref.ref.match(/^\[\[(.*)\]\]$/)?.[1] ?? path.basename(ref.dst);
+}
+---
+<Base title={`${bundle.name ?? moldSlug} · Agent Skill`} description={bundle.description}>
+  <header class="page-header usage-header skill-header">
+    <p class="eyebrow">Agent Skill · cast</p>
+    <h1><code>{bundle.name ?? moldSlug}</code></h1>
+    {bundle.description && <p>{bundle.description}</p>}
+    <nav class="skill-context" aria-label="Skill context">
+      <a href={`${base}/usage/`}>← All cast skills</a>
+      <a href={`${base}/molds/${moldSlug}/`}>Source Mold →</a>
+    </nav>
+  </header>
+
+  <section class="quick-install" aria-labelledby="quick-install-heading">
+    <div>
+      <p class="eyebrow">Quick install</p>
+      <h2 id="quick-install-heading">Use this skill</h2>
+    </div>
+    <div>
+      <strong>Claude Code</strong>
+      <pre><code>/plugin marketplace add jmchilton/bio-topo-foundry
+/plugin install tda-foundry-skills@tda-bioinformatics-foundry
+/tda-foundry-skills:{moldSlug}</code></pre>
+    </div>
+    <div>
+      <strong>Codex</strong>
+      <pre><code>codex plugin marketplace add jmchilton/bio-topo-foundry
+codex plugin add tda-foundry-skills@tda-bioinformatics-foundry
+${moldSlug}</code></pre>
+    </div>
+  </section>
+
+  <section class="bundle-section" aria-labelledby="bundle-heading">
+    <div class="usage-section-heading">
+      <p class="eyebrow">Bundle</p>
+      <h2 id="bundle-heading">Packaged runtime material</h2>
+    </div>
+    <dl class="usage-stats bundle-stats">
+      <div><dt>Attached files</dt><dd>{bundle.attachedFiles.length}</dd></div>
+      <div><dt>Upfront</dt><dd>{upfront.length}</dd></div>
+      <div><dt>On demand</dt><dd>{onDemand.length}</dd></div>
+      <div><dt>Provenance schema</dt><dd>{bundle.provenance?.provenance_schema_version ?? 'n/a'}</dd></div>
+    </dl>
+    <div class="reference-bundles">
+      {bundle.attachedFiles.map((ref) => (
+        <article id={ref.anchor} data-load={ref.load}>
+          <header>
+            <span>{ref.kind} · {ref.load}</span>
+            <strong>{label(ref)}</strong>
+          </header>
+          <p>{ref.purpose ?? ref.trigger ?? 'Packaged runtime reference.'}</p>
+          <dl>
+            <dt>Bundle path</dt><dd><code>{ref.dst}</code></dd>
+            <dt>Source</dt><dd><code>{ref.src}</code></dd>
+            <dt>Size</dt><dd>{bytes(ref.sizeBytes)}</dd>
+          </dl>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="bundle-section" aria-labelledby="skill-source-heading">
+    <div class="usage-section-heading">
+      <p class="eyebrow">Generated document</p>
+      <h2 id="skill-source-heading">SKILL.md</h2>
+    </div>
+    <pre class="skill-source"><code>{skillBody}</code></pre>
+  </section>
+</Base>

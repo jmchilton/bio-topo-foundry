@@ -16,7 +16,10 @@ const { noteCount } = Astro.props;
       A knowledge base connecting TDA research and software to reproducible bioinformatics
       environments, Galaxy tools, workflows, and training.
     </p>
-    <a class="primary-link" href={`${base}/tags/`}>Browse {noteCount} typed notes →</a>
+    <div class="hero-actions">
+      <a class="primary-link" href={`${base}/tags/`}>Browse {noteCount} typed notes →</a>
+      <a class="secondary-link" href={`${base}/usage/`}>Install a cast skill</a>
+    </div>
   </div>
 
   <figure class="filtration" data-filtration data-filtration-stage="3">
