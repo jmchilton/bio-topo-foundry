@@ -1286,6 +1286,20 @@ a {
   font-size: 0.82rem;
 }
 
+/* An L4 has to show its evidence, so the state and the digest sit under the image name. */
+.candidate-evidence {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.candidate-evidence strong {
+  color: var(--color-text-secondary);
+}
+
 /* Keyed on the measured state, never on a filename. */
 .companion-list li[data-present='true'] span {
   color: var(--color-license-verbatim);

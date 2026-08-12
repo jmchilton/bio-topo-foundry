@@ -219,6 +219,25 @@ const resolveRef = (ref: string) => contentReader.resolveLink(ref, { base });
           <span>Portability grade</span>
           <strong data-grade={entry.data.portability_grade}>{entry.data.portability_grade}</strong>
         </div>
+        {entry.data.publication_candidate && (
+          <div class="note-facts-wide">
+            <span>Container</span>
+            <code>{entry.data.publication_candidate.uri}</code>
+            {entry.data.publication_candidate.state === 'CONFIRMED' ? (
+              <p class="candidate-evidence">
+                <strong>CONFIRMED</strong> — observed{' '}
+                {entry.data.publication_candidate.observed_at.slice(0, 10)}
+                <br />
+                <code>{entry.data.publication_candidate.digest}</code>
+              </p>
+            ) : (
+              <p class="candidate-evidence">
+                <strong>{entry.data.publication_candidate.state}</strong> — no image observed, so
+                this is the name one would have
+              </p>
+            )}
+          </div>
+        )}
         <div class="note-facts-wide">
           <span>Manifest files</span>
           <ul class="companion-list">

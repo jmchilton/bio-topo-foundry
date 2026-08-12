@@ -29,7 +29,8 @@ Non-corpus meta already in place: `content/meta/glossary.md`, `content/environme
 
 ## `environment` — the 33 biopixi fixtures
 
-Grade = anticipated biopixi L0–L4 (from `content/environments/README.md`). Recipe = has a custom
+Grade = anticipated biopixi L0–L4 (from `content/environments/README.md`); an L4 row carries an
+observed container digest in its note, since offline grading cannot reach L4. Recipe = has a custom
 build in `recipes/`. Lock = `pixi.lock` present (solved/verified). WP = has a whitepaper.
 
 | Environment | Grade | Recipe | Lock | WP | Upstream package (→ `package` Kind) |
@@ -57,9 +58,9 @@ build in `recipes/`. Lock = `pixi.lock` present (solved/verified). WP = has a wh
 | open-topoqa-scorer | L1 | ✓✓ | ✓ | — | open TopoQA ProteinGAT scorer (MIT clean-room retrain) |
 | biopython | L3 | — | ✓ | — | Biopython (structure I/O — enabling dep) |
 | scanpy | L3 | — | ✓ | — | Scanpy + AnnData (single-cell — enabling dep) |
-| dssp | L4 | — | ✓ | — | DSSP / mkdssp (SASA + secondary structure — enabling dep) |
+| dssp | L3 | — | ✓ | — | DSSP / mkdssp (SASA + secondary structure — enabling dep; conda-forge only, no Bioconda package) |
 | mmseqs2 | L4 | — | ✓ | — | MMseqs2 (sequence clustering, leakage-safe splits — enabling dep) |
-| dockq | L4 | — | ✓ | — | DockQ (reference interface-QA metric — enabling dep) |
+| dockq | L3 | — | ✓ | — | DockQ (reference interface-QA metric — enabling dep; lock takes the conda-forge build, so no container) |
 | phat | L1 | ✓ | — | — | PHAT (C++ reduction backend, LGPL — Tier-2 capability, recipe verified green) |
 | scvi | L3 | — | ✓ | — | scvi-tools (deep generative single-cell embedding — companion) |
 | phate | L4 | — | ✓ | — | PHATE (diffusion embedding, Krishnaswamy lab — companion) |

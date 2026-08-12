@@ -1,7 +1,7 @@
 # PHATE — diffusion-based embedding for continuous trajectories / branching structure (Krishnaswamy
 # lab, same group as HiPoNet). A TopoMetry runtime + geometry comparator: PHATE's diffusion potential
-# vs a topological scaffold on the same cells. bioconda noarch → L4 (single Bioconda pkg → auto
-# BioContainer). (bioconda phate=2.0.0, 2026-07-30)
+# vs a topological scaffold on the same cells. bioconda noarch, single Bioconda pkg; container
+# observed at quay → L4. (bioconda phate=2.0.0, 2026-07-30; container rechecked 2026-08-12)
 [workspace]
 channels = ["conda-forge", "bioconda"]
 platforms = ["linux-64"]

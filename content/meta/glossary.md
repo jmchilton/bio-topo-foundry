@@ -123,12 +123,18 @@ deeply; surrounding stages are adopted from existing tools and packages but must
 Pipeline can be delivered as a **Workflow**, but the terms are not synonyms.
 
 **Portability grade (L0–L4)** — biopixi's reproducibility and portability score for an
-**Environment**, from L0 out-of-profile through L4 single-package auto-container. It grades the
-environment; it is not the Foundry's scientific acceptance check.
+**Environment**, from L0 out-of-profile through L4 observed container. It grades the environment;
+it is not the Foundry's scientific acceptance check. L1–L3 are decidable from the lockfile; L4 also
+requires a **Publication candidate** that was observed, so it cannot be assigned offline.
 
 **Proof** — a TDA note kind for a mathematical result — a theorem with its proof — grounding a
 TDA or topological deep learning **Method**. It means mathematics, not a proof-of-concept
 demonstration.
+
+**Publication candidate** — the container an **Environment** would publish as, plus the state of the
+evidence that it exists: `UNREGISTERED`, `INFERRED`, `REGISTERED`, or `CONFIRMED`. Only `CONFIRMED`
+rests on a pull that succeeded, and it records the manifest digest and when. It is what a
+**Portability grade** of L4 must carry.
 
 **Provenance** — a record (`_provenance.json`) emitted beside every cast artifact: which Mold
 revision, which target, which references resolved, and which checks ran. It identifies which

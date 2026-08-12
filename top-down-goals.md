@@ -81,10 +81,10 @@ Tiered by leverage. `[ ]` = to build. Each: what · why · caveat.
 ### Tier 1 — enabling deps that unblock many pipelines (low effort, bioconda)
 
 - [x] **Biopython** — PDB/mmCIF parsing + interface extraction; glue under every structure pipeline. **[struct]** → `content/environments/biopython/` **L3**, locked green (conda-forge 1.87).
-- [x] **DockQ** — the reference interface-quality score; the *training label + eval metric* for both QA papers. No structure-QA pipeline is reproducible without it. **[struct]** → `content/environments/dockq/` **L4**, locked green (Bioconda 2.1.3).
+- [x] **DockQ** — the reference interface-quality score; the *training label + eval metric* for both QA papers. No structure-QA pipeline is reproducible without it. **[struct]** → `content/environments/dockq/` **L3**, locked green (conda-forge 2.1.3 — on Bioconda too, but the lock takes conda-forge, so no container).
 - [x] **Scanpy + AnnData** — single-cell preprocessing + `.h5ad` container; explicit dep of both single-cell papers and the on-ramp for every single-cell pipeline. **[sc]** → `content/environments/scanpy/` **L3**, locked green (conda-forge scanpy 1.12.3 + anndata 0.13.2).
-- [x] **DSSP (mkdssp)** — secondary structure + SASA; required for TopoQA's conventional node features. **[struct]** → `content/environments/dssp/` **L4**, locked green (Bioconda dssp 4.6.1, provides `mkdssp`).
-- [x] **MMseqs2** — sequence clustering for leakage-safe test splits (both QA papers depend on it). **[struct]** → `content/environments/mmseqs2/` **L4**, locked green (Bioconda 18.8cc5c).
+- [x] **DSSP (mkdssp)** — secondary structure + SASA; required for TopoQA's conventional node features. **[struct]** → `content/environments/dssp/` **L3**, locked green (conda-forge dssp 4.6.1, provides `mkdssp`; Bioconda has no `dssp`).
+- [x] **MMseqs2** — sequence clustering for leakage-safe test splits (both QA papers depend on it). **[struct]** → `content/environments/mmseqs2/` **L4**, locked green (Bioconda 18.8cc5c; container observed at quay).
 
 ### Tier 2 — new TDA capability (methods our stack lacks)
 
@@ -124,7 +124,7 @@ alternatives for one pipeline slot into a single env.*
 - [x] **scVI / scvi-tools** — deep generative embedding; TopoMetry's learned-embedding baseline. **[sc]**
   → `content/environments/scvi/` **L3**, locked green (conda-forge scvi-tools 1.5.0.post1).
 - [x] **PHATE** — diffusion embedding for trajectories (same lab as HiPoNet); TopoMetry runtime comparator. **[sc]**
-  → `content/environments/phate/` **L4**, locked green (bioconda phate 2.0.0, single-pkg → auto BioContainer).
+  → `content/environments/phate/` **L4**, locked green (bioconda phate 2.0.0; container observed at quay).
 - [x] **hnswlib / pynndescent** — ANN backends; *pinning them fixes a documented TopoMetry repro gap* and unlocks ~1.3M-cell scale. **[sc]**
   → `content/environments/ann-backends/` **L3**, locked green (conda-forge hnswlib 0.8.0 + pynndescent 0.5.13).
 - [x] **Harmony / Scanorama** — batch integration; prerequisite for honest multi-donor/cohort pipelines. **[sc]**

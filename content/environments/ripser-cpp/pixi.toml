@@ -1,6 +1,5 @@
 # Ripser (C++ CLI) — efficient Vietoris–Rips persistence barcodes.
-# Single Bioconda package → Bioconda auto-builds a BioContainers image per recipe build,
-# so this reaches L4 with no combination line needed.
+# Single Bioconda package; BioContainers image observed at quay → L4 (digest in index.md).
 # NAME COLLISION: conda-forge also ships a `ripser` (the 0.6.x Python lib). Pinning ==1.0.1
 # disambiguates to the Bioconda C++ tool. The channel prefix is part of the mulled identity —
 # see ../ripser-py. (verified on anaconda.org 2026-07-29)
