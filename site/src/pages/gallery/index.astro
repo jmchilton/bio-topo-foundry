@@ -137,7 +137,9 @@ const groupAnchor = (group: SpecimenGroup): string => group.id;
     grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.72fr);
     gap: clamp(2rem, 7vw, 7rem);
     align-items: end;
-    padding: clamp(4rem, 9vw, 7.5rem) 0 clamp(3rem, 7vw, 5.5rem);
+    /* No closing padding: the divider below owns that gap, and owns the matching one on its far
+       side. Stacking the two put the barcode nearer what follows it than what it closes. */
+    padding: clamp(4rem, 9vw, 7.5rem) 0 0;
   }
 
   .gallery-hero h1 {
@@ -180,7 +182,9 @@ const groupAnchor = (group: SpecimenGroup): string => group.id;
   .gallery-ledger {
     display: grid;
     grid-template-columns: 1.25fr 0.75fr;
-    margin: clamp(3rem, 7vw, 6rem) 0 2rem;
+    /* No top margin: it collapses against the divider's and wins, which puts the barcode closer to
+       the hero it closes than to the ledger it introduces. */
+    margin: 0 0 2rem;
     border-top: 1px solid var(--color-border-subtle);
     border-bottom: 1px solid var(--color-border-subtle);
   }

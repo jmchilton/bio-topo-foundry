@@ -156,13 +156,24 @@
   padding: 3.5rem 0 2.5rem;
 }
 
+/* Same reason the filtration hero has none: a header's closing padding and the divider's own
+   margin stack into one gap above the barcode that no longer matches the gap below it. Where the
+   two meet, the divider owns the space on both of its sides. */
+.page-header:has(+ .persistence-divider) {
+  padding-bottom: 0;
+}
+
+/* No bottom padding: the divider below supplies that whole gap, and it is the same gap the divider
+   leaves on its other side. A rule used to trim this from the divider's side instead, and never
+   matched — the hero emits its enhancement script as the next sibling, so `+ .persistence-divider`
+   was looking at a `<script>`. Held here, where no sibling can come between. */
 .hero--filtration {
   display: grid;
   max-width: none;
   grid-template-columns: minmax(0, 0.86fr) minmax(27rem, 1.14fr);
   align-items: center;
   gap: clamp(2.5rem, 6vw, 6.5rem);
-  padding: clamp(4rem, 9vw, 7.5rem) 0 clamp(4.5rem, 9vw, 8rem);
+  padding: clamp(4rem, 9vw, 7.5rem) 0 0;
 }
 
 .hero-copy {
@@ -803,12 +814,16 @@
   line-height: 1.5;
 }
 
+/* Punctuation between sections, so it sits in the middle of the space it makes rather than at the
+   top of it. The margin was -0.5rem over 2.5rem, which pulled the barcode up into whatever ended
+   above it — against the last row of homepage cards it overlapped them — and then left a gap
+   underneath that belonged to neither side. Symmetric, and every neighbour keeps its own padding. */
 .persistence-divider {
   display: flex;
   align-items: center;
   gap: clamp(0.8rem, 2vw, 1.5rem);
   width: 100%;
-  margin: -0.5rem 0 2.5rem;
+  margin: clamp(2rem, 4vw, 3.25rem) 0;
   color: var(--color-text-muted);
 }
 
@@ -865,10 +880,6 @@
   stroke: var(--color-accent);
 }
 
-.hero--filtration + .persistence-divider {
-  margin-top: -3.5rem;
-  margin-bottom: 3.75rem;
-}
 
 .reference-grid,
 .collection-list {
@@ -1084,8 +1095,10 @@
   opacity: 0.55;
 }
 
+/* Tighter than a section break, because a breadcrumb is a line of navigation rather than the end
+   of something — but still the same distance on each side of the barcode. */
 .topology-breadcrumb + .persistence-divider {
-  margin: 0.8rem 0 1.4rem;
+  margin: 1.1rem 0;
 }
 
 .card span {
