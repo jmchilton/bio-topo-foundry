@@ -5,8 +5,81 @@ import Base from '../layouts/Base.astro';
 import { designRecordShelves } from '../lib/design-records';
 import { contentReader } from '../lib/content-reader';
 import { base } from '../lib/site-base';
+import { getEntriesByTag } from '../lib/tags';
 
-const typedNoteCount = contentReader.noteTargets().length;
+const noteTargets = contentReader.noteTargets();
+const typedNoteCount = noteTargets.length;
+
+const notesIn = (collection: string) =>
+  noteTargets.filter((note) => note.collection === collection).length;
+
+// Counted, not asserted. Nine tiles of one sentence each say the same thing nine times over; the
+// size of what is behind each one is the only part that differs, and it is the part a reader is
+// deciding on. The glossary is the one destination with nothing to count — a hand-curated page
+// rather than a collection — so it carries no figure rather than an invented one.
+const slice = [
+  {
+    path: 'packages',
+    title: 'Packages',
+    blurb: 'Profiles of upstream TDA software and the facts needed to harden it.',
+    count: notesIn('packages'),
+    unit: { one: 'profile', many: 'profiles' },
+  },
+  {
+    path: 'environments',
+    title: 'Environments',
+    blurb: 'Runnable biopixi fixtures, graded L0 to L4 for how portable their packaging is.',
+    count: notesIn('environments'),
+    unit: { one: 'fixture', many: 'fixtures' },
+  },
+  {
+    path: 'recipes',
+    title: 'Recipes',
+    blurb: 'In-repo builds for the packages no conda channel carries, and the route out.',
+    count: notesIn('recipes'),
+    unit: { one: 'build', many: 'builds' },
+  },
+  {
+    path: 'molds',
+    title: 'Molds',
+    blurb: 'Abstract actions with typed dependencies, ready to become castable artifacts.',
+    count: notesIn('molds'),
+    unit: { one: 'action', many: 'actions' },
+  },
+  {
+    path: 'papers',
+    title: 'Papers',
+    blurb: 'Reviews of external TDA papers and surveys, linked rather than copied.',
+    count: notesIn('papers'),
+    unit: { one: 'review', many: 'reviews' },
+  },
+  {
+    path: 'replication-experiments',
+    title: 'Replication experiments',
+    blurb: 'What happened when we ran the papers ourselves, pinned to the evidence.',
+    count: notesIn('replication-experiments'),
+    unit: { one: 'study', many: 'studies' },
+  },
+  {
+    path: 'methods',
+    title: 'Methods',
+    blurb: 'The techniques themselves — what each computes, and what implements it here.',
+    count: notesIn('methods'),
+    unit: { one: 'technique', many: 'techniques' },
+  },
+  {
+    path: 'glossary',
+    title: 'Glossary',
+    blurb: "The terms that keep the Foundry's content and machinery precise.",
+  },
+  {
+    path: 'tags',
+    title: 'Tags',
+    blurb: 'Browse typed notes through the controlled vocabulary they carry.',
+    count: (await getEntriesByTag()).size,
+    unit: { one: 'term', many: 'terms' },
+  },
+] as const;
 
 const recordShelves = await designRecordShelves();
 ---
@@ -16,48 +89,23 @@ const recordShelves = await designRecordShelves();
 
   <section class="reference-grid" aria-labelledby="reference-heading">
     <h2 id="reference-heading">Current typed content slice</h2>
-    <a class="card" href={`${base}/packages/`}>
-      <strong>Packages</strong>
-      <span>Profiles of upstream TDA software and the facts needed to harden it.</span>
-    </a>
-    <a class="card" href={`${base}/environments/`}>
-      <strong>Environments</strong>
-      <span>Runnable biopixi fixtures, graded L0 to L4 for how portable their packaging is.</span>
-    </a>
-    <a class="card" href={`${base}/recipes/`}>
-      <strong>Recipes</strong>
-      <span>In-repo builds for the packages no conda channel carries, and the route out.</span>
-    </a>
-    <a class="card" href={`${base}/molds/`}>
-      <strong>Molds</strong>
-      <span>Abstract actions with typed dependencies, ready to become castable artifacts.</span>
-    </a>
-    <a class="card" href={`${base}/papers/`}>
-      <strong>Papers</strong>
-      <span>Reviews of external TDA papers and surveys, linked rather than copied.</span>
-    </a>
-    <a class="card" href={`${base}/replication-experiments/`}>
-      <strong>Replication experiments</strong>
-      <span>What happened when we ran the papers ourselves, pinned to the evidence.</span>
-    </a>
-    <a class="card" href={`${base}/methods/`}>
-      <strong>Methods</strong>
-      <span>The techniques themselves — what each computes, and what implements it here.</span>
-    </a>
-    <a class="card" href={`${base}/glossary/`}>
-      <strong>Glossary</strong>
-      <span>The terms that keep the Foundry's content and machinery precise.</span>
-    </a>
-    <a class="card" href={`${base}/tags/`}>
-      <strong>Tags</strong>
-      <span>Browse typed notes through the controlled vocabulary they carry.</span>
-    </a>
+    {slice.map((destination) => (
+      <a class="card" href={`${base}/${destination.path}/`}>
+        <strong>{destination.title}</strong>
+        <span>{destination.blurb}</span>
+        {'count' in destination && (
+          <small>
+            {destination.count} {destination.count === 1 ? destination.unit.one : destination.unit.many}
+          </small>
+        )}
+      </a>
+    ))}
   </section>
 
   <PersistenceDivider seed="home:the-foundry-itself" />
 
   {/*
-    Its own band rather than a ninth card above, because the subject changes. Everything in that
+    Its own band rather than one more card above, because the subject changes. Everything in that
     grid is about topological data analysis; these records are about the thing holding it, and a
     reader who wants one almost never wants the other in the same glance.
   */}

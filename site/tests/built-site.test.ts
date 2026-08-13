@@ -44,6 +44,35 @@ function builtPages(dir: string = DIST): string[] {
 const relativePage = (file: string) => path.relative(DIST, file);
 const read = (file: string) => readFileSync(file, "utf8");
 
+/**
+ * The stylesheet with every `@layer` block removed — what is left outranks all of them.
+ *
+ * Cascade layers lose to unlayered CSS regardless of specificity, so "is this rule in a layer" is
+ * the whole question when a plain element selector and a utility class both target one element.
+ */
+function unlayered(sheet: string): string {
+  let rest = sheet;
+  let out = "";
+  for (;;) {
+    const at = rest.search(/@layer [^;{]+\{/);
+    if (at === -1) return out + rest;
+    out += rest.slice(0, at);
+    let depth = 0;
+    let end = rest.indexOf("{", at);
+    for (let i = end; i < rest.length; i += 1) {
+      if (rest[i] === "{") depth += 1;
+      else if (rest[i] === "}") {
+        depth -= 1;
+        if (depth === 0) {
+          end = i;
+          break;
+        }
+      }
+    }
+    rest = rest.slice(end + 1);
+  }
+}
+
 const STANDALONE_SPECIMEN_PAGES = ALL_SPECIMENS.filter(
   (group) => !sharesPage(group),
 ).flatMap((group) =>
@@ -133,6 +162,51 @@ describe("the emitted reader slice", () => {
     // Constructed so Tailwind cannot satisfy this assertion by scanning the test itself.
     const kitOnlyUtility = ["min", "h", "dvh"].join("-");
     expect(css).toContain(`.${kitOnlyUtility}`);
+  });
+
+  it("leaves the shell's own colours to the shell", () => {
+    // The shell paints the dark chrome with `text-(--color-*)` utilities, which Tailwind emits
+    // into `@layer utilities`. Unlayered CSS outranks every layer whatever its specificity, so an
+    // element default written outside one silently repaints the entire header and footer — the
+    // style-contract check above still passes, because the utility is emitted, just outranked.
+    expect(css).toMatch(/a\{color:var\(--color-link\)/);
+    expect(unlayered(css)).not.toMatch(/(^|[},])a\{[^}]*color:/);
+  });
+
+  it("wraps the shared header instead of widening the document", () => {
+    // `navVisible` is one number measured against a wide bar. No count fits a phone, and the row
+    // defaults to nowrap, so the overflow became the whole document's horizontal scroll.
+    expect(css).toMatch(/nav\[aria-label=["']?Primary["']?\]\{[^}]*flex-wrap:wrap/);
+  });
+
+  it("counts every homepage destination it claims a size for", () => {
+    const home = read(path.join(DIST, "index.html"));
+    const sizes: Record<string, { one: string; many: string }> = {
+      packages: { one: "profile", many: "profiles" },
+      environments: { one: "fixture", many: "fixtures" },
+      recipes: { one: "build", many: "builds" },
+      molds: { one: "action", many: "actions" },
+      papers: { one: "review", many: "reviews" },
+      "replication-experiments": { one: "study", many: "studies" },
+      methods: { one: "technique", many: "techniques" },
+    };
+    const targets = contentReader.noteTargets();
+    const wrong = Object.entries(sizes)
+      .map(([collection, unit]) => {
+        const count = targets.filter(
+          (note) => note.collection === collection,
+        ).length;
+        return `${count} ${count === 1 ? unit.one : unit.many}`;
+      })
+      .filter((size) => !home.includes(size));
+    expect(wrong).toEqual([]);
+
+    // The glossary is a curated page rather than a collection, so it is the one tile that carries
+    // no figure. An invented one is the failure this guards against.
+    const afterGlossary = home.slice(home.indexOf("<strong>Glossary</strong>"));
+    expect(afterGlossary.slice(0, afterGlossary.indexOf("</a>"))).not.toContain(
+      "<small>",
+    );
   });
 
   it("self-hosts the editorial serif, sans, and mono type system", () => {

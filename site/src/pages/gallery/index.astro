@@ -57,7 +57,7 @@ const groupAnchor = (group: SpecimenGroup): string => group.id;
     </div>
   </section>
 
-  <nav class="gallery-index" aria-label="Component groups">
+  <nav class="gallery-index" id="component-index" aria-label="Component groups">
     {ALL_SPECIMENS.map((group) => (
       <a href={`#${groupAnchor(group)}`} data-origin={specimenOrigin(group)}>
         <span>{specimenOrigin(group) === 'shared' ? 'site-kit' : 'tda'}</span>
@@ -76,6 +76,7 @@ const groupAnchor = (group: SpecimenGroup): string => group.id;
           <div>
             <span>{origin === 'shared' ? 'Shared component' : 'TDA component'}</span>
             <h2>{group.component}</h2>
+            <a class="gallery-group-top" href="#component-index">↑ Component index</a>
           </div>
           <p>{group.summary}</p>
         </header>
@@ -101,6 +102,7 @@ const groupAnchor = (group: SpecimenGroup): string => group.id;
           <div>
             <span>{origin === 'shared' ? 'Shared component' : 'TDA component'}</span>
             <h2>{group.component}</h2>
+            <a class="gallery-group-top" href="#component-index">↑ Component index</a>
           </div>
           <p>
             {group.summary} Its <code>{group.surface}</code> surface receives a real route rather
@@ -296,6 +298,29 @@ const groupAnchor = (group: SpecimenGroup): string => group.id;
     font-weight: 570;
     letter-spacing: -0.045em;
     line-height: 1;
+  }
+
+  /* Thirteen groups over twenty thousand pixels, and the only route between them is at the very
+     top. Each heading carries the way back rather than leaving the reader to scroll for it. */
+  .gallery-group-top {
+    display: inline-block;
+    margin-top: 0.7rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 180ms ease;
+  }
+
+  .gallery-group-top:hover {
+    color: var(--color-link);
+  }
+
+  #component-index,
+  .gallery-group {
+    scroll-margin-top: 1.5rem;
   }
 
   .gallery-group-heading p {

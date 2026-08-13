@@ -52,22 +52,35 @@
   --color-evidence-grounded-text: #86d3b5;
 }
 
-html {
-  scroll-behavior: smooth;
-  font-optical-sizing: auto;
-  text-rendering: optimizeLegibility;
-}
+/* Element defaults, and they have to stay in a layer. Unlayered CSS outranks every layer no matter
+   how specific the layered selector is, so a bare `a { color }` out here silently beats the
+   `text-(--color-*)` utilities site-kit's shell paints the header and footer with — the chrome is
+   dark, the link colour is not, and the whole primary nav lands under 2:1 contrast. Anything below
+   that is a component talking about itself and belongs outside the layer, where it outranks the
+   utilities on purpose. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
+  }
 
-body {
-  margin: 0;
-  font-family: var(--font-sans);
-  font-kerning: normal;
-  font-synthesis: none;
-}
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-kerning: normal;
+    font-synthesis: none;
+  }
 
-::selection {
-  background: color-mix(in srgb, var(--color-accent) 48%, transparent);
-  color: var(--color-text-primary);
+  a {
+    color: var(--color-link);
+    text-underline-offset: 0.18em;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 48%, transparent);
+    color: var(--color-text-primary);
+  }
 }
 
 .skip-link {
@@ -111,9 +124,22 @@ body {
   color: var(--color-accent);
 }
 
-a {
-  color: var(--color-link);
-  text-underline-offset: 0.18em;
+/* The shell ships no stylesheet, so the header's behaviour at narrow widths is this instance's to
+   supply. `navVisible` is one number measured against a wide bar; the wordmark plus five
+   destinations plus "More" cannot fit a phone at any count, and the row's default nowrap pushed
+   them past the viewport where they took the whole document's horizontal scroll with them. Let the
+   brand and the nav wrap instead. Keyed on the navigation's own accessible name rather than on the
+   utility classes beside it, which are the shell's to change. */
+@media (max-width: 60rem) {
+  header div:has(> nav[aria-label='Primary']) {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  header nav[aria-label='Primary'] {
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+  }
 }
 
 :where(a, button, input, summary):focus-visible {
@@ -867,6 +893,12 @@ a {
   padding: 0;
 }
 
+/* The list item is the grid cell and stretches to the tallest summary in its row; the card inside
+   it did not, so a short card's measurement floated mid-row while its neighbours' sat lower. */
+.collection-list > li {
+  display: grid;
+}
+
 .card {
   position: relative;
   isolation: isolate;
@@ -1060,8 +1092,19 @@ a {
   color: var(--color-text-muted);
 }
 
+/* A card's last line is its measurement — a count, a kind, a licence id, a source path — so it
+   takes the mono voice the rest of the site gives to metadata. Not uppercased, unlike the eyebrows
+   it resembles: some of these are paths, and a path rendered in a case it does not have is wrong
+   rather than styled. Pinned to the bottom, so a row of cards whose summaries run to different
+   lengths still puts its figures on one line. */
 .card small {
+  margin-top: auto;
+  padding-top: 0.2rem;
   color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
 }
 
 .tag-groups {
@@ -1168,6 +1211,12 @@ a {
   border-top: 1px solid var(--color-border);
   color: inherit;
   text-decoration: none;
+}
+
+/* Closes the list. Each row rules off the one above it, so without this the last row has a top
+   edge and no bottom one and the shelf reads as truncated rather than as two of two. */
+.foundry-record li:last-child a {
+  border-bottom: 1px solid var(--color-border);
 }
 
 .foundry-record a:hover strong {
