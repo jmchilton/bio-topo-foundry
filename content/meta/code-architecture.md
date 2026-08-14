@@ -373,10 +373,14 @@ severities, and the digest-bound adjudication shape.
 That split is the point of the directory boundary rather than a tidiness preference. `base/digest.ts`
 and `base/files.ts` are byte-identical to their counterparts inside `@galaxy-foundry/audit-citations`,
 and `base/claims.ts` is the vocabulary a second checker forced into the open. foundry-lib's
-shared-substrate test admits an extraction once a second consumer exists, which is what this is; the
-files are laid out so that extracting `audit-base` is a move rather than a rewrite. Until that
-happens the copies are the divergence risk, and `audit/tool-alignment-README.md` is where the
-comparison is kept.
+shared-substrate test admits an extraction once a second consumer exists, which is what this is.
+
+How much of that extraction is a move and how much is a rewrite is not settled, and the boundary is
+laid out to make the question answerable rather than to presume the answer. The two copied files
+move as they are. `base/claims.ts` converged on shapes but was typed independently, and the
+lifecycle rules around it — what a reviewed decision may do to a verdict, which decisions must fail
+rather than retire — are newer than either checker. `audit/tool-alignment-README.md` keeps the
+comparison and the open questions; it is the exhibit an extraction would argue from.
 
 Casting is the other build-time path. `cast-corpus.ts` projects the shared content index into the
 two maps the cast engine consumes. `cast-spec.ts` composes that corpus with the Kind definitions,

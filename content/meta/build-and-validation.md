@@ -128,11 +128,16 @@ they resolve from, the version each is pinned at — and checks each against the
 `pixi.lock` committed beside it. The lock is the record of a solve that already happened, so no
 stage of this fetches, solves, or executes anything.
 
-Two properties are deliberate. A claim the runtime cannot falsify is never a failure: `unpinned` and
-`unavailable` are reported apart from `absent` and `wrong-value`, because a fixture that declares
-less is not a fixture caught lying. And every recognized token the grammar refuses to promote is
-counted rather than discarded, so the run states how much prose it could read — a rate over an
-unstated denominator is a number nobody can size.
+Three properties are deliberate. A claim the runtime cannot falsify is never a failure: `unpinned`
+and `unavailable` are reported apart from `absent` and `wrong-value`, because a fixture that
+declares less is not a fixture caught lying. Evidence the reader cannot decode is not a failure
+either — an unreadable lock entry stops the audit rather than dropping a package, since a claim
+about a package the evidence lacks would otherwise read as a claim the runtime contradicts.
+
+And a reviewed decision cannot make a finding hold. A claim struck as an extractor defect is
+withdrawn from the denominator rather than counted as passing, or the instrument could improve its
+own rate by misreading more prose; a claim where the checker itself erred moves only to the verdict
+the reviewer names in its place. The machine verdict is kept beside the reviewed one in both cases.
 
 **Built output.** The last layer reads the emitted HTML and CSS, because the defects that matter most
 here exist only after compilation and every earlier stage reports success. It checks that every
@@ -162,8 +167,12 @@ substantive provider or verdict change from timestamp-only churn.
 
 `pnpm audit:tools` produces `audit/tool-alignment.json` and `audit/tool-alignment.md` from the
 Environment corpus and `audit/tool-alignment-adjudications.json`. The tool-alignment test is their
-drift guard, and it replays from committed files only. An adjudication binds to the digest of the
-source text it reviewed, so editing a claim retires the decision that cleared it.
+drift guard, and it replays from committed files only. Both JSON documents are parsed against strict
+schemas rather than asserted into shape, because the replay that gates the build reads them back as
+input from outside the process however they were produced. An adjudication binds to the digest of
+the source text it reviewed, so editing a claim retires the decision that cleared it; a decision
+naming a claim id the corpus does not carry, or naming one twice, fails instead of retiring, since
+that is a reviewer believing they cleared something.
 
 `pnpm cast <mold>` produces a target bundle under `casts/` from the Mold, its typed references, the
 content index, Kind companion declarations, the reference contract, and target policy. The generated
@@ -211,8 +220,13 @@ stay Foundry-side because the Mold Kind declares them `foundry-only`.
   is invisible to it, and the corpus has carried a wrong one there while the note beside it was
   correct.
 - Tool alignment is tuned for precision over recall, so a claim the grammar declines is a claim
-  nobody checked. The declined count is reported for exactly that reason; it is not a backlog the
-  gate will ever work through on its own.
+  nobody checked. The report counts the tokens it recognized and declined, which is not a coverage
+  measure and cannot be made into one: a claim written in a shape the grammar does not know produces
+  no token, so nothing counts it and no figure in the report would reveal it.
+- A channel claim is answered per fixture rather than per package: it holds when any of the
+  fixture's dependencies resolves from the named channel. Every such claim in this corpus is about a
+  fixture that resolves from one channel, so a mixed-channel fixture would need the extractor to
+  keep the subject and quantifier it currently discards.
 - A portability grade is checked for internal consistency, never against a registry. `L4` asserts an
   observed BioContainer, and no committed file records an observation, so nothing here can tell a
   correct grade from an optimistic one.

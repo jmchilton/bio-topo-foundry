@@ -5,7 +5,7 @@ import { writeJsonAtomic, writeTextAtomic } from "../src/lib/audit/base/files";
 import { buildToolAlignmentRun } from "../src/lib/audit/tool-alignment/audit";
 import { renderToolAlignmentMarkdown } from "../src/lib/audit/tool-alignment/report";
 import {
-  readAdjudications,
+  readReferentialAdjudications,
   REPO_ROOT,
   RUN_JSON_PATH,
   RUN_MARKDOWN_PATH,
@@ -28,7 +28,7 @@ async function gitProvenance(): Promise<{ headRevision?: string; workingTreeDirt
 
 const scan = await scanToolClaims();
 const run = buildToolAlignmentRun(scan.claims, scan.evidence, scan.diagnostics, {
-  adjudications: await readAdjudications(),
+  adjudications: await readReferentialAdjudications(scan.claims),
   generatedAt: new Date().toISOString(),
   provenance: await gitProvenance(),
 });
@@ -36,9 +36,9 @@ const run = buildToolAlignmentRun(scan.claims, scan.evidence, scan.diagnostics, 
 await writeJsonAtomic(RUN_JSON_PATH, run);
 await writeTextAtomic(RUN_MARKDOWN_PATH, renderToolAlignmentMarkdown(run));
 
-const { byVerdict, total, coverage } = run.summary;
+const { byVerdict, assessed, withdrawn, recognizedTokensDeclined } = run.summary;
 console.log(
-  `tool-alignment: ${total} claims — ${byVerdict.exists} hold, ${byVerdict["wrong-value"]} contradicted, ` +
+  `tool-alignment: ${assessed} assessed — ${byVerdict.exists} hold, ${byVerdict["wrong-value"]} contradicted, ` +
     `${byVerdict.absent} absent, ${byVerdict.unpinned} unpinned, ${byVerdict.unavailable} unavailable ` +
-    `(${coverage.declined} declined by a pre-filter)`,
+    `(${withdrawn} withdrawn on review, ${recognizedTokensDeclined} recognized tokens declined)`,
 );

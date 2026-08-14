@@ -3,8 +3,16 @@ import path from "node:path";
 
 import { z } from "zod";
 
-import { claimAdjudicationSchema, type ClaimAdjudication } from "./audit/base/claims";
-import { buildToolAlignmentRun, type ToolAlignmentRun } from "./audit/tool-alignment/audit";
+import {
+  adjudicationProblems,
+  claimAdjudicationSchema,
+  type ClaimAdjudication,
+} from "./audit/base/claims";
+import {
+  buildToolAlignmentRun,
+  toolAlignmentRunSchema,
+  type ToolAlignmentRun,
+} from "./audit/tool-alignment/audit";
 import { extractToolClaims, type ExtractionDiagnostic, type ToolClaim } from "./audit/tool-alignment/extract";
 import { canonicalPackageName, readPixiEvidence, type PixiEvidence } from "./audit/tool-alignment/pixi";
 import { renderToolAlignmentMarkdown } from "./audit/tool-alignment/report";
@@ -97,6 +105,30 @@ export async function readAdjudications(): Promise<ClaimAdjudication[]> {
   }
 }
 
+/**
+ * Read the reviewed decisions and refuse the ones that quietly do nothing.
+ *
+ * A decision naming a claim id this corpus does not carry, or naming one twice, is not a decision
+ * — it is a reviewer believing they cleared something. Retirement by digest is the designed path
+ * and stays silent; these two are the failure the file must never have.
+ */
+export async function readReferentialAdjudications(
+  claims: readonly ToolClaim[],
+): Promise<ClaimAdjudication[]> {
+  const adjudications = await readAdjudications();
+  const broken = adjudicationProblems(claims, adjudications).filter(
+    ({ kind }) => kind !== "retired",
+  );
+  if (broken.length > 0) {
+    throw new Error(
+      `${ADJUDICATIONS_PATH} carries decisions that apply to nothing:\n${broken
+        .map(({ detail }) => `  - ${detail}`)
+        .join("\n")}`,
+    );
+  }
+  return adjudications;
+}
+
 export interface ToolAlignmentReplay {
   scan: ToolAlignmentScan;
   run: ToolAlignmentRun;
@@ -114,9 +146,11 @@ export interface ToolAlignmentReplay {
  */
 export async function replayToolAlignmentAudit(): Promise<ToolAlignmentReplay> {
   const scan = await scanToolClaims();
-  const committedRun = JSON.parse(await readFile(RUN_JSON_PATH, "utf8")) as ToolAlignmentRun;
+  const committedRun = toolAlignmentRunSchema.parse(
+    JSON.parse(await readFile(RUN_JSON_PATH, "utf8")) as unknown,
+  );
   const run = buildToolAlignmentRun(scan.claims, scan.evidence, scan.diagnostics, {
-    adjudications: await readAdjudications(),
+    adjudications: await readReferentialAdjudications(scan.claims),
     generatedAt: committedRun.generatedAt,
     provenance: {
       ...(committedRun.corpus.headRevision === undefined

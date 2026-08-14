@@ -1,9 +1,14 @@
 # The tool-alignment audit, and what it says about `audit-base`
 
-S2 of the Skill Integrity Audit, run over this Foundry's environment notes. A note asserts things
-about a runtime — which platform its lock solves, which channel its package comes from, how many
-packages it installs, what version it pins — and the manifest and lock committed beside it are the
-authority on all four. This checks one against the other.
+This Foundry's S2 of the Skill Integrity Audit, and it is worth being exact about what it audits. A
+note asserts things about a runtime — which platform its lock solves, which channel its package
+comes from, how many packages it installs, what version it pins — and the manifest and lock
+committed beside it are the authority on all four. This checks one against the other.
+
+So it is an **environment runtime-claim audit**, and the report calls itself that. The S2 lineage is
+real — an Environment note is what a cast ships as a skill's tool documentation, companions and all
+— but nothing here checks whether a generated skill invokes its tool correctly, and a name implying
+otherwise would claim a check that does not exist.
 
 Nothing here solves, fetches, or executes. A `pixi.lock` is the record of a solve that already
 happened, so every verdict is reproducible offline and identical on every machine. That is the same
@@ -33,7 +38,7 @@ have to independently arrive at pixi before that changed.
 | --- | --- | --- |
 | `base/digest.ts` | byte-identical copy | `sha256` matches `packages/audit-citations/src/digest.ts` exactly |
 | `base/files.ts` | byte-identical copy | `sha256` matches `packages/audit-citations/src/files.ts` exactly |
-| `base/claims.ts` | same shapes, re-typed | span-with-digest, three-state evidence, severity split, digest-bound adjudication, corpus digest |
+| `base/claims.ts` | same shapes, re-typed | span-with-digest and its two refinements, three-state evidence, severity split, digest-bound adjudication, corpus digest, referential integrity |
 
 The two copied files are the strongest evidence available, because the admission test says so:
 "Byte-identical copied files are strong evidence. Similar names, parallel folder structures, or a
@@ -47,9 +52,25 @@ when the text changes — but the types were rewritten rather than copied, becau
 versions name citations. Whether that is one contract or two similar ones is the question extraction
 has to answer, and this file is the exhibit.
 
+The span is now the same field set as the citation one, including `sourceText` and both refinements
+(`endLine` not preceding `startLine`, and the digest verified against the text it covers). The first
+draft omitted `sourceText`, which meant the digest was carried but never checked — the divergence
+was an oversight rather than a decision, and finding it is the reason to write the comparison down
+instead of asserting convergence. What remains genuinely different is below.
+
 ## Where the citation lifecycle did not fit
 
-Three divergences, each a real difference rather than an omission:
+Four divergences, each a real difference rather than an omission:
+
+**A reviewed decision is not allowed to mean "it holds".** The citation adjudication classifies;
+here classification alone was made to change a verdict, and the first draft mapped both
+false-positive classes onto `exists`. That is wrong in two different ways. An extractor false
+positive means there was never a claim, so it leaves the denominator entirely rather than passing —
+otherwise the instrument could improve its own score by misreading more prose. A checker false
+positive means the checker got a real claim wrong, which is a statement with no content until the
+reviewer supplies the verdict it should have had, so `assertedVerdict` is required for that class
+and forbidden for the others. Whether `audit-base` should own this rule or only the shapes it
+operates on is an open question for extraction.
 
 **There is no evidence-acquisition phase.** The citation audit fetches from registries, caches
 normalized evidence, and replays offline; `unavailable` exists because a provider can be
@@ -87,11 +108,17 @@ point rather than an anecdote: ScientistOne's own audit found only two to four o
 provenance failures genuine, the rest extraction artifacts, and an audit whose false-positive rate
 exceeds its finding rate is worse than no audit because every false positive is an accusation.
 
-The pre-filters cost recall, and the report says so. Twenty-five recognized tokens are declined,
-each recorded with its reason. One is a known false negative: a channel claim in a sentence that
-also names a second channel is dropped even when the first is a true, checkable assertion
-(`ripser-py`). Precision is worth more than recall for a check that gates a build, but the trade
-is recorded rather than hidden.
+The pre-filters cost recall, and the report says so: it counts every recognized token it declined,
+each with its reason. That count is deliberately not restated here, because a hand-copied number
+drifts from the generated one and this file already carried a stale one.
+
+Read it for what it is. It counts tokens the grammar **recognized** and refused to promote — the
+known false negatives, such as a channel claim dropped because its sentence names a second channel
+(`ripser-py`), even though the first is a true and checkable assertion. It is not a coverage
+measure and cannot become one: a claim written in a shape the grammar does not know produces no
+token at all, so nothing counts it and no number in the report would reveal it. What the report can
+honestly say is how often the grammar saw something and declined; what nobody can say from these
+artifacts is how much of the corpus the grammar never saw.
 
 ## Running it
 
@@ -101,5 +128,26 @@ pnpm test            # includes the gate
 ```
 
 The gate fails when a claim is contradicted by the runtime it names, when a flagged finding carries
-no reviewed decision, or when the committed report no longer replays from the committed corpus.
-`unpinned` and `unavailable` never fail.
+no reviewed decision, when the committed report no longer replays from the committed corpus, when
+the committed run does not satisfy its own wire schema, or when a reviewed decision names a claim id
+this corpus does not carry. `unpinned` and `unavailable` never fail.
+
+It also fails when the lock reader meets an artifact shape it cannot decode, rather than skipping
+the entry. That is deliberate and it has already paid: a skipped entry removes a package from the
+evidence, and a claim about a package the evidence lacks reads as a claim the runtime contradicts,
+so a parser gap does not weaken the audit — it makes it accuse a correct note. Turning the skip into
+a failure immediately surfaced 162 PyPI packages in `hiponet` and 64 in `topodockq` that the reader
+had been silently discarding.
+
+## Known limits
+
+- **Channel claims are answered per-fixture, not per-package.** A claim naming a channel holds when
+  any of the fixture's channel dependencies resolves from it. Every channel claim in this corpus is
+  about a fixture whose dependencies all resolve from one channel, so the distinction has not
+  mattered yet; a mixed-channel fixture would need the extractor to keep the claim's subject and
+  quantifier, which it currently discards.
+- **The lock is flattened to one entry per package name.** Fixtures here solve a single platform, so
+  a name resolves to one artifact. A multi-platform fixture could resolve one name to several
+  versions, and this reader would keep whichever appeared first.
+- **Only note prose is read.** A runtime claim written in a `pixi.toml` header comment is invisible
+  to the grammar, and the corpus has carried a wrong one there while the note beside it was right.

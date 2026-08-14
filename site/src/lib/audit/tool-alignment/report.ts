@@ -13,32 +13,43 @@ export function renderToolAlignmentMarkdown(run: ToolAlignmentRun): string {
   const claimById = new Map(run.claims.map((claim) => [claim.id, claim]));
   const lines: string[] = [];
 
-  lines.push("# Skill–tool alignment audit", "");
+  lines.push("# Environment runtime-claim audit", "");
   lines.push(
     "Runtime claims in environment notes, checked against the pixi manifest and lock committed",
     "beside them. Nothing here solves, fetches, or executes: the lock is the record of a solve that",
     "already happened, so every verdict is reproducible offline.",
     "",
+    "This is the Skill Integrity Audit's S2 for this Foundry. It audits what a note asserts about",
+    "its own runtime, not whether a cast skill invokes the tool correctly.",
+    "",
   );
 
-  lines.push(`- Claims checked: **${summary.total}**`);
+  lines.push(`- Extracted: **${summary.extracted}**`);
+  if (summary.withdrawn > 0) {
+    lines.push(`- Withdrawn on review as extractor defects: **${summary.withdrawn}**`);
+  }
+  lines.push(`- Assessed: **${summary.assessed}**`);
   lines.push(`- Holds: **${summary.byVerdict.exists}**`);
   lines.push(`- Contradicted by the runtime: **${summary.byVerdict["wrong-value"]}**`);
   lines.push(`- Names something the runtime lacks: **${summary.byVerdict.absent}**`);
   lines.push(`- Not falsifiable (\`unpinned\`): **${summary.byVerdict.unpinned}**`);
   lines.push(`- Not checkable (\`unavailable\`): **${summary.byVerdict.unavailable}**`);
-  lines.push(
-    `- Declined by a pre-filter: **${summary.coverage.declined}** (a recognized token the grammar refused to promote)`,
-  );
+  lines.push(`- Recognized tokens declined by a pre-filter: **${summary.recognizedTokensDeclined}**`);
   lines.push("");
   lines.push(
-    "The last figure is part of the result, not a footnote. A rate describes only the claims the",
-    "extractor could read, and one that does not say how much it read is a number nobody can size.",
+    "Every rate here is over **assessed**, not over everything extracted: a claim review struck as",
+    "an extractor defect was never a claim, and letting it score as one would let the instrument",
+    "improve its own numbers by misreading more prose.",
+    "",
+    "The last figure counts tokens the grammar recognized and refused to promote. It is not a",
+    "coverage measure, and no number here can be one — a claim written in a shape the grammar does",
+    "not know produces no token at all, so nothing counts it and nothing here would reveal it.",
     "",
   );
 
   const flagged = run.findings.filter(
-    ({ verdict }) => verdict === "wrong-value" || verdict === "absent",
+    ({ effectiveVerdict, withdrawn }) =>
+      !withdrawn && (effectiveVerdict === "wrong-value" || effectiveVerdict === "absent"),
   );
 
   if (flagged.length === 0) {
@@ -73,6 +84,25 @@ export function renderToolAlignmentMarkdown(run: ToolAlignmentRun): string {
     `${summary.review.completed} of ${summary.review.required} flagged findings carry a reviewed decision.`,
     "",
   );
+
+  // A decision that changes a number has to be legible beside the number it changed, or the run
+  // reports a rate whose reason lives only in a separate file.
+  const decided = run.findings.filter(({ adjudication }) => adjudication !== undefined);
+  if (decided.length > 0) {
+    lines.push("| Claim | Where | Machine | Decision | After review |");
+    lines.push("| --- | --- | --- | --- | --- |");
+    for (const finding of decided) {
+      const claim = claimById.get(finding.claimId);
+      const where = claim
+        ? `\`${claim.span.artifactPath}:${claim.span.startLine}\``
+        : finding.claimId;
+      const after = finding.withdrawn ? "withdrawn" : `\`${finding.effectiveVerdict}\``;
+      lines.push(
+        `| ${claim?.kind ?? "?"} | ${where} | \`${finding.verdict}\` | ${finding.adjudication} | ${after} |`,
+      );
+    }
+    lines.push("");
+  }
 
   return `${lines.join("\n").trimEnd()}\n`;
 }

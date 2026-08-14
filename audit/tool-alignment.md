@@ -1,19 +1,28 @@
-# Skill–tool alignment audit
+# Environment runtime-claim audit
 
 Runtime claims in environment notes, checked against the pixi manifest and lock committed
 beside them. Nothing here solves, fetches, or executes: the lock is the record of a solve that
 already happened, so every verdict is reproducible offline.
 
-- Claims checked: **34**
+This is the Skill Integrity Audit's S2 for this Foundry. It audits what a note asserts about
+its own runtime, not whether a cast skill invokes the tool correctly.
+
+- Extracted: **34**
+- Assessed: **34**
 - Holds: **34**
 - Contradicted by the runtime: **0**
 - Names something the runtime lacks: **0**
 - Not falsifiable (`unpinned`): **0**
 - Not checkable (`unavailable`): **0**
-- Declined by a pre-filter: **33** (a recognized token the grammar refused to promote)
+- Recognized tokens declined by a pre-filter: **33**
 
-The last figure is part of the result, not a footnote. A rate describes only the claims the
-extractor could read, and one that does not say how much it read is a number nobody can size.
+Every rate here is over **assessed**, not over everything extracted: a claim review struck as
+an extractor defect was never a claim, and letting it score as one would let the instrument
+improve its own numbers by misreading more prose.
+
+The last figure counts tokens the grammar recognized and refused to promote. It is not a
+coverage measure, and no number here can be one — a claim written in a shape the grammar does
+not know produces no token at all, so nothing counts it and nothing here would reveal it.
 
 ## Findings
 

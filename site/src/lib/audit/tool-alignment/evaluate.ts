@@ -101,11 +101,26 @@ function evaluatePackageChannel(claim: ToolClaim, evidence: PixiEvidence): ToolF
       detail: `${claim.environment} declares only in-repo path recipes, so it takes no package from a channel`,
     };
   }
-  const observedChannels = new Set(
-    channelDependencies.map(
-      (name) => evidence.lockedPackages?.get(canonicalPackageName(name))?.channel ?? "unresolved",
-    ),
-  );
+  const resolved = channelDependencies.map((name) => ({
+    name,
+    channel: evidence.lockedPackages?.get(canonicalPackageName(name))?.channel,
+  }));
+  /**
+   * A dependency the lock does not account for is a gap in the evidence, never a finding. Scoring
+   * it as a contradiction would let a reader of this file accuse a note of stating something the
+   * note states correctly, on the strength of a package the reader failed to find.
+   */
+  const unresolved = resolved.filter(({ channel }) => channel === undefined).map(({ name }) => name);
+  if (unresolved.length > 0) {
+    return {
+      claimId: claim.id,
+      verdict: "unavailable",
+      evidenceState: "unavailable",
+      detail: `${claim.environment} declares ${unresolved.join(", ")}, which the lock does not resolve, so the channel its packages come from cannot be established`,
+    };
+  }
+
+  const observedChannels = new Set(resolved.map(({ channel }) => channel as string));
   if (observedChannels.has(claim.asserted)) {
     return {
       claimId: claim.id,
@@ -114,15 +129,14 @@ function evaluatePackageChannel(claim: ToolClaim, evidence: PixiEvidence): ToolF
       observed: [...observedChannels].join(", "),
     };
   }
-  const observed = [...observedChannels].sort().join(", ");
   return {
     claimId: claim.id,
     verdict: "wrong-value",
     evidenceState: "observed",
     severity: "error",
-    observed,
-    detail: `note claims this fixture's package comes from ${claim.asserted}; the lock resolves ${channelDependencies
-      .map((name) => `${name} from ${evidence.lockedPackages?.get(canonicalPackageName(name))?.channel ?? "no channel"}`)
+    observed: [...observedChannels].sort().join(", "),
+    detail: `note claims this fixture's package comes from ${claim.asserted}; the lock resolves ${resolved
+      .map(({ name, channel }) => `${name} from ${channel}`)
       .join(", ")}`,
   };
 }

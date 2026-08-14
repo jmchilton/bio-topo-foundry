@@ -11,6 +11,9 @@ import { claimId, sourceTextDigest, type ArtifactSpan } from "../base/claims";
  * could read, and one that does not say how much it read is a number nobody can size.
  */
 
+/** Every claim this checker reads comes from the body of an Environment note. */
+const ARTIFACT_KIND = "environment-note";
+
 export const toolClaimKinds = [
   "lock-platform",
   "package-channel",
@@ -125,9 +128,11 @@ export function extractToolClaims(
       asserted,
       ...(subject === undefined ? {} : { subject }),
       span: {
+        artifactKind: ARTIFACT_KIND,
         artifactPath,
         startLine,
         endLine,
+        sourceText,
         sourceDigest: sourceTextDigest(sourceText),
       },
       context: sentenceAround(block.text, offset),
