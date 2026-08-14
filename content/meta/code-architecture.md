@@ -7,7 +7,7 @@ order: 1
 status: revised
 created: 2026-08-08
 revised: 2026-08-12
-revision: 5
+revision: 6
 tags:
   - meta
 ---
@@ -322,6 +322,14 @@ What stays local is that identity, the palette and type system in `src/styles/gl
 properties the kit names but does not ship), and the domain components in `src/components/`. That
 stylesheet also has to point Tailwind at the package, because source detection does not look inside
 `node_modules`, and the built-output test is what checks it did.
+
+Shipping no stylesheet has two further consequences, and both fail without an error. Element
+defaults here belong in `@layer base`, because unlayered CSS outranks every layer whatever its
+specificity: a bare `a { color }` outside one repaints the header and footer the kit colours with
+utilities, and the style-contract check still passes, since the utility is emitted and merely
+outranked. The shell's behaviour at narrow widths is local for the same reason — `navVisible` is one
+number measured against a wide bar, and no count fits a phone, so the wrapping rule is this
+stylesheet's to write. Built-output tests hold both.
 
 `site/src/pages/gallery/` is the visual acceptance surface for that boundary. It imports every case
 from `@galaxy-foundry/site-kit/specimens` and renders the shared components through this instance's
