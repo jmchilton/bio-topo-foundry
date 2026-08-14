@@ -113,6 +113,25 @@ describe("claim extraction", () => {
     expect(claims.filter(({ kind }) => kind === "package-channel")).toEqual([]);
   });
 
+  /**
+   * The first defect found in prose this session did not write, and the reason it matters: a note
+   * that names its own repair is a note the audit is working on, so this shape appears exactly
+   * where findings are being fixed.
+   */
+  it("refuses a claim about a runtime the fixture does not have", () => {
+    const { claims } = extract(
+      "Bioconda's build of the same version does have one, so a channel pin and a re-lock would move this fixture to L4.",
+    );
+    expect(claims.filter(({ kind }) => kind === "package-channel")).toEqual([]);
+  });
+
+  it("declines a hypothetical for every claim kind, not only channels", () => {
+    const { claims } = extract(
+      "If it pinned ripser 1.2.1 from Bioconda instead, one package would solve on linux-64.",
+    );
+    expect(claims).toEqual([]);
+  });
+
   it("refuses a version claim whose subject is not a package this fixture has", () => {
     const { claims } = extract("The fixture needs `cmake <4` because the submodule predates 3.5.");
     expect(claims.filter(({ kind }) => kind === "package-version")).toEqual([]);

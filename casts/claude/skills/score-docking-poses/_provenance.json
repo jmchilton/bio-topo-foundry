@@ -5,9 +5,9 @@
     "name": "score-docking-poses",
     "path": "content/molds/score-docking-poses/index.md",
     "content_hash": "5d005415e198962379b2ea4b081d51d87e70dede6bcf9b58c0e6112558bd965b",
-    "commit": "7fc30dfe5822238beaba9f693723ed2719bb0738"
+    "commit": "9bab14c78acf5e834915f0c45eaf2f0aa6e42b59"
   },
-  "cast_at": "2026-08-08T16:56:45.728Z",
+  "cast_at": "2026-08-14T15:01:16.536Z",
   "refs": [
     {
       "kind": "environment",
@@ -19,8 +19,8 @@
       "load": "upfront",
       "evidence": "corpus-observed",
       "purpose": "Supplies the runnable featurizer and scorer together with their solved package closure.",
-      "src_hash": "f702780cfdc01a592f25ed45a44853505b72619d265827e6785ae06f13b59e54",
-      "dst_hash": "f702780cfdc01a592f25ed45a44853505b72619d265827e6785ae06f13b59e54",
+      "src_hash": "55de2c3213d6afdd65f18cac03c2e5dbd1c469b55ecd9cae52f0ce3ba60e8b8d",
+      "dst_hash": "55de2c3213d6afdd65f18cac03c2e5dbd1c469b55ecd9cae52f0ce3ba60e8b8d",
       "source": "deterministic"
     },
     {

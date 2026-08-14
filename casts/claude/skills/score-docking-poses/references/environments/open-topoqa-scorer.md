@@ -26,5 +26,5 @@ at parity — it matches or beats every correlation and reaches HAF2 ranking-los
 The environment stages **two** in-repo path recipes, the scorer and the featurizer it consumes,
 since the latter is on no public channel yet, and it drags a full pytorch and
 pytorch_geometric closure. The linux-64 lock solves cleanly (pytorch 2.13.0 cpu-mkl,
-pytorch_geometric 2.8.0, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds
+pytorch_geometric 2.8.0.post1, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds
 and imports.

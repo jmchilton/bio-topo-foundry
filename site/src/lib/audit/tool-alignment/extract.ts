@@ -40,7 +40,7 @@ export interface ToolClaim {
 export interface ExtractionDiagnostic {
   artifactPath: string;
   line: number;
-  reason: "build-subject" | "no-subject" | "unknown-package";
+  reason: "build-subject" | "no-subject" | "unknown-package" | "hypothetical";
   text: string;
 }
 
@@ -87,6 +87,19 @@ const PACKAGE_VERSION = /`?\b([A-Za-z][A-Za-z0-9_.-]{2,})`?\s+v?(\d+\.\d+(?:[\w.
  * whole.
  */
 const SUBJECT_WINDOW = 60;
+
+/**
+ * A sentence describing a runtime other than the committed one.
+ *
+ * The whole checker rests on comparing what a note says against what the lock did, so a sentence
+ * about what a *different* lock would do is outside its subject entirely. This is the fifth
+ * extractor defect the corpus produced, and the first found in prose written by someone else:
+ * "a channel pin and a re-lock would move this fixture to L4" reads `pin` as an assertion that the
+ * fixture pins that channel, when the sentence exists to say it does not. Repair advice is the
+ * natural thing to write beside a finding, which makes this shape common exactly where the audit
+ * is working.
+ */
+const HYPOTHETICAL = /\b(?:would|could|should|might|if|unless|instead of|rather than)\b/iu;
 
 interface Block {
   /** The paragraph as one line, so a claim wrapped across source lines still reads as a sentence. */
@@ -139,9 +152,21 @@ export function extractToolClaims(
     });
   };
 
+  /**
+   * Applied ahead of every extractor rather than only the one it bit. The defect is not about
+   * channels: any token in a sentence about a runtime that does not exist describes that runtime,
+   * not this one.
+   */
+  const hypothetical = (offset: number, block: Block): boolean => {
+    if (!HYPOTHETICAL.test(sentenceAround(block.text, offset))) return false;
+    diagnostics.push(diagnostic(block, offset, artifactPath, "hypothetical"));
+    return true;
+  };
+
   for (const block of blocks(noteText)) {
     for (const match of block.text.matchAll(PLATFORM)) {
       const offset = match.index;
+      if (hypothetical(offset, block)) continue;
       const subject = nearestSubject(block.text, offset, match[0].length);
       if (subject === "build") {
         diagnostics.push(diagnostic(block, offset, artifactPath, "build-subject"));
@@ -157,10 +182,12 @@ export function extractToolClaims(
     for (const match of block.text.matchAll(DEPENDENCY_COUNT)) {
       const count = COUNT_WORDS.get(match[1].toLowerCase());
       if (count === undefined) continue;
+      if (hypothetical(match.index, block)) continue;
       push("dependency-count", String(count), undefined, block, match.index, match[0].length);
     }
 
     for (const match of block.text.matchAll(CHANNEL)) {
+      if (hypothetical(match.index, block)) continue;
       const sentence = sentenceAround(block.text, match.index);
       if (!assertsOwnChannel(sentence, match[0])) {
         diagnostics.push(diagnostic(block, match.index, artifactPath, "no-subject"));
@@ -181,6 +208,7 @@ export function extractToolClaims(
         }
         continue;
       }
+      if (hypothetical(match.index, block)) continue;
       push("package-version", match[2], canonical, block, match.index, match[0].length);
     }
   }

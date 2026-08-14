@@ -103,7 +103,18 @@ The first draft of the grammar flagged seven claims. Four were extractor defects
 - contrastive and negated channel prose ("the Bioconda CLI here, the conda-forge library there";
   "it is **not** a single Bioconda package") was read as an assertion, inverting the note's meaning.
 
-All four are now regression tests in `site/tests/tool-alignment.test.ts`. This ordering is the
+A fifth arrived later and is the most instructive, because it came from prose the checker's author
+did not write. A note repaired on `main` explains its own fix — "a channel pin and a re-lock **would**
+move this fixture to L4" — and `pin` satisfied the resolve-verb test, so a sentence written to say
+the fixture does *not* take that channel was read as claiming it does. The grammar now declines any
+sentence carrying a modal or conditional, for every claim kind rather than only channels: a sentence
+about a runtime that does not exist describes that runtime, not this one.
+
+That shape is not rare, and it is worst exactly where the audit is succeeding. Repair advice is the
+natural thing to write beside a finding, so the better this checker works, the more counterfactual
+prose the corpus will contain for it to misread.
+
+All five are now regression tests in `site/tests/tool-alignment.test.ts`. This ordering is the
 point rather than an anecdote: ScientistOne's own audit found only two to four of twelve flagged
 provenance failures genuine, the rest extraction artifacts, and an audit whose false-positive rate
 exceeds its finding rate is worse than no audit because every false positive is an accusation.

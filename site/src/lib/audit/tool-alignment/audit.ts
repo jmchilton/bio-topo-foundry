@@ -108,7 +108,7 @@ export const toolAlignmentRunSchema = z
         .object({
           artifactPath: z.string().min(1),
           line: z.number().int().positive(),
-          reason: z.enum(["build-subject", "no-subject", "unknown-package"]),
+          reason: z.enum(["build-subject", "no-subject", "unknown-package", "hypothetical"]),
           text: z.string(),
         })
         .strict(),
