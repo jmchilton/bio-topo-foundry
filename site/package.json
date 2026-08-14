@@ -17,6 +17,7 @@
     "audit:citations": "foundry-audit-citations audit --root .. --config audit-citations.config.json --evidence audit/provider-evidence.json --adjudications audit/adjudications.json --output audit/citation-audit.json --markdown audit/citation-audit.md",
     "audit:citations:refresh": "pnpm audit:citations --refresh",
     "audit:citations:scan": "foundry-audit-citations scan --root .. --config audit-citations.config.json --output build/citation-scan.json",
+    "audit:tools": "vite-node scripts/audit-tool-alignment.ts",
     "validate": "pnpm check:kinds && vitest run && pnpm check:casts && astro check && astro build --force"
   },
   "dependencies": {
@@ -39,6 +40,7 @@
     "astro-pagefind": "^2.0.1",
     "js-yaml": "^4.1.0",
     "marked": "^18.0.2",
+    "smol-toml": "^1.8.0",
     "tailwindcss": "4.3.3",
     "zod": "^4.4.3"
   },

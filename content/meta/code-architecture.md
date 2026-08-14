@@ -370,6 +370,26 @@ and gates. See the shared
 [citation-audit architecture](https://github.com/jmchilton/foundry-lib/blob/main/docs/architecture/audit-citations.md)
 for the separation between evidence acquisition, replay, and adjudication.
 
+The tool-alignment audit is a second checker on that same path, and it is local. Its evidence is
+already in the repository — each Environment note is checked against the `pixi.toml` and `pixi.lock`
+committed beside it — so there is no provider layer, no refresh, and nothing to acquire.
+`site/src/lib/audit/tool-alignment/` holds the parts that know about pixi: manifest and lock
+parsing, the claim grammar, comparison, and report rendering. `site/src/lib/audit/base/` holds the
+parts that know about neither pixi nor citations — span digests, corpus identity, evidence states,
+severities, and the digest-bound adjudication shape.
+
+That split is the point of the directory boundary rather than a tidiness preference. `base/digest.ts`
+and `base/files.ts` are byte-identical to their counterparts inside `@galaxy-foundry/audit-citations`,
+and `base/claims.ts` is the vocabulary a second checker forced into the open. foundry-lib's
+shared-substrate test admits an extraction once a second consumer exists, which is what this is.
+
+How much of that extraction is a move and how much is a rewrite is not settled, and the boundary is
+laid out to make the question answerable rather than to presume the answer. The two copied files
+move as they are. `base/claims.ts` converged on shapes but was typed independently, and the
+lifecycle rules around it — what a reviewed decision may do to a verdict, which decisions must fail
+rather than retire — are newer than either checker. `audit/tool-alignment-README.md` keeps the
+comparison and the open questions; it is the exhibit an extraction would argue from.
+
 Casting is the other build-time path. `cast-corpus.ts` projects the shared content index into the
 two maps the cast engine consumes. `cast-spec.ts` composes that corpus with the Kind definitions,
 reference contract, target-independent hooks, and supported modes. The local scripts are thin
@@ -418,5 +438,8 @@ aspirational or the checkout is broken.
 | runtime plugin and marketplace adapters | `casts/claude/.{claude,codex}-plugin/`, `.claude-plugin/`, `.agents/plugins/`   |
 | citation-audit binding and test        | `site/src/lib/citation-audit.ts`, `site/tests/citation-audit.test.ts`           |
 | citation policy and committed evidence | `audit-citations.config.json`, `audit/`                                         |
+| checker vocabulary shared by both      | `site/src/lib/audit/base/`                                                      |
+| pixi claim grammar and comparison      | `site/src/lib/audit/tool-alignment/`                                            |
+| tool-alignment binding and test        | `site/src/lib/tool-alignment-audit.ts`, `site/tests/tool-alignment.test.ts`     |
 
 Update this record when a component, dependency seam, entry point, or deliberate absence changes.

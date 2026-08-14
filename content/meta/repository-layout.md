@@ -7,7 +7,7 @@ order: 3
 status: revised
 created: 2026-08-08
 revised: 2026-08-12
-revision: 8
+revision: 9
 tags:
   - meta
 ---
@@ -28,7 +28,7 @@ bio-topo-foundry/
 ├── casts/<target>/         target policy and committed generated bundles
 ├── .claude-plugin/         Claude Code marketplace metadata for published casts
 ├── .agents/plugins/        Codex marketplace metadata for the same published casts
-├── audit/                  committed citation evidence, verdicts, and reports
+├── audit/                  committed audit evidence, verdicts, and reports
 ├── LICENSES/               verbatim upstream license texts a note redistributes under
 ├── .claude/commands/       repository-scoped agent commands; unvalidated, like AGENTS.md
 ├── .github/workflows/      validation, Pages deployment, and live citation refresh
@@ -126,7 +126,9 @@ authored adapters that point both runtimes at that one tree. The repository-leve
 identity for Claude Code and Codex. None of the four manifests duplicates a skill body, reference,
 or provenance record.
 
-## `audit/`: committed citation evidence
+## `audit/`: committed audit evidence
+
+Two checkers write here, and they differ in where their evidence comes from.
 
 The citation audit is reproducible offline because its provider answers are committed under
 `audit/` beside the machine-readable run, rendered report, adjudications, and reviewed exclusions.
@@ -137,6 +139,13 @@ corpus, which scholarly hosts are trusted, and how live requests are bounded.
 formats. This repository owns the configuration and acceptance decisions. The generated run and
 report are checked by `site/tests/citation-audit.test.ts`; provider evidence is refreshed by the
 scheduled workflow and reviewed through a pull request when its rendered verdict changes.
+
+The tool-alignment audit commits a run, a report, and adjudications, and no evidence — its evidence
+is the `pixi.toml` and `pixi.lock` already committed beside each Environment note, so there is
+nothing to snapshot and no live path to bound. It has no root policy file for the same reason: its
+corpus is the Environment collection, which the content model already defines. Its divergence log
+against `@galaxy-foundry/audit-citations` lives at `audit/tool-alignment-README.md`, which is
+working notes rather than a typed note, kept beside the artifacts it explains.
 
 ## `LICENSES/`: terms we redistribute under
 

@@ -13,6 +13,7 @@ import { sharesPage, specimenPath } from "@galaxy-foundry/site-kit/specimens";
 import { beforeAll, describe, expect, it } from "vitest";
 
 import { contentReader } from "../src/lib/content-reader";
+import { PORTABILITY_GRADES } from "../src/types/environment/schema";
 import { environmentCompanions } from "../src/lib/companions";
 import { listAllCasts } from "../src/lib/casts";
 import { ALL_SPECIMENS, TDA_SPECIMENS } from "../src/lib/gallery";
@@ -20,6 +21,7 @@ import { vendoredLicenses } from "../src/lib/licenses";
 import {
   COLLECTION_NAMES,
   contentPath,
+  environmentSchema,
   methodSchema,
 } from "../src/lib/frontmatter-schema";
 import { readFrontmatter } from "./frontmatter";
@@ -405,10 +407,24 @@ describe("the emitted reader slice", () => {
       );
     }
 
-    // The ladder groups the index, so the L0 rung has to be reachable as a heading.
+    // The ladder groups the index, so every rung the corpus actually occupies has to be reachable
+    // as a heading — and one it does not occupy must not render an empty section. Naming specific
+    // rungs ties the page to today's distribution, which has already moved once.
     const index = read(path.join(DIST, "environments/index.html"));
-    expect(index).toContain('id="grade-L0"');
-    expect(index).toContain('id="grade-L4"');
+    const occupied = new Set(
+      contentReader
+        .noteIds("environments")
+        .map(
+          (id) =>
+            environmentSchema.parse(
+              readFrontmatter(contentPath(`environments/${id}/index.md`)),
+            ).portability_grade,
+        ),
+    );
+    for (const grade of PORTABILITY_GRADES) {
+      expect(index.includes(`id="grade-${grade}"`), `rung ${grade}`).toBe(occupied.has(grade));
+    }
+    expect(occupied.size).toBeGreaterThan(1);
   });
 
   /**
