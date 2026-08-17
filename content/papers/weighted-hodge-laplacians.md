@@ -117,7 +117,7 @@ Set that beside [[persistent-spectral-graph]], which tabulates boundary matrices
 
 **Settled.** The weighted de Rham–Hodge framework is well posed on manifolds with boundary under both boundary conditions; the kernels are the weighted harmonic spaces and remain isomorphic to de Rham cohomology; the weighted BIG Laplacian preserves the rank deficiency and therefore the cohomology. A weight function is a legitimate second axis for a Hodge Laplacian, and unlike a filtration it can be aimed.
 
-**Demonstrated.** That per-atom weighted spectra carry enough local signal to beat three published B-factor models on a shared benchmark, as reported.
+**Reported.** The paper gives per-atom weighted spectra a higher point estimate than three published B-factor baselines on a shared benchmark. Those baselines were not rerun, their feature sets are not labelled consistently, and the paper reports no dispersion, so the table does not establish that the margins are reliable.
 
 **Not addressed — the ablation that would isolate the contribution.** There is no baseline separating the Laplacian from the weight. The weight function is itself a distance-damped Gaussian density over an 11 Å neighbourhood, which is to say an FRI-style local packing descriptor, and packing density is a known B-factor predictor in its own right — three of the consensus model's twelve extra features are exactly that. Nobody reports what summary statistics of *f* alone would score. Note that the obvious control, an unweighted Laplacian, is not available: without an atom-specific weight every atom in a protein receives an identical spectrum, so the weight is not an improvement over the unweighted case, it is what makes the task possible at all. That makes the *other* control the one that matters, and it is absent.
 
@@ -135,7 +135,7 @@ Set that beside [[persistent-spectral-graph]], which tabulates boundary matrices
 - **[[tda-tdl-beyond-persistent-homology]]** is the review by this paper's first author, and its Hodge-Laplacian section is the map this work adds a region to.
 - **[[petls]]** and [[petls-pytorch]] compute persistent Laplacians on simplicial complexes and cannot compute this. The object here is a differential operator discretized on a Cartesian grid, not a boundary-matrix construction, and no software in this corpus implements it.
 
-The one-sentence version for a reader deciding whether to follow this line: the weighting is a genuinely better fit than a filtration when the target is per-entity and the domain is a manifold, and the 346-protein evaluation is the one the founding paper should have had — but the margins are reported to one decimal place of confidence less than the baselines they beat, and nothing yet separates what the Laplacian contributes from what its weight function already knew.
+The one-sentence version for a reader deciding whether to follow this line: the weighting offers a more direct localization mechanism than a filtration when the target is per-entity and the domain is a manifold, and the 346-protein evaluation is the one the founding paper should have had — but the margins are reported to one decimal place of confidence less than the baselines they beat, and nothing yet separates what the Laplacian contributes from what its weight function already knew.
 
 ## References
 
