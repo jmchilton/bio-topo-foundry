@@ -6,8 +6,8 @@ record_kind: foundation
 order: 3
 status: draft
 created: 2026-08-08
-revised: 2026-08-09
-revision: 3
+revised: 2026-08-17
+revision: 4
 tags:
   - meta
 ---
@@ -28,7 +28,7 @@ answered better by the thing that has them.
                         │
                         ▼
             authored knowledge under content/
-      methods, packages, papers, environments, recipes
+ applications, methods, packages, papers, environments, recipes
                         │
             ┌───────────┴───────────┐
             ▼                       ▼
@@ -53,14 +53,15 @@ downstream of the other, and both read the same corpus.
 The kinds fall into three groups, and the grouping is the architecture — the roster itself is in the
 generated manifest and on the site.
 
-- A **research pole** describes work at the frontier: the techniques, the external sources that
-  introduce them, and eventually original scholarship of our own.
+- A **research pole** describes work at the frontier: the biological problems, the techniques
+  applied to them, the external sources that introduce those techniques, and eventually original
+  scholarship of our own.
 - A **delivery pole** describes what it takes to run that work: the upstream software, the recipe
   that builds it when no channel does, and the graded environment that assembles software into
   something that installs and runs.
-- **Connective tissue** joins the two: a method note is the concept both poles refer to, and a
-  replication experiment is the evidence that the delivery pole actually reproduces the research
-  pole's claim.
+- **Connective tissue** joins the two: an application note states what biological task the work
+  must earn its place on, a method note is the concept both poles refer to, and a replication
+  experiment is the evidence that the delivery pole actually reproduces the research pole's claim.
 
 [[content-model]] owns what each kind requires and how they address each other. What matters here is
 that describing software and running it are different kinds, so a thorough description can never be
@@ -83,10 +84,10 @@ human-first reading site. It adapts the corpus from workflows and statistical me
 software and the claims made with it, and it adapts the deterministic gate from schema validation
 alone to schema validation plus re-execution evidence.
 
-The instance-specific additions are three: replication as a first-class evidence-bearing kind,
-licensing typed on the note with deny-by-default resolution, and a packaging kind for the builds
-this repository has to supply itself. Each exists because this domain produced the problem, not
-because the pattern suggested it.
+The instance-specific additions are four: application synthesis as a dated, problem-first kind,
+replication as a first-class evidence-bearing kind, licensing typed on the note with deny-by-default
+resolution, and a packaging kind for the builds this repository has to supply itself. Each exists
+because this domain produced the problem, not because the pattern suggested it.
 
 **Convergence direction.** This is the third instance and the first stood up by reusing the earlier
 two as examples. The intent is to converge by **back-porting from here**, not by inheriting the

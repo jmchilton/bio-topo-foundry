@@ -5,6 +5,7 @@ import { base } from "./site-base";
 export interface TaggedEntry {
   id: string;
   kind:
+    | "Application"
     | "Design record"
     | "Environment"
     | "Method"
@@ -22,6 +23,7 @@ export interface TaggedEntry {
 }
 
 const KIND_LABELS = {
+  application: "Application",
   environment: "Environment",
   meta: "Design record",
   method: "Method",

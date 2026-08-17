@@ -6,8 +6,8 @@ record_kind: infrastructure
 order: 3
 status: revised
 created: 2026-08-08
-revised: 2026-08-12
-revision: 9
+revised: 2026-08-17
+revision: 10
 tags:
   - meta
 ---
@@ -52,6 +52,7 @@ the glossary; a shortened slug is a URL decision, not a rename.
 ```text
 content/
 ├── meta/                          design records; glossary.md is a non-note
+├── applications/*.md             biological problems and dated state-of-the-art assessments
 ├── environments/<slug>/           index.md + pixi.toml/pixi.lock companions; README.md at base
 ├── molds/<slug>/                  index.md, with eval.md and scenarios.md recommended
 ├── methods/*.md

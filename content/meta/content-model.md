@@ -6,8 +6,8 @@ record_kind: infrastructure
 order: 2
 status: revised
 created: 2026-08-08
-revised: 2026-08-12
-revision: 6
+revised: 2026-08-17
+revision: 7
 tags:
   - meta
 ---
@@ -26,11 +26,12 @@ Every note declares one literal `type`. That value selects one strict kind defin
 inferred from a path or a tag. `site/src/types/kinds.generated.json` is the exact current roster;
 this record owns the relationships that make that roster meaningful rather than copying its list.
 
-Most kinds describe the domain from one angle: a technique, an upstream implementation, a runnable
-environment, a source, a Foundry-run study, or an in-repository build recipe. They remain distinct
-because those subjects can truthfully support different metadata. A Mold is the action-oriented
-kind: it says what to do and names typed references to the knowledge it needs. A `meta` record is the
-opposite boundary, the one kind whose subject is the Foundry rather than the domain.
+Most kinds describe the domain from one angle: a biological problem, a technique, an upstream
+implementation, a runnable environment, a source, a Foundry-run study, or an in-repository build
+recipe. They remain distinct because those subjects can truthfully support different metadata. A
+Mold is the action-oriented kind: it says what to do and names typed references to the knowledge it
+needs. A `meta` record is the opposite boundary, the one kind whose subject is the Foundry rather
+than the domain.
 
 A **collection** is a location, not a kind: a base directory under `content/`, a pattern selecting
 which files beneath it are notes, and the kind those notes are. The two are not one-to-one, and one
@@ -77,12 +78,15 @@ recover. `meta` is the single exception and states why in its own `kind.md` — 
 written in this repository, so its lifecycle comes from its own git history.
 
 Beyond `tags`, the recurring requirements are a `title` (a `mold` carries `name` instead) and a
-`summary` bounded at 20–160 characters, widened to 200 for `environment`. Kind-specific fields are
-documented by each `kind.md` and enumerated by the generated manifest, not restated here.
+`summary` bounded at 20–160 characters, widened to 200 for `environment`. An `application` also
+requires the ISO date `assessed`, because its present-tense synthesis of a moving state of the art
+must say when it was evaluated. Kind-specific fields are documented by each `kind.md` and
+enumerated by the generated manifest, not restated here.
 
 Several constraints are cross-field rather than per-field, and are expressed as kind refinements:
 
 - a `method` note must carry the `method/` tag it declares itself the anchor of;
+- an `application` note that optionally declares an `application/` anchor must carry that tag;
 - a `paper` may only claim the `verbatim-quotes-summary` posture when its source license resolves
   to a `verbatim-ok` policy row and the note carries the notice and license file that row obliges,
   so posture follows the license rather than the author;
@@ -126,6 +130,20 @@ and so does a registered tag no note carries, because that is a browse axis rend
 The registry **format** is shared across Foundry instances; this **vocabulary** is ours, seeded
 corpus-first. `meta` is the one term carried verbatim from the other two instances rather than
 coined here.
+
+Two note kinds may lead tag pages, with deliberately different cardinalities. Every `method/` value
+has exactly one Method note because that vocabulary is the corpus's conceptual spine. An
+Application note may declare `facet_tag` only when its problem is exactly as broad as an existing
+`application/` value; conformance rejects two notes claiming the same value but does not require a
+note for every value. Problem pages need the granularity of the task, while browse tags need enough
+members to remain useful. Protein Flexibility therefore carries `application/molecular-sciences`
+without claiming to be the landing page for all molecular sciences.
+
+`modality` has no landing-note kind because a modality is a classifier, not a subject with an
+evaluation protocol or a state of the art. A molecular structure can be the input to many unrelated
+problems and techniques; a page explaining the file or data object would be a different kind of
+reference material, not the authoritative guide for every note carrying
+`modality/molecular-structure`. This asymmetry is semantic rather than unfinished coverage.
 
 ## Links
 

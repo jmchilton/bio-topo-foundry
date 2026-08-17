@@ -9,6 +9,7 @@ import {
 } from "./lib/frontmatter-schema";
 
 const design = COLLECTIONS.design;
+const applications = COLLECTIONS.applications;
 const packages = COLLECTIONS.packages;
 const papers = COLLECTIONS.papers;
 const methods = COLLECTIONS.methods;
@@ -25,6 +26,14 @@ export const collections = {
       generateId: stripExtension,
     }),
     schema: design.schema,
+  }),
+  applications: defineCollection({
+    loader: glob({
+      pattern: [...applications.pattern],
+      base: contentPath(applications.base),
+      generateId: stripExtension,
+    }),
+    schema: applications.schema,
   }),
   packages: defineCollection({
     loader: glob({

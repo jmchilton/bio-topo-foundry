@@ -6,6 +6,7 @@ export interface DetailRoute {
 }
 
 export const DETAIL_ROUTES: Record<CollectionName, DetailRoute> = {
+  applications: { label: "Applications" },
   design: { label: "Design records" },
   environments: { label: "Environments" },
   methods: { label: "Methods" },

@@ -30,6 +30,10 @@ tags:
 
 **Why this note exists.** [[persistent-spectral-graph]] is the founding paper of the topological-Laplacian line, and this corpus's note on it ends with a specific complaint: its protein B-factor experiment is one protein, with an eleven-parameter linear model fit against that same protein's experimental values and scored on them, and no head-to-head number against the elastic-network models it says it improves on. This paper shares its senior author, Guo-Wei Wei, and returns to the same task six years later. The narrow question worth answering is whether the evidence caught up with the machinery.
 
+[[protein-flexibility]] owns the broader task context: why crystallographic B-factors are not the
+same target as MD RMSF, which evaluation protocols can be compared, and where this line sits
+against current non-topological methods. This note keeps the narrower paper-level question.
+
 It did. That is the finding, and the rest of this note is what it cost and what still is not shown.
 
 ## Executive summary

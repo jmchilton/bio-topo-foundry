@@ -1,5 +1,9 @@
 # Glossary — TDA Bioinformatics Foundry
 
+**Application** — a problem-first note that defines one biological task, its target and scoring
+traps, the dated state of the art, and where topological methods sit against serious alternatives.
+It may anchor an `application/` tag when their granularity matches, but does not need to.
+
 **biopixi** — the specification and grader for reproducible, lightweight **Environments**. It
 scores a `pixi.toml` on the L0–L4 **Portability grade** ladder.
 

@@ -6,8 +6,8 @@ record_kind: infrastructure
 order: 4
 status: revised
 created: 2026-08-08
-revised: 2026-08-12
-revision: 6
+revised: 2026-08-17
+revision: 7
 tags:
   - meta
 ---
@@ -114,6 +114,11 @@ their resolution from committed provider evidence, without network access. It fa
 evidence, an unresolved or mismatched work without adjudication, an unaccounted bibliography entry,
 or a committed run and report that no longer match the replay. This proves that a citation names the
 work its own text describes; it does not prove that the work supports the surrounding claim.
+
+The configured corpus includes Application notes as well as source, method, package, Mold, and
+replication-experiment notes. An Application's dated cross-literature comparison is exactly where a
+real but misidentified paper would be most misleading, so it is audited even though the note is not
+itself a source note.
 
 A source note splits that text in two: `citation` describes the work and `source_ids` carries the
 identifiers, so read line by line neither half can check the other. The `noteFrontmatter` block in

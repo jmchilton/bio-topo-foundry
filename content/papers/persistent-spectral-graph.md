@@ -129,6 +129,10 @@ How much this establishes needs care. The correlation is computed on the same ei
 
 The second application is chosen precisely because persistent homology has no natural model for it: B-factors are per-residue continuous quantities, and a barcode is not indexed by residue. The non-harmonic spectrum, with its eigenvectors, is.
 
+For the distinction between B-factors and other flexibility proxies, the fitting-versus-blind
+protocol trap, and the current cross-method assessment, see [[protein-flexibility]]. This section
+stays with what this paper's single-protein experiment establishes.
+
 The method is a multiscale generalization of GNM. For protein 2Y7L in a coarse-grained Cα representation (N = 319 residues), each atom is grown into a ball of radius r, giving a family of 0-Laplacians 𝓛_0^{r+0}. From the non-harmonic spectrum and eigenvectors, the Moore–Penrose pseudo-inverse is assembled by summing (1/λ_k) u_k u_k^T over the non-zero modes only — which is exactly why the harmonic part must be identified correctly, since including a zero eigenvalue would be a division by zero. The per-residue prediction at radius r is the corresponding diagonal entry of that pseudo-inverse, and the final estimate is a linear combination across radii,
 
 > B_i^PST = Σ_{r=2}^{12} w_r B_i^r + w_0,

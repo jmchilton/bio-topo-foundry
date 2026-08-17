@@ -6,6 +6,7 @@ import { REGISTRIES } from "./registries";
 
 const ctx = buildKindContext(REGISTRIES);
 
+export const applicationSchema = assemble(DEFINITIONS.application, ctx);
 export const environmentSchema = assemble(DEFINITIONS.environment, ctx);
 export const metaSchema = assemble(DEFINITIONS.meta, ctx);
 export const methodSchema = assemble(DEFINITIONS.method, ctx);
@@ -19,6 +20,7 @@ export const replicationExperimentSchema = assemble(
 );
 
 export const NOTE_KINDS = {
+  application: applicationSchema,
   environment: environmentSchema,
   meta: metaSchema,
   method: methodSchema,
@@ -91,6 +93,14 @@ export const COLLECTIONS = {
     pattern: ["*/index.md"],
     kind: "environment",
     schema: environmentSchema,
+  },
+  // Problem pages are finer than the application facet and are not expected to collide with tool
+  // names. Keep them ahead of packages so software still wins if that assumption ever changes.
+  applications: {
+    base: "applications",
+    pattern: ["*.md"],
+    kind: "application",
+    schema: applicationSchema,
   },
   // A method slug names a technique, so it never contends with a tool name for a bare address.
   // Ordered ahead of `packages` anyway: if the two ever did collide, the software should win the

@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import TagChips from '@galaxy-foundry/site-kit/TagChips.astro';
+
+import Base from '../../layouts/Base.astro';
+import { base } from '../../lib/site-base';
+
+const applications = (await getCollection('applications')).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
+---
+<Base title="Applications" description="Biological problems, their evaluation traps, current best methods, and where topology sits.">
+  <header class="page-header">
+    <p class="eyebrow">Problems</p>
+    <h1>Applications</h1>
+    <p>
+      An Application note starts with a biological problem rather than a technique. It separates
+      targets and scoring protocols, dates the strongest current evidence, and asks whether a
+      topological method earns its place against serious non-topological alternatives.
+    </p>
+  </header>
+
+  <ul class="collection-list">
+    {applications.map((entry) => (
+      <li class="card">
+        <a class="card-primary" href={`${base}/applications/${entry.id}/`}>
+          <strong>{entry.data.title}</strong>
+          <span>{entry.data.summary}</span>
+          <small>Assessed {entry.data.assessed}</small>
+        </a>
+        <TagChips tags={entry.data.tags} tagBase={`${base}/tags`} />
+      </li>
+    ))}
+  </ul>
+</Base>

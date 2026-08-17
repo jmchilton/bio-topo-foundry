@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "trackedOnly": true,
   "sources": [
+    { "include": ["content/applications/*.md"], "artifactKind": "application-note" },
     { "include": ["content/papers/*.md"], "artifactKind": "paper-note" },
     { "include": ["content/packages/*.md"], "artifactKind": "package-note" },
     { "include": ["content/methods/*.md"], "artifactKind": "method-note" },
