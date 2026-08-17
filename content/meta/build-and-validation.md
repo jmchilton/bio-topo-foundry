@@ -132,7 +132,9 @@ Three properties are deliberate. A claim the runtime cannot falsify is never a f
 and `unavailable` are reported apart from `absent` and `wrong-value`, because a fixture that
 declares less is not a fixture caught lying. Evidence the reader cannot decode is not a failure
 either — an unreadable lock entry stops the audit rather than dropping a package, since a claim
-about a package the evidence lacks would otherwise read as a claim the runtime contradicts.
+about a package the evidence lacks would otherwise read as a claim the runtime contradicts. A lock
+that solved more than one platform stops it for the mirror reason: the reader keys packages by name
+alone, so it would answer a claim about one platform with another platform's pin.
 
 And a reviewed decision cannot make a finding hold. A claim struck as an extractor defect is
 withdrawn from the denominator rather than counted as passing, or the instrument could improve its
@@ -227,9 +229,14 @@ stay Foundry-side because the Mold Kind declares them `foundry-only`.
   fixture's dependencies resolves from the named channel. Every such claim in this corpus is about a
   fixture that resolves from one channel, so a mixed-channel fixture would need the extractor to
   keep the subject and quantifier it currently discards.
-- A portability grade is checked for internal consistency, never against a registry. `L4` asserts an
-  observed BioContainer, and no committed file records an observation, so nothing here can tell a
-  correct grade from an optimistic one.
+- No fixture's runtime is checked on more than one platform. Every `pixi.toml` here solves
+  `linux-64` alone, and a lock that solved several is refused rather than read, so what a
+  multi-platform claim would even have to name is an open question rather than a checked one.
+- A portability grade is checked for internal consistency, never against a registry. `L4` now
+  requires a `publication_candidate` in the `CONFIRMED` state, carrying the digest and timestamp of
+  an observation, so the gate can tell a graded claim from an ungrounded one — but the observation
+  itself is a committed record of a past `biopixi verify`, and nothing offline can tell a stale one
+  from a current one.
 - Citation resolution checks identity only: a real paper cited for a claim it does not support
   passes. Design records are outside the audited corpus, and nothing checks the transitive step from
   a domain note's wiki link to the scholarly identifier held by the linked source note.

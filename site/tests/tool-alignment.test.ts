@@ -354,6 +354,50 @@ describe("evidence the reader could not decode is never a finding", () => {
   });
 });
 
+describe("evidence the reader would flatten stops the audit", () => {
+  /**
+   * One name resolving to two artifacts is not a repetition. Answering a claim about one platform
+   * with the other platform's pin would report a correct note as wrong-value, so the reader refuses
+   * rather than picking whichever the lock happened to list first.
+   */
+  const twoPlatforms = [
+    "version: 7",
+    "platforms:",
+    "- name: linux-64",
+    "  virtual-packages:",
+    "  - __unix=0=0",
+    "- name: osx-arm64",
+    "  virtual-packages:",
+    "  - __unix=0=0",
+    "environments:",
+    "  default:",
+    "    packages:",
+    "      linux-64:",
+    "      - conda: https://conda.anaconda.org/conda-forge/linux-64/gudhi-3.13.0-py313hf0a2c11_0.conda",
+    "      osx-arm64:",
+    "      - conda: https://conda.anaconda.org/conda-forge/osx-arm64/gudhi-3.12.0-py313h8a5c2de_0.conda",
+    "",
+  ].join("\n");
+
+  it("refuses a lock that solved more than one platform", async () => {
+    const { readLock, MultiPlatformLock } = await import("../src/lib/audit/tool-alignment/pixi");
+    expect(() => readLock(twoPlatforms, "example")).toThrow(MultiPlatformLock);
+    // The message has to name both, or the reader reports a problem nobody can locate.
+    expect(() => readLock(twoPlatforms, "example")).toThrow(/linux-64, osx-arm64/u);
+  });
+
+  it("still reads a lock that solved one", async () => {
+    const { readLock } = await import("../src/lib/audit/tool-alignment/pixi");
+    const single = twoPlatforms
+      .split("\n")
+      .filter((line) => !line.includes("osx-arm64"))
+      .join("\n");
+    const evidence = readLock(single, "example");
+    expect(evidence.lockedPlatforms).toEqual(["linux-64"]);
+    expect(evidence.lockedPackages?.get("gudhi")?.version).toBe("3.13.0");
+  });
+});
+
 describe("verdicts keep unfalsifiable claims out of the failure partitions", () => {
   const lockless: PixiEvidence = {
     environment: "example",

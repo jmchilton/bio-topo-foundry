@@ -143,12 +143,14 @@ no reviewed decision, when the committed report no longer replays from the commi
 the committed run does not satisfy its own wire schema, or when a reviewed decision names a claim id
 this corpus does not carry. `unpinned` and `unavailable` never fail.
 
-It also fails when the lock reader meets an artifact shape it cannot decode, rather than skipping
-the entry. That is deliberate and it has already paid: a skipped entry removes a package from the
-evidence, and a claim about a package the evidence lacks reads as a claim the runtime contradicts,
-so a parser gap does not weaken the audit — it makes it accuse a correct note. Turning the skip into
-a failure immediately surfaced 162 PyPI packages in `hiponet` and 64 in `topodockq` that the reader
-had been silently discarding.
+It also fails when the lock reader meets an artifact shape it cannot decode, or a lock that solved
+more than one platform, rather than skipping the entry or flattening the name. Both are the same
+rule: a gap in the reader must not become a finding about a note. A skipped entry removes a package
+from the evidence, and a claim about a package the evidence lacks reads as a claim the runtime
+contradicts — so a parser gap does not weaken the audit, it makes it accuse a correct note. Turning
+the skip into a failure immediately surfaced 162 PyPI packages in `hiponet` and 64 in `topodockq`
+that the reader had been silently discarding. A flattened name would fail the same way from the
+other side, answering a claim about one platform with another platform's pin.
 
 ## Known limits
 
@@ -157,8 +159,12 @@ had been silently discarding.
   about a fixture whose dependencies all resolve from one channel, so the distinction has not
   mattered yet; a mixed-channel fixture would need the extractor to keep the claim's subject and
   quantifier, which it currently discards.
-- **The lock is flattened to one entry per package name.** Fixtures here solve a single platform, so
-  a name resolves to one artifact. A multi-platform fixture could resolve one name to several
-  versions, and this reader would keep whichever appeared first.
+- **No fixture is checked on more than one platform.** The reader keys packages by name, first
+  occurrence wins, which is right only while one name means one artifact. Every `pixi.toml` here
+  solves `linux-64` alone, so that holds today; a lock that solved several is refused rather than
+  flattened, because answering a claim about one platform with another platform's pin would report
+  a correct note as `wrong-value`. Keying the evidence by platform is deliberately deferred: there
+  is no multi-platform fixture to design it against, and a version claim in one would need to name a
+  platform before it could be checked at all, which no sentence in this corpus does.
 - **Only note prose is read.** A runtime claim written in a `pixi.toml` header comment is invisible
   to the grammar, and the corpus has carried a wrong one there while the note beside it was right.
