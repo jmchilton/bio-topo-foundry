@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-14T15:01:07.157Z",
+  "generatedAt": "2026-08-17T19:48:11.658Z",
   "corpus": {
-    "digest": "b835daed921b34a40b7f44826ebecc0dd965f829659e77e1820b8ff5f6d0c889",
-    "claimCount": 27,
-    "headRevision": "9bab14c78acf5e834915f0c45eaf2f0aa6e42b59",
+    "digest": "14c38ed9e58b83685a28682e7f36fbc6d6159a7444563e7899963d260d642d9b",
+    "claimCount": 71,
+    "headRevision": "1702372da575b119f041280bbdb8c547091b1b77",
     "workingTreeDirty": true
   },
   "claims": [
@@ -39,6 +39,54 @@
       "context": "Two conda-forge packages in one fixture, locked green."
     },
     {
+      "id": "189646833db7c98a",
+      "kind": "package-channel",
+      "environment": "ann-backends",
+      "asserted": "conda-forge",
+      "subject": "hnswlib",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/ann-backends/pixi.toml",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "# pynndescent is noarch). (conda-forge hnswlib=0.8.0, pynndescent=0.5.13, 2026-07-30)",
+        "sourceDigest": "f54710baed3d18b19c8d82793fef0e5030690652439479105d102c660b40a706"
+      },
+      "context": "(conda-forge hnswlib=0.8.0, pynndescent=0.5.13, 2026-07-30)"
+    },
+    {
+      "id": "1db7f16a59e02f29",
+      "kind": "package-version",
+      "environment": "ann-backends",
+      "asserted": "0.8.0",
+      "subject": "hnswlib",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/ann-backends/pixi.toml",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "# pynndescent is noarch). (conda-forge hnswlib=0.8.0, pynndescent=0.5.13, 2026-07-30)",
+        "sourceDigest": "f54710baed3d18b19c8d82793fef0e5030690652439479105d102c660b40a706"
+      },
+      "context": "(conda-forge hnswlib=0.8.0, pynndescent=0.5.13, 2026-07-30)"
+    },
+    {
+      "id": "40b31e799d9f9ece",
+      "kind": "package-version",
+      "environment": "ann-backends",
+      "asserted": "0.5.13",
+      "subject": "pynndescent",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/ann-backends/pixi.toml",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "# pynndescent is noarch). (conda-forge hnswlib=0.8.0, pynndescent=0.5.13, 2026-07-30)",
+        "sourceDigest": "f54710baed3d18b19c8d82793fef0e5030690652439479105d102c660b40a706"
+      },
+      "context": "(conda-forge hnswlib=0.8.0, pynndescent=0.5.13, 2026-07-30)"
+    },
+    {
       "id": "b079565accf102c5",
       "kind": "dependency-count",
       "environment": "batch-integration",
@@ -69,6 +117,84 @@
       "context": "Two Bioconda packages, locked green."
     },
     {
+      "id": "dd9c894b2ab0b517",
+      "kind": "package-channel",
+      "environment": "batch-integration",
+      "asserted": "bioconda",
+      "subject": "harmonypy",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/batch-integration/pixi.toml",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "# (bioconda harmonypy=2.0.0, scanorama=1.7.4, 2026-07-30)",
+        "sourceDigest": "96937f9d22ad89757df84870846f5b4628b0b75c3db2a836b0754a168e1a78d1"
+      },
+      "context": "(bioconda harmonypy=2.0.0, scanorama=1.7.4, 2026-07-30)"
+    },
+    {
+      "id": "c7195bd6aa5dc8b4",
+      "kind": "package-channel",
+      "environment": "batch-integration",
+      "asserted": "bioconda",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/batch-integration/pixi.toml",
+        "startLine": 4,
+        "endLine": 4,
+        "sourceText": "# slot, pinned together to document the choice. Both bioconda → each is individually L4 (single",
+        "sourceDigest": "32d25ca2d468debb2c396d044ce7d46182d3b46587d2d73a9f0d0342c7a56ae4"
+      },
+      "context": "Both bioconda → each is individually L4 (single Bioconda pkg), but this env installs two, so it grades L3 (multi-package, all-conda, resolvable)."
+    },
+    {
+      "id": "a3f3ada931491baf",
+      "kind": "package-channel",
+      "environment": "batch-integration",
+      "asserted": "bioconda",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/batch-integration/pixi.toml",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "# Bioconda pkg), but this env installs two, so it grades L3 (multi-package, all-conda, resolvable).",
+        "sourceDigest": "323f17685b2e9611d9b07f75ae81a81bf931b0dfa7001e9d4616a48f3b58e570"
+      },
+      "context": "Both bioconda → each is individually L4 (single Bioconda pkg), but this env installs two, so it grades L3 (multi-package, all-conda, resolvable)."
+    },
+    {
+      "id": "7fa8968df28224f5",
+      "kind": "package-version",
+      "environment": "batch-integration",
+      "asserted": "2.0.0",
+      "subject": "harmonypy",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/batch-integration/pixi.toml",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "# (bioconda harmonypy=2.0.0, scanorama=1.7.4, 2026-07-30)",
+        "sourceDigest": "96937f9d22ad89757df84870846f5b4628b0b75c3db2a836b0754a168e1a78d1"
+      },
+      "context": "(bioconda harmonypy=2.0.0, scanorama=1.7.4, 2026-07-30)"
+    },
+    {
+      "id": "7e6562ee1e21bc0c",
+      "kind": "package-version",
+      "environment": "batch-integration",
+      "asserted": "1.7.4",
+      "subject": "scanorama",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/batch-integration/pixi.toml",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "# (bioconda harmonypy=2.0.0, scanorama=1.7.4, 2026-07-30)",
+        "sourceDigest": "96937f9d22ad89757df84870846f5b4628b0b75c3db2a836b0754a168e1a78d1"
+      },
+      "context": "(bioconda harmonypy=2.0.0, scanorama=1.7.4, 2026-07-30)"
+    },
+    {
       "id": "694d24084aabe411",
       "kind": "package-channel",
       "environment": "biopython",
@@ -82,6 +208,38 @@
         "sourceDigest": "00b413e999c309d8380659757605fb5d3c05c2ab66a7099897d355d91fb3e06e"
       },
       "context": "It resolves from conda-forge and is locked green."
+    },
+    {
+      "id": "f0fe80949ea86f8b",
+      "kind": "package-channel",
+      "environment": "biopython",
+      "asserted": "conda-forge",
+      "subject": "biopython",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/biopython/pixi.toml",
+        "startLine": 3,
+        "endLine": 3,
+        "sourceText": "# (conda-forge biopython=1.87, 2026-07-30)",
+        "sourceDigest": "83df102de463499528db1f960e78ae84773d38f4399f47d1fb67d2ce4b7d0df3"
+      },
+      "context": "(conda-forge biopython=1.87, 2026-07-30)"
+    },
+    {
+      "id": "ae4fb5b112c6dd0a",
+      "kind": "package-version",
+      "environment": "biopython",
+      "asserted": "1.87",
+      "subject": "biopython",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/biopython/pixi.toml",
+        "startLine": 3,
+        "endLine": 3,
+        "sourceText": "# (conda-forge biopython=1.87, 2026-07-30)",
+        "sourceDigest": "83df102de463499528db1f960e78ae84773d38f4399f47d1fb67d2ce4b7d0df3"
+      },
+      "context": "(conda-forge biopython=1.87, 2026-07-30)"
     },
     {
       "id": "fe377f2cb25ca3a2",
@@ -99,6 +257,102 @@
       "context": "It resolves from conda-forge with no recipe required."
     },
     {
+      "id": "f6eb8e03688c0ca8",
+      "kind": "package-channel",
+      "environment": "dionysus",
+      "asserted": "conda-forge",
+      "subject": "dionysus",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/dionysus/pixi.toml",
+        "startLine": 2,
+        "endLine": 2,
+        "sourceText": "# rather than an end-user tool. conda-forge → L3. (conda-forge dionysus=2.2.3, 2026-07-29)",
+        "sourceDigest": "a7d38660cfa0aea71ea9dd581b0300a313eaf17d26ebbd4e3df0e4748fa6c7ae"
+      },
+      "context": "(conda-forge dionysus=2.2.3, 2026-07-29)"
+    },
+    {
+      "id": "27629808b643ecc2",
+      "kind": "package-version",
+      "environment": "dionysus",
+      "asserted": "2.2.3",
+      "subject": "dionysus",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/dionysus/pixi.toml",
+        "startLine": 2,
+        "endLine": 2,
+        "sourceText": "# rather than an end-user tool. conda-forge → L3. (conda-forge dionysus=2.2.3, 2026-07-29)",
+        "sourceDigest": "a7d38660cfa0aea71ea9dd581b0300a313eaf17d26ebbd4e3df0e4748fa6c7ae"
+      },
+      "context": "(conda-forge dionysus=2.2.3, 2026-07-29)"
+    },
+    {
+      "id": "de93b51fe6a8d1d1",
+      "kind": "package-channel",
+      "environment": "dockq",
+      "asserted": "conda-forge",
+      "subject": "dockq",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/dockq/pixi.toml",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "# (conda-forge dockq=2.1.3, 2026-07-30; channel order rechecked 2026-08-12)",
+        "sourceDigest": "4e367107e090e476c1014d509affc0e554132c26e5dbcf9968873428fc3d32c3"
+      },
+      "context": "(conda-forge dockq=2.1.3, 2026-07-30;"
+    },
+    {
+      "id": "a5053c7b39d936db",
+      "kind": "package-version",
+      "environment": "dockq",
+      "asserted": "2.1.3",
+      "subject": "dockq",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/dockq/pixi.toml",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "# (conda-forge dockq=2.1.3, 2026-07-30; channel order rechecked 2026-08-12)",
+        "sourceDigest": "4e367107e090e476c1014d509affc0e554132c26e5dbcf9968873428fc3d32c3"
+      },
+      "context": "(conda-forge dockq=2.1.3, 2026-07-30;"
+    },
+    {
+      "id": "130597b1e1f2b4e3",
+      "kind": "package-channel",
+      "environment": "dssp",
+      "asserted": "conda-forge",
+      "subject": "dssp",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/dssp/pixi.toml",
+        "startLine": 4,
+        "endLine": 4,
+        "sourceText": "# follows → L3. (conda-forge dssp=4.6.1, provides the `mkdssp` binary; rechecked 2026-08-12)",
+        "sourceDigest": "37f571a82789248046823aa780837f2f79b5dc11b603394bd23f66e451b9ae7c"
+      },
+      "context": "(conda-forge dssp=4.6.1, provides the `mkdssp` binary;"
+    },
+    {
+      "id": "caa0c203d9eaadf5",
+      "kind": "package-version",
+      "environment": "dssp",
+      "asserted": "4.6.1",
+      "subject": "dssp",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/dssp/pixi.toml",
+        "startLine": 4,
+        "endLine": 4,
+        "sourceText": "# follows → L3. (conda-forge dssp=4.6.1, provides the `mkdssp` binary; rechecked 2026-08-12)",
+        "sourceDigest": "37f571a82789248046823aa780837f2f79b5dc11b603394bd23f66e451b9ae7c"
+      },
+      "context": "(conda-forge dssp=4.6.1, provides the `mkdssp` binary;"
+    },
+    {
       "id": "80bba8ac3cd86c0e",
       "kind": "package-channel",
       "environment": "gudhi",
@@ -114,6 +368,38 @@
       "context": "It resolves from conda-forge with no recipe required."
     },
     {
+      "id": "36adcc26ee7f0bc8",
+      "kind": "package-channel",
+      "environment": "gudhi",
+      "asserted": "conda-forge",
+      "subject": "gudhi",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/gudhi/pixi.toml",
+        "startLine": 2,
+        "endLine": 2,
+        "sourceText": "# conda-forge, community-maintained → L3. (conda-forge gudhi=3.13.0, 2026-07-29)",
+        "sourceDigest": "69e2796984697bde734bcc36976dd4fbf0311674b959f1b5e2ccebf0b2e676b1"
+      },
+      "context": "(conda-forge gudhi=3.13.0, 2026-07-29)"
+    },
+    {
+      "id": "036310e5ebf8156a",
+      "kind": "package-version",
+      "environment": "gudhi",
+      "asserted": "3.13.0",
+      "subject": "gudhi",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/gudhi/pixi.toml",
+        "startLine": 2,
+        "endLine": 2,
+        "sourceText": "# conda-forge, community-maintained → L3. (conda-forge gudhi=3.13.0, 2026-07-29)",
+        "sourceDigest": "69e2796984697bde734bcc36976dd4fbf0311674b959f1b5e2ccebf0b2e676b1"
+      },
+      "context": "(conda-forge gudhi=3.13.0, 2026-07-29)"
+    },
+    {
       "id": "f255cb458f4e7d1f",
       "kind": "lock-platform",
       "environment": "hiponet",
@@ -127,6 +413,22 @@
         "sourceDigest": "b6c78d5bf2cebc33ce8e11c3edcc1010fe7809537655a48aa8c31b5ccdd151c3"
       },
       "context": "This fixture reproduces HiPoNet's dependency closure — locked green on linux-64 — and runs the tool from its pinned git clone at `@45a9d08`."
+    },
+    {
+      "id": "0d6994ccd7a46c46",
+      "kind": "package-version",
+      "environment": "kmapper",
+      "asserted": "2.1.0",
+      "subject": "kmapper",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/kmapper/pixi.toml",
+        "startLine": 3,
+        "endLine": 3,
+        "sourceText": "# recipe holds it at L1. (PyPI kmapper==2.1.0, 2026-07-29)",
+        "sourceDigest": "01d56a3f361d295de099c0d7fcc6ffa38907cffda628e02da638453394365fdd"
+      },
+      "context": "(PyPI kmapper==2.1.0, 2026-07-29)"
     },
     {
       "id": "0484fc36585ae873",
@@ -159,6 +461,38 @@
       "context": "One Bioconda package, locked green, and a BioContainer pulled to check it is there — the digest is in the frontmatter."
     },
     {
+      "id": "4df1d53fd3bc978b",
+      "kind": "package-channel",
+      "environment": "mmseqs2",
+      "asserted": "bioconda",
+      "subject": "mmseqs2",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/mmseqs2/pixi.toml",
+        "startLine": 3,
+        "endLine": 3,
+        "sourceText": "# package (CLI); container observed at quay → L4. (Bioconda mmseqs2=18.8cc5c, 2026-07-30;",
+        "sourceDigest": "37d8d3fe105a50c1db34fdb4f84a16e1fcf45d28c3d84bf1bc9188355b974626"
+      },
+      "context": "(Bioconda mmseqs2=18.8cc5c, 2026-07-30;"
+    },
+    {
+      "id": "f3aead58561153e2",
+      "kind": "package-version",
+      "environment": "mmseqs2",
+      "asserted": "18.8cc5c",
+      "subject": "mmseqs2",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/mmseqs2/pixi.toml",
+        "startLine": 3,
+        "endLine": 3,
+        "sourceText": "# package (CLI); container observed at quay → L4. (Bioconda mmseqs2=18.8cc5c, 2026-07-30;",
+        "sourceDigest": "37d8d3fe105a50c1db34fdb4f84a16e1fcf45d28c3d84bf1bc9188355b974626"
+      },
+      "context": "(Bioconda mmseqs2=18.8cc5c, 2026-07-30;"
+    },
+    {
       "id": "5d53b669ff22e48d",
       "kind": "lock-platform",
       "environment": "open-topodockq-featurizer",
@@ -172,6 +506,21 @@
         "sourceDigest": "484867fdcfe62ff45f6fdd72255a9468449ebfe77dfb31c4b19b5f3c4f5665d6"
       },
       "context": "Verified green with a solved linux-64 lock."
+    },
+    {
+      "id": "e86b3d14530d5da3",
+      "kind": "lock-platform",
+      "environment": "open-topodockq-featurizer",
+      "asserted": "linux-64",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/open-topodockq-featurizer/pixi.toml",
+        "startLine": 11,
+        "endLine": 11,
+        "sourceText": "# lockfile solve is heavy; linux-64 to match that closure.",
+        "sourceDigest": "9f1efffe9d207350c33be03b853862bbabdf72418a91007eb1779aef601dc5e0"
+      },
+      "context": "linux-64 to match that closure."
     },
     {
       "id": "49aedbb6fcf5662f",
@@ -284,6 +633,69 @@
       "context": "The linux-64 lock solves cleanly (pytorch 2.13.0 cpu-mkl, pytorch_geometric 2.8.0.post1, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds and imports."
     },
     {
+      "id": "21c2ac604bacdcd4",
+      "kind": "lock-platform",
+      "environment": "open-topoqa-scorer",
+      "asserted": "linux-64",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/open-topoqa-scorer/pixi.toml",
+        "startLine": 10,
+        "endLine": 10,
+        "sourceText": "# heavy; linux-64 to match that closure.",
+        "sourceDigest": "b514c25af40dff5dee08c2370c4fb6eb12b4b5792d152ea8af98c7302a91198e"
+      },
+      "context": "linux-64 to match that closure."
+    },
+    {
+      "id": "52129039dd7b2201",
+      "kind": "package-channel",
+      "environment": "persim",
+      "asserted": "conda-forge",
+      "subject": "persim",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/persim/pixi.toml",
+        "startLine": 2,
+        "endLine": 2,
+        "sourceText": "# the scikit-tda family. conda-forge → L3. (conda-forge persim=0.3.8, 2026-07-29)",
+        "sourceDigest": "0605f9716c3ed8b7b5695edc70af5d1c713d239bb878c7ab11a944880ca79091"
+      },
+      "context": "(conda-forge persim=0.3.8, 2026-07-29)"
+    },
+    {
+      "id": "936c2deadba25699",
+      "kind": "package-version",
+      "environment": "persim",
+      "asserted": "0.3.8",
+      "subject": "persim",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/persim/pixi.toml",
+        "startLine": 2,
+        "endLine": 2,
+        "sourceText": "# the scikit-tda family. conda-forge → L3. (conda-forge persim=0.3.8, 2026-07-29)",
+        "sourceDigest": "0605f9716c3ed8b7b5695edc70af5d1c713d239bb878c7ab11a944880ca79091"
+      },
+      "context": "(conda-forge persim=0.3.8, 2026-07-29)"
+    },
+    {
+      "id": "8ab7950cef566270",
+      "kind": "package-version",
+      "environment": "petls",
+      "asserted": "1.0.1",
+      "subject": "petls",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/petls/pixi.toml",
+        "startLine": 3,
+        "endLine": 3,
+        "sourceText": "# recipe → L1. Depends on conda-forge gudhi. (PyPI petls==1.0.1, 2026-07-29)",
+        "sourceDigest": "cda0ef5ababd1d6947af5f1d596ab94d18341e923cab829f6c10237789e23db0"
+      },
+      "context": "(PyPI petls==1.0.1, 2026-07-29)"
+    },
+    {
       "id": "f48b99ac9429b5f9",
       "kind": "lock-platform",
       "environment": "petls-pytorch",
@@ -297,6 +709,22 @@
         "sourceDigest": "79eb58f9410df7140952735224d4195ad1d01070b36650914e83ba013a2b16ae"
       },
       "context": "Recipe and linux-64 lock are verified green."
+    },
+    {
+      "id": "f2fb1eecea22ac13",
+      "kind": "package-version",
+      "environment": "phat",
+      "asserted": "1.5.0a",
+      "subject": "phat",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/phat/pixi.toml",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "# (PyPI phat==1.5.0a; header-only C++11, no external libs.)",
+        "sourceDigest": "81172a7be868451e1ab690305c25669353c6ae5ba21373b7736ebc10a5ab44bb"
+      },
+      "context": "(PyPI phat==1.5.0a;"
     },
     {
       "id": "a72378d16466ee92",
@@ -329,6 +757,38 @@
       "context": "One Bioconda package, locked green, and a BioContainer pulled to check it is there — the digest is in the frontmatter."
     },
     {
+      "id": "29d37e3a5cec9ca0",
+      "kind": "package-channel",
+      "environment": "phate",
+      "asserted": "bioconda",
+      "subject": "phate",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/phate/pixi.toml",
+        "startLine": 4,
+        "endLine": 4,
+        "sourceText": "# observed at quay → L4. (bioconda phate=2.0.0, 2026-07-30; container rechecked 2026-08-12)",
+        "sourceDigest": "972efff216320549f0d4202725dd5566b27a2b90ace2936719e9c23813733390"
+      },
+      "context": "(bioconda phate=2.0.0, 2026-07-30;"
+    },
+    {
+      "id": "1eeeba85d2d34509",
+      "kind": "package-version",
+      "environment": "phate",
+      "asserted": "2.0.0",
+      "subject": "phate",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/phate/pixi.toml",
+        "startLine": 4,
+        "endLine": 4,
+        "sourceText": "# observed at quay → L4. (bioconda phate=2.0.0, 2026-07-30; container rechecked 2026-08-12)",
+        "sourceDigest": "972efff216320549f0d4202725dd5566b27a2b90ace2936719e9c23813733390"
+      },
+      "context": "(bioconda phate=2.0.0, 2026-07-30;"
+    },
+    {
       "id": "1b38e7032eb01ac1",
       "kind": "package-channel",
       "environment": "ripser-cpp",
@@ -342,6 +802,38 @@
         "sourceDigest": "7621884d5907d22782e3c37efb13ff0b95a1fadeb1e75a87166d3ce1c0c1e635"
       },
       "context": "It is the cleanest point on the ladder in this corpus: one Bioconda package, no recipe, no glue, and a BioContainer pulled to check it is there — the digest is in the frontmatter."
+    },
+    {
+      "id": "1f14817796d7efb4",
+      "kind": "package-channel",
+      "environment": "ripser-py",
+      "asserted": "conda-forge",
+      "subject": "ripser",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/ripser-py/pixi.toml",
+        "startLine": 4,
+        "endLine": 4,
+        "sourceText": "# target string is registered in BioContainers hash.tsv. (conda-forge ripser=0.6.14, 2026-07-29)",
+        "sourceDigest": "e3ada4e4316043fd63c2a98cfe6d3c008daf4cba12c62e95baea2e81fc695b7f"
+      },
+      "context": "(conda-forge ripser=0.6.14, 2026-07-29)"
+    },
+    {
+      "id": "1039cbc1035ee3a7",
+      "kind": "package-version",
+      "environment": "ripser-py",
+      "asserted": "0.6.14",
+      "subject": "ripser",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/ripser-py/pixi.toml",
+        "startLine": 4,
+        "endLine": 4,
+        "sourceText": "# target string is registered in BioContainers hash.tsv. (conda-forge ripser=0.6.14, 2026-07-29)",
+        "sourceDigest": "e3ada4e4316043fd63c2a98cfe6d3c008daf4cba12c62e95baea2e81fc695b7f"
+      },
+      "context": "(conda-forge ripser=0.6.14, 2026-07-29)"
     },
     {
       "id": "bb4147bf44bb369e",
@@ -359,6 +851,118 @@
       "context": "Resolves from conda-forge, locked green."
     },
     {
+      "id": "d6febdee42709a62",
+      "kind": "package-channel",
+      "environment": "scanpy",
+      "asserted": "conda-forge",
+      "subject": "scanpy",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/scanpy/pixi.toml",
+        "startLine": 4,
+        "endLine": 4,
+        "sourceText": "# format contract. (conda-forge scanpy=1.12.3, anndata=0.13.2, 2026-07-30)",
+        "sourceDigest": "5af551285a1fb86c365687d8454e40091a68329394405529b65bde8e21be2989"
+      },
+      "context": "(conda-forge scanpy=1.12.3, anndata=0.13.2, 2026-07-30)"
+    },
+    {
+      "id": "7a381d00140eb359",
+      "kind": "package-version",
+      "environment": "scanpy",
+      "asserted": "1.12.3",
+      "subject": "scanpy",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/scanpy/pixi.toml",
+        "startLine": 4,
+        "endLine": 4,
+        "sourceText": "# format contract. (conda-forge scanpy=1.12.3, anndata=0.13.2, 2026-07-30)",
+        "sourceDigest": "5af551285a1fb86c365687d8454e40091a68329394405529b65bde8e21be2989"
+      },
+      "context": "(conda-forge scanpy=1.12.3, anndata=0.13.2, 2026-07-30)"
+    },
+    {
+      "id": "b7914dbcef4eebfa",
+      "kind": "package-version",
+      "environment": "scanpy",
+      "asserted": "0.13.2",
+      "subject": "anndata",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/scanpy/pixi.toml",
+        "startLine": 4,
+        "endLine": 4,
+        "sourceText": "# format contract. (conda-forge scanpy=1.12.3, anndata=0.13.2, 2026-07-30)",
+        "sourceDigest": "5af551285a1fb86c365687d8454e40091a68329394405529b65bde8e21be2989"
+      },
+      "context": "(conda-forge scanpy=1.12.3, anndata=0.13.2, 2026-07-30)"
+    },
+    {
+      "id": "ac110e4b91c7b9cd",
+      "kind": "package-version",
+      "environment": "scikit-tda",
+      "asserted": "1.1.1",
+      "subject": "scikit-tda",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/scikit-tda/pixi.toml",
+        "startLine": 3,
+        "endLine": 3,
+        "sourceText": "# that package needs its own recipe before this environment fully resolves. (PyPI scikit-tda==1.1.1)",
+        "sourceDigest": "a670de42b82ae00fc96df184de4a67302f984bbda10c26a370e9a7a744c771dd"
+      },
+      "context": "(PyPI scikit-tda==1.1.1)"
+    },
+    {
+      "id": "917d249b112677ef",
+      "kind": "package-channel",
+      "environment": "scvelo",
+      "asserted": "conda-forge",
+      "subject": "scvelo",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/scvelo/pixi.toml",
+        "startLine": 17,
+        "endLine": 17,
+        "sourceText": "# (conda-forge scvelo=0.3.4, anndata=0.13.2, 2026-08-05)",
+        "sourceDigest": "21450c5d1db4716f1ca09da5f04b5b157ae3d44f83f8f5a33f8ecfccd7a74707"
+      },
+      "context": "(conda-forge scvelo=0.3.4, anndata=0.13.2, 2026-08-05)"
+    },
+    {
+      "id": "a75acd3805a3267e",
+      "kind": "package-version",
+      "environment": "scvelo",
+      "asserted": "0.3.4",
+      "subject": "scvelo",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/scvelo/pixi.toml",
+        "startLine": 17,
+        "endLine": 17,
+        "sourceText": "# (conda-forge scvelo=0.3.4, anndata=0.13.2, 2026-08-05)",
+        "sourceDigest": "21450c5d1db4716f1ca09da5f04b5b157ae3d44f83f8f5a33f8ecfccd7a74707"
+      },
+      "context": "(conda-forge scvelo=0.3.4, anndata=0.13.2, 2026-08-05)"
+    },
+    {
+      "id": "993095c43309c8a5",
+      "kind": "package-version",
+      "environment": "scvelo",
+      "asserted": "0.13.2",
+      "subject": "anndata",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/scvelo/pixi.toml",
+        "startLine": 17,
+        "endLine": 17,
+        "sourceText": "# (conda-forge scvelo=0.3.4, anndata=0.13.2, 2026-08-05)",
+        "sourceDigest": "21450c5d1db4716f1ca09da5f04b5b157ae3d44f83f8f5a33f8ecfccd7a74707"
+      },
+      "context": "(conda-forge scvelo=0.3.4, anndata=0.13.2, 2026-08-05)"
+    },
+    {
       "id": "c2903eaa534258d2",
       "kind": "package-channel",
       "environment": "scvi",
@@ -372,6 +976,38 @@
         "sourceDigest": "835508c77a083438cdfa717ee42169d764e3a27d3a3d17722a6607a8ba731492"
       },
       "context": "Resolves from conda-forge, locked green."
+    },
+    {
+      "id": "0fb7e3bb26dce663",
+      "kind": "package-channel",
+      "environment": "scvi",
+      "asserted": "conda-forge",
+      "subject": "scvi-tools",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/scvi/pixi.toml",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "# (conda-forge scvi-tools=1.5.0.post1, 2026-07-30)",
+        "sourceDigest": "a6d9360110652b9c235fd4b23173312f76d94d377a0329d585f7ac709a695546"
+      },
+      "context": "(conda-forge scvi-tools=1.5.0.post1, 2026-07-30)"
+    },
+    {
+      "id": "d0bc18c237e1860d",
+      "kind": "package-version",
+      "environment": "scvi",
+      "asserted": "1.5.0.post1",
+      "subject": "scvi-tools",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/scvi/pixi.toml",
+        "startLine": 6,
+        "endLine": 6,
+        "sourceText": "# (conda-forge scvi-tools=1.5.0.post1, 2026-07-30)",
+        "sourceDigest": "a6d9360110652b9c235fd4b23173312f76d94d377a0329d585f7ac709a695546"
+      },
+      "context": "(conda-forge scvi-tools=1.5.0.post1, 2026-07-30)"
     },
     {
       "id": "01839af07f11d72a",
@@ -404,6 +1040,38 @@
       "context": "This fixture pins the single TopoMetry build that exists on conda-forge, 0.2.1.1."
     },
     {
+      "id": "3197ec531b23127b",
+      "kind": "package-channel",
+      "environment": "topometry",
+      "asserted": "conda-forge",
+      "subject": "topometry",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/topometry/pixi.toml",
+        "startLine": 3,
+        "endLine": 3,
+        "sourceText": "# so a full lockfile solve is heavy. (conda-forge topometry=0.2.1.1, 2026-07-29)",
+        "sourceDigest": "83fbd50484d08c03d49b38efd6e9e92fd9bcc7131d002f1276c8cf669eba4a3d"
+      },
+      "context": "(conda-forge topometry=0.2.1.1, 2026-07-29)"
+    },
+    {
+      "id": "d2e8c2c50db716cc",
+      "kind": "package-version",
+      "environment": "topometry",
+      "asserted": "0.2.1.1",
+      "subject": "topometry",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/topometry/pixi.toml",
+        "startLine": 3,
+        "endLine": 3,
+        "sourceText": "# so a full lockfile solve is heavy. (conda-forge topometry=0.2.1.1, 2026-07-29)",
+        "sourceDigest": "83fbd50484d08c03d49b38efd6e9e92fd9bcc7131d002f1276c8cf669eba4a3d"
+      },
+      "context": "(conda-forge topometry=0.2.1.1, 2026-07-29)"
+    },
+    {
       "id": "0008b30340bc65e6",
       "kind": "lock-platform",
       "environment": "topometry-1.1",
@@ -417,6 +1085,37 @@
         "sourceDigest": "424fdee33138e2aacf03a578fac602db7b5ae121cbb5f158daed760f8733431e"
       },
       "context": "Verified green on osx-arm64 — build, `pip check`, and asserts on the runtime version, the distribution version, and the presence of `fit_adata` and `preprocess` — with a solved linux-64 lock."
+    },
+    {
+      "id": "80556ab201003594",
+      "kind": "package-version",
+      "environment": "topometry-1.1",
+      "asserted": "1.1.0",
+      "subject": "topometry",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/topometry-1.1/pixi.toml",
+        "startLine": 1,
+        "endLine": 1,
+        "sourceText": "# TopoMetry 1.1.0 — the release the eLife version of record (13:RP100361, 2026-07-03) describes,",
+        "sourceDigest": "7b5311f2a598586dbca409f80ee9b40e5aa8c2ea0fc2bb73b5e613a3e8211471"
+      },
+      "context": "TopoMetry 1.1.0 — the release the eLife version of record (13:RP100361, 2026-07-03) describes, staged from an in-repo recipe because conda-forge is four years stale."
+    },
+    {
+      "id": "f6e27b1ad15633c7",
+      "kind": "package-channel",
+      "environment": "topometry-1.1",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/topometry-1.1/pixi.toml",
+        "startLine": 11,
+        "endLine": 11,
+        "sourceText": "# GRADE: L1 — one in-repo path recipe. Everything else resolves from conda-forge. The recipe is",
+        "sourceDigest": "1e95c5e6bd806980878d51db517ac15c5cc219e9ddcbf23f91e7de4f24a8c059"
+      },
+      "context": "Everything else resolves from conda-forge."
     }
   ],
   "findings": [
@@ -437,6 +1136,30 @@
       "withdrawn": false
     },
     {
+      "claimId": "189646833db7c98a",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "1db7f16a59e02f29",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "0.8.0",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "40b31e799d9f9ece",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "0.5.13",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
       "claimId": "b079565accf102c5",
       "verdict": "exists",
       "evidenceState": "observed",
@@ -453,10 +1176,66 @@
       "withdrawn": false
     },
     {
+      "claimId": "dd9c894b2ab0b517",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "bioconda",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "c7195bd6aa5dc8b4",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "bioconda",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "a3f3ada931491baf",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "bioconda",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "7fa8968df28224f5",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2.0.0",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "7e6562ee1e21bc0c",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "1.7.4",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
       "claimId": "694d24084aabe411",
       "verdict": "exists",
       "evidenceState": "observed",
       "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "f0fe80949ea86f8b",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "ae4fb5b112c6dd0a",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "1.87",
       "effectiveVerdict": "exists",
       "withdrawn": false
     },
@@ -469,10 +1248,74 @@
       "withdrawn": false
     },
     {
+      "claimId": "f6eb8e03688c0ca8",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "27629808b643ecc2",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2.2.3",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "de93b51fe6a8d1d1",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "a5053c7b39d936db",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2.1.3",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "130597b1e1f2b4e3",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "caa0c203d9eaadf5",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "4.6.1",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
       "claimId": "80bba8ac3cd86c0e",
       "verdict": "exists",
       "evidenceState": "observed",
       "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "36adcc26ee7f0bc8",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "036310e5ebf8156a",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "3.13.0",
       "effectiveVerdict": "exists",
       "withdrawn": false
     },
@@ -482,6 +1325,14 @@
       "evidenceState": "observed",
       "observed": "linux-64",
       "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "0d6994ccd7a46c46",
+      "verdict": "unpinned",
+      "evidenceState": "absent",
+      "detail": "kmapper is declared as an in-repo path recipe, so no lock entry pins its version; the recipe is the authority and this audit does not read it",
+      "effectiveVerdict": "unpinned",
       "withdrawn": false
     },
     {
@@ -501,7 +1352,31 @@
       "withdrawn": false
     },
     {
+      "claimId": "4df1d53fd3bc978b",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "bioconda",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "f3aead58561153e2",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "18.8cc5c",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
       "claimId": "5d53b669ff22e48d",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "linux-64",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "e86b3d14530d5da3",
       "verdict": "exists",
       "evidenceState": "observed",
       "observed": "linux-64",
@@ -565,11 +1440,51 @@
       "withdrawn": false
     },
     {
+      "claimId": "21c2ac604bacdcd4",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "linux-64",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "52129039dd7b2201",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "936c2deadba25699",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "0.3.8",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "8ab7950cef566270",
+      "verdict": "unavailable",
+      "evidenceState": "unavailable",
+      "detail": "petls has no committed pixi.lock, so petls's version cannot be checked",
+      "effectiveVerdict": "unavailable",
+      "withdrawn": false
+    },
+    {
       "claimId": "f48b99ac9429b5f9",
       "verdict": "exists",
       "evidenceState": "observed",
       "observed": "linux-64",
       "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "f2fb1eecea22ac13",
+      "verdict": "unavailable",
+      "evidenceState": "unavailable",
+      "detail": "phat has no committed pixi.lock, so phat's version cannot be checked",
+      "effectiveVerdict": "unavailable",
       "withdrawn": false
     },
     {
@@ -589,10 +1504,42 @@
       "withdrawn": false
     },
     {
+      "claimId": "29d37e3a5cec9ca0",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "bioconda",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "1eeeba85d2d34509",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2.0.0",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
       "claimId": "1b38e7032eb01ac1",
       "verdict": "exists",
       "evidenceState": "observed",
       "observed": "bioconda",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "1f14817796d7efb4",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "1039cbc1035ee3a7",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "0.6.14",
       "effectiveVerdict": "exists",
       "withdrawn": false
     },
@@ -605,10 +1552,82 @@
       "withdrawn": false
     },
     {
+      "claimId": "d6febdee42709a62",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "7a381d00140eb359",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "1.12.3",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "b7914dbcef4eebfa",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "0.13.2",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "ac110e4b91c7b9cd",
+      "verdict": "unavailable",
+      "evidenceState": "unavailable",
+      "detail": "scikit-tda has no committed pixi.lock, so scikit-tda's version cannot be checked",
+      "effectiveVerdict": "unavailable",
+      "withdrawn": false
+    },
+    {
+      "claimId": "917d249b112677ef",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "a75acd3805a3267e",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "0.3.4",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "993095c43309c8a5",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "0.13.2",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
       "claimId": "c2903eaa534258d2",
       "verdict": "exists",
       "evidenceState": "observed",
       "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "0fb7e3bb26dce663",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "d0bc18c237e1860d",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "1.5.0.post1",
       "effectiveVerdict": "exists",
       "withdrawn": false
     },
@@ -629,15 +1648,71 @@
       "withdrawn": false
     },
     {
+      "claimId": "3197ec531b23127b",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "d2e8c2c50db716cc",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "0.2.1.1",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
       "claimId": "0008b30340bc65e6",
       "verdict": "exists",
       "evidenceState": "observed",
       "observed": "linux-64",
       "effectiveVerdict": "exists",
       "withdrawn": false
+    },
+    {
+      "claimId": "80556ab201003594",
+      "verdict": "unpinned",
+      "evidenceState": "absent",
+      "detail": "topometry is declared as an in-repo path recipe, so no lock entry pins its version; the recipe is the authority and this audit does not read it",
+      "effectiveVerdict": "unpinned",
+      "withdrawn": false
+    },
+    {
+      "claimId": "f6e27b1ad15633c7",
+      "verdict": "unpinned",
+      "evidenceState": "absent",
+      "detail": "topometry-1.1 declares only in-repo path recipes, so it takes no package from a channel",
+      "effectiveVerdict": "unpinned",
+      "withdrawn": false
     }
   ],
   "diagnostics": [
+    {
+      "artifactPath": "content/environments/ann-backends/pixi.toml",
+      "line": 6,
+      "reason": "build-subject",
+      "text": "# pynndescent is noarch). (conda-forge hnswlib=0.8.0, pynndescent=0.5.13, 2026-07-30)"
+    },
+    {
+      "artifactPath": "content/environments/ann-backends/pixi.toml",
+      "line": 5,
+      "reason": "no-subject",
+      "text": "# neighbor-graph substrate is reproducible. Both conda-forge → L3 (hnswlib is compiled per-platform;"
+    },
+    {
+      "artifactPath": "content/environments/biopython/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# structure pipeline (the on-ramp for TopoQA/TopoDockQ-style interface work). conda-forge → L3."
+    },
+    {
+      "artifactPath": "content/environments/dionysus/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# rather than an end-user tool. conda-forge → L3. (conda-forge dionysus=2.2.3, 2026-07-29)"
+    },
     {
       "artifactPath": "content/environments/dockq/index.md",
       "line": 22,
@@ -663,6 +1738,24 @@
       "text": "takes that build and no container follows from it — L3. Bioconda's build of the same version does"
     },
     {
+      "artifactPath": "content/environments/dockq/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# QA pipeline is reproducible without it. On both conda-forge and Bioconda; conda-forge is listed"
+    },
+    {
+      "artifactPath": "content/environments/dockq/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# QA pipeline is reproducible without it. On both conda-forge and Bioconda; conda-forge is listed"
+    },
+    {
+      "artifactPath": "content/environments/dockq/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# QA pipeline is reproducible without it. On both conda-forge and Bioconda; conda-forge is listed"
+    },
+    {
       "artifactPath": "content/environments/dssp/index.md",
       "line": 22,
       "reason": "no-subject",
@@ -673,6 +1766,18 @@
       "line": 22,
       "reason": "no-subject",
       "text": "conda-forge, locked green. Bioconda has no `dssp` at all, so no container follows and the fixture"
+    },
+    {
+      "artifactPath": "content/environments/dssp/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# TopoQA's conventional (non-topological) node features. Modern mkdssp v4 ships as the conda-forge"
+    },
+    {
+      "artifactPath": "content/environments/dssp/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# `dssp` package and provides the `mkdssp` CLI. Bioconda has no `dssp` at all, so no container"
     },
     {
       "artifactPath": "content/environments/giotto-ph/index.md",
@@ -687,6 +1792,60 @@
       "text": "`cmake <4`, because the junction submodule's `cmake_minimum_required` predates 3.5."
     },
     {
+      "artifactPath": "content/environments/giotto-tda/pixi.toml",
+      "line": 5,
+      "reason": "unknown-package",
+      "text": "# (its sibling giotto-ph already has one). (PyPI giotto-tda==0.6.2, 2026-07-29)"
+    },
+    {
+      "artifactPath": "content/environments/gudhi/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# conda-forge, community-maintained → L3. (conda-forge gudhi=3.13.0, 2026-07-29)"
+    },
+    {
+      "artifactPath": "content/environments/hiponet/pixi.toml",
+      "line": 5,
+      "reason": "no-subject",
+      "text": "# separate Yale license). Buildable/usable for research, but NOT conda-forge/Bioconda-eligible (no OSI"
+    },
+    {
+      "artifactPath": "content/environments/hiponet/pixi.toml",
+      "line": 5,
+      "reason": "no-subject",
+      "text": "# separate Yale license). Buildable/usable for research, but NOT conda-forge/Bioconda-eligible (no OSI"
+    },
+    {
+      "artifactPath": "content/environments/hiponet/pixi.toml",
+      "line": 11,
+      "reason": "unknown-package",
+      "text": "# research codebase (.python-version 3.11, uv.lock pins torch 2.8 / numpy 2.3.2 / scanpy 1.11.4)."
+    },
+    {
+      "artifactPath": "content/environments/hiponet/pixi.toml",
+      "line": 11,
+      "reason": "other-runtime",
+      "text": "# research codebase (.python-version 3.11, uv.lock pins torch 2.8 / numpy 2.3.2 / scanpy 1.11.4)."
+    },
+    {
+      "artifactPath": "content/environments/hiponet/pixi.toml",
+      "line": 11,
+      "reason": "other-runtime",
+      "text": "# research codebase (.python-version 3.11, uv.lock pins torch 2.8 / numpy 2.3.2 / scanpy 1.11.4)."
+    },
+    {
+      "artifactPath": "content/environments/hiponet/pixi.toml",
+      "line": 11,
+      "reason": "other-runtime",
+      "text": "# research codebase (.python-version 3.11, uv.lock pins torch 2.8 / numpy 2.3.2 / scanpy 1.11.4)."
+    },
+    {
+      "artifactPath": "content/environments/mmseqs2/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# train/test splits, which both structure-QA papers depend on for honest evaluation. Single Bioconda"
+    },
+    {
       "artifactPath": "content/environments/open-topodockq-featurizer/index.md",
       "line": 24,
       "reason": "no-subject",
@@ -697,6 +1856,24 @@
       "line": 24,
       "reason": "no-subject",
       "text": "engine, which is what holds it at L1. Both are pure-Python noarch and Bioconda-eligible, so"
+    },
+    {
+      "artifactPath": "content/environments/open-topodockq-featurizer/pixi.toml",
+      "line": 2,
+      "reason": "build-subject",
+      "text": "# the only .pyc-gated piece of TopoDockQ (bio-topo-foundry#3). Pure-Python (noarch) in-repo recipe →"
+    },
+    {
+      "artifactPath": "content/environments/open-topodockq-featurizer/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# L1 today, conda-forge/Bioconda-eligible → L3/L4 on upstreaming. Completes the open TopoDockQ vertical"
+    },
+    {
+      "artifactPath": "content/environments/open-topodockq-featurizer/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# L1 today, conda-forge/Bioconda-eligible → L3/L4 on upstreaming. Completes the open TopoDockQ vertical"
     },
     {
       "artifactPath": "content/environments/open-topoqa-featurizer/index.md",
@@ -705,12 +1882,66 @@
       "text": "Every runtime dependency is on public channels — numpy, gudhi, biopython, and Bioconda's"
     },
     {
+      "artifactPath": "content/environments/open-topoqa-featurizer/pixi.toml",
+      "line": 2,
+      "reason": "build-subject",
+      "text": "# persistent-homology interface featurizer (bio-topo-foundry#4). Pure-Python (noarch) in-repo"
+    },
+    {
+      "artifactPath": "content/environments/open-topoqa-featurizer/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# recipe → L1 today, conda-forge/Bioconda-eligible → L3/L4 on upstreaming. The open half of a"
+    },
+    {
+      "artifactPath": "content/environments/open-topoqa-featurizer/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# recipe → L1 today, conda-forge/Bioconda-eligible → L3/L4 on upstreaming. The open half of a"
+    },
+    {
+      "artifactPath": "content/environments/open-topoqa-featurizer/pixi.toml",
+      "line": 9,
+      "reason": "hypothetical",
+      "text": "# every run dep is on a public channel — numpy/gudhi/biopython from conda-forge and `dssp`"
+    },
+    {
+      "artifactPath": "content/environments/open-topoqa-featurizer/pixi.toml",
+      "line": 10,
+      "reason": "hypothetical",
+      "text": "# (mkdssp binary, for 8-state SS + relative SASA) from bioconda — so they resolve from"
+    },
+    {
       "artifactPath": "content/environments/open-topoqa-scorer/index.md",
       "line": 29,
       "reason": "build-subject",
       "text": "pytorch_geometric 2.8.0.post1, gudhi 3.13.0, dssp 4.6.1, biopython 1.87) and the noarch wheel builds"
     },
     {
+      "artifactPath": "content/environments/open-topoqa-scorer/pixi.toml",
+      "line": 2,
+      "reason": "build-subject",
+      "text": "# (bio-topo-foundry#5). Pure-Python (noarch) in-repo recipe → L1 today, conda-forge/Bioconda-"
+    },
+    {
+      "artifactPath": "content/environments/open-topoqa-scorer/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# (bio-topo-foundry#5). Pure-Python (noarch) in-repo recipe → L1 today, conda-forge/Bioconda-"
+    },
+    {
+      "artifactPath": "content/environments/open-topoqa-scorer/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# (bio-topo-foundry#5). Pure-Python (noarch) in-repo recipe → L1 today, conda-forge/Bioconda-"
+    },
+    {
+      "artifactPath": "content/environments/persim/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# the scikit-tda family. conda-forge → L3. (conda-forge persim=0.3.8, 2026-07-29)"
+    },
+    {
       "artifactPath": "content/environments/petls/index.md",
       "line": 18,
       "reason": "no-subject",
@@ -733,6 +1964,12 @@
       "line": 22,
       "reason": "build-subject",
       "text": "The recipe is verified building green on linux-64 and is linux-64 only: an upstream"
+    },
+    {
+      "artifactPath": "content/environments/petls/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# recipe → L1. Depends on conda-forge gudhi. (PyPI petls==1.0.1, 2026-07-29)"
     },
     {
       "artifactPath": "content/environments/petls-pytorch/index.md",
@@ -747,10 +1984,52 @@
       "text": "The fixture builds from our fork `jmchilton/petls-pytorch @ v2` rather than the PyPI 1.0.2"
     },
     {
+      "artifactPath": "content/environments/petls-pytorch/pixi.toml",
+      "line": 3,
+      "reason": "build-subject",
+      "text": "# wheel. In-repo recipe (noarch, redistributable) → L1 today, but conda-forge/Bioconda-eligible → L3/L4"
+    },
+    {
+      "artifactPath": "content/environments/petls-pytorch/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# wheel. In-repo recipe (noarch, redistributable) → L1 today, but conda-forge/Bioconda-eligible → L3/L4"
+    },
+    {
+      "artifactPath": "content/environments/petls-pytorch/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# wheel. In-repo recipe (noarch, redistributable) → L1 today, but conda-forge/Bioconda-eligible → L3/L4"
+    },
+    {
+      "artifactPath": "content/environments/petls-pytorch/pixi.toml",
+      "line": 7,
+      "reason": "unknown-package",
+      "text": "# recipe header) — NOT the PyPI 1.0.2 sdist. The fork moved `tadasets` from a runtime dep to a benchmark"
+    },
+    {
       "artifactPath": "content/environments/phat/index.md",
       "line": 17,
       "reason": "build-subject",
       "text": "The in-repo recipe compiles the C++ with pybind11 and is verified green on linux-64. PHAT is"
+    },
+    {
+      "artifactPath": "content/environments/phate/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# vs a topological scaffold on the same cells. bioconda noarch, single Bioconda pkg; container"
+    },
+    {
+      "artifactPath": "content/environments/phate/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# vs a topological scaffold on the same cells. bioconda noarch, single Bioconda pkg; container"
+    },
+    {
+      "artifactPath": "content/environments/phate/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# vs a topological scaffold on the same cells. bioconda noarch, single Bioconda pkg; container"
     },
     {
       "artifactPath": "content/environments/pydowker/index.md",
@@ -759,10 +2038,34 @@
       "text": "`rivet-console`, not `rivet` — the latter is an unrelated conda-forge project. GPL-3.0 for"
     },
     {
+      "artifactPath": "content/environments/pydowker/pixi.toml",
+      "line": 9,
+      "reason": "build-subject",
+      "text": "# linux-64 and grades L1 (in-repo recipes; RIVET GPL-3.0 + pyrivet BSD + pyDowker MIT are all"
+    },
+    {
+      "artifactPath": "content/environments/pydowker/pixi.toml",
+      "line": 8,
+      "reason": "no-subject",
+      "text": "# and scipy are pulled transitively from conda-forge. rivet is a compiled C++ recipe → this env is"
+    },
+    {
+      "artifactPath": "content/environments/pydowker/pixi.toml",
+      "line": 10,
+      "reason": "no-subject",
+      "text": "# redistributable → L3-eligible once the recipes are upstreamed to conda-forge)."
+    },
+    {
       "artifactPath": "content/environments/pyflagser/index.md",
       "line": 17,
       "reason": "build-subject",
       "text": "is verified building green on linux-64. Like [[giotto-ph-recipe]] it builds from git rather than a"
+    },
+    {
+      "artifactPath": "content/environments/r-tda/pixi.toml",
+      "line": 2,
+      "reason": "unknown-package",
+      "text": "# compiled; LinkingTo BH/Rcpp/RcppEigen, system deps gmp + make. In-repo recipe → L1. (CRAN 1.9.4)"
     },
     {
       "artifactPath": "content/environments/r-tdastats/index.md",
@@ -771,6 +2074,12 @@
       "text": "linux-64, which holds it at L1."
     },
     {
+      "artifactPath": "content/environments/r-tdastats/pixi.toml",
+      "line": 2,
+      "reason": "unknown-package",
+      "text": "# (NeedsCompilation: yes). In-repo recipe → L1. Upstream is legacy/maintenance-only. (CRAN 0.4.2)"
+    },
+    {
       "artifactPath": "content/environments/ripser-cpp/index.md",
       "line": 24,
       "reason": "no-subject",
@@ -781,6 +2090,36 @@
       "line": 24,
       "reason": "no-subject",
       "text": "but from different channels — the Bioconda C++ CLI here, the conda-forge Python library there."
+    },
+    {
+      "artifactPath": "content/environments/ripser-cpp/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# Single Bioconda package; BioContainers image observed at quay → L4 (digest in index.md)."
+    },
+    {
+      "artifactPath": "content/environments/ripser-cpp/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# NAME COLLISION: conda-forge also ships a `ripser` (the 0.6.x Python lib). Pinning ==1.0.1"
+    },
+    {
+      "artifactPath": "content/environments/ripser-cpp/pixi.toml",
+      "line": 4,
+      "reason": "no-subject",
+      "text": "# disambiguates to the Bioconda C++ tool. The channel prefix is part of the mulled identity —"
+    },
+    {
+      "artifactPath": "content/environments/ripser-cpp/pixi.toml",
+      "line": 3,
+      "reason": "unknown-package",
+      "text": "# NAME COLLISION: conda-forge also ships a `ripser` (the 0.6.x Python lib). Pinning ==1.0.1"
+    },
+    {
+      "artifactPath": "content/environments/ripser-cpp/pixi.toml",
+      "line": 3,
+      "reason": "unknown-package",
+      "text": "# NAME COLLISION: conda-forge also ships a `ripser` (the 0.6.x Python lib). Pinning ==1.0.1"
     },
     {
       "artifactPath": "content/environments/ripser-py/index.md",
@@ -793,6 +2132,30 @@
       "line": 15,
       "reason": "no-subject",
       "text": "entirely from conda-forge, so it needs no in-repo recipe, but it is not a single Bioconda"
+    },
+    {
+      "artifactPath": "content/environments/ripser-py/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# from the same-named Bioconda C++ CLI in ../ripser-cpp. conda-forge only, single package."
+    },
+    {
+      "artifactPath": "content/environments/ripser-py/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# from the same-named Bioconda C++ CLI in ../ripser-cpp. conda-forge only, single package."
+    },
+    {
+      "artifactPath": "content/environments/ripser-py/pixi.toml",
+      "line": 3,
+      "reason": "hypothetical",
+      "text": "# conda-forge single packages get no automatic BioContainer, so this grades L3 unless the exact"
+    },
+    {
+      "artifactPath": "content/environments/scanpy/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# pipeline. conda-forge → L3. AnnData is pulled transitively by scanpy but pinned explicitly as the"
     },
     {
       "artifactPath": "content/environments/scvelo/index.md",
@@ -805,6 +2168,66 @@
       "line": 19,
       "reason": "hypothetical",
       "text": "conda-forge, locked green. Bioconda's scvelo is stuck at 0.2.5, so there is no automatic"
+    },
+    {
+      "artifactPath": "content/environments/scvelo/pixi.toml",
+      "line": 7,
+      "reason": "no-subject",
+      "text": "# BSD-3-Clause, conda-forge → L3. Not L4: conda-forge-only packages get no automatic"
+    },
+    {
+      "artifactPath": "content/environments/scvelo/pixi.toml",
+      "line": 7,
+      "reason": "no-subject",
+      "text": "# BSD-3-Clause, conda-forge → L3. Not L4: conda-forge-only packages get no automatic"
+    },
+    {
+      "artifactPath": "content/environments/scvelo/pixi.toml",
+      "line": 8,
+      "reason": "no-subject",
+      "text": "# BioContainer, and bioconda's scvelo is stuck at 0.2.5."
+    },
+    {
+      "artifactPath": "content/environments/scvi/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# conda-forge → L3 (noarch python; pulls a torch/jax/lightning closure, all conda-forge)."
+    },
+    {
+      "artifactPath": "content/environments/scvi/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# conda-forge → L3 (noarch python; pulls a torch/jax/lightning closure, all conda-forge)."
+    },
+    {
+      "artifactPath": "content/environments/scvi/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# conda-forge → L3 (noarch python; pulls a torch/jax/lightning closure, all conda-forge)."
+    },
+    {
+      "artifactPath": "content/environments/scvi/pixi.toml",
+      "line": 4,
+      "reason": "no-subject",
+      "text": "# NOTE: bioconda also carries `scvi-tools` but pinned to an ancient 0.14.5; conda-forge is current"
+    },
+    {
+      "artifactPath": "content/environments/scvi/pixi.toml",
+      "line": 4,
+      "reason": "no-subject",
+      "text": "# NOTE: bioconda also carries `scvi-tools` but pinned to an ancient 0.14.5; conda-forge is current"
+    },
+    {
+      "artifactPath": "content/environments/scvi/pixi.toml",
+      "line": 5,
+      "reason": "no-subject",
+      "text": "# (1.5.0.post1) and authoritative — channel order below keeps conda-forge first for that reason."
+    },
+    {
+      "artifactPath": "content/environments/scvi/pixi.toml",
+      "line": 4,
+      "reason": "unknown-package",
+      "text": "# NOTE: bioconda also carries `scvi-tools` but pinned to an ancient 0.14.5; conda-forge is current"
     },
     {
       "artifactPath": "content/environments/topodockq/index.md",
@@ -813,30 +2236,84 @@
       "text": "CPython 3.8 `.pyc` bytecode with no corresponding source, so there is nothing to compile and"
     },
     {
+      "artifactPath": "content/environments/topodockq/pixi.toml",
+      "line": 8,
+      "reason": "unknown-package",
+      "text": "# setup.py/pyproject -> nothing to build a recipe from, and the interpreter is HARD-PINNED to CPython"
+    },
+    {
       "artifactPath": "content/environments/topometry/index.md",
       "line": 22,
       "reason": "hypothetical",
       "text": "Keeping both fixtures records the gap instead of hiding it. Updating the conda-forge feedstock"
     },
     {
+      "artifactPath": "content/environments/topometry/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# latent representations). conda-forge → L3. Note: drags a large single-cell/scientific closure,"
+    },
+    {
       "artifactPath": "content/environments/topometry-1.1/index.md",
       "line": 26,
       "reason": "build-subject",
       "text": "Verified green on osx-arm64 — build, `pip check`, and asserts on the runtime version, the"
+    },
+    {
+      "artifactPath": "content/environments/topometry-1.1/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# staged from an in-repo recipe because conda-forge is four years stale. bio-topo-foundry#11,"
+    },
+    {
+      "artifactPath": "content/environments/topometry-1.1/pixi.toml",
+      "line": 5,
+      "reason": "other-runtime",
+      "text": "# WHY NOT `content/environments/topometry/`: that env pins conda-forge topometry 0.2.1.1 — the"
+    },
+    {
+      "artifactPath": "content/environments/topometry-1.1/pixi.toml",
+      "line": 7,
+      "reason": "no-subject",
+      "text": "# the published pancreas workflow uses. It stays as the L3 conda-forge fixture; THIS env is the"
+    },
+    {
+      "artifactPath": "content/environments/topometry-1.1/pixi.toml",
+      "line": 5,
+      "reason": "other-runtime",
+      "text": "# WHY NOT `content/environments/topometry/`: that env pins conda-forge topometry 0.2.1.1 — the"
+    },
+    {
+      "artifactPath": "content/environments/topometry-1.1/pixi.toml",
+      "line": 12,
+      "reason": "hypothetical",
+      "text": "# pure-Python noarch and MIT, so upstreaming it to conda-forge (which would mean updating the"
+    },
+    {
+      "artifactPath": "content/environments/topometry-1.1/pixi.toml",
+      "line": 12,
+      "reason": "hypothetical",
+      "text": "# pure-Python noarch and MIT, so upstreaming it to conda-forge (which would mean updating the"
+    },
+    {
+      "artifactPath": "content/environments/topometry-1.1/pixi.toml",
+      "line": 13,
+      "reason": "unknown-package",
+      "text": "# existing feedstock from 0.2.1.1 to 1.1.0) promotes this env to L3 and retires the split."
     }
   ],
   "summary": {
-    "extracted": 27,
+    "extracted": 71,
     "withdrawn": 0,
-    "assessed": 27,
+    "assessed": 71,
     "byVerdict": {
-      "exists": 27,
+      "exists": 65,
       "absent": 0,
       "wrong-value": 0,
-      "unpinned": 0,
-      "unavailable": 0
+      "unpinned": 3,
+      "unavailable": 3
     },
-    "recognizedTokensDeclined": 31,
+    "recognizedTokensDeclined": 102,
     "review": {
       "required": 0,
       "completed": 0

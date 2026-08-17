@@ -11,7 +11,10 @@ import {
   toolAlignmentRunSchema,
 } from "../src/lib/audit/tool-alignment/audit";
 import { evaluateClaim } from "../src/lib/audit/tool-alignment/evaluate";
-import { extractToolClaims } from "../src/lib/audit/tool-alignment/extract";
+import {
+  extractManifestClaims,
+  extractToolClaims,
+} from "../src/lib/audit/tool-alignment/extract";
 import { renderToolAlignmentMarkdown } from "../src/lib/audit/tool-alignment/report";
 import type { PixiEvidence } from "../src/lib/audit/tool-alignment/pixi";
 import {
@@ -351,6 +354,145 @@ describe("evidence the reader could not decode is never a finding", () => {
     const evidence = await readPixiEvidence("../content/environments/hiponet", "hiponet");
     expect(evidence.lockedPackages?.get("torch")?.channel).toBe("pypi");
     expect(evidence.lockedPackages?.get("antlr4-python3-runtime")?.version).toBe("4.9.3");
+  });
+});
+
+describe("the manifest header is prose too", () => {
+  const header = [
+    "# Dionysus 2 — persistent (co)homology, vineyards, zigzag persistence.",
+    "# conda-forge, community-maintained → L3. (conda-forge dionysus=2.2.3, 2026-07-29)",
+    "[workspace]",
+    'channels = ["conda-forge", "bioconda"]',
+    "",
+    "[dependencies]",
+    "dionysus = 3.0.0",
+    "",
+  ].join("\n");
+
+  const scan = extractManifestClaims(
+    "dionysus",
+    "content/environments/dionysus/pixi.toml",
+    header,
+    new Set(["dionysus"]),
+  );
+
+  it("reads a pin spec as a claim that names its own package", () => {
+    const channel = scan.claims.find(({ kind }) => kind === "package-channel");
+    const version = scan.claims.find(({ kind }) => kind === "package-version");
+    expect(channel).toMatchObject({ asserted: "conda-forge", subject: "dionysus" });
+    expect(version).toMatchObject({ asserted: "2.2.3", subject: "dionysus" });
+    expect(channel?.span.artifactKind).toBe("environment-manifest");
+  });
+
+  /**
+   * The tables are what the claims are checked against. Reading them as prose would compare the
+   * file to itself and pass whatever it said — `dionysus = 3.0.0` above is a table entry, not an
+   * assertion, and must never become a claim of version 3.0.0.
+   */
+  it("reads only whole-line comments, never the tables they describe", () => {
+    expect(scan.claims.some(({ asserted }) => asserted === "3.0.0")).toBe(false);
+    for (const claim of scan.claims) expect(claim.span.sourceText.trimStart()).toMatch(/^#/u);
+  });
+});
+
+describe("a sentence about someone else's runtime is not a claim about this one", () => {
+  const declined = (environment: string, text: string) =>
+    extractManifestClaims(
+      environment,
+      `content/environments/${environment}/pixi.toml`,
+      `# ${text}\n`,
+      new Set(["torch", "topometry"]),
+    );
+
+  /** `hiponet`'s header records what upstream's own resolver pins, which is true of upstream. */
+  it("declines a version another resolver pins", () => {
+    const scan = declined("hiponet", "It is uv-managed (uv.lock pins torch 2.8).");
+    expect(scan.claims).toHaveLength(0);
+    expect(scan.diagnostics.map(({ reason }) => reason)).toContain("other-runtime");
+  });
+
+  /** A header explains itself by contrast with the sibling fixture it is not. */
+  it("declines a pin belonging to a different fixture", () => {
+    const scan = declined(
+      "topometry-1.1",
+      "WHY NOT `content/environments/topometry/`: that env pins conda-forge topometry 0.2.1.1 today.",
+    );
+    expect(scan.claims).toHaveLength(0);
+    expect(scan.diagnostics.map(({ reason }) => reason)).toContain("other-runtime");
+  });
+
+  it("still reads a sentence naming its own environment", () => {
+    const scan = declined(
+      "topometry",
+      "`content/environments/topometry/` installs conda-forge topometry=0.2.1.1 today.",
+    );
+    expect(scan.claims.map(({ kind }) => kind)).toContain("package-channel");
+  });
+});
+
+describe("a package the lock cannot contain is not a package the lock contradicts", () => {
+  const pathFixture: PixiEvidence = {
+    environment: "kmapper",
+    declaredChannels: ["conda-forge"],
+    declaredPlatforms: ["linux-64"],
+    declaredDependencies: ["kmapper"],
+    pathDependencies: ["kmapper"],
+    lockedPlatforms: ["linux-64"],
+    lockedPackages: new Map(),
+  };
+
+  /**
+   * An in-repo recipe is deliberately on no channel, so its absence from the lock is the expected
+   * shape. Reporting it as `absent` accused three correct headers of naming a package that does
+   * not exist.
+   */
+  it("reports a path recipe's version as unpinned rather than absent", () => {
+    const { claims } = extractManifestClaims(
+      "kmapper",
+      "content/environments/kmapper/pixi.toml",
+      "# KeplerMapper — (PyPI kmapper==2.1.0, 2026-07-29)\n",
+      new Set(["kmapper"]),
+    );
+    const version = claims.find(({ kind }) => kind === "package-version");
+    expect(version).toBeDefined();
+    const finding = evaluateClaim(version!, pathFixture);
+    expect(finding.verdict).toBe("unpinned");
+    expect(finding.severity).toBeUndefined();
+  });
+});
+
+describe("a channel claim that names its package is answered by that package", () => {
+  /**
+   * The fixture-wide question — does *any* dependency resolve from this channel — gives the right
+   * answer only while a fixture resolves from one. This evidence is mixed, so the two questions
+   * disagree, and the fixture-wide one would report a false claim as holding.
+   */
+  const mixed: PixiEvidence = {
+    environment: "example",
+    declaredChannels: ["conda-forge", "bioconda"],
+    declaredPlatforms: ["linux-64"],
+    declaredDependencies: ["dockq", "mmseqs2"],
+    pathDependencies: [],
+    lockedPlatforms: ["linux-64"],
+    lockedPackages: new Map([
+      ["dockq", { name: "dockq", version: "2.1.3", build: "0", channel: "conda-forge", subdir: "linux-64" }],
+      ["mmseqs2", { name: "mmseqs2", version: "18.8cc5c", build: "0", channel: "bioconda", subdir: "linux-64" }],
+    ]),
+  };
+
+  it("contradicts a named package the lock resolves elsewhere", () => {
+    const { claims } = extractManifestClaims(
+      "example",
+      "content/environments/example/pixi.toml",
+      "# DockQ — (bioconda dockq=2.1.3, 2026-07-30)\n",
+      new Set(["dockq", "mmseqs2"]),
+    );
+    const channel = claims.find(({ kind }) => kind === "package-channel");
+    expect(channel).toMatchObject({ asserted: "bioconda", subject: "dockq" });
+
+    const finding = evaluateClaim(channel!, mixed);
+    expect(finding.verdict).toBe("wrong-value");
+    expect(finding.observed).toBe("conda-forge");
   });
 });
 

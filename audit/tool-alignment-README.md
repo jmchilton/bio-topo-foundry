@@ -1,9 +1,14 @@
 # The tool-alignment audit, and what it says about `audit-base`
 
 This Foundry's S2 of the Skill Integrity Audit, and it is worth being exact about what it audits. A
-note asserts things about a runtime — which platform its lock solves, which channel its package
+fixture asserts things about a runtime — which platform its lock solves, which channel its package
 comes from, how many packages it installs, what version it pins — and the manifest and lock
 committed beside it are the authority on all four. This checks one against the other.
+
+It reads those assertions from two files. The note is the document a reader is pointed at; the
+`pixi.toml` header comment is what the person editing the manifest sees, and it sits two lines above
+the tables it describes. Being two files is the whole reason the second one drifts, and for a while
+only the first was read.
 
 So it is an **environment runtime-claim audit**, and the report calls itself that. The S2 lineage is
 real — an Environment note is what a cast ships as a skill's tool documentation, companions and all
@@ -114,7 +119,21 @@ That shape is not rare, and it is worst exactly where the audit is succeeding. R
 natural thing to write beside a finding, so the better this checker works, the more counterfactual
 prose the corpus will contain for it to misread.
 
-All five are now regression tests in `site/tests/tool-alignment.test.ts`. This ordering is the
+Reading a second artifact produced two more of the same family, and they are the reason to read real
+prose rather than imagine it. Both are sentences with a subject — the error is that the subject is
+not this fixture:
+
+- **Another resolver.** `hiponet`'s header records what upstream pins in upstream's own lockfile:
+  "uv.lock pins torch 2.8 / numpy 2.3.2 / scanpy 1.11.4". Every one of those is true, and none of
+  them is about the `pixi.lock` beside it. Three false accusations from one sentence.
+- **Another fixture.** A header explains itself by contrast with the sibling it is not: "WHY NOT
+  `content/environments/topometry/`: that env pins conda-forge topometry 0.2.1.1". Read as this
+  fixture's pin, it accuses a file for describing its neighbour accurately.
+
+The grammar now declines a sentence naming a foreign lockfile or an environment directory other
+than its own, and counts the refusal as `other-runtime`.
+
+All seven are now regression tests in `site/tests/tool-alignment.test.ts`. This ordering is the
 point rather than an anecdote: ScientistOne's own audit found only two to four of twelve flagged
 provenance failures genuine, the rest extraction artifacts, and an audit whose false-positive rate
 exceeds its finding rate is worse than no audit because every false positive is an accusation.
@@ -154,11 +173,12 @@ other side, answering a claim about one platform with another platform's pin.
 
 ## Known limits
 
-- **Channel claims are answered per-fixture, not per-package.** A claim naming a channel holds when
-  any of the fixture's channel dependencies resolves from it. Every channel claim in this corpus is
-  about a fixture whose dependencies all resolve from one channel, so the distinction has not
-  mattered yet; a mixed-channel fixture would need the extractor to keep the claim's subject and
-  quantifier, which it currently discards.
+- **A channel claim without a subject is answered per-fixture.** A pin spec names its package and is
+  answered by that package. Prose does not: "it resolves from conda-forge" holds when *any* of the
+  fixture's channel dependencies does, which is a weaker question and the wrong one in a
+  mixed-channel fixture. No fixture here is mixed, so the two agree today. Closing it needs the
+  extractor to keep a quantifier as well as a subject — "the CLI", "both", "all of them" are three
+  different claims — and no sentence in this corpus distinguishes them.
 - **No fixture is checked on more than one platform.** The reader keys packages by name, first
   occurrence wins, which is right only while one name means one artifact. Every `pixi.toml` here
   solves `linux-64` alone, so that holds today; a lock that solved several is refused rather than
@@ -166,5 +186,11 @@ other side, answering a claim about one platform with another platform's pin.
   a correct note as `wrong-value`. Keying the evidence by platform is deliberately deferred: there
   is no multi-platform fixture to design it against, and a version claim in one would need to name a
   platform before it could be checked at all, which no sentence in this corpus does.
-- **Only note prose is read.** A runtime claim written in a `pixi.toml` header comment is invisible
-  to the grammar, and the corpus has carried a wrong one there while the note beside it was right.
+- **A path recipe's version is not checked against anything.** A package the fixture takes from an
+  in-repo recipe cannot appear in the lock, so the claim is reported `unpinned` rather than scored.
+  `recipes/<name>/recipe.yaml` is the authority and this audit does not read it, which leaves the
+  `kmapper` and `topometry-1.1` version claims unfalsifiable rather than checked. Before the manifest
+  headers were read this reported `absent`, which accused two correct files.
+- **The two files are read, and nothing else is.** A recipe's own run requirements are asserted in
+  header prose (`open-topoqa-featurizer` names four) and answered by no authority this audit holds.
+  Those sentences decline; they do not fail.
