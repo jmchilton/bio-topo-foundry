@@ -10,15 +10,15 @@ Reviewed flagged findings: **0/0**
 
 | Verdict | Count |
 |---|---:|
-| resolved | 79 |
+| resolved | 91 |
 | resolved-mismatched | 0 |
 | unresolved | 0 |
 | unavailable | 0 |
-| total | 79 |
+| total | 91 |
 
 ## Verification
 
-Verified against a described work: **73 of 79** resolved citations.
+Verified against a described work: **85 of 91** resolved citations.
 
 The remaining **6** resolved an identifier that no nearby text describes, so the only thing checked was that the identifier exists. Give the citation a title, or record the identifier in a note field the extraction config declares, and it becomes checkable.
 
@@ -33,7 +33,7 @@ The remaining **6** resolved an identifier that no nearby text describes, so the
 
 ## Extraction coverage
 
-Extracted **79 of 97** reference-section lines. The verdict counts above describe only the extracted lines.
+Extracted **91 of 109** reference-section lines. The verdict counts above describe only the extracted lines.
 
 A wrapped entry counts once per physical line, so this is a lower bound on coverage.
 
@@ -139,6 +139,18 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 | `content/papers/tda-tdl-molecular-sciences.md:237` | Topological data analysis and topological deep learning beyond persistent homology - a review | openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
 | `content/papers/tdl-docking-benchmark-review.md:2` | Topological deep learning for drug–target interaction, virtual screening, and docking scoring: a practical, benchmark-driven review | crossref `doi:10.1093/bib/bbag370` → doi:10.1093/bib/bbag370; europe-pmc `pmid:42437450` → pmid:42437450 | — |
 | `content/papers/tdl-docking-benchmark-review.md:41` | doi:10.1093/bib/bbag370 | crossref `doi:10.1093/bib/bbag370` → doi:10.1093/bib/bbag370 | — |
+| `content/papers/weighted-hodge-laplacians.md:2` | Weighted Hodge Laplacians on Manifolds with Boundary | openalex `arxiv:2608.00244` → arxiv:2608.00244 | — |
+| `content/papers/weighted-hodge-laplacians.md:27` | Weighted Hodge Laplacians on Manifolds with Boundary | openalex `arxiv:2608.00244` → arxiv:2608.00244 | — |
+| `content/papers/weighted-hodge-laplacians.md:142` | Weighted Hodge Laplacians on Manifolds with Boundary | openalex `arxiv:2608.00244` → arxiv:2608.00244 | — |
+| `content/papers/weighted-hodge-laplacians.md:143` | Persistent de Rham-Hodge Laplacians in Eulerian representation for manifold topological learning | crossref `doi:10.3934/math.20241333` → doi:10.3934/math.20241333 | — |
+| `content/papers/weighted-hodge-laplacians.md:144` | Combinatorial and Hodge Laplacians: Similarities and Differences | crossref `doi:10.1137/22m1482299` → doi:10.1137/22m1482299 | — |
+| `content/papers/weighted-hodge-laplacians.md:145` | The heat kernel weighted Hodge Laplacian on noncompact manifolds | crossref `doi:10.1090/s0002-9947-99-02021-8` → doi:10.1090/s0002-9947-99-02021-8 | — |
+| `content/papers/weighted-hodge-laplacians.md:146` | Multiscale differential geometry learning for protein flexibility analysis | crossref `doi:10.1002/jcc.70073` → doi:10.1002/jcc.70073 | — |
+| `content/papers/weighted-hodge-laplacians.md:147` | Persistent sheaf Laplacian analysis of protein flexibility | crossref `doi:10.1021/acs.jpcb.5c01287` → doi:10.1021/acs.jpcb.5c01287 | — |
+| `content/papers/weighted-hodge-laplacians.md:148` | Correction to 'Persistent Sheaf Laplacian Analysis of Protein Flexibility' | crossref `doi:10.1021/acs.jpcb.5c03679` → doi:10.1021/acs.jpcb.5c03679 | — |
+| `content/papers/weighted-hodge-laplacians.md:149` | Commutative algebra learning for protein flexibility analysis | openalex `arxiv:2607.00879` → arxiv:2607.00879 | — |
+| `content/papers/weighted-hodge-laplacians.md:150` | Fast and anisotropic flexibility-rigidity index for protein flexibility and fluctuation analysis | crossref `doi:10.1063/1.4882258` → doi:10.1063/1.4882258 | — |
+| `content/papers/weighted-hodge-laplacians.md:151` | Persistent spectral graph | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376 | — |
 
 ## resolved-mismatched
 
@@ -167,6 +179,7 @@ None.
 | `content/papers/tda-tdl-beyond-persistent-homology.md` | 10 | 0 |
 | `content/papers/tda-tdl-molecular-sciences.md` | 15 | 0 |
 | `content/papers/tdl-docking-benchmark-review.md` | 2 | 0 |
+| `content/papers/weighted-hodge-laplacians.md` | 12 | 0 |
 
 ## Adjudicated extractor false positives
 
@@ -174,5 +187,5 @@ None.
 
 ## Extractor diagnostics
 
-- Generic/non-scholarly URLs excluded: 41
-- Potential free-form `Author Year` patterns measured (diagnostic only): 4
+- Generic/non-scholarly URLs excluded: 42
+- Potential free-form `Author Year` patterns measured (diagnostic only): 5
