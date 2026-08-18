@@ -67,17 +67,26 @@ work [3]. Later blind-prediction studies use 346 of those proteins after filteri
 then hides two distinct protocols.
 
 In the **per-protein fitting** protocol, a model's coefficients are fit separately to each target's
-own experimental B-factors and scored on that same target. Reported full-set correlations include
-0.565 for GNM, 0.673 for optimized FRI, and 0.751 for Persistent Sheaf Laplacian [4, 5]. These are
-approximations of an observed profile once the profile has already been shown to the model. They do
-not measure prediction for an unseen protein.
+own experimental B-factors and scored on that same target. On the 364-protein superset, GNM reports
+0.565, optimized FRI 0.673, and Persistent Sheaf Laplacian 0.682 [4, 5]. That last figure is itself
+a worked example of what a transcribed number costs. The sheaf paper first published 0.751 and a
+32% improvement over GNM; a June 2025 correction found that its averages had silently dropped part
+of each data set, restated the superset as 0.682 and the improvement as 20%, and amended "improved
+performance over all other compared methods" to "most" — because 0.682 no longer clears optimized
+FRI's 0.673 by any margin worth the word. The correction leaves the blind-prediction results
+unchanged [6]. These are all approximations of an observed profile once the profile has already been
+shown to the model. They do not measure prediction for an unseen protein.
 
 In the **blind** protocol, features are trained across proteins and evaluated on held-out proteins.
 On the 346-protein split, mDGL reports 0.407, commutative algebra learning 0.456, and Weighted Hodge
 Laplacian features 0.480; adding twelve structural and sequence features gives the latter paper's
-consensus model 0.524 [6–8]. A number from the first protocol cannot be placed above a number from
-the second. The roughly quarter-point gap is primarily a change of question, not a sudden loss of
-mathematical quality.
+consensus model 0.524 [7–9]. Those are not four like-for-like columns. As
+[[weighted-hodge-laplacians]] records, the commutative-algebra figure quoted here matches that
+paper's own consensus gradient-boosting row, so 0.456 already carries non-topological features and
+the descriptor-only reading is 0.480 beating a consensus baseline rather than edging a comparable
+one. A number from the first protocol cannot be placed above a number from the second either; the
+roughly quarter-point gap between the protocols is primarily a change of question, not a sudden loss
+of mathematical quality.
 
 The aggregation can change the apparent result again. [[weighted-hodge-laplacians]] reports about
 0.48 when Pearson correlation is computed within each held-out protein and averaged, but about
@@ -93,7 +102,7 @@ the extras. A defensible comparison must state target, split unit, aggregation, 
 
 This is also no longer the most informative default task for working protein-dynamics practice.
 The current line represented by FastProtFlex trains against MD-derived RMSF and tests across MD,
-NMR, and cryo-EM-derived data [9]. B-factor prediction remains a useful crystallographic benchmark,
+NMR, and cryo-EM-derived data [10]. B-factor prediction remains a useful crystallographic benchmark,
 especially when only a static structure is available, but its mixed target and mature shortcuts
 make it a weak stand-in for protein dynamics as a whole.
 
@@ -101,10 +110,10 @@ make it a weak stand-in for protein dynamics as a whole.
 
 | Proxy and protocol | Reference point at assessment | Reported evaluation |
 | --- | --- | --- |
-| Crystallographic B-factor, training-free | ProDy normal-mode analysis | Mean per-target PCC 0.31 on CAMEO65, 0.25 on CASP15, 0.43 on CAMEO82 [10, 11] |
-| Crystallographic B-factor, learned | OPUS-BFactor-struct | Mean per-target PCC 0.61, 0.48, and 0.67 on the same three temporally newer sets [11] |
-| MD-derived RMSF, coordinate-only | FastProtFlex graphlet-degree-vector model | Mean Spearman 0.792–0.794 across three ATLAS replicates; 0.817 on the full ATLAS benchmark [9] |
-| Cryo-EM-derived RMSF validation | FastProtFlex | Mean correlation 0.690–0.706 across cutoffs on 321 usable proteins [9] |
+| Crystallographic B-factor, training-free | ProDy normal-mode analysis | Mean per-target PCC 0.31 on CAMEO65, 0.25 on CASP15, 0.43 on CAMEO82 [11, 12] |
+| Crystallographic B-factor, learned | OPUS-BFactor-struct | Mean per-target PCC 0.61, 0.48, and 0.67 on the same three temporally newer sets [12] |
+| MD-derived RMSF, coordinate-only | FastProtFlex graphlet-degree-vector model | Mean Spearman 0.792–0.794 across three ATLAS replicates; 0.817 on the full ATLAS benchmark [10] |
+| Cryo-EM-derived RMSF validation | FastProtFlex | Mean correlation 0.690–0.706 across cutoffs on 321 usable proteins [10] |
 
 These rows are intentionally grouped by target. OPUS-BFactor is the strongest B-factor model in its
 reported comparison and uses ESM-2 plus a transformer-based sequence/pair architecture. FastProtFlex
@@ -113,7 +122,7 @@ coordinates. Its reported 0.817 is not "better than" OPUS-BFactor's 0.67: the la
 correlation statistic, and validation designs differ.
 
 ProDy/GNM is the important practical anchor. It is training-free, available, interpretable, and
-descends from a 1997 elastic-network model [10, 12]. A new descriptor should beat it under the same
+descends from a 1997 elastic-network model [11, 13]. A new descriptor should beat it under the same
 data and split, or explain what additional capability justifies the complexity.
 
 ## Where topology sits
@@ -155,10 +164,11 @@ number to the literature without locating the method in it.
 3. Opron, K., Xia, K., and Wei, G.-W. "Fast and anisotropic flexibility-rigidity index for protein flexibility and fluctuation analysis." *The Journal of Chemical Physics* 140, 234105 (2014). [DOI](https://doi.org/10.1063/1.4882258).
 4. Bramer, D. and Wei, G.-W. "Blind prediction of protein B-factor and flexibility." *The Journal of Chemical Physics* 149, 134107 (2018). [DOI](https://doi.org/10.1063/1.5048469).
 5. Hayes, N. et al. "Persistent Sheaf Laplacian Analysis of Protein Flexibility." *The Journal of Physical Chemistry B* 129, 4169–4178 (2025). [DOI](https://doi.org/10.1021/acs.jpcb.5c01287).
-6. Feng, H., Zhao, J. Y., and Wei, G.-W. "Multiscale Differential Geometry Learning for Protein Flexibility Analysis." *Journal of Computational Chemistry* 46, e70073 (2025). [DOI](https://doi.org/10.1002/jcc.70073).
-7. Zhang, H. and Feng, H. "Commutative algebra learning for protein flexibility analysis." [arXiv:2607.00879](https://arxiv.org/abs/2607.00879) (2026).
-8. Su, Z., Tong, Y., and Wei, G.-W. "Weighted Hodge Laplacians on Manifolds with Boundary." [arXiv:2608.00244](https://arxiv.org/abs/2608.00244) (2026).
-9. Pražnikar, J. "Fast prediction of protein flexibility." *Bioinformatics* 42, btag175 (2026). [DOI](https://doi.org/10.1093/bioinformatics/btag175).
-10. Bakan, A. et al. "ProDy: Protein Dynamics Inferred from Theory and Experiments." *Bioinformatics* 27, 1575–1577 (2011). [DOI](https://doi.org/10.1093/bioinformatics/btr168).
-11. Yang, Y. et al. "OPUS-BFactor: Predicting Protein B-Factor with Sequence and Structure Information." *Molecules* 30, 2570 (2025). [DOI](https://doi.org/10.3390/molecules30122570).
-12. Bahar, I., Atilgan, A. R., and Erman, B. "Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential." *Folding and Design* 2, 173–181 (1997). [DOI](https://doi.org/10.1016/S1359-0278%2897%2900024-2).
+6. Hayes, N. et al. "Correction to 'Persistent Sheaf Laplacian Analysis of Protein Flexibility'." *The Journal of Physical Chemistry B* 129, 6112–6113 (2025). [DOI](https://doi.org/10.1021/acs.jpcb.5c03679).
+7. Feng, H., Zhao, J. Y., and Wei, G.-W. "Multiscale Differential Geometry Learning for Protein Flexibility Analysis." *Journal of Computational Chemistry* 46, e70073 (2025). [DOI](https://doi.org/10.1002/jcc.70073).
+8. Zhang, H. and Feng, H. "Commutative algebra learning for protein flexibility analysis." [arXiv:2607.00879](https://arxiv.org/abs/2607.00879) (2026).
+9. Su, Z., Tong, Y., and Wei, G.-W. "Weighted Hodge Laplacians on Manifolds with Boundary." [arXiv:2608.00244](https://arxiv.org/abs/2608.00244) (2026).
+10. Pražnikar, J. "Fast prediction of protein flexibility." *Bioinformatics* 42, btag175 (2026). [DOI](https://doi.org/10.1093/bioinformatics/btag175).
+11. Bakan, A. et al. "ProDy: Protein Dynamics Inferred from Theory and Experiments." *Bioinformatics* 27, 1575–1577 (2011). [DOI](https://doi.org/10.1093/bioinformatics/btr168).
+12. Yang, Y. et al. "OPUS-BFactor: Predicting Protein B-Factor with Sequence and Structure Information." *Molecules* 30, 2570 (2025). [DOI](https://doi.org/10.3390/molecules30122570).
+13. Bahar, I., Atilgan, A. R., and Erman, B. "Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential." *Folding and Design* 2, 173–181 (1997). [DOI](https://doi.org/10.1016/S1359-0278%2897%2900024-2).

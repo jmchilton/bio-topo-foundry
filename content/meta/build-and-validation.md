@@ -6,8 +6,8 @@ record_kind: infrastructure
 order: 4
 status: revised
 created: 2026-08-08
-revised: 2026-08-17
-revision: 7
+revised: 2026-08-18
+revision: 8
 tags:
   - meta
 ---
@@ -119,6 +119,14 @@ The configured corpus includes Application notes as well as source, method, pack
 replication-experiment notes. An Application's dated cross-literature comparison is exactly where a
 real but misidentified paper would be most misleading, so it is audited even though the note is not
 itself a source note.
+
+Which heading opens a bibliography is a substring rule, and `referenceHeadingTerms` in
+`audit-citations.config.json` sets the terms because the default is one letter too generous for this
+corpus. It matches the singular `reference`, which makes a heading like "Dated reference points" a
+bibliography and every line beneath it an entry that failed to parse — a body section counted as
+unextracted references, silently lowering the coverage this report exists to state. The plural plus
+`source note` covers the headings actually written here, `Selected references` and `Source note and
+selected verified references` among them, and an anchored or exact-match rule would not.
 
 A source note splits that text in two: `citation` describes the work and `source_ids` carries the
 identifiers, so read line by line neither half can check the other. The `noteFrontmatter` block in

@@ -192,6 +192,7 @@ describe("the emitted reader slice", () => {
       papers: { one: "review", many: "reviews" },
       "replication-experiments": { one: "study", many: "studies" },
       methods: { one: "technique", many: "techniques" },
+      applications: { one: "problem", many: "problems" },
     };
     const targets = contentReader.noteTargets();
     const wrong = Object.entries(sizes)

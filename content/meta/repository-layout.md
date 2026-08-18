@@ -52,7 +52,7 @@ the glossary; a shortened slug is a URL decision, not a rename.
 ```text
 content/
 ├── meta/                          design records; glossary.md is a non-note
-├── applications/*.md             biological problems and dated state-of-the-art assessments
+├── applications/*.md              biological problems and dated state-of-the-art assessments
 ├── environments/<slug>/           index.md + pixi.toml/pixi.lock companions; README.md at base
 ├── molds/<slug>/                  index.md, with eval.md and scenarios.md recommended
 ├── methods/*.md
