@@ -376,9 +376,9 @@ The tool-alignment audit is a second checker on that same path, and it is local.
 already in the repository — each fixture's prose is checked against the `pixi.toml` and `pixi.lock`
 committed beside it — so there is no provider layer, no refresh, and nothing to acquire.
 `site/src/lib/audit/tool-alignment/` holds the parts that know about pixi: manifest and lock
-parsing, the claim grammar, comparison, and report rendering. `site/src/lib/audit/base/` holds the
-parts that know about neither pixi nor citations — span digests, corpus identity, evidence states,
-severities, and the digest-bound adjudication shape.
+parsing, the claim grammar, comparison, and report rendering. The parts that know about neither pixi
+nor citations are no longer here at all — they are `@galaxy-foundry/audit-base`, which
+`audit-citations` also consumes.
 
 Two artifacts feed that grammar: the Environment note, and the manifest's own header comment. They
 differ only in how a file becomes prose, so `extract.ts` exposes an entry point per artifact over
@@ -386,17 +386,19 @@ one shared scan rather than a grammar per file — two grammars would drift apar
 files do. The artifact a claim came from travels with it in `span.artifactKind`, which is also the
 first exercise that field has had: a discriminator with one value is a field nothing has tested.
 
-That split is the point of the directory boundary rather than a tidiness preference. `base/digest.ts`
-and `base/files.ts` are byte-identical to their counterparts inside `@galaxy-foundry/audit-citations`,
-and `base/claims.ts` is the vocabulary a second checker forced into the open. foundry-lib's
-shared-substrate test admits an extraction once a second consumer exists, which is what this is.
+The local half is `tool-alignment/lifecycle.ts`, and what it holds is exactly what the package
+refuses to own. The verdicts and the evidence states, because the two checkers share one value of
+each and a common union would be a lowest common denominator or an untagged mixture. The claim id,
+because a citation candidate has no kind and a claim does, so one sentence can produce a channel
+claim and a version claim over one span. The corpus digest, because this one hashes ordered ids and
+the citation one hashes full records, which answer different questions about what counts as the same
+corpus. Each is a divergence that was found rather than assumed.
 
-How much of that extraction is a move and how much is a rewrite is not settled, and the boundary is
-laid out to make the question answerable rather than to presume the answer. The two copied files
-move as they are. `base/claims.ts` converged on shapes but was typed independently, and the
-lifecycle rules around it — what a reviewed decision may do to a verdict, which decisions must fail
-rather than retire — are newer than either checker. `audit/tool-alignment-README.md` keeps the
-comparison and the open questions; it is the exhibit an extraction would argue from.
+That boundary was laid out to make the extraction question answerable rather than to presume the
+answer, and the answer came out cleanly: the shapes are one contract with the vocabulary taken out.
+The two byte-identical files moved unchanged, the re-typed shapes moved as parameterized schemas,
+and the local file is what is left. `audit/tool-alignment-README.md` keeps the comparison and the
+remaining known limits.
 
 Casting is the other build-time path. `cast-corpus.ts` projects the shared content index into the
 two maps the cast engine consumes. `cast-spec.ts` composes that corpus with the Kind definitions,
@@ -446,7 +448,8 @@ aspirational or the checkout is broken.
 | runtime plugin and marketplace adapters | `casts/claude/.{claude,codex}-plugin/`, `.claude-plugin/`, `.agents/plugins/`   |
 | citation-audit binding and test        | `site/src/lib/citation-audit.ts`, `site/tests/citation-audit.test.ts`           |
 | citation policy and committed evidence | `audit-citations.config.json`, `audit/`                                         |
-| checker vocabulary shared by both      | `site/src/lib/audit/base/`                                                      |
+| audit lifecycle shared by both         | `@galaxy-foundry/audit-base`                                                    |
+| verdicts, evidence states, claim ids   | `site/src/lib/audit/tool-alignment/lifecycle.ts`                                |
 | pixi claim grammar and comparison      | `site/src/lib/audit/tool-alignment/`                                            |
 | tool-alignment binding and test        | `site/src/lib/tool-alignment-audit.ts`, `site/tests/tool-alignment.test.ts`     |
 

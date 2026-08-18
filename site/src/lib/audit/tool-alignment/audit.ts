@@ -1,15 +1,14 @@
 import { z } from "zod";
 
+import { artifactSpanSchema, claimClassifications, claimSeverities } from "@galaxy-foundry/audit-base";
+
 import {
-  artifactSpanSchema,
   claimCorpusDigest,
-  claimClassifications,
-  claimSeverities,
   corpusIdentitySchema,
   evidenceStates,
   type ClaimAdjudication,
   type CorpusIdentity,
-} from "../base/claims";
+} from "./lifecycle";
 import { toolClaimKinds } from "./extract";
 import { evaluateClaim, toolVerdicts, type ToolFinding, type ToolVerdict } from "./evaluate";
 import type { ExtractionDiagnostic, ToolClaim } from "./extract";

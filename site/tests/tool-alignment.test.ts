@@ -1,11 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  adjudicationProblems,
-  claimAdjudicationSchema,
-  artifactSpanSchema,
-  sourceTextDigest,
-} from "../src/lib/audit/base/claims";
+import { adjudicationProblems, artifactSpanSchema, sourceTextDigest } from "@galaxy-foundry/audit-base";
+
+import { claimAdjudicationSchema } from "../src/lib/audit/tool-alignment/lifecycle";
 import {
   buildToolAlignmentRun,
   toolAlignmentRunSchema,

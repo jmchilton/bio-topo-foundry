@@ -78,6 +78,9 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.4
         version: 0.9.10(prettier@3.9.6)(typescript@5.9.3)
+      '@galaxy-foundry/audit-base':
+        specifier: ^0.1.0
+        version: 0.1.0(zod@4.4.3)
       '@galaxy-foundry/audit-citations':
         specifier: ^0.2.0
         version: 0.2.0(zod@4.4.3)
@@ -483,6 +486,12 @@ packages:
 
   '@fontsource/ibm-plex-mono@5.3.0':
     resolution: {integrity: sha512-eTgnZjZEGk1QtD3ZstF+Vclo2HLAni8YMy34/DxllwZvyz1lR/1RF/xTiAquOBO7MvqBx8D2Ig2WCPMVfdZu7Q==}
+
+  '@galaxy-foundry/audit-base@0.1.0':
+    resolution: {integrity: sha512-53ipMAfb7L6xwt1Pduf/+/Nf848xprGy2wBdluAK3IQFUVAXU4KI8Wfby5pnSPgwB+XJWXFIBhMWgqRNPPDw1w==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      zod: ^4.0.0
 
   '@galaxy-foundry/audit-citations@0.2.0':
     resolution: {integrity: sha512-3D3kUEgNwwsNBgbVNLAJ4H2z/rgFoaC6MSC5lhQRCNJIBgnmI+W6ObkvUDeWMQP15F4zPZfxaPKKYAzBU5E9Cw==}
@@ -2926,6 +2935,10 @@ snapshots:
   '@fontsource-variable/source-serif-4@5.3.0': {}
 
   '@fontsource/ibm-plex-mono@5.3.0': {}
+
+  '@galaxy-foundry/audit-base@0.1.0(zod@4.4.3)':
+    dependencies:
+      zod: 4.4.3
 
   '@galaxy-foundry/audit-citations@0.2.0(zod@4.4.3)':
     dependencies:

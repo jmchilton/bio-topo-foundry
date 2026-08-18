@@ -3,7 +3,7 @@ import path from "node:path";
 
 import { parse as parseToml } from "smol-toml";
 
-import { isMissingFile } from "../base/files";
+import { isMissingFile } from "@galaxy-foundry/audit-base";
 
 /**
  * Read the runtime authority for one fixture: what the manifest declares and what the lock
