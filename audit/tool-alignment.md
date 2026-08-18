@@ -1,20 +1,22 @@
 # Environment runtime-claim audit
 
-Runtime claims in environment notes, checked against the pixi manifest and lock committed
-beside them. Nothing here solves, fetches, or executes: the lock is the record of a solve that
-already happened, so every verdict is reproducible offline.
+Runtime claims in environment notes and in the header comment of the manifest beside them,
+checked against that manifest and its lock. Nothing here solves, fetches, or executes: the
+lock is the record of a solve that already happened, so every verdict is reproducible offline.
 
-This is the Skill Integrity Audit's S2 for this Foundry. It audits what a note asserts about
+This is the Skill Integrity Audit's S2 for this Foundry. It audits what a fixture asserts about
 its own runtime, not whether a cast skill invokes the tool correctly.
 
-- Extracted: **27**
-- Assessed: **27**
-- Holds: **27**
+- Extracted: **71**
+  - from `environment-manifest`: **44**
+  - from `environment-note`: **27**
+- Assessed: **71**
+- Holds: **65**
 - Contradicted by the runtime: **0**
 - Names something the runtime lacks: **0**
-- Not falsifiable (`unpinned`): **0**
-- Not checkable (`unavailable`): **0**
-- Recognized tokens declined by a pre-filter: **31**
+- Not falsifiable (`unpinned`): **3**
+- Not checkable (`unavailable`): **3**
+- Recognized tokens declined by a pre-filter: **102**
 
 Every rate here is over **assessed**, not over everything extracted: a claim review struck as
 an extractor defect was never a claim, and letting it score as one would let the instrument

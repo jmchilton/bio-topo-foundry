@@ -371,12 +371,18 @@ and gates. See the shared
 for the separation between evidence acquisition, replay, and adjudication.
 
 The tool-alignment audit is a second checker on that same path, and it is local. Its evidence is
-already in the repository — each Environment note is checked against the `pixi.toml` and `pixi.lock`
+already in the repository — each fixture's prose is checked against the `pixi.toml` and `pixi.lock`
 committed beside it — so there is no provider layer, no refresh, and nothing to acquire.
 `site/src/lib/audit/tool-alignment/` holds the parts that know about pixi: manifest and lock
 parsing, the claim grammar, comparison, and report rendering. `site/src/lib/audit/base/` holds the
 parts that know about neither pixi nor citations — span digests, corpus identity, evidence states,
 severities, and the digest-bound adjudication shape.
+
+Two artifacts feed that grammar: the Environment note, and the manifest's own header comment. They
+differ only in how a file becomes prose, so `extract.ts` exposes an entry point per artifact over
+one shared scan rather than a grammar per file — two grammars would drift apart exactly as the two
+files do. The artifact a claim came from travels with it in `span.artifactKind`, which is also the
+first exercise that field has had: a discriminator with one value is a field nothing has tested.
 
 That split is the point of the directory boundary rather than a tidiness preference. `base/digest.ts`
 and `base/files.ts` are byte-identical to their counterparts inside `@galaxy-foundry/audit-citations`,

@@ -76,6 +76,32 @@ export class UnreadableLockEntry extends Error {
   }
 }
 
+/**
+ * A lock that solved more than one platform.
+ *
+ * Keying packages by name alone is right only while one name means one artifact. A multi-platform
+ * lock resolves a name once per platform — different builds, and sometimes different versions — so
+ * flattening would answer a claim about one platform with another platform's pin and report a
+ * correct note as `wrong-value`. That is the same false-accusation shape as an unread entry,
+ * reached from the opposite direction.
+ *
+ * Keying the evidence by platform is deliberately not the fix made here. No fixture in this corpus
+ * solves more than one platform, so the model would be designed against a shape nobody has written,
+ * and a version claim in such a fixture would need to name a platform before it could be checked at
+ * all — which is unanswerable without a real note to read. This stops instead, and the model waits
+ * for the fixture that can inform it.
+ */
+export class MultiPlatformLock extends Error {
+  constructor(environment: string, platforms: readonly string[]) {
+    super(
+      `${environment}: the lock solves ${platforms.join(", ")}, and this reader keys packages by ` +
+        `name alone. Teach it to key by platform, and give the claim a platform to be checked ` +
+        `against, rather than letting one platform's pin answer for another's.`,
+    );
+    this.name = "MultiPlatformLock";
+  }
+}
+
 /** Canonical package name. Conda treats `_` and `-` as distinct; note prose does not. */
 export const canonicalPackageName = (name: string): string => name.toLowerCase().replace(/_/gu, "-");
 
@@ -105,22 +131,34 @@ export async function readPixiEvidence(
   const lock = await readOptional(path.join(environmentDirectory, "pixi.lock"));
   if (lock === undefined) return evidence;
 
+  return { ...evidence, ...readLock(lock, environment) };
+}
+
+/**
+ * The parsing seam, kept separate from the directory read so the shapes a lock can take are
+ * testable without a fixture on disk — including the one no fixture here has.
+ */
+export function readLock(
+  lock: string,
+  environment: string,
+): Pick<PixiEvidence, "lockedPlatforms" | "lockedPackages"> {
+  const lockedPlatforms = [
+    ...new Set([...lock.matchAll(LOCK_PLATFORM)].map(([, name]) => name as string)),
+  ];
+  if (lockedPlatforms.length > 1) throw new MultiPlatformLock(environment, lockedPlatforms);
+
   const lockedPackages = new Map<string, LockedPackage>();
   for (const [, kind, url] of lock.matchAll(LOCK_ARTIFACT)) {
     const locked = kind === "conda" ? readCondaEntry(url as string) : readPypiEntry(url as string);
     if (locked === undefined) throw new UnreadableLockEntry(environment, url as string);
     const key = canonicalPackageName(locked.name);
-    // First occurrence wins: a lock repeats an entry once per environment that uses it, and the
-    // repetitions are the same artifact. This corpus solves one platform per fixture; a fixture
-    // that solved several could resolve one name to several versions, which this would flatten.
+    // First occurrence wins, which is safe only because of the guard above: a lock lists each
+    // artifact once as a definition and again for every environment that references it, and those
+    // repetitions are the same artifact. Repetition across platforms is not, and never gets here.
     if (!lockedPackages.has(key)) lockedPackages.set(key, locked);
   }
 
-  return {
-    ...evidence,
-    lockedPlatforms: [...new Set([...lock.matchAll(LOCK_PLATFORM)].map(([, name]) => name as string))],
-    lockedPackages,
-  };
+  return { lockedPlatforms, lockedPackages };
 }
 
 function readCondaEntry(url: string): LockedPackage | undefined {

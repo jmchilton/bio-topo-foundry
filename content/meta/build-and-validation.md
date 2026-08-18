@@ -122,17 +122,23 @@ is also what makes a note's DOI and its arXiv id checkable against each other. T
 its extraction options separately from the CLI, so a new config field reaches one and not the other;
 the run-matches-replay assertion is what catches that.
 
-**Runtime claims.** `tests/tool-alignment.test.ts` reads the assertions an Environment note makes
-about its own runtime — the platform its lock solved, how many packages it declares, the channel
-they resolve from, the version each is pinned at — and checks each against the `pixi.toml` and
-`pixi.lock` committed beside it. The lock is the record of a solve that already happened, so no
-stage of this fetches, solves, or executes anything.
+**Runtime claims.** `tests/tool-alignment.test.ts` reads the assertions a fixture makes about its
+own runtime — the platform its lock solved, how many packages it declares, the channel they resolve
+from, the version each is pinned at — and checks each against the `pixi.toml` and `pixi.lock`
+committed beside it. The lock is the record of a solve that already happened, so no stage of this
+fetches, solves, or executes anything.
+
+Two artifacts carry those assertions and one grammar reads both: the Environment note, and the
+header comment of the manifest itself. Only whole-line comments are read there — the tables below
+them are the authority the claims are checked against, not prose that could be wrong on its own.
 
 Three properties are deliberate. A claim the runtime cannot falsify is never a failure: `unpinned`
 and `unavailable` are reported apart from `absent` and `wrong-value`, because a fixture that
 declares less is not a fixture caught lying. Evidence the reader cannot decode is not a failure
 either — an unreadable lock entry stops the audit rather than dropping a package, since a claim
-about a package the evidence lacks would otherwise read as a claim the runtime contradicts.
+about a package the evidence lacks would otherwise read as a claim the runtime contradicts. A lock
+that solved more than one platform stops it for the mirror reason: the reader keys packages by name
+alone, so it would answer a claim about one platform with another platform's pin.
 
 And a reviewed decision cannot make a finding hold. A claim struck as an extractor defect is
 withdrawn from the denominator rather than counted as passing, or the instrument could improve its
@@ -216,20 +222,26 @@ stay Foundry-side because the Mold Kind declares them `foundry-only`.
   the syntax, so the rule carries it instead.
 - Nothing checks that a recipe under `recipes/` still builds, or that a fixture's `pixi.lock`
   resolves today. Environment companions are measured for presence, not for freshness.
-- The tool-alignment grammar reads note prose only. A claim written in a `pixi.toml` header comment
-  is invisible to it, and the corpus has carried a wrong one there while the note beside it was
-  correct.
+- A package a fixture takes from an in-repo recipe cannot appear in its lock, so a claim about that
+  package's version is reported unfalsifiable rather than checked. The recipe is the authority and
+  the tool-alignment audit does not read `recipes/`.
 - Tool alignment is tuned for precision over recall, so a claim the grammar declines is a claim
   nobody checked. The report counts the tokens it recognized and declined, which is not a coverage
   measure and cannot be made into one: a claim written in a shape the grammar does not know produces
   no token, so nothing counts it and no figure in the report would reveal it.
-- A channel claim is answered per fixture rather than per package: it holds when any of the
-  fixture's dependencies resolves from the named channel. Every such claim in this corpus is about a
-  fixture that resolves from one channel, so a mixed-channel fixture would need the extractor to
-  keep the subject and quantifier it currently discards.
-- A portability grade is checked for internal consistency, never against a registry. `L4` asserts an
-  observed BioContainer, and no committed file records an observation, so nothing here can tell a
-  correct grade from an optimistic one.
+- A channel claim written as prose names no package, so it is answered per fixture: it holds when
+  any of the fixture's dependencies resolves from the named channel. A pin spec in a manifest header
+  does name one and is answered by that package. Closing the gap for prose needs a quantifier the
+  extractor discards — "the CLI", "both" and "all of them" are three different claims — and no
+  fixture here resolves from more than one channel, so the two questions agree today.
+- No fixture's runtime is checked on more than one platform. Every `pixi.toml` here solves
+  `linux-64` alone, and a lock that solved several is refused rather than read, so what a
+  multi-platform claim would even have to name is an open question rather than a checked one.
+- A portability grade is checked for internal consistency, never against a registry. `L4` now
+  requires a `publication_candidate` in the `CONFIRMED` state, carrying the digest and timestamp of
+  an observation, so the gate can tell a graded claim from an ungrounded one — but the observation
+  itself is a committed record of a past `biopixi verify`, and nothing offline can tell a stale one
+  from a current one.
 - Citation resolution checks identity only: a real paper cited for a claim it does not support
   passes. Design records are outside the audited corpus, and nothing checks the transitive step from
   a domain note's wiki link to the scholarly identifier held by the linked source note.

@@ -90,6 +90,15 @@ function evaluatePackageChannel(claim: ToolClaim, evidence: PixiEvidence): ToolF
       detail: `${claim.environment} has no committed pixi.lock, so the channel its packages resolve from is unknown`,
     };
   }
+  /**
+   * A claim that names its package is answered by that package. Only the pin-spec shape in a
+   * manifest header states a subject; prose channel claims do not, and are answered fixture-wide
+   * below, which is a weaker question — it holds when *any* dependency resolves from the channel.
+   */
+  if (claim.subject !== undefined) {
+    return evaluateNamedPackageChannel(claim, evidence, claim.subject);
+  }
+
   const channelDependencies = evidence.declaredDependencies.filter(
     (name) => !evidence.pathDependencies.includes(name),
   );
@@ -141,6 +150,41 @@ function evaluatePackageChannel(claim: ToolClaim, evidence: PixiEvidence): ToolF
   };
 }
 
+function evaluateNamedPackageChannel(
+  claim: ToolClaim,
+  evidence: PixiEvidence,
+  subject: string,
+): ToolFinding {
+  if (evidence.pathDependencies.map(canonicalPackageName).includes(subject)) {
+    return {
+      claimId: claim.id,
+      verdict: "unpinned",
+      evidenceState: "absent",
+      detail: `${subject} is declared as an in-repo path recipe, so it comes from no channel`,
+    };
+  }
+  const locked = evidence.lockedPackages?.get(subject);
+  if (locked === undefined) {
+    return {
+      claimId: claim.id,
+      verdict: "unavailable",
+      evidenceState: "unavailable",
+      detail: `${claim.environment} declares ${subject}, which the lock does not resolve, so the channel it comes from cannot be established`,
+    };
+  }
+  if (locked.channel === claim.asserted) {
+    return { claimId: claim.id, verdict: "exists", evidenceState: "observed", observed: locked.channel };
+  }
+  return {
+    claimId: claim.id,
+    verdict: "wrong-value",
+    evidenceState: "observed",
+    severity: "error",
+    observed: locked.channel,
+    detail: `note claims ${subject} comes from ${claim.asserted}; the lock resolves it from ${locked.channel}`,
+  };
+}
+
 function evaluatePackageVersion(claim: ToolClaim, evidence: PixiEvidence): ToolFinding {
   if (evidence.lockedPackages === undefined) {
     return {
@@ -151,6 +195,24 @@ function evaluatePackageVersion(claim: ToolClaim, evidence: PixiEvidence): ToolF
     };
   }
   const locked = claim.subject === undefined ? undefined : evidence.lockedPackages.get(claim.subject);
+  /**
+   * A package the fixture takes from an in-repo recipe cannot appear in the lock as a channel
+   * artifact, so its absence there is the expected shape and not a contradiction. The recipe is the
+   * authority for its version, and this checker does not read `recipes/` — so the claim is
+   * unfalsifiable here rather than false, and must not be scored as a failure.
+   */
+  if (
+    locked === undefined &&
+    claim.subject !== undefined &&
+    evidence.pathDependencies.map(canonicalPackageName).includes(claim.subject)
+  ) {
+    return {
+      claimId: claim.id,
+      verdict: "unpinned",
+      evidenceState: "absent",
+      detail: `${claim.subject} is declared as an in-repo path recipe, so no lock entry pins its version; the recipe is the authority and this audit does not read it`,
+    };
+  }
   if (locked === undefined) {
     return {
       claimId: claim.id,

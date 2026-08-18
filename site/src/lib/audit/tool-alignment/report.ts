@@ -15,16 +15,21 @@ export function renderToolAlignmentMarkdown(run: ToolAlignmentRun): string {
 
   lines.push("# Environment runtime-claim audit", "");
   lines.push(
-    "Runtime claims in environment notes, checked against the pixi manifest and lock committed",
-    "beside them. Nothing here solves, fetches, or executes: the lock is the record of a solve that",
-    "already happened, so every verdict is reproducible offline.",
+    "Runtime claims in environment notes and in the header comment of the manifest beside them,",
+    "checked against that manifest and its lock. Nothing here solves, fetches, or executes: the",
+    "lock is the record of a solve that already happened, so every verdict is reproducible offline.",
     "",
-    "This is the Skill Integrity Audit's S2 for this Foundry. It audits what a note asserts about",
+    "This is the Skill Integrity Audit's S2 for this Foundry. It audits what a fixture asserts about",
     "its own runtime, not whether a cast skill invokes the tool correctly.",
     "",
   );
 
   lines.push(`- Extracted: **${summary.extracted}**`);
+  // Which file a claim came from is worth reporting: the two describe one runtime, and a corpus
+  // where only one of them is ever read is a corpus with an unaudited half.
+  for (const [artifactKind, count] of countByArtifact(run)) {
+    lines.push(`  - from \`${artifactKind}\`: **${count}**`);
+  }
   if (summary.withdrawn > 0) {
     lines.push(`- Withdrawn on review as extractor defects: **${summary.withdrawn}**`);
   }
@@ -105,4 +110,12 @@ export function renderToolAlignmentMarkdown(run: ToolAlignmentRun): string {
   }
 
   return `${lines.join("\n").trimEnd()}\n`;
+}
+
+function countByArtifact(run: ToolAlignmentRun): [string, number][] {
+  const counts = new Map<string, number>();
+  for (const claim of run.claims) {
+    counts.set(claim.span.artifactKind, (counts.get(claim.span.artifactKind) ?? 0) + 1);
+  }
+  return [...counts].sort(([left], [right]) => left.localeCompare(right));
 }

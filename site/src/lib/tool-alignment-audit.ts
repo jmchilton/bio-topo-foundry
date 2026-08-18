@@ -13,7 +13,12 @@ import {
   toolAlignmentRunSchema,
   type ToolAlignmentRun,
 } from "./audit/tool-alignment/audit";
-import { extractToolClaims, type ExtractionDiagnostic, type ToolClaim } from "./audit/tool-alignment/extract";
+import {
+  extractManifestClaims,
+  extractToolClaims,
+  type ExtractionDiagnostic,
+  type ToolClaim,
+} from "./audit/tool-alignment/extract";
 import { canonicalPackageName, readPixiEvidence, type PixiEvidence } from "./audit/tool-alignment/pixi";
 import { renderToolAlignmentMarkdown } from "./audit/tool-alignment/report";
 
@@ -88,6 +93,18 @@ export async function scanToolClaims(): Promise<ToolAlignmentScan> {
     const scan = extractToolClaims(environment, artifactPath, note, knownPackages);
     claims.push(...scan.claims);
     diagnostics.push(...scan.diagnostics);
+
+    // The manifest's own header comment, which asserts the same four things about the same runtime
+    // and sits close enough to the tables to be the easier of the two to forget.
+    const manifestPath = `${ENVIRONMENTS_DIRECTORY}/${environment}/pixi.toml`;
+    const manifest = extractManifestClaims(
+      environment,
+      manifestPath,
+      await readFile(auditPath(manifestPath), "utf8"),
+      knownPackages,
+    );
+    claims.push(...manifest.claims);
+    diagnostics.push(...manifest.diagnostics);
   }
 
   return { claims, diagnostics, evidence };
