@@ -60,19 +60,19 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 
 | Source | Described identity | Resolver evidence | Review note |
 |---|---|---|---|
-| `content/applications/protein-flexibility.md:162` | Utility of B-Factors in Protein Science: Interpreting Rigidity, Flexibility, and Internal Motion and Engineering Thermostability | crossref `doi:10.1021/acs.chemrev.8b00290` → doi:10.1021/acs.chemrev.8b00290 | — |
-| `content/applications/protein-flexibility.md:163` | TLS from fundamentals to practice | crossref `doi:10.1080/0889311x.2013.835806` → doi:10.1080/0889311x.2013.835806 | — |
-| `content/applications/protein-flexibility.md:164` | Fast and anisotropic flexibility-rigidity index for protein flexibility and fluctuation analysis | crossref `doi:10.1063/1.4882258` → doi:10.1063/1.4882258 | — |
-| `content/applications/protein-flexibility.md:165` | Blind prediction of protein B-factor and flexibility | crossref `doi:10.1063/1.5048469` → doi:10.1063/1.5048469 | — |
-| `content/applications/protein-flexibility.md:166` | Persistent Sheaf Laplacian Analysis of Protein Flexibility | crossref `doi:10.1021/acs.jpcb.5c01287` → doi:10.1021/acs.jpcb.5c01287 | — |
-| `content/applications/protein-flexibility.md:167` | Correction to 'Persistent Sheaf Laplacian Analysis of Protein Flexibility' | crossref `doi:10.1021/acs.jpcb.5c03679` → doi:10.1021/acs.jpcb.5c03679 | — |
-| `content/applications/protein-flexibility.md:168` | Multiscale Differential Geometry Learning for Protein Flexibility Analysis | crossref `doi:10.1002/jcc.70073` → doi:10.1002/jcc.70073 | — |
-| `content/applications/protein-flexibility.md:169` | Commutative algebra learning for protein flexibility analysis | openalex `arxiv:2607.00879` → arxiv:2607.00879 | — |
-| `content/applications/protein-flexibility.md:170` | Weighted Hodge Laplacians on Manifolds with Boundary | openalex `arxiv:2608.00244` → arxiv:2608.00244 | — |
-| `content/applications/protein-flexibility.md:171` | Fast prediction of protein flexibility | crossref `doi:10.1093/bioinformatics/btag175` → doi:10.1093/bioinformatics/btag175 | — |
-| `content/applications/protein-flexibility.md:172` | ProDy: Protein Dynamics Inferred from Theory and Experiments | crossref `doi:10.1093/bioinformatics/btr168` → doi:10.1093/bioinformatics/btr168 | — |
-| `content/applications/protein-flexibility.md:173` | OPUS-BFactor: Predicting Protein B-Factor with Sequence and Structure Information | crossref `doi:10.3390/molecules30122570` → doi:10.3390/molecules30122570 | — |
-| `content/applications/protein-flexibility.md:174` | Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential | crossref `doi:10.1016/s1359-0278(97)00024-2` → doi:10.1016/s1359-0278(97)00024-2 | — |
+| `content/applications/protein-flexibility.md:171` | Utility of B-Factors in Protein Science: Interpreting Rigidity, Flexibility, and Internal Motion and Engineering Thermostability | crossref `doi:10.1021/acs.chemrev.8b00290` → doi:10.1021/acs.chemrev.8b00290 | — |
+| `content/applications/protein-flexibility.md:172` | TLS from fundamentals to practice | crossref `doi:10.1080/0889311x.2013.835806` → doi:10.1080/0889311x.2013.835806 | — |
+| `content/applications/protein-flexibility.md:173` | Fast and anisotropic flexibility-rigidity index for protein flexibility and fluctuation analysis | crossref `doi:10.1063/1.4882258` → doi:10.1063/1.4882258 | — |
+| `content/applications/protein-flexibility.md:174` | Blind prediction of protein B-factor and flexibility | crossref `doi:10.1063/1.5048469` → doi:10.1063/1.5048469 | — |
+| `content/applications/protein-flexibility.md:175` | Persistent Sheaf Laplacian Analysis of Protein Flexibility | crossref `doi:10.1021/acs.jpcb.5c01287` → doi:10.1021/acs.jpcb.5c01287 | — |
+| `content/applications/protein-flexibility.md:176` | Correction to 'Persistent Sheaf Laplacian Analysis of Protein Flexibility' | crossref `doi:10.1021/acs.jpcb.5c03679` → doi:10.1021/acs.jpcb.5c03679 | — |
+| `content/applications/protein-flexibility.md:177` | Multiscale Differential Geometry Learning for Protein Flexibility Analysis | crossref `doi:10.1002/jcc.70073` → doi:10.1002/jcc.70073 | — |
+| `content/applications/protein-flexibility.md:178` | Commutative algebra learning for protein flexibility analysis | openalex `arxiv:2607.00879` → arxiv:2607.00879 | — |
+| `content/applications/protein-flexibility.md:179` | Weighted Hodge Laplacians on Manifolds with Boundary | openalex `arxiv:2608.00244` → arxiv:2608.00244 | — |
+| `content/applications/protein-flexibility.md:180` | Fast prediction of protein flexibility | crossref `doi:10.1093/bioinformatics/btag175` → doi:10.1093/bioinformatics/btag175 | — |
+| `content/applications/protein-flexibility.md:181` | ProDy: Protein Dynamics Inferred from Theory and Experiments | crossref `doi:10.1093/bioinformatics/btr168` → doi:10.1093/bioinformatics/btr168 | — |
+| `content/applications/protein-flexibility.md:182` | OPUS-BFactor: Predicting Protein B-Factor with Sequence and Structure Information | crossref `doi:10.3390/molecules30122570` → doi:10.3390/molecules30122570 | — |
+| `content/applications/protein-flexibility.md:183` | Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential | crossref `doi:10.1016/s1359-0278(97)00024-2` → doi:10.1016/s1359-0278(97)00024-2 | — |
 | `content/packages/hiponet.md:22` | HiPoNet: A Multi-View Simplicial Complex Network for High Dimensional Point-Cloud and Single-Cell data | openalex `arxiv:2502.07746` → arxiv:2502.07746; citation-metadata-page `url:https://proceedings.neurips.cc/paper_files/paper/2025/hash/b284aad9fb5c6d74b9535a30ece69e1c-Abstract-Conference.html` → doi:10.52202/085713-4107 | — |
 | `content/packages/hiponet.md:24` | doi:10.48550/arxiv.2502.07746; arxiv:2502.07746 | openalex `arxiv:2502.07746` → arxiv:2502.07746 | — |
 | `content/packages/hiponet.md:238` | HiPoNet: A Multi-View Simplicial Complex Network for High Dimensional Point-Cloud and Single-Cell data | citation-metadata-page `url:https://proceedings.neurips.cc/paper_files/paper/2025/hash/b284aad9fb5c6d74b9535a30ece69e1c-Abstract-Conference.html` → doi:10.52202/085713-4107 | — |
