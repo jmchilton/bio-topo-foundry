@@ -7,16 +7,16 @@ lock is the record of a solve that already happened, so every verdict is reprodu
 This is the Skill Integrity Audit's S2 for this Foundry. It audits what a fixture asserts about
 its own runtime, not whether a cast skill invokes the tool correctly.
 
-- Extracted: **77**
+- Extracted: **78**
   - from `environment-manifest`: **49**
-  - from `environment-note`: **28**
-- Assessed: **77**
-- Holds: **71**
+  - from `environment-note`: **29**
+- Assessed: **78**
+- Holds: **72**
 - Contradicted by the runtime: **0**
 - Names something the runtime lacks: **0**
 - Not falsifiable (`unpinned`): **3**
 - Not checkable (`unavailable`): **3**
-- Recognized tokens declined by a pre-filter: **112**
+- Recognized tokens declined by a pre-filter: **110**
 
 Every rate here is over **assessed**, not over everything extracted: a claim review struck as
 an extractor defect was never a claim, and letting it score as one would let the instrument

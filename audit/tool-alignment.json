@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-18T20:19:37.656Z",
+  "generatedAt": "2026-08-18T20:51:25.312Z",
   "corpus": {
-    "digest": "85fb52ced6a5466b3888841b89c924263dd08bbe6f069a4334d733796d618105",
-    "claimCount": 77,
-    "headRevision": "8a3c0780b9cf3c7b64bbc7296a74b83010840d3f",
+    "digest": "59caef76367a19b611317aad37f212e36a5187eb603234f70d4120209a1df8fc",
+    "claimCount": 78,
+    "headRevision": "569532089843390c4747df390b8c0f84d8412f30",
     "workingTreeDirty": true
   },
   "claims": [
@@ -837,7 +837,22 @@
       "context": "(bioconda phate=2.0.0, 2026-07-30;"
     },
     {
-      "id": "1092646911c1a292",
+      "id": "950255e87c7dbc07",
+      "kind": "package-channel",
+      "environment": "prody",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactKind": "environment-note",
+        "artifactPath": "content/environments/prody/index.md",
+        "startLine": 23,
+        "endLine": 23,
+        "sourceText": "grades L3. conda-forge builds 2.6.1 for linux-64 and osx-64 only, and has never built `prody` for",
+        "sourceDigest": "3c6a398f596ea12e5fa3d13ee2131e348195552f3f5310dc5b967a5be86a4c94"
+      },
+      "context": "conda-forge builds 2.6.1 for linux-64 and osx-64 only, and has never built `prody` for osx-arm64 at any version, so an arm64 macOS reader cannot install this fixture natively whatever the platform set says."
+    },
+    {
+      "id": "030949e40b33202b",
       "kind": "package-channel",
       "environment": "prody",
       "asserted": "conda-forge",
@@ -847,13 +862,13 @@
         "artifactPath": "content/environments/prody/pixi.toml",
         "startLine": 5,
         "endLine": 5,
-        "sourceText": "# (conda-forge prody=2.6.1, MIT; checked 2026-08-18)",
-        "sourceDigest": "a1d4f511a3943e076587bbfb9bbdfed812371a100f2add6ccc769f5bd878bba1"
+        "sourceText": "# (conda-forge prody=2.6.1; checked 2026-08-18)",
+        "sourceDigest": "38534e7613356d166a4e1546ef30a04b35b169583b034fab40c8d77b66832029"
       },
-      "context": "(conda-forge prody=2.6.1, MIT;"
+      "context": "(conda-forge prody=2.6.1;"
     },
     {
-      "id": "a92270154454f3f1",
+      "id": "fb33ffe4a0b0a6ba",
       "kind": "package-version",
       "environment": "prody",
       "asserted": "2.6.1",
@@ -863,10 +878,10 @@
         "artifactPath": "content/environments/prody/pixi.toml",
         "startLine": 5,
         "endLine": 5,
-        "sourceText": "# (conda-forge prody=2.6.1, MIT; checked 2026-08-18)",
-        "sourceDigest": "a1d4f511a3943e076587bbfb9bbdfed812371a100f2add6ccc769f5bd878bba1"
+        "sourceText": "# (conda-forge prody=2.6.1; checked 2026-08-18)",
+        "sourceDigest": "38534e7613356d166a4e1546ef30a04b35b169583b034fab40c8d77b66832029"
       },
-      "context": "(conda-forge prody=2.6.1, MIT;"
+      "context": "(conda-forge prody=2.6.1;"
     },
     {
       "id": "fc1264560ed5adcd",
@@ -1641,7 +1656,7 @@
       "withdrawn": false
     },
     {
-      "claimId": "1092646911c1a292",
+      "claimId": "950255e87c7dbc07",
       "verdict": "exists",
       "evidenceState": "observed",
       "observed": "conda-forge",
@@ -1649,7 +1664,15 @@
       "withdrawn": false
     },
     {
-      "claimId": "a92270154454f3f1",
+      "claimId": "030949e40b33202b",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "fb33ffe4a0b0a6ba",
       "verdict": "exists",
       "evidenceState": "observed",
       "observed": "2.6.1",
@@ -2174,61 +2197,43 @@
       "artifactPath": "content/environments/prody/index.md",
       "line": 23,
       "reason": "build-subject",
-      "text": "fixture grades L3. conda-forge also has no osx-arm64 build, only linux-64, osx-64, and win-64,"
+      "text": "grades L3. conda-forge builds 2.6.1 for linux-64 and osx-64 only, and has never built `prody` for"
     },
     {
       "artifactPath": "content/environments/prody/index.md",
       "line": 23,
       "reason": "build-subject",
-      "text": "fixture grades L3. conda-forge also has no osx-arm64 build, only linux-64, osx-64, and win-64,"
-    },
-    {
-      "artifactPath": "content/environments/prody/index.md",
-      "line": 23,
-      "reason": "build-subject",
-      "text": "fixture grades L3. conda-forge also has no osx-arm64 build, only linux-64, osx-64, and win-64,"
-    },
-    {
-      "artifactPath": "content/environments/prody/index.md",
-      "line": 23,
-      "reason": "build-subject",
-      "text": "fixture grades L3. conda-forge also has no osx-arm64 build, only linux-64, osx-64, and win-64,"
+      "text": "grades L3. conda-forge builds 2.6.1 for linux-64 and osx-64 only, and has never built `prody` for"
     },
     {
       "artifactPath": "content/environments/prody/index.md",
       "line": 24,
-      "reason": "no-subject",
-      "text": "which is why the platform set is not widened here and why runs happen in a linux-64 container."
+      "reason": "build-subject",
+      "text": "osx-arm64 at any version, so an arm64 macOS reader cannot install this fixture natively whatever"
     },
     {
       "artifactPath": "content/environments/prody/index.md",
       "line": 22,
       "reason": "no-subject",
-      "text": "conda-forge, locked green, MIT. Bioconda has no `prody` at all, so no container follows and the"
+      "text": "conda-forge, locked green. Bioconda has no `prody` at all, so no container follows and the fixture"
     },
     {
       "artifactPath": "content/environments/prody/index.md",
       "line": 22,
       "reason": "no-subject",
-      "text": "conda-forge, locked green, MIT. Bioconda has no `prody` at all, so no container follows and the"
+      "text": "conda-forge, locked green. Bioconda has no `prody` at all, so no container follows and the fixture"
     },
     {
       "artifactPath": "content/environments/prody/index.md",
       "line": 23,
-      "reason": "no-subject",
-      "text": "fixture grades L3. conda-forge also has no osx-arm64 build, only linux-64, osx-64, and win-64,"
+      "reason": "unknown-package",
+      "text": "grades L3. conda-forge builds 2.6.1 for linux-64 and osx-64 only, and has never built `prody` for"
     },
     {
       "artifactPath": "content/environments/prody/pixi.toml",
       "line": 4,
       "reason": "build-subject",
-      "text": "# There is also no osx-arm64 build, so this fixture runs under linux-64 or not at all."
-    },
-    {
-      "artifactPath": "content/environments/prody/pixi.toml",
-      "line": 4,
-      "reason": "build-subject",
-      "text": "# There is also no osx-arm64 build, so this fixture runs under linux-64 or not at all."
+      "text": "# The platform set follows the corpus convention; conda-forge has never built prody for osx-arm64."
     },
     {
       "artifactPath": "content/environments/prody/pixi.toml",
@@ -2241,6 +2246,12 @@
       "line": 3,
       "reason": "no-subject",
       "text": "# only: bioconda has no `prody` at all, so no container follows and the fixture grades L3."
+    },
+    {
+      "artifactPath": "content/environments/prody/pixi.toml",
+      "line": 4,
+      "reason": "no-subject",
+      "text": "# The platform set follows the corpus convention; conda-forge has never built prody for osx-arm64."
     },
     {
       "artifactPath": "content/environments/pydowker/index.md",
@@ -2508,17 +2519,17 @@
     }
   ],
   "summary": {
-    "extracted": 77,
+    "extracted": 78,
     "withdrawn": 0,
-    "assessed": 77,
+    "assessed": 78,
     "byVerdict": {
-      "exists": 71,
+      "exists": 72,
       "absent": 0,
       "wrong-value": 0,
       "unpinned": 3,
       "unavailable": 3
     },
-    "recognizedTokensDeclined": 112,
+    "recognizedTokensDeclined": 110,
     "review": {
       "required": 0,
       "completed": 0
