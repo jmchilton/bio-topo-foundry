@@ -241,12 +241,15 @@ stay Foundry-side because the Mold Kind declares them `foundry-only`.
 - Tool alignment is tuned for precision over recall, so a claim the grammar declines is a claim
   nobody checked. The report counts the tokens it recognized and declined, which is not a coverage
   measure and cannot be made into one: a claim written in a shape the grammar does not know produces
-  no token, so nothing counts it and no figure in the report would reveal it.
-- A channel claim written as prose names no package, so it is answered per fixture: it holds when
-  any of the fixture's dependencies resolves from the named channel. A pin spec in a manifest header
-  does name one and is answered by that package. Closing the gap for prose needs a quantifier the
-  extractor discards — "the CLI", "both" and "all of them" are three different claims — and no
-  fixture here resolves from more than one channel, so the two questions agree today.
+  no token, so nothing counts it and no figure in the report would reveal it. Declining is not the
+  safe direction either: two pre-filters between them hid the one claim this corpus carried that its
+  own lock contradicted, which is what a pass rate over declined prose is worth.
+- A channel claim is answered by the package it names, where it names one — a manifest pin spec, or
+  prose binding a channel by preposition to packages beside it. Prose that names no package is
+  answered per fixture instead: it holds when any of the fixture's dependencies resolves from that
+  channel. The subject is kept; the quantifier is not, so a list binds as a claim about its last
+  member and the rest goes unread — "the CLI", "both" and "all of them" are three different claims.
+  No fixture here resolves from more than one channel, so the two questions agree today.
 - No fixture's runtime is checked on more than one platform. Every `pixi.toml` here solves
   `linux-64` alone, and a lock that solved several is refused rather than read, so what a
   multi-platform claim would even have to name is an open question rather than a checked one.

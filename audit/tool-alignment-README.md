@@ -133,7 +133,29 @@ not this fixture:
 The grammar now declines a sentence naming a foreign lockfile or an environment directory other
 than its own, and counts the refusal as `other-runtime`.
 
-All seven are now regression tests in `site/tests/tool-alignment.test.ts`. This ordering is the
+Two more went the other way, and they are the ones worth reading twice: a pre-filter that declines
+too much is not the safe direction, it is a checker that reports a clean corpus it never read. Both
+fired on one sentence in `open-topoqa-featurizer`'s header — "numpy/gudhi/biopython from conda-forge
+and `dssp` (…) from bioconda — so they resolve from channels rather than sibling path recipes" —
+and between them they hid the only claim in this corpus the lock actually contradicts:
+
+- **Contrast read as condition.** `rather than` and `instead of` sat in the counterfactual list.
+  They are contrast, not condition, and English uses them to say what a thing *is* at least as often
+  as what it would otherwise be. A counterfactual needs a modal or a conditional; a contrast word on
+  its own is not one.
+- **Two claims read as a comparison.** A sentence naming two channels was refused whole, because
+  the shape that defeated the first grammar was a comparison — "the Bioconda CLI here, the
+  conda-forge library there". But a comparison names two channels for *one* package, and this names
+  one channel for each of *two*. Each channel bound by a preposition now takes the packages named
+  between it and the channel before it, which makes the sentence two subject-bearing claims and
+  needs no window to tune.
+
+What the sentence asserted was that `dssp` came from Bioconda. The `pixi.lock` beside it resolves
+`dssp` from conda-forge, and `content/environments/dssp/` — the fixture that exists to package it —
+says outright that Bioconda has no `dssp` at all. The note repeated it. Both are repaired, and both
+are now checked rather than declined.
+
+All nine are now regression tests in `site/tests/tool-alignment.test.ts`. This ordering is the
 point rather than an anecdote: ScientistOne's own audit found only two to four of twelve flagged
 provenance failures genuine, the rest extraction artifacts, and an audit whose false-positive rate
 exceeds its finding rate is worse than no audit because every false positive is an accusation.
@@ -173,12 +195,17 @@ other side, answering a claim about one platform with another platform's pin.
 
 ## Known limits
 
-- **A channel claim without a subject is answered per-fixture.** A pin spec names its package and is
-  answered by that package. Prose does not: "it resolves from conda-forge" holds when *any* of the
-  fixture's channel dependencies does, which is a weaker question and the wrong one in a
-  mixed-channel fixture. No fixture here is mixed, so the two agree today. Closing it needs the
-  extractor to keep a quantifier as well as a subject — "the CLI", "both", "all of them" are three
-  different claims — and no sentence in this corpus distinguishes them.
+- **A channel claim without a subject is answered per-fixture.** Two shapes name their package and
+  are answered by it: the manifest's pin spec, and prose that binds a channel with a preposition to
+  packages it names. Prose that binds nothing does not — "it resolves from conda-forge" holds when
+  *any* of the fixture's channel dependencies does, which is a weaker question and the wrong one in
+  a mixed-channel fixture. No fixture here is mixed, so the two agree today.
+- **A bound channel is read as a claim about the last package named, not about all of them.** The
+  subject is now kept; the quantifier still is not. "numpy, gudhi and biopython from conda-forge"
+  becomes one claim about `biopython`, and the other two stay unread rather than assumed — "the
+  CLI", "both" and "all of them" are three different claims and no sentence here distinguishes them.
+  This is the remaining half of #81, and it is why a declined token and an unread list member are
+  counted nowhere: see the note on coverage above.
 - **No fixture is checked on more than one platform.** The reader keys packages by name, first
   occurrence wins, which is right only while one name means one artifact. Every `pixi.toml` here
   solves `linux-64` alone, so that holds today; a lock that solved several is refused rather than
@@ -191,6 +218,8 @@ other side, answering a claim about one platform with another platform's pin.
   `recipes/<name>/recipe.yaml` is the authority and this audit does not read it, which leaves the
   `kmapper` and `topometry-1.1` version claims unfalsifiable rather than checked. Before the manifest
   headers were read this reported `absent`, which accused two correct files.
-- **The two files are read, and nothing else is.** A recipe's own run requirements are asserted in
-  header prose (`open-topoqa-featurizer` names four) and answered by no authority this audit holds.
-  Those sentences decline; they do not fail.
+- **The two files are read, and nothing else is.** `recipes/` is not opened, so a header sentence
+  about what a recipe builds, patches or requires is answered by nothing here. Those sentences
+  decline; they do not fail. This is narrower than it first looked: a recipe's run dependencies do
+  reach the fixture's own `pixi.lock`, so a claim about where they come from is answerable and is
+  now answered — that was the `open-topoqa-featurizer` finding above, not a missing authority.

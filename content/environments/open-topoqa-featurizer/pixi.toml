@@ -6,9 +6,9 @@
 # coordinate defect fixed by construction and NO unlicensed code in the path.
 #
 # Stages ONE in-repo recipe (the featurizer). Unlike the sibling open-topodockq-featurizer,
-# every run dep is on a public channel — numpy/gudhi/biopython from conda-forge and `dssp`
-# (mkdssp binary, for 8-state SS + relative SASA) from bioconda — so they resolve from
-# channels rather than sibling path recipes.
+# every run dep is on a public channel — numpy/gudhi/biopython from conda-forge, and `dssp`
+# (mkdssp binary, for 8-state SS + relative SASA) from conda-forge too, because Bioconda has
+# no `dssp` at all — so they resolve from channels rather than sibling path recipes.
 [workspace]
 preview = ["pixi-build"]
 channels = ["conda-forge", "bioconda"]

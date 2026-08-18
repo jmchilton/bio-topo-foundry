@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-17T19:48:11.658Z",
+  "generatedAt": "2026-08-18T15:59:05.816Z",
   "corpus": {
-    "digest": "14c38ed9e58b83685a28682e7f36fbc6d6159a7444563e7899963d260d642d9b",
-    "claimCount": 71,
-    "headRevision": "1702372da575b119f041280bbdb8c547091b1b77",
-    "workingTreeDirty": true
+    "digest": "1232edeabbbdf6b1803e65369bad1d5d634e89512f9a0321671f5e00a4e5489f",
+    "claimCount": 75,
+    "headRevision": "301f37e9a357b11d734ef7174615e8d7e93684b0",
+    "workingTreeDirty": false
   },
   "claims": [
     {
@@ -530,12 +530,60 @@
       "span": {
         "artifactKind": "environment-note",
         "artifactPath": "content/environments/open-topoqa-featurizer/index.md",
-        "startLine": 28,
-        "endLine": 28,
+        "startLine": 29,
+        "endLine": 29,
         "sourceText": "with a solved linux-64 lock; publishing the recipe reaches L3 or L4.",
         "sourceDigest": "5294453fce6bec8243dd5dbf54da98153b4924391018ac31a07153590118e7c2"
       },
       "context": "Verified green with a solved linux-64 lock;"
+    },
+    {
+      "id": "aa99553bf005c728",
+      "kind": "package-channel",
+      "environment": "open-topoqa-featurizer",
+      "asserted": "conda-forge",
+      "subject": "dssp",
+      "span": {
+        "artifactKind": "environment-note",
+        "artifactPath": "content/environments/open-topoqa-featurizer/index.md",
+        "startLine": 27,
+        "endLine": 27,
+        "sourceText": "package behind [[dssp-environment]], which supplies `mkdssp`, all from conda-forge, because",
+        "sourceDigest": "d638efb3f4ee10650c4b058c90232836017bddd8ef0e15883502284d32b0fc91"
+      },
+      "context": "Every runtime dependency is on public channels — numpy, gudhi, biopython, and the `dssp` package behind [[dssp-environment]], which supplies `mkdssp`, all from conda-forge, because Bioconda carries no `dssp` at all."
+    },
+    {
+      "id": "ff4b37e5d72a25ff",
+      "kind": "package-channel",
+      "environment": "open-topoqa-featurizer",
+      "asserted": "conda-forge",
+      "subject": "biopython",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/open-topoqa-featurizer/pixi.toml",
+        "startLine": 9,
+        "endLine": 9,
+        "sourceText": "# every run dep is on a public channel — numpy/gudhi/biopython from conda-forge, and `dssp`",
+        "sourceDigest": "0e5133ab5e40e535ab93c2fbfe8ea815829c7d275522b7e634bccf596879bfa9"
+      },
+      "context": "Unlike the sibling open-topodockq-featurizer, every run dep is on a public channel — numpy/gudhi/biopython from conda-forge, and `dssp` (mkdssp binary, for 8-state SS + relative SASA) from conda-forge too, because Bioconda has no `dssp` at all — so they resolve from channels rather than sibling path recipes."
+    },
+    {
+      "id": "4eb16f6e7594d887",
+      "kind": "package-channel",
+      "environment": "open-topoqa-featurizer",
+      "asserted": "conda-forge",
+      "subject": "dssp",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/open-topoqa-featurizer/pixi.toml",
+        "startLine": 10,
+        "endLine": 10,
+        "sourceText": "# (mkdssp binary, for 8-state SS + relative SASA) from conda-forge too, because Bioconda has",
+        "sourceDigest": "193f2ee3cfbf8b54d4998c0c976352f728c32cc59962f35e2263342abcddc97a"
+      },
+      "context": "Unlike the sibling open-topodockq-featurizer, every run dep is on a public channel — numpy/gudhi/biopython from conda-forge, and `dssp` (mkdssp binary, for 8-state SS + relative SASA) from conda-forge too, because Bioconda has no `dssp` at all — so they resolve from channels rather than sibling path recipes."
     },
     {
       "id": "5ae21cddd962d027",
@@ -789,6 +837,22 @@
       "context": "(bioconda phate=2.0.0, 2026-07-30;"
     },
     {
+      "id": "fc1264560ed5adcd",
+      "kind": "package-channel",
+      "environment": "pydowker",
+      "asserted": "conda-forge",
+      "subject": "scipy",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/pydowker/pixi.toml",
+        "startLine": 8,
+        "endLine": 8,
+        "sourceText": "# and scipy are pulled transitively from conda-forge. rivet is a compiled C++ recipe → this env is",
+        "sourceDigest": "e17eb0c2a4c2abee08bdfbcc5c3096a9e009caefe48b9c0487602981e2559109"
+      },
+      "context": "gudhi, numpy and scipy are pulled transitively from conda-forge."
+    },
+    {
       "id": "1b38e7032eb01ac1",
       "kind": "package-channel",
       "environment": "ripser-cpp",
@@ -1029,6 +1093,7 @@
       "kind": "package-channel",
       "environment": "topometry",
       "asserted": "conda-forge",
+      "subject": "topometry",
       "span": {
         "artifactKind": "environment-note",
         "artifactPath": "content/environments/topometry/index.md",
@@ -1392,6 +1457,30 @@
       "withdrawn": false
     },
     {
+      "claimId": "aa99553bf005c728",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "ff4b37e5d72a25ff",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "4eb16f6e7594d887",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
       "claimId": "5ae21cddd962d027",
       "verdict": "exists",
       "evidenceState": "observed",
@@ -1516,6 +1605,14 @@
       "verdict": "exists",
       "evidenceState": "observed",
       "observed": "2.0.0",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "fc1264560ed5adcd",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
       "effectiveVerdict": "exists",
       "withdrawn": false
     },
@@ -1877,9 +1974,9 @@
     },
     {
       "artifactPath": "content/environments/open-topoqa-featurizer/index.md",
-      "line": 26,
+      "line": 28,
       "reason": "no-subject",
-      "text": "Every runtime dependency is on public channels — numpy, gudhi, biopython, and Bioconda's"
+      "text": "Bioconda carries no `dssp` at all. So the fixture stages just one path recipe. Verified green"
     },
     {
       "artifactPath": "content/environments/open-topoqa-featurizer/pixi.toml",
@@ -1901,15 +1998,9 @@
     },
     {
       "artifactPath": "content/environments/open-topoqa-featurizer/pixi.toml",
-      "line": 9,
-      "reason": "hypothetical",
-      "text": "# every run dep is on a public channel — numpy/gudhi/biopython from conda-forge and `dssp`"
-    },
-    {
-      "artifactPath": "content/environments/open-topoqa-featurizer/pixi.toml",
       "line": 10,
-      "reason": "hypothetical",
-      "text": "# (mkdssp binary, for 8-state SS + relative SASA) from bioconda — so they resolve from"
+      "reason": "no-subject",
+      "text": "# (mkdssp binary, for 8-state SS + relative SASA) from conda-forge too, because Bioconda has"
     },
     {
       "artifactPath": "content/environments/open-topoqa-scorer/index.md",
@@ -2045,12 +2136,6 @@
     },
     {
       "artifactPath": "content/environments/pydowker/pixi.toml",
-      "line": 8,
-      "reason": "no-subject",
-      "text": "# and scipy are pulled transitively from conda-forge. rivet is a compiled C++ recipe → this env is"
-    },
-    {
-      "artifactPath": "content/environments/pydowker/pixi.toml",
       "line": 10,
       "reason": "no-subject",
       "text": "# redistributable → L3-eligible once the recipes are upstreamed to conda-forge)."
@@ -2166,7 +2251,7 @@
     {
       "artifactPath": "content/environments/scvelo/index.md",
       "line": 19,
-      "reason": "hypothetical",
+      "reason": "no-subject",
       "text": "conda-forge, locked green. Bioconda's scvelo is stuck at 0.2.5, so there is no automatic"
     },
     {
@@ -2303,17 +2388,17 @@
     }
   ],
   "summary": {
-    "extracted": 71,
+    "extracted": 75,
     "withdrawn": 0,
-    "assessed": 71,
+    "assessed": 75,
     "byVerdict": {
-      "exists": 65,
+      "exists": 69,
       "absent": 0,
       "wrong-value": 0,
       "unpinned": 3,
       "unavailable": 3
     },
-    "recognizedTokensDeclined": 102,
+    "recognizedTokensDeclined": 100,
     "review": {
       "required": 0,
       "completed": 0
