@@ -11,8 +11,15 @@ import { claimId, sourceTextDigest, type ArtifactSpan } from "../base/claims";
  * could read, and one that does not say how much it read is a number nobody can size.
  */
 
-/** Every claim this checker reads comes from the body of an Environment note. */
-const ARTIFACT_KIND = "environment-note";
+/**
+ * The artifacts this checker reads prose out of.
+ *
+ * A note is the document a reader is pointed at; a manifest header is the comment the person
+ * editing the manifest sees. They assert the same four things about the same runtime, and being
+ * two files is the whole reason the second one drifts.
+ */
+export const artifactKinds = ["environment-note", "environment-manifest"] as const;
+export type ArtifactKind = (typeof artifactKinds)[number];
 
 export const toolClaimKinds = [
   "lock-platform",
@@ -40,7 +47,7 @@ export interface ToolClaim {
 export interface ExtractionDiagnostic {
   artifactPath: string;
   line: number;
-  reason: "build-subject" | "no-subject" | "unknown-package" | "hypothetical";
+  reason: "build-subject" | "no-subject" | "unknown-package" | "hypothetical" | "other-runtime";
   text: string;
 }
 
@@ -77,8 +84,23 @@ const DEPENDENCY_COUNT = /\b(One|Two|Three|Four|Five)\b\s+(?:(?:conda-forge|[Bb]
  * The version must not end on punctuation. A trailing `.` belongs to the sentence, and swallowing
  * it turned `ripser 1.2.1.` into a claim of version `1.2.1.` — a mismatch against a lock that
  * pins exactly what the note says.
+ *
+ * The separator admits `=` and `==` as well as a space, because a manifest header writes its
+ * versions as pin specs — `dionysus=2.2.3` — rather than as prose.
  */
-const PACKAGE_VERSION = /`?\b([A-Za-z][A-Za-z0-9_.-]{2,})`?\s+v?(\d+\.\d+(?:[\w.]*\w)?)/gu;
+const PACKAGE_VERSION =
+  /`?\b([A-Za-z][A-Za-z0-9_.-]{2,})`?(?:\s+|\s*={1,2}\s*)v?(\d+\.\d+(?:[\w.]*\w)?)/gu;
+
+/**
+ * The pin triple: `<channel> <name>=<version>`.
+ *
+ * Manifest headers close on this shape — `(conda-forge dionysus=2.2.3, 2026-07-29)` — and it is the
+ * first channel claim in this corpus that names the package it is about. Prose has to be argued
+ * with, which is what `assertsOwnChannel` does and why it declines so much; a pin spec states its
+ * subject, so it is matched as its own shape instead.
+ */
+const CHANNEL_PIN =
+  /\b(conda-forge|[Bb]ioconda)\s+([A-Za-z][A-Za-z0-9_.-]{2,})\s*={1,2}\s*\d/gu;
 
 /**
  * How far from a platform token to look for the word that says what the claim is about.
@@ -101,6 +123,23 @@ const SUBJECT_WINDOW = 60;
  */
 const HYPOTHETICAL = /\b(?:would|could|should|might|if|unless|instead of|rather than)\b/iu;
 
+/**
+ * A sentence about a runtime that exists but is not this one.
+ *
+ * Both shapes arrived with the manifest headers, and both are the same error as the hypothetical:
+ * the sentence has a subject, and it is not the lock committed beside this file.
+ *
+ * - **Another resolver.** `hiponet`'s header records what upstream pins — "uv.lock pins torch 2.8 /
+ *   numpy 2.3.2 / scanpy 1.11.4" — which is true of upstream's lock and says nothing about this
+ *   fixture's.
+ * - **Another fixture.** A header explains itself by contrast with the neighbour it is not: "WHY
+ *   NOT `content/environments/topometry/`: that env pins conda-forge topometry 0.2.1.1". Reading
+ *   that as this fixture's pin accuses a file for describing its sibling accurately.
+ */
+const FOREIGN_RUNTIME =
+  /\b(?:uv\.lock|poetry\.lock|Cargo\.lock|package-lock\.json|conda-lock|requirements(?:\.txt)?|environment\.yml|\.python-version)\b/iu;
+const ENVIRONMENT_PATH = /content\/environments\/([a-z0-9._-]+)/giu;
+
 interface Block {
   /** The paragraph as one line, so a claim wrapped across source lines still reads as a sentence. */
   text: string;
@@ -110,10 +149,43 @@ interface Block {
   lines: Map<number, string>;
 }
 
+/** Claims in the body of an Environment note. */
 export function extractToolClaims(
   environment: string,
   artifactPath: string,
   noteText: string,
+  knownPackages: ReadonlySet<string>,
+): ToolClaimScan {
+  return scan(environment, "environment-note", artifactPath, noteBlocks(noteText), knownPackages);
+}
+
+/**
+ * Claims in a `pixi.toml` header comment.
+ *
+ * The same grammar reads both, which is the point: a header asserting a channel is asserting the
+ * thing a note asserts, and two grammars would drift apart exactly as the two files do. Only the
+ * step that turns a file into prose differs.
+ */
+export function extractManifestClaims(
+  environment: string,
+  artifactPath: string,
+  manifestText: string,
+  knownPackages: ReadonlySet<string>,
+): ToolClaimScan {
+  return scan(
+    environment,
+    "environment-manifest",
+    artifactPath,
+    commentBlocks(manifestText),
+    knownPackages,
+  );
+}
+
+function scan(
+  environment: string,
+  artifactKind: ArtifactKind,
+  artifactPath: string,
+  prose: readonly Block[],
   knownPackages: ReadonlySet<string>,
 ): ToolClaimScan {
   const claims: ToolClaim[] = [];
@@ -141,7 +213,7 @@ export function extractToolClaims(
       asserted,
       ...(subject === undefined ? {} : { subject }),
       span: {
-        artifactKind: ARTIFACT_KIND,
+        artifactKind,
         artifactPath,
         startLine,
         endLine,
@@ -154,19 +226,28 @@ export function extractToolClaims(
 
   /**
    * Applied ahead of every extractor rather than only the one it bit. The defect is not about
-   * channels: any token in a sentence about a runtime that does not exist describes that runtime,
-   * not this one.
+   * channels: any token in a sentence whose subject is some other runtime — one that does not
+   * exist, one another resolver owns, or one belonging to a different fixture — describes that
+   * runtime and not this one.
    */
-  const hypothetical = (offset: number, block: Block): boolean => {
-    if (!HYPOTHETICAL.test(sentenceAround(block.text, offset))) return false;
-    diagnostics.push(diagnostic(block, offset, artifactPath, "hypothetical"));
+  const notThisRuntime = (offset: number, block: Block): boolean => {
+    const sentence = sentenceAround(block.text, offset);
+    if (HYPOTHETICAL.test(sentence)) {
+      diagnostics.push(diagnostic(block, offset, artifactPath, "hypothetical"));
+      return true;
+    }
+    const elsewhere =
+      FOREIGN_RUNTIME.test(sentence) ||
+      [...sentence.matchAll(ENVIRONMENT_PATH)].some(([, slug]) => slug !== environment);
+    if (!elsewhere) return false;
+    diagnostics.push(diagnostic(block, offset, artifactPath, "other-runtime"));
     return true;
   };
 
-  for (const block of blocks(noteText)) {
+  for (const block of prose) {
     for (const match of block.text.matchAll(PLATFORM)) {
       const offset = match.index;
-      if (hypothetical(offset, block)) continue;
+      if (notThisRuntime(offset, block)) continue;
       const subject = nearestSubject(block.text, offset, match[0].length);
       if (subject === "build") {
         diagnostics.push(diagnostic(block, offset, artifactPath, "build-subject"));
@@ -182,12 +263,29 @@ export function extractToolClaims(
     for (const match of block.text.matchAll(DEPENDENCY_COUNT)) {
       const count = COUNT_WORDS.get(match[1].toLowerCase());
       if (count === undefined) continue;
-      if (hypothetical(match.index, block)) continue;
+      if (notThisRuntime(match.index, block)) continue;
       push("dependency-count", String(count), undefined, block, match.index, match[0].length);
     }
 
+    // A pin spec states which package it is about, so it is read first and its channel token is
+    // not offered to the prose grammar afterwards.
+    const pinned = new Set<number>();
+    for (const match of block.text.matchAll(CHANNEL_PIN)) {
+      // Claimed either way: whatever this extractor decided about the token is the decision, and
+      // letting the prose grammar see it again would count one refusal twice.
+      pinned.add(match.index);
+      const canonical = match[2].toLowerCase().replace(/_/gu, "-");
+      if (!knownPackages.has(canonical)) {
+        diagnostics.push(diagnostic(block, match.index, artifactPath, "unknown-package"));
+        continue;
+      }
+      if (notThisRuntime(match.index, block)) continue;
+      push("package-channel", match[1].toLowerCase(), canonical, block, match.index, match[1].length);
+    }
+
     for (const match of block.text.matchAll(CHANNEL)) {
-      if (hypothetical(match.index, block)) continue;
+      if (pinned.has(match.index)) continue;
+      if (notThisRuntime(match.index, block)) continue;
       const sentence = sentenceAround(block.text, match.index);
       if (!assertsOwnChannel(sentence, match[0])) {
         diagnostics.push(diagnostic(block, match.index, artifactPath, "no-subject"));
@@ -208,7 +306,7 @@ export function extractToolClaims(
         }
         continue;
       }
-      if (hypothetical(match.index, block)) continue;
+      if (notThisRuntime(match.index, block)) continue;
       push("package-version", match[2], canonical, block, match.index, match[0].length);
     }
   }
@@ -298,7 +396,7 @@ function rangeText(block: Block, startLine: number, endLine: number): string {
  * grammar has to see the joined sentence while the span has to name the real lines, which is why
  * both are carried rather than one being reconstructed from the other.
  */
-function blocks(noteText: string): Block[] {
+function noteBlocks(noteText: string): Block[] {
   const withoutFrontmatter = noteText.replace(/^---\n[\s\S]*?\n---\n/u, (matched) =>
     "\n".repeat((matched.match(/\n/gu) ?? []).length),
   );
@@ -330,6 +428,42 @@ function blocks(noteText: string): Block[] {
       current.lineAt.push(lineNumber);
     }
     current.lines.set(lineNumber, line);
+  });
+
+  return result;
+}
+
+/**
+ * Split a manifest's whole-line comments into paragraphs.
+ *
+ * A comment is the only thing in a `pixi.toml` that can be wrong on its own. The tables below it
+ * are the authority the audit checks against, so reading them as prose would compare the file to
+ * itself; a header line describing them is an assertion like any other, and until now nothing read
+ * it. A bare `#` separates paragraphs the way a blank line does in a note.
+ *
+ * The block carries the stripped comment text so the grammar reads a sentence, and the physical
+ * lines unchanged so a span quotes the file as it is written.
+ */
+function commentBlocks(manifestText: string): Block[] {
+  const result: Block[] = [];
+  let current: Block | undefined;
+
+  manifestText.split("\n").forEach((line, index) => {
+    const comment = /^\s*#[ \t]?(.*)$/u.exec(line);
+    if (comment === null || comment[1].trim() === "") {
+      current = undefined;
+      return;
+    }
+    if (current === undefined) {
+      current = { text: "", lineAt: [], lines: new Map() };
+      result.push(current);
+    }
+    const separator = current.text === "" ? "" : " ";
+    current.text += separator + comment[1];
+    for (let offset = 0; offset < separator.length + comment[1].length; offset += 1) {
+      current.lineAt.push(index + 1);
+    }
+    current.lines.set(index + 1, line);
   });
 
   return result;

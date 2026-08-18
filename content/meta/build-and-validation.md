@@ -122,11 +122,15 @@ is also what makes a note's DOI and its arXiv id checkable against each other. T
 its extraction options separately from the CLI, so a new config field reaches one and not the other;
 the run-matches-replay assertion is what catches that.
 
-**Runtime claims.** `tests/tool-alignment.test.ts` reads the assertions an Environment note makes
-about its own runtime — the platform its lock solved, how many packages it declares, the channel
-they resolve from, the version each is pinned at — and checks each against the `pixi.toml` and
-`pixi.lock` committed beside it. The lock is the record of a solve that already happened, so no
-stage of this fetches, solves, or executes anything.
+**Runtime claims.** `tests/tool-alignment.test.ts` reads the assertions a fixture makes about its
+own runtime — the platform its lock solved, how many packages it declares, the channel they resolve
+from, the version each is pinned at — and checks each against the `pixi.toml` and `pixi.lock`
+committed beside it. The lock is the record of a solve that already happened, so no stage of this
+fetches, solves, or executes anything.
+
+Two artifacts carry those assertions and one grammar reads both: the Environment note, and the
+header comment of the manifest itself. Only whole-line comments are read there — the tables below
+them are the authority the claims are checked against, not prose that could be wrong on its own.
 
 Three properties are deliberate. A claim the runtime cannot falsify is never a failure: `unpinned`
 and `unavailable` are reported apart from `absent` and `wrong-value`, because a fixture that
@@ -218,17 +222,18 @@ stay Foundry-side because the Mold Kind declares them `foundry-only`.
   the syntax, so the rule carries it instead.
 - Nothing checks that a recipe under `recipes/` still builds, or that a fixture's `pixi.lock`
   resolves today. Environment companions are measured for presence, not for freshness.
-- The tool-alignment grammar reads note prose only. A claim written in a `pixi.toml` header comment
-  is invisible to it, and the corpus has carried a wrong one there while the note beside it was
-  correct.
+- A package a fixture takes from an in-repo recipe cannot appear in its lock, so a claim about that
+  package's version is reported unfalsifiable rather than checked. The recipe is the authority and
+  the tool-alignment audit does not read `recipes/`.
 - Tool alignment is tuned for precision over recall, so a claim the grammar declines is a claim
   nobody checked. The report counts the tokens it recognized and declined, which is not a coverage
   measure and cannot be made into one: a claim written in a shape the grammar does not know produces
   no token, so nothing counts it and no figure in the report would reveal it.
-- A channel claim is answered per fixture rather than per package: it holds when any of the
-  fixture's dependencies resolves from the named channel. Every such claim in this corpus is about a
-  fixture that resolves from one channel, so a mixed-channel fixture would need the extractor to
-  keep the subject and quantifier it currently discards.
+- A channel claim written as prose names no package, so it is answered per fixture: it holds when
+  any of the fixture's dependencies resolves from the named channel. A pin spec in a manifest header
+  does name one and is answered by that package. Closing the gap for prose needs a quantifier the
+  extractor discards — "the CLI", "both" and "all of them" are three different claims — and no
+  fixture here resolves from more than one channel, so the two questions agree today.
 - No fixture's runtime is checked on more than one platform. Every `pixi.toml` here solves
   `linux-64` alone, and a lock that solved several is refused rather than read, so what a
   multi-platform claim would even have to name is an open question rather than a checked one.
