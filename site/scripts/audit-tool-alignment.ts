@@ -1,7 +1,7 @@
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 
-import { writeJsonAtomic, writeTextAtomic } from "../src/lib/audit/base/files";
+import { writeJsonAtomic, writeTextAtomic } from "@galaxy-foundry/audit-base";
 import { buildToolAlignmentRun } from "../src/lib/audit/tool-alignment/audit";
 import { renderToolAlignmentMarkdown } from "../src/lib/audit/tool-alignment/report";
 import {

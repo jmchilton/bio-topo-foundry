@@ -1,4 +1,6 @@
-import { claimId, sourceTextDigest, type ArtifactSpan } from "../base/claims";
+import { sourceTextDigest, type ArtifactSpan } from "@galaxy-foundry/audit-base";
+
+import { claimId } from "./lifecycle";
 
 /**
  * Read runtime claims out of note prose.

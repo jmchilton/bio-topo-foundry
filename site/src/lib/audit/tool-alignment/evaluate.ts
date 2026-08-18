@@ -1,5 +1,7 @@
-import type { ClaimSeverity, EvidenceState } from "../base/claims";
+import type { ClaimSeverity } from "@galaxy-foundry/audit-base";
+
 import type { ToolClaim } from "./extract";
+import type { EvidenceState } from "./lifecycle";
 import { canonicalPackageName, type PixiEvidence } from "./pixi";
 
 /**

@@ -28,9 +28,16 @@ substrate's admission test is deliberate about what comes next:
 > S2 tool checks or S3 threshold checks share a base schema. Any `audit-base` or `audit-schemas`
 > package must still pass the normal admission test **after another checker exists**.
 
-This is that other checker. It is written to make the extraction argument decidable rather than to
-pre-empt it: everything that turned out to be shared lives in `site/src/lib/audit/base/`, and
-everything that knows what pixi is lives in `site/src/lib/audit/tool-alignment/`.
+This is that other checker, and the extraction has since happened:
+[`@galaxy-foundry/audit-base`](https://www.npmjs.com/package/@galaxy-foundry/audit-base) carries the
+lifecycle, and `audit-citations` consumes it too — a base package only one checker used would have
+been a third copy rather than an extraction.
+
+Nothing local was redesigned to get there. Everything that turned out to be shared had been kept in
+`site/src/lib/audit/base/`, physically separated from anything that knew what pixi was, so the move
+was a deletion and an import. What stayed behind is in `tool-alignment/lifecycle.ts`: the
+vocabularies the package refuses to own, and the two identity functions the two checkers compute
+differently.
 
 The checker itself is **not** an upstreaming candidate and is not expected to become one. The
 `environment` kind is declared locally in `reference_contract.yml`; a fixture built from a pixi
@@ -39,23 +46,29 @@ have to independently arrive at pixi before that changed.
 
 ## What converged, and how strongly
 
-| Module | Relationship to `audit-citations` | Evidence |
+| Shape | Relationship to `audit-citations` | Where it is now |
 | --- | --- | --- |
-| `base/digest.ts` | byte-identical copy | `sha256` matches `packages/audit-citations/src/digest.ts` exactly |
-| `base/files.ts` | byte-identical copy | `sha256` matches `packages/audit-citations/src/files.ts` exactly |
-| `base/claims.ts` | same shapes, re-typed | span-with-digest and its two refinements, three-state evidence, severity split, digest-bound adjudication, corpus digest, referential integrity |
+| `digest.ts` | byte-identical copy, verified by `sha256` | `audit-base` |
+| `files.ts` | byte-identical copy, verified by `sha256` | `audit-base` |
+| span with digest, and both refinements | same shape, re-typed | `audit-base` |
+| severity split, three classifications | same shape, re-typed | `audit-base` |
+| adjudication, and its referential integrity | same shape, re-typed | `audit-base`, built against local verdicts |
+| corpus record | same shape plus a local count | `audit-base` fields, `lifecycle.ts` count |
+| evidence states, verdicts | one value in common | `lifecycle.ts` |
+| claim id, corpus digest | same intent, different inputs | `lifecycle.ts` |
 
-The two copied files are the strongest evidence available, because the admission test says so:
+The two copied files were the strongest evidence available, because the admission test says so:
 "Byte-identical copied files are strong evidence. Similar names, parallel folder structures, or a
 belief that projects _should_ converge are not." Neither file was edited to fit; they were copied
 and used.
 
-`base/claims.ts` is weaker evidence and should be read as such. The shapes converged — a span that
-carries the digest of the text it covers, a state field that keeps `unavailable` out of the verdict,
-a severity that separates drift from a dispute about identity, an adjudication that retires itself
-when the text changes — but the types were rewritten rather than copied, because the citation
-versions name citations. Whether that is one contract or two similar ones is the question extraction
-has to answer, and this file is the exhibit.
+The re-typed shapes were weaker evidence and were read as such while the question was open. They
+converged — a span that carries the digest of the text it covers, a state field that keeps
+`unavailable` out of the verdict, a severity that separates drift from a dispute about identity, an
+adjudication that retires itself when the text changes — but the types were rewritten rather than
+copied, because the citation versions name citations. Extraction had to answer whether that was one
+contract or two similar ones, and the answer was one contract with the vocabulary taken out: the
+shapes are shared and parameterized, the vocabularies are not.
 
 The span is now the same field set as the citation one, including `sourceText` and both refinements
 (`endLine` not preceding `startLine`, and the digest verified against the text it covers). The first
@@ -65,7 +78,8 @@ instead of asserting convergence. What remains genuinely different is below.
 
 ## Where the citation lifecycle did not fit
 
-Four divergences, each a real difference rather than an omission:
+Five divergences, each a real difference rather than an omission. All five survived extraction: the
+package ships the mechanism and leaves each of these to the checker.
 
 **A reviewed decision is not allowed to mean "it holds".** The citation adjudication classifies;
 here classification alone was made to change a verdict, and the first draft mapped both
@@ -74,8 +88,9 @@ positive means there was never a claim, so it leaves the denominator entirely ra
 otherwise the instrument could improve its own score by misreading more prose. A checker false
 positive means the checker got a real claim wrong, which is a statement with no content until the
 reviewer supplies the verdict it should have had, so `assertedVerdict` is required for that class
-and forbidden for the others. Whether `audit-base` should own this rule or only the shapes it
-operates on is an open question for extraction.
+and forbidden for the others. `audit-base` owns this rule — the stricter of the two implementations
+was adopted rather than averaged, and `audit-citations` now rejects an asserted verdict where it
+could never mean anything.
 
 **There is no evidence-acquisition phase.** The citation audit fetches from registries, caches
 normalized evidence, and replays offline; `unavailable` exists because a provider can be
@@ -85,8 +100,16 @@ failure. An `audit-base` that assumed a provider/cache phase would be assuming a
 
 **Extraction is the whole risk, and it is checker-specific.** A DOI has a grammar. A claim that a
 fixture installs one Bioconda package does not. Every pre-filter in `tool-alignment/extract.ts` is
-prose-shaped and none of it generalizes — which suggests `audit-base` should own the lifecycle and
-the identity/adjudication machinery and stay entirely out of extraction.
+prose-shaped and none of it generalizes — so `audit-base` owns the lifecycle and the
+identity/adjudication machinery and stays entirely out of extraction. That is the boundary it
+shipped with.
+
+**A retired decision is benign here and fatal there.** A decision bound to text that has since
+changed has done its job and steps aside, which is what digest-binding is for; the citation audit
+instead refuses to build a run from a review file that no longer describes its corpus. Both are
+defensible and neither is a shared policy, so `adjudicationProblems` reports the three problems and
+ranks none of them. That split is what kept the extraction from having to invent a common posture,
+which the admission test forbids.
 
 **The verdict vocabularies do not align, and forcing them would lose information.** Citations are
 `resolved`/`resolved-mismatched`/`unresolved`/`unavailable`; claims here are
@@ -94,7 +117,10 @@ the identity/adjudication machinery and stay entirely out of extraction.
 has no citation analogue at all: it marks a claim that cannot be falsified because the fixture
 declares less than the note discusses, and it must never score as a failure or the audit would
 punish fixtures for being modest. A shared `Verdict` union would either be a lowest common
-denominator or an untagged mixture.
+denominator or an untagged mixture, so `adjudicationSchema` takes the vocabulary as a parameter
+instead. That bought something the local schema did not have: `assertedVerdict` was a non-empty
+string, so a reviewer could have recorded `resolved` against a runtime claim and nothing would have
+objected.
 
 ## Precision before findings
 

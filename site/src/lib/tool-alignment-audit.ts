@@ -3,11 +3,12 @@ import path from "node:path";
 
 import { z } from "zod";
 
+import { adjudicationProblems } from "@galaxy-foundry/audit-base";
+
 import {
-  adjudicationProblems,
   claimAdjudicationSchema,
   type ClaimAdjudication,
-} from "./audit/base/claims";
+} from "./audit/tool-alignment/lifecycle";
 import {
   buildToolAlignmentRun,
   toolAlignmentRunSchema,
