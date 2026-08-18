@@ -19,6 +19,7 @@ import { listAllCasts } from "../src/lib/casts";
 import { ALL_SPECIMENS, TDA_SPECIMENS } from "../src/lib/gallery";
 import { vendoredLicenses } from "../src/lib/licenses";
 import {
+  applicationSchema,
   COLLECTION_NAMES,
   contentPath,
   environmentSchema,
@@ -191,6 +192,7 @@ describe("the emitted reader slice", () => {
       papers: { one: "review", many: "reviews" },
       "replication-experiments": { one: "study", many: "studies" },
       methods: { one: "technique", many: "techniques" },
+      applications: { one: "problem", many: "problems" },
     };
     const targets = contentReader.noteTargets();
     const wrong = Object.entries(sizes)
@@ -318,6 +320,34 @@ describe("the emitted reader slice", () => {
       ).toBeGreaterThan(guideStart);
       expect(html.indexOf(methodLink)).toBeLessThan(guideEnd);
       expect(html.split(methodLink)).toHaveLength(2);
+    }
+  });
+
+  it("uses the declaring kind in every optional Application guide label", () => {
+    const files = contentReader.noteFiles("applications");
+    const targets = contentReader.noteTargets("applications");
+    expect(targets).toHaveLength(files.length);
+
+    for (const [index, file] of files.entries()) {
+      const application = applicationSchema.parse(
+        readFrontmatter(contentPath(file)),
+      );
+      if (!application.facet_tag) continue;
+      const html = read(
+        path.join(DIST, `tags/${application.facet_tag}/index.html`),
+      );
+      const guideStart = html.indexOf(
+        '<h2 id="tag-guide">Application guide</h2>',
+      );
+      const guideEnd = html.indexOf("</section>", guideStart);
+      const applicationLink = `href="/bio-topo-foundry/${targets[index].target.path}/"`;
+
+      expect(
+        guideStart,
+        `${application.facet_tag} has no Application guide`,
+      ).toBeGreaterThan(-1);
+      expect(html.indexOf(applicationLink)).toBeGreaterThan(guideStart);
+      expect(html.indexOf(applicationLink)).toBeLessThan(guideEnd);
     }
   });
 

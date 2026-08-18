@@ -3,6 +3,51 @@
   "version": 1,
   "kinds": [
     {
+      "kind": "application",
+      "title": "Application",
+      "layer": "instance",
+      "summary": "This Foundry's account of one biological problem: what the task is, how it is scored, what currently does it best, and where topology sits.",
+      "shape": "file",
+      "companions": [],
+      "locations": [
+        "applications"
+      ],
+      "doc": "# Application\n\nAn Application note is this Foundry's account of one biological problem: what the task is, how it\nis scored, what currently does it best, and where topological methods sit against that evidence.\n\nRequired fields:\n\n- `type: application`\n- `title`: the problem's display name\n- `summary`: short reader-facing description\n- `assessed`: the ISO date on which the moving state-of-the-art synthesis was last evaluated\n- `tags`: at least one registered domain facet tag\n\nOptional field:\n\n- `facet_tag`: the `application/` facet value this note anchors, when the page and tag have exactly\n  the same granularity\n\n## Why this is not a Paper or Method note\n\nA Paper note reviews one external work. A Method note explains one technique. An Application note\ncompares techniques and evidence around one problem, including non-topological competitors and\nfacts no single source owns: which target practitioners actually care about, which evaluation\nprotocols are commensurable, and whether topology is ahead, competitive, or behind. It survives\nthe replacement of any one paper or model even though its dated state-of-the-art section changes.\n\n## Why `assessed` is required\n\nThe problem definition and evaluation traps should be durable; the best available model is not.\n`assessed` makes every present-tense synthesis explicitly time-bounded. It does not replace\ncitations: every load-bearing external claim still names its primary source.\n\n## Why `facet_tag` is optional\n\nApplication pages may be narrower than the browse vocabulary. A tag needs enough notes to make a\nuseful axis; a problem page needs only a coherent task, target, and evaluation practice. Requiring\none page for every broad `application/` member would turn a browsing taxonomy into a content\nbacklog, while requiring a new tag for every page would make the vocabulary too fine to browse.\n\nWhen a page does align exactly with a facet value it may declare `facet_tag`. The schema then checks\nthat the value belongs to the `application` facet and that the note carries the tag it claims to\nanchor. Corpus conformance also rejects two Application notes claiming the same anchor. It does not\nrequire every application tag to have a landing note.\n\n## What an Application note owes the reader\n\nStart with the property or task in working terms. Separate proxies that measure different things,\nstate the metric and split, and name protocol choices that make reported numbers incomparable.\nDate the state of the art, include serious non-TDA baselines, and say plainly what topology buys —\nincluding when the evidence says it buys nothing yet.",
+      "example": "---\ntype: application\ntitle: Example biological problem\nsummary: A minimal problem note with a dated assessment and no requirement to anchor a broad application tag.\nassessed: \"2026-08-17\"\ntags:\n  - application/molecular-sciences\n  - modality/molecular-structure\n---\n\n# Example biological problem\n\nThe body defines the target, distinguishes its proxies and evaluation protocols, dates the current\nbest non-topological evidence, and says where topological methods sit against it.",
+      "fields": [
+        {
+          "name": "assessed",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "required": true,
+          "type": "string[]"
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": "\"application\""
+        },
+        {
+          "name": "facet_tag",
+          "required": false,
+          "type": "string"
+        }
+      ]
+    },
+    {
       "kind": "environment",
       "title": "Environment",
       "layer": "instance",

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  applicationSchema,
   COLLECTIONS,
   COLLECTION_NAMES,
   contentPath,
@@ -89,6 +90,29 @@ describe("typed corpus slice", () => {
     expect(
       duplicates,
       `duplicate Method landing notes:\n${duplicates.join("\n")}`,
+    ).toEqual([]);
+  });
+
+  it("allows application tags without guides but never two guides for one tag", () => {
+    const notesByTag = new Map<string, string[]>();
+
+    for (const relativePath of contentReader.noteFiles("applications")) {
+      const application = applicationSchema.parse(
+        readFrontmatter(contentPath(relativePath)),
+      );
+      if (!application.facet_tag) continue;
+      const notes = notesByTag.get(application.facet_tag);
+      if (notes) notes.push(relativePath);
+      else notesByTag.set(application.facet_tag, [relativePath]);
+    }
+
+    const duplicates = [...notesByTag]
+      .filter(([, notes]) => notes.length > 1)
+      .map(([tag, notes]) => `${tag}: ${notes.join(", ")}`);
+
+    expect(
+      duplicates,
+      `duplicate Application landing notes:\n${duplicates.join("\n")}`,
     ).toEqual([]);
   });
 });

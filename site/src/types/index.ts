@@ -1,3 +1,4 @@
+import { kind as applicationKind } from "./application/schema";
 import { kind as environmentKind } from "./environment/schema";
 import { kind as metaKind } from "./meta/schema";
 import { kind as methodKind } from "./method/schema";
@@ -8,6 +9,7 @@ import { kind as recipeKind } from "./recipe/schema";
 import { kind as replicationExperimentKind } from "./replication_experiment/schema";
 
 export const DEFINITIONS = {
+  application: applicationKind,
   environment: environmentKind,
   meta: metaKind,
   method: methodKind,
@@ -18,6 +20,7 @@ export const DEFINITIONS = {
   replication_experiment: replicationExperimentKind,
 } as const;
 export const KINDS = [
+  applicationKind,
   environmentKind,
   metaKind,
   methodKind,

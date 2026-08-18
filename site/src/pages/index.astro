@@ -13,7 +13,7 @@ const typedNoteCount = noteTargets.length;
 const notesIn = (collection: string) =>
   noteTargets.filter((note) => note.collection === collection).length;
 
-// Counted, not asserted. Nine tiles of one sentence each say the same thing nine times over; the
+// Counted, not asserted. Ten tiles of one sentence each say the same thing ten times over; the
 // size of what is behind each one is the only part that differs, and it is the part a reader is
 // deciding on. The glossary is the one destination with nothing to count — a hand-curated page
 // rather than a collection — so it carries no figure rather than an invented one.
@@ -66,6 +66,13 @@ const slice = [
     blurb: 'The techniques themselves — what each computes, and what implements it here.',
     count: notesIn('methods'),
     unit: { one: 'technique', many: 'techniques' },
+  },
+  {
+    path: 'applications',
+    title: 'Applications',
+    blurb: 'The biological problems — how they are scored, what leads, and where topology sits.',
+    count: notesIn('applications'),
+    unit: { one: 'problem', many: 'problems' },
   },
   {
     path: 'glossary',

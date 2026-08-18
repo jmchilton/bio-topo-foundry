@@ -6,8 +6,8 @@ record_kind: infrastructure
 order: 1
 status: revised
 created: 2026-08-08
-revised: 2026-08-12
-revision: 6
+revised: 2026-08-17
+revision: 7
 tags:
   - meta
 ---
@@ -212,11 +212,11 @@ shape, and companion declarations), `kind.md` (why each required field is requir
 executable).
 
 `types/context.ts` builds the `KindContext` a kind receives: the base envelope, the license-id
-primitive, the typed-reference entry, and — for the two kinds that need to interrogate rather than
-merely validate — the tag registry and license policy themselves. A Method note has to ask which
-facet declared a tag; a Paper note has to ask what a license row permits. `types/index.ts` is the
-single enumeration of concrete kinds, exported both as a keyed `DEFINITIONS` map and an ordered
-`KINDS` array.
+primitive, the typed-reference entry, and — for the kinds that need to interrogate rather than
+merely validate — the tag registry and license policy themselves. Method and Application notes
+have to ask which facet declared a proposed anchor; a Paper note has to ask what a license row
+permits. `types/index.ts` is the single enumeration of concrete kinds, exported both as a keyed
+`DEFINITIONS` map and an ordered `KINDS` array.
 
 [`@galaxy-foundry/kind-schema`](https://github.com/jmchilton/foundry-lib/tree/main/packages/kind-schema)
 supplies the definition, assembly, and companion mechanics. It ships no domain kinds. The
@@ -296,9 +296,11 @@ than trusting frontmatter, which is why `environment` has no `locked` field.
 ## Presentation registries
 
 `tags.ts`, `design-records.ts`, and `detail-routes.ts` are presentation registries over already
-validated content: they decide which notes appear on a surface and what to label them. They do not
-define note membership, and each is held to the collection table by a test — `DETAIL_ROUTES` in both
-directions, the tag surface by the registry-drift check.
+validated content: they decide which notes appear on a surface and what to label them. `tags.ts`
+also projects an optional `facet_tag` into the guide that leads a tag page; the page takes its guide
+label from the declaring kind, so Method and Application anchors share one mechanism. They do not
+define note membership, and each is held to the collection table by a test — `DETAIL_ROUTES` in
+both directions, the tag surface by the registry-drift check.
 
 `motifs.ts` is domain furniture with no content dependency at all: a stable hash from a note's
 metadata to repeatable point-cloud and barcode geometry, so a note's marginalia is derived rather
