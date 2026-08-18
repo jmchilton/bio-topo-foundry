@@ -30,10 +30,6 @@ tags:
 
 **Why this note exists.** [[persistent-spectral-graph]] is the founding paper of the topological-Laplacian line, and this corpus's note on it ends with a specific complaint: its protein B-factor experiment is one protein, with an eleven-parameter linear model fit against that same protein's experimental values and scored on them, and no head-to-head number against the elastic-network models it says it improves on. This paper shares its senior author, Guo-Wei Wei, and returns to the same task six years later. The narrow question worth answering is whether the evidence caught up with the machinery.
 
-[[protein-flexibility]] owns the broader task context: why crystallographic B-factors are not the
-same target as MD RMSF, which evaluation protocols can be compared, and where this line sits
-against current non-topological methods. This note keeps the narrower paper-level question.
-
 It did. That is the finding, and the rest of this note is what it cost and what still is not shown.
 
 ## Executive summary
@@ -50,7 +46,7 @@ That is the same harmonic/non-harmonic split [[persistent-laplacian]] describes,
 
 The application makes the difference concrete. A B-factor is a per-atom number, and a persistent barcode is not indexed by atoms; the founding paper's answer was eigenvectors of the Laplacian, which are. This paper's answer is one Laplacian *per atom* on a shared protein manifold, differing only in a weight function centred on that atom. Every atom gets its own spectrum of the same operator on the same domain, which is a cleaner way to get locality than either.
 
-The evaluation is the part that has changed. Where the founding paper had one protein, this has 346, with three published baselines, protein-level ten-fold cross-validation, and identical protocol claimed. Its topological and geometric features alone reach a protein-level Pearson correlation of 0.480 against a best prior of 0.456; adding twelve non-topological structural features reaches 0.524. Those are real numbers on a real benchmark, and the comparison to the 2020 paper's single in-sample protein is not close.
+The evaluation is the part that has changed. Where the founding paper had one protein, this has 346, with three published baselines, protein-level ten-fold cross-validation, and identical protocol claimed. Its topological and geometric features alone reach a protein-level Pearson correlation of 0.480 against a best prior of 0.456, and adding twelve non-topological structural features reaches 0.524. That 0.456 is itself a consensus model rather than a bare descriptor, as the table discussion below establishes, so the honest pairings are 0.524 against 0.456 and 0.480 against a baseline carrying features it does not have. Those are real numbers on a real benchmark, and the comparison to the 2020 paper's single in-sample protein is not close.
 
 What has *not* changed is the reporting. The paper gives one averaged correlation per cell, with no standard deviation, no seeds, and no significance test — while the strongest baseline in the table reports its own protein-level figure as 0.456 ± 0.161 over a hundred runs. And the number of eigenvalues *k* is chosen by sweeping it and keeping whichever value scored best on the same cross-validation the result is reported from. A reader wanting to know whether 0.480 beats 0.456 cannot answer it from this paper.
 
@@ -134,6 +130,7 @@ Set that beside [[persistent-spectral-graph]], which tabulates boundary matrices
 ## Reading this alongside the corpus
 
 - **[[persistent-spectral-graph]]** is the note to read first and the one this answers. Same senior author, same B-factor task, and the evidence complaint that note ends on is the one this paper resolves.
+- **[[protein-flexibility]]** owns the task rather than any one paper: which of the several proxies called flexibility this benchmark measures, which protocols can be compared with which, and where this line stands against training-free and learned non-topological models. The 346-protein evaluation is one row on that page.
 - **[[persistent-laplacian]]** describes the harmonic/non-harmonic split as a property of a filtration. This is the same split without a filtration, and it is a useful corrective: the split comes from the Hodge structure, not from persistence.
 - **[[spectral-geometry]]** notes that its lineage is metric where persistent homology is topological, and that the two are easy to confuse. This paper sits across the seam deliberately — a spectral operator whose kernel is exactly topology and whose remaining spectrum is exactly geometry — which is why it carries that facet rather than the persistent-Laplacian one. It is not a persistent Laplacian and should not be filed as one.
 - **[[tda-tdl-beyond-persistent-homology]]** is the review by this paper's first author, and its Hodge-Laplacian section is the map this work adds a region to.

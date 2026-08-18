@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-18T16:09:14.499Z",
+  "generatedAt": "2026-08-18T16:20:55.162Z",
   "corpus": {
-    "digest": "aaf78254c555b2b968fa5968d4ee3f443bdb2194328a39d86dec7ae0c38da3a3",
-    "headRevision": "a63b3b3a87bc1ff3c7900c7bb62d9322f23968ad",
+    "digest": "ededc99a860fb58030b95846188e41a6906c2663b5a19225ce47ee7ded0cb7ff",
+    "headRevision": "db008ec569b1639463822e1a115031e335385fcf",
     "workingTreeDirty": true
   },
   "evidenceSnapshotDigest": "9876d00308b27e056dccdea79c724dda4eb189757007d4ddcb69179434952688",
@@ -1498,8 +1498,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 169,
-        "endLine": 169,
+        "startLine": 166,
+        "endLine": 166,
         "sourceText": "1. Wang, R., Nguyen, D. D., and Wei, G.-W. \"Persistent spectral graph.\" *International Journal for Numerical Methods in Biomedical Engineering* 36(9), e3376 (2020). [DOI](https://doi.org/10.1002/cnm.3376). Preprint: [arXiv:1912.04135](https://arxiv.org/abs/1912.04135).",
         "sourceDigest": "c711b532b29b233f8463c08db9468468291370c459997e94ecb62938b55d008e"
       },
@@ -1529,8 +1529,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 170,
-        "endLine": 170,
+        "startLine": 167,
+        "endLine": 167,
         "sourceText": "2. Wang, R., Zhao, R., Ribando-Gros, E., Chen, J., Tong, Y., and Wei, G.-W. \"HERMES: Persistent spectral graph software.\" *Foundations of Data Science* 3(1), 67-97 (2021). [DOI](https://doi.org/10.3934/fods.2021006).",
         "sourceDigest": "52cf1b6b86fccf922482bf0b1f13949c18fbc280a2675272a92ba5236e417461"
       },
@@ -1559,8 +1559,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 171,
-        "endLine": 171,
+        "startLine": 168,
+        "endLine": 168,
         "sourceText": "3. Memoli, F., Wan, Z., and Wang, Y. \"Persistent Laplacians: Properties, Algorithms and Implications.\" *SIAM Journal on Mathematics of Data Science* 4(2), 858-884 (2022). [DOI](https://doi.org/10.1137/21M1435471).",
         "sourceDigest": "5dbf35cf971a69ef65fadc6ae6ce2e8e59a8e1a8f6fc968c7703013764f57f01"
       },
@@ -1585,8 +1585,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 172,
-        "endLine": 172,
+        "startLine": 169,
+        "endLine": 169,
         "sourceText": "4. Jones, B. and Wei, G.-W. \"PETLS: PErsistent Topological Laplacian Software.\" [arXiv:2508.11560](https://arxiv.org/abs/2508.11560).",
         "sourceDigest": "c2e74115f2836c0acdaeae918e44aabc27504c111ade0eb4f644f39d10230faa"
       },
@@ -1610,8 +1610,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 173,
-        "endLine": 173,
+        "startLine": 170,
+        "endLine": 170,
         "sourceText": "5. Bahar, I., Atilgan, A. R., and Erman, B. \"Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential.\" *Folding and Design* 2(3), 173-181 (1997). [DOI](https://doi.org/10.1016/S1359-0278%2897%2900024-2).",
         "sourceDigest": "bbf097d027423420543c6544511ded3cfa934a37ba77370f3e4ba26cd5cc1c24"
       },
@@ -1636,8 +1636,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 174,
-        "endLine": 174,
+        "startLine": 171,
+        "endLine": 171,
         "sourceText": "6. Atilgan, A. R., Durell, S. R., Jernigan, R. L., Demirel, M. C., Keskin, O., and Bahar, I. \"Anisotropy of fluctuation dynamics of proteins with an elastic network model.\" *Biophysical Journal* 80(1), 505-515 (2001). [DOI](https://doi.org/10.1016/S0006-3495%2801%2976033-X).",
         "sourceDigest": "a5c8f338ef7e4035560224b0f0554baabaa21cbc58966cdff7bb09fdc47b474f"
       },
@@ -1665,8 +1665,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 175,
-        "endLine": 175,
+        "startLine": 172,
+        "endLine": 172,
         "sourceText": "7. Bramer, D. and Wei, G.-W. \"Blind prediction of protein B-factor and flexibility.\" *The Journal of Chemical Physics* 149(13), 134107 (2018). [DOI](https://doi.org/10.1063/1.5048469).",
         "sourceDigest": "13601fd60f3c552b2fcc4f49d78c643d60767f9b701163c0b9d38eb81e86c647"
       },
@@ -1691,8 +1691,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/persistent-spectral-graph.md",
-        "startLine": 176,
-        "endLine": 176,
+        "startLine": 173,
+        "endLine": 173,
         "sourceText": "8. Wei, X. and Wei, G.-W. \"Persistent topological Laplacians - a survey.\" *Mathematics* 13(2), 208 (2025). [DOI](https://doi.org/10.3390/math13020208).",
         "sourceDigest": "d023c4f5d7c05f703113634042d85a21c2c5337a2e9a99495b291291dc706f13"
       },
@@ -2537,8 +2537,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/weighted-hodge-laplacians.md",
-        "startLine": 146,
-        "endLine": 146,
+        "startLine": 143,
+        "endLine": 143,
         "sourceText": "1. Su, Z., Tong, Y., and Wei, G.-W. \"Weighted Hodge Laplacians on Manifolds with Boundary.\" [arXiv:2608.00244](https://arxiv.org/abs/2608.00244) (2026).",
         "sourceDigest": "c9fa39fab670ee82c259fe98e0df1722d15d243fda093fa472e1c1db880b69c0"
       },
@@ -2564,8 +2564,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/weighted-hodge-laplacians.md",
-        "startLine": 147,
-        "endLine": 147,
+        "startLine": 144,
+        "endLine": 144,
         "sourceText": "2. Su, Z., Tong, Y., and Wei, G.-W. \"Persistent de Rham-Hodge Laplacians in Eulerian representation for manifold topological learning.\" *AIMS Mathematics* 9(10), 27438 (2024). [DOI](https://doi.org/10.3934/math.20241333).",
         "sourceDigest": "43c834b26f65963bce6db16a8602b1ba28437ae854cd19b35b8645214c0b171d"
       },
@@ -2591,8 +2591,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/weighted-hodge-laplacians.md",
-        "startLine": 148,
-        "endLine": 148,
+        "startLine": 145,
+        "endLine": 145,
         "sourceText": "3. Ribando-Gros, E., Wang, R., Chen, J., Tong, Y., and Wei, G.-W. \"Combinatorial and Hodge Laplacians: Similarities and Differences.\" *SIAM Review* 66(3), 575-601 (2024). [DOI](https://doi.org/10.1137/22M1482299).",
         "sourceDigest": "2d819f85b01613c8a8a3127e461aaadf50418deaa0bb35841f40cac44ac7ef7c"
       },
@@ -2620,8 +2620,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/weighted-hodge-laplacians.md",
-        "startLine": 149,
-        "endLine": 149,
+        "startLine": 146,
+        "endLine": 146,
         "sourceText": "4. Bueler, E. \"The heat kernel weighted Hodge Laplacian on noncompact manifolds.\" *Transactions of the American Mathematical Society* 351(2), 683-713 (1999). [DOI](https://doi.org/10.1090/S0002-9947-99-02021-8).",
         "sourceDigest": "ed71ed1dac79a2613b6c4dd3a5c800cad5707a13efb9f6a507dac39204c51a02"
       },
@@ -2644,8 +2644,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/weighted-hodge-laplacians.md",
-        "startLine": 150,
-        "endLine": 150,
+        "startLine": 147,
+        "endLine": 147,
         "sourceText": "5. Feng, H., Zhao, J. Y., and Wei, G.-W. \"Multiscale differential geometry learning for protein flexibility analysis.\" *Journal of Computational Chemistry* 46(7), e70073 (2025). [DOI](https://doi.org/10.1002/jcc.70073).",
         "sourceDigest": "b25f8678c92b4d5f556578fb2bf753e52d1a02f3e48e05cd21a474c54c258110"
       },
@@ -2671,8 +2671,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/weighted-hodge-laplacians.md",
-        "startLine": 151,
-        "endLine": 151,
+        "startLine": 148,
+        "endLine": 148,
         "sourceText": "6. Hayes, N., Wei, X., Feng, H., Merkurjev, E., and Wei, G.-W. \"Persistent sheaf Laplacian analysis of protein flexibility.\" *The Journal of Physical Chemistry B* 129(17), 4169-4178 (2025). [DOI](https://doi.org/10.1021/acs.jpcb.5c01287).",
         "sourceDigest": "6b642bcf1871b478119fd87d62f7a6aa335b7161c1c6555fd568b0be4330f59b"
       },
@@ -2700,8 +2700,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/weighted-hodge-laplacians.md",
-        "startLine": 152,
-        "endLine": 152,
+        "startLine": 149,
+        "endLine": 149,
         "sourceText": "7. Hayes, N., Wei, X., Feng, H., Merkurjev, E., and Wei, G.-W. \"Correction to 'Persistent Sheaf Laplacian Analysis of Protein Flexibility'.\" *The Journal of Physical Chemistry B* 129(24), 6112-6113 (2025). [DOI](https://doi.org/10.1021/acs.jpcb.5c03679).",
         "sourceDigest": "dfa63a0f0ef0cf99506b62bc7640349928fcfffe79aaa084625adb1d05a1546e"
       },
@@ -2729,8 +2729,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/weighted-hodge-laplacians.md",
-        "startLine": 153,
-        "endLine": 153,
+        "startLine": 150,
+        "endLine": 150,
         "sourceText": "8. Zhang, H. and Feng, H. \"Commutative algebra learning for protein flexibility analysis.\" [arXiv:2607.00879](https://arxiv.org/abs/2607.00879) (2026).",
         "sourceDigest": "fb2e98777f0b668f9a2fb2825c8d1832dccdf1367124cef2de95958c0ade4bac"
       },
@@ -2754,8 +2754,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/weighted-hodge-laplacians.md",
-        "startLine": 154,
-        "endLine": 154,
+        "startLine": 151,
+        "endLine": 151,
         "sourceText": "9. Opron, K., Xia, K., and Wei, G.-W. \"Fast and anisotropic flexibility-rigidity index for protein flexibility and fluctuation analysis.\" *The Journal of Chemical Physics* 140(23), 234105 (2014). [DOI](https://doi.org/10.1063/1.4882258).",
         "sourceDigest": "5aa8ca9c49185366f812b8d410637f40f7d1326cde34cead978dd60e4414c019"
       },
@@ -2781,8 +2781,8 @@
       "span": {
         "artifactKind": "paper-note",
         "artifactPath": "content/papers/weighted-hodge-laplacians.md",
-        "startLine": 155,
-        "endLine": 155,
+        "startLine": 152,
+        "endLine": 152,
         "sourceText": "10. Wang, R., Nguyen, D. D., and Wei, G.-W. \"Persistent spectral graph.\" *International Journal for Numerical Methods in Biomedical Engineering* 36(9), e3376 (2020). [DOI](https://doi.org/10.1002/cnm.3376).",
         "sourceDigest": "50dce8195dcb71781e6b6c4e7ca715f1b99c30b8f7fcb4679efae8f3afe08dff"
       },

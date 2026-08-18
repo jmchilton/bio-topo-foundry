@@ -117,14 +117,14 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 | `content/papers/mapper-brca-survival.md:33` | doi:10.48550/arxiv.2607.15022; arxiv:2607.15022 | openalex `arxiv:2607.15022` → arxiv:2607.15022 | — |
 | `content/papers/persistent-spectral-graph.md:2` | Persistent spectral graph | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376; openalex `arxiv:1912.04135` → arxiv:1912.04135 | warning: openalex (arxiv:1912.04135): year differs: described 2020, observed 2019 |
 | `content/papers/persistent-spectral-graph.md:30` | Persistent spectral graph | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376; openalex `arxiv:1912.04135` → arxiv:1912.04135 | warning: crossref (doi:10.1002/cnm.3376): year differs: described 2019, observed 2020 |
-| `content/papers/persistent-spectral-graph.md:169` | Persistent spectral graph | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376; openalex `arxiv:1912.04135` → arxiv:1912.04135 | warning: openalex (arxiv:1912.04135): year differs: described 2020, observed 2019 |
-| `content/papers/persistent-spectral-graph.md:170` | HERMES: Persistent spectral graph software | crossref `doi:10.3934/fods.2021006` → doi:10.3934/fods.2021006 | — |
-| `content/papers/persistent-spectral-graph.md:171` | Persistent Laplacians: Properties, Algorithms and Implications | crossref `doi:10.1137/21m1435471` → doi:10.1137/21m1435471 | — |
-| `content/papers/persistent-spectral-graph.md:172` | PETLS: PErsistent Topological Laplacian Software | openalex `arxiv:2508.11560` → arxiv:2508.11560 | — |
-| `content/papers/persistent-spectral-graph.md:173` | Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential | crossref `doi:10.1016/s1359-0278(97)00024-2` → doi:10.1016/s1359-0278(97)00024-2 | — |
-| `content/papers/persistent-spectral-graph.md:174` | Anisotropy of fluctuation dynamics of proteins with an elastic network model | crossref `doi:10.1016/s0006-3495(01)76033-x` → doi:10.1016/s0006-3495(01)76033-x | — |
-| `content/papers/persistent-spectral-graph.md:175` | Blind prediction of protein B-factor and flexibility | crossref `doi:10.1063/1.5048469` → doi:10.1063/1.5048469 | — |
-| `content/papers/persistent-spectral-graph.md:176` | Persistent topological Laplacians - a survey | crossref `doi:10.3390/math13020208` → doi:10.3390/math13020208 | — |
+| `content/papers/persistent-spectral-graph.md:166` | Persistent spectral graph | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376; openalex `arxiv:1912.04135` → arxiv:1912.04135 | warning: openalex (arxiv:1912.04135): year differs: described 2020, observed 2019 |
+| `content/papers/persistent-spectral-graph.md:167` | HERMES: Persistent spectral graph software | crossref `doi:10.3934/fods.2021006` → doi:10.3934/fods.2021006 | — |
+| `content/papers/persistent-spectral-graph.md:168` | Persistent Laplacians: Properties, Algorithms and Implications | crossref `doi:10.1137/21m1435471` → doi:10.1137/21m1435471 | — |
+| `content/papers/persistent-spectral-graph.md:169` | PETLS: PErsistent Topological Laplacian Software | openalex `arxiv:2508.11560` → arxiv:2508.11560 | — |
+| `content/papers/persistent-spectral-graph.md:170` | Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential | crossref `doi:10.1016/s1359-0278(97)00024-2` → doi:10.1016/s1359-0278(97)00024-2 | — |
+| `content/papers/persistent-spectral-graph.md:171` | Anisotropy of fluctuation dynamics of proteins with an elastic network model | crossref `doi:10.1016/s0006-3495(01)76033-x` → doi:10.1016/s0006-3495(01)76033-x | — |
+| `content/papers/persistent-spectral-graph.md:172` | Blind prediction of protein B-factor and flexibility | crossref `doi:10.1063/1.5048469` → doi:10.1063/1.5048469 | — |
+| `content/papers/persistent-spectral-graph.md:173` | Persistent topological Laplacians - a survey | crossref `doi:10.3390/math13020208` → doi:10.3390/math13020208 | — |
 | `content/papers/tda-tdl-beyond-persistent-homology.md:2` | Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review | openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
 | `content/papers/tda-tdl-beyond-persistent-homology.md:27` | Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review | crossref `doi:10.1007/s10462-025-11462-w` → doi:10.1007/s10462-025-11462-w; openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
 | `content/papers/tda-tdl-beyond-persistent-homology.md:212` | Topological Data Analysis and Topological Deep Learning Beyond Persistent Homology - A Review | crossref `doi:10.1007/s10462-025-11462-w` → doi:10.1007/s10462-025-11462-w; openalex `arxiv:2507.19504` → arxiv:2507.19504 | — |
@@ -154,16 +154,16 @@ A wrapped entry counts once per physical line, so this is a lower bound on cover
 | `content/papers/tdl-docking-benchmark-review.md:41` | doi:10.1093/bib/bbag370 | crossref `doi:10.1093/bib/bbag370` → doi:10.1093/bib/bbag370 | — |
 | `content/papers/weighted-hodge-laplacians.md:2` | Weighted Hodge Laplacians on Manifolds with Boundary | openalex `arxiv:2608.00244` → arxiv:2608.00244 | — |
 | `content/papers/weighted-hodge-laplacians.md:27` | Weighted Hodge Laplacians on Manifolds with Boundary | openalex `arxiv:2608.00244` → arxiv:2608.00244 | — |
-| `content/papers/weighted-hodge-laplacians.md:146` | Weighted Hodge Laplacians on Manifolds with Boundary | openalex `arxiv:2608.00244` → arxiv:2608.00244 | — |
-| `content/papers/weighted-hodge-laplacians.md:147` | Persistent de Rham-Hodge Laplacians in Eulerian representation for manifold topological learning | crossref `doi:10.3934/math.20241333` → doi:10.3934/math.20241333 | — |
-| `content/papers/weighted-hodge-laplacians.md:148` | Combinatorial and Hodge Laplacians: Similarities and Differences | crossref `doi:10.1137/22m1482299` → doi:10.1137/22m1482299 | — |
-| `content/papers/weighted-hodge-laplacians.md:149` | The heat kernel weighted Hodge Laplacian on noncompact manifolds | crossref `doi:10.1090/s0002-9947-99-02021-8` → doi:10.1090/s0002-9947-99-02021-8 | — |
-| `content/papers/weighted-hodge-laplacians.md:150` | Multiscale differential geometry learning for protein flexibility analysis | crossref `doi:10.1002/jcc.70073` → doi:10.1002/jcc.70073 | — |
-| `content/papers/weighted-hodge-laplacians.md:151` | Persistent sheaf Laplacian analysis of protein flexibility | crossref `doi:10.1021/acs.jpcb.5c01287` → doi:10.1021/acs.jpcb.5c01287 | — |
-| `content/papers/weighted-hodge-laplacians.md:152` | Correction to 'Persistent Sheaf Laplacian Analysis of Protein Flexibility' | crossref `doi:10.1021/acs.jpcb.5c03679` → doi:10.1021/acs.jpcb.5c03679 | — |
-| `content/papers/weighted-hodge-laplacians.md:153` | Commutative algebra learning for protein flexibility analysis | openalex `arxiv:2607.00879` → arxiv:2607.00879 | — |
-| `content/papers/weighted-hodge-laplacians.md:154` | Fast and anisotropic flexibility-rigidity index for protein flexibility and fluctuation analysis | crossref `doi:10.1063/1.4882258` → doi:10.1063/1.4882258 | — |
-| `content/papers/weighted-hodge-laplacians.md:155` | Persistent spectral graph | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376 | — |
+| `content/papers/weighted-hodge-laplacians.md:143` | Weighted Hodge Laplacians on Manifolds with Boundary | openalex `arxiv:2608.00244` → arxiv:2608.00244 | — |
+| `content/papers/weighted-hodge-laplacians.md:144` | Persistent de Rham-Hodge Laplacians in Eulerian representation for manifold topological learning | crossref `doi:10.3934/math.20241333` → doi:10.3934/math.20241333 | — |
+| `content/papers/weighted-hodge-laplacians.md:145` | Combinatorial and Hodge Laplacians: Similarities and Differences | crossref `doi:10.1137/22m1482299` → doi:10.1137/22m1482299 | — |
+| `content/papers/weighted-hodge-laplacians.md:146` | The heat kernel weighted Hodge Laplacian on noncompact manifolds | crossref `doi:10.1090/s0002-9947-99-02021-8` → doi:10.1090/s0002-9947-99-02021-8 | — |
+| `content/papers/weighted-hodge-laplacians.md:147` | Multiscale differential geometry learning for protein flexibility analysis | crossref `doi:10.1002/jcc.70073` → doi:10.1002/jcc.70073 | — |
+| `content/papers/weighted-hodge-laplacians.md:148` | Persistent sheaf Laplacian analysis of protein flexibility | crossref `doi:10.1021/acs.jpcb.5c01287` → doi:10.1021/acs.jpcb.5c01287 | — |
+| `content/papers/weighted-hodge-laplacians.md:149` | Correction to 'Persistent Sheaf Laplacian Analysis of Protein Flexibility' | crossref `doi:10.1021/acs.jpcb.5c03679` → doi:10.1021/acs.jpcb.5c03679 | — |
+| `content/papers/weighted-hodge-laplacians.md:150` | Commutative algebra learning for protein flexibility analysis | openalex `arxiv:2607.00879` → arxiv:2607.00879 | — |
+| `content/papers/weighted-hodge-laplacians.md:151` | Fast and anisotropic flexibility-rigidity index for protein flexibility and fluctuation analysis | crossref `doi:10.1063/1.4882258` → doi:10.1063/1.4882258 | — |
+| `content/papers/weighted-hodge-laplacians.md:152` | Persistent spectral graph | crossref `doi:10.1002/cnm.3376` → doi:10.1002/cnm.3376 | — |
 
 ## resolved-mismatched
 
