@@ -7,7 +7,7 @@ order: 4
 status: revised
 created: 2026-08-08
 revised: 2026-08-18
-revision: 8
+revision: 9
 tags:
   - meta
 ---
@@ -89,6 +89,11 @@ the renderer uses, so a link naming nothing fails validation rather than waiting
 aliases are checked to land on their own notes, which turns silent address shadowing into a failure.
 Each typed Mold reference is also shape-checked against its reference kind and resolved through the
 same alias-aware content index the caster consumes.
+
+**Citation markers.** The renderer resolves every numbered marker a note writes against that note's
+own bibliography, and the build fails on one that names an entry the list does not hold. It is the
+build rather than a test because the marker is rewritten during rendering: the same pass that emits
+the link is the one that can tell the number is not there.
 
 **Cast reproducibility.** The cast integration test checks the boundary itself: the site and caster
 share aliases and frontmatter; target-required outputs and resolved references exist; Kind-bundled

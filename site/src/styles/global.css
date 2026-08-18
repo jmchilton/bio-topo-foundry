@@ -1444,6 +1444,49 @@
   margin-top: 0.35rem;
 }
 
+/* A citation marker is an annotation on the word it follows, not a word in the sentence: sans,
+   small, and never wrapped across a line break away from its numbers. */
+.prose .citation-marker {
+  font-family: var(--font-sans);
+  font-size: 0.66em;
+  font-variation-settings: normal;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.prose .citation-marker a {
+  text-decoration: none;
+}
+
+.prose .citation-marker a:hover,
+.prose .citation-marker a:focus-visible {
+  text-decoration: underline;
+}
+
+/* A marker names its entry by number, so the entry has to show that number — and the preflight
+   strips the marker off every list. Scoped by the anchor the renderer adds, so restoring the
+   numbering here restores it for bibliographies only. */
+.prose ol:has(> li[id^='citation-']) {
+  padding-left: 2.4rem;
+  list-style: decimal;
+}
+
+.prose li[id^='citation-']::marker {
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.86em;
+}
+
+/* Landing on an entry has to say which one, or a jump into a thirteen-item list arrives nowhere. */
+.prose li[id^='citation-'] {
+  scroll-margin-top: 5rem;
+}
+
+.prose li[id^='citation-']:target {
+  background: var(--color-surface-raised);
+  box-shadow: -0.6rem 0 0 var(--color-surface-raised), 0.4rem 0 0 var(--color-surface-raised);
+}
+
 /* The architecture map is inline SVG so its palette follows the reader's light/dark tokens. */
 /* Widens past the reading measure, but only rightwards: the prose column sits left of centre
    inside its container, so a symmetric bleed pushes the diagram's left edge off-screen where

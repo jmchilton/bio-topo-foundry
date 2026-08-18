@@ -4,6 +4,7 @@ import { unified } from '@astrojs/markdown-remark';
 import tailwindcss from '@tailwindcss/vite';
 import pagefind from 'astro-pagefind';
 
+import remarkCitationLinks from './src/lib/remark-citation-links.ts';
 import remarkWikiLinks from './src/lib/remark-wiki-links.ts';
 
 const base = '/bio-topo-foundry';
@@ -15,7 +16,7 @@ export default defineConfig({
   integrations: [pagefind()],
   markdown: {
     processor: unified({
-      remarkPlugins: [[remarkWikiLinks, { base }]],
+      remarkPlugins: [[remarkWikiLinks, { base }], remarkCitationLinks],
     }),
   },
   vite: {
