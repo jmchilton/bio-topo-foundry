@@ -23,6 +23,7 @@ bit-exact oracle** here, unlike the TopoDockQ featurizer. Divergence from the up
 checkpoint is the correct outcome, not a bug, so validation is against the paper spec and
 structural invariants instead: 19 tests including a real `mkdssp` end-to-end run.
 
-Every runtime dependency is on public channels — numpy, gudhi, biopython, and Bioconda's
-[[dssp-environment]] for `mkdssp` — so the fixture stages just one path recipe. Verified green
+Every runtime dependency is on public channels — numpy, gudhi, biopython, and the `dssp`
+package behind [[dssp-environment]], which supplies `mkdssp`, all from conda-forge, because
+Bioconda carries no `dssp` at all. So the fixture stages just one path recipe. Verified green
 with a solved linux-64 lock; publishing the recipe reaches L3 or L4.

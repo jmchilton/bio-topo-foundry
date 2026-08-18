@@ -430,6 +430,62 @@ describe("a sentence about someone else's runtime is not a claim about this one"
   });
 });
 
+/**
+ * The sentence that produced both of these, as it stood in `open-topoqa-featurizer/pixi.toml`.
+ *
+ * Two pre-filters declined it independently, and between them they hid the only claim in this
+ * corpus the lock actually contradicted: it said `dssp` came from Bioconda while the lock beside
+ * it resolved `dssp` from conda-forge, and the fixture next door says outright that Bioconda has
+ * no `dssp` at all. A checker tuned for precision earns that tuning by being wrong in the
+ * declining direction only where declining is right.
+ */
+describe("a sentence that binds a channel to each of two packages is two claims, not a comparison", () => {
+  const scan = extractManifestClaims(
+    "example",
+    "content/environments/example/pixi.toml",
+    [
+      "# every run dep is on a public channel — numpy/gudhi/biopython from conda-forge and `dssp`",
+      "# (mkdssp binary, for 8-state SS + relative SASA) from bioconda — so they resolve from",
+      "# channels rather than sibling path recipes.",
+      "",
+    ].join("\n"),
+    new Set(["numpy", "gudhi", "biopython", "dssp"]),
+  );
+
+  /** `rather than` is contrast, not condition. Only a modal or a conditional makes a sentence one. */
+  it("does not read a contrast word as a counterfactual", () => {
+    expect(scan.diagnostics.map(({ reason }) => reason)).not.toContain("hypothetical");
+  });
+
+  /**
+   * Two channels in one sentence is the comparison shape `assertsOwnChannel` exists to refuse — but
+   * a comparison names two channels for one package, and this names one channel for each of two.
+   */
+  it("binds each channel to the packages named before it", () => {
+    expect(
+      scan.claims
+        .filter(({ kind }) => kind === "package-channel")
+        .map(({ subject, asserted }) => `${subject}=${asserted}`),
+    ).toEqual(["biopython=conda-forge", "dssp=bioconda"]);
+  });
+
+  /**
+   * The binding is what supplies the subject, so prose that binds nothing this fixture has must
+   * still fall through to the weaker fixture-wide question rather than inventing one.
+   */
+  it("leaves a binding that names no package of this fixture's to the prose grammar", () => {
+    const { claims } = extractManifestClaims(
+      "example",
+      "content/environments/example/pixi.toml",
+      "# It resolves from conda-forge.\n",
+      new Set(["numpy"]),
+    );
+    expect(claims.map(({ kind, asserted, subject }) => `${kind}=${asserted}:${String(subject)}`)).toEqual([
+      "package-channel=conda-forge:undefined",
+    ]);
+  });
+});
+
 describe("a package the lock cannot contain is not a package the lock contradicts", () => {
   const pathFixture: PixiEvidence = {
     environment: "kmapper",

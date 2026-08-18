@@ -25,6 +25,18 @@ export interface ToolFinding {
   detail?: string;
 }
 
+/**
+ * What to call the artifact a claim was read out of.
+ *
+ * A finding's detail is the sentence a reviewer reads when the checker fires, and it has to name
+ * the file they should open. Two artifacts assert these things now, and `note claims …` about a
+ * `pixi.toml` header sends the reviewer to the wrong one — worse for the subject-bearing channel
+ * claim, which only a manifest header can currently produce, so the wrong word would be the only
+ * word it ever printed.
+ */
+const claimSource = (claim: ToolClaim): string =>
+  claim.span.artifactKind === "environment-manifest" ? "the manifest header" : "the note";
+
 export function evaluateClaim(claim: ToolClaim, evidence: PixiEvidence): ToolFinding {
   switch (claim.kind) {
     case "lock-platform":
@@ -57,7 +69,7 @@ function evaluateLockPlatform(claim: ToolClaim, evidence: PixiEvidence): ToolFin
     evidenceState: "observed",
     severity: "error",
     observed,
-    detail: `note claims the lock solves ${claim.asserted}; the lock solves ${observed}`,
+    detail: `${claimSource(claim)} claims the lock solves ${claim.asserted}; the lock solves ${observed}`,
   };
 }
 
@@ -72,7 +84,7 @@ function evaluateDependencyCount(claim: ToolClaim, evidence: PixiEvidence): Tool
     evidenceState: "observed",
     severity: "error",
     observed,
-    detail: `note claims ${claim.asserted} package(s); pixi.toml declares ${observed} (${evidence.declaredDependencies.join(", ")})`,
+    detail: `${claimSource(claim)} claims ${claim.asserted} package(s); the [dependencies] table declares ${observed} (${evidence.declaredDependencies.join(", ")})`,
   };
 }
 
@@ -144,7 +156,7 @@ function evaluatePackageChannel(claim: ToolClaim, evidence: PixiEvidence): ToolF
     evidenceState: "observed",
     severity: "error",
     observed: [...observedChannels].sort().join(", "),
-    detail: `note claims this fixture's package comes from ${claim.asserted}; the lock resolves ${resolved
+    detail: `${claimSource(claim)} claims this fixture's package comes from ${claim.asserted}; the lock resolves ${resolved
       .map(({ name, channel }) => `${name} from ${channel}`)
       .join(", ")}`,
   };
@@ -181,7 +193,7 @@ function evaluateNamedPackageChannel(
     evidenceState: "observed",
     severity: "error",
     observed: locked.channel,
-    detail: `note claims ${subject} comes from ${claim.asserted}; the lock resolves it from ${locked.channel}`,
+    detail: `${claimSource(claim)} claims ${subject} comes from ${claim.asserted}; the lock resolves it from ${locked.channel}`,
   };
 }
 
@@ -219,7 +231,7 @@ function evaluatePackageVersion(claim: ToolClaim, evidence: PixiEvidence): ToolF
       verdict: "absent",
       evidenceState: "absent",
       severity: "error",
-      detail: `note names ${claim.subject ?? "a package"} ${claim.asserted}; the lock contains no such package`,
+      detail: `${claimSource(claim)} names ${claim.subject ?? "a package"} ${claim.asserted}; the lock contains no such package`,
     };
   }
   if (locked.version === claim.asserted) {
@@ -240,7 +252,7 @@ function evaluatePackageVersion(claim: ToolClaim, evidence: PixiEvidence): ToolF
     severity: isPackagingSuffix ? "warning" : "error",
     observed: locked.version,
     detail: isPackagingSuffix
-      ? `note writes ${claim.subject} ${claim.asserted}; the lock pins ${locked.version}, the same release with a packaging suffix`
-      : `note claims ${claim.subject} ${claim.asserted}; the lock pins ${locked.version}`,
+      ? `${claimSource(claim)} writes ${claim.subject} ${claim.asserted}; the lock pins ${locked.version}, the same release with a packaging suffix`
+      : `${claimSource(claim)} claims ${claim.subject} ${claim.asserted}; the lock pins ${locked.version}`,
   };
 }

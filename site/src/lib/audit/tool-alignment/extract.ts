@@ -103,6 +103,26 @@ const CHANNEL_PIN =
   /\b(conda-forge|[Bb]ioconda)\s+([A-Za-z][A-Za-z0-9_.-]{2,})\s*={1,2}\s*\d/gu;
 
 /**
+ * A channel a preposition binds to the packages named before it: `numpy/gudhi/biopython from
+ * conda-forge`.
+ *
+ * The pin spec states its subject as a triple; prose states it by binding, and the two deserve the
+ * same answer. Without this the contrastive pre-filter refuses the whole sentence — it names two
+ * channels, so it looks like the comparison shape `assertsOwnChannel` exists to decline — and that
+ * refusal is what let `open-topoqa-featurizer` assert `dssp` came from Bioconda while its own lock
+ * resolved it from conda-forge. A comparison names two channels for one package; this names one
+ * channel for each of two, which is two claims rather than none.
+ *
+ * The preposition is required. A channel token can appear in a sentence about anything —
+ * "conda-forge also ships a `ripser`" is a warning about a name collision — and only a binding word
+ * says the packages beside it are where this claim's subject comes from.
+ */
+const BOUND_CHANNEL = /\b(?:from|on|via)\s+(conda-forge|[Bb]ioconda)\b/gu;
+
+/** A word that could be a package name, for the scan that decides which one a channel binds. */
+const NAME_TOKEN = /[A-Za-z][A-Za-z0-9_.-]{2,}/gu;
+
+/**
  * How far from a platform token to look for the word that says what the claim is about.
  * A sentence routinely carries both kinds — "Verified green on osx-arm64 … with a solved linux-64
  * lock" — so each token binds to its nearest subject rather than the sentence being classified
@@ -120,8 +140,15 @@ const SUBJECT_WINDOW = 60;
  * fixture pins that channel, when the sentence exists to say it does not. Repair advice is the
  * natural thing to write beside a finding, which makes this shape common exactly where the audit
  * is working.
+ *
+ * `rather than` and `instead of` were on this list and do not belong on it. They are contrast, not
+ * condition, and English uses them to say what a thing *is* at least as often as what it would
+ * otherwise be: "every run dep … resolves from channels rather than sibling path recipes" asserts
+ * something about this fixture and its lock can answer it. Declining it cost the audit the only
+ * wrong channel claim the corpus actually carried, on the first run that could have caught it. A
+ * counterfactual needs a modal or a conditional; a contrast word on its own is not one.
  */
-const HYPOTHETICAL = /\b(?:would|could|should|might|if|unless|instead of|rather than)\b/iu;
+const HYPOTHETICAL = /\b(?:would|could|should|might|if|unless)\b/iu;
 
 /**
  * A sentence about a runtime that exists but is not this one.
@@ -283,6 +310,19 @@ function scan(
       push("package-channel", match[1].toLowerCase(), canonical, block, match.index, match[1].length);
     }
 
+    // The same rule one step weaker: prose that binds a channel to a package it names. A binding
+    // that finds no package of this fixture's is left to the prose grammar below, which asks the
+    // fixture-wide question instead — "it resolves from conda-forge" names nothing and always did.
+    for (const match of block.text.matchAll(BOUND_CHANNEL)) {
+      const at = match.index + match[0].length - match[1].length;
+      if (pinned.has(at)) continue;
+      const subject = boundPackage(block.text, at, knownPackages);
+      if (subject === undefined) continue;
+      pinned.add(at);
+      if (notThisRuntime(at, block)) continue;
+      push("package-channel", match[1].toLowerCase(), subject, block, at, match[1].length);
+    }
+
     for (const match of block.text.matchAll(CHANNEL)) {
       if (pinned.has(match.index)) continue;
       if (notThisRuntime(match.index, block)) continue;
@@ -376,11 +416,47 @@ function nearestSubject(text: string, offset: number, length: number): "lock" | 
   return lock <= build ? "lock" : "build";
 }
 
+/**
+ * Which of this fixture's packages a bound channel token is about.
+ *
+ * Scoped to the sentence, then to the run of text since the previous channel token: each channel
+ * owns the packages named between it and the one before it. That is what makes a two-channel
+ * sentence two claims instead of a comparison — "numpy/gudhi/biopython from conda-forge and `dssp`
+ * (…) from bioconda" binds `biopython` to the first and `dssp` to the second, with no window to
+ * tune and nothing crossing the boundary between them.
+ *
+ * The nearest name wins, not every name, so a list is read as a claim about its last member.
+ * A quantifier would be needed to say more — "all of them" and "one of them" are different claims
+ * — and no sentence here supplies one, so the rest of a list stays unread rather than assumed.
+ */
+function boundPackage(
+  text: string,
+  offset: number,
+  knownPackages: ReadonlySet<string>,
+): string | undefined {
+  const left = text.slice(sentenceStart(text, offset), offset);
+  const previousChannel = [...left.matchAll(CHANNEL)].at(-1);
+  const segment =
+    previousChannel === undefined
+      ? left
+      : left.slice(previousChannel.index + previousChannel[0].length);
+
+  let nearest: string | undefined;
+  for (const token of segment.matchAll(NAME_TOKEN)) {
+    const canonical = token[0].toLowerCase().replace(/_/gu, "-");
+    if (knownPackages.has(canonical)) nearest = canonical;
+  }
+  return nearest;
+}
+
+function sentenceStart(text: string, offset: number): number {
+  return Math.max(0, text.lastIndexOf(". ", offset) + 1, text.lastIndexOf("; ", offset) + 1);
+}
+
 function sentenceAround(text: string, offset: number): string {
-  const start = Math.max(0, text.lastIndexOf(". ", offset) + 1, text.lastIndexOf("; ", offset) + 1);
   const endMatch = /[.;](?:\s|$)/u.exec(text.slice(offset));
   const end = endMatch ? offset + endMatch.index + 1 : text.length;
-  return text.slice(start, end).trim();
+  return text.slice(sentenceStart(text, offset), end).trim();
 }
 
 function rangeText(block: Block, startLine: number, endLine: number): string {
