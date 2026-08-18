@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-18T15:59:05.816Z",
+  "generatedAt": "2026-08-18T20:19:37.656Z",
   "corpus": {
-    "digest": "1232edeabbbdf6b1803e65369bad1d5d634e89512f9a0321671f5e00a4e5489f",
-    "claimCount": 75,
-    "headRevision": "301f37e9a357b11d734ef7174615e8d7e93684b0",
-    "workingTreeDirty": false
+    "digest": "85fb52ced6a5466b3888841b89c924263dd08bbe6f069a4334d733796d618105",
+    "claimCount": 77,
+    "headRevision": "8a3c0780b9cf3c7b64bbc7296a74b83010840d3f",
+    "workingTreeDirty": true
   },
   "claims": [
     {
@@ -837,6 +837,38 @@
       "context": "(bioconda phate=2.0.0, 2026-07-30;"
     },
     {
+      "id": "1092646911c1a292",
+      "kind": "package-channel",
+      "environment": "prody",
+      "asserted": "conda-forge",
+      "subject": "prody",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/prody/pixi.toml",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "# (conda-forge prody=2.6.1, MIT; checked 2026-08-18)",
+        "sourceDigest": "a1d4f511a3943e076587bbfb9bbdfed812371a100f2add6ccc769f5bd878bba1"
+      },
+      "context": "(conda-forge prody=2.6.1, MIT;"
+    },
+    {
+      "id": "a92270154454f3f1",
+      "kind": "package-version",
+      "environment": "prody",
+      "asserted": "2.6.1",
+      "subject": "prody",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/prody/pixi.toml",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "# (conda-forge prody=2.6.1, MIT; checked 2026-08-18)",
+        "sourceDigest": "a1d4f511a3943e076587bbfb9bbdfed812371a100f2add6ccc769f5bd878bba1"
+      },
+      "context": "(conda-forge prody=2.6.1, MIT;"
+    },
+    {
       "id": "fc1264560ed5adcd",
       "kind": "package-channel",
       "environment": "pydowker",
@@ -1609,6 +1641,22 @@
       "withdrawn": false
     },
     {
+      "claimId": "1092646911c1a292",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "a92270154454f3f1",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2.6.1",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
       "claimId": "fc1264560ed5adcd",
       "verdict": "exists",
       "evidenceState": "observed",
@@ -2123,6 +2171,78 @@
       "text": "# vs a topological scaffold on the same cells. bioconda noarch, single Bioconda pkg; container"
     },
     {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 23,
+      "reason": "build-subject",
+      "text": "fixture grades L3. conda-forge also has no osx-arm64 build, only linux-64, osx-64, and win-64,"
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 23,
+      "reason": "build-subject",
+      "text": "fixture grades L3. conda-forge also has no osx-arm64 build, only linux-64, osx-64, and win-64,"
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 23,
+      "reason": "build-subject",
+      "text": "fixture grades L3. conda-forge also has no osx-arm64 build, only linux-64, osx-64, and win-64,"
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 23,
+      "reason": "build-subject",
+      "text": "fixture grades L3. conda-forge also has no osx-arm64 build, only linux-64, osx-64, and win-64,"
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 24,
+      "reason": "no-subject",
+      "text": "which is why the platform set is not widened here and why runs happen in a linux-64 container."
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 22,
+      "reason": "no-subject",
+      "text": "conda-forge, locked green, MIT. Bioconda has no `prody` at all, so no container follows and the"
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 22,
+      "reason": "no-subject",
+      "text": "conda-forge, locked green, MIT. Bioconda has no `prody` at all, so no container follows and the"
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 23,
+      "reason": "no-subject",
+      "text": "fixture grades L3. conda-forge also has no osx-arm64 build, only linux-64, osx-64, and win-64,"
+    },
+    {
+      "artifactPath": "content/environments/prody/pixi.toml",
+      "line": 4,
+      "reason": "build-subject",
+      "text": "# There is also no osx-arm64 build, so this fixture runs under linux-64 or not at all."
+    },
+    {
+      "artifactPath": "content/environments/prody/pixi.toml",
+      "line": 4,
+      "reason": "build-subject",
+      "text": "# There is also no osx-arm64 build, so this fixture runs under linux-64 or not at all."
+    },
+    {
+      "artifactPath": "content/environments/prody/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# per-residue B-factor anchor the protein-flexibility benchmark is compared against. conda-forge"
+    },
+    {
+      "artifactPath": "content/environments/prody/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# only: bioconda has no `prody` at all, so no container follows and the fixture grades L3."
+    },
+    {
       "artifactPath": "content/environments/pydowker/index.md",
       "line": 28,
       "reason": "no-subject",
@@ -2388,17 +2508,17 @@
     }
   ],
   "summary": {
-    "extracted": 75,
+    "extracted": 77,
     "withdrawn": 0,
-    "assessed": 75,
+    "assessed": 77,
     "byVerdict": {
-      "exists": 69,
+      "exists": 71,
       "absent": 0,
       "wrong-value": 0,
       "unpinned": 3,
       "unavailable": 3
     },
-    "recognizedTokensDeclined": 100,
+    "recognizedTokensDeclined": 112,
     "review": {
       "required": 0,
       "completed": 0
