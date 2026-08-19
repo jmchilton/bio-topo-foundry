@@ -1,0 +1,11 @@
+# ProDy — elastic network models (GNM/ANM) and normal-mode analysis; the training-free
+# per-residue B-factor anchor the protein-flexibility benchmark is compared against. conda-forge
+# only: bioconda has no `prody` at all, so no container follows and the fixture grades L3.
+# The platform set follows the corpus convention; conda-forge has never built prody for osx-arm64.
+# (conda-forge prody=2.6.1; checked 2026-08-18)
+[workspace]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+prody = "==2.6.1"

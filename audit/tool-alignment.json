@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-18T15:59:05.816Z",
+  "generatedAt": "2026-08-18T20:51:25.312Z",
   "corpus": {
-    "digest": "1232edeabbbdf6b1803e65369bad1d5d634e89512f9a0321671f5e00a4e5489f",
-    "claimCount": 75,
-    "headRevision": "301f37e9a357b11d734ef7174615e8d7e93684b0",
-    "workingTreeDirty": false
+    "digest": "59caef76367a19b611317aad37f212e36a5187eb603234f70d4120209a1df8fc",
+    "claimCount": 78,
+    "headRevision": "569532089843390c4747df390b8c0f84d8412f30",
+    "workingTreeDirty": true
   },
   "claims": [
     {
@@ -837,6 +837,53 @@
       "context": "(bioconda phate=2.0.0, 2026-07-30;"
     },
     {
+      "id": "950255e87c7dbc07",
+      "kind": "package-channel",
+      "environment": "prody",
+      "asserted": "conda-forge",
+      "span": {
+        "artifactKind": "environment-note",
+        "artifactPath": "content/environments/prody/index.md",
+        "startLine": 23,
+        "endLine": 23,
+        "sourceText": "grades L3. conda-forge builds 2.6.1 for linux-64 and osx-64 only, and has never built `prody` for",
+        "sourceDigest": "3c6a398f596ea12e5fa3d13ee2131e348195552f3f5310dc5b967a5be86a4c94"
+      },
+      "context": "conda-forge builds 2.6.1 for linux-64 and osx-64 only, and has never built `prody` for osx-arm64 at any version, so an arm64 macOS reader cannot install this fixture natively whatever the platform set says."
+    },
+    {
+      "id": "030949e40b33202b",
+      "kind": "package-channel",
+      "environment": "prody",
+      "asserted": "conda-forge",
+      "subject": "prody",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/prody/pixi.toml",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "# (conda-forge prody=2.6.1; checked 2026-08-18)",
+        "sourceDigest": "38534e7613356d166a4e1546ef30a04b35b169583b034fab40c8d77b66832029"
+      },
+      "context": "(conda-forge prody=2.6.1;"
+    },
+    {
+      "id": "fb33ffe4a0b0a6ba",
+      "kind": "package-version",
+      "environment": "prody",
+      "asserted": "2.6.1",
+      "subject": "prody",
+      "span": {
+        "artifactKind": "environment-manifest",
+        "artifactPath": "content/environments/prody/pixi.toml",
+        "startLine": 5,
+        "endLine": 5,
+        "sourceText": "# (conda-forge prody=2.6.1; checked 2026-08-18)",
+        "sourceDigest": "38534e7613356d166a4e1546ef30a04b35b169583b034fab40c8d77b66832029"
+      },
+      "context": "(conda-forge prody=2.6.1;"
+    },
+    {
       "id": "fc1264560ed5adcd",
       "kind": "package-channel",
       "environment": "pydowker",
@@ -1609,6 +1656,30 @@
       "withdrawn": false
     },
     {
+      "claimId": "950255e87c7dbc07",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "030949e40b33202b",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "conda-forge",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
+      "claimId": "fb33ffe4a0b0a6ba",
+      "verdict": "exists",
+      "evidenceState": "observed",
+      "observed": "2.6.1",
+      "effectiveVerdict": "exists",
+      "withdrawn": false
+    },
+    {
       "claimId": "fc1264560ed5adcd",
       "verdict": "exists",
       "evidenceState": "observed",
@@ -2123,6 +2194,66 @@
       "text": "# vs a topological scaffold on the same cells. bioconda noarch, single Bioconda pkg; container"
     },
     {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 23,
+      "reason": "build-subject",
+      "text": "grades L3. conda-forge builds 2.6.1 for linux-64 and osx-64 only, and has never built `prody` for"
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 23,
+      "reason": "build-subject",
+      "text": "grades L3. conda-forge builds 2.6.1 for linux-64 and osx-64 only, and has never built `prody` for"
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 24,
+      "reason": "build-subject",
+      "text": "osx-arm64 at any version, so an arm64 macOS reader cannot install this fixture natively whatever"
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 22,
+      "reason": "no-subject",
+      "text": "conda-forge, locked green. Bioconda has no `prody` at all, so no container follows and the fixture"
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 22,
+      "reason": "no-subject",
+      "text": "conda-forge, locked green. Bioconda has no `prody` at all, so no container follows and the fixture"
+    },
+    {
+      "artifactPath": "content/environments/prody/index.md",
+      "line": 23,
+      "reason": "unknown-package",
+      "text": "grades L3. conda-forge builds 2.6.1 for linux-64 and osx-64 only, and has never built `prody` for"
+    },
+    {
+      "artifactPath": "content/environments/prody/pixi.toml",
+      "line": 4,
+      "reason": "build-subject",
+      "text": "# The platform set follows the corpus convention; conda-forge has never built prody for osx-arm64."
+    },
+    {
+      "artifactPath": "content/environments/prody/pixi.toml",
+      "line": 2,
+      "reason": "no-subject",
+      "text": "# per-residue B-factor anchor the protein-flexibility benchmark is compared against. conda-forge"
+    },
+    {
+      "artifactPath": "content/environments/prody/pixi.toml",
+      "line": 3,
+      "reason": "no-subject",
+      "text": "# only: bioconda has no `prody` at all, so no container follows and the fixture grades L3."
+    },
+    {
+      "artifactPath": "content/environments/prody/pixi.toml",
+      "line": 4,
+      "reason": "no-subject",
+      "text": "# The platform set follows the corpus convention; conda-forge has never built prody for osx-arm64."
+    },
+    {
       "artifactPath": "content/environments/pydowker/index.md",
       "line": 28,
       "reason": "no-subject",
@@ -2388,17 +2519,17 @@
     }
   ],
   "summary": {
-    "extracted": 75,
+    "extracted": 78,
     "withdrawn": 0,
-    "assessed": 75,
+    "assessed": 78,
     "byVerdict": {
-      "exists": 69,
+      "exists": 72,
       "absent": 0,
       "wrong-value": 0,
       "unpinned": 3,
       "unavailable": 3
     },
-    "recognizedTokensDeclined": 100,
+    "recognizedTokensDeclined": 110,
     "review": {
       "required": 0,
       "completed": 0

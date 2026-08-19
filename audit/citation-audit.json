@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "auditKind": "citation-integrity",
-  "generatedAt": "2026-08-18T16:20:55.162Z",
+  "generatedAt": "2026-08-18T20:54:19.847Z",
   "corpus": {
-    "digest": "ededc99a860fb58030b95846188e41a6906c2663b5a19225ce47ee7ded0cb7ff",
-    "headRevision": "db008ec569b1639463822e1a115031e335385fcf",
+    "digest": "f4a6aec91bffe1a9512e16639ba588af748362aed90fcf5497978df4b8059802",
+    "headRevision": "3abc6d142ef521e899369026b1607c9004de91ff",
     "workingTreeDirty": true
   },
   "evidenceSnapshotDigest": "9876d00308b27e056dccdea79c724dda4eb189757007d4ddcb69179434952688",
@@ -28,8 +28,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 162,
-        "endLine": 162,
+        "startLine": 171,
+        "endLine": 171,
         "sourceText": "1. Sun, Z. et al. \"Utility of B-Factors in Protein Science: Interpreting Rigidity, Flexibility, and Internal Motion and Engineering Thermostability.\" *Chemical Reviews* 119, 1626–1665 (2019). [DOI](https://doi.org/10.1021/acs.chemrev.8b00290).",
         "sourceDigest": "8a45824459d623dbb5b368e19d11fcb96e9c88f9795d10e13b061f069bf293d3"
       },
@@ -53,8 +53,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 163,
-        "endLine": 163,
+        "startLine": 172,
+        "endLine": 172,
         "sourceText": "2. Urzhumtsev, A., Afonine, P. V., and Adams, P. D. \"TLS from fundamentals to practice.\" *Crystallography Reviews* 19, 230–270 (2013). [DOI](https://doi.org/10.1080/0889311X.2013.835806).",
         "sourceDigest": "9b9f57eb27d6784379b6973006bb6abf77cbf5c3e111a062d6896dfe5c26e602"
       },
@@ -79,8 +79,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 164,
-        "endLine": 164,
+        "startLine": 173,
+        "endLine": 173,
         "sourceText": "3. Opron, K., Xia, K., and Wei, G.-W. \"Fast and anisotropic flexibility-rigidity index for protein flexibility and fluctuation analysis.\" *The Journal of Chemical Physics* 140, 234105 (2014). [DOI](https://doi.org/10.1063/1.4882258).",
         "sourceDigest": "2a05d50499dd6f310d2e9477bea2f0f1e8adbff832102a6f2feb9ba9199c9d07"
       },
@@ -106,8 +106,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 165,
-        "endLine": 165,
+        "startLine": 174,
+        "endLine": 174,
         "sourceText": "4. Bramer, D. and Wei, G.-W. \"Blind prediction of protein B-factor and flexibility.\" *The Journal of Chemical Physics* 149, 134107 (2018). [DOI](https://doi.org/10.1063/1.5048469).",
         "sourceDigest": "8c087f131460ee6f945e93cbe668aa8af7d782f4c700bf9c55e424fe210bf527"
       },
@@ -132,8 +132,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 166,
-        "endLine": 166,
+        "startLine": 175,
+        "endLine": 175,
         "sourceText": "5. Hayes, N. et al. \"Persistent Sheaf Laplacian Analysis of Protein Flexibility.\" *The Journal of Physical Chemistry B* 129, 4169–4178 (2025). [DOI](https://doi.org/10.1021/acs.jpcb.5c01287).",
         "sourceDigest": "ff1daf7efc646595956d65b25d224a7705f470664efaff1e570bb913795db0dd"
       },
@@ -157,8 +157,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 167,
-        "endLine": 167,
+        "startLine": 176,
+        "endLine": 176,
         "sourceText": "6. Hayes, N. et al. \"Correction to 'Persistent Sheaf Laplacian Analysis of Protein Flexibility'.\" *The Journal of Physical Chemistry B* 129, 6112–6113 (2025). [DOI](https://doi.org/10.1021/acs.jpcb.5c03679).",
         "sourceDigest": "8dee22870438924a971eba0675205f97ecc1531968e2bb3e8be47ea0fb5aa280"
       },
@@ -182,8 +182,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 168,
-        "endLine": 168,
+        "startLine": 177,
+        "endLine": 177,
         "sourceText": "7. Feng, H., Zhao, J. Y., and Wei, G.-W. \"Multiscale Differential Geometry Learning for Protein Flexibility Analysis.\" *Journal of Computational Chemistry* 46, e70073 (2025). [DOI](https://doi.org/10.1002/jcc.70073).",
         "sourceDigest": "3c8da09c496127af333af537fb71f14f20e2d60a8fe43603f9ed3658a9d24a06"
       },
@@ -209,8 +209,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 169,
-        "endLine": 169,
+        "startLine": 178,
+        "endLine": 178,
         "sourceText": "8. Zhang, H. and Feng, H. \"Commutative algebra learning for protein flexibility analysis.\" [arXiv:2607.00879](https://arxiv.org/abs/2607.00879) (2026).",
         "sourceDigest": "fb2e98777f0b668f9a2fb2825c8d1832dccdf1367124cef2de95958c0ade4bac"
       },
@@ -234,8 +234,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 170,
-        "endLine": 170,
+        "startLine": 179,
+        "endLine": 179,
         "sourceText": "9. Su, Z., Tong, Y., and Wei, G.-W. \"Weighted Hodge Laplacians on Manifolds with Boundary.\" [arXiv:2608.00244](https://arxiv.org/abs/2608.00244) (2026).",
         "sourceDigest": "9cf193dada474dd3fa340866ec8d5f06c47d6e1785e9b3d6f34ad9e45fcf1cc6"
       },
@@ -261,8 +261,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 171,
-        "endLine": 171,
+        "startLine": 180,
+        "endLine": 180,
         "sourceText": "10. Pražnikar, J. \"Fast prediction of protein flexibility.\" *Bioinformatics* 42, btag175 (2026). [DOI](https://doi.org/10.1093/bioinformatics/btag175).",
         "sourceDigest": "71ff8bee415454f006641c04c4c107ab2352ac3551b2d9b947769171ae9ecd3b"
       },
@@ -285,8 +285,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 172,
-        "endLine": 172,
+        "startLine": 181,
+        "endLine": 181,
         "sourceText": "11. Bakan, A. et al. \"ProDy: Protein Dynamics Inferred from Theory and Experiments.\" *Bioinformatics* 27, 1575–1577 (2011). [DOI](https://doi.org/10.1093/bioinformatics/btr168).",
         "sourceDigest": "4a7a71b8fa2b847e47a8a21cc393c570d82799b6bf8b0aca0c1581a6fb2e3523"
       },
@@ -310,8 +310,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 173,
-        "endLine": 173,
+        "startLine": 182,
+        "endLine": 182,
         "sourceText": "12. Yang, Y. et al. \"OPUS-BFactor: Predicting Protein B-Factor with Sequence and Structure Information.\" *Molecules* 30, 2570 (2025). [DOI](https://doi.org/10.3390/molecules30122570).",
         "sourceDigest": "8a0a94ee4731c19807d2ce1e435b388fe34a9da03a0ad0841f568d676457db90"
       },
@@ -335,8 +335,8 @@
       "span": {
         "artifactKind": "application-note",
         "artifactPath": "content/applications/protein-flexibility.md",
-        "startLine": 174,
-        "endLine": 174,
+        "startLine": 183,
+        "endLine": 183,
         "sourceText": "13. Bahar, I., Atilgan, A. R., and Erman, B. \"Direct evaluation of thermal fluctuations in proteins using a single-parameter harmonic potential.\" *Folding and Design* 2, 173–181 (1997). [DOI](https://doi.org/10.1016/S1359-0278%2897%2900024-2).",
         "sourceDigest": "1bd16089d9461eeccd76085cf06ce40de2d6d2259a83a5053f10d1fefc7269c6"
       },

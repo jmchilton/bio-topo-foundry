@@ -88,11 +88,20 @@ one. A number from the first protocol cannot be placed above a number from the s
 roughly quarter-point gap between the protocols is primarily a change of question, not a sudden loss
 of mathematical quality.
 
-The aggregation can change the apparent result again. [[weighted-hodge-laplacians]] reports about
-0.48 when Pearson correlation is computed within each held-out protein and averaged, but about
-0.86 when residues are pooled and randomly split so that the same protein contributes atoms to
-both training and test folds. The pooled score is useful for fitting residues within known
-structures; it is not blind to protein identity.
+The **split unit** can change the apparent result again. [[weighted-hodge-laplacians]] reports about
+0.48 when whole proteins are held out, but about 0.86 when residues are pooled across proteins
+before splitting, so that the same protein contributes atoms to both training and test folds. The
+pooled-split score is useful for fitting residues within known structures; it is not blind to
+protein identity.
+
+**Aggregation** is a second axis, and it is the one the literature leaves unstated. Whether a fold's
+correlation is computed within each held-out protein and then averaged, or over all the fold's
+residues concatenated, changes the number without changing a word of the protocol description — and
+the papers here describe only the split. The one case that can be checked is instructive: commutative
+algebra learning's released driver keeps whole proteins in a fold and then computes one correlation
+over the fold's pooled residues, so its "protein-level" figure is a fold-pooled statistic. What the
+Weighted Hodge Laplacian paper's corresponding figure aggregates over is not stated. A comparison
+that does not pin this down is comparing two quantities that happen to share a name.
 
 Finally, a **consensus** row is not a pure-method row. Several papers append amino-acid identity,
 secondary structure, packing-density, or sequence features to the descriptor under study. Published
