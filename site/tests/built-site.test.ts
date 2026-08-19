@@ -162,6 +162,11 @@ describe("the emitted reader slice", () => {
     expect(licenseBadgeStyleGaps(css)).toEqual([]);
     expect(referenceStyleGaps(css)).toEqual([]);
 
+    // The preflight strips the marker off every list, including a bibliography whose entries are
+    // addressed by number from the prose above them. Restoring it is a rule that can be lost to an
+    // unrelated stylesheet edit and would leave the citation links landing on unnumbered entries.
+    expect(css).toMatch(/ol:has\(>li\[id\^=citation-\]\)\{[^}]*list-style:decimal/);
+
     // Constructed so Tailwind cannot satisfy this assertion by scanning the test itself.
     const kitOnlyUtility = ["min", "h", "dvh"].join("-");
     expect(css).toContain(`.${kitOnlyUtility}`);

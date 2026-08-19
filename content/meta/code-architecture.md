@@ -6,8 +6,8 @@ record_kind: infrastructure
 order: 1
 status: revised
 created: 2026-08-08
-revised: 2026-08-17
-revision: 7
+revised: 2026-08-18
+revision: 8
 tags:
   - meta
 ---
@@ -285,6 +285,16 @@ for `astro.config.mjs`. This is the one module reachable from the Astro config, 
 it carries is easy to trip: config loads outside Astro's module graph, so nothing reachable from it
 may import `astro:content`. Here the content reader is filesystem-based and imports no Astro
 runtime, which is what keeps the constraint satisfied without a second module split.
+
+`remark-citation-links.ts` is the second module the config reaches, and carries the same
+constraint plus one of its own. It links a note's numbered citation markers — `[3]`, `[1, 2]`,
+`[7–9]` — to the entries of that note's own bibliography, giving each entry an id and each written
+number a link, and failing the build when a marker names an entry the list does not hold. Which
+heading opens a bibliography is not its decision: it reads `referenceHeadingTerms` from
+`audit-citations.config.json` as raw JSON, because the package that owns that vocabulary is a
+development dependency the site build may not import. The config is found by walking up from the
+working directory, since a module-relative `import.meta.url` is a `/@fs/…` URL under Vite rather
+than a path on disk.
 
 `render-vault-doc.ts` is the corresponding path for a loose document — currently only the glossary.
 It resolves links through the same reader, renders with `marked`, and adds the bold-term anchors the

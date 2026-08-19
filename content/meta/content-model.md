@@ -6,8 +6,8 @@ record_kind: infrastructure
 order: 2
 status: revised
 created: 2026-08-08
-revised: 2026-08-17
-revision: 7
+revised: 2026-08-18
+revision: 8
 tags:
   - meta
 ---
@@ -157,6 +157,14 @@ Body links are checked, not merely rendered: every `[[Target]]` written in a typ
 in the test suite, so a link naming nothing fails validation. A backticked token names the syntax
 and creates no link, which means it is also invisible to the check — write `` `[[Target]]` `` only
 when the literal token is the subject.
+
+A numbered citation marker is the corpus's other link grammar, and it is resolved the same way. A
+note that writes `[3]`, `[1, 2]`, or `[7–9]` in prose is linking to the entries of its own
+bibliography, and the renderer supplies both halves: an id on each numbered entry, a link on each
+number the note wrote, superscripted. A range links the ends the author wrote and is checked across
+the entries it implies. A marker naming an entry the list does not hold fails the build, so this
+grammar cannot rot into decorative brackets either. The reverse direction — a listed work no marker
+cites — belongs to the citation audit, not here.
 
 ## Typed references
 
